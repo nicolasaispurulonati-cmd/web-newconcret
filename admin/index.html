@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — NewConcret</title>
+    <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
+    <link rel="stylesheet" href="../assets/css/admin.css?v=2.0">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="../assets/data/site-structure.js"></script>
+</head>
+<body class="admin-body">
+
+<!-- ── LOGIN SCREEN ── -->
+<div id="login-container" class="login-screen">
+    <div class="login-card">
+        <h1 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img src="../logos/logonewconcret-blanco.png" alt="NewConcret" style="height: 26px;">
+            <span style="font-size: 1.8rem; transform: translateY(2px); font-family: 'Barlow', sans-serif;">ADMIN</span>
+        </h1>
+        <form id="login-form">
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" id="username" placeholder="newconcret" required autofocus>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="btn-admin">Acceder al Sistema</button>
+            <p id="error-msg" style="color: #c1121f; font-size: 0.8rem; margin-top: 1rem; display: none;"></p>
+        </form>
+        <p style="font-size: 0.7rem; color: #555; margin-top: 2rem;">Acceso local: newconcret / admin2024</p>
+    </div>
+</div>
+
+<!-- ── DASHBOARD ── -->
+<div id="dashboard-container" class="hidden">
+    <header class="admin-header">
+        <div class="admin-logo" style="display: flex; align-items: center; gap: 8px;">
+            <img src="../logos/logonewconcret-blanco.png" alt="NewConcret" style="height: 20px;">
+            <span style="font-size: 1.3rem; transform: translateY(2px);">ADMIN</span>
+        </div>
+        <div style="display: flex; gap: 1.5rem; align-items: center;">
+            <span id="user-display" style="font-size: 0.75rem; color: #888;">ADMIN MODE</span>
+            <button onclick="logout()" class="btn-admin" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: #333; width: auto;">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <main class="admin-content">
+        <div class="toolbar">
+            <button onclick="openEditor(null)" class="btn-admin" style="background:#c1121f; width:auto; padding:0.7rem 1.5rem; margin-right:auto;">+ Nuevo Producto</button>
+            <input type="text" id="search-box" class="search-input" placeholder="Buscar por nombre, SKU o categoría...">
+            <select id="filter-cat" class="search-input" style="width: 200px;">
+                <option value="">Todas las categorías</option>
+                <option value="equipos">Equipos</option>
+                <option value="materiales">Materiales</option>
+                <option value="productos-quimicos">Químicos</option>
+                <option value="insumos">Insumos</option>
+                <option value="accesorios">Accesorios</option>
+            </select>
+            <button onclick="saveAll()" id="btn-save-all" class="btn-admin" style="width: auto; padding: 0.7rem 1.5rem;">Guardar / Exportar</button>
+        </div>
+
+        <div id="product-list" class="product-grid">
+            <!-- Dinámico -->
+        </div>
+    </main>
+</div>
+
+<!-- ── MODAL EDITOR ── -->
+<div id="editor-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-title" style="margin:0;">Editar Producto</h2>
+            <button onclick="closeEditor()" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="edit-form">
+                <input type="hidden" id="edit-id">
+                <div class="editor-grid">
+                    <div>
+                        <div class="form-group">
+                            <label>Nombre del Producto</label>
+                            <input type="text" id="edit-name" required>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="form-group" style="flex: 1;">
+                                <label>SKU (Único)</label>
+                                <input type="text" id="edit-sku" readonly style="opacity: 0.5;">
+                            </div>
+                            <div class="form-group" style="flex: 0 0 100px;">
+                                <label>Visibilidad</label>
+                                <select id="edit-visible" class="search-input" style="width: 100%; padding: 0.8rem;">
+                                    <option value="true">Visible</option>
+                                    <option value="false">Oculto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción Corta</label>
+                            <textarea id="edit-desc" style="width:100%; height:80px; background:#000; color:#fff; border:1px solid #222; padding:10px; font-family: inherit;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Imagen Principal</label>
+                            <div class="upload-wrapper" onclick="document.getElementById('upload-img').click()">
+                                <img id="prev-img" src="" class="preview-img hidden">
+                                <span id="label-img" class="file-info">Clic para seleccionar imagen</span>
+                                <input type="file" id="upload-img" hidden onchange="handleFileUpload(this, 'img')">
+                                <input type="hidden" id="edit-img">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ficha Técnica (PDF)</label>
+                            <div class="upload-wrapper" onclick="document.getElementById('upload-doc').click()">
+                                <div id="prev-doc" class="file-info hidden">📄 PDF Cargado</div>
+                                <span id="label-doc" class="file-info">Clic para seleccionar PDF</span>
+                                <input type="file" id="upload-doc" hidden onchange="handleFileUpload(this, 'doc')">
+                                <input type="hidden" id="edit-pdf">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Enlace a Tienda (URL Completa)</label>
+                            <input type="text" id="edit-shop" placeholder="https://tiendalonati.com.ar/productos/...">
+                        </div>
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 2rem;">
+                            <label style="font-size: 0.7rem; text-transform: uppercase; color: #888; display: block; margin-bottom: 1rem;">Categorización Múltiple (Árbol)</label>
+                            <div id="category-tree" class="tree-container">
+                                <!-- Tree dynamic -->
+                            </div>
+                        </div>
+
+                        <div id="specs-editor">
+                            <label style="font-size: 0.7rem; text-transform: uppercase; color: #888; display: block; margin-bottom: 0.5rem;">Especificaciones Técnicas (Specs)</label>
+                            <div id="specs-list">
+                                <!-- Dinámico -->
+                            </div>
+                            <button type="button" onclick="addSpec()" class="btn-admin" style="background:#222; font-size:0.6rem; margin-top:0.5rem; width: auto; padding: 0.5rem 1rem;">+ Añadir Especificación</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button onclick="deleteProduct()" id="btn-delete" class="btn-admin" style="background: transparent; border: 1px solid #c1121f; color: #c1121f; width: auto; margin-right: auto;">Eliminar Producto</button>
+            <button onclick="closeEditor()" class="btn-admin" style="background: #222; width: auto;">Cancelar</button>
+            <button onclick="applyEdit()" class="btn-admin" style="width: auto;">Aplicar Cambios</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── EXPORT MODAL ── -->
+<div id="export-modal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 600px;">
+        <div class="modal-header">
+            <h2>Exportar productos.js</h2>
+            <button onclick="document.getElementById('export-modal').style.display='none'" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p style="font-size: 0.85rem; color: #888; margin-bottom: 1rem;">Copia el código de abajo y pégalo íntegramente en tu archivo <b>assets/data/productos.js</b>.</p>
+            <textarea id="export-area" readonly style="width:100%; height:300px; background:#000; color:#0f0; border:1px solid #222; padding:10px; font-family: monospace; font-size: 0.75rem;"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button onclick="copyExport()" class="btn-admin" style="width: auto;">Copiar al Portapapeles</button>
+            <button onclick="downloadExport()" class="btn-admin" style="width: auto; background: #222;">Descargar Archivo</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── TOAST CONTAINER ── -->
+<div id="toast-container" class="toast-container"></div>
+
+<script src="../assets/data/productos.js"></script>
+<script>
+let currentProductList = [...productos];
+let auth_token = localStorage.getItem('nc_auth_token');
+
+// ── AUTH LOGIC ──
+const loginForm = document.getElementById('login-form');
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    
+    // MOCK LOGIN for local development
+    if (user === 'newconcret' && pass === 'admin2024') {
+        const token = 'mock_token_' + Date.now();
+        localStorage.setItem('nc_auth_token', token);
+        auth_token = token;
+        initDashboard();
+        return;
+    }
+
+    try {
+        const resp = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user, pass })
+        });
+        
+        const data = await resp.json();
+        if (data.success) {
+            localStorage.setItem('nc_auth_token', data.token);
+            auth_token = data.token;
+            initDashboard();
+        } else {
+            const err = document.getElementById('error-msg');
+            err.innerText = data.message;
+            err.style.display = 'block';
+        }
+    } catch(err) {
+        const errMsg = document.getElementById('error-msg');
+        errMsg.innerText = "Modo Local: Usa newconcret / admin2024";
+        errMsg.style.display = 'block';
+    }
+});
+
+function logout() {
+    localStorage.removeItem('nc_auth_token');
+    location.reload();
+}
+
+function checkAuth() {
+    if (auth_token) {
+        initDashboard();
+    }
+}
+
+// ── DASHBOARD LOGIC ──
+function initDashboard() {
+    document.getElementById('login-container').classList.add('hidden');
+    document.getElementById('dashboard-container').classList.remove('hidden');
+    renderProducts();
+}
+
+function renderProducts() {
+    const list = document.getElementById('product-list');
+    const search = document.getElementById('search-box').value.toLowerCase();
+    const cat = document.getElementById('filter-cat').value;
+    
+    list.innerHTML = '';
+    
+    const filtered = currentProductList.filter(p => {
+        if (!p || !p.nombre) return false;
+        const name = p.nombre.toLowerCase();
+        const sku = (p.sku || "").toLowerCase();
+        const matchesSearch = name.includes(search) || sku.includes(search);
+        const matchesCat = !cat || p.categoria === cat;
+        return matchesSearch && matchesCat;
+    });
+
+    if (filtered.length === 0) {
+        list.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #555;">No se encontraron productos.</div>';
+        return;
+    }
+
+    filtered.forEach(p => {
+        const isHidden = p.visible === false;
+        const card = document.createElement('div');
+        card.className = 'admin-pcard' + (isHidden ? ' is-hidden' : '');
+        card.style.opacity = isHidden ? '0.5' : '1';
+        card.onclick = () => openEditor(p.id);
+        card.innerHTML = `
+            <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='../assets/img/hero/productos.jpg'">
+            <div class="admin-pcard-info">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="flex:1; margin-right:10px;">${p.nombre}</h3>
+                    ${isHidden ? '<span style="font-size:0.6rem; background:#444; padding:2px 5px; border-radius:3px; flex-shrink:0;">OCULTO</span>' : ''}
+                </div>
+                <p>SKU: ${p.sku || 'N/A'} | Cat: ${p.categoria || 'N/A'}</p>
+                <p style="margin-top:0.3rem">${(p.secciones || []).join(', ')}</p>
+                
+                <!-- Quick Actions -->
+                <div class="card-actions" style="display:flex; gap:0.5rem; margin-top:1rem; border-top:1px solid #222; padding-top:1rem;">
+                    <button class="btn-quick ${isHidden ? 'active' : ''}" onclick="toggleQuickVisibility(event, '${p.id}')" title="${isHidden ? 'Mostrar' : 'Ocultar'}">
+                        ${isHidden 
+                            ? '<svg class="glow-white" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> <span style="color:#fff">Mostrar</span>' 
+                            : '<svg class="glow-white" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg> <span style="color:#aaa">Ocultar</span>'}
+                    </button>
+                    <button class="btn-quick btn-quick-del" onclick="quickDelete(event, '${p.id}', '${p.nombre.replace(/'/g, "\\'")}')" title="Eliminar">
+                        <svg class="glow-red" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                        <span style="color:#C1121F">Borrar</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        list.appendChild(card);
+    });
+}
+
+document.getElementById('search-box').addEventListener('input', renderProducts);
+document.getElementById('filter-cat').addEventListener('change', renderProducts);
+
+// ── EDITOR LOGIC ──
+const modal = document.getElementById('editor-modal');
+
+function openEditor(id = null) {
+    let p;
+    if (id) {
+        p = currentProductList.find(x => x.id === id);
+        if (!p) return;
+        document.getElementById('modal-title').innerText = 'Editar Producto';
+        document.getElementById('edit-sku').readOnly = true;
+        document.getElementById('edit-sku').style.opacity = '0.5';
+        document.getElementById('btn-delete').style.display = 'block';
+    } else {
+        p = { id: '', nombre: '', sku: '', descripcion: '', imagen: '', pdfUrl: '', storeUrl: '', rutas: [], specs: [], visible: true };
+        document.getElementById('modal-title').innerText = 'Crear Nuevo Producto';
+        document.getElementById('edit-sku').readOnly = false;
+        document.getElementById('edit-sku').style.opacity = '1';
+        document.getElementById('btn-delete').style.display = 'none';
+    }
+    
+    document.getElementById('edit-id').value = p.id;
+    document.getElementById('edit-name').value = p.nombre || '';
+    document.getElementById('edit-sku').value = p.sku || '';
+    document.getElementById('edit-desc').value = p.descripcion || '';
+    document.getElementById('edit-visible').value = (p.visible !== false).toString();
+    
+    // Imagen
+    const imgInp = document.getElementById('edit-img');
+    const prevImg = document.getElementById('prev-img');
+    const labelImg = document.getElementById('label-img');
+    imgInp.value = p.imagen || '';
+    if (p.imagen) {
+        prevImg.src = p.imagen.startsWith('/') ? '..' + p.imagen : p.imagen;
+        prevImg.classList.remove('hidden');
+        labelImg.innerText = 'Cargar otra imagen';
+    } else {
+        prevImg.classList.add('hidden');
+        labelImg.innerText = 'Clic para seleccionar imagen';
+    }
+
+    // PDF & Shop
+    const pdfInp = document.getElementById('edit-pdf');
+    const shopInp = document.getElementById('edit-shop');
+    const prevDoc = document.getElementById('prev-doc');
+    const labelDoc = document.getElementById('label-doc');
+
+    let currentPdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
+    let currentShop = (p.storeUrl && !p.storeUrl.endsWith('.pdf')) ? p.storeUrl : '';
+
+    pdfInp.value = currentPdf;
+    shopInp.value = currentShop;
+
+    if (currentPdf) {
+        prevDoc.classList.remove('hidden');
+        labelDoc.innerText = 'Cargar otro PDF';
+    } else {
+        prevDoc.classList.add('hidden');
+        labelDoc.innerText = 'Clic para seleccionar PDF';
+    }
+    
+    renderTree(p.rutas || []);
+    renderSpecs(p.specs || []);
+    
+    modal.style.display = 'flex';
+}
+
+function closeEditor() {
+    modal.style.display = 'none';
+}
+
+function renderTree(selectedPaths = []) {
+    const container = document.getElementById('category-tree');
+    container.innerHTML = '';
+
+    if (typeof NEWCONCRET_STRUCTURE === 'undefined') {
+        container.innerHTML = '<p style="color:red; font-size:0.7rem">Error: site-structure.js no cargado</p>';
+        return;
+    }
+
+    for (const secKey in NEWCONCRET_STRUCTURE) {
+        const section = NEWCONCRET_STRUCTURE[secKey];
+        const isSecChecked = selectedPaths.some(r => r.sección === secKey && !r.categoría);
+        const secNode = createTreeNode(secKey, section.label, 'section', 0, isSecChecked);
+        container.appendChild(secNode);
+
+        const catsContainer = document.createElement('div');
+        catsContainer.className = 'tree-children collapsed';
+        secNode.appendChild(catsContainer);
+
+        const secHeader = secNode.querySelector('.tree-node-header');
+        secHeader.onclick = (e) => {
+            if (e.target.type === 'checkbox') return;
+            const toggle = secHeader.querySelector('.tree-toggle');
+            if (toggle) toggle.classList.toggle('open');
+            catsContainer.classList.toggle('collapsed');
+        };
+
+        for (const catKey in section.categories) {
+            const category = section.categories[catKey];
+            const isCatChecked = selectedPaths.some(r => r.sección === secKey && r.categoría === catKey && !r.subcategoría);
+            const catNode = createTreeNode(catKey, category.label, 'category', 1, isCatChecked, {secKey});
+            catsContainer.appendChild(catNode);
+
+            const subsContainer = document.createElement('div');
+            subsContainer.className = 'tree-children collapsed';
+            catNode.appendChild(subsContainer);
+
+            const catHeader = catNode.querySelector('.tree-node-header');
+            catHeader.onclick = (e) => {
+                if (e.target.type === 'checkbox') return;
+                const toggle = catHeader.querySelector('.tree-toggle');
+                if (toggle) toggle.classList.toggle('open');
+                subsContainer.classList.toggle('collapsed');
+            };
+
+            category.subcategories.forEach(sub => {
+                const isSubChecked = selectedPaths.some(r => r.sección === secKey && r.categoría === catKey && r.subcategoría === (sub.slug || sub));
+                const subNode = createTreeNode(sub.slug || sub, sub.label || sub, 'subcategory', 2, isSubChecked, {secKey, catKey});
+                subsContainer.appendChild(subNode);
+            });
+        }
+    }
+}
+
+function createTreeNode(id, label, type, level, checked = false, data = {}) {
+    const div = document.createElement('div');
+    div.className = `tree-node level-${level}`;
+    
+    const header = document.createElement('div');
+    header.className = 'tree-node-header';
+    
+    if (type !== 'subcategory') {
+        const toggle = document.createElement('span');
+        toggle.className = 'tree-toggle';
+        toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+        header.appendChild(toggle);
+    } else {
+        const spacer = document.createElement('span');
+        spacer.style.width = '20px';
+        header.appendChild(spacer);
+    }
+    
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = checked;
+    cb.dataset.type = type;
+    cb.dataset.sec = data.secKey || id;
+    cb.dataset.cat = type === 'section' ? '' : (data.catKey || id);
+    cb.dataset.sub = type === 'subcategory' ? id : '';
+    cb.className = 'path-checkbox';
+    header.appendChild(cb);
+    
+    const span = document.createElement('span');
+    span.className = `tree-label ${type}`;
+    span.innerText = label;
+    header.appendChild(span);
+    
+    div.appendChild(header);
+    return div;
+}
+
+function renderSpecs(specs) {
+    const list = document.getElementById('specs-list');
+    list.innerHTML = '';
+    (specs || []).forEach((s, idx) => {
+        list.appendChild(createSpecRow(s.icono, s.clave, s.valor, idx));
+    });
+}
+
+function createSpecRow(icon, key, val, idx) {
+    const row = document.createElement('div');
+    row.className = 'spec-item';
+    row.innerHTML = `
+        <input type="text" placeholder="Clave" value="${key}" class="s-key">
+        <input type="text" placeholder="Valor" value="${val}" class="s-val">
+        <button type="button" class="btn-del" onclick="this.parentElement.remove()">&times;</button>
+    `;
+    return row;
+}
+
+function addSpec() {
+    document.getElementById('specs-list').appendChild(createSpecRow('◉', '', '', ''));
+}
+
+function applyEdit() {
+    const id = document.getElementById('edit-id').value;
+    const newSku = document.getElementById('edit-sku').value.trim();
+    
+    if (!newSku) {
+        showToast('El SKU es obligatorio.', 'error');
+        return;
+    }
+
+    let idx = currentProductList.findIndex(x => x.id === id);
+    let p;
+    
+    if (idx === -1) {
+        if (currentProductList.some(x => x.sku && x.sku.toLowerCase() === newSku.toLowerCase())) {
+            showToast('Ese SKU ya existe en otro producto.', 'error');
+            return;
+        }
+        p = { id: 'prod_' + Date.now().toString(36) };
+        currentProductList.unshift(p);
+    } else {
+        p = currentProductList[idx];
+    }
+    
+    p.nombre = document.getElementById('edit-name').value;
+    p.sku = newSku;
+    p.descripcion = document.getElementById('edit-desc').value;
+    p.imagen = document.getElementById('edit-img').value;
+    p.pdfUrl = document.getElementById('edit-pdf').value;
+    p.storeUrl = document.getElementById('edit-shop').value;
+    p.visible = document.getElementById('edit-visible').value === 'true';
+    
+    const checkboxes = document.querySelectorAll('.path-checkbox:checked');
+    p.rutas = Array.from(checkboxes).map(cb => ({
+        sección: cb.dataset.sec,
+        categoría: cb.dataset.cat,
+        subcategoría: cb.dataset.sub
+    }));
+
+    if (p.rutas.length > 0) {
+        p.secciones = Array.from(new Set(p.rutas.map(r => r.sección)));
+        const first = p.rutas[0];
+        p.categoria = first.categoría;
+        if (first.categoría && NEWCONCRET_STRUCTURE[first.sección].categories[first.categoría]) {
+            p.cat_label = NEWCONCRET_STRUCTURE[first.sección].categories[first.categoría].label;
+        } else {
+            p.cat_label = '';
+        }
+        p.subcategoria = first.subcategoría;
+    } else {
+        p.secciones = [];
+        p.categoria = '';
+        p.cat_label = '';
+        p.subcategoria = '';
+    }
+    
+    p.specs = Array.from(document.querySelectorAll('.spec-item')).map(row => ({
+        icono: '◉',
+        clave: row.querySelector('.s-key').value,
+        valor: row.querySelector('.s-val').value
+    }));
+    
+    closeEditor();
+    renderProducts();
+    showToast('Cambios aplicados temporalmente. Recuerda guardar.', 'success');
+}
+
+function deleteProduct() {
+    const id = document.getElementById('edit-id').value;
+    const name = document.getElementById('edit-name').value;
+    
+    if (confirm(`¿Estás seguro de que deseas eliminar permanentemente "${name}"?`)) {
+        currentProductList = currentProductList.filter(x => x.id !== id);
+        closeEditor();
+        renderProducts();
+        showToast('Producto eliminado de la lista. Recuerda guardar.', 'success');
+    }
+}
+
+// ── QUICK ACTIONS ──
+function toggleQuickVisibility(e, id) {
+    e.stopPropagation();
+    const p = currentProductList.find(x => x.id === id);
+    if (p) {
+        p.visible = (p.visible === false); // Toggle
+        renderProducts();
+        showToast(`Producto "${p.nombre}" ${p.visible ? 'ahora es visible' : 'ahora está oculto'}. Recuerda guardar.`, 'success');
+    }
+}
+
+function quickDelete(e, id, name) {
+    e.stopPropagation();
+    if (confirm(`¿Estás seguro de que deseas eliminar permanentemente "${name}"?`)) {
+        currentProductList = currentProductList.filter(x => x.id !== id);
+        renderProducts();
+        showToast('Producto eliminado. Recuerda guardar cambios globales.', 'success');
+    }
+}
+
+// ── FILE UPLOAD LOGIC ──
+async function handleFileUpload(input, type) {
+    if (!input.files || !input.files[0]) return;
+    
+    const file = input.files[0];
+    const label = document.getElementById(`label-${type}`);
+    
+    // Simulate local file path since we don't have a backend
+    const fakeUrl = (type === 'img' ? '/assets/img/productos/' : '/assets/docs/') + file.name;
+    
+    document.getElementById(`edit-${type === 'img' ? 'img' : 'pdf'}`).value = fakeUrl;
+    if (type === 'img') {
+        const prev = document.getElementById('prev-img');
+        prev.src = URL.createObjectURL(file);
+        prev.classList.remove('hidden');
+    } else {
+        document.getElementById('prev-doc').classList.remove('hidden');
+    }
+    
+    label.innerText = '✓ ¡Cargado localmente!';
+    showToast('Archivo referenciado. Asegúrate de copiar el archivo real a ' + fakeUrl, 'success');
+}
+
+function saveAll() {
+    const exportArea = document.getElementById('export-area');
+    const json = JSON.stringify(currentProductList, null, 4);
+    const fullCode = `const STORE_BASE = 'https://tiendalonati.com.ar';\n\nconst productos = ${json};`;
+    
+    exportArea.value = fullCode;
+    document.getElementById('export-modal').style.display = 'flex';
+}
+
+function copyExport() {
+    const area = document.getElementById('export-area');
+    area.select();
+    document.execCommand('copy');
+    showToast('¡Código copiado al portapapeles!', 'success');
+}
+
+function downloadExport() {
+    const area = document.getElementById('export-area');
+    const blob = new Blob([area.value], { type: 'application/javascript' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'productos.js';
+    a.click();
+    showToast('Archivo descargado.', 'success');
+}
+
+// ── TOAST NOTIFICATIONS ──
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    
+    const icon = type === 'success' 
+        ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'
+        : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
+
+    toast.innerHTML = `<div class="toast-icon">${icon}</div><div class="toast-message">${message}</div>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+    }, 3500);
+}
+
+checkAuth();
+</script>
+</body>
+</html>

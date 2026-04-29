@@ -1,0 +1,1720 @@
+<html lang="es" class="js-loaded">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="NewConcret: Capacitaciones teóricas y prácticas sobre pulido y tratamiento de pisos de hormigón. Certificación profesional en Bragado, Buenos Aires.">
+    <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&amp;family=Barlow:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/estilo.css?v=39">
+    <link rel="stylesheet" href="../assets/css/nav.css?v=1.3">
+    <style>
+        /* Failsafe cursor visibility */
+        body:not(.js-loaded) {
+            cursor: auto !important;
+        }
+
+        .js-loaded body {
+            cursor: none;
+        }
+    </style>
+    <style>
+        /* ══════════════════════════════════════════
+    TOKENS
+/* ══════════════════════════════════════════ */
+        :root {
+            --r: #C1121F;
+            --rh: #E5161E;
+            --bk: #0A0A0A;
+            --dk: #111111;
+            --cb: #161616;
+            --st: #242424;
+            --s2: #303030;
+            --mi: #555;
+            --as: #888;
+            --lt: #CACAC8;
+            --wh: #F4F4F2;
+            --fd: 'Barlow Condensed', sans-serif;
+            --fb: 'Barlow', sans-serif;
+            --fm: 'JetBrains Mono', monospace;
+            --ex: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Basic typography overrides for this specific page */
+        body {
+            font-family: var(--fb);
+            background: var(--bk);
+            color: var(--wh);
+            overflow-x: hidden;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bk);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--s2);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--r);
+        }
+
+        /* ═══════════════════════════════════════
+    NAV
+    ═══════════════════════════════════════ */
+        /* ═══════════════════════════════════════
+    MOCKUP OVERRIDES
+    ═══════════════════════════════════════ */
+        /* We keep the mockup's tokens and fonts but let estilo.css handle the nav */
+
+        /* ═══════════════════════════════════════
+    HERO
+    ═══════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 88vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 4rem 5rem;
+            overflow: hidden;
+            margin-top: 66px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(.38) saturate(.5);
+        }
+
+        .hero-ov {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to right, rgba(10, 10, 10, .95) 0%, rgba(10, 10, 10, .6) 55%, rgba(10, 10, 10, .15) 100%),
+                linear-gradient(to top, rgba(10, 10, 10, .95) 0%, transparent 55%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .65rem;
+            margin-bottom: 1.4rem;
+            animation: fadeUp .8s var(--ex) .2s both;
+        }
+
+        .eyebrow-line {
+            width: 32px;
+            height: 1px;
+            background: var(--r);
+        }
+
+        .eyebrow-tx {
+            font-family: var(--fm);
+            font-size: .64rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--r);
+        }
+
+        .hero-h1 {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            line-height: .93;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            color: var(--wh);
+            margin-bottom: 1.25rem;
+            animation: fadeUp .8s var(--ex) .38s both;
+        }
+
+        .hero-h1 .red {
+            color: var(--r);
+        }
+
+        .hero-h1 .thin {
+            font-weight: 300;
+            color: var(--as);
+        }
+
+        .hero-p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--lt);
+            max-width: 460px;
+            margin-bottom: 2.5rem;
+            animation: fadeUp .8s var(--ex) .52s both;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeUp .8s var(--ex) .65s both;
+        }
+
+        .hero-aside {
+            position: absolute;
+            right: 4rem;
+            bottom: 5rem;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: flex-end;
+            animation: fadeUp .8s var(--ex) .9s both;
+        }
+
+        .aside-stat {
+            text-align: right;
+        }
+
+        .aside-num {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--wh);
+            letter-spacing: -.02em;
+            line-height: 1;
+        }
+
+        .aside-num em {
+            color: var(--r);
+            font-style: normal;
+            font-size: .75em;
+        }
+
+        .aside-lbl {
+            font-family: var(--fm);
+            font-size: .58rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--mi);
+            margin-top: .2rem;
+        }
+
+        .scroll-ind {
+            position: absolute;
+            bottom: 1.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--r), transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .scroll-ind span {
+            font-family: var(--fm);
+            font-size: .56rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--mi);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: .3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(34px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ═══════════════════════════════════════
+    BTNS
+    ═══════════════════════════════════════ */
+        .btn-p {
+            display: inline-flex;
+            align-items: center;
+            gap: .65rem;
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: .78rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--r);
+            padding: .9rem 1.8rem;
+            text-decoration: none;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
+            position: relative;
+            overflow: hidden;
+            transition: background .2s, transform .2s;
+        }
+
+        .btn-p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .13), transparent);
+            transition: left .45s;
+        }
+
+        .btn-p:hover {
+            background: var(--rh);
+            transform: translateY(-2px);
+        }
+
+        .btn-p:hover::before {
+            left: 100%;
+        }
+
+        .btn-g {
+            display: inline-flex;
+            align-items: center;
+            gap: .65rem;
+            font-family: var(--fd);
+            font-weight: 600;
+            font-size: .78rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--as);
+            text-decoration: none;
+            padding: .9rem 0;
+            border-bottom: 1px solid var(--st);
+            transition: color .2s, border-color .2s, gap .2s;
+        }
+
+        .btn-g:hover {
+            color: var(--wh);
+            border-color: var(--as);
+            gap: .9rem;
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: .78rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #fff;
+            background: #25D366;
+            padding: .9rem 1.8rem;
+            text-decoration: none;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
+            position: relative;
+            overflow: hidden;
+            transition: background .2s, transform .2s;
+        }
+
+        .btn-wa::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .12), transparent);
+            transition: left .45s;
+        }
+
+        .btn-wa:hover {
+            background: #1eb858;
+            transform: translateY(-2px);
+        }
+
+        .btn-wa:hover::before {
+            left: 100%;
+        }
+
+        /* ═══════════════════════════════════════
+    SECTION UTILS
+    ═══════════════════════════════════════ */
+        .sec {
+            padding: 6rem 4rem;
+        }
+
+        .sec-label {
+            display: inline-flex;
+            align-items: center;
+            gap: .65rem;
+            margin-bottom: 1rem;
+        }
+
+        .sec-label-line {
+            width: 22px;
+            height: 2px;
+            background: var(--r);
+        }
+
+        .recap-sec .sec-label {
+            margin-bottom: 0.5rem;
+        }
+
+        .sec-label-tx {
+            font-family: var(--fm);
+            font-size: .63rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--r);
+        }
+
+        .sec-h2 {
+            font-family: var(--fd);
+            font-weight: 800;
+            font-size: clamp(1.9rem, 3.8vw, 3.2rem);
+            line-height: 1;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            color: var(--wh);
+            margin-bottom: 1rem;
+        }
+
+        .recap-sec .sec-h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .sec-p {
+            font-size: .95rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--as);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .75s var(--ex), transform .75s var(--ex);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        .d1 {
+            transition-delay: .08s
+        }
+
+        .d2 {
+            transition-delay: .16s
+        }
+
+        .d3 {
+            transition-delay: .24s
+        }
+
+        .d4 {
+            transition-delay: .32s
+        }
+
+        .d5 {
+            transition-delay: .4s
+        }
+
+        /* ═══════════════════════════════════════
+    ¿QUÉ VAS A APRENDER? — 3 PASOS
+    ═══════════════════════════════════════ */
+        .aprende-sec {
+            background: var(--cb);
+            border-top: 1px solid var(--st);
+            border-bottom: 1px solid var(--st);
+        }
+
+        .aprende-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .aprende-img-wrap {
+            position: relative;
+        }
+
+        .aprende-img-wrap img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .aprende-img-wrap::before {
+            content: '';
+            position: absolute;
+            top: -1.25rem;
+            left: -1.25rem;
+            right: 1.25rem;
+            bottom: 1.25rem;
+            border: 1px solid var(--st);
+            z-index: 0;
+        }
+
+        .aprende-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: -1.25rem;
+            right: -1.25rem;
+            width: 80px;
+            height: 80px;
+            background: var(--r);
+            z-index: 0;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
+        }
+
+        .aprende-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.75rem 0;
+            border-bottom: 1px solid var(--st);
+            position: relative;
+            transition: padding-left .3s var(--ex);
+        }
+
+        .step:first-child {
+            padding-top: 0;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: transparent;
+            transition: background .3s;
+        }
+
+        .step:hover {
+            padding-left: .75rem;
+        }
+
+        .step:hover::before {
+            background: var(--r);
+        }
+
+        .step-num {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, .06);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 60px;
+            text-align: right;
+            transition: color .3s;
+        }
+
+        .step:hover .step-num {
+            color: rgba(193, 18, 31, .18);
+        }
+
+        .step-label {
+            font-family: var(--fm);
+            font-size: .6rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--r);
+            display: block;
+            margin-bottom: .4rem;
+        }
+
+        .step-tx {
+            font-size: .95rem;
+            font-weight: 300;
+            color: var(--lt);
+            line-height: 1.6;
+        }
+
+        .step-tx strong {
+            color: var(--wh);
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════
+    OBJETIVOS DEL CURSO
+    ═══════════════════════════════════════ */
+        .obj-sec {
+            background: var(--bk);
+        }
+
+        .obj-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.55fr;
+            gap: 5rem;
+            align-items: start;
+            margin-top: 3.5rem;
+        }
+
+        .obj-card {
+            background: var(--cb);
+            border: 1px solid var(--st);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .obj-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--r);
+            transition: height .5s var(--ex);
+        }
+
+        .obj-card:hover::before {
+            height: 100%;
+        }
+
+        .obj-card p {
+            font-size: .92rem;
+            font-weight: 300;
+            color: var(--as);
+            line-height: 1.7;
+            margin-bottom: 1.1rem;
+        }
+
+        .obj-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .obj-card p strong {
+            color: var(--wh);
+            font-weight: 500;
+        }
+
+        .obj-pillars {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5px;
+            background: var(--st);
+        }
+
+        .pillar {
+            background: var(--dk);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+            position: relative;
+            overflow: hidden;
+            transition: background .3s;
+        }
+
+        .pillar:hover {
+            background: var(--cb);
+        }
+
+        .pillar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--r);
+            transition: width .4s var(--ex);
+        }
+
+        .pillar:hover::after {
+            width: 100%;
+        }
+
+        .pillar-ic {
+            font-size: 1.15rem;
+            display: block;
+        }
+
+        .pillar-title {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            color: var(--wh);
+            letter-spacing: .02em;
+            line-height: 1.1;
+        }
+
+        .pillar-desc {
+            font-size: .82rem;
+            font-weight: 300;
+            color: var(--mi);
+            line-height: 1.55;
+        }
+
+        /* ═══════════════════════════════════════
+    RECAP — ÚLTIMA CAPACITACIÓN 7 MAR 2026
+    ═══════════════════════════════════════ */
+        .recap-sec {
+            background: var(--cb);
+            border-top: 1px solid var(--st);
+        }
+
+        .recap-date-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            background: var(--r);
+            padding: .42rem 1.2rem;
+            font-family: var(--fm);
+            font-size: .64rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 0; /* Removed spacing below title/date */
+        }
+
+        .recap-sec .recap-date-tag {
+            margin-bottom: 2rem;
+        }
+
+        .recap-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start; /* Align video with title top */
+            margin-top: 0; /* Removed spacing above layout */
+        }
+
+        .recap-text p {
+            font-size: .9rem;
+            font-weight: 300;
+            color: var(--as);
+            line-height: 1.7;
+            margin-bottom: 1.1rem;
+        }
+
+        .recap-text p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .recap-text strong {
+            color: var(--wh);
+            font-weight: 500;
+        }
+
+        .recap-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5px;
+            background: var(--st);
+            margin-top: 2rem;
+        }
+
+        .rstat {
+            background: var(--dk);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: background .25s;
+        }
+
+        .rstat:hover {
+            background: var(--cb);
+        }
+
+        .rstat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--r);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .4s var(--ex);
+        }
+
+        .rstat:hover::before {
+            transform: scaleX(1);
+        }
+
+        .rstat-icon {
+            font-size: 1.2rem;
+            color: var(--r);
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .rstat-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .rstat-val {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-size: 1.9rem;
+            color: var(--wh);
+            letter-spacing: -.02em;
+            line-height: 1;
+        }
+
+        .rstat-val.sm {
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .rstat-desc {
+            font-family: var(--fm);
+            font-size: .58rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--mi);
+        }
+
+        /* Video column */
+        .recap-vid-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 380px;
+            margin: 0 auto; /* Horizontally centered in its column */
+            width: 100%;
+        }
+
+        .vid-label {
+            font-family: var(--fm);
+            font-size: .62rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--as);
+            padding: .55rem 1rem;
+            background: var(--st);
+            border: 1px solid var(--s2);
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+        }
+
+        .vid-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--r);
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: blink 1.8s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .25;
+            }
+        }
+
+        .vid-frame {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 Aspect Ratio for Shorts */
+            height: 0;
+            overflow: hidden;
+            border: 1px solid var(--st);
+            border-top: none;
+        }
+
+        .vid-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .vid-caption {
+            font-family: var(--fm);
+            font-size: .57rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--mi);
+            padding: .55rem 1rem;
+            border: 1px solid var(--st);
+            border-top: none;
+            background: var(--dk);
+        }
+
+        /* ═══════════════════════════════════════
+    SEDE / UBICACIÓN
+    ═══════════════════════════════════════ */
+        .sede-sec {
+            background: var(--bk);
+            border-top: 1px solid var(--st);
+        }
+
+        .sede-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.45fr;
+            gap: 3.5rem;
+            margin-top: 3.5rem;
+            align-items: start;
+        }
+
+        .sede-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5px;
+            background: var(--st);
+        }
+
+        .sede-card {
+            background: var(--dk);
+            padding: 1.55rem 1.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            transition: background .25s;
+        }
+
+        .sede-card:hover {
+            background: var(--cb);
+        }
+
+        .sede-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: transparent;
+            transition: background .3s;
+        }
+
+        .sede-card:hover::before {
+            background: var(--r);
+        }
+
+        .sede-card-ic {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            background: var(--st);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--r);
+        }
+
+        .sede-card-body h4 {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: .95rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--wh);
+            margin-bottom: .32rem;
+        }
+
+        .sede-card-body p {
+            font-size: .84rem;
+            font-weight: 300;
+            color: var(--as);
+            line-height: 1.55;
+        }
+
+        .sede-card-body a {
+            color: var(--r);
+            text-decoration: none;
+            transition: opacity .2s;
+        }
+
+        .sede-card-body a:hover {
+            opacity: .72;
+        }
+
+        .sede-map {
+            border: 1px solid var(--st);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sede-map-label {
+            background: var(--dk);
+            border-bottom: 1px solid var(--st);
+            padding: .6rem 1.25rem;
+            font-family: var(--fm);
+            font-size: .62rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--as);
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+        }
+
+        .sede-map-label b {
+            color: var(--r);
+        }
+
+        .sede-map iframe {
+            display: block;
+            width: 100%;
+            height: 410px;
+            border: none;
+            filter: grayscale(100%) brightness(.5) contrast(1.1);
+            transition: filter .4s;
+        }
+
+        .sede-map:hover iframe {
+            filter: grayscale(80%) brightness(.6) contrast(1.05);
+        }
+
+        /* ═══════════════════════════════════════
+    CTA FINAL
+    ═══════════════════════════════════════ */
+        .cta-sec {
+            background: var(--bk);
+            padding: 7rem 4rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--st);
+        }
+
+        .cta-sec::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(193, 18, 31, .1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-box {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: center;
+            border: 1px solid var(--st);
+            padding: 4rem;
+        }
+
+        .cta-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .cta-eyebrow-ln {
+            width: 22px;
+            height: 2px;
+            background: var(--r);
+        }
+
+        .cta-eyebrow-tx {
+            font-family: var(--fm);
+            font-size: .62rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--r);
+        }
+
+        .cta-h2 {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-size: clamp(1.9rem, 3.8vw, 3.3rem);
+            text-transform: uppercase;
+            color: var(--wh);
+            line-height: .98;
+            letter-spacing: -.01em;
+        }
+
+        .cta-h2 span {
+            color: var(--r);
+        }
+
+        .cta-sub {
+            font-size: .9rem;
+            color: var(--mi);
+            margin-top: .9rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .cta-acts {
+            display: flex;
+            flex-direction: column;
+            gap: .85rem;
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+
+        .cta-phone {
+            font-family: var(--fm);
+            font-size: .6rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--mi);
+        }
+
+        /* ═══════════════════════════════════════
+    FOOTER
+    ═══════════════════════════════════════ */
+        .footer-mini {
+            padding: 1.5rem 4rem;
+            background: var(--cb);
+            border-top: 1px solid var(--st);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-family: var(--fm);
+            font-size: .6rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--s2);
+        }
+
+        .footer-copy b {
+            color: var(--mi);
+        }
+
+        /* ═══════════════════════════════════════
+    RESPONSIVE
+    ═══════════════════════════════════════ */
+        @media(max-width:1100px) {
+
+            .aprende-layout,
+            .recap-layout,
+            .sede-layout,
+            .obj-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-aside {
+                display: none;
+            }
+
+            .cta-box {
+                grid-template-columns: 1fr;
+            }
+
+            .aprende-img-wrap img {
+                min-height: 280px;
+            }
+
+            .recap-vid-col {
+                margin-top: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media(max-width:480px) {
+            .rstat {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 1.5rem;
+            }
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .sec {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero {
+                padding: 0 1.5rem 4rem;
+                min-height: 72vh;
+            }
+
+            .cta-sec {
+                padding: 4rem 1.5rem;
+            }
+
+            .cta-box {
+                padding: 2rem;
+            }
+
+            .footer-mini {
+                padding: 1.5rem;
+            }
+
+            .obj-pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .recap-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="cur"></div>
+    <div id="ring"></div>
+
+    <!-- MEGA BACKDROP -->
+    <div id="nav-placeholder"></div>
+
+    <!-- ══════════════════════════════════════════
+     HERO
+    ══════════════════════════════════════════ -->
+    <!-- HERO (Desktop) -->
+    <section class="hero hide-mobile">
+        <div class="hero-bg">
+            <img src="../assets/img/hero/capacitaciones.jpg"
+                onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&amp;q=75'"
+                alt="Capacitaciones NewConcret — Pulido de pisos de hormigón">
+        </div>
+        <div class="hero-ov"></div>
+
+        <div class="hero-content">
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-tx">Academia NewConcret · Dominá el arte del hormigón pulido <b style="color:#C1121F; font-size: 20px;">●</b></span>
+            </div>
+            <h1 class="hero-h1">
+                Formación<br>
+                <span class="red">certificada</span><br>
+                <span class="thin">en hormigón.</span>
+            </h1>
+            <p class="hero-p">Curso teórico-práctico sobre reparación, pulido y embellecimiento de pisos de hormigón.
+                Certificación profesional emitida por NewConcret.</p>
+            <div class="hero-btns">
+                <a href="https://wa.link/ayeajp" class="btn-p" target="_blank" rel="noopener">
+                    Inscribirme ahora
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <path d="M2.5 7.5h10M8 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.4"
+                            stroke-linecap="round"></path>
+                    </svg>
+                </a>
+                <a href="#aprende" class="btn-g">
+                    Ver el programa
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                        <path d="M6.5 1.5v10M2.5 8l4 4 4-4" stroke="currentColor" stroke-width="1.3"
+                            stroke-linecap="round"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Side stats -->
+        <div class="hero-aside">
+            <div class="aside-stat">
+                <div class="aside-num">8<em>hs</em></div>
+                <div class="aside-lbl">práctica intensiva</div>
+            </div>
+            <div class="aside-stat">
+                <div class="aside-num">100<em>%</em></div>
+                <div class="aside-lbl">participantes certificados</div>
+            </div>
+            <div class="aside-stat">
+                <div class="aside-num">+10</div>
+                <div class="aside-lbl">productos trabajados</div>
+            </div>
+        </div>
+
+        <div class="scroll-ind">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- HERO (Mobile Redesign) -->
+    <section class="hero hide-desktop"
+        style="min-height:75vh; padding:0 1.5rem 3.5rem; display:flex; align-items:flex-end;">
+        <div class="hero-bg"><img src="../assets/img/hero/capacitaciones.jpg"
+                style="width:100%; height:100%; object-fit:cover; filter:brightness(.4);"></div>
+        <div class="hero-ov"
+            style="position:absolute; inset:0; background:linear-gradient(to top,var(--nc-black),transparent);"></div>
+        <div style="position:relative; z-index:2; width:100%;">
+            <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Academia NewConcret · Marzo 2026</span>
+            </div>
+            <h1
+                style="font-family:var(--font-d); font-weight:900; font-size:3.5rem; text-transform:uppercase; color:var(--nc-white); line-height:.9; margin-bottom:1.5rem;">
+                For&shy;ma&shy;ción <br><span style="color:var(--nc-red);">Cértificada</span></h1>
+            <a href="https://wa.me/5492342464082" class="btn-p" style="width:100%; justify-content:center;">Reservar
+                Cupo</a>
+        </div>
+    </section>
+    <div class="hero-stats-mob hide-desktop"
+        style="display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--nc-steel);">
+        <div style="padding:1.5rem; border-right:1px solid var(--nc-steel);">
+            <div style="font-family:var(--font-d); font-weight:900; font-size:2.2rem; color:var(--nc-white);">
+                8<em>hs</em>
+            </div>
+            <div style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-red);">
+                Práctica
+                Real</div>
+        </div>
+        <div style="padding:1.5rem;">
+            <div style="font-family:var(--font-d); font-weight:900; font-size:2.2rem; color:var(--nc-white);">100%</div>
+            <div style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-red);">
+                Certificado</div>
+        </div>
+    </div>
+
+    <!-- ¿QUÉ VAS A APRENDER? (Desktop) -->
+    <section class="aprende-sec sec hide-mobile" id="aprende">
+        <div class="aprende-layout">
+
+            <!-- Imagen -->
+            <div class="aprende-img-wrap reveal">
+                <img src="../assets/img/capacitaciones/capacitaciones2.jpg"
+                    onerror="this.src='https://images.unsplash.com/photo-1621905251189-08b45249ff78?w=900&amp;q=75'"
+                    alt="Práctica — Curso de pulido de hormigón NewConcret">
+            </div>
+
+            <!-- Pasos -->
+            <div class="reveal d1">
+                <div class="sec-label">
+                    <span class="sec-label-line"></span>
+                    <span class="sec-label-tx">Formación profesional</span>
+                </div>
+                <h2 class="sec-h2">¿Qué vas<br>a aprender?</h2>
+                <p class="sec-p" style="max-width:480px;margin-bottom:2rem;">Dominá el arte del hormigón pulido con
+                    metodología
+                    de vanguardia y equipos de última generación.</p>
+
+                <div class="aprende-steps">
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <div>
+                            <span class="step-label">Proceso completo</span>
+                            <p class="step-tx">Comprenderás el <strong>ciclo perfecto de un tratamiento de
+                                    pulido</strong>: desde la
+                                preparación del sustrato hasta el acabado final.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <div>
+                            <span class="step-label">Práctica real</span>
+                            <p class="step-tx">Podrás <strong>realizar pruebas con todos los productos
+                                    NewConcret</strong> en
+                                instalaciones equipadas con maquinaria profesional.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <div>
+                            <span class="step-label">Certificación</span>
+                            <p class="step-tx">Te convertirás en un <strong>profesional certificado por
+                                    NewConcret</strong>, con aval
+                                técnico para ejecutar trabajos de alto estándar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     OBJETIVOS DEL CURSO
+    ══════════════════════════════════════════ -->
+    <section class="obj-sec sec">
+
+        <div class="reveal">
+            <div class="sec-label">
+                <span class="sec-label-line"></span>
+                <span class="sec-label-tx">Objetivos del curso</span>
+            </div>
+            <h2 class="sec-h2">Excelencia<br>en cada detalle</h2>
+        </div>
+
+        <div class="obj-layout">
+
+            <div class="obj-card reveal d1">
+                <p>Ofrecemos <strong>capacitaciones teóricas y prácticas</strong> sobre tratamientos de superficies
+                    cementicias.
+                </p>
+                <p>Brindamos la posibilidad de capacitarse y obtener la <strong>certificación profesional otorgada por
+                        NewConcret</strong>.</p>
+                <p>Las capacitaciones cubren diversas temáticas que permiten comprender todo el ciclo del tratamiento de
+                    pulido,
+                    logrando resultados inigualables.</p>
+                <p>Durante el curso, podrás realizar pruebas con <strong>todos los productos NewConcret</strong>.</p>
+                <p>Con los conocimientos y herramientas adecuados, incluso los hormigones más antiguos y deteriorados
+                    podrán
+                    lucir perfectamente resistentes y embellecidos.</p>
+            </div>
+
+            <div class="obj-pillars reveal d2">
+                <div class="pillar">
+                    <span class="pillar-ic">📐</span>
+                    <div class="pillar-title">Teoría técnica</div>
+                    <div class="pillar-desc">Fundamentos del hormigón, tipos de sustrato, comportamiento frente al
+                        pulido y
+                        selección de materiales.</div>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-ic">🛠</span>
+                    <div class="pillar-title">Práctica intensiva</div>
+                    <div class="pillar-desc">Trabajo real con maquinaria profesional y productos NewConcret en planta
+                        equipada.
+                    </div>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-ic">🧪</span>
+                    <div class="pillar-title">Productos en acción</div>
+                    <div class="pillar-desc">Pruebas con densificadores, selladores, abrasivos y químicos de alta
+                        performance
+                        sobre piso real.</div>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-ic">🎓</span>
+                    <div class="pillar-title">Certificación oficial</div>
+                    <div class="pillar-desc">Certificado profesional emitido por NewConcret al finalizar la jornada, con
+                        aval de
+                        la empresa.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     RECAP — ÚLTIMA CAPACITACIÓN 7 MAR 2026
+    ══════════════════════════════════════════ -->
+    <section class="recap-sec sec">
+        <div class="recap-layout">
+
+            <!-- Texto + stats -->
+            <div>
+                <div class="reveal">
+                    <div class="sec-label">
+                        <span class="sec-label-line"></span>
+                        <span class="sec-label-tx">Resumen del evento</span>
+                    </div>
+                    <h2 class="sec-h2">Nuestra última<br>capacitación</h2>
+                    <div class="recap-date-tag">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"></rect>
+                            <path d="M1 5h10M4 1v2M8 1v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                            </path>
+                        </svg>
+                        7 de Marzo de 2026 — Bragado, Buenos Aires
+                    </div>
+                </div>
+
+                <div class="recap-text reveal" style="margin-top: 1rem;">
+                    <p>El pasado <strong>7 de marzo de 2026</strong> llevamos a cabo una nueva edición de nuestra
+                        capacitación
+                        teórico-práctica en pulido y tratamiento de superficies cementicias. Los participantes
+                        recorrieron todo el
+                        proceso: desde la preparación del sustrato hasta el acabado final con productos NewConcret.</p>
+                    <p>Cada asistente tuvo la oportunidad de trabajar directamente con nuestros equipos y materiales,
+                        acompañados
+                        por <strong>instructores certificados</strong> que guiaron cada etapa del proceso, garantizando
+                        una
+                        experiencia de aprendizaje completa y práctica.</p>
+                    <p>Al finalizar la jornada, los participantes recibieron su <strong>certificación profesional
+                            NewConcret</strong>, avalando sus habilidades para ejecutar tratamientos de pulido de
+                        hormigón de alta
+                        calidad.</p>
+                </div>
+
+                <div class="recap-stats reveal d1">
+                    <div class="rstat">
+                        <div class="rstat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                        </div>
+                        <div>
+                            <div class="rstat-val">100%</div>
+                            <div class="rstat-desc">Participantes certificados</div>
+                        </div>
+                    </div>
+                    <div class="rstat">
+                        <div class="rstat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                        </div>
+                        <div>
+                            <div class="rstat-val">8 hs</div>
+                            <div class="rstat-desc">De práctica intensiva</div>
+                        </div>
+                    </div>
+                    <div class="rstat">
+                        <div class="rstat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45L14 10V2"></path><path d="M8.5 2h7"></path><path d="M7 16h10"></path></svg>
+                        </div>
+                        <div>
+                            <div class="rstat-val">+10</div>
+                            <div class="rstat-desc">Productos trabajados</div>
+                        </div>
+                    </div>
+                    <div class="rstat">
+                        <div class="rstat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </div>
+                        <div>
+                            <div class="rstat-val sm">Teórico + Práctico</div>
+                            <div class="rstat-desc">Metodología completa</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video YouTube -->
+            <div class="recap-vid-col reveal d2">
+                <div class="vid-label">
+                    <div class="vid-dot"></div>
+                    Video de la capacitación — 7 Mar 2026
+                </div>
+                <div class="vid-frame">
+                    <iframe src="https://www.youtube.com/embed/wB3LUCAU2Cg?rel=0&amp;modestbranding=1"
+                        title="Capacitación NewConcret — 7 de Marzo 2026"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen="">
+                    </iframe>
+                </div>
+                <div class="vid-caption">Capacitación NewConcret · Bragado, Buenos Aires · Marzo 2026</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     SEDE / UBICACIÓN
+    ══════════════════════════════════════════ -->
+    <section class="sede-sec sec">
+
+        <div class="reveal">
+            <div class="sec-label">
+                <span class="sec-label-line"></span>
+                <span class="sec-label-tx">Sede central</span>
+            </div>
+            <h2 class="sec-h2">Acá realizamos<br>nuestras capacitaciones</h2>
+            <p class="sec-p" style="max-width:560px;margin-top:.5rem;">Todas nuestras capacitaciones se llevan a cabo en
+                nuestra sede en Bragado, donde contamos con instalaciones equipadas con maquinaria profesional y
+                espacios
+                dedicados a la práctica.</p>
+        </div>
+
+        <div class="sede-layout">
+
+            <!-- Info cards -->
+            <div class="sede-cards reveal d1">
+
+                <div class="sede-card">
+                    <div class="sede-card-ic">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M9 1C6.24 1 4 3.24 4 6c0 4.25 5 11 5 11s5-6.75 5-11c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <div class="sede-card-body">
+                        <h4>Dirección</h4>
+                        <p>Sede NewConcret<br>Bragado, Buenos Aires, Argentina</p>
+                    </div>
+                </div>
+
+                <div class="sede-card">
+                    <div class="sede-card-ic">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <rect x="2" y="8" width="14" height="8" rx="1" stroke="currentColor" stroke-width="1.4">
+                            </rect>
+                            <path d="M5 8V5a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.4"
+                                stroke-linecap="round"></path>
+                            <path d="M2 11h14M6 11v5M12 11v5" stroke="currentColor" stroke-width="1.2"
+                                stroke-linecap="round"></path>
+                        </svg>
+                    </div>
+                    <div class="sede-card-body">
+                        <h4>Instalaciones</h4>
+                        <p>Planta equipada con maquinaria profesional y áreas prácticas especialmente preparadas para el
+                            entrenamiento.</p>
+                    </div>
+                </div>
+
+                <div class="sede-card">
+                    <div class="sede-card-ic">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.4"></circle>
+                            <path d="M9 5v4.2l2.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="sede-card-body">
+                        <h4>Horario de capacitaciones</h4>
+                        <p>Jornadas de <strong style="color:var(--wh);">8 horas</strong> con modalidad teórico-práctica.
+                            Consultanos
+                            por las próximas fechas.</p>
+                    </div>
+                </div>
+
+                <div class="sede-card">
+                    <div class="sede-card-ic">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9c0 1.32.36 2.56.98 3.63L1.5 16.5l3.97-.97A7.47 7.47 0 009 16.5c4.14 0 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5zm0 13.5c-1.13 0-2.2-.3-3.12-.82l-.22-.13-2.36.58.6-2.3-.14-.23A6 6 0 019 3a6 6 0 010 12zm3.29-4.49c-.18-.09-1.06-.52-1.22-.58-.16-.06-.28-.09-.4.09-.12.18-.46.58-.56.7-.1.12-.21.13-.39.04-.18-.09-.76-.28-1.45-.89-.54-.48-.9-1.07-1-1.25-.1-.18-.01-.28.08-.37.08-.08.18-.2.27-.31.09-.1.12-.18.18-.3.06-.12.03-.22-.01-.31-.04-.09-.4-.96-.54-1.32-.14-.34-.29-.29-.4-.3h-.34c-.12 0-.31.04-.47.22-.16.17-.62.6-.62 1.47s.63 1.71.72 1.82c.09.12 1.24 1.9 3 2.66.42.18.74.29.99.37.42.13.8.11 1.1.07.33-.05 1.03-.42 1.17-.83.15-.4.15-.75.1-.83-.04-.08-.16-.12-.34-.2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <div class="sede-card-body">
+                        <h4>¿Querés inscribirte?</h4>
+                        <p><a href="https://wa.link/ayeajp" target="_blank" rel="noopener">Escribinos por WhatsApp</a> y
+                            te
+                            informamos disponibilidad y aranceles.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mapa Google Maps real -->
+            <div class="sede-map reveal d2">
+                <div class="sede-map-label">
+                    <b>◉</b>
+                    NewConcret — Bragado, Buenos Aires
+                </div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40390.14661765769!2d-60.53490704154408!3d-35.125873021678316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bedd8960783fb9%3A0xa953ab73229200cd!2sNewConcret!5e0!3m2!1ses!2sar!4v1722002708645!5m2!1ses!2sar"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación NewConcret — Bragado, Buenos Aires">
+                </iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     CTA FINAL
+    ══════════════════════════════════════════ -->
+    <section class="cta-sec">
+        <div class="cta-box reveal">
+            <div>
+                <div class="cta-eyebrow">
+                    <span class="cta-eyebrow-ln"></span>
+                    <span class="cta-eyebrow-tx">¿Querés capacitarte?</span>
+                </div>
+                <h2 class="cta-h2">Sumate a la<br>próxima <span>capacitación.</span></h2>
+                <p class="cta-sub">Consultanos por las próximas fechas y aranceles.
+                </p>
+            </div>
+            <div class="cta-acts">
+                <a href="https://wa.link/ayeajp" class="btn-wa" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9c0 1.32.36 2.56.98 3.63L1.5 16.5l3.97-.97A7.47 7.47 0 009 16.5c4.14 0 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5zm0 13.5c-1.13 0-2.2-.3-3.12-.82l-.22-.13-2.36.58.6-2.3-.14-.23A6 6 0 019 3a6 6 0 010 12zm3.29-4.49c-.18-.09-1.06-.52-1.22-.58-.16-.06-.28-.09-.4.09-.12.18-.46.58-.56.7-.1.12-.21.13-.39.04-.18-.09-.76-.28-1.45-.89-.54-.48-.9-1.07-1-1.25-.1-.18-.01-.28.08-.37.08-.08.18-.2.27-.31.09-.1.12-.18.18-.3.06-.12.03-.22-.01-.31-.04-.09-.4-.96-.54-1.32-.14-.34-.29-.29-.4-.3h-.34c-.12 0-.31.04-.47.22-.16.17-.62.6-.62 1.47s.63 1.71.72 1.82c.09.12 1.24 1.9 3 2.66.42.18.74.29.99.37.42.13.8.11 1.1.07.33-.05 1.03-.42 1.17-.83.15-.4.15-.75.1-.83-.04-.08-.16-.12-.34-.2z"
+                            fill="currentColor"></path>
+                    </svg>
+                    Contactanos por WhatsApp
+                </a>
+                <a href="mailto:info@newconcret.com" class="btn-g">
+                    Enviar un email
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                        <path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.2"
+                            stroke-linecap="round"></path>
+                    </svg>
+                </a>
+                <div class="cta-phone">Bragado, Buenos Aires, Argentina</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.documentElement.classList.add('js-loaded');
+        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: .07 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+
+</html>
