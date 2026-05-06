@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
     <link rel="stylesheet" href="../assets/css/admin.css?v=2.0">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script src="../assets/data/site-structure.js"></script>
+    <script src="../assets/data/site-structure.js?v=3.0"></script>
 </head>
 <body class="admin-body">
 
@@ -172,9 +172,8 @@
 <!-- ── TOAST CONTAINER ── -->
 <div id="toast-container" class="toast-container"></div>
 
-<script src="../assets/data/productos.js"></script>
 <script>
-let currentProductList = [...productos];
+let currentProductList = [];
 let auth_token = localStorage.getItem('nc_auth_token');
 
 // ── AUTH LOGIC ──
@@ -229,9 +228,22 @@ function checkAuth() {
 }
 
 // ── DASHBOARD LOGIC ──
-function initDashboard() {
+async function initDashboard() {
     document.getElementById('login-container').classList.add('hidden');
     document.getElementById('dashboard-container').classList.remove('hidden');
+    
+    try {
+        const resp = await fetch('/api/get-productos');
+        const data = await resp.json();
+        if (data.ok) {
+            currentProductList = data.productos;
+        } else {
+            showToast('Error cargando productos: ' + data.error, 'error');
+        }
+    } catch (err) {
+        showToast('Error de red al cargar productos', 'error');
+    }
+    
     renderProducts();
 }
 
@@ -540,7 +552,7 @@ function applyEdit() {
     
     closeEditor();
     renderProducts();
-    showToast('Cambios aplicados temporalmente. Recuerda guardar.', 'success');
+    autoSave();
 }
 
 function deleteProduct() {
@@ -551,7 +563,7 @@ function deleteProduct() {
         currentProductList = currentProductList.filter(x => x.id !== id);
         closeEditor();
         renderProducts();
-        showToast('Producto eliminado de la lista. Recuerda guardar.', 'success');
+        autoSave();
     }
 }
 
@@ -560,9 +572,9 @@ function toggleQuickVisibility(e, id) {
     e.stopPropagation();
     const p = currentProductList.find(x => x.id === id);
     if (p) {
-        p.visible = (p.visible === false); // Toggle
+        p.visible = (p.visible === false);
         renderProducts();
-        showToast(`Producto "${p.nombre}" ${p.visible ? 'ahora es visible' : 'ahora está oculto'}. Recuerda guardar.`, 'success');
+        autoSave(`"${p.nombre}" ahora es ${p.visible ? 'visible' : 'oculto'}`);
     }
 }
 
@@ -571,7 +583,27 @@ function quickDelete(e, id, name) {
     if (confirm(`¿Estás seguro de que deseas eliminar permanentemente "${name}"?`)) {
         currentProductList = currentProductList.filter(x => x.id !== id);
         renderProducts();
-        showToast('Producto eliminado. Recuerda guardar cambios globales.', 'success');
+        autoSave(`"${name}" eliminado`);
+    }
+}
+
+// ── AUTO SAVE (silencioso, se dispara en cada mutación) ──
+async function autoSave(context) {
+    try {
+        const resp = await fetch('/api/save-productos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productos: currentProductList })
+        });
+        const data = await resp.json();
+        if (data.ok) {
+            const msg = context ? `✓ Guardado: ${context}` : `✓ productos.js actualizado (${data.count} productos)`;
+            showToast(msg, 'success');
+        } else {
+            throw new Error(data.error);
+        }
+    } catch (err) {
+        showToast('⚠ Auto-guardado falló: ' + err.message, 'error');
     }
 }
 
@@ -581,47 +613,82 @@ async function handleFileUpload(input, type) {
     
     const file = input.files[0];
     const label = document.getElementById(`label-${type}`);
-    
-    // Simulate local file path since we don't have a backend
-    const fakeUrl = (type === 'img' ? '/assets/img/productos/' : '/assets/docs/') + file.name;
-    
-    document.getElementById(`edit-${type === 'img' ? 'img' : 'pdf'}`).value = fakeUrl;
-    if (type === 'img') {
-        const prev = document.getElementById('prev-img');
-        prev.src = URL.createObjectURL(file);
-        prev.classList.remove('hidden');
-    } else {
-        document.getElementById('prev-doc').classList.remove('hidden');
+    label.innerText = '⏳ Subiendo...';
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const endpoint = type === 'img' ? '/api/upload/imagen' : '/api/upload/doc';
+
+    try {
+        const resp = await fetch(endpoint, { method: 'POST', body: formData });
+        const data = await resp.json();
+
+        if (!data.ok) throw new Error(data.error || 'Error desconocido');
+
+        // Guardar el path real en el campo oculto
+        document.getElementById(`edit-${type === 'img' ? 'img' : 'pdf'}`).value = data.path;
+
+        if (type === 'img') {
+            const prev = document.getElementById('prev-img');
+            prev.src = data.path;
+            prev.classList.remove('hidden');
+            label.innerText = '✓ Imagen guardada';
+        } else {
+            document.getElementById('prev-doc').classList.remove('hidden');
+            label.innerText = '✓ PDF guardado';
+        }
+
+        showToast(`✓ Archivo subido: ${data.path}`, 'success');
+    } catch (err) {
+        label.innerText = '✗ Error al subir';
+        showToast('Error al subir archivo: ' + err.message, 'error');
     }
-    
-    label.innerText = '✓ ¡Cargado localmente!';
-    showToast('Archivo referenciado. Asegúrate de copiar el archivo real a ' + fakeUrl, 'success');
 }
 
-function saveAll() {
-    const exportArea = document.getElementById('export-area');
-    const json = JSON.stringify(currentProductList, null, 4);
-    const fullCode = `const STORE_BASE = 'https://tiendalonati.com.ar';\n\nconst productos = ${json};`;
-    
-    exportArea.value = fullCode;
-    document.getElementById('export-modal').style.display = 'flex';
+async function saveAll() {
+    const btn = document.getElementById('btn-save-all');
+    btn.innerText = 'Guardando...';
+    btn.disabled = true;
+
+    try {
+        const resp = await fetch('/api/save-productos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productos: currentProductList })
+        });
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.error || 'Error del servidor');
+        showToast(`✓ productos.js guardado — ${data.count} productos`, 'success');
+    } catch (err) {
+        showToast('Error al guardar: ' + err.message, 'error');
+        // Fallback: ofrecer descarga manual
+        const json = JSON.stringify(currentProductList, null, 4);
+        const fullCode = `const STORE_BASE = 'https://tiendalonati.com.ar';\n\nconst productos = ${json};`;
+        const blob = new Blob([fullCode], { type: 'application/javascript' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'productos.js'; a.click();
+        showToast('Fallback: archivo descargado manualmente.', 'success');
+    } finally {
+        btn.innerText = 'Guardar Cambios';
+        btn.disabled = false;
+    }
 }
 
 function copyExport() {
     const area = document.getElementById('export-area');
-    area.select();
-    document.execCommand('copy');
+    if (area) { area.select(); document.execCommand('copy'); }
     showToast('¡Código copiado al portapapeles!', 'success');
 }
 
 function downloadExport() {
-    const area = document.getElementById('export-area');
-    const blob = new Blob([area.value], { type: 'application/javascript' });
+    const json = JSON.stringify(currentProductList, null, 4);
+    const fullCode = `const STORE_BASE = 'https://tiendalonati.com.ar';\n\nconst productos = ${json};`;
+    const blob = new Blob([fullCode], { type: 'application/javascript' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = 'productos.js';
-    a.click();
+    a.href = url; a.download = 'productos.js'; a.click();
     showToast('Archivo descargado.', 'success');
 }
 

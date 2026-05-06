@@ -18,7 +18,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Para compactar y alisar hormigón",
         "imagen": "/assets/img/productos/allanadora.png",
-        "storeUrl": "/assets/docs/1776180795867_Allanadora.pdf",
+        "storeUrl": "https://tiendalonati.com.ar/productos/allanadora/",
         "specs": [
             {
                 "icono": "◉",
@@ -52,7 +52,9 @@ const productos = [
                 "categoría": "equipos",
                 "subcategoría": "allanadoras"
             }
-        ]
+        ],
+        "pdfUrl": "/assets/docs/allanadora-1777921009636.pdf",
+        "visible": true
     },
     {
         "id": "concret-fix",
@@ -60,7 +62,8 @@ const productos = [
         "nombre": "Concret Fix",
         "secciones": [
             "construccion",
-            "reparacion"
+            "reparacion",
+            "pulido"
         ],
         "categoria": "",
         "cat_label": "",
@@ -115,9 +118,25 @@ const productos = [
                 "sección": "reparacion",
                 "categoría": "materiales",
                 "subcategoría": "grouting"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "materiales",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "materiales",
+                "subcategoría": "grouting"
             }
         ],
-        "pdfUrl": "/assets/docs/1776186110601_Ficha_Tecnica_Concret_Fix.pdf"
+        "pdfUrl": "/assets/docs/1776186110601_Ficha_Tecnica_Concret_Fix.pdf",
+        "visible": true
     },
     {
         "id": "concret-microstrong",
@@ -125,14 +144,15 @@ const productos = [
         "nombre": "Concret MicroStrong",
         "secciones": [
             "construccion",
-            "reparacion"
+            "reparacion",
+            "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Reparación, nivelación y terminación de superficies",
         "imagen": "/assets/img/productos/concretmicrostrong.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-microstrong/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-microstrong/",
         "specs": [
             {
                 "icono": "◉",
@@ -174,9 +194,31 @@ const productos = [
             {
                 "sección": "reparacion",
                 "categoría": "materiales",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "materiales",
+                "subcategoría": "mortero-cementicio"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "materiales",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "materiales",
                 "subcategoría": "mortero-cementicio"
             }
-        ]
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "concret-dur",
@@ -240,22 +282,23 @@ const productos = [
                 "categoría": "materiales",
                 "subcategoría": "endurecedor-superficial"
             }
-        ]
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "nylon-negro-de-200-micrones",
         "sku": "NYLONNEGRO",
         "nombre": "Nylon Negro de 200 micrones",
         "secciones": [
-            "construccion",
-            "reparacion"
+            "construccion"
         ],
-        "categoria": "materiales",
-        "cat_label": "Materiales",
-        "subcategoria": "nylon",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Barrera hidrófuga para humedad ascendente",
         "imagen": "/assets/img/productos/nylonnegro.png",
-        "storeUrl": "${STORE_BASE}/productos/nylon-negro/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/nylon-negro/",
         "specs": [
             {
                 "icono": "◉",
@@ -272,6 +315,25 @@ const productos = [
                 "clave": "Presentación",
                 "valor": "Segun necesidad"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "construccion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "construccion",
+                "categoría": "materiales",
+                "subcategoría": ""
+            },
+            {
+                "sección": "construccion",
+                "categoría": "materiales",
+                "subcategoría": "nylon"
+            }
         ]
     },
     {
@@ -286,7 +348,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Microfibra monofilamento",
         "imagen": "/assets/img/productos/microfibra.png",
-        "storeUrl": "${STORE_BASE}/productos/microfibra3/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/microfibra3/",
         "specs": [
             {
                 "icono": "◉",
@@ -320,15 +382,16 @@ const productos = [
                 "categoría": "materiales",
                 "subcategoría": "microfibra"
             }
-        ]
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "concret-fibra",
         "sku": "CONCRETFIBRA",
         "nombre": "Concret Fibra",
         "secciones": [
-            "construccion",
-            "reparacion"
+            "construccion"
         ],
         "categoria": "",
         "cat_label": "",
@@ -368,18 +431,10 @@ const productos = [
                 "sección": "construccion",
                 "categoría": "materiales",
                 "subcategoría": "macrofibra"
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "",
-                "subcategoría": ""
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "materiales",
-                "subcategoría": ""
             }
-        ]
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "concret-one",
@@ -392,8 +447,8 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aditivo facilitador de llaneado",
-        "imagen": "/assets/img/productos/1774979519986_Concret_One_5.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-one/",
+        "imagen": "/assets/img/productos/concret-one-5-1777919261199.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-one/",
         "specs": [
             {
                 "icono": "◉",
@@ -427,7 +482,9 @@ const productos = [
                 "categoría": "productos-quimicos",
                 "subcategoría": "aditivo-llaneado"
             }
-        ]
+        ],
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-one-1777920855993.pdf",
+        "visible": true
     },
     {
         "id": "concret-strong",
@@ -441,8 +498,8 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aglutinante potenciado para sistemas de pulido",
-        "imagen": "/assets/img/productos/concret-strong.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-strong/",
+        "imagen": "/assets/img/productos/strong-5-1777920959883.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-strong/",
         "specs": [
             {
                 "icono": "◉",
@@ -496,7 +553,9 @@ const productos = [
                 "categoría": "productos-quimicos",
                 "subcategoría": "puentes-de-adherencia"
             }
-        ]
+        ],
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-strong-1777920972787.pdf",
+        "visible": true
     },
     {
         "id": "concret-restor",
@@ -510,8 +569,8 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Puente de adherencia",
-        "imagen": "/assets/img/productos/1774979531774_5_L.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-restor/",
+        "imagen": "/assets/img/productos/5-l-1777920757894.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-restor/",
         "specs": [
             {
                 "icono": "◉",
@@ -570,7 +629,9 @@ const productos = [
                 "categoría": "productos-quimicos",
                 "subcategoría": "puentes-de-adherencia"
             }
-        ]
+        ],
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-restor-1777920767131.pdf",
+        "visible": true
     },
     {
         "id": "concret-scudo",
@@ -583,11 +644,11 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Curador de membrana",
-        "imagen": "/assets/img/productos/1774979545703_Scudo_5.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-scudo/",
+        "imagen": "/assets/img/productos/scudo-5-1777920808015.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-scudo/",
         "specs": [
             {
-                "icono": " ✔",
+                "icono": "◉",
                 "clave": "Tipo",
                 "valor": "Curador acrílico líquido"
             },
@@ -618,19 +679,24 @@ const productos = [
                 "categoría": "productos-quimicos",
                 "subcategoría": "curadores"
             }
-        ]
+        ],
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-scudo-1777920816257.pdf",
+        "visible": true
     },
     {
         "id": "sellador-poliuretnico",
         "sku": "SELLADORPOLIURETNICO",
         "nombre": "Sellador Poliuretánico",
-        "secciones": [],
+        "secciones": [
+            "construccion",
+            "reparacion"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Sellado profesional de juntas",
-        "imagen": "/assets/img/productos/1774979565166_Sellador_NewConcret.png",
-        "storeUrl": "${STORE_BASE}/productos/sellador-poliuretanico/",
+        "imagen": "/assets/img/productos/sellador-newconcret-1777921719643.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/sellador-poliuretanico/",
         "specs": [
             {
                 "icono": "◉",
@@ -648,7 +714,30 @@ const productos = [
                 "valor": "Sachet 600 g"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "construccion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "construccion",
+                "categoría": "materiales",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "materiales",
+                "subcategoría": ""
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "plato-con-velcro-para-pulido",
@@ -696,7 +785,9 @@ const productos = [
                 "categoría": "equipos",
                 "subcategoría": "allanadoras"
             }
-        ]
+        ],
+        "pdfUrl": "/assets/docs/acc-allanadora-1777921198331.pdf",
+        "visible": true
     },
     {
         "id": "jackson-10",
@@ -705,15 +796,15 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "escarificadoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Escarificadora",
-        "imagen": "/assets/img/productos/escarificadora-jackson10.png",
-        "storeUrl": "${STORE_BASE}/productos/jackson-101/",
+        "imagen": "/assets/img/productos/jackson-10-1777921631842.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/jackson-101/",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "10 HP"
             },
@@ -727,6 +818,25 @@ const productos = [
                 "clave": "Profundidad",
                 "valor": "1 a 7 mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "equipos",
+                "subcategoría": "escarificadoras"
+            }
         ]
     },
     {
@@ -736,15 +846,15 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "escarificadoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Escarificadora",
-        "imagen": "/assets/img/productos/escarificadora-jackson15.png",
-        "storeUrl": "${STORE_BASE}/productos/jackson-151/",
+        "imagen": "/assets/img/productos/jackson-15-1777921639477.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/jackson-151/",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "15 HP"
             },
@@ -758,6 +868,25 @@ const productos = [
                 "clave": "Profundidad",
                 "valor": "1 a 30 mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "equipos",
+                "subcategoría": "escarificadoras"
+            }
         ]
     },
     {
@@ -767,12 +896,12 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "accesorios-amoladora",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Perforación en hormigón y superficies duras",
         "imagen": "/assets/img/productos/mecha-copa-diamantada.png",
-        "storeUrl": "${STORE_BASE}/productos/mecha-copa-diamantada",
+        "storeUrl": "https://tiendalonati.com.ar/productos/mecha-copa-diamantada/",
         "specs": [
             {
                 "icono": "◉",
@@ -789,6 +918,25 @@ const productos = [
                 "clave": "Compatibilidad",
                 "valor": "Rosca M14"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "mechas-copa"
+            }
         ]
     },
     {
@@ -796,14 +944,15 @@ const productos = [
         "sku": "DISCOSFLAP",
         "nombre": "Discos Flap",
         "secciones": [
-            "reparacion"
+            "reparacion",
+            "pulido"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "accesorios-amoladora",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Desbaste, nivelación y pulido en zonas de difácil acceso",
         "imagen": "/assets/img/productos/disco-flap.png",
-        "storeUrl": "${STORE_BASE}/productos/discos-flap",
+        "storeUrl": "https://tiendalonati.com.ar/productos/discos-flap/",
         "specs": [
             {
                 "icono": "◉",
@@ -820,6 +969,35 @@ const productos = [
                 "clave": "Modo_de_uso",
                 "valor": "Uso en seco"
             }
+        ],
+        "pdfUrl": "/assets/docs/discos-flap-1777921926290.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "accesorios-amoladora"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            }
         ]
     },
     {
@@ -827,14 +1005,15 @@ const productos = [
         "sku": "DISCODIAMANTADO",
         "nombre": "Disco Diamantado para amoladora",
         "secciones": [
-            "reparacion"
+            "reparacion",
+            "pulido"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "accesorios-amoladora",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Desbaste agresivo y remoción de recubrimientos",
         "imagen": "/assets/img/productos/metal-amoladora.png",
-        "storeUrl": "${STORE_BASE}/productos/disco-diamantado-para-amoladora-diametro-125-mm-grano-60/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/disco-diamantado-amoladora/",
         "specs": [
             {
                 "icono": "◉",
@@ -851,6 +1030,40 @@ const productos = [
                 "clave": "Granos",
                 "valor": "30 y 60"
             }
+        ],
+        "pdfUrl": "/assets/docs/discos-amol-1777921912403.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "accesorios-amoladora"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
+            }
         ]
     },
     {
@@ -860,12 +1073,12 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "accesorios-amoladora",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Remoción de recubrimientos epoxi y adhesivos",
         "imagen": "/assets/img/productos/epoxi-amoladora.png",
-        "storeUrl": "${STORE_BASE}/productos/disco-diamantado-para-amoladora-diametro-125-mm-grano-pcd-epoxy/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/diamantado-epoxy-para-amoladora-5aq8s/",
         "specs": [
             {
                 "icono": "◉",
@@ -882,6 +1095,25 @@ const productos = [
                 "clave": "Grano",
                 "valor": "Epoxi"
             }
+        ],
+        "pdfUrl": "/assets/docs/discos-amol-1777921939014.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "accesorios-amoladora"
+            }
         ]
     },
     {
@@ -891,12 +1123,12 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "accesorios-amoladora",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Soporte para discos resinoides con sistema velcro",
         "imagen": "/assets/img/productos/respaldo-amoladora.png",
-        "storeUrl": "${STORE_BASE}/productos/respaldo-para-amoladoras-para-discos-resinoides/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/respaldo-de-amoladoras/",
         "specs": [
             {
                 "icono": "◉",
@@ -909,9 +1141,28 @@ const productos = [
                 "valor": "Rosca M14"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Adherencia",
                 "valor": "Velcro Industrial"
+            }
+        ],
+        "pdfUrl": "/assets/docs/resp-amol-1777921977326.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "accesorios-amoladora"
             }
         ]
     },
@@ -922,12 +1173,12 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "accesorios-amoladora",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Protección en trabajos de corte",
         "imagen": "/assets/img/productos/carcasa-corte.png",
-        "storeUrl": "${STORE_BASE}/productos/carcaza-antipolvo-para-amoladora1/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/carcasa-para-corte/",
         "specs": [
             {
                 "icono": "◉",
@@ -943,6 +1194,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Diametro",
                 "valor": "115 mm"
+            }
+        ],
+        "pdfUrl": "/assets/docs/carcasa-amol-1777922003671.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "accesorios-amoladora"
             }
         ]
     },
@@ -984,9 +1254,9 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "puntas-martillo",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Demolición puntual y apertura inicial",
         "imagen": "/assets/img/productos/punta-sds-plus.png",
         "storeUrl": "${STORE_BASE}/productos/punta-sds-plus/",
@@ -1010,6 +1280,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Aplicacion",
                 "valor": "Hormigón y mampostería"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "puntas-martillo"
             }
         ]
     },

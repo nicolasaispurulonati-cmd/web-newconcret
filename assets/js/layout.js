@@ -139,10 +139,10 @@
       </button>
       <div class="mob-sub" id="sub-reparacion">
         <div class="mob-sub-inner">
-          <div><div class="mob-grp-title">Materiales</div><ul class="mob-links"><li><a href="${root}construccion/materiales/nylon/">Nylon</a></li><li><a href="${root}construccion/materiales/microfibra/">Microfibra</a></li><li><a href="${root}construccion/materiales/macrofibra/">Macrofibra</a></li><li><a href="${root}construccion/materiales/endurecedor-superficial/">Endurecedor superficial</a></li><li><a href="${root}construccion/materiales/grouting/">Grouting</a></li><li><a href="${root}construccion/materiales/mortero-cementicio/">Mortero cementicio</a></li></ul></div>
-          <div><div class="mob-grp-title">Productos químicos</div><ul class="mob-links"><li><a href="${root}construccion/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}construccion/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li><li><a href="${root}construccion/productos-quimicos/curadores/">Curadores</a></li><li><a href="${root}construccion/productos-quimicos/aditivo-llaneado/">Aditivos para llaneado</a></li></ul></div>
-          <div><div class="mob-grp-title">Equipos</div><ul class="mob-links"><li><a href="${root}maquinaria/">Escarificadoras</a></li></ul></div>
-          <div><div class="mob-grp-title">Insumos</div><ul class="mob-links"><li><a href="${root}insumos/">Mechas copa</a></li><li><a href="${root}insumos/">Accesorios amoladoras</a></li><li><a href="${root}insumos/">Ruedas de bujardado</a></li></ul></div>
+          <div><div class="mob-grp-title">Materiales</div><ul class="mob-links"><li><a href="${root}reparacion/materiales/nylon/">Nylon</a></li><li><a href="${root}reparacion/materiales/endurecedor-superficial/">Endurecedor superficial</a></li><li><a href="${root}reparacion/materiales/grouting/">Grouting</a></li><li><a href="${root}reparacion/materiales/mortero-cementicio/">Mortero cementicio</a></li></ul></div>
+          <div><div class="mob-grp-title">Productos químicos</div><ul class="mob-links"><li><a href="${root}reparacion/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}reparacion/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li></ul></div>
+          <div><div class="mob-grp-title">Equipos</div><ul class="mob-links"><li><a href="${root}reparacion/equipos/escarificadoras/">Escarificadoras</a></li></ul></div>
+          <div><div class="mob-grp-title">Insumos</div><ul class="mob-links"><li><a href="${root}reparacion/insumos/accesorios-amoladora/">Accesorios amoladora</a></li><li><a href="${root}reparacion/insumos/bujardado/">Ruedas de bujardado</a></li><li><a href="${root}reparacion/insumos/puntas-martillo/">Puntas martillo</a></li><li><a href="${root}reparacion/insumos/mechas-copa/">Mechas copa</a></li></ul></div>
           <a href="${root}reparacion/" class="mob-sub-cta">Ver reparación completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
         </div>
       </div>
@@ -156,11 +156,11 @@
       </button>
       <div class="mob-sub" id="sub-pulido">
         <div class="mob-sub-inner">
-          <div><div class="mob-grp-title">Materiales</div><ul class="mob-links"><li><a href="${root}construccion/materiales/grouting/">Grouting</a></li><li><a href="${root}construccion/materiales/mortero-cementicio/">Mortero cementicio</a></li></ul></div>
-          <div><div class="mob-grp-title">Productos químicos</div><ul class="mob-links"><li><a href="${root}construccion/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}construccion/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li><li><a href="${root}insumos/">Densificadores</a></li><li><a href="${root}insumos/">Impermeabilizantes</a></li></ul></div>
-          <div><div class="mob-grp-title">Equipos</div><ul class="mob-links"><li><a href="${root}maquinaria/">Pulidoras</a></li><li><a href="${root}maquinaria/">Aspiradoras</a></li><li><a href="${root}maquinaria/">Lustradoras</a></li></ul></div>
-          <div><div class="mob-grp-title">Insumos</div><ul class="mob-links"><li><a href="${root}insumos/">Metales para desbaste</a></li><li><a href="${root}insumos/">Discos resinoides</a></li><li><a href="${root}insumos/">Paños diamantados</a></li></ul></div>
-          <a href="${root}maquinaria/" class="mob-sub-cta">Ver pulido completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
+          <div><div class="mob-grp-title">Materiales</div><ul class="mob-links"><li><a href="${root}pulido/materiales/grouting/">Grouting</a></li><li><a href="${root}pulido/materiales/mortero-cementicio/">Mortero cementicio</a></li></ul></div>
+          <div><div class="mob-grp-title">Productos químicos</div><ul class="mob-links"><li><a href="${root}pulido/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}pulido/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li><li><a href="${root}pulido/productos-quimicos/densificadores/">Densificadores</a></li><li><a href="${root}pulido/productos-quimicos/impermeabilizantes/">Impermeabilizantes</a></li><li><a href="${root}pulido/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}pulido/productos-quimicos/detergentes/">Detergentes</a></li></ul></div>
+          <div><div class="mob-grp-title">Equipos</div><ul class="mob-links"><li><a href="${root}pulido/equipos/pulidoras/">Pulidoras</a></li><li><a href="${root}pulido/equipos/aspiradoras/">Aspiradoras</a></li><li><a href="${root}pulido/equipos/lustradoras/">Lustradoras</a></li></ul></div>
+          <div><div class="mob-grp-title">Insumos</div><ul class="mob-links"><li><a href="${root}pulido/insumos/metales-desbaste/">Metales para desbaste</a></li><li><a href="${root}pulido/insumos/discos-resinoides/">Discos resinoides</a></li><li><a href="${root}pulido/insumos/panos-diamantados/">Paños diamantados</a></li></ul></div>
+          <a href="${root}pulido/" class="mob-sub-cta">Ver pulido completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
         </div>
       </div>
     </div>
@@ -173,9 +173,9 @@
       </button>
       <div class="mob-sub" id="sub-mantenimiento">
         <div class="mob-sub-inner">
-          <div><div class="mob-grp-title">Equipos</div><ul class="mob-links"><li><a href="${root}maquinaria/">Aspiradoras</a></li><li><a href="${root}maquinaria/">Lustradoras</a></li><li><a href="${root}maquinaria/">Lavasecapisos</a></li></ul></div>
-          <div><div class="mob-grp-title">Productos químicos</div><ul class="mob-links"><li><a href="${root}insumos/">Selladores</a></li><li><a href="${root}insumos/">Desengrasante</a></li></ul></div>
-          <div><div class="mob-grp-title">Accesorios</div><ul class="mob-links"><li><a href="${root}insumos/">Mopas y pulverizadores</a></li><li><a href="${root}insumos/">Paños de lustre</a></li></ul></div>
+          <div><div class="mob-grp-title">Equipos</div><ul class="mob-links"><li><a href="${root}mantenimiento/equipos/aspiradoras/">Aspiradoras</a></li><li><a href="${root}mantenimiento/equipos/lustradoras/">Lustradoras</a></li><li><a href="${root}mantenimiento/equipos/lavasecapisos/">Lavasecapisos</a></li></ul></div>
+          <div><div class="mob-grp-title">Productos químicos</div><ul class="mob-links"><li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li></ul></div>
+          <div><div class="mob-grp-title">Accesorios</div><ul class="mob-links"><li><a href="${root}mantenimiento/accesorios/mopas/">Mopas y pulverizadores</a></li><li><a href="${root}mantenimiento/accesorios/panos/">Paños de lustre</a></li></ul></div>
           <a href="${root}mantenimiento/" class="mob-sub-cta">Ver mantenimiento completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
         </div>
       </div>
@@ -208,7 +208,7 @@
         <div class="mega-cat-title">Cons&shy;truc&shy;ción</div>
         <div class="mega-cat-desc">Materiales, químicos y equipos para la construcción de nuevos pisos de hormigón.</div>
       </div>
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&amp;q=70" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/equipos-construccion.jpg" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">
@@ -258,36 +258,38 @@
         <div class="mega-cat-title">Reparación</div>
         <div class="mega-cat-desc">Productos y equipos para recuperar pisos de hormigón con daños estructurales o superficiales.</div>
       </div>
-      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&amp;q=70" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/reparacion.jpg" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">
         <a href="${root}reparacion/materiales/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Materiales</a>
         <ul class="mega-links">
-          <li><a href="${root}construccion/materiales/microfibra/">Microfibra</a></li>
-          <li><a href="${root}construccion/materiales/macrofibra/">Macrofibra</a></li>
-          <li><a href="${root}construccion/materiales/grouting/">Grouting</a></li>
-          <li><a href="${root}construccion/materiales/mortero-cementicio/">Mortero cementicio</a></li>
+          <li><a href="${root}reparacion/materiales/grouting/">Grouting</a></li>
+          <li><a href="${root}reparacion/materiales/mortero-cementicio/">Mortero cementicio</a></li>
+          <li><a href="${root}reparacion/materiales/endurecedor-superficial/">Endurecedor superficial</a></li>
+          <li><a href="${root}reparacion/materiales/nylon/">Nylon</a></li>
         </ul>
       </div>
       <div class="mega-col">
         <a href="${root}reparacion/productos-quimicos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Químicos</a>
         <ul class="mega-links">
-          <li><a href="${root}construccion/productos-quimicos/aglutinantes/">Aglutinantes</a></li>
-          <li><a href="${root}construccion/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li>
+          <li><a href="${root}reparacion/productos-quimicos/aglutinantes/">Aglutinantes</a></li>
+          <li><a href="${root}reparacion/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li>
         </ul>
       </div>
       <div class="mega-col">
         <a href="${root}reparacion/equipos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Equipos</a>
         <ul class="mega-links">
-          <li><a href="${root}maquinaria/">Escarificadoras</a></li>
+          <li><a href="${root}reparacion/equipos/escarificadoras/">Escarificadoras</a></li>
         </ul>
       </div>
       <div class="mega-col">
-        <a href="${root}reparacion/insumos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Ver</a>
+        <a href="${root}reparacion/insumos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Insumos</a>
         <ul class="mega-links">
-          <li><a href="${root}reparacion/insumos/">Insumos diamantados</a></li>
-          <li><a href="${root}reparacion/">Todos los productos</a></li>
+          <li><a href="${root}reparacion/insumos/accesorios-amoladora/">Accesorios amoladora</a></li>
+          <li><a href="${root}reparacion/insumos/bujardado/">Ruedas de bujardado</a></li>
+          <li><a href="${root}reparacion/insumos/puntas-martillo/">Puntas martillo</a></li>
+          <li><a href="${root}reparacion/insumos/mechas-copa/">Mechas copa</a></li>
         </ul>
         <a href="${root}reparacion/" class="mega-ver-todos">Ver reparación completo <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg></a>
       </div>
@@ -303,38 +305,41 @@
         <div class="mega-cat-title">Pulido</div>
         <div class="mega-cat-desc">Discos, abrasivos, densificadores y máquinas pulidoras para acabados industriales y decorativos.</div>
       </div>
-      <img src="https://images.unsplash.com/photo-1621905251189-08b45249ff78?w=400&amp;q=70" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/pulido.jpg" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">
         <a href="${root}pulido/materiales/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Materiales</a>
         <ul class="mega-links">
-          <li><a href="${root}construccion/materiales/grouting/">Grouting</a></li>
-          <li><a href="${root}construccion/materiales/mortero-cementicio/">Mortero cementicio</a></li>
+          <li><a href="${root}pulido/materiales/grouting/">Grouting</a></li>
+          <li><a href="${root}pulido/materiales/mortero-cementicio/">Mortero cementicio</a></li>
         </ul>
       </div>
       <div class="mega-col">
         <a href="${root}pulido/productos-quimicos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Productos químicos</a>
         <ul class="mega-links">
-          <li><a href="${root}construccion/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}construccion/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li>
-          <li><a href="${root}insumos/">Densificadores</a></li>
-          <li><a href="${root}insumos/">Impermeabilizantes</a></li>
+          <li><a href="${root}pulido/productos-quimicos/aglutinantes/">Aglutinantes</a></li>
+          <li><a href="${root}pulido/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li>
+          <li><a href="${root}pulido/productos-quimicos/densificadores/">Densificadores</a></li>
+          <li><a href="${root}pulido/productos-quimicos/impermeabilizantes/">Impermeabilizantes</a></li>
+          <li><a href="${root}pulido/productos-quimicos/selladores/">Selladores</a></li>
+          <li><a href="${root}pulido/productos-quimicos/detergentes/">Detergentes</a></li>
         </ul>
       </div>
       <div class="mega-col">
         <a href="${root}pulido/equipos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Equipos</a>
         <ul class="mega-links">
-          <li><a href="${root}maquinaria/">Pulidoras</a></li>
-          <li><a href="${root}maquinaria/">Aspiradoras</a></li>
-          <li><a href="${root}maquinaria/">Lustradoras</a></li>
+          <li><a href="${root}pulido/equipos/pulidoras/">Pulidoras</a></li>
+          <li><a href="${root}pulido/equipos/aspiradoras/">Aspiradoras</a></li>
+          <li><a href="${root}pulido/equipos/lustradoras/">Lustradoras</a></li>
         </ul>
       </div>
       <div class="mega-col">
         <a href="${root}pulido/insumos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Insumos</a>
         <ul class="mega-links">
-          <li><a href="${root}insumos/">Metales para desbaste</a></li>
-          <li><a href="${root}insumos/">Discos resinoides</a></li>
-          <li><a href="${root}insumos/">Paños diamantados</a></li>
+          <li><a href="${root}pulido/insumos/metales-desbaste/">Metales para desbaste</a></li>
+          <li><a href="${root}pulido/insumos/discos-resinoides/">Discos resinoides</a></li>
+          <li><a href="${root}pulido/insumos/panos-diamantados/">Paños diamantados</a></li>
         </ul>
         <a href="${root}pulido/" class="mega-ver-todos">
           Ver pulido completo
@@ -353,29 +358,29 @@
         <div class="mega-cat-title">Mante&shy;ni&shy;mien&shy;to</div>
         <div class="mega-cat-desc">Equipos, químicos y accesorios para mantener pisos pulidos en óptimas condiciones.</div>
       </div>
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&amp;q=70" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/mantenimiento.png" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">
-        <a href="${root}maquinaria/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Equipos</a>
+        <a href="${root}mantenimiento/equipos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Equipos</a>
         <ul class="mega-links">
-          <li><a href="${root}maquinaria/">Aspiradoras</a></li>
-          <li><a href="${root}maquinaria/">Lustradoras</a></li>
-          <li><a href="${root}maquinaria/">Lavasecapisos</a></li>
+          <li><a href="${root}mantenimiento/equipos/aspiradoras/">Aspiradoras</a></li>
+          <li><a href="${root}mantenimiento/equipos/lustradoras/">Lustradoras</a></li>
+          <li><a href="${root}mantenimiento/equipos/lavasecapisos/">Lavasecapisos</a></li>
         </ul>
       </div>
       <div class="mega-col">
-        <a href="${root}insumos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Productos químicos</a>
+        <a href="${root}mantenimiento/productos-quimicos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Productos químicos</a>
         <ul class="mega-links">
-          <li><a href="${root}insumos/">Selladores</a></li>
-          <li><a href="${root}insumos/">Desengrasante</a></li>
+          <li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li>
+          <li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li>
         </ul>
       </div>
       <div class="mega-col">
-        <div class="mega-col-title"><span class="mega-col-title-dot"></span>Accesorios</div>
+        <a href="${root}mantenimiento/accesorios/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Accesorios</a>
         <ul class="mega-links">
-          <li><a href="${root}insumos/">Mopas y pulverizadores</a></li>
-          <li><a href="${root}insumos/">Paños de lustre</a></li>
+          <li><a href="${root}mantenimiento/accesorios/mopas/">Mopas y pulverizadores</a></li>
+          <li><a href="${root}mantenimiento/accesorios/panos/">Paños de lustre</a></li>
         </ul>
       </div>
       <div class="mega-col">
@@ -412,8 +417,8 @@
       <div class="f-col-title">Productos</div>
       <ul class="f-links">
         <li><a href="${root}construccion/" class="f-link">Construcción</a></li>
-        <li><a href="${root}maquinaria/" class="f-link">Reparación</a></li>
-        <li><a href="${root}maquinaria/" class="f-link">Pulido</a></li>
+        <li><a href="${root}reparacion/" class="f-link">Reparación</a></li>
+        <li><a href="${root}pulido/" class="f-link">Pulido</a></li>
         <li><a href="${root}mantenimiento/" class="f-link">Mantenimiento</a></li>
         <li><a href="https://tiendalonati.com.ar" class="f-link" target="_blank" rel="noopener">Tienda Lonati</a></li>
       </ul>

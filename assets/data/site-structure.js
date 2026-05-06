@@ -1,30 +1,30 @@
 /* ── site-structure.js ── 
-   Define la taxonomía completa del sitio para el selector del Panel Admin.
+   Define la taxonomía completa del sitio para el Panel Admin.
+   Sincronizado al 100% con los Mega Menus de layout.js
 */
 
 const NEWCONCRET_STRUCTURE = {
   "construccion": {
     "label": "Construcción",
     "categories": {
-      "productos-quimicos": {
-        "label": "Productos Químicos",
-        "subcategories": [
-          { "slug": "aglutinantes", "label": "Aglutinantes" },
-          { "slug": "puentes-de-adherencia", "label": "Puentes de Adherencia" },
-          { "slug": "curadores", "label": "Curadores" },
-          { "slug": "aditivo-llaneado", "label": "Aditivos para Llaneado" }
-        ]
-      },
       "materiales": {
         "label": "Materiales",
         "subcategories": [
           { "slug": "nylon", "label": "Nylon" },
           { "slug": "microfibra", "label": "Microfibra" },
           { "slug": "macrofibra", "label": "Macrofibra" },
-          { "slug": "endurecedor-superficial", "label": "Endurecedor Superficial" },
+          { "slug": "endurecedor-superficial", "label": "Endurecedor superficial" },
           { "slug": "grouting", "label": "Grouting" },
-          { "slug": "mortero-cementicio", "label": "Mortero Cementicio" },
-          { "slug": "sellador-poliuretanico", "label": "Sellador Poliuretánico" }
+          { "slug": "mortero-cementicio", "label": "Mortero cementicio" }
+        ]
+      },
+      "productos-quimicos": {
+        "label": "Productos químicos",
+        "subcategories": [
+          { "slug": "aglutinantes", "label": "Aglutinantes" },
+          { "slug": "puentes-de-adherencia", "label": "Puentes de adherencia" },
+          { "slug": "curadores", "label": "Curadores" },
+          { "slug": "aditivo-llaneado", "label": "Aditivos para llaneado" }
         ]
       },
       "equipos": {
@@ -32,52 +32,41 @@ const NEWCONCRET_STRUCTURE = {
         "subcategories": [
           { "slug": "allanadoras", "label": "Allanadoras" }
         ]
-      },
-      "accesorios": {
-        "label": "Accesorios",
-        "subcategories": [
-          { "slug": "accesorios-allanadora", "label": "Accesorios para Allanadoras" },
-          { "slug": "discos-prep", "label": "Discos de Preparación" },
-          { "slug": "platos-velcro", "label": "Platos de Velcro" }
-        ]
       }
     }
   },
   "reparacion": {
     "label": "Reparación",
     "categories": {
+      "materiales": {
+        "label": "Materiales",
+        "subcategories": [
+          { "slug": "grouting", "label": "Grouting" },
+          { "slug": "mortero-cementicio", "label": "Mortero cementicio" },
+          { "slug": "endurecedor-superficial", "label": "Endurecedor superficial" },
+          { "slug": "nylon", "label": "Nylon" }
+        ]
+      },
+      "productos-quimicos": {
+        "label": "Químicos",
+        "subcategories": [
+          { "slug": "aglutinantes", "label": "Aglutinantes" },
+          { "slug": "puentes-de-adherencia", "label": "Puentes de adherencia" }
+        ]
+      },
       "equipos": {
         "label": "Equipos",
         "subcategories": [
           { "slug": "escarificadoras", "label": "Escarificadoras" }
         ]
       },
-      "materiales": {
-        "label": "Materiales",
-        "subcategories": [
-          { "slug": "nylon", "label": "Nylon" },
-          { "slug": "microfibra", "label": "Microfibra" },
-          { "slug": "macrofibra", "label": "Macrofibra" },
-          { "slug": "endurecedor-superficial", "label": "Endurecedor Superficial" },
-          { "slug": "grouting", "label": "Grouting" },
-          { "slug": "mortero-cementicio", "label": "Mortero Cementicio" }
-        ]
-      },
-      "productos-quimicos": {
-        "label": "Productos Químicos",
-        "subcategories": [
-          { "slug": "aglutinantes", "label": "Aglutinantes" },
-          { "slug": "puentes-de-adherencia", "label": "Puentes de Adherencia" },
-          { "slug": "curadores", "label": "Curadores" },
-          { "slug": "aditivo-llaneado", "label": "Aditivos para Llaneado" }
-        ]
-      },
       "insumos": {
         "label": "Insumos",
         "subcategories": [
-          { "slug": "puntas-martillo", "label": "Puntas de Martillo" },
-          { "slug": "accesorios-amoladora", "label": "Accesorios para Amoladora" },
-          { "slug": "bujardado", "label": "Bujardado" }
+          { "slug": "accesorios-amoladora", "label": "Accesorios amoladora" },
+          { "slug": "bujardado", "label": "Ruedas de bujardado" },
+          { "slug": "puntas-martillo", "label": "Puntas martillo" },
+          { "slug": "mechas-copa", "label": "Mechas copa" }
         ]
       }
     }
@@ -85,29 +74,38 @@ const NEWCONCRET_STRUCTURE = {
   "pulido": {
     "label": "Pulido",
     "categories": {
+      "materiales": {
+        "label": "Materiales",
+        "subcategories": [
+          { "slug": "grouting", "label": "Grouting" },
+          { "slug": "mortero-cementicio", "label": "Mortero cementicio" }
+        ]
+      },
+      "productos-quimicos": {
+        "label": "Productos químicos",
+        "subcategories": [
+          { "slug": "aglutinantes", "label": "Aglutinantes" },
+          { "slug": "puentes-de-adherencia", "label": "Puentes de adherencia" },
+          { "slug": "densificadores", "label": "Densificadores" },
+          { "slug": "impermeabilizantes", "label": "Impermeabilizantes" },
+          { "slug": "selladores", "label": "Selladores" },
+          { "slug": "detergentes", "label": "Detergentes" }
+        ]
+      },
       "equipos": {
         "label": "Equipos",
         "subcategories": [
           { "slug": "pulidoras", "label": "Pulidoras" },
-          { "slug": "aspiradoras", "label": "Aspiradoras" }
+          { "slug": "aspiradoras", "label": "Aspiradoras" },
+          { "slug": "lustradoras", "label": "Lustradoras" }
         ]
       },
       "insumos": {
         "label": "Insumos",
         "subcategories": [
-          { "slug": "diametales-metalicos", "label": "Diamantados Metálicos" },
-          { "slug": "herramientas-pcd", "label": "Herramientas PCD" },
-          { "slug": "copas-diamantadas", "label": "Copas Diamantadas" },
-          { "slug": "discos-resinoides", "label": "Discos Resinoides" },
-          { "slug": "discos-abrillantadores", "label": "Discos Abrillantadores" }
-        ]
-      },
-      "quimicos": {
-        "label": "Químicos",
-        "subcategories": [
-          { "slug": "densificadores", "label": "Densificadores" },
-          { "slug": "selladores-penetrantes", "label": "Selladores Penetrantes" },
-          { "slug": "limpiadores-industriales", "label": "Limpiadores Industriales" }
+          { "slug": "metales-desbaste", "label": "Metales para desbaste" },
+          { "slug": "discos-resinoides", "label": "Discos resinoides" },
+          { "slug": "panos-diamantados", "label": "Paños diamantados" }
         ]
       }
     }
@@ -118,23 +116,23 @@ const NEWCONCRET_STRUCTURE = {
       "equipos": {
         "label": "Equipos",
         "subcategories": [
+          { "slug": "aspiradoras", "label": "Aspiradoras" },
           { "slug": "lustradoras", "label": "Lustradoras" },
-          { "slug": "aspiradoras-manto", "label": "Aspiradoras de Mantenimiento" }
+          { "slug": "lavasecapisos", "label": "Lavasecapisos" }
         ]
       },
-      "insumos": {
-        "label": "Insumos",
+      "productos-quimicos": {
+        "label": "Productos químicos",
         "subcategories": [
-          { "slug": "pads-diamantados", "label": "Pads Diamantados" },
-          { "slug": "cepillos", "label": "Cepillos" },
-          { "slug": "discos-fibras", "label": "Discos de Fibra" }
+          { "slug": "selladores", "label": "Selladores" },
+          { "slug": "desengrasantes", "label": "Desengrasantes" }
         ]
       },
-      "quimicos": {
-        "label": "Químicos",
+      "accesorios": {
+        "label": "Accesorios",
         "subcategories": [
-          { "slug": "detergentes-neutros", "label": "Detergentes Neutros" },
-          { "slug": "ceras-metalizadas", "label": "Ceras Metalizadas" }
+          { "slug": "mopas", "label": "Mopas y pulverizadores" },
+          { "slug": "panos", "label": "Paños de lustre" }
         ]
       }
     }
