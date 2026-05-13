@@ -208,21 +208,21 @@
   <div class="ph-inner">
     <div>
       <div class="ph-breadcrumb">
-        <a href="#">Inicio</a>
+        <a href="../../">Inicio</a>
         <span>›</span>
-        <a href="#">Productos</a>
+        <a href="../">Construcción</a>
         <span>›</span>
-        <em>Construcción</em>
+        <em>Materiales</em>
       </div>
       <div class="ph-eyebrow">
         <span class="ph-eyebrow-line"></span>
         <span class="ph-eyebrow-tx">Categoría de productos</span>
       </div>
-      <h1 class="ph-title">Construcción<br>de pisos</h1>
-      <p class="ph-desc">Materiales, productos químicos y equipos para la construcción de nuevos pisos de hormigón industrial.</p>
+      <h1 class="ph-title">Materiales<br>para pisos</h1>
+      <p class="ph-desc">Fibras, endurecedores, grouting y barreras hidrófugas para la construcción de pisos industriales de alto rendimiento.</p>
     </div>
     <div class="ph-count">
-      <b id="total-count">11</b>
+      <b id="total-count">0</b>
       productos disponibles
     </div>
   </div>
@@ -233,9 +233,12 @@
   <span class="filter-label">Filtrar:</span>
   <div class="filter-pills">
     <button class="pill active" data-filter="all">Todos</button>
-    <button class="pill" data-filter="materiales">Materiales</button>
-    <button class="pill" data-filter="quimicos">Productos químicos</button>
-    <button class="pill" data-filter="equipos">Equipos</button>
+    <button class="pill" data-filter="nylon">Nylon</button>
+    <button class="pill" data-filter="microfibra">Microfibra</button>
+    <button class="pill" data-filter="macrofibra">Macrofibra</button>
+    <button class="pill" data-filter="endurecedor-superficial">Endurecedor</button>
+    <button class="pill" data-filter="grouting">Grouting</button>
+    <button class="pill" data-filter="mortero-cementicio">Mortero</button>
   </div>
   <div class="filter-right">
     <select class="sort-select" id="sortSelect">
@@ -309,11 +312,12 @@
 /* ──────────────────────────────────────
    1. DATA ADAPTER
 ────────────────────────────────────── */
-const ALL_PRODUCTS = typeof productos !== 'undefined' ? productos : [];
+const PAGE_SECCION      = 'construccion';
+const PAGE_CATEGORIA    = 'materiales';
+const PAGE_SUBCATEGORIA = null;
+const ROOT              = '../../';
 
-/* ──────────────────────────────────────
-   2. STATE
-────────────────────────────────────── */
+const ALL_PRODUCTS = typeof productos !== 'undefined' ? productos : [];
 let activeFilter = 'all';
 let activeSort   = 'default';
 let isListView   = false;
@@ -369,19 +373,26 @@ function renderCard(p, delay) {
   </div>`;
 }
 
+function matchProduct(p, seccion, categoria, subcategoria) {
+  if (p.rutas && p.rutas.length > 0) {
+    return p.rutas.some(function(r) {
+      var s  = r['sección']     || r['seccion']     || '';
+      var c  = r['categoría']   || r['categoria']   || '';
+      var sc = r['subcategoría']|| r['subcategoria']|| '';
+      if (s !== seccion) return false;
+      if (categoria   && c  !== categoria)   return false;
+      if (subcategoria && sc !== subcategoria) return false;
+      return true;
+    });
+  }
+  return false;
+}
+
 function getFiltered() {
-  return ALL_PRODUCTS.filter(p => {
-    if (!p.rutas) return false;
-    const belongsToConstruccion = p.rutas.some(r => r["sección"] === "construccion");
-    let matchesFilter = false;
-    if (activeFilter === 'all') {
-      matchesFilter = true;
-    } else {
-      const filterKey = activeFilter === 'quimicos' ? 'productos-quimicos' : activeFilter;
-      matchesFilter = p.rutas.some(r => r["sección"] === "construccion" && r["categoría"] === filterKey);
-    }
-    return belongsToConstruccion && matchesFilter;
-  }).sort((a,b) => {
+  var sub = (activeFilter === 'all') ? null : activeFilter;
+  return ALL_PRODUCTS.filter(function(p) {
+    return matchProduct(p, PAGE_SECCION, PAGE_CATEGORIA, sub);
+  }).sort(function(a, b) {
     if (activeSort === 'az') return a.nombre.localeCompare(b.nombre);
     if (activeSort === 'za') return b.nombre.localeCompare(a.nombre);
     return 0;

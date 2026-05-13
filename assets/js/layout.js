@@ -23,7 +23,7 @@
 
     // 2. Templates
     const navHtml = `
-<div class="mega-backdrop" id="backdrop"></div>
+<div class="mega-backdrop hide-mobile" id="backdrop"></div>
 
 <nav class="nav ${root === './' || root === '' ? 'nav-home' : 'on'} hide-mobile" id="nav">
   <a href="${root}" class="nav-logo logo">
@@ -54,14 +54,14 @@
     <button class="nav-search" aria-label="Buscar">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.4"></circle><path d="M11.5 11.5l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path></svg>
     </button>
-    <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="nav-cta">
+    <a href="${root}contacto/" class="nav-cta">
       Consultar
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
     </a>
   </div>
 </nav>
 
-<nav class="nav hide-desktop" id="mob-nav" style="position:fixed; top:0; left:0; right:0; z-index:900; height:66px; display:flex; align-items:center; justify-content:space-between; padding:0 0.75rem; background:rgba(10,10,10,.85); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--nc-steel);">
+<nav class="mob-nav-bar hide-desktop" id="mob-nav" style="position:fixed; top:0; left:0; right:0; z-index:1500; height:66px; display:flex; align-items:center; justify-content:space-between; padding:0 0.5rem; background:transparent; border-bottom:1px solid transparent; transition: background .3s, border-color .3s;">
   <a href="${root}" class="logo">
     <img src="${root}logos/logonewconcret-blanco.png" alt="NewConcret" style="height:24px; width:auto; display:block;">
   </a>
@@ -185,11 +185,11 @@
     <div class="mob-simple"><a href="${root}capacitacion/">Capacitaciones</a></div>
     <div class="mob-simple"><a href="${root}sistema-newconcret/">Sistema NC</a></div>
     <div class="mob-simple"><a href="${root}nosotros/">Nosotros</a></div>
-    <div class="mob-simple"><a href="mailto:info@newconcret.com">Contacto</a></div>
+    <div class="mob-simple"><a href="${root}contacto/">Contacto</a></div>
   </div>
 
   <div class="mob-footer">
-    <a href="https://wa.link/ayeajp" class="mob-cta-red" target="_blank" rel="noopener">
+    <a href="${root}contacto/" class="mob-cta-red">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       Contacto directo
     </a>
@@ -237,12 +237,8 @@
         </ul>
       </div>
       <div class="mega-col">
-        <div class="mega-col-title"><span class="mega-col-title-dot"></span>Ver</div>
-        <ul class="mega-links">
-          <li><a href="${root}construccion/">Todos los productos</a></li>
-        </ul>
-        <a href="${root}construccion/" class="mega-ver-todos">
-          Ver construcción completo
+        <a href="${root}construccion/" class="mega-ver-todos" style="margin-top: 0;">
+          Ver todos los productos
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
         </a>
       </div>
@@ -431,7 +427,7 @@
         <li><a href="${root}sistema-newconcret/" class="f-link">Sistema NC</a></li>
         <li><a href="${root}capacitacion/" class="f-link">Capacitaciones</a></li>
         <li><a href="${root}nosotros/" class="f-link">Nosotros</a></li>
-        <li><a href="mailto:info@newconcret.com.ar" class="f-link">Contacto</a></li>
+        <li><a href="${root}contacto/" class="f-link">Contacto</a></li>
       </ul>
     </div>
 
@@ -486,17 +482,8 @@
             footerTarget.innerHTML = footerHtml;
         }
 
-        // Interactivity Logic
-        const ham = document.getElementById('ham');
-        const mobDrawer = document.getElementById('mobDrawer');
-        const mobClose = document.getElementById('mobClose');
-        const mobBd = document.getElementById('mobBd');
-
-        if (ham && mobDrawer) {
-            ham.onclick = () => { mobDrawer.classList.add('open'); mobBd.classList.add('open'); document.body.style.overflow = 'hidden'; };
-            mobClose.onclick = () => { mobDrawer.classList.remove('open'); mobBd.classList.remove('open'); document.body.style.overflow = ''; };
-            mobBd.onclick = () => { mobDrawer.classList.remove('open'); mobBd.classList.remove('open'); document.body.style.overflow = ''; };
-        }
+        // Interactivity Logic is now handled by nav.js to avoid conflicts
+        // This includes: ham toggle, mobDrawer, mobBd, and mob-cat-btn accordions
 
         // Mega menu logic (Desktop)
         const cats = document.querySelectorAll('.nav-cat');
@@ -564,19 +551,7 @@
             backdrop.addEventListener('click', closeAllMegas);
         }
 
-        // Mobile accordion
-        document.querySelectorAll('.mob-cat-btn').forEach(btn => {
-            btn.onclick = () => {
-                const sub = document.getElementById(btn.dataset.sub);
-                const isOpen = sub.classList.contains('open');
-                document.querySelectorAll('.mob-sub').forEach(s => s.classList.remove('open'));
-                document.querySelectorAll('.mob-cat-btn').forEach(b => b.classList.remove('active'));
-                if (!isOpen) {
-                    sub.classList.add('open');
-                    btn.classList.add('active');
-                }
-            };
-        });
+        // Mobile accordion logic moved to nav.js
 
         // Update year
         const yearSpan = document.getElementById('ncYear');

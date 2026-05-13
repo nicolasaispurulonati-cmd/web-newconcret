@@ -122,26 +122,26 @@
 </section>
 
 <!-- HERO (Mobile Redesign) -->
-<section class="hero hide-desktop" id="inicio-mob" style="min-height:100svh; display:flex; align-items:flex-end; padding:0 1.5rem 4rem; position:relative; overflow:hidden;">
+<section class="hero hide-desktop" id="inicio-mob" style="min-height:100svh; display:flex; align-items:center; justify-content:flex-start; padding:0 0.75rem; position:relative; overflow:hidden;">
   <div class="hero-bg" style="position:absolute; inset:0;">
     <video src="assets/img/hero/principal.mp4" autoplay="" muted="" loop="" playsinline="" poster="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&amp;q=70" style="width:100%; height:100%; object-fit:cover; filter:brightness(.35) saturate(.5);"></video>
   </div>
   <div class="hero-ov" style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.97) 0%, transparent 60%);"></div>
-  <div class="hero-content" style="position:relative; z-index:2; width:100%;">
+  <div class="hero-content" style="position:relative; z-index:2; width:100%; text-align:left; display:flex; flex-direction:column; align-items:flex-start; padding-bottom: 5rem;">
     <div class="eyebrow" style="display:inline-flex; align-items:center; gap:.65rem; margin-bottom:1rem;">
       <span class="eyebrow-line" style="width:28px; height:1px; background:var(--nc-red);"></span>
       <span class="eyebrow-tx" style="font-family:var(--font-m); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--nc-red);">Desde 2010 · Bragado</span>
     </div>
-    <h1 class="hero-h1" style="font-family:var(--font-d); font-weight:900; font-size:2.8rem; line-height:.93; letter-spacing:-.01em; text-transform:uppercase; color:var(--nc-white); margin-bottom:1rem;">Todo para<br>el trabajo del<br><span style="color:var(--nc-red);">hormigón.</span></h1>
-    <div class="hero-btns" style="display:flex; flex-direction:column; gap:.8rem;">
-      <a href="maquinaria/" class="btn-p">Ver catálogo maquinaria</a>
-      <a href="capacitacion/" class="btn-g" style="border-bottom:none; padding: .5rem 0;">Inscribirme a capacitación</a>
+    <h1 class="hero-h1" style="font-family:var(--font-d); font-weight:900; font-size:3.8rem; line-height:.91; letter-spacing:-.02em; text-transform:uppercase; color:var(--nc-white); margin-bottom:1.5rem;">Todo para<br>el trabajo del<br><span style="color:var(--nc-red);">hormigón.</span></h1>
+    <div class="hero-btns" style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem; width:100%;">
+      <a href="productos/" class="btn-p" style="padding: 0.8rem 1.4rem; font-size: 0.72rem;">Ver catálogo productos</a>
+      <a href="capacitacion/" class="btn-g" style="padding: 0.8rem 1.4rem; font-size: 0.72rem; border: 1px solid var(--nc-steel); color: var(--nc-white); background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%); display: inline-flex; align-items: center; justify-content: flex-start; text-decoration: none;">Inscribirme a capacitación</a>
     </div>
-    <div class="hero-stats-mob hide-desktop" style="display:flex; gap:0; margin-top:2rem; border:1px solid var(--nc-steel);">
-      <div class="hs-item"><div class="hs-num">800<em>+</em></div><div class="hs-lbl">clientes</div></div>
-      <div class="hs-item"><div class="hs-num">14<em>+</em></div><div class="hs-lbl">años</div></div>
-      <div class="hs-item"><div class="hs-num">300<em>+</em></div><div class="hs-lbl">alumnos</div></div>
-    </div>
+  </div>
+  <div class="hero-stats-mob hide-desktop" style="position:absolute; bottom:0; left:0; right:0; z-index:3; display:flex; gap:0; border-top:1px solid var(--nc-steel); background:rgba(10,10,10,.6); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);">
+    <div class="hs-item"><div class="hs-num">800<em>+</em></div><div class="hs-lbl">clientes</div></div>
+    <div class="hs-item"><div class="hs-num">14<em>+</em></div><div class="hs-lbl">años</div></div>
+    <div class="hs-item"><div class="hs-num">300<em>+</em></div><div class="hs-lbl">alumnos</div></div>
   </div>
 </section>
 
@@ -202,13 +202,12 @@
       background: var(--nc-carbon);
     ">
       <img src="assets/img/hero/equipos-construccion.jpg" alt="Construcción de pisos industriales"
-        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(80%);opacity:.55;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.3) 60%, transparent 100%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
       <div style="position:absolute;bottom:2.5rem;left:2.5rem;z-index:2;">
         <div style="font-family:var(--font-m);font-size:.6rem;color:var(--nc-red);text-transform:uppercase;letter-spacing:.2em;margin-bottom:.8rem;">Soluciones para · Construcción de pisos</div>
-        <h3 style="font-family:var(--font-d);font-weight:900;font-size:2.8rem;text-transform:uppercase;color:var(--nc-white);line-height:1;letter-spacing:-.02em;margin-bottom:1rem;">Construcción</h3>
-        <p style="font-family:var(--font-m);color:rgba(200,198,198,.55);font-size:.82rem;text-transform:uppercase;letter-spacing:.03em;max-width:28rem;line-height:1.6;margin-bottom:1.5rem;">Materiales de alto rendimiento, químicos especializados y equipos de precisión para la creación de pisos industriales duraderos.</p>
+        <h3 style="font-family:var(--font-d);font-weight:900;font-size:2.8rem;text-transform:uppercase;color:var(--nc-white);line-height:1;letter-spacing:-.02em;margin-bottom:1.5rem;">Construcción</h3>
         <div style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-m);font-size:.65rem;color:var(--nc-red);font-weight:700;text-transform:uppercase;letter-spacing:.15em;transition:gap .3s;" class="maq-cta-link">
           Explorar
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
@@ -226,14 +225,14 @@
       background: var(--nc-carbon);
     ">
       <img src="assets/img/hero/pulido.jpg" alt="Pulido de pisos de hormigón"
-        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(80%);opacity:.55;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.92) 0%, transparent 70%);z-index:1;"></div>
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
       <div style="position:absolute;bottom:2rem;left:2rem;z-index:2;">
         <div style="font-family:var(--font-m);font-size:.55rem;color:var(--nc-red);text-transform:uppercase;letter-spacing:.2em;margin-bottom:.5rem;">Acabados de alta definición</div>
-        <h3 style="font-family:var(--font-d);font-weight:900;font-size:1.9rem;text-transform:uppercase;color:var(--nc-white);line-height:1;margin-bottom:1rem;">Pulido</h3>
+        <h3 style="font-family:var(--font-d);font-weight:900;font-size:1.9rem;text-transform:uppercase;color:var(--nc-white);line-height:1;margin-bottom:1.2rem;">Pulido</h3>
         <div style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-m);font-size:.6rem;color:var(--nc-red);font-weight:700;text-transform:uppercase;letter-spacing:.15em;" class="maq-cta-link">
-          Ver detalles
+          Explorar
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
         </div>
       </div>
@@ -248,11 +247,12 @@
       background: var(--nc-carbon);
     ">
       <img src="assets/img/hero/mantenimiento.png" alt="Mantenimiento de pisos industriales"
-        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(80%);opacity:.45;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.92) 0%, transparent 70%);z-index:1;"></div>
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
       <div style="position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;">
-        <h3 style="font-family:var(--font-d);font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--nc-white);line-height:1;margin-bottom:.8rem;">Mantenim.</h3>
+        <div style="font-family:var(--font-m);font-size:.45rem;color:var(--nc-red);text-transform:uppercase;letter-spacing:.2em;margin-bottom:.4rem;">Cuidado y protección</div>
+        <h3 style="font-family:var(--font-d);font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--nc-white);line-height:1;margin-bottom:.8rem;">Mantenimiento</h3>
         <div style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-m);font-size:.55rem;color:var(--nc-red);font-weight:700;text-transform:uppercase;letter-spacing:.1em;" class="maq-cta-link">
           Ver
           <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
@@ -269,10 +269,11 @@
       background: var(--nc-carbon);
     ">
       <img src="assets/img/hero/reparacion.jpg" alt="Reparación de pisos de hormigón"
-        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(80%);opacity:.45;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.92) 0%, transparent 70%);z-index:1;"></div>
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
       <div style="position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;">
+        <div style="font-family:var(--font-m);font-size:.45rem;color:var(--nc-red);text-transform:uppercase;letter-spacing:.2em;margin-bottom:.4rem;">Restauración técnica</div>
         <h3 style="font-family:var(--font-d);font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--nc-white);line-height:1;margin-bottom:.8rem;">Reparación</h3>
         <div style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-m);font-size:.55rem;color:var(--nc-red);font-weight:700;text-transform:uppercase;letter-spacing:.1em;" class="maq-cta-link">
           Ver
@@ -297,36 +298,55 @@
 </section>
 
 <!-- MAQUINARIA PREVIEW (Mobile Redesign) -->
+<!-- MAQUINARIA PREVIEW (Mobile) — Full Stack Design -->
 <section class="sec hide-desktop" id="maquinaria-mob" style="background:var(--nc-black); padding:4rem 1.5rem !important;">
-  <div class="cat-hd" style="margin-bottom:2rem;">
-    <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Equipamiento industrial</span></div>
-    <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1.1 !important;">Maquinaria de alto rendimiento</h2>
+  <div style="margin-bottom:2.5rem; display:flex; flex-direction:column; align-items:flex-start;">
+    <div class="sec-lbl" style="margin-bottom:0.6rem;"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Equipamiento industrial</span></div>
+    <h2 class="sec-h2" style="font-size:2.4rem !important; line-height:.95 !important; letter-spacing:-.02em !important; text-transform:uppercase; margin-bottom:0;">Equipos para<br>cada trabajo</h2>
   </div>
-  <div class="filter-bar">
-    <div class="filter-pills">
-      <button class="pill active" data-filter="all">Todas</button>
-      <button class="pill" data-filter="pulidoras">Pulidoras</button>
-      <button class="pill" data-filter="aspiradoras">Aspiradoras</button>
-      <button class="pill" data-filter="lustradoras">Lustradoras</button>
-    </div>
-  </div>
-  <div class="prod-grid" style="display:grid; grid-template-columns:1fr; gap:1rem;">
-    <div class="prod-card" data-cat="pulidoras">
-      <img src="assets/img/maquinaria/pulidoras.jpg" alt="" class="prod-card-img" style="height:200px !important;">
-      <div class="prod-card-body">
-        <div class="prod-name">Pulidoras</div>
-        <div class="prod-desc">Equipos planetarios para desbaste y pulido de hormigón.</div>
-        <a href="maquinaria/" class="prod-link">Ver en catálogo</a>
+
+  <div class="maq-stack-mob" style="display:flex; flex-direction:column; gap:8px;">
+    
+    <!-- CONSTRUCCIÓN -->
+    <a href="construccion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
+      <img src="assets/img/hero/equipos-construccion.jpg" alt="Construcción" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
+      <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
+        <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Equipos y químicos</div>
+        <h3 style="font-family:var(--font-d); font-weight:900; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Construcción</h3>
       </div>
-    </div>
-    <div class="prod-card" data-cat="aspiradoras">
-      <img src="assets/img/maquinaria/aspiradoras.jpg" alt="" class="prod-card-img" style="height:200px !important;">
-      <div class="prod-card-body">
-        <div class="prod-name">Aspiradoras</div>
-        <div class="prod-desc">Aspiradoras industriales con filtro HEPA para obra.</div>
-        <a href="maquinaria/" class="prod-link">Ver en catálogo</a>
+    </a>
+
+    <!-- PULIDO -->
+    <a href="pulido/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
+      <img src="assets/img/hero/pulido.jpg" alt="Pulido" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
+      <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
+        <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Desbaste y brillo</div>
+        <h3 style="font-family:var(--font-d); font-weight:900; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Pulido</h3>
       </div>
-    </div>
+    </a>
+
+    <!-- MANTENIMIENTO -->
+    <a href="mantenimiento/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
+      <img src="assets/img/hero/mantenimiento.png" alt="Mantenimiento" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
+      <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
+        <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Limpieza y protección</div>
+        <h3 style="font-family:var(--font-d); font-weight:900; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Mantenimiento</h3>
+      </div>
+    </a>
+
+    <!-- REPARACIÓN -->
+    <a href="reparacion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
+      <img src="assets/img/hero/reparacion.jpg" alt="Reparación" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
+      <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
+        <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Restauración de juntas</div>
+        <h3 style="font-family:var(--font-d); font-weight:900; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Reparación</h3>
+      </div>
+    </a>
+
   </div>
 </section>
 
@@ -344,44 +364,31 @@
       <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Producto estrella</span></div>
       <h2 class="sec-h2">Frida 450<br>Fabricada por nosotros.</h2>
       <p class="sec-p">Frida 450 es una pulidora semiprofesional versátil, diseñada para realizar pulido, lavado y lustrado con mayor estabilidad. Ideal para obras pequeñas y medianas que requieren resultados profesionales.</p>
-      <div class="specs-grid">
-        <div class="spec">
-          <div class="spec-ic">
-            <svg class="glow-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-          </div>
-          <div><div class="spec-v">5.5 HP</div><div class="spec-k">Motor</div></div>
+      <div class="specs-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem 3rem; margin-top:3rem; border-top:1px solid var(--nc-steel); padding-top:2.5rem;">
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+          <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">5.5 HP</div>
+          <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Motor Industrial</div>
         </div>
-        <div class="spec">
-          <div class="spec-ic">
-            <svg class="glow-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 14.14 14.14"></path></svg>
-          </div>
-          <div><div class="spec-v">450 mm</div><div class="spec-k">Diámetro</div></div>
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+          <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">450 mm</div>
+          <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Diámetro de trabajo</div>
         </div>
-        <div class="spec">
-          <div class="spec-ic">
-            <svg class="glow-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="M7 12h10"></path><path d="M10 8v8"></path></svg>
-          </div>
-          <div><div class="spec-v">220 V</div><div class="spec-k">Potencia</div></div>
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+          <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">220 V</div>
+          <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Conexión Monofásica</div>
         </div>
-        <div class="spec">
-          <div class="spec-ic">
-            <svg class="glow-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path><path d="m11 10 3-3"></path><path d="m15 14 3 3"></path><circle cx="12" cy="12" r="1"></circle></svg>
-          </div>
-          <div><div class="spec-v">800 RPM</div><div class="spec-k">Velocidad</div></div>
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+          <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">800 RPM</div>
+          <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Velocidad de giro</div>
         </div>
-        <div class="spec">
-          <div class="spec-ic">
-            <svg class="glow-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12h10"></path><path d="M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path><path d="M19 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path><path d="M5 14h14"></path><path d="m12 14 3-9H9l3 9Z"></path></svg>
-          </div>
-          <div><div class="spec-v">115 kg</div><div class="spec-k">Peso</div></div>
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+          <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">115 kg</div>
+          <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Peso operativo</div>
         </div>
-        <div class="spec">
-          <div class="spec-ic">
-            <svg class="glow-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M3 12h18"></path><path d="M12 3v18"></path></svg>
-          </div>
-          <div><div class="spec-v">4</div><div class="spec-k">Cabezales</div></div>
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+          <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">4 Cabezales</div>
+          <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Montaje de insumos</div>
         </div>
-
       </div>
       <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="https://tienda.newconcret.com/productos/frida-450" target="_blank" rel="noopener" class="btn-p">
@@ -396,27 +403,27 @@
 
 <!-- FRIDA 450 (Mobile Redesign) -->
 <section class="sec hide-desktop" id="frida-mob" style="padding:4rem 0 !important; background:var(--nc-carbon);">
-  <div class="frida-mob-banner" style="background:var(--nc-black); border:1px solid var(--nc-steel); border-left:none; border-right:none; padding:1.5rem; display:flex; align-items:center; gap:1.25rem; margin-bottom:2.5rem;">
-    <div class="frida-mob-num" style="font-family:var(--font-d); font-weight:900; font-size:3.5rem; color:var(--nc-red); line-height:1;">450</div>
+  <div class="frida-mob-banner" style="background:transparent; border:1px solid var(--nc-steel); border-left:none; border-right:none; padding:1.5rem; display:flex; align-items:center; gap:1.25rem; margin-bottom:0;">
+    <div class="frida-mob-num" style="font-family:var(--font-d); font-weight:900; font-size:5rem; color:var(--nc-red); line-height:1;">450</div>
     <div>
-      <div style="font-family:var(--font-m); font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; color:var(--nc-red); margin-bottom:.2rem;">Modelo estrella</div>
-      <div style="font-family:var(--font-d); font-weight:800; font-size:1.15rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Frida Industrial</div>
+      <div style="font-family:var(--font-m); font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--nc-red); margin-bottom:.3rem;">Modelo estrella</div>
+      <div style="font-family:var(--font-d); font-weight:800; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Frida Industrial</div>
     </div>
   </div>
-  <div style="padding:0 1.5rem;">
-    <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Fabricación nacional</span></div>
-    <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important; margin-bottom:1.5rem;">Diseñada para<br>la obra real.</h2>
+  <div style="padding:1.5rem 1.5rem 0;">
+    <div class="sec-lbl" style="margin-bottom:0.4rem;"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Fabricación nacional</span></div>
+    <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important; margin-bottom:1rem;">Diseñada para<br>la obra real.</h2>
     
     <!-- Video Mobile -->
     <div class="frida-vid-mob" style="margin: 2.5rem 0; width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid var(--nc-steel); overflow: hidden;">
       <iframe src="https://www.youtube.com/embed/2IUMdoDIgNE?start=3" style="width: 100%; height: 100%; border: none;" allowfullscreen="" title="Frida 450 en obra"></iframe>
     </div>
 
-    <div class="specs-grid" style="display:grid; grid-template-columns: 1fr; border:1px solid var(--nc-steel); margin-top:2rem;">
-    <div class="spec" style="border-right:1px solid var(--nc-steel); border-bottom:1px solid var(--nc-steel); padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-mid); margin-bottom:.2rem;">Potencia</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">7.5 HP</div></div>
+    <div class="specs-grid" style="display:grid; grid-template-columns: 1fr 1fr; border:1px solid var(--nc-steel); margin-top:2rem;">
+      <div class="spec" style="border-right:1px solid var(--nc-steel); border-bottom:1px solid var(--nc-steel); padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-mid); margin-bottom:.2rem;">Motor</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">5.5 HP</div></div>
       <div class="spec" style="border-bottom:1px solid var(--nc-steel); padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-mid); margin-bottom:.2rem;">Diámetro</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">450 mm</div></div>
-      <div class="spec" style="border-right:1px solid var(--nc-steel); padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-mid); margin-bottom:.2rem;">Peso</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">130 KG</div></div>
-      <div class="spec" style="padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-mid); margin-bottom:.2rem;">Rendimiento</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">30 m²/h</div></div>
+      <div class="spec" style="border-right:1px solid var(--nc-steel); padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-mid); margin-bottom:.2rem;">Potencia</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">220 V</div></div>
+      <div class="spec" style="padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color:var(--nc-mid); margin-bottom:.2rem;">Montaje</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">4 Cabez.</div></div>
     </div>
     <a href="https://wa.me/5492342464082" class="btn-p" style="margin-top:2.5rem; width:100%; justify-content:center;">Consultar por Frida</a>
   </div>
@@ -480,34 +487,45 @@
   </div>
 </section>
 
-<!-- INSUMOS PREVIEW (Mobile Redesign) -->
-<section class="sec hide-desktop" id="insumos-mob" style="background:var(--nc-black); padding:4rem 1.5rem !important;">
-  <div>
-    <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Insumos y químicos</span></div>
-    <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Insumos para<br>cada etapa.</h2>
+<!-- QUÍMICOS PREVIEW (Mobile Redesign) -->
+<section class="sec hide-desktop" id="quimicos-mob" style="background:var(--nc-black); padding:4rem 1.5rem !important;">
+  <div style="margin-bottom:2.5rem; display:flex; flex-direction:column; align-items:flex-start;">
+    <div class="sec-lbl" style="margin-bottom:0.6rem;"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Tratamientos químicos</span></div>
+    <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Químicos para<br>cada etapa.</h2>
   </div>
-  <div class="insumos-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1.5px; background:var(--nc-steel); margin-top:2rem;">
-    <div class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1rem;">
-      <span class="ins-icon">💎</span>
-      <div class="ins-name" style="font-size:.88rem !important; margin-bottom:.3rem;">Discos Diamantados</div>
-      <div class="ins-desc" style="font-size:.75rem !important; display:none;">Para desbaste, pulido y abrillantado.</div>
-      <a href="insumos/" class="ins-link" style="font-size:.55rem !important;">Ver stock</a>
-    </div>
-    <div class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1rem;">
-      <span class="ins-icon">🧪</span>
-      <div class="ins-name" style="font-size:.88rem !important; margin-bottom:.3rem;">Densificadores</div>
-      <a href="insumos/" class="ins-link" style="font-size:.55rem !important;">Ver stock</a>
-    </div>
-    <div class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1rem;">
-      <span class="ins-icon">🛡</span>
-      <div class="ins-name" style="font-size:.88rem !important; margin-bottom:.3rem;">Selladores</div>
-      <a href="insumos/" class="ins-link" style="font-size:.55rem !important;">Ver stock</a>
-    </div>
-    <div class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1rem;">
-      <span class="ins-icon">✨</span>
-      <div class="ins-name" style="font-size:.88rem !important; margin-bottom:.3rem;">Cristalizadores</div>
-      <a href="insumos/" class="ins-link" style="font-size:.55rem !important;">Ver stock</a>
-    </div>
+  <div class="insumos-list" style="display:flex; flex-direction:column; gap:1px; background:var(--nc-steel); margin-top:2rem;">
+    <!-- DENSIFICADORES -->
+    <a href="pulido/productos-quimicos/densificadores/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
+      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8"></path><path d="M14 2v8"></path><path d="M8.5 2h7"></path><path d="M14 10a5 5 0 1 1-4 0"></path></svg></span>
+      <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
+        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Densificadores</div>
+        <div class="ins-link" style="font-size:.6rem !important; color:var(--nc-red); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+      </div>
+    </a>
+    <!-- IMPERMEABILIZANTES -->
+    <a href="pulido/productos-quimicos/impermeabilizantes/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
+      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+      <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
+        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Impermeabiliz.</div>
+        <div class="ins-link" style="font-size:.6rem !important; color:var(--nc-red); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+      </div>
+    </a>
+    <!-- SELLADORES -->
+    <a href="pulido/productos-quimicos/selladores/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
+      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+      <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
+        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Selladores</div>
+        <div class="ins-link" style="font-size:.6rem !important; color:var(--nc-red); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+      </div>
+    </a>
+    <!-- DETERGENTES -->
+    <a href="pulido/productos-quimicos/detergentes/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
+      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="M16.24 16.24l2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="M16.24 7.76l2.83-2.83"></path></svg></span>
+      <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
+        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Detergentes</div>
+        <div class="ins-link" style="font-size:.6rem !important; color:var(--nc-red); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -568,8 +586,8 @@
     <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Formamos expertos.</h2>
   </div>
   
-  <div class="cap-pillars" style="margin-top:2.5rem;">
-    <div class="pillar-card">
+  <div class="cap-pillars" style="margin-top:1rem; display:flex; flex-direction:column; gap:0;">
+    <div class="pillar-card" style="border-bottom:2px solid rgba(193,18,31,0.5);">
       <div class="pillar-num">01</div>
       <div class="pillar-info">
         <span class="pillar-label">Teoría</span>
@@ -577,7 +595,7 @@
         <p class="pillar-desc">Estudio profundo de sustratos y químicos.</p>
       </div>
     </div>
-    <div class="pillar-card">
+    <div class="pillar-card" style="border-bottom:2px solid rgba(193,18,31,0.5);">
       <div class="pillar-num">02</div>
       <div class="pillar-info">
         <span class="pillar-label">Práctica</span>
@@ -750,13 +768,13 @@
 <section class="sec hide-desktop" id="test-mob" style="background:var(--nc-carbon); padding:4rem 1.5rem !important;">
   <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Casos de éxito</span></div>
   <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Nuestros clientes.</h2>
-  <div class="test-grid" style="display:flex; flex-direction:column; gap:1.5px; background:var(--nc-steel); margin-top:2.5rem;">
-    <div class="test-card" style="background:var(--nc-dark); padding:2rem 1.5rem;">
-      <div class="q-mark" style="font-size:3rem; color:rgba(255,255,255,.1); margin-bottom:.5rem;">"</div>
+  <div class="test-grid" style="display:flex; flex-direction:column; gap:0; margin-top:2.5rem;">
+    <div class="test-card" style="background:var(--nc-black); padding:1.2rem 1.5rem 2rem; border:1px solid var(--nc-steel); border-left:3px solid var(--nc-red);">
+      <div class="q-mark" style="font-size:2.5rem; color:var(--nc-red); margin-bottom:.3rem; line-height:1;">"</div>
       <p class="test-txt" style="font-size:.9rem; line-height:1.6; color:var(--nc-light); margin-bottom:1.5rem;">"El nivel de asesoramiento es único. No te venden lo más caro, te venden lo que necesitás."</p>
       <div class="test-auth" style="display:flex; align-items:center; gap:.8rem;">
-        <div class="auth-av" style="width:36px; height:36px; background:var(--nc-steel); display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; color:#fff;">GN</div>
-        <div><div class="auth-name" style="font-size:.82rem; font-weight:700; color:#fff;">Gustavo Navarro</div></div>
+        <div class="auth-av" style="width:36px; height:36px; background:var(--nc-red); display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; color:#fff;">GN</div>
+        <div><div class="auth-name" style="font-size:.82rem; font-weight:700; color:#fff;">Gustavo Navarro</div><div style="font-size:.65rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.1em;">Pulidor independiente</div></div>
       </div>
     </div>
   </div>
@@ -780,10 +798,10 @@
 </section>
 
 <!-- CTA (Mobile Redesign) -->
-<section class="sec hide-desktop" id="contacto-mob" style="padding:4rem 1.5rem !important; background:var(--nc-black); text-align:center;">
-  <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1 !important; margin-bottom:1rem;">Iniciá tu<br><span>proyecto</span> hoy.</h2>
-  <p class="sec-p" style="margin-bottom:2.5rem;">Asesoramiento técnico inmediato por WhatsApp.</p>
-  <a href="https://wa.me/5492342464082" class="btn-p" style="width:100%; justify-content:center; padding:1.2rem;">Escribinos por WhatsApp</a>
+<section class="sec hide-desktop" id="contacto-mob" style="padding:2.5rem 1.5rem !important; background:var(--nc-black); text-align:center;">
+  <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1 !important; margin-bottom:.6rem;">Iniciá tu<br><span>proyecto</span> hoy.</h2>
+  <p class="sec-p" style="margin-bottom:1.5rem; font-size:.85rem;">Asesoramiento técnico inmediato por WhatsApp.</p>
+  <a href="https://wa.me/5492342464082" class="btn-p" style="padding:0.75rem 1.5rem; font-size:0.7rem; width:auto; display:inline-flex;">Escribinos por WhatsApp</a>
 </section>
 
 <div id="footer-placeholder"></div>

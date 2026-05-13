@@ -8,10 +8,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 1. Nav Scroll Backdrop ──
   const nav = document.getElementById('nav');
-  if (nav) {
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('on', window.scrollY > 60);
-    });
+  const mobNav = document.getElementById('mob-nav');
+  
+  if (nav || mobNav) {
+    const handleScroll = () => {
+      const scroll = window.scrollY;
+      const isLanding = !!document.querySelector('.hero');
+      const isHovering = nav?.matches(':hover');
+      
+      const opacity = (isLanding && !isHovering) ? Math.min(scroll / 300, 0.94) : 0.94;
+      const blur = (isLanding && !isHovering) ? Math.min(scroll / 10, 20) : 20;
+      
+      if (nav) {
+        nav.style.setProperty('--nav-bg-opacity', opacity);
+        nav.style.setProperty('--nav-blur', `${blur}px`);
+        nav.classList.toggle('on', isLanding ? (scroll > 2 || isHovering) : true);
+      }
+      
+      if (mobNav) {
+        // En mobile el fondo siempre es visible para evitar saltos visuales
+        const mobOpacity = 0.94;
+        const mobBlur    = 20;
+        
+        mobNav.style.background = `rgba(10, 10, 10, ${mobOpacity})`;
+        mobNav.style.backdropFilter = `blur(${mobBlur}px)`;
+        mobNav.style.webkitBackdropFilter = `blur(${mobBlur}px)`;
+        mobNav.style.borderBottomColor = `rgba(255, 255, 255, 0.1)`;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (nav) {
+        nav.addEventListener('mouseenter', handleScroll);
+        nav.addEventListener('mouseleave', handleScroll);
+    }
+    handleScroll();
   }
 
   // ── 2. Desktop Mega Menu ──
@@ -71,36 +102,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── 3. Mobile Drawer Toggle ──
-  const ham = document.getElementById('ham');
-  const drawer = document.getElementById('mobDrawer');
-  if (ham && drawer) {
+  const initMobInteractivity = () => {
+    const ham = document.getElementById('ham');
+    const drawer = document.getElementById('mobDrawer');
     const mobBackdrop = document.getElementById('mobBd');
     const closeBtn = document.getElementById('mobClose');
     
-    const toggleDrawer = () => {
+    if (!ham || !drawer) return;
+
+    const toggleDrawer = (e) => {
+      if (e) e.preventDefault();
       const isOpen = drawer.classList.toggle('open');
       if (mobBackdrop) mobBackdrop.classList.toggle('show');
       ham.classList.toggle('active');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      ham.setAttribute('aria-expanded', isOpen);
+      
+      if (isOpen) {
+        document.body.classList.add('no-scroll');
+        document.documentElement.classList.add('no-scroll');
+      } else {
+        document.body.classList.remove('no-scroll');
+        document.documentElement.classList.remove('no-scroll');
+      }
     };
 
-    ham.addEventListener('click', toggleDrawer);
-    if (mobBackdrop) mobBackdrop.addEventListener('click', toggleDrawer);
-    if (closeBtn) closeBtn.addEventListener('click', toggleDrawer);
-  }
+    // Use onclick to ensure we overwrite any previous single listeners
+    ham.onclick = toggleDrawer;
+    if (mobBackdrop) mobBackdrop.onclick = toggleDrawer;
+    if (closeBtn) closeBtn.onclick = toggleDrawer;
 
-  // ── 4. Mobile Category Accordions ──
-  const accBtns = document.querySelectorAll('.mob-cat-btn');
-  accBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const subId = btn.getAttribute('data-sub');
-      const sub = document.getElementById(subId);
-      if (!sub) return;
-      const isOpen = sub.classList.toggle('open');
-      btn.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen);
+    // Close drawer when a link is clicked (useful for anchors)
+    drawer.querySelectorAll('a').forEach(link => {
+      link.onclick = () => {
+        if (drawer.classList.contains('open')) toggleDrawer();
+      };
     });
-  });
+
+    // ── 4. Mobile Category Accordions ──
+    const accBtns = document.querySelectorAll('.mob-cat-btn');
+    accBtns.forEach(btn => {
+      btn.onclick = () => {
+        const subId = btn.getAttribute('data-sub');
+        const sub = document.getElementById(subId);
+        if (!sub) return;
+        
+        const wasOpen = sub.classList.contains('open');
+        
+        // Close other open accordions
+        document.querySelectorAll('.mob-sub.open').forEach(s => {
+          if (s.id !== subId) s.classList.remove('open');
+        });
+        document.querySelectorAll('.mob-cat-btn.open').forEach(b => {
+          if (b !== btn) b.classList.remove('open');
+        });
+
+        sub.classList.toggle('open', !wasOpen);
+        btn.classList.toggle('open', !wasOpen);
+        btn.setAttribute('aria-expanded', !wasOpen);
+      };
+    });
+  };
+
+  // Run with a small delay to ensure layout.js has injected the HTML
+  setTimeout(initMobInteractivity, 50);
 
   // ── 5. Active Link Highlighting ──
   const currentPath = window.location.pathname;

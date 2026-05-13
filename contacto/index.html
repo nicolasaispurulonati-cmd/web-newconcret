@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es" class="js-loaded">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — NewConcret</title>
+    <meta name="description" content="Contactate con NewConcret. Asesoramiento técnico en maquinaria e insumos para pisos de hormigón. Bragado, Buenos Aires.">
+    <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
+    <link rel="stylesheet" href="../assets/css/estilo.css?v=41">
+    <link rel="stylesheet" href="../assets/css/nav.css?v=1.4">
+    <style>
+        body:not(.js-loaded) { cursor: auto !important; }
+        .js-loaded body { cursor: none; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1px;
+            background: var(--nc-steel);
+            margin-top: 3.5rem;
+            border: 1px solid var(--nc-steel);
+        }
+
+        .contact-card {
+            background: var(--nc-black);
+            padding: 3.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            text-decoration: none;
+            transition: background .4s var(--expo);
+        }
+
+        .contact-card:hover {
+            background: var(--nc-dark);
+        }
+
+        .contact-label {
+            font-family: var(--font-m);
+            font-size: .6rem;
+            text-transform: uppercase;
+            letter-spacing: .25em;
+            color: var(--nc-red);
+            font-weight: 500;
+        }
+
+        .contact-value {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--nc-white);
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -.01em;
+        }
+
+        .contact-desc {
+            font-family: var(--font-b);
+            font-size: .88rem;
+            color: var(--nc-mid);
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 550px;
+            background: var(--nc-dark);
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+            border: 1px solid var(--nc-steel);
+            margin-top: 4.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .sec { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+            .contact-card { padding: 2.5rem 1.5rem; }
+            .contact-value { font-size: 1.4rem; }
+            .map-container { height: 380px; width: calc(100% + 2.5rem); margin-left: -1.25rem; }
+            .sec-h1 { font-size: 2.8rem !important; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="cur"></div>
+    <div id="ring"></div>
+
+    <div id="nav-placeholder"></div>
+
+    <!-- ══ HERO ══ -->
+    <section class="sec" style="padding: 10rem 1.25rem 5rem !important; background: var(--nc-black); max-width: 1400px; margin: 0 auto;">
+        <div class="reveal">
+            <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Atención directa</span></div>
+            <h1 class="sec-h1" style="font-family: var(--font-d); font-weight: 900; font-size: 4.5rem; line-height: 0.95; text-transform: uppercase; margin-top: 1.5rem; color: var(--nc-white);">Hablemos de tu<br><span class="red">próximo proyecto.</span></h1>
+            <p class="sec-p" style="max-width: 650px; margin-top: 2rem; font-size: 1.1rem; color: var(--nc-ash); line-height: 1.6;">Nuestro equipo técnico está listo para asesorarte en la elección de maquinaria, insumos y procesos para tus obras de hormigón.</p>
+        </div>
+
+        <div class="contact-grid reveal d1">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="contact-card">
+                <span class="contact-label">Asesoramiento</span>
+                <span class="contact-value">WhatsApp</span>
+                <p class="contact-desc">Asesoramiento técnico inmediato y presupuestos.<br><strong>+54 9 2342 46-4082</strong></p>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:info@newconcret.com" class="contact-card">
+                <span class="contact-label">Administración</span>
+                <span class="contact-value">Email</span>
+                <p class="contact-desc">Consultas comerciales y administrativas.<br><strong>info@newconcret.com</strong></p>
+            </a>
+
+            <!-- Ubicación -->
+            <div class="contact-card">
+                <span class="contact-label">Planta Industrial</span>
+                <span class="contact-value">Bragado</span>
+                <p class="contact-desc">Las Cigüeñas 217, Bragado,<br>Buenos Aires, Argentina.</p>
+            </div>
+        </div>
+
+        <!-- ══ MAPA ══ -->
+        <div class="map-container reveal d2">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.7027154894413!2d-60.4616377244336!3d-35.13909157276712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bedd8960783fb9%3A0xa953ab73229200cd!2sNewConcret!5e0!3m2!1ses-419!2sar!4v1778082445967!5m2!1ses-419!2sar" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/main.js?v=3.0"></script>
+    <script src="../assets/js/nav.js?v=3.0"></script>
+    <script>
+        document.documentElement.classList.add('js-loaded');
+        
+        /* Scroll reveal simple implementation */
+        const obs = new IntersectionObserver(es => es.forEach(e => { 
+            if (e.isIntersecting) e.target.classList.add('in'); 
+        }), { threshold: .1 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+
+</html>

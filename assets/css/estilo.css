@@ -1,4 +1,4 @@
-﻿/* -----------------------------------------------
+/* -----------------------------------------------
    NEWCONCRET - estilo.css
    CSS global compartido por todas las paginas
    ----------------------------------------------- */
@@ -516,11 +516,15 @@ body {
 
 /* -- PAGE HERO (subpages) -- */
 .nc-cat-hero {
-    padding: 10rem 4rem 5rem;
+    min-height: 520px;
+    padding: 8rem 4rem 4rem;
     background: var(--nc-carbon);
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--nc-steel);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .nc-cat-hero::before {
@@ -2741,9 +2745,6 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 
-    .nc-cat-hero {
-        padding: 9rem 2.5rem 4rem;
-    }
 }
 
 @media(max-width:768px) {
@@ -2778,7 +2779,26 @@ body {
     }
 
     .nc-cat-hero {
-        padding: 7rem 1.5rem 2.5rem;
+        padding: 11rem 1.5rem 5rem;
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .nc-cat-hero .hero-h1 {
+        font-size: 2.8rem !important;
+        line-height: 0.95;
+        margin-bottom: 1.2rem;
+        letter-spacing: -0.02em;
+    }
+
+    .nc-cat-hero .hero-p {
+        font-size: 0.95rem !important;
+        line-height: 1.55;
+        max-width: 100%;
+        margin-bottom: 0;
+        opacity: 0.75;
     }
 
     .stats-grid {
@@ -2976,8 +2996,8 @@ body {
 
     /* -- HERO -- */
     .hero-h1 {
-        font-size: clamp(2.6rem, 10vw, 4.5rem) !important;
-        line-height: .95 !important;
+        font-size: clamp(3.8rem, 14vw, 5.5rem) !important;
+        line-height: .91 !important;
     }
 
     .hero-btns {
@@ -3024,6 +3044,16 @@ body {
         text-transform: uppercase;
         color: var(--nc-mid);
         margin-top: .2rem;
+    }
+
+    .nc-cat-hero {
+        min-height: auto;
+        padding: 7rem 1.5rem 3.5rem;
+        display: block;
+    }
+
+    .nc-cat-hero .hero-content {
+        max-width: 100%;
     }
 
     /* -- SECTION UTILS -- */
@@ -3137,11 +3167,11 @@ body {
     /* -- CAPACITACIONES -- */
     .cap-pillars {
         grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+        gap: 0 !important;
     }
 
     .pillar-card {
-        padding: 2rem 1.5rem !important;
+        padding: 1rem 1.5rem !important;
     }
 
     .pillar-num {
@@ -3172,13 +3202,16 @@ body {
     .cap-cta-banner {
         flex-direction: column !important;
         text-align: center !important;
-        padding: 2.5rem 1.5rem !important;
-        gap: 2rem !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 1.2rem 1.5rem !important;
+        gap: 0.6rem !important;
     }
 
     .cap-cta-banner .btn-white {
-        width: 100%;
-        justify-content: center;
+        width: auto;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     /* -- PROCESO -- */
@@ -3211,7 +3244,7 @@ body {
     }
 
     .test-card {
-        padding: 1.8rem 1.2rem !important;
+        padding: 1rem 1.2rem !important;
     }
 
     /* -- CTA FINAL -- */
