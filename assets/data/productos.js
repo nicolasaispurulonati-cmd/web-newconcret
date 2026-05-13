@@ -7,35 +7,733 @@ const STORE_BASE = 'https://tiendalonati.com.ar';
 
 const productos = [
     {
-        "id": "allanadora-cte436",
-        "sku": "ALLANADORACTE436",
-        "nombre": "Allanadora CTE436",
+        "id": "prod_mp40z4uh",
+        "nombre": "Lavasecapisos MB135",
+        "sku": "LAV-MB135",
+        "descripcion": "Lavasecapisos hombre a bordo",
+        "imagen": "/assets/img/productos/mb135-1778674658727.png",
+        "pdfUrl": "/assets/docs/mb135-1778674667448.pdf",
+        "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mb135/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            }
+        ],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Tracción",
+                "valor": "Motorizada – Ride-On"
+            },
+            {
+                "icono": "◉",
+                "clave": "Rendimiento",
+                "valor": "4.500–5.600 m²/h"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de limpieza",
+                "valor": "800 mm"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2zpqbz",
+        "nombre": "Disco de Lustre de 20\"",
+        "sku": "LUSTRE-20",
+        "descripcion": "Disco de lustre de 20 pulgadas",
+        "imagen": "/assets/img/productos/pao-rojo-1778612094107.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/pano-de-20/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "panos-diamantados"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "accesorios",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "accesorios",
+                "subcategoría": "panos"
+            }
+        ],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Diámetro",
+                "valor": "20 pulgadas"
+            },
+            {
+                "icono": "◉",
+                "clave": "Variantes",
+                "valor": "Blanco y Rojo"
+            },
+            {
+                "icono": "◉",
+                "clave": "Usos",
+                "valor": "Lustrado y Mantenimiento"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2zmp7j",
+        "nombre": "Discos de Lustre de 17\"",
+        "sku": "LUSTRE-17",
+        "descripcion": "Paños de lustre de 17 pulgadas",
+        "imagen": "/assets/img/productos/pao-blanco-1778611869906.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/panos-lustre/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "panos-diamantados"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "accesorios",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "accesorios",
+                "subcategoría": "panos"
+            }
+        ],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Variantes",
+                "valor": "Blanco, Rojo, Verde, Negro"
+            },
+            {
+                "icono": "◉",
+                "clave": "Diámetro",
+                "valor": "17 pulgadas"
+            },
+            {
+                "icono": "◉",
+                "clave": "Función",
+                "valor": "Limpieza y Lustrado"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2zb57m",
+        "nombre": "Pads Manual de Pulido",
+        "sku": "PADPULIDO",
+        "descripcion": "Pads de pulido Manual",
+        "imagen": "/assets/img/productos/espnoja-manual-grano-100-1778611557051.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/pads-manuales/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "panos-diamantados"
+            }
+        ],
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Granos",
+                "valor": "50, 100, 200 y 400"
+            },
+            {
+                "icono": "◉",
+                "clave": "Agarre",
+                "valor": "Hergonómico"
+            },
+            {
+                "icono": "◉",
+                "clave": "Variantes",
+                "valor": "Texturado y Liso"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2z44ba",
+        "nombre": "Velcro Auto Adhesivo",
+        "sku": "VELCROAUTO",
+        "descripcion": "Velcro Auto Adhesivo de 100 para adhesión de insumos",
+        "imagen": "/assets/img/productos/base-adhesiva-1778611780470.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/velcro-auto-adhesivo/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-pulidoras"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            }
+        ],
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Diámetro",
+                "valor": "100 mmm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Función",
+                "valor": "Velcro para adhesión de insumos"
+            },
+            {
+                "icono": "◉",
+                "clave": "",
+                "valor": ""
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2z1hgg",
+        "nombre": "Discos Resinoides Espesor 15 mm",
+        "sku": "RESINOIDE-15MM",
+        "descripcion": "Disco resinoide de 100mm de diámetro y 15mm de espesor",
+        "imagen": "/assets/img/productos/resinas-15mm-grano-50-2-1778610727067.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoide-15mm/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "discos-resinoides"
+            }
+        ],
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Diámetro",
+                "valor": "100 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Espesor",
+                "valor": "15 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Granos",
+                "valor": "50 al 400"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2yumhm",
+        "nombre": "Discos Resinoides Espesor 3 mm",
+        "sku": "RESINOIDE-3MM",
+        "descripcion": "Disco resinoide de 100mm de diámetro y 3mm de espesot",
+        "imagen": "/assets/img/productos/grano-400-1778610389925.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoides-3mm/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "discos-resinoides"
+            }
+        ],
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Diámetro",
+                "valor": "100 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Espesor",
+                "valor": "3 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Granos",
+                "valor": "50 al 800"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2xw1r5",
+        "nombre": "Metal Epoxi Circular",
+        "sku": "EPOXI-CIRCULAR",
+        "descripcion": "Metal para remoción de recubrimientos",
+        "imagen": "/assets/img/productos/circular-epoxy-2-1778608929665.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-circular/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
+            }
+        ],
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Composicion",
+                "valor": " Policristalinos de diamante"
+            },
+            {
+                "icono": "◉",
+                "clave": "Rendimiento",
+                "valor": "1300 m²"
+            },
+            {
+                "icono": "◉",
+                "clave": "Comaptibilidad",
+                "valor": "Pulidoras NewConcret"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2xi1g1",
+        "nombre": "Metales PCD Right/Left",
+        "sku": "PCD-ROJO-AZUL",
+        "descripcion": "Remoción de Recubrimientos",
+        "imagen": "/assets/img/productos/epoxy-y-pcd-1778608255871.png",
+        "pdfUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-poliuretano/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
+            }
+        ],
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Variantes",
+                "valor": "Right y Left"
+            },
+            {
+                "icono": "◉",
+                "clave": "Rendimiento",
+                "valor": " >1300 m²"
+            },
+            {
+                "icono": "◉",
+                "clave": "Aplicación",
+                "valor": "Remoción de epoxi, poliuretanos, adhesivos y pinturas"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2tfel4",
+        "nombre": "Lavasecapisos MX3T",
+        "sku": "MX3T",
+        "descripcion": "Lavasecapisos con tracción propia",
+        "imagen": "/assets/img/productos/mx3-1778601543367.png",
+        "pdfUrl": "/assets/docs/mx3t-1778601462133.pdf",
+        "storeUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            }
+        ],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Rendimiento",
+                "valor": "3.200 m²/h"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de limpieza",
+                "valor": "530 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de succión/secado",
+                "valor": "830 mm"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2t7yml",
+        "nombre": "Lavasecapisos MX3",
+        "sku": "MX3",
+        "descripcion": "Lavasecapisos a Batería",
+        "imagen": "/assets/img/productos/mx3-1778601166341.png",
+        "pdfUrl": "/assets/docs/mx3-1778601171496.pdf",
+        "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mx3/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            }
+        ],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Rendimiento",
+                "valor": "2.850 m²/h"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de limpieza",
+                "valor": "530 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de succión/secado",
+                "valor": "830 mm"
+            }
+        ]
+    },
+    {
+        "id": "prod_mp2spm6m",
+        "nombre": "Lavasecapisos MB460",
+        "sku": "MB460",
+        "descripcion": "Lavasecapisos con cable",
+        "imagen": "/assets/img/productos/mb460-1778600227857.png",
+        "pdfUrl": "/assets/docs/mb460-1778600234967.pdf",
+        "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mb460/",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "lavasecapisos"
+            }
+        ],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Rendimiento",
+                "valor": " 1.850 m²/h"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de limpieza",
+                "valor": "450 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de succión/secado",
+                "valor": "680 mm"
+            }
+        ]
+    },
+    {
+        "id": "nylon-negro-de-200-micrones",
+        "sku": "NYLONNEGRO",
+        "nombre": "Nylon Negro de 200 micrones",
         "secciones": [
             "construccion"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Para compactar y alisar hormigón",
-        "imagen": "/assets/img/productos/allanadora.png",
-        "storeUrl": "https://tiendalonati.com.ar/productos/allanadora/",
+        "descripcion": "Barrera hidrófuga para humedad ascendente",
+        "imagen": "/assets/img/productos/nylonnegro.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/nylon-negro/",
         "specs": [
             {
                 "icono": "◉",
-                "clave": "Motor",
-                "valor": "Honda 5.5 HP"
+                "clave": "Material",
+                "valor": "Polietileno"
             },
             {
                 "icono": "◉",
-                "clave": "Potencia",
-                "valor": "3600 RPM"
+                "clave": "Función",
+                "valor": "Barrera hidrofuga"
             },
             {
                 "icono": "◉",
-                "clave": "Diametro de trabajo",
-                "valor": "940 mm"
+                "clave": "Presentación",
+                "valor": "Segun necesidad"
             }
         ],
+        "pdfUrl": "/assets/docs/ficha-tcnica-nylon-negro-1778596573206.pdf",
+        "visible": true,
         "rutas": [
             {
                 "sección": "construccion",
@@ -44,17 +742,15 @@ const productos = [
             },
             {
                 "sección": "construccion",
-                "categoría": "equipos",
+                "categoría": "materiales",
                 "subcategoría": ""
             },
             {
                 "sección": "construccion",
-                "categoría": "equipos",
-                "subcategoría": "allanadoras"
+                "categoría": "materiales",
+                "subcategoría": "nylon"
             }
-        ],
-        "pdfUrl": "/assets/docs/allanadora-1777921009636.pdf",
-        "visible": true
+        ]
     },
     {
         "id": "concret-fix",
@@ -217,7 +913,7 @@ const productos = [
                 "subcategoría": "mortero-cementicio"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/ficha-tcnica-concret-microstrong-1778591010565.pdf",
         "visible": true
     },
     {
@@ -233,7 +929,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Endurecedor superficial no metálico para hormigón fresco",
         "imagen": "/assets/img/productos/concretdur.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-dur/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-dur/",
         "specs": [
             {
                 "icono": "◉",
@@ -283,58 +979,8 @@ const productos = [
                 "subcategoría": "endurecedor-superficial"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/ficha-tecnica-concret-dur-1778593121150.pdf",
         "visible": true
-    },
-    {
-        "id": "nylon-negro-de-200-micrones",
-        "sku": "NYLONNEGRO",
-        "nombre": "Nylon Negro de 200 micrones",
-        "secciones": [
-            "construccion"
-        ],
-        "categoria": "",
-        "cat_label": "",
-        "subcategoria": "",
-        "descripcion": "Barrera hidrófuga para humedad ascendente",
-        "imagen": "/assets/img/productos/nylonnegro.png",
-        "storeUrl": "https://tiendalonati.com.ar/productos/nylon-negro/",
-        "specs": [
-            {
-                "icono": "◉",
-                "clave": "Material",
-                "valor": "Polietileno"
-            },
-            {
-                "icono": "◉",
-                "clave": "Función",
-                "valor": "Barrera hidrofuga"
-            },
-            {
-                "icono": "◉",
-                "clave": "Presentación",
-                "valor": "Segun necesidad"
-            }
-        ],
-        "pdfUrl": "",
-        "visible": true,
-        "rutas": [
-            {
-                "sección": "construccion",
-                "categoría": "",
-                "subcategoría": ""
-            },
-            {
-                "sección": "construccion",
-                "categoría": "materiales",
-                "subcategoría": ""
-            },
-            {
-                "sección": "construccion",
-                "categoría": "materiales",
-                "subcategoría": "nylon"
-            }
-        ]
     },
     {
         "id": "concret-micro",
@@ -383,7 +1029,7 @@ const productos = [
                 "subcategoría": "microfibra"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/ficha-tecnica-microfibra-1778596553056.pdf",
         "visible": true
     },
     {
@@ -433,7 +1079,7 @@ const productos = [
                 "subcategoría": "macrofibra"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/ficha-tcnica---macrofibra-concret-fibra-1778596584361.pdf",
         "visible": true
     },
     {
@@ -487,29 +1133,28 @@ const productos = [
         "visible": true
     },
     {
-        "id": "concret-strong",
-        "sku": "CONCRETSTRONG",
-        "nombre": "Concret Strong",
+        "id": "concret-scudo",
+        "sku": "CONCRETSCUDO",
+        "nombre": "Concret Scudo",
         "secciones": [
-            "construccion",
-            "reparacion"
+            "construccion"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Aglutinante potenciado para sistemas de pulido",
-        "imagen": "/assets/img/productos/strong-5-1777920959883.png",
-        "storeUrl": "https://tiendalonati.com.ar/productos/concret-strong/",
+        "descripcion": "Curador de membrana",
+        "imagen": "/assets/img/productos/scudo-5-1777920808015.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-scudo/",
         "specs": [
             {
                 "icono": "◉",
                 "clave": "Tipo",
-                "valor": "Aglutinante líquido"
+                "valor": "Curador acrílico líquido"
             },
             {
                 "icono": "◉",
                 "clave": "Función",
-                "valor": "Relleno de micro poros"
+                "valor": "Control de evaporación"
             },
             {
                 "icono": "◉",
@@ -531,30 +1176,10 @@ const productos = [
             {
                 "sección": "construccion",
                 "categoría": "productos-quimicos",
-                "subcategoría": "aglutinantes"
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "",
-                "subcategoría": ""
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "productos-quimicos",
-                "subcategoría": ""
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "productos-quimicos",
-                "subcategoría": "aglutinantes"
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "productos-quimicos",
-                "subcategoría": "puentes-de-adherencia"
+                "subcategoría": "curadores"
             }
         ],
-        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-strong-1777920972787.pdf",
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-scudo-1777920816257.pdf",
         "visible": true
     },
     {
@@ -563,7 +1188,8 @@ const productos = [
         "nombre": "Concret Restor",
         "secciones": [
             "construccion",
-            "reparacion"
+            "reparacion",
+            "pulido"
         ],
         "categoria": "",
         "cat_label": "",
@@ -628,34 +1254,56 @@ const productos = [
                 "sección": "reparacion",
                 "categoría": "productos-quimicos",
                 "subcategoría": "puentes-de-adherencia"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "aglutinantes"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "puentes-de-adherencia"
             }
         ],
         "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-restor-1777920767131.pdf",
         "visible": true
     },
     {
-        "id": "concret-scudo",
-        "sku": "CONCRETSCUDO",
-        "nombre": "Concret Scudo",
+        "id": "concret-strong",
+        "sku": "CONCRETSTRONG",
+        "nombre": "Concret Strong",
         "secciones": [
-            "construccion"
+            "construccion",
+            "reparacion",
+            "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Curador de membrana",
-        "imagen": "/assets/img/productos/scudo-5-1777920808015.png",
-        "storeUrl": "https://tiendalonati.com.ar/productos/concret-scudo/",
+        "descripcion": "Aglutinante potenciado para sistemas de pulido",
+        "imagen": "/assets/img/productos/strong-5-1777920959883.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-strong/",
         "specs": [
             {
                 "icono": "◉",
                 "clave": "Tipo",
-                "valor": "Curador acrílico líquido"
+                "valor": "Aglutinante líquido"
             },
             {
                 "icono": "◉",
                 "clave": "Función",
-                "valor": "Control de evaporación"
+                "valor": "Relleno de micro poros"
             },
             {
                 "icono": "◉",
@@ -677,10 +1325,45 @@ const productos = [
             {
                 "sección": "construccion",
                 "categoría": "productos-quimicos",
-                "subcategoría": "curadores"
+                "subcategoría": "aglutinantes"
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "productos-quimicos",
+                "subcategoría": "aglutinantes"
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "productos-quimicos",
+                "subcategoría": "puentes-de-adherencia"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "aglutinantes"
             }
         ],
-        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-scudo-1777920816257.pdf",
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-strong-1777920972787.pdf",
         "visible": true
     },
     {
@@ -740,6 +1423,56 @@ const productos = [
         "visible": true
     },
     {
+        "id": "allanadora-cte436",
+        "sku": "ALLANADORACTE436",
+        "nombre": "Allanadora CTE436",
+        "secciones": [
+            "construccion"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "descripcion": "Para compactar y alisar hormigón",
+        "imagen": "/assets/img/productos/allanadora.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/allanadora/",
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Motor",
+                "valor": "Honda 5.5 HP"
+            },
+            {
+                "icono": "◉",
+                "clave": "Potencia",
+                "valor": "3600 RPM"
+            },
+            {
+                "icono": "◉",
+                "clave": "Diametro de trabajo",
+                "valor": "940 mm"
+            }
+        ],
+        "rutas": [
+            {
+                "sección": "construccion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "construccion",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "construccion",
+                "categoría": "equipos",
+                "subcategoría": "allanadoras"
+            }
+        ],
+        "pdfUrl": "/assets/docs/allanadora-1777921009636.pdf",
+        "visible": true
+    },
+    {
         "id": "plato-con-velcro-para-pulido",
         "sku": "PLATOCON",
         "nombre": "Plato con Velcro para Pulido",
@@ -751,7 +1484,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Accesorio para pulido con allanadora",
         "imagen": "/assets/img/productos/discos-allanadora.png",
-        "storeUrl": "${STORE_BASE}/productos/plato-con-velcro/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/discos-para-pulido-para-allanadora/",
         "specs": [
             {
                 "icono": "◉",
@@ -966,7 +1699,7 @@ const productos = [
             },
             {
                 "icono": "◉",
-                "clave": "Modo_de_uso",
+                "clave": "Modo de uso",
                 "valor": "Uso en seco"
             }
         ],
@@ -1071,7 +1804,8 @@ const productos = [
         "sku": "DISCOEPOXI",
         "nombre": "Disco Epoxi para amoladora",
         "secciones": [
-            "reparacion"
+            "reparacion",
+            "pulido"
         ],
         "categoria": "",
         "cat_label": "",
@@ -1113,6 +1847,21 @@ const productos = [
                 "sección": "reparacion",
                 "categoría": "insumos",
                 "subcategoría": "accesorios-amoladora"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
             }
         ]
     },
@@ -1309,9 +2058,9 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "puntas-martillo",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Canaletas y ranuras",
         "imagen": "/assets/img/productos/pala-angosta-sds-plus.png",
         "storeUrl": "${STORE_BASE}/productos/pala-angosta-sds-plus/",
@@ -1336,6 +2085,25 @@ const productos = [
                 "clave": "Aplicacion",
                 "valor": "Hormigón y ladrillo"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "puntas-martillo"
+            }
         ]
     },
     {
@@ -1345,9 +2113,9 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "puntas-martillo",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Remoción de revestimientos",
         "imagen": "/assets/img/productos/pala-ancha-sds-plus.png",
         "storeUrl": "${STORE_BASE}/productos/pala-ancha-sds-plus/",
@@ -1372,6 +2140,25 @@ const productos = [
                 "clave": "Aplicacion",
                 "valor": "Hormigón y cerámicos"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "puntas-martillo"
+            }
         ]
     },
     {
@@ -1381,12 +2168,12 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "bujardado",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Texturado de hormigón",
         "imagen": "/assets/img/productos/ruedas-bujardado.png",
-        "storeUrl": "${STORE_BASE}/productos/ruedas-de-bujardado/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/ruedas-de-bujardado/",
         "specs": [
             {
                 "icono": "◉",
@@ -1403,6 +2190,25 @@ const productos = [
                 "clave": "Compatibilidad",
                 "valor": "Pulidoras NewConcret"
             }
+        ],
+        "pdfUrl": "/assets/docs/bujardado-1778603935946.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "bujardado"
+            }
         ]
     },
     {
@@ -1412,12 +2218,12 @@ const productos = [
         "secciones": [
             "reparacion"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "bujardado",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Texturado de hormigón",
         "imagen": "/assets/img/productos/bujardado.png",
-        "storeUrl": "${STORE_BASE}/productos/plato-bujardado/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/ruedas-de-bujardado/",
         "specs": [
             {
                 "icono": "◉",
@@ -1434,6 +2240,25 @@ const productos = [
                 "clave": "Compatibilidad",
                 "valor": "Pulidoras NewConcret"
             }
+        ],
+        "pdfUrl": "/assets/docs/bujardado-1778604032241.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "reparacion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "reparacion",
+                "categoría": "insumos",
+                "subcategoría": "bujardado"
+            }
         ]
     },
     {
@@ -1443,12 +2268,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora semi-profesional",
         "imagen": "/assets/img/productos/frida-400.png",
-        "storeUrl": "${STORE_BASE}/productos/frida-400/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/frida-400/",
         "specs": [
             {
                 "icono": "◉",
@@ -1456,7 +2281,7 @@ const productos = [
                 "valor": "400 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "220 V (monofásica)"
             },
@@ -1464,6 +2289,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "3"
+            }
+        ],
+        "pdfUrl": "/assets/docs/frida-400-1778596814278.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1474,12 +2318,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora semi-profesional",
         "imagen": "/assets/img/productos/frida-450.png",
-        "storeUrl": "${STORE_BASE}/productos/frida-450/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/frida-450/",
         "specs": [
             {
                 "icono": "◉",
@@ -1487,7 +2331,7 @@ const productos = [
                 "valor": "450 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "220 V (monofásica)"
             },
@@ -1496,36 +2340,24 @@ const productos = [
                 "clave": "Placas de fijacion",
                 "valor": "4"
             }
-        ]
-    },
-    {
-        "id": "frida-720",
-        "sku": "FRIDA720",
-        "nombre": "Frida 720",
-        "secciones": [
-            "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
-        "descripcion": "Pulidora Profesional",
-        "imagen": "/assets/img/productos/frida-720.png",
-        "storeUrl": "${STORE_BASE}/productos/frida-720/",
-        "specs": [
+        "pdfUrl": "/assets/docs/frida-450-1778596781261.pdf",
+        "visible": true,
+        "rutas": [
             {
-                "icono": "◉",
-                "clave": "Ancho de trabajo",
-                "valor": "720 mm"
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
             },
             {
-                "icono": "▲",
-                "clave": "Potencia",
-                "valor": "380 V (trifásica)"
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
             },
             {
-                "icono": "◉",
-                "clave": "Placas de fijacion",
-                "valor": "12"
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1536,12 +2368,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora Satelital Profesional",
         "imagen": "/assets/img/productos/chavela-550.png",
-        "storeUrl": "${STORE_BASE}/productos/chavela-550s/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/chavela-550s/",
         "specs": [
             {
                 "icono": "◉",
@@ -1549,7 +2381,7 @@ const productos = [
                 "valor": "550 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "220 V (monofásica)"
             },
@@ -1557,6 +2389,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "9"
+            }
+        ],
+        "pdfUrl": "/assets/docs/chavela-550s-1778596835808.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1567,12 +2418,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora Satelital Industrial",
         "imagen": "/assets/img/productos/chavela-680.png",
-        "storeUrl": "${STORE_BASE}/productos/chavela-680/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/chavela-680/",
         "specs": [
             {
                 "icono": "◉",
@@ -1580,7 +2431,7 @@ const productos = [
                 "valor": "680 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V (trifásica)"
             },
@@ -1588,6 +2439,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "12"
+            }
+        ],
+        "pdfUrl": "/assets/docs/chavela-680-1778596872264.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1598,12 +2468,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora Satelital Industrial",
         "imagen": "/assets/img/productos/chavela-750.png",
-        "storeUrl": "${STORE_BASE}/productos/chavela-750/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/chavela-750/",
         "specs": [
             {
                 "icono": "◉",
@@ -1611,7 +2481,7 @@ const productos = [
                 "valor": "750 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V (trifásica)"
             },
@@ -1619,6 +2489,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "12"
+            }
+        ],
+        "pdfUrl": "/assets/docs/chavela-750-1778596890418.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1629,12 +2518,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora Satelital Industrial a control remoto",
         "imagen": "/assets/img/productos/chavela-750cr.png",
-        "storeUrl": "${STORE_BASE}/productos/chavela-750cr/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/chavela-750cr/",
         "specs": [
             {
                 "icono": "◉",
@@ -1642,7 +2531,7 @@ const productos = [
                 "valor": "750 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V (trifásica)"
             },
@@ -1650,6 +2539,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "12"
+            }
+        ],
+        "pdfUrl": "/assets/docs/chavela-750cr-1778596921101.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1660,12 +2568,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora Satelital Industrial",
         "imagen": "/assets/img/productos/chavela-850.png",
-        "storeUrl": "${STORE_BASE}/productos/chavela-850/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/chavela-850/",
         "specs": [
             {
                 "icono": "◉",
@@ -1673,7 +2581,7 @@ const productos = [
                 "valor": "850 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V (trifásica)"
             },
@@ -1681,6 +2589,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "12"
+            }
+        ],
+        "pdfUrl": "/assets/docs/chavela-850-1778596939462.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1691,20 +2618,20 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora Satelital Industrial a control remoto",
         "imagen": "/assets/img/productos/chavela-900.png",
-        "storeUrl": "${STORE_BASE}/productos/chavela-900/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/chavela-900/",
         "specs": [
             {
                 "icono": "◉",
                 "clave": "Ancho de trabajo",
-                "valor": "850 mm"
+                "valor": "900 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V (trifásica)"
             },
@@ -1712,6 +2639,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "12"
+            }
+        ],
+        "pdfUrl": "/assets/docs/chavela-900-1778597005222.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1722,12 +2668,12 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "pulidoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Pulidora Satelital de dos Motores a Control Remoto",
         "imagen": "/assets/img/productos/chavela-1366.png",
-        "storeUrl": "${STORE_BASE}/productos/chavela-1366/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/chavela-1366/",
         "specs": [
             {
                 "icono": "◉",
@@ -1735,7 +2681,7 @@ const productos = [
                 "valor": "1366 mm"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V (trifásica)"
             },
@@ -1743,6 +2689,25 @@ const productos = [
                 "icono": "◉",
                 "clave": "Placas de fijacion",
                 "valor": "24"
+            }
+        ],
+        "pdfUrl": "/assets/docs/chavela-1366-1778597031719.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "pulidoras"
             }
         ]
     },
@@ -1754,15 +2719,15 @@ const productos = [
             "pulido",
             "mantenimiento"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "lustradoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Lustradora de Alta Velocidad",
         "imagen": "/assets/img/productos/tarseila-c1500-light-7-1773156559338.png",
-        "storeUrl": "${STORE_BASE}/productos/tarsila-c1500-light1/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/lustradora-tarsila-c1500-light/",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "1,5 HP"
             },
@@ -1776,6 +2741,40 @@ const productos = [
                 "clave": "RPM",
                 "valor": "1500"
             }
+        ],
+        "pdfUrl": "/assets/docs/lustradora-tarsila-light-1778597083459.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "lustradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "lustradoras"
+            }
         ]
     },
     {
@@ -1783,18 +2782,18 @@ const productos = [
         "sku": "TARSILAC1500",
         "nombre": "Tarsila C1500",
         "secciones": [
-            "mantenimiento",
-            "pulido"
+            "pulido",
+            "mantenimiento"
         ],
-        "categoria": "equipos",
-        "cat_label": "Equipos",
-        "subcategoria": "lustradoras",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Lustradora industrial",
-        "imagen": "/assets/img/productos/tarseila-c1500-1773156598791.png",
-        "storeUrl": "${STORE_BASE}/productos/tarsila-c15001/",
+        "imagen": "/assets/img/productos/1500-nueva-1778598427788.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/tarsila-c1500/",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "5HP / RPM 1500"
             },
@@ -1808,19 +2807,56 @@ const productos = [
                 "clave": "Peso",
                 "valor": "90 Kg"
             }
+        ],
+        "pdfUrl": "/assets/docs/lustradora-tarsila-1500-1778598389073.pdf",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "lustradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "lustradoras"
+            }
         ]
     },
     {
         "id": "gala-d301",
         "sku": "GALAD301",
         "nombre": "Gala D301",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Monofásica",
-        "imagen": "/assets/img/productos/1774979593223_D301.png",
-        "storeUrl": "${STORE_BASE}/productos/gala-d301-monofasica/",
+        "imagen": "/assets/img/productos/d301-1778598595180.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-d301",
         "specs": [
             {
                 "icono": "◉",
@@ -1828,7 +2864,7 @@ const productos = [
                 "valor": "Uso continuo"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "7.5 HP"
             },
@@ -1838,22 +2874,58 @@ const productos = [
                 "valor": "38.600 cm3"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "gala-js400",
         "sku": "GALAJS400",
         "nombre": "Gala JS400",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Trifásica Compacta",
-        "imagen": "/assets/img/productos/1774979612256_JS400.png",
-        "storeUrl": "${STORE_BASE}/productos/b480-trifasica/",
+        "imagen": "/assets/img/productos/js400-1778598667668.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-js400",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "7.5 HP"
             },
@@ -1868,22 +2940,58 @@ const productos = [
                 "valor": "HEPA"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "gala-551",
         "sku": "GALA551",
-        "nombre": "Gala 551",
-        "secciones": [],
+        "nombre": "Gala G551",
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Industrial Trifásica",
-        "imagen": "/assets/img/productos/1774979845948_G551.png",
-        "storeUrl": "${STORE_BASE}/productos/gala-551-trifasica/",
+        "imagen": "/assets/img/productos/g551-1778598776964.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-g551/",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "7.5 HP"
             },
@@ -1893,27 +3001,63 @@ const productos = [
                 "valor": "85.000 cm3"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "gala-w552",
         "sku": "GALAW552",
         "nombre": "Gala W552",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Industrial Trifásica",
-        "imagen": "/assets/img/productos/1774979861311_552.png",
-        "storeUrl": "${STORE_BASE}/productos/gala-w552/",
+        "imagen": "/assets/img/productos/552-1778598825390.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-w552",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "7.5 HP"
             },
@@ -1923,27 +3067,63 @@ const productos = [
                 "valor": "85.000 cm3"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380 V"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "gala-sw551-trifsica",
         "sku": "GALASW551",
         "nombre": "Gala SW551 Trifásica",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Industrial Trifásica",
-        "imagen": "/assets/img/productos/1774979873749_SW551_Roja.png",
-        "storeUrl": "${STORE_BASE}/productos/gala-sw551-trifasica/",
+        "imagen": "/assets/img/productos/sw551-roja-1778598895574.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-gala-sw551/",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "7.5 HP"
             },
@@ -1953,43 +3133,124 @@ const productos = [
                 "valor": "38.600 cm2"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "380V"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "cicln-preseparador",
         "sku": "CICLNPRESEPARADOR",
         "nombre": "Ciclón preseparador",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Ciclón Preseparador de residuos",
-        "imagen": "/assets/img/productos/1774979886295_Ciclon.png",
+        "imagen": "/assets/img/productos/ciclon-1778598944444.png",
         "storeUrl": "${STORE_BASE}/productos/ciclon-preseparador/",
         "specs": [
             {
                 "icono": "◉",
-                "clave": "Función",
-                "valor": "Disminuir el peso del material aspirado"
+                "clave": "Peso",
+                "valor": "55 kg"
+            },
+            {
+                "icono": "◉",
+                "clave": "Volumen de recolección:",
+                "valor": "20 L+"
+            },
+            {
+                "icono": "◉",
+                "clave": "Método de recolección",
+                "valor": "Bolsa continua"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "extensin-curva-para-cepillo-barredor",
         "sku": "EXTENSINCURVA",
         "nombre": "Extensión curva para cepillo barredor",
-        "secciones": [],
-        "categoria": "a",
-        "cat_label": "A",
-        "subcategoria": "c",
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "equipos",
+        "cat_label": "Equipos",
+        "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/extensioncurva-cacee0e49067ef7cdb17310961635402-480-0.webp",
+        "imagen": "/assets/img/productos/extension-aspiradora-1778613659418.png",
         "storeUrl": "${STORE_BASE}/productos/extension-curva-para-cepillo-barredor/",
         "specs": [
             {
@@ -1997,18 +3258,29 @@ const productos = [
                 "clave": "Diametro",
                 "valor": "50mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-aspiradoras"
+            }
         ]
     },
     {
         "id": "cepillo-barredor-con-ruedas-mc75",
         "sku": "CEPILLOBARREDOR",
         "nombre": "Cepillo barredor con ruedas MC75",
-        "secciones": [],
-        "categoria": "a",
-        "cat_label": "A",
-        "subcategoria": "c",
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "equipos",
+        "cat_label": "Equipos",
+        "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/cepillobarredor-6d2c0866c34661474517310969503581-480-0.webp",
+        "imagen": "/assets/img/productos/cepillo-1778613646978.png",
         "storeUrl": "${STORE_BASE}/productos/cepillo-barredor-con-ruedas-mc75/",
         "specs": [
             {
@@ -2016,18 +3288,29 @@ const productos = [
                 "clave": "Diametro",
                 "valor": "50 mm a 2 x 40 mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-aspiradoras"
+            }
         ]
     },
     {
         "id": "manguera-de-aspiracin",
         "sku": "MANGUERADE",
         "nombre": "Manguera de aspiración",
-        "secciones": [],
-        "categoria": "a",
-        "cat_label": "A",
-        "subcategoria": "c",
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "equipos",
+        "cat_label": "Equipos",
+        "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/manguera-dd3876fb071d75bcce17310962817090-480-0.webp",
+        "imagen": "/assets/img/productos/manguera-aspiradora-1778613632365.png",
         "storeUrl": "${STORE_BASE}/productos/manguera-de-aspiracion-de-pvc-interior-liso/",
         "specs": [
             {
@@ -2045,16 +3328,27 @@ const productos = [
                 "clave": "Diametro",
                 "valor": "50 mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-aspiradoras"
+            }
         ]
     },
     {
         "id": "bifurcacin-metlica-mc75",
         "sku": "BIFURCACINMETLICA",
         "nombre": "Bifurcación metálica MC75",
-        "secciones": [],
-        "categoria": "a",
-        "cat_label": "A",
-        "subcategoria": "c",
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "equipos",
+        "cat_label": "Equipos",
+        "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
         "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/bifurcacion-8cd7ec039f0771391217310967788401-480-0.webp",
         "storeUrl": "${STORE_BASE}/productos/bifurcacion-metalica-mc75/",
@@ -2064,18 +3358,29 @@ const productos = [
                 "clave": "Diametro",
                 "valor": "50 mm a 2 x 40 mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-aspiradoras"
+            }
         ]
     },
     {
         "id": "terminales-para-manguera-mc75",
         "sku": "TERMINALESPARA",
         "nombre": "Terminales para manguera MC/75",
-        "secciones": [],
-        "categoria": "a",
-        "cat_label": "A",
-        "subcategoria": "c",
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "equipos",
+        "cat_label": "Equipos",
+        "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/terminales-bc2f19b0034d6683ce17310964231408-480-0.webp",
+        "imagen": "/assets/img/productos/adaptadores-de-manguera-1778613607167.png",
         "storeUrl": "${STORE_BASE}/productos/terminales-para-manguera-mc-75/",
         "specs": [
             {
@@ -2083,18 +3388,29 @@ const productos = [
                 "clave": "Diametro",
                 "valor": "40 y 50mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-aspiradoras"
+            }
         ]
     },
     {
         "id": "cepillo-redondo-mc75",
         "sku": "CEPILLOREDONDO",
         "nombre": "Cepillo redondo MC/75",
-        "secciones": [],
-        "categoria": "a",
-        "cat_label": "A",
-        "subcategoria": "c",
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "equipos",
+        "cat_label": "Equipos",
+        "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/cepillo-a03c1648dcd6f6e32717310965854354-480-0.webp",
+        "imagen": "/assets/img/productos/pico-redondo-con-cepillo-1778613583922.png",
         "storeUrl": "${STORE_BASE}/productos/cepillo-redondo-mc-75/",
         "specs": [
             {
@@ -2107,18 +3423,29 @@ const productos = [
                 "clave": "Diametro",
                 "valor": "50mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-aspiradoras"
+            }
         ]
     },
     {
         "id": "pico-chato-metlico-mc75",
         "sku": "PICOCHATO",
         "nombre": "Pico chato metálico MC/75",
-        "secciones": [],
-        "categoria": "a",
-        "cat_label": "A",
-        "subcategoria": "c",
-        "descripcion": "",
-        "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/pico-89f2ce7a3b11a28c6d17310966658096-480-0.webp",
+        "secciones": [
+            "pulido"
+        ],
+        "categoria": "equipos",
+        "cat_label": "Equipos",
+        "subcategoria": "accesorios-aspiradoras",
+        "descripcion": "Pico chato para aspiradoras NewConcret ",
+        "imagen": "/assets/img/productos/pico-chato-1778613541688.png",
         "storeUrl": "${STORE_BASE}/productos/pico-chato-metalico-mc-75/",
         "specs": [
             {
@@ -2126,19 +3453,30 @@ const productos = [
                 "clave": "Diametro",
                 "valor": "50mm"
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-aspiradoras"
+            }
         ]
     },
     {
         "id": "metales-para-desbaste-circulares",
         "sku": "METALESPARA",
-        "nombre": "Metales para desbaste circulares",
-        "secciones": [],
+        "nombre": "Metal para desbaste Circular",
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste de Superficies",
-        "imagen": "/assets/img/productos/1774979928639_Circulares_60_2.png",
-        "storeUrl": "${STORE_BASE}/productos/metales-para-desbaste-linea-newconcret-circular/",
+        "imagen": "/assets/img/productos/circulares-8-2-1778604202928.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/metales-circulares/",
         "specs": [
             {
                 "icono": "◉",
@@ -2148,7 +3486,7 @@ const productos = [
             {
                 "icono": "◉",
                 "clave": "Grano",
-                "valor": "16, 30, 60, 120, 240 y 400"
+                "valor": "8, 16, 30, 60, 120, 240 y 400"
             },
             {
                 "icono": "◉",
@@ -2156,19 +3494,39 @@ const productos = [
                 "valor": "Pulidoras NewConcret"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
+            }
+        ],
+        "pdfUrl": "/assets/docs/metales-circulare-1778604147818.pdf",
+        "visible": true
     },
     {
         "id": "metales-para-desbaste-trapezoidal",
         "sku": "METALESPARA",
-        "nombre": "Metales para desbaste Trapezoidal",
-        "secciones": [],
+        "nombre": "Metal para desbaste Alto Rendimiento",
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste de Superficies",
-        "imagen": "/assets/img/productos/1774979950755_1.png",
-        "storeUrl": "${STORE_BASE}/productos/metales-trapezoidales-alto-rendimiento/",
+        "imagen": "/assets/img/productos/1-1778604259666.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/metales-alto-rendimiento/",
         "specs": [
             {
                 "icono": "◉",
@@ -2186,19 +3544,39 @@ const productos = [
                 "valor": "Pulidoras NewConcret"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "metales-para-desbaste-lnea-eco",
         "sku": "METALESPARA",
-        "nombre": "Metales para desbaste línea ECO",
-        "secciones": [],
+        "nombre": "Metal para desbaste línea ECO",
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste de Superficies",
-        "imagen": "/assets/img/productos/1774979966424_Grano_8_2.png",
-        "storeUrl": "${STORE_BASE}/productos/metales-para-desbaste-linea-newconcret-eco/",
+        "imagen": "/assets/img/productos/grano-30-2-1778604302525.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/metales-eco/",
         "specs": [
             {
                 "icono": "◉",
@@ -2216,19 +3594,39 @@ const productos = [
                 "valor": "Pulidoras NewConcret"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "metal-epoxi",
         "sku": "METALEPOXI",
         "nombre": "Metal Epoxi",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Metal PCD Right-Left",
-        "imagen": "/assets/img/productos/1774979995444_Epoxy_y_PCD2.png",
-        "storeUrl": "${STORE_BASE}/productos/metal-para-remover-revestimientos-epoxy-poliuretano/",
+        "imagen": "/assets/img/productos/epoxy-1778605387003.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-trapezoidal/",
         "specs": [
             {
                 "icono": "◉",
@@ -2246,19 +3644,39 @@ const productos = [
                 "valor": "Policristalinos de Diamante"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "metales-desbaste"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "discos-resinoides-espesor-12-mm",
         "sku": "DISCOSRESINOIDES",
         "nombre": "Discos Resinoides Espesor 12 mm",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste y Pulido de Superficies",
-        "imagen": "/assets/img/productos/1774980072043_Grano_400_12mm__3_.jpg",
-        "storeUrl": "${STORE_BASE}/productos/discos-resinoides-diametro-100-mm-12-mm-espesor/",
+        "imagen": "/assets/img/productos/metal-epoxy-trapezoidal-2-1778609116513.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoide-12mm/",
         "specs": [
             {
                 "icono": "◉",
@@ -2268,15 +3686,33 @@ const productos = [
             {
                 "icono": "◉",
                 "clave": "Grano",
-                "valor": "30/50/100/200/400/800"
+                "valor": "30 al 800"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Espesor",
                 "valor": "12 mm"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "discos-resinoides"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "discos-resinoides-espesor-8-mm",
@@ -2285,11 +3721,11 @@ const productos = [
         "secciones": [
             "pulido"
         ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "resinoides",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Desbaste y Pulido de Superficies",
-        "imagen": "/assets/img/productos/400-1773683050508.jpg",
+        "imagen": "/assets/img/productos/grano-30-1778605279602.png",
         "storeUrl": "${STORE_BASE}/productos/discos-resinoides-diametro-100-mm-8-mm-espesor/",
         "specs": [
             {
@@ -2299,13 +3735,32 @@ const productos = [
             },
             {
                 "icono": "◉",
-                "clave": "Grano",
-                "valor": "30/50/100/200/400/800/1000/2000/3000"
+                "clave": "Granos",
+                "valor": "30 al 3000"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Espesor",
                 "valor": "8 mm"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "discos-resinoides"
             }
         ]
     },
@@ -2314,12 +3769,12 @@ const productos = [
         "sku": "DISCOSRESINOIDES",
         "nombre": "Discos resinoides para empastado",
         "secciones": [],
-        "categoria": "materiales",
-        "cat_label": "Materiales",
-        "subcategoria": "materiales",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "",
-        "imagen": "/assets/img/productos/empastinado-1773683133501.jpg",
-        "storeUrl": "${STORE_BASE}/productos/discos-resinoides-para-empastado/",
+        "imagen": "/assets/img/productos/empastinado-1778605511973.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/discos-empastinado/",
         "specs": [
             {
                 "icono": "◉",
@@ -2336,19 +3791,24 @@ const productos = [
                 "clave": "Material",
                 "valor": "Compuestos de Resinas flexibles"
             }
-        ]
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": []
     },
     {
         "id": "paos-diamantados",
         "sku": "PAOSDIAMANTADOS",
         "nombre": "Paños diamantados",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "",
-        "imagen": "/assets/img/productos/1774980413700_3_Pasos_3.png",
-        "storeUrl": "${STORE_BASE}/productos/panos-diamantados-100-mm/",
+        "descripcion": "Paños diamantados para micro-pulido",
+        "imagen": "/assets/img/productos/3-pasos-2-1778605551012.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/panos-diamantados1/",
         "specs": [
             {
                 "icono": "◉",
@@ -2366,43 +3826,38 @@ const productos = [
                 "valor": "1 / 2 / 3"
             }
         ],
-        "rutas": []
-    },
-    {
-        "id": "ruedas-de-burbujado",
-        "sku": "RUEDASDE",
-        "nombre": "Ruedas de burbujado",
-        "secciones": [],
-        "categoria": "",
-        "cat_label": "",
-        "subcategoria": "",
-        "descripcion": "",
-        "imagen": "/assets/img/productos/1774980156131_Base___Ruedas_Bujardado_550_680__2_.png",
-        "storeUrl": "${STORE_BASE}/productos/ruedas-de-bujardado/",
-        "specs": [
+        "rutas": [
             {
-                "icono": "◉",
-                "clave": "Terminación",
-                "valor": "Rugosa y delicada"
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
             },
             {
-                "icono": "◉",
-                "clave": "Aplicación",
-                "valor": "Veredas, rampas de discapacitados, sendas peatonales al aire libre, cocheras o toda superficie que necesite una delicada rugosidad."
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": "panos-diamantados"
             }
         ],
-        "rutas": []
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "adaptador-universal",
         "sku": "ADAPTADORUNIVERSAL",
         "nombre": "Adaptador Universal",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "",
-        "imagen": "/assets/img/productos/1774980176434_Adaptador_1.png",
+        "descripcion": "Adaptador universal para pulidoras",
+        "imagen": "/assets/img/productos/adaptador-1-1778605650302.png",
         "storeUrl": "${STORE_BASE}/productos/adaptador-universal/",
         "specs": [
             {
@@ -2411,35 +3866,88 @@ const productos = [
                 "valor": "Usar nuestros insumos en todo tipo de máquinas"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-pulidoras"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "base-con-velcro-p-disco-resinoide",
         "sku": "BASECON",
-        "nombre": "Base con velcro p/ Disco resinoide",
-        "secciones": [],
+        "nombre": "Base con velcro",
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "",
-        "imagen": "/assets/img/productos/1774980204391_Base_con_Velcro.png",
-        "storeUrl": "${STORE_BASE}/productos/base-con-velcro-p-disco-resinoide/",
+        "descripcion": "Base con velcro p/ Disco resinoide",
+        "imagen": "/assets/img/productos/base-con-velcro-1778605723104.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/base-con-velcro/",
         "specs": [],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "faldas-para-pulidoras",
         "sku": "FALDASPARA",
         "nombre": "Faldas para pulidoras",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "En pulidoras",
-        "imagen": "/assets/img/productos/1774980234534_Pollera_Pulidora.png",
-        "storeUrl": "${STORE_BASE}/productos/faldas-para-pulidoras1/",
+        "imagen": "/assets/img/productos/pollera-pulidora-1778605789155.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/faldas-para-pulidoras/",
         "specs": [],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "accesorios-pulidoras"
+            },
+            {
+                "sección": "pulido",
+                "categoría": "insumos",
+                "subcategoría": ""
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "concret-restor",
@@ -2474,13 +3982,15 @@ const productos = [
         "id": "concret-sodium",
         "sku": "CONCRETSODIUM",
         "nombre": "Concret Sodium",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Densificador a base de Sodio",
-        "imagen": "/assets/img/productos/1774980261013_Sodium_5_L.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-sodium1/",
+        "imagen": "/assets/img/productos/sodium-5-l-1778605845082.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-sodium",
         "specs": [
             {
                 "icono": "◉",
@@ -2498,19 +4008,39 @@ const productos = [
                 "valor": "En pisos de hormigón"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "densificadores"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "concret-litium",
         "sku": "CONCRETLITIUM",
         "nombre": "Concret Litium",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Densificador y sellador a base de litio",
-        "imagen": "/assets/img/productos/1774980271081_Litium_5L.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-litium1/",
+        "imagen": "/assets/img/productos/litium-5l-1778606771146.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-litium/",
         "specs": [
             {
                 "icono": "◉",
@@ -2528,19 +4058,39 @@ const productos = [
                 "valor": "En pisos de hormigón"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "densificadores"
+            }
+        ],
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-litium-1778606790413.pdf",
+        "visible": true
     },
     {
         "id": "concret-lock",
         "sku": "CONCRETLOCK",
         "nombre": "Concret Lock",
-        "secciones": [],
+        "secciones": [
+            "pulido"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Impermeabilizante oleo e hidro repelente",
-        "imagen": "/assets/img/productos/1774980286105_Lock_5L.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-lock1/",
+        "imagen": "/assets/img/productos/lock-5l-1778606821609.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-lock1/",
         "specs": [
             {
                 "icono": "◉",
@@ -2558,18 +4108,39 @@ const productos = [
                 "valor": "Ladrillos, lajas, piedras, cerámicas, mamposterias, etc."
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "impermeabilizantes"
+            }
+        ],
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-lock-1778606837774.pdf",
+        "visible": true
     },
     {
         "id": "concret-d",
         "sku": "CONCRETD",
         "nombre": "Concret D",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Detergente removedor y desengrasante",
-        "imagen": "/assets/img/productos/1774980316433_Concret_D_5.png",
+        "imagen": "/assets/img/productos/concret-d-5-1778606889938.png",
         "storeUrl": "${STORE_BASE}/productos/concret-d1/",
         "specs": [
             {
@@ -2588,7 +4159,40 @@ const productos = [
                 "valor": "En pisos de hormigón"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "detergentes"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "productos-quimicos",
+                "subcategoría": "desengrasantes"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "concret-max",
@@ -2598,12 +4202,12 @@ const productos = [
             "pulido",
             "mantenimiento"
         ],
-        "categoria": "productos-quimicos",
-        "cat_label": "Productos Químicos",
-        "subcategoria": "selladores",
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Sellador de Alto Brillo",
-        "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/max1-24f9dfc8d224acb1ab17095782723940-1024-1024.webp",
-        "storeUrl": "${STORE_BASE}/productos/concret-max1/",
+        "imagen": "/assets/img/productos/max-5l-1778606902219.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/selladores-concret-max/",
         "specs": [
             {
                 "icono": "◉",
@@ -2620,19 +4224,56 @@ const productos = [
                 "clave": "Aplicación",
                 "valor": "Pisos de mosaico, mármol, terrazo, hormigón."
             }
+        ],
+        "pdfUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "selladores"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "productos-quimicos",
+                "subcategoría": "selladores"
+            }
         ]
     },
     {
         "id": "concret-finish",
         "sku": "CONCRETFINISH",
         "nombre": "Concret Finish",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Sellador de Alto Solidos",
-        "imagen": "/assets/img/productos/1774980353991_Finish_5L.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-finish/",
+        "imagen": "/assets/img/productos/finish-5l-1778606979003.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-finish/",
         "specs": [
             {
                 "icono": "◉",
@@ -2650,22 +4291,58 @@ const productos = [
                 "valor": "Hormigón, granito, terrazo, etc."
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "productos-quimicos",
+                "subcategoría": "selladores"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "productos-quimicos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "productos-quimicos",
+                "subcategoría": "selladores"
+            }
+        ],
+        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-finish-1778606985264.pdf",
+        "visible": true
     },
     {
         "id": "gala-b480",
         "sku": "GALAB480",
         "nombre": "Gala B480",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Industrial Monofásica",
-        "imagen": "/assets/img/productos/1774980378204_B480.png",
-        "storeUrl": "${STORE_BASE}/productos/gala-b480",
+        "imagen": "/assets/img/productos/b480-1778599117879.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-gala-b480/",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Motor",
                 "valor": "3500 W"
             },
@@ -2680,27 +4357,63 @@ const productos = [
                 "valor": "100 L"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     },
     {
         "id": "gala-b301",
         "sku": "GALAB301",
         "nombre": "Gala B301",
-        "secciones": [],
+        "secciones": [
+            "pulido",
+            "mantenimiento"
+        ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Industrial Monofásica",
-        "imagen": "/assets/img/productos/1774980391705_Gala_B301__4_.png",
-        "storeUrl": "${STORE_BASE}/productos/gala-b301",
+        "imagen": "/assets/img/productos/gala-b301-4-1778599236971.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-b301",
         "specs": [
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Cantidad de Motores",
                 "valor": "3"
             },
             {
-                "icono": "▲",
+                "icono": "◉",
                 "clave": "Potencia",
                 "valor": "3500 W"
             },
@@ -2710,6 +4423,39 @@ const productos = [
                 "valor": "80 L"
             }
         ],
-        "rutas": []
+        "rutas": [
+            {
+                "sección": "pulido",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "pulido",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "mantenimiento",
+                "categoría": "equipos",
+                "subcategoría": "aspiradoras"
+            }
+        ],
+        "pdfUrl": "",
+        "visible": true
     }
 ];

@@ -119,24 +119,31 @@
    9. GLOBAL PRODUCT FILTER ENGINE
 ────────────────────────────────────── */
 function getProductos(seccion = null, categoria = null, subcategoria = null) {
-  if (typeof productos === 'undefined') return [];
-  
-  return productos.filter(p => {
-    // Skip hidden products
-    if (p.visible === false) return false;
+    if (typeof productos === 'undefined') return [];
 
-    const hasSec = !seccion || (p.secciones && p.secciones.includes(seccion)) || 
-                   (p.rutas && p.rutas.some(r => r.sección === seccion));
-    if (!hasSec) return false;
+    return productos.filter(p => {
+        if (p.visible === false) return false;
+        if (!p.rutas || !Array.isArray(p.rutas)) return false;
 
-    if (categoria === 'all' || !categoria) return true;
-    const hasCat = (p.categoria === categoria) || 
-                   (p.rutas && p.rutas.some(r => r.categoría === categoria));
-    if (!hasCat) return false;
+        return p.rutas.some(r => {
+            const s = r['sección'] || r['seccion'] || '';
+            const c = r['categoría'] || r['categoria'] || '';
+            const sc = r['subcategoría'] || r['subcategoria'] || '';
 
-    if (!subcategoria) return true;
-    const hasSub = (p.subcategoria === subcategoria) || 
-                   (p.rutas && p.rutas.some(r => r.subcategoría === subcategoria));
-    return hasSub;
-  });
+            if (s !== seccion) return false;
+
+            // Root Section View
+            if (categoria === 'all' || !categoria) {
+                return c === '';
+            }
+
+            // Category View
+            if (!subcategoria) {
+                return c === categoria;
+            }
+
+            // Subcategory View
+            return (c === categoria && sc === subcategoria);
+        });
+    });
 }

@@ -48,23 +48,80 @@
     </header>
 
     <main class="admin-content">
-        <div class="toolbar">
-            <button onclick="openEditor(null)" class="btn-admin" style="background:#c1121f; width:auto; padding:0.7rem 1.5rem; margin-right:auto;">+ Nuevo Producto</button>
-            <input type="text" id="search-box" class="search-input" placeholder="Buscar por nombre, SKU o categoría...">
-            <select id="filter-cat" class="search-input" style="width: 200px;">
-                <option value="">Todas las categorías</option>
-                <option value="equipos">Equipos</option>
-                <option value="materiales">Materiales</option>
-                <option value="productos-quimicos">Químicos</option>
-                <option value="insumos">Insumos</option>
-                <option value="accesorios">Accesorios</option>
-            </select>
-            <button onclick="saveAll()" id="btn-save-all" class="btn-admin" style="width: auto; padding: 0.7rem 1.5rem;">Guardar / Exportar</button>
+
+        <!-- ── TAB NAVIGATION ── -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" id="tab-productos" onclick="switchTab('productos')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span>Productos</span>
+            </button>
+            <button class="admin-tab" id="tab-ordenar" onclick="switchTab('ordenar')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="7" y1="12" x2="17" y2="12"></line><line x1="10" y1="18" x2="14" y2="18"></line></svg>
+                <span>Ordenar Páginas</span>
+            </button>
         </div>
 
-        <div id="product-list" class="product-grid">
-            <!-- Dinámico -->
+        <!-- ── PANEL: PRODUCTOS ── -->
+        <div id="panel-productos">
+            <div class="toolbar">
+                <button onclick="openEditor(null)" class="btn-admin" style="background:#c1121f; width:auto; padding:0.7rem 1.5rem; margin-right:auto;">+ Nuevo Producto</button>
+                <input type="text" id="search-box" class="search-input" placeholder="Buscar por nombre, SKU o categoría...">
+                <select id="filter-cat" class="search-input" style="width: 200px;">
+                    <option value="">Todas las categorías</option>
+                    <option value="equipos">Equipos</option>
+                    <option value="materiales">Materiales</option>
+                    <option value="productos-quimicos">Químicos</option>
+                    <option value="insumos">Insumos</option>
+                    <option value="accesorios">Accesorios</option>
+                </select>
+                <button onclick="saveAll()" id="btn-save-all" class="btn-admin" style="width: auto; padding: 0.7rem 1.5rem;">Guardar / Exportar</button>
+            </div>
+            <div id="product-list" class="product-grid">
+                <!-- Dinámico -->
+            </div>
         </div>
+
+        <!-- ── PANEL: ORDENAR ── -->
+        <div id="panel-ordenar" style="display:none;">
+
+            <!-- Selector de página -->
+            <div class="page-selector">
+                <label>Página:</label>
+                <div class="page-sel-group">
+                    <select class="page-select" id="sel-seccion" onchange="onSeccionChange()">
+                        <option value="">— Sección —</option>
+                    </select>
+                    <span class="page-sel-arrow">›</span>
+                    <select class="page-select" id="sel-categoria" onchange="onCategoriaChange()" disabled>
+                        <option value="">— Categoría —</option>
+                    </select>
+                    <span class="page-sel-arrow">›</span>
+                    <select class="page-select" id="sel-subcategoria" onchange="renderSortable()" disabled>
+                        <option value="">— Subcategoría —</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Info bar -->
+            <div class="reorder-info">
+                <span class="reorder-info-text" id="reorder-info-text">
+                    Seleccioná una página para ver y reordenar sus productos.
+                </span>
+                <span class="reorder-count" id="reorder-count" style="display:none;"></span>
+            </div>
+
+            <!-- Lista sortable -->
+            <div id="sortable-container">
+                <div class="reorder-empty" id="reorder-placeholder">
+                    <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"></path><circle cx="7" cy="12" r="1" fill="currentColor"></circle><circle cx="7" cy="6" r="1" fill="currentColor"></circle><circle cx="7" cy="18" r="1" fill="currentColor"></circle></svg>
+                    <h3>Sin página seleccionada</h3>
+                    <p>Elegí una sección, categoría o subcategoría para ver el orden de sus productos.</p>
+                </div>
+                <div class="sortable-list" id="sortable-list"></div>
+            </div>
+
+        </div>
+
     </main>
 </div>
 
@@ -174,6 +231,15 @@
 
 <script>
 let currentProductList = [];
+
+// ── TAB SWITCHING ──
+function switchTab(name) {
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    document.getElementById('panel-productos').style.display = name === 'productos' ? 'block' : 'none';
+    document.getElementById('panel-ordenar').style.display = name === 'ordenar' ? 'block' : 'none';
+    if (name === 'ordenar') initReorderPanel();
+}
 let auth_token = localStorage.getItem('nc_auth_token');
 
 // ── AUTH LOGIC ──
@@ -713,6 +779,252 @@ function showToast(message, type = 'success') {
 }
 
 checkAuth();
+
+// ─────────────────────────────────────────────────────────────
+// ── REORDER PANEL ────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+
+let reorderDragSrcId = null;
+
+function initReorderPanel() {
+    const selSec = document.getElementById('sel-seccion');
+    if (selSec.options.length > 1) return; // ya inicializado
+    selSec.innerHTML = '<option value="">— Sección —</option>';
+    if (typeof NEWCONCRET_STRUCTURE === 'undefined') return;
+    for (const key in NEWCONCRET_STRUCTURE) {
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = NEWCONCRET_STRUCTURE[key].label;
+        selSec.appendChild(opt);
+    }
+}
+
+function onSeccionChange() {
+    const secKey = document.getElementById('sel-seccion').value;
+    const selCat = document.getElementById('sel-categoria');
+    const selSub = document.getElementById('sel-subcategoria');
+
+    selCat.innerHTML = '<option value="">— Todas las categorías —</option>';
+    selSub.innerHTML = '<option value="">— Todas las subcategorías —</option>';
+    selSub.disabled = true;
+
+    if (!secKey) {
+        selCat.disabled = true;
+        renderSortable();
+        return;
+    }
+
+    selCat.disabled = false;
+    const cats = NEWCONCRET_STRUCTURE[secKey]?.categories || {};
+    for (const catKey in cats) {
+        const opt = document.createElement('option');
+        opt.value = catKey;
+        opt.textContent = cats[catKey].label;
+        selCat.appendChild(opt);
+    }
+    renderSortable();
+}
+
+function onCategoriaChange() {
+    const secKey = document.getElementById('sel-seccion').value;
+    const catKey = document.getElementById('sel-categoria').value;
+    const selSub = document.getElementById('sel-subcategoria');
+
+    selSub.innerHTML = '<option value="">— Todas las subcategorías —</option>';
+
+    if (!catKey) {
+        selSub.disabled = true;
+        renderSortable();
+        return;
+    }
+
+    selSub.disabled = false;
+    const subs = NEWCONCRET_STRUCTURE[secKey]?.categories[catKey]?.subcategories || [];
+    subs.forEach(sub => {
+        const opt = document.createElement('option');
+        opt.value = sub.slug || sub;
+        opt.textContent = sub.label || sub;
+        selSub.appendChild(opt);
+    });
+    renderSortable();
+}
+
+function getPageProducts() {
+    const secKey = document.getElementById('sel-seccion').value;
+    const catKey = document.getElementById('sel-categoria').value;
+    const subKey = document.getElementById('sel-subcategoria').value;
+
+    if (!secKey) return [];
+
+    return currentProductList.filter(p => {
+        if (!p || !p.rutas) return false;
+        return p.rutas.some(r => {
+            if (r.sección !== secKey) return false;
+            if (catKey && r.categoría !== catKey) return false;
+            if (subKey && r.subcategoría !== subKey) return false;
+            return true;
+        });
+    });
+}
+
+function renderSortable() {
+    const secKey = document.getElementById('sel-seccion').value;
+    const catKey = document.getElementById('sel-categoria').value;
+    const subKey = document.getElementById('sel-subcategoria').value;
+
+    const list = document.getElementById('sortable-list');
+    const placeholder = document.getElementById('reorder-placeholder');
+    const infoText = document.getElementById('reorder-info-text');
+    const countBadge = document.getElementById('reorder-count');
+
+    if (!secKey) {
+        list.innerHTML = '';
+        placeholder.style.display = 'block';
+        list.style.display = 'none';
+        countBadge.style.display = 'none';
+        infoText.textContent = 'Seleccioná una página para ver y reordenar sus productos.';
+        return;
+    }
+
+    const products = getPageProducts();
+
+    // Build breadcrumb label
+    const secLabel = NEWCONCRET_STRUCTURE[secKey]?.label || secKey;
+    const catLabel = catKey ? (NEWCONCRET_STRUCTURE[secKey]?.categories[catKey]?.label || catKey) : '';
+    let subLabel = '';
+    if (subKey && catKey) {
+        const subs = NEWCONCRET_STRUCTURE[secKey]?.categories[catKey]?.subcategories || [];
+        const found = subs.find(s => (s.slug || s) === subKey);
+        subLabel = found ? (found.label || found) : subKey;
+    }
+    const breadcrumb = [secLabel, catLabel, subLabel].filter(Boolean).join(' › ');
+    infoText.textContent = `Ordenando: ${breadcrumb}`;
+
+    if (products.length === 0) {
+        list.innerHTML = '';
+        placeholder.style.display = 'block';
+        list.style.display = 'none';
+        countBadge.style.display = 'none';
+        placeholder.querySelector('h3').textContent = 'Sin productos en esta página';
+        placeholder.querySelector('p').textContent = 'No hay productos asignados a esta sección/categoría/subcategoría.';
+        return;
+    }
+
+    placeholder.style.display = 'none';
+    list.style.display = 'flex';
+    countBadge.style.display = 'block';
+    countBadge.textContent = `${products.length} producto${products.length !== 1 ? 's' : ''}`;
+
+    list.innerHTML = '';
+    products.forEach((p, idx) => {
+        const item = document.createElement('div');
+        item.className = 'sortable-item';
+        item.draggable = true;
+        item.dataset.id = p.id;
+
+        const isHidden = p.visible === false;
+
+        item.innerHTML = `
+            <div class="sort-handle" title="Arrastrar para reordenar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="9" y1="6" x2="15" y2="6"/>
+                    <line x1="9" y1="12" x2="15" y2="12"/>
+                    <line x1="9" y1="18" x2="15" y2="18"/>
+                    <line x1="4" y1="6" x2="4.01" y2="6"/>
+                    <line x1="4" y1="12" x2="4.01" y2="12"/>
+                    <line x1="4" y1="18" x2="4.01" y2="18"/>
+                    <line x1="20" y1="6" x2="20.01" y2="6"/>
+                    <line x1="20" y1="12" x2="20.01" y2="12"/>
+                    <line x1="20" y1="18" x2="20.01" y2="18"/>
+                </svg>
+            </div>
+            <span class="sort-num">#${idx + 1}</span>
+            <img class="sort-img" src="${p.imagen || ''}" alt="${p.nombre}" onerror="this.src='../assets/img/hero/productos.jpg'">
+            <div class="sort-info">
+                <div class="sort-name">${p.nombre}</div>
+                <div class="sort-meta">SKU: ${p.sku || 'N/A'}</div>
+            </div>
+            ${isHidden ? '<span class="sort-badge hidden-badge">OCULTO</span>' : '<span class="sort-badge">VISIBLE</span>'}
+        `;
+
+        // Drag events
+        item.addEventListener('dragstart', onDragStart);
+        item.addEventListener('dragend', onDragEnd);
+        item.addEventListener('dragover', onDragOver);
+        item.addEventListener('dragleave', onDragLeave);
+        item.addEventListener('drop', onDrop);
+
+        list.appendChild(item);
+    });
+}
+
+// ── DRAG & DROP HANDLERS ──
+function onDragStart(e) {
+    reorderDragSrcId = this.dataset.id;
+    this.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', reorderDragSrcId);
+}
+
+function onDragEnd(e) {
+    this.classList.remove('dragging');
+    document.querySelectorAll('.sortable-item').forEach(el => {
+        el.classList.remove('drag-over', 'drop-above', 'drop-below');
+    });
+}
+
+function onDragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    document.querySelectorAll('.sortable-item').forEach(el => {
+        el.classList.remove('drop-above', 'drop-below');
+    });
+    if (this.dataset.id === reorderDragSrcId) return;
+    const rect = this.getBoundingClientRect();
+    const midY = rect.top + rect.height / 2;
+    if (e.clientY < midY) {
+        this.classList.add('drop-above');
+        this.classList.remove('drop-below');
+    } else {
+        this.classList.add('drop-below');
+        this.classList.remove('drop-above');
+    }
+}
+
+function onDragLeave(e) {
+    this.classList.remove('drop-above', 'drop-below');
+}
+
+function onDrop(e) {
+    e.preventDefault();
+    const targetId = this.dataset.id;
+    if (!reorderDragSrcId || reorderDragSrcId === targetId) return;
+
+    const rect = this.getBoundingClientRect();
+    const midY = rect.top + rect.height / 2;
+    const insertBefore = e.clientY < midY;
+
+    this.classList.remove('drop-above', 'drop-below');
+
+    // Find global indices
+    const srcIdx = currentProductList.findIndex(p => p.id === reorderDragSrcId);
+    const tgtIdx = currentProductList.findIndex(p => p.id === targetId);
+
+    if (srcIdx === -1 || tgtIdx === -1) return;
+
+    // Remove source from array
+    const [srcItem] = currentProductList.splice(srcIdx, 1);
+
+    // Re-find target index after removal
+    const newTgtIdx = currentProductList.findIndex(p => p.id === targetId);
+    const insertAt = insertBefore ? newTgtIdx : newTgtIdx + 1;
+
+    currentProductList.splice(insertAt, 0, srcItem);
+
+    renderSortable();
+    autoSave(`Orden actualizado`);
+}
+
 </script>
 </body>
 </html>

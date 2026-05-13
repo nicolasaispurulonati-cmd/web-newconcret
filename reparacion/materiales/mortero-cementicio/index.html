@@ -14,38 +14,127 @@
 
   :root{--r:#C1121F;--bk:#0A0A0A;--dk:#111111;--cb:#161616;--st:#272727;--mi:#555;--as:#888;--lt:#CACAC8;--wh:#F4F4F2;--fm:'JetBrains Mono',monospace;--fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--ex:cubic-bezier(0.16,1,0.3,1);}
   .nav-home{display:flex!important;}
-  @media(min-width:1024px){.grid-wrap{grid-template-columns:repeat(3,1fr)!important;gap:1.5px!important;}}
-  .products-section{padding:2.5rem;background:var(--bk);}
-  .grid-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5px;background:var(--st);}
-  .grid-wrap.list-view{grid-template-columns:1fr!important;}
-  .pcard{background:var(--dk);display:flex;flex-direction:column;position:relative;overflow:hidden;cursor:none;transition:background .25s;}
-  .pcard:hover{background:var(--cb);}
-  .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ex);z-index:2;}
-  .pcard:hover::before{transform:scaleX(1);}
-  .pcard-img-wrap{position:relative;overflow:hidden;aspect-ratio:1/1;flex-shrink:0;background:var(--cb);padding:1.5rem;display:flex;align-items:center;justify-content:center;}
-  .pcard-img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .6s var(--ex);}
-  .pcard:hover .pcard-img{transform:scale(1.08);}
-  .pcard-img-ov{display:none;}
-  .pcard-badge{position:absolute;top:1rem;left:1rem;z-index:1;font-family:var(--fm);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--r);background:rgba(10,10,10,.85);padding:.25rem .65rem;border:1px solid rgba(193,18,31,.3);}
-  .pcard-badge-new{position:absolute;top:1rem;right:1rem;z-index:1;font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--r);padding:.22rem .55rem;}
-  .pcard-sku{position:absolute;bottom:.75rem;right:1rem;z-index:1;font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;color:rgba(255,255,255,.25);}
-  .pcard-body{padding:1.6rem 1.75rem;flex:1;display:flex;flex-direction:column;}
-  .pcard-cat{font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--r);margin-bottom:.55rem;}
-  .pcard-name{font-family:var(--fd);font-weight:800;font-size:1.35rem;text-transform:uppercase;color:var(--wh);letter-spacing:.01em;line-height:1.05;margin-bottom:.6rem;}
-  .pcard-desc{font-size:.83rem;font-weight:300;color:var(--as);line-height:1.55;margin-bottom:1.25rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .pcard-features{display:flex;flex-direction:column;margin-bottom:1.5rem;border:1px solid var(--st);}
-  .pcard-feat{display:flex;align-items:flex-start;gap:.8rem;padding:.65rem 1rem;border-bottom:1px solid var(--st);transition:background .2s;}
-  .pcard-feat:last-child{border-bottom:none;}
-  .pcard-feat-ic{width:22px;height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--st);color:var(--r);font-size:10px;}
-  .pcard-feat-tx{flex:1;}
-  .pcard-feat-label{font-family:var(--fm);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mi);display:block;margin-bottom:.1rem;}
-  .pcard-feat-val{font-family:var(--fd);font-weight:600;font-size:.9rem;color:var(--lt);}
-  .pcard-actions{display:flex;gap:.75rem;margin-top:auto;flex-wrap:wrap;}
-  .btn-ver{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--fd);font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--r);padding:.75rem 1.25rem;text-decoration:none;clip-path:polygon(0 0,100% 0,100% 68%,92% 100%,0 100%);position:relative;overflow:hidden;transition:background .2s;border:none;cursor:none;}
-  .btn-ver::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transition:left .45s;}
-  .btn-ver:hover::before{left:100%;}
-  .btn-ft{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;font-family:var(--fd);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--as);background:none;border:1px solid var(--st);padding:.75rem 1rem;text-decoration:none;cursor:none;transition:color .2s,border-color .2s,background .2s;white-space:nowrap;}
-  .btn-ft:hover{color:var(--wh);border-color:var(--as);background:rgba(255,255,255,.04);}
+  .grid-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--nc-steel);
+  }
+  @media (max-width: 1200px) { .grid-wrap { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) { .grid-wrap { grid-template-columns: 1fr !important; gap: 1px; } }
+
+  /* ── PRODUCT CARD ── */
+  .pcard {
+    background: var(--nc-dark);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s var(--ex);
+    cursor: pointer;
+  }
+  .pcard:hover { background: var(--nc-carbon); }
+
+  .pcard-img-wrap {
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    background: var(--nc-black);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .pcard-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.8s var(--ex);
+    z-index: 2;
+  }
+  .pcard:hover .pcard-img { transform: scale(1.08) translateY(-5px); }
+
+  .pcard-img-ov {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(193, 18, 31, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s var(--ex);
+    z-index: 1;
+  }
+  .pcard:hover .pcard-img-ov { opacity: 1; }
+
+  .pcard-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.4rem 0.8rem;
+    font-family: var(--fm);
+    font-size: 0.6rem;
+    color: var(--r);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid rgba(193, 18, 31, 0.3);
+    z-index: 3;
+  }
+
+  .pcard-sku {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    font-family: var(--fm);
+    font-size: 0.65rem;
+    color: var(--mi);
+    opacity: 0.5;
+    z-index: 3;
+    text-transform: uppercase;
+  }
+
+  .pcard-body {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--nc-steel);
+  }
+  .pcard-cat { font-family: var(--fm); font-size: .6rem; color: var(--r); text-transform: uppercase; margin-bottom: .6rem; letter-spacing: 0.15em; }
+  .pcard-name { font-family: var(--fd); font-weight: 800; font-size: 1.5rem; color: var(--wh); text-transform: uppercase; line-height: 1.1; margin-bottom: .8rem; }
+  .pcard-desc { font-size: .88rem; color: var(--as); line-height: 1.6; margin-bottom: 2rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-align: left; }
+  
+  .pcard-features { display: flex; flex-direction: column; border: 1px solid var(--nc-steel); margin-bottom: 1.5rem; }
+  .pcard-feat { display: flex; justify-content: space-between; align-items: center; padding: .7rem 1rem; border-bottom: 1px solid var(--nc-steel); transition: background .2s; }
+  .pcard-feat:last-child { border-bottom: none; }
+  .pcard-feat:hover { background: rgba(255,255,255,0.03); }
+  .pcard-feat-label { font-family: var(--fm); font-size: .58rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.05em; }
+  .pcard-feat-val { font-family: var(--fd); font-weight: 600; font-size: .9rem; color: var(--lt); }
+  
+  .pcard-actions { margin-top: auto; display: flex; gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
+  .btn-ver, .btn-ft {
+    flex: 1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--fd);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s var(--ex);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
+  .btn-ver { background: var(--r); color: #fff; }
+  .btn-ver:hover { background: var(--rh); gap: 0.8rem; }
+  .btn-ft { background: var(--dk); color: var(--as); }
+  .btn-ft:hover { background: var(--cb); color: var(--wh); }
+
   .modal-bg{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
   .modal-bg.open{opacity:1;pointer-events:all;}
   .modal{background:var(--dk);border:1px solid var(--st);width:100%;max-width:900px;position:relative;}
@@ -58,7 +147,51 @@
   .reveal.in{opacity:1;transform:none;}
   body{cursor:none;}
 
-.page-header{margin-top:68px!important;background-image:linear-gradient(rgba(10,10,10,0.7),rgba(10,10,10,0.7)),url('../../../assets/img/hero/mortero-cementicio.jpg');background-size:cover;background-position:center;}
+  /* ── PAGE HEADER ── */
+  .page-header {
+    position: relative;
+    margin-top: 68px !important;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+    min-height: 420px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: 
+      linear-gradient(to right, rgba(10,10,10,.98) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.3) 100%),
+      linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+      url('../../../assets/img/hero/mortero-cementicio.jpg');
+  }
+  .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+  .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--st); padding-left: 2rem; z-index: 3; }
+  .ph-count b { display: block; font-size: 2.2rem; color: var(--wh); margin-bottom: 0.3rem; font-family: var(--fd, 'Barlow Condensed', sans-serif); font-weight: 800; }
+  
+  .ph-eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: 1.4rem; }
+  .ph-eyebrow-line { width: 32px; height: 1px; background: var(--r); }
+  .ph-eyebrow-tx { font-family: var(--fm); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--r); }
+  .ph-title { font-family: var(--fd); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--wh); text-transform: uppercase; line-height: 0.9; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+  .ph-desc { font-size: 1.1rem; color: var(--as); max-width: 600px; line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .page-header { 
+      margin-top: 66px !important; 
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1.5rem !important;
+      background-image: 
+        linear-gradient(to right, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.8) 30%, rgba(10,10,10,0.5) 60%, rgba(10,10,10,0.2) 100%),
+        linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 60%),
+        url('../../../assets/img/hero/mortero-cementicio.jpg') !important;
+    }
+    .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
+    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
+    .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--st); padding-top: 1.2rem; margin-top: 0; width: auto; }
+    .ph-count b { display: inline; font-size: 1.4rem; }
+  }
 </style>
 </head>
 <body>
@@ -68,14 +201,19 @@
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="ph-inner">
+    <div class="ph-inner">
     <div>
-      <div class="ph-breadcrumb"><a href="../../../">Inicio</a><span>›</span><a href="../../../reparacion/">Reparación</a><span>›</span><a href="../../../reparacion/materiales/">Materiales</a><span>›</span><em>Mortero cementicio</em></div>
-      <div class="ph-eyebrow"><span class="ph-eyebrow-line"></span><span class="ph-eyebrow-tx">Materiales · Reparación</span></div>
+      <div class="ph-eyebrow">
+        <span class="ph-eyebrow-line"></span>
+        <span class="ph-eyebrow-tx">Materiales · Reparación</span>
+      </div>
       <h1 class="ph-title">Mortero<br>cementicio</h1>
       <p class="ph-desc">Mortero cementicio fino y grueso para reparación, nivelación y terminación de superficies de hormigón.</p>
     </div>
-    <div class="ph-count"><b id="total-count">0</b> productos disponibles</div>
+    <div class="ph-count">
+      <b id="total-count">0</b>
+      productos disponibles
+    </div>
   </div>
 </div>
 
@@ -174,27 +312,47 @@ var downSVG  = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><pat
 function renderCard(p, delay) {
   var imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
   var badge  = p.badge ? '<div class="pcard-badge-new">' + p.badge + '</div>' : '';
-  var feats  = (p.specs || []).slice(0,3).map(function(f) {
-    return '<div class="pcard-feat"><div class="pcard-feat-ic">' + (f.icono||'◉') + '</div><div class="pcard-feat-tx"><span class="pcard-feat-label">' + f.clave + '</span><span class="pcard-feat-val">' + f.valor + '</span></div></div>';
+  var catLabel = (p.cat_label || 'Categoría').charAt(0).toUpperCase() + (p.cat_label || 'Categoría').slice(1).replace(/-/g, ' ');
+
+  var feats = (p.specs || []).slice(0, 3).map(function(f) {
+    return `
+    <div class="pcard-feat">
+      <span class="pcard-feat-label">${f.clave}</span>
+      <span class="pcard-feat-val">${f.valor}</span>
+    </div>`;
   }).join('');
-  return '<div class="pcard reveal d' + delay + '" data-id="' + p.id + '">' +
-    '<div class="pcard-img-wrap">' +
-      '<img class="pcard-img" src="' + imgSrc + '" alt="' + p.nombre + '" loading="lazy">' +
-      '<div class="pcard-img-ov"></div>' +
-      '<div class="pcard-badge">' + (p.cat_label||'Producto') + '</div>' + badge +
-      '<div class="pcard-sku">' + p.sku + '</div>' +
-    '</div>' +
-    '<div class="pcard-body">' +
-      '<div class="pcard-cat">' + (p.cat_label||'Categoría') + '</div>' +
-      '<div class="pcard-name">' + p.nombre + '</div>' +
-      '<div class="pcard-desc">' + p.descripcion + '</div>' +
-      '<div class="pcard-features">' + feats + '</div>' +
-      '<div class="pcard-actions">' +
-        '<button class="btn-ver" onclick="openModal(\'' + p.id + '\')">Ver más ' + arrowSVG + '</button>' +
-        '<a href="' + (p.pdfUrl||'#') + '" class="btn-ft" ' + (p.pdfUrl ? 'download' : 'style="opacity:0.3;pointer-events:none;"') + '>' + downSVG + ' Ficha técnica</a>' +
-      '</div>' +
-    '</div>' +
-  '</div>';
+
+  var shop = p.tiendaUrl;
+  var pdf  = p.pdfUrl;
+
+  return `
+  <div class="pcard reveal in d${delay}" data-id="${p.id}" onclick="openModal('${p.id}')">
+    <div class="pcard-img-wrap">
+      <img class="pcard-img" src="${imgSrc}" alt="${p.nombre}" loading="lazy">
+      <div class="pcard-img-ov"></div>
+      <div class="pcard-badge">${catLabel}</div>
+      ${badge}
+      <div class="pcard-sku">${p.sku}</div>
+    </div>
+    <div class="pcard-body">
+      <div class="pcard-cat">${catLabel}</div>
+      <div class="pcard-name">${p.nombre}</div>
+      <div class="pcard-desc">${p.descripcion}</div>
+      <div class="pcard-features">${feats}</div>
+      <div class="pcard-actions">
+        <button class="btn-ver">
+          Ver detalles ${arrowSVG}
+        </button>
+        ${shop 
+          ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
+          : (pdf 
+              ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha</a>`
+              : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
+            )
+        }
+      </div>
+    </div>
+  </div>`;
 }
 
 function getFiltered() {

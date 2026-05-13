@@ -58,7 +58,51 @@
   .reveal.in{opacity:1;transform:none;}
   body{cursor:none;}
 
-.page-header{margin-top:68px!important;background-image:linear-gradient(rgba(10,10,10,0.7),rgba(10,10,10,0.7)),url('../../../assets/img/hero/reparacion-quimicos.jpg');background-size:cover;background-position:center;}
+  /* ── PAGE HEADER ── */
+  .page-header {
+    position: relative;
+    margin-top: 68px !important;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+    min-height: 420px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: 
+      linear-gradient(to right, rgba(10,10,10,.98) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.3) 100%),
+      linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+      url('../../../assets/img/hero/reparacion-quimicos.jpg');
+  }
+  .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+  .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--st); padding-left: 2rem; z-index: 3; }
+  .ph-count b { display: block; font-size: 2.2rem; color: var(--wh); margin-bottom: 0.3rem; font-family: var(--fd, 'Barlow Condensed', sans-serif); font-weight: 800; }
+  
+  .ph-eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: 1.4rem; }
+  .ph-eyebrow-line { width: 32px; height: 1px; background: var(--r); }
+  .ph-eyebrow-tx { font-family: var(--fm); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--r); }
+  .ph-title { font-family: var(--fd); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--wh); text-transform: uppercase; line-height: 0.9; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+  .ph-desc { font-size: 1.1rem; color: var(--as); max-width: 600px; line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .page-header { 
+      margin-top: 66px !important; 
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1.5rem !important;
+      background-image: 
+        linear-gradient(to right, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.8) 30%, rgba(10,10,10,0.5) 60%, rgba(10,10,10,0.2) 100%),
+        linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 60%),
+        url('../../../assets/img/hero/reparacion-quimicos.jpg') !important;
+    }
+    .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
+    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
+    .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--st); padding-top: 1.2rem; margin-top: 0; width: auto; }
+    .ph-count b { display: inline; font-size: 1.4rem; }
+  }
 </style>
 </head>
 <body>
@@ -68,14 +112,19 @@
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="ph-inner">
+    <div class="ph-inner">
     <div>
-      <div class="ph-breadcrumb"><a href="../../../">Inicio</a><span>›</span><a href="../../../reparacion/">Reparación</a><span>›</span><a href="../../../reparacion/productos-quimicos/">Químicos</a><span>›</span><em>Puentes de adherencia</em></div>
-      <div class="ph-eyebrow"><span class="ph-eyebrow-line"></span><span class="ph-eyebrow-tx">Productos Químicos · Reparación</span></div>
+      <div class="ph-eyebrow">
+        <span class="ph-eyebrow-line"></span>
+        <span class="ph-eyebrow-tx">Productos Químicos · Reparación</span>
+      </div>
       <h1 class="ph-title">Puentes de<br>adherencia</h1>
       <p class="ph-desc">Promotores de adherencia para garantizar la unión entre capas de hormigón nuevo y existente.</p>
     </div>
-    <div class="ph-count"><b id="total-count">0</b> productos disponibles</div>
+    <div class="ph-count">
+      <b id="total-count">0</b>
+      productos disponibles
+    </div>
   </div>
 </div>
 

@@ -8,7 +8,7 @@
     <meta name="description"
         content="Materiales de reparación estructural, morteros, químicos y equipos para la restauración de superficies de hormigón. NewConcret, Buenos Aires.">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
-    <link rel="stylesheet" href="../assets/css/estilo.css?v=38">
+    <link rel="stylesheet" href="../assets/css/estilo.css?v=41">
     <link rel="stylesheet" href="../assets/css/nav.css?v=1.3">
     <style>
         /* 1. PRODUCT CARDS (PREMIUM) */
@@ -92,6 +92,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            min-height: 220px;
         }
 
         .pcard-name {
@@ -121,7 +122,7 @@
 
         /* 2. MODAL CUSTOMIZATION */
         .modal {
-            max-width: 800px !important;
+            max-width: 860px !important;
             max-height: 90vh;
             overflow-y: auto;
             background: var(--nc-dark);
@@ -146,14 +147,15 @@
             overflow: hidden;
             border-right: 1px solid var(--nc-steel);
             width: 100%;
-            height: 100%; /* Stretch to fill grid height */
+            aspect-ratio: 1 / 1;
+            align-self: start;
         }
 
         .modal-img {
             width: 100% !important;
             height: 100% !important;
             object-fit: contain !important;
-            padding: 1.8rem !important; /* Increased to avoid clipping on zoom */
+            padding: 1.5rem !important; /* Increased for better zoom safety */
             transition: transform 0.8s var(--expo);
         }
 
@@ -168,89 +170,6 @@
             background: var(--nc-dark);
             justify-content: center;
             order: 2; /* Información a la derecha */
-        }
-
-        @media (max-width: 900px) {
-            .grid-wrap {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-grid {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-
-            .modal-img-container {
-                border-right: none;
-                border-bottom: 1px solid var(--nc-steel);
-                height: 320px;
-            }
-
-            .modal-img {
-                max-height: 320px !important;
-                padding: 2rem !important;
-            }
-
-            .modal-body {
-                padding: 2.5rem !important;
-            }
-            
-            .modal-img-container {
-                border-right: none;
-                border-bottom: 1px solid var(--nc-steel);
-                aspect-ratio: auto;
-                height: 300px;
-            }
-
-            .modal-name {
-                font-size: 1.8rem;
-                margin-bottom: 1rem;
-            }
-
-            .modal-desc {
-                font-size: 0.9rem;
-                margin-bottom: 2rem;
-            }
-
-            .modal-feats {
-                margin-bottom: 1.5rem;
-            }
-
-            .modal-feat {
-                padding: 0.7rem 0.5rem;
-            }
-
-            .modal-feat-val {
-                font-size: 0.75rem;
-            }
-
-            .modal-actions {
-                flex-direction: row;
-                gap: 0.8rem;
-            }
-            
-            .modal-actions .btn-ver, .modal-actions .btn-ft {
-                flex: 1 !important;
-                width: auto !important;
-                justify-content: center !important;
-                height: 48px !important;
-                margin-bottom: 0;
-                font-size: 0.6rem !important; /* Slightly smaller to fit */
-                padding: 0 0.5rem !important;
-            }
-
-            .custom-option {
-                padding: 0.8rem 1.2rem;
-                min-height: 54px;
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid rgba(255,255,255,0.06);
-            }
-            
-            .custom-option.selected {
-                background: var(--nc-carbon);
-                color: var(--nc-white);
-            }
         }
 
         .pcard-badge-new {
@@ -360,6 +279,7 @@
         .btn-ft {
             background: var(--nc-dark);
             color: var(--nc-ash);
+            border: 1px solid var(--nc-steel);
         }
 
         .btn-ft:hover {
@@ -453,11 +373,7 @@
         .modal-name {
             font-family: var(--font-d);
             font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--nc-white);
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
             letter-spacing: -0.01em;
         }
 
@@ -465,7 +381,7 @@
             font-size: 0.85rem;
             color: var(--nc-ash);
             line-height: 1.5;
-            margin-bottom: 0.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .modal-feats-title {
@@ -482,7 +398,7 @@
         .modal-feats {
             display: flex;
             flex-direction: column;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .modal-feat {
@@ -527,6 +443,11 @@
             flex-direction: row !important;
             gap: 0.8rem;
             width: 100%;
+        }
+
+        .modal-actions .btn-ver,
+        .modal-actions .btn-ft {
+            white-space: nowrap !important;
         }
 
         @media (max-width: 600px) {
@@ -640,7 +561,7 @@
 
             .modal-desc {
                 font-size: 0.9rem;
-                margin-bottom: 2rem;
+                margin-bottom: 0.2rem;
             }
 
             .modal-feats {
@@ -869,43 +790,55 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: .65rem;
-            margin-bottom: 1.4rem;
-        }
+  /* ── PAGE HEADER ── */
+  .page-header {
+    position: relative;
+    margin-top: 68px !important;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+    min-height: 420px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: 
+      linear-gradient(to right, rgba(10,10,10,.98) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.3) 100%),
+      linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+      url('../assets/img/hero/reparacion.jpg');
+  }
+  .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+  .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--nc-steel); padding-left: 2rem; z-index: 3; }
+  .ph-count b { display: block; font-size: 2.2rem; color: var(--nc-white); margin-bottom: 0.3rem; font-family: var(--font-d); font-weight: 800; }
+  
+  .ph-eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: 1.4rem; }
+  .ph-eyebrow-line { width: 32px; height: 1px; background: var(--nc-red); }
+  .ph-eyebrow-tx { font-family: var(--font-m); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-red); }
+  .ph-title { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--nc-white); text-transform: uppercase; line-height: 0.9; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+  .ph-desc { font-size: 1.1rem; color: var(--nc-ash); max-width: 600px; line-height: 1.5; }
 
-        .eyebrow-line {
-            width: 32px;
-            height: 1px;
-            background: var(--nc-red);
-        }
+  @media (max-width: 900px) {
+    .page-header { 
+      margin-top: 66px !important; 
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1.5rem !important;
+      background-image: 
+        linear-gradient(to right, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.8) 30%, rgba(10,10,10,0.5) 60%, rgba(10,10,10,0.2) 100%),
+        linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 60%),
+        url('../assets/img/hero/reparacion.jpg') !important;
+    }
+    .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
+    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
+    .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--nc-steel); padding-top: 1.2rem; margin-top: 0; width: auto; }
+    .ph-count b { display: inline; font-size: 1.4rem; }
+  }
 
-        .eyebrow-tx {
-            font-family: var(--font-m);
-            font-size: .64rem;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: var(--nc-red);
-        }
-
-        .cta-sec {
-            padding: 4rem 0;
-        }
-
-        @media (max-width: 900px) {
-            .cta-sec {
-                padding: 2rem 0;
-            }
-        }
-
-        @keyframes tick {
-            to {
-                transform: translateX(-50%);
-            }
-        }
-    </style>
+  .cta-sec { padding: 4rem 0; }
+  @media (max-width: 900px) { .cta-sec { padding: 2rem 0; } }
+</style>
 </head>
 
 <body>
@@ -915,21 +848,21 @@
 
     <div id="nav-placeholder"></div>
 
-
-
-    <!-- PAGE HERO -->
-    <div class="nc-cat-hero" data-watermark="Reparación">
-        <div class="hero-bg">
-            <img src="../assets/img/hero/reparacion.jpg" alt="Reparación de Hormigón NewConcret">
-        </div>
-        <div class="hero-ov"></div>
-        <div class="hero-content">
-            <div class="eyebrow">
-                <span class="eyebrow-line"></span>
-                <span class="eyebrow-tx">Soluciones para · Reparación de Hormigón</span>
+    <!-- ══ PAGE HEADER ══ -->
+    <div class="page-header">
+        <div class="ph-inner">
+            <div>
+                <div class="ph-eyebrow">
+                    <span class="ph-eyebrow-line"></span>
+                    <span class="ph-eyebrow-tx">Soluciones para · Reparación de Hormigón</span>
+                </div>
+                <h1 class="ph-title">Reparación<br>Estructural</h1>
+                <p class="ph-desc">Materiales técnicos de alta performance para rehabilitar estructuras de hormigón.</p>
             </div>
-            <h1 class="hero-h1">Restauración de<br><span class="red">alto nivel.</span></h1>
-            <p class="hero-p">Soluciones profesionales para la reparación estructural, nivelación y tratamiento de fisuras en superficies de hormigón.</p>
+        </div>
+        <div class="ph-count">
+            <b id="total-count">0</b>
+            productos disponibles
         </div>
     </div>
 
@@ -1048,7 +981,23 @@
             const badge = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
             const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
             const shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
-            const catLabel = p.cat_label || p.categoria || 'Producto';
+            
+            // Dynamic category label
+            let rawCat = p.cat_label || p.categoria;
+            if (!rawCat && p.rutas) {
+                const route = p.rutas.find(r => r.sección === activeSeccion && r.categoría);
+                if (route) rawCat = route.categoría;
+            }
+            if (!rawCat) rawCat = 'Producto';
+
+            const catMap = {
+                'materiales': 'Materiales',
+                'productos-quimicos': 'Productos Químicos',
+                'equipos': 'Equipos',
+                'insumos': 'Insumos',
+                'herramientas': 'Herramientas'
+            };
+            const catLabel = catMap[rawCat.toLowerCase()] || rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
 
             return `
   <div class="pcard in d${delay}" data-id="${p.id}" data-cat="${p.categoria}">
@@ -1082,6 +1031,7 @@
         function render() {
             if (!grid || typeof getProductos !== 'function') return;
             let data = getProductos(activeSeccion, activeFilter);
+            document.getElementById('total-count').textContent = data.length;
             const delays = [1, 2, 3, 1, 2, 3, 1, 2, 3];
 
             // Handle Sorting

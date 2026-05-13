@@ -8,7 +8,7 @@
     <meta name="description"
         content="Materiales, endurecedores y equipos para la construcción de pisos industriales. Fibras, mallas, curadores y allanadoras. NewConcret, Buenos Aires.">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
-    <link rel="stylesheet" href="../assets/css/estilo.css?v=38">
+    <link rel="stylesheet" href="../assets/css/estilo.css?v=41">
     <link rel="stylesheet" href="../assets/css/nav.css?v=1.3">
     <style>
         /* 1. PRODUCT CARDS (PREMIUM) */
@@ -92,6 +92,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            min-height: 220px;
         }
 
         .pcard-name {
@@ -121,7 +122,7 @@
 
         /* 2. MODAL CUSTOMIZATION */
         .modal {
-            max-width: 800px !important;
+            max-width: 860px !important;
             max-height: 90vh;
             overflow-y: auto;
             background: var(--nc-dark);
@@ -146,14 +147,15 @@
             overflow: hidden;
             border-right: 1px solid var(--nc-steel);
             width: 100%;
-            height: 100%; /* Stretch to fill grid height */
+            aspect-ratio: 1 / 1;
+            align-self: start;
         }
 
         .modal-img {
             width: 100% !important;
             height: 100% !important;
             object-fit: contain !important;
-            padding: 1.8rem !important; /* Increased to avoid clipping on zoom */
+            padding: 1.5rem !important; /* Increased for better zoom safety */
             transition: transform 0.8s var(--expo);
         }
 
@@ -279,6 +281,7 @@
         .btn-ft {
             background: var(--nc-dark);
             color: var(--nc-ash);
+            border: 1px solid var(--nc-steel);
         }
 
         .btn-ft:hover {
@@ -372,11 +375,7 @@
         .modal-name {
             font-family: var(--font-d);
             font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--nc-white);
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
             letter-spacing: -0.01em;
         }
 
@@ -384,7 +383,7 @@
             font-size: 0.85rem;
             color: var(--nc-ash);
             line-height: 1.5;
-            margin-bottom: 0.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .modal-feats-title {
@@ -401,7 +400,7 @@
         .modal-feats {
             display: flex;
             flex-direction: column;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .modal-feat {
@@ -446,6 +445,11 @@
             flex-direction: row !important;
             gap: 0.8rem;
             width: 100%;
+        }
+
+        .modal-actions .btn-ver,
+        .modal-actions .btn-ft {
+            white-space: nowrap !important;
         }
 
         @media (max-width: 600px) {
@@ -559,7 +563,7 @@
 
             .modal-desc {
                 font-size: 0.9rem;
-                margin-bottom: 2rem;
+                margin-bottom: 0.2rem;
             }
 
             .modal-feats {
@@ -862,7 +866,10 @@
     <!-- PAGE HERO -->
     <div class="nc-cat-hero" data-watermark="Construcción">
         <div class="hero-bg">
-            <img src="../assets/img/hero/equipos-construccion.jpg" alt="Equipos NewConcret">
+            <picture>
+                <source srcset="../assets/img/hero/construccion-mobile.jpg" media="(max-width: 900px)">
+                <img src="../assets/img/hero/construccion.jpg" alt="Construcción NewConcret">
+            </picture>
         </div>
         <div class="hero-ov"></div>
         <div class="hero-content">
@@ -990,7 +997,23 @@
             const badge = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
             const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
             const shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
-            const catLabel = p.cat_label || p.categoria || 'Producto';
+            
+            // Dynamic category label
+            let rawCat = p.cat_label || p.categoria;
+            if (!rawCat && p.rutas) {
+                const route = p.rutas.find(r => r.sección === activeSeccion && r.categoría);
+                if (route) rawCat = route.categoría;
+            }
+            if (!rawCat) rawCat = 'Producto';
+
+            const catMap = {
+                'materiales': 'Materiales',
+                'productos-quimicos': 'Productos químicos',
+                'equipos': 'Equipos',
+                'insumos': 'Insumos',
+                'herramientas': 'Herramientas'
+            };
+            const catLabel = catMap[rawCat.toLowerCase()] || rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
 
             return `
   <div class="pcard in d${delay}" data-id="${p.id}" data-cat="${p.categoria}">

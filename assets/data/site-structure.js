@@ -43,8 +43,7 @@ const NEWCONCRET_STRUCTURE = {
         "subcategories": [
           { "slug": "grouting", "label": "Grouting" },
           { "slug": "mortero-cementicio", "label": "Mortero cementicio" },
-          { "slug": "endurecedor-superficial", "label": "Endurecedor superficial" },
-          { "slug": "nylon", "label": "Nylon" }
+          { "slug": "endurecedor-superficial", "label": "Endurecedor superficial" }
         ]
       },
       "productos-quimicos": {
@@ -96,8 +95,11 @@ const NEWCONCRET_STRUCTURE = {
         "label": "Equipos",
         "subcategories": [
           { "slug": "pulidoras", "label": "Pulidoras" },
+          { "slug": "accesorios-pulidoras", "label": "Accesorios pulidoras" },
           { "slug": "aspiradoras", "label": "Aspiradoras" },
-          { "slug": "lustradoras", "label": "Lustradoras" }
+          { "slug": "accesorios-aspiradoras", "label": "Accesorios aspiradoras" },
+          { "slug": "lustradoras", "label": "Lustradoras" },
+          { "slug": "lavasecapisos", "label": "Lavasecapisos" }
         ]
       },
       "insumos": {

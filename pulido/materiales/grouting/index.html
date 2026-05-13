@@ -40,12 +40,28 @@
   .pcard-feat-tx{flex:1;}
   .pcard-feat-label{font-family:var(--fm);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mi);display:block;margin-bottom:.1rem;}
   .pcard-feat-val{font-family:var(--fd);font-weight:600;font-size:.9rem;color:var(--lt);}
-  .pcard-actions{display:flex;gap:.75rem;margin-top:auto;flex-wrap:wrap;}
-  .btn-ver{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--fd);font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--r);padding:.75rem 1.25rem;text-decoration:none;clip-path:polygon(0 0,100% 0,100% 68%,92% 100%,0 100%);position:relative;overflow:hidden;transition:background .2s;border:none;cursor:none;}
-  .btn-ver::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transition:left .45s;}
-  .btn-ver:hover::before{left:100%;}
-  .btn-ft{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;font-family:var(--fd);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--as);background:none;border:1px solid var(--st);padding:.75rem 1rem;text-decoration:none;cursor:none;transition:color .2s,border-color .2s,background .2s;white-space:nowrap;}
-  .btn-ft:hover{color:var(--wh);border-color:var(--as);background:rgba(255,255,255,.04);}
+  .pcard-actions { margin-top: auto; display: flex; gap: 1px; background: var(--st); border: 1px solid var(--st); }
+  .btn-ver, .btn-ft {
+    flex: 1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--fd);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s var(--ex);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
+  .btn-ver { background: var(--r); color: #fff; }
+  .btn-ver:hover { background: var(--rh); gap: 0.8rem; }
+  .btn-ft { background: var(--dk); color: var(--as); }
+  .btn-ft:hover { background: var(--cb); color: var(--wh); }
   .modal-bg{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
   .modal-bg.open{opacity:1;pointer-events:all;}
   .modal{background:var(--dk);border:1px solid var(--st);width:100%;max-width:900px;position:relative;}
@@ -59,6 +75,11 @@
   body{cursor:none;}
 
 .page-header{margin-top:68px!important;background-image:linear-gradient(rgba(10,10,10,0.7),rgba(10,10,10,0.7)),url('../../../assets/img/hero/grouting.jpg');background-size:cover;background-position:center;}
+  .hide-mobile { display: none !important; }
+  @media (min-width: 1024px) {
+    .hide-mobile { display: flex !important; }
+    .hide-desktop { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -82,21 +103,31 @@
 <!-- FILTER BAR -->
 <div class="filter-bar">
   <span class="filter-label">Filtrar:</span>
-  <div class="filter-pills"><button class="pill active" data-filter="all">Grouting</button></div>
-  <div class="filter-right">
-    <select class="sort-select" id="sortSelect">
-      <option value="default">Ordenar: Destacados</option>
-      <option value="az">Nombre A–Z</option>
-      <option value="za">Nombre Z–A</option>
-    </select>
-    <div class="view-toggle">
-      <button class="view-btn active" id="btnGrid" title="Vista grilla">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/></svg>
-      </button>
-      <button class="view-btn" id="btnList" title="Vista lista">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M1 7h12M1 11h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </button>
+  
+  <!-- Desktop Pills -->
+  <div class="filter-pills hide-mobile">
+    <button class="pill" data-filter="all">Todos</button>
+    <button class="pill active" data-filter="grouting">Grouting</button>
+    <button class="pill" data-filter="mortero-cementicio">Mortero</button>
+  </div>
+
+  <!-- Mobile Custom Select -->
+  <div class="custom-select-wrap hide-desktop" id="customFilter">
+    <button class="custom-select-trigger" id="customFilterTrigger">Grouting</button>
+    <div class="custom-select-options">
+      <div class="custom-option" data-value="all">Todos</div>
+      <div class="custom-option selected" data-value="grouting">Grouting</div>
+      <div class="custom-option" data-value="mortero-cementicio">Mortero</div>
     </div>
+  </div>
+
+  <div class="filter-right">
+    <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
+    <select class="sort-select" id="sortSelect">
+      <option value="default">Destacados</option>
+      <option value="az">A–Z</option>
+      <option value="za">Z–A</option>
+    </select>
   </div>
 </div>
 
@@ -172,17 +203,21 @@ var arrowSVG = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><pat
 var downSVG  = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 function renderCard(p, delay) {
+  var badge = p.badge ? '<div class="pcard-badge-new">' + p.badge + '</div>' : '';
   var imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
-  var badge  = p.badge ? '<div class="pcard-badge-new">' + p.badge + '</div>' : '';
-  var feats  = (p.specs || []).slice(0,3).map(function(f) {
-    return '<div class="pcard-feat"><div class="pcard-feat-ic">' + (f.icono||'◉') + '</div><div class="pcard-feat-tx"><span class="pcard-feat-label">' + f.clave + '</span><span class="pcard-feat-val">' + f.valor + '</span></div></div>';
+  var feats = (p.specs || []).slice(0, 3).map(function(f) {
+    return '<div class="pcard-feat"><span class="pcard-feat-label">' + f.clave + '</span><span class="pcard-feat-val">' + f.valor + '</span></div>';
   }).join('');
+
+  var pdf  = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
+  var shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
+
   return '<div class="pcard reveal d' + delay + '" data-id="' + p.id + '">' +
     '<div class="pcard-img-wrap">' +
       '<img class="pcard-img" src="' + imgSrc + '" alt="' + p.nombre + '" loading="lazy">' +
       '<div class="pcard-img-ov"></div>' +
       '<div class="pcard-badge">' + (p.cat_label||'Producto') + '</div>' + badge +
-      '<div class="pcard-sku">' + p.sku + '</div>' +
+      '<div class="pcard-sku">' + (p.sku||'') + '</div>' +
     '</div>' +
     '<div class="pcard-body">' +
       '<div class="pcard-cat">' + (p.cat_label||'Categoría') + '</div>' +
@@ -190,8 +225,10 @@ function renderCard(p, delay) {
       '<div class="pcard-desc">' + p.descripcion + '</div>' +
       '<div class="pcard-features">' + feats + '</div>' +
       '<div class="pcard-actions">' +
-        '<button class="btn-ver" onclick="openModal(\'' + p.id + '\')">Ver más ' + arrowSVG + '</button>' +
-        '<a href="' + (p.pdfUrl||'#') + '" class="btn-ft" ' + (p.pdfUrl ? 'download' : 'style="opacity:0.3;pointer-events:none;"') + '>' + downSVG + ' Ficha técnica</a>' +
+        '<button class="btn-ver" onclick="openModal(\'' + p.id + '\')">Ver detalles ' + arrowSVG + '</button>' +
+        (shop ? '<a href="' + shop + '" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>' : 
+          (pdf ? '<a href="' + pdf + '" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica ' + downSVG + '</a>' : 
+          '<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>')) +
       '</div>' +
     '</div>' +
   '</div>';
@@ -225,6 +262,7 @@ function render() {
   });
 }
 
+// Filter Pills (Desktop)
 document.querySelectorAll('.pill').forEach(function(btn) {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.pill').forEach(function(b) { b.classList.remove('active'); });
@@ -233,22 +271,82 @@ document.querySelectorAll('.pill').forEach(function(btn) {
     render();
   });
 });
-document.getElementById('sortSelect').addEventListener('change', function(e) { activeSort = e.target.value; render(); });
-document.getElementById('btnGrid').addEventListener('click', function() { isListView = false; document.getElementById('btnGrid').classList.add('active'); document.getElementById('btnList').classList.remove('active'); render(); });
-document.getElementById('btnList').addEventListener('click', function() { isListView = true; document.getElementById('btnList').classList.add('active'); document.getElementById('btnGrid').classList.remove('active'); render(); });
+
+// Custom Select (Mobile)
+const customFilter = document.getElementById('customFilter');
+const customFilterTrigger = document.getElementById('customFilterTrigger');
+const customOptions = customFilter.querySelectorAll('.custom-option');
+
+if (customFilterTrigger) {
+  customFilterTrigger.addEventListener('click', function() {
+    customFilter.classList.toggle('open');
+  });
+}
+
+customOptions.forEach(function(opt) {
+  opt.addEventListener('click', function() {
+    customOptions.forEach(function(o) { o.classList.remove('selected'); });
+    opt.classList.add('selected');
+    activeFilter = opt.dataset.value;
+    customFilterTrigger.textContent = opt.textContent;
+    customFilter.classList.remove('open');
+    
+    // Sync desktop pills
+    document.querySelectorAll('.pill').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.filter === activeFilter);
+    });
+    
+    render();
+  });
+});
+
+// Close custom select on click outside
+document.addEventListener('click', function(e) {
+  if (customFilter && !customFilter.contains(e.target)) {
+    customFilter.classList.remove('open');
+  }
+});
+
+document.getElementById('sortSelect').addEventListener('change', function(e) { 
+  activeSort = e.target.value; 
+  render(); 
+});
 
 var modalBg = document.getElementById('modalBg');
 function openModal(id) {
   var p = ALL_PRODUCTS.find(function(x) { return x.id === id; });
   if (!p) return;
+  var pdf  = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
+  var shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
+
   var imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
   document.getElementById('modalImg').src              = imgSrc;
   document.getElementById('modalImg').alt              = p.nombre;
-  document.getElementById('modalCat').textContent      = (p.cat_label||'Categoría') + ' · ' + p.sku;
+  document.getElementById('modalCat').textContent      = (p.cat_label||'Categoría') + ' · ' + (p.sku || '');
   document.getElementById('modalName').textContent     = p.nombre;
   document.getElementById('modalDesc').textContent     = p.descripcion;
-  document.getElementById('modalFicha').href           = p.pdfUrl || '#';
-  document.getElementById('modalFicha').style.display  = p.pdfUrl ? 'inline-flex' : 'none';
+
+  var btnShop = document.getElementById('modalConsultar');
+  var btnFicha = document.getElementById('modalFicha');
+
+  if (shop) {
+    btnShop.href = shop;
+    btnShop.innerHTML = 'Ver en tienda ' + arrowSVG;
+    btnShop.style.display = 'inline-flex';
+  } else {
+    btnShop.href = "https://wa.me/5492342464082";
+    btnShop.innerHTML = 'Consultar disponibilidad ' + arrowSVG;
+    btnShop.style.display = 'inline-flex';
+  }
+
+  if (pdf) {
+    btnFicha.href = pdf;
+    btnFicha.innerHTML = 'Ficha Técnica ' + downSVG;
+    btnFicha.style.display = 'inline-flex';
+  } else {
+    btnFicha.style.display = 'none';
+  }
+
   document.getElementById('modalFeats').innerHTML = (p.specs||[]).map(function(f) {
     return '<div class="modal-feat"><div class="modal-feat-ic">' + (f.icono||'◉') + '</div><div><span class="modal-feat-label">' + f.clave + '</span><span class="modal-feat-val">' + f.valor + '</span></div></div>';
   }).join('');
