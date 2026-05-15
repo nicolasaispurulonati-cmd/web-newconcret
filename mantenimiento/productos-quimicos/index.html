@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Productos químicos para mantenimiento de pisos | NewConcret</title>
-<meta name="description" content="Selladores y desengrasantes para el mantenimiento y protección de pisos de hormigón pulido.">
+<title>Químicos para Mantenimiento | NewConcret</title>
+<meta name="description" content="Productos químicos especializados para la limpieza, cuidado y protección de pisos de hormigón.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/estilo.css?v=40">
-<link rel="stylesheet" href="../../assets/css/nav.css?v=1.3">
+<link rel="stylesheet" href="../../../assets/css/estilo.css?v=40">
+<link rel="stylesheet" href="../../../assets/css/nav.css?v=1.3">
 <style>
   /* ── DESIGN TOKENS ── */
   :root {
@@ -45,14 +45,15 @@
     margin-top: 68px !important;
     display: flex;
     align-items: center;
-    padding: 3.5rem 4rem 3rem;
+    padding: 4rem;
+    min-height: 420px;
     overflow: hidden;
     background-size: cover;
     background-position: center;
     background-image: 
       linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
       linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
-      url('../../assets/img/hero/mantenimiento.png');
+      url('../../../assets/img/hero/mantenimiento.png');
   }
   .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
   .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--st); padding-left: 2rem; z-index: 3; }
@@ -70,7 +71,7 @@
       background-image: 
         linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
         linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
-        url('../../assets/img/hero/mantenimiento-mobile.png') !important;
+        url('../../../assets/img/hero/mantenimiento-mobile.png') !important;
     }
     .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
     .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
@@ -89,20 +90,7 @@
   .filter-right { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
   .sort-select { background: var(--cb); border: 1px solid var(--st2); color: var(--as); font-family: var(--fm); font-size: 0.62rem; padding: 0.35rem 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; outline: none; transition: border-color .2s, color .2s; }
   .sort-select:hover { border-color: var(--mi); color: var(--wh); }
-  .view-toggle { display: flex; gap: 0; }
-  .view-btn { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: none; border: 1px solid var(--st2); cursor: pointer; color: var(--mi); transition: color .2s, background .2s, border-color .2s; }
-  .view-btn:first-child { border-right: none; }
-  .view-btn:hover { color: var(--wh); }
-  .view-btn.active { background: var(--r); border-color: var(--r); color: #fff; }
   
-  .list-view .pcard { flex-direction: row; }
-  .list-view .pcard-img-wrap { width: 220px; height: auto; flex-shrink: 0; }
-  .list-view .pcard-body { flex: 1; }
-  .list-view .pcard-features { grid-template-columns: 1fr; display: flex; flex-direction: row; flex-wrap: wrap; }
-  .list-view .pcard-feat { flex: 1; min-width: 160px; border-right: 1px solid var(--st); border-bottom: none; }
-  .list-view .pcard-feat:last-child { border-right: none; }
-  .list-view .pcard-actions { flex-direction: row; }
-
   @media (max-width: 900px) {
     .filter-bar { top: 66px; padding: 0.8rem 1.5rem !important; gap: 0.6rem !important; flex-direction: row !important; align-items: center !important; }
     .filter-label, .view-toggle { display: none !important; }
@@ -118,8 +106,8 @@
   }
 
   /* ── PRODUCTS SECTION ── */
-  .products-section { padding: 1rem 0 6rem; background: var(--bk); }
-  .prod-count-bar { padding: 0 4rem 0 !important; margin-bottom: 0.5rem !important; display: flex; align-items: center; }
+  .products-section { padding: 1rem 0 6rem; background: var(--bk); width: 100%; }
+  .prod-count-bar { padding: 0 1.5rem 0 !important; margin-bottom: 0.5rem !important; display: flex; align-items: center; }
   .prod-count-tx { font-family: var(--fm); font-size: 0.65rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.1em; }
   .prod-count-tx b { color: var(--wh); font-weight: 600; margin: 0 0.3rem; }
   
@@ -129,32 +117,127 @@
     .prod-count-tx { text-align: left !important; width: 100%; }
   }
 
-  .grid-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--st); border-top: 1px solid var(--st); border-bottom: 1px solid var(--st); }
+  .grid-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--nc-steel);
+  }
   @media (max-width: 1200px) { .grid-wrap { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 900px) { .grid-wrap { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .grid-wrap { grid-template-columns: 1fr !important; gap: 1px; } }
 
   /* ── PRODUCT CARD ── */
-  .pcard { background: var(--dk); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: background .3s; }
-  .pcard:hover { background: var(--cb); }
-  .pcard-img-wrap { position: relative; aspect-ratio: 1/1; background: var(--cb); padding: 2rem 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .pcard-img { width: 100%; height: 100%; object-fit: contain; transition: transform .6s var(--ex); }
-  .pcard:hover .pcard-img { transform: scale(1.08); }
-  .pcard-badge { position: absolute; top: 1rem; left: 1rem; z-index: 1; font-family: var(--fm); font-size: .58rem; text-transform: uppercase; color: var(--r); background: rgba(10,10,10,.8); padding: .3rem .7rem; border: 1px solid rgba(193,18,31,.3); }
-  .pcard-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
-  .pcard-cat { font-family: var(--fm); font-size: .6rem; color: var(--r); text-transform: uppercase; margin-bottom: .6rem; }
+  .pcard {
+    background: var(--nc-dark);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s var(--ex);
+    cursor: pointer;
+  }
+  .pcard:hover { background: var(--nc-carbon); }
+
+  .pcard-img-wrap {
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    background: var(--nc-black);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .pcard-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.8s var(--ex);
+    z-index: 2;
+  }
+  .pcard:hover .pcard-img { transform: scale(1.08) translateY(-5px); }
+
+  .pcard-img-ov {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(193, 18, 31, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s var(--ex);
+    z-index: 1;
+  }
+  .pcard:hover .pcard-img-ov { opacity: 1; }
+
+  .pcard-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.4rem 0.8rem;
+    font-family: var(--fm);
+    font-size: 0.6rem;
+    color: var(--r);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid rgba(193, 18, 31, 0.3);
+    z-index: 3;
+  }
+
+  .pcard-sku {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    font-family: var(--fm);
+    font-size: 0.65rem;
+    color: var(--mi);
+    opacity: 0.5;
+    z-index: 3;
+    text-transform: uppercase;
+  }
+
+  .pcard-body {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--nc-steel);
+  }
+  .pcard-cat { font-family: var(--fm); font-size: .6rem; color: var(--r); text-transform: uppercase; margin-bottom: .6rem; letter-spacing: 0.15em; }
   .pcard-name { font-family: var(--fd); font-weight: 800; font-size: 1.5rem; color: var(--wh); text-transform: uppercase; line-height: 1.1; margin-bottom: .8rem; }
-  .pcard-desc { font-size: .85rem; color: var(--as); line-height: 1.6; margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-align: left; }
-  .pcard-features { display: flex; flex-direction: column; border: 1px solid var(--st); margin-bottom: 1.5rem; }
-  .pcard-feat { display: flex; justify-content: space-between; align-items: center; padding: .7rem 1rem; border-bottom: 1px solid var(--st); transition: background .2s; }
+  .pcard-desc { font-size: .88rem; color: var(--as); line-height: 1.6; margin-bottom: 2rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-align: left; }
+  
+  .pcard-features { display: flex; flex-direction: column; border: 1px solid var(--nc-steel); margin-bottom: 1.5rem; }
+  .pcard-feat { display: flex; justify-content: space-between; align-items: center; padding: .7rem 1rem; border-bottom: 1px solid var(--nc-steel); transition: background .2s; }
+  .pcard-feat:last-child { border-bottom: none; }
   .pcard-feat:hover { background: rgba(255,255,255,0.03); }
   .pcard-feat-label { font-family: var(--fm); font-size: .58rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.05em; }
   .pcard-feat-val { font-family: var(--fd); font-weight: 600; font-size: .9rem; color: var(--lt); }
   
-  .pcard-actions { display: flex; gap: .5rem; margin-top: auto; }
-  .btn-ver { flex: 1.5; background: var(--r); color: #fff; font-family: var(--fd); font-weight: 700; text-transform: uppercase; font-size: .75rem; height: 48px; border: none; display: flex; align-items: center; justify-content: center; gap: .5rem; clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%); transition: background .3s; }
-  .btn-ver:hover { background: var(--rh); }
-  .btn-ft { flex: 1; border: 1px solid var(--st); color: var(--as); font-family: var(--fd); font-weight: 600; text-transform: uppercase; font-size: .7rem; height: 48px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all .3s; }
-  .btn-ft:hover { background: var(--st); color: var(--wh); }
+  .pcard-actions { margin-top: auto; display: flex; gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
+  .btn-ver, .btn-ft {
+    flex: 1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--fd);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s var(--ex);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
+  .btn-ver { background: var(--r); color: #fff; }
+  .btn-ver:hover { background: var(--rh); gap: 0.8rem; }
+  .btn-ft { background: var(--dk); color: var(--as); }
+  .btn-ft:hover { background: var(--cb); color: var(--wh); }
+
 
   /* ── MODAL ── */
   .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 10000; display: flex; align-items: flex-start; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: all .5s var(--ex); overflow-y: auto; }
@@ -204,24 +287,18 @@
 <div class="page-header">
   <div class="ph-inner">
     <div>
-      <div class="ph-breadcrumb">
-        <a href="../../">Inicio</a>
-        <span>›</span>
-        <a href="../">Mantenimiento</a>
-        <span>›</span>
-        <em>Productos químicos</em>
-      </div>
+
       <div class="ph-eyebrow">
         <span class="ph-eyebrow-line"></span>
-        <span class="ph-eyebrow-tx">Mantenimiento / Productos químicos</span>
+        <span class="ph-eyebrow-tx">Construcción / Materiales</span>
       </div>
-      <h1 class="ph-title">Químicos<br>para mantener</h1>
-      <p class="ph-desc">Selladores y desengrasantes para la protección y cuidado de pisos de hormigón pulido.</p>
+      <h1 class="ph-title">QUÍMICOS DE<br>MANTENIMIENTO</h1>
+      <p class="ph-desc">Productos para reforzar, proteger y mejorar el desempeño del hormigón en pisos industriales.</p>
     </div>
   </div>
   <div class="ph-count">
     <b id="total-count">0</b>
-    productos disponibles
+    materiales disponibles
   </div>
 </div>
 
@@ -233,10 +310,11 @@
   
   <!-- Desktop Pills -->
   <div class="filter-pills hide-mobile">
-    <button class="pill active" data-filter="all">Todos</button>
-    <button class="pill" data-filter="selladores">Selladores</button>
-    <button class="pill" data-filter="desengrasantes">Desengrasantes</button>
-  </div>
+    <button class="pill" onclick="window.location.href='../'">Todos</button>
+    <button class="pill " onclick="window.location.href='../equipos/'">Equipos</button>
+    <button class="pill active" onclick="window.location.href='../productos-quimicos/'">Químicos</button>
+    <button class="pill " onclick="window.location.href='../accesorios/'">Accesorios</button>
+</div>
 
   <div class="filter-right">
     <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
@@ -245,22 +323,13 @@
       <option value="az">A–Z</option>
       <option value="za">Z–A</option>
     </select>
-
-    <div class="view-toggle hide-mobile">
-      <button class="view-btn active" id="btnGrid" title="Vista grilla">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="1" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="8" width="5" height="5" stroke="currentColor" stroke-width="1.2"/></svg>
-      </button>
-      <button class="view-btn" id="btnList" title="Vista lista">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M1 7h12M1 11h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </button>
-    </div>
   </div>
 </div>
 
 <!-- ══ PRODUCTS ══ -->
 <section class="products-section">
   <div class="prod-count-bar">
-    <span class="prod-count-tx">Mostrando <b id="showing-count">0</b> productos químicos</span>
+    <span class="prod-count-tx">Mostrando <b id="showing-count">7</b> productos de mantenimiento</span>
   </div>
 
   <div class="grid-wrap" id="productGrid">
@@ -269,10 +338,10 @@
 
   <!-- ══ FINAL CTA ══ -->
   <section id="cta-section" class="sec" style="padding: 5rem 0 3rem;">
-    <div class="cta-box in" style="border-left: none; border-right: none; background-image: linear-gradient(rgba(10, 10, 10, .8), rgba(10, 10, 10, .8)), url('../../assets/img/hero/mantenimiento.png');">
+    <div class="cta-box in" style="border-left: none; border-right: none; background-image: linear-gradient(rgba(10, 10, 10, .8), rgba(10, 10, 10, .8)), url('../../../assets/img/hero/construccion-materiales.jpg');">
         <div>
-            <h2 class="cta-h2">¿Qué químico necesitás<br>para <span>tu mantenimiento?</span></h2>
-            <p class="cta-sub">Asesoramiento técnico · Productos para protección de pisos · Consultá disponibilidad</p>
+            <h2 class="cta-h2">¿Qué necesitás<br>para tu próximo<br><span>trabajo?</span></h2>
+            <p class="cta-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
         </div>
         <div class="cta-acts">
             <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener" class="btn-p">
@@ -303,12 +372,12 @@
         <div class="pcard-features" id="modalFeats"></div>
         <div class="modal-actions">
           <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">
-            Consultar disponibilidad
+            Ver en tienda
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
           </a>
           <a href="#" class="btn-ft" id="modalFicha" download>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Ficha técnica
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>
@@ -318,13 +387,13 @@
 
 <div id="footer-placeholder"></div>
 
-<script src="../../assets/js/layout.js"></script>
-<script src="../../assets/js/main.js"></script>
-<script src="../../assets/js/nav.js"></script>
+<script src="../../../assets/js/layout.js"></script>
+<script src="../../../assets/js/main.js"></script>
+<script src="../../../assets/js/nav.js"></script>
 
 
 <!-- CARGA DE BASE DE DATOS REAL -->
-<script src="../../assets/data/productos.js"></script>
+<script src="../../../assets/data/productos.js"></script>
 
 <!-- ══════════════════════════════════════
      PRODUCT DATA + RENDER LOGIC
@@ -335,13 +404,12 @@
 ────────────────────────────────────── */
 const PAGE_SECCION      = 'mantenimiento';
 const PAGE_CATEGORIA    = 'productos-quimicos';
-const PAGE_SUBCATEGORIA = null;
-const ROOT              = '../../';
+const PAGE_SUBCATEGORIA = 'all';
+const ROOT              = '../../../';
 
 const ALL_PRODUCTS = typeof productos !== 'undefined' ? productos : [];
 let activeFilter = 'all';
 let activeSort   = 'default';
-let isListView   = false;
 
 /* ──────────────────────────────────────
    3. RENDER
@@ -357,24 +425,10 @@ function iconSVG(type) {
 function renderCard(p, delay) {
   const badge = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
   
-  // Resolve category label from routes if missing
-  let rawCat = p.cat_label;
-  if (!rawCat && p.rutas) {
-      // Prioritize route with subcategory for this category
-      const route = p.rutas.find(r => 
-        (r.sección === 'mantenimiento' || r.seccion === 'mantenimiento') && 
-        (r.categoría === 'productos-quimicos' || r.categoria === 'productos-quimicos') && 
-        (r.subcategoría || r.subcategoria)
-      );
-      if (route) {
-          rawCat = route.subcategoría || route.subcategoria;
-      } else {
-          // Fallback to first construction route
-          const fallback = p.rutas.find(r => (r.sección === 'mantenimiento' || r.seccion === 'mantenimiento'));
-          if (fallback) rawCat = fallback.subcategoría || fallback.subcategoria || fallback.categoría || fallback.categoria;
-      }
-  }
-  let catLabel = rawCat || 'Producto';
+  
+  // Resolve category label
+  let catLabel = p.cat_label || 'productos-quimicos';
+  if (catLabel === 'productos-quimicos') catLabel = 'Químicos';
   catLabel = catLabel.charAt(0).toUpperCase() + catLabel.slice(1).replace(/-/g, ' ');
 
   const feats = (p.specs || []).slice(0, 3).map(f => `
@@ -383,9 +437,9 @@ function renderCard(p, delay) {
       <span class="pcard-feat-val">${f.valor}</span>
     </div>`).join('');
 
-  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../' + p.imagen.replace(/^\//, '');
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../../' + p.imagen.replace(/^\//, '');
 
-  const shop = p.tiendaUrl;
+  const shop = p.storeUrl || p.tiendaUrl;
   const pdf  = p.pdfUrl;
 
   return `
@@ -404,16 +458,16 @@ function renderCard(p, delay) {
       <div class="pcard-features">${feats}</div>
       <div class="pcard-actions">
         <button class="btn-ver">
-          Ver detalles ${iconSVG('arrow')}
+          Ver detalles <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
         </button>
         ${shop 
-          ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()" style="flex:1;">Ver en tienda</a>`
+          ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
           : (pdf 
-              ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()" style="flex:1;">Ficha técnica</a>`
-              : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()" style="flex:1;">Consultar</a>`
+              ? `<a href="${ROOT + pdf.replace(/^\//, '')}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`
+              : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
             )
         }
-      </div>
+      </div></div>
     </div>
   </div>`;
 }
@@ -451,7 +505,6 @@ function render() {
 
   document.getElementById('showing-count').textContent = list.length;
   document.getElementById('total-count').textContent   = list.length;
-  grid.classList.toggle('list-view', isListView);
 
   if (list.length === 0) {
     grid.innerHTML = `<div class="empty-state"><h3>Sin resultados</h3><p>No hay productos en esta categoría.</p></div>`;
@@ -498,40 +551,6 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
 });
 
-// Sync Pills with Custom Select
-function syncPills(filterVal) {
-  document.querySelectorAll('.pill').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.filter === filterVal);
-  });
-  const mobOpt = document.querySelector(`#customFilter .custom-option[data-value="${filterVal}"]`);
-  if (mobOpt) {
-    document.getElementById('customFilterTrigger').textContent = mobOpt.textContent;
-    document.querySelectorAll('#customFilter .custom-option').forEach(o => o.classList.remove('selected'));
-    mobOpt.classList.add('selected');
-  }
-}
-
-document.querySelectorAll('.pill').forEach(btn => {
-  btn.addEventListener('click', () => {
-    activeFilter = btn.dataset.filter;
-    syncPills(activeFilter);
-    render();
-  });
-});
-
-initCustomSelect('customFilter', (val) => {
-  activeFilter = val;
-  syncPills(val);
-  render();
-});
-
-initCustomSelect('customSort', (val) => {
-  activeSort = val;
-  const desktopSort = document.getElementById('sortSelect');
-  if (desktopSort) desktopSort.value = val;
-  render();
-});
-
 document.getElementById('sortSelect').addEventListener('change', e => {
   activeSort = e.target.value;
   const mobOpt = document.querySelector(`#customSort .custom-option[data-value="${activeSort}"]`);
@@ -540,19 +559,6 @@ document.getElementById('sortSelect').addEventListener('change', e => {
     document.querySelectorAll('#customSort .custom-option').forEach(o => o.classList.remove('selected'));
     mobOpt.classList.add('selected');
   }
-  render();
-});
-
-document.getElementById('btnGrid')?.addEventListener('click', () => {
-  isListView = false;
-  document.getElementById('btnGrid').classList.add('active');
-  document.getElementById('btnList').classList.remove('active');
-  render();
-});
-document.getElementById('btnList')?.addEventListener('click', () => {
-  isListView = true;
-  document.getElementById('btnList').classList.add('active');
-  document.getElementById('btnGrid').classList.remove('active');
   render();
 });
 
@@ -566,20 +572,30 @@ function openModal(id) {
   const p = ALL_PRODUCTS.find(x => x.id === id);
   if (!p) return;
 
-  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../' + p.imagen.replace(/^\//, '');
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../../' + p.imagen.replace(/^\//, '');
   
   document.getElementById('modalImg').src    = imgSrc;
   document.getElementById('modalImg').alt    = p.nombre;
   document.getElementById('modalCat').textContent  = (p.cat_label || 'Categoría') + ' · ' + p.sku;
-  document.getElementById('modalName').textContent = p.nombre;
+  const modalName = document.getElementById('modalName');
+  modalName.textContent = p.nombre;
   document.getElementById('modalDesc').textContent = p.descripcion;
   
-  const wp = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}%20(SKU:%20${p.sku})`;
-  document.getElementById('modalConsultar').href = wp;
+  const modalTienda = document.getElementById('modalConsultar');
+  if (p.storeUrl) {
+    modalTienda.href = p.storeUrl;
+    modalTienda.innerHTML = `Ver en tienda <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+    modalTienda.target = "_blank";
+  } else {
+    const wp = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}%20(SKU:%20${p.sku})`;
+    modalTienda.href = wp;
+    modalTienda.innerHTML = `Consultar disponibilidad <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+    modalTienda.target = "_blank";
+  }
 
   const modalFicha = document.getElementById('modalFicha');
   if (p.pdfUrl) {
-    modalFicha.href = p.pdfUrl;
+    modalFicha.href = ROOT + p.pdfUrl.replace(/^\//, '');
     modalFicha.style.display = 'inline-flex';
   } else {
     modalFicha.style.display = 'none';

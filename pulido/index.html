@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pulido y Tratamiento de Pisos — NewConcret</title>
     <meta name="description"
-        content="Sistemas de pulido de hormigón, maquinaria Frida y Chavela, diamantes, resinoides y densificadores. Tecnología NewConcret para pisos brillantes y resistentes.">
+        content="Sistemas de pulido de hormigón, maquinaria planetaria, insumos diamantados y densificadores. Tecnología NewConcret para pisos brillantes y resistentes.">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
     <link rel="stylesheet" href="../assets/css/estilo.css?v=41">
     <link rel="stylesheet" href="../assets/css/nav.css?v=1.3">
@@ -155,7 +155,7 @@
             width: 100% !important;
             height: 100% !important;
             object-fit: contain !important;
-            padding: 1.5rem !important; /* Increased for better zoom safety */
+            padding: 1.5rem !important;
             transition: transform 0.8s var(--expo);
         }
 
@@ -169,7 +169,7 @@
             padding: 2.5rem 3rem !important;
             background: var(--nc-dark);
             justify-content: center;
-            order: 2; /* Información a la derecha */
+            order: 2;
         }
 
 
@@ -322,13 +322,12 @@
             -webkit-backdrop-filter: blur(15px);
             z-index: 10000;
             display: flex;
-            align-items: flex-start; /* Better for scrollable content */
+            align-items: flex-start;
             justify-content: center;
             padding: 2rem;
             opacity: 0;
             visibility: hidden;
             transition: all 0.5s var(--expo);
-            override: hidden;
             overflow-y: auto;
         }
 
@@ -339,7 +338,7 @@
 
         .modal-bg.open .modal {
             transform: translateY(0);
-            margin: auto; /* Keeps it centered if smaller than viewport */
+            margin: auto;
         }
 
         .modal-close {
@@ -415,10 +414,6 @@
         
         .modal-feat:first-child {
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .modal-feat-ic {
-            display: none !important; /* Remove icons as requested for a cleaner look */
         }
 
         .modal-feat-label {
@@ -507,6 +502,10 @@
             #ring {
                 display: none;
             }
+
+            body {
+                cursor: auto !important;
+            }
         }
 
 
@@ -590,7 +589,7 @@
                 justify-content: center !important;
                 height: 48px !important;
                 margin-bottom: 0;
-                font-size: 0.6rem !important; /* Slightly smaller to fit */
+                font-size: 0.6rem !important;
                 padding: 0 0.5rem !important;
             }
 
@@ -776,16 +775,7 @@
             .custom-option:active, .custom-option.selected {
                 background: var(--nc-carbon);
                 color: var(--nc-white);
-                padding-left: 1.2rem;
             }
-            
-            .custom-option.selected {
-                background: var(--nc-carbon);
-                color: var(--nc-white);
-            }
-
-            .filter-right { flex: 1; margin: 0 !important; }
-            .sort-select { display: none !important; }
         }
 
         @keyframes slideDown {
@@ -814,21 +804,6 @@
             color: var(--nc-red);
         }
 
-        .cta-sec {
-            padding: 4rem 0;
-        }
-
-        @media (max-width: 900px) {
-            .cta-sec {
-                padding: 2rem 0;
-            }
-        }
-
-        @keyframes tick {
-            to {
-                transform: translateX(-50%);
-            }
-        }
     </style>
 </head>
 
@@ -839,26 +814,24 @@
 
     <div id="nav-placeholder"></div>
 
-
-
-    <!-- PAGE HERO -->
-    <div class="nc-cat-hero" data-watermark="Pulido">
+    <!-- ══ PAGE HERO (Construcción Style) ══ -->
+    <div class="nc-cat-hero" data-watermark="PULIDO">
         <div class="hero-bg">
-            <img src="../assets/img/hero/pulido.jpg" alt="Pulido de Hormigón NewConcret">
+            <picture>
+                <source srcset="../assets/img/hero/pulido-mobile.jpg" media="(max-width: 900px)">
+                <img src="../assets/img/hero/pulido.jpg" alt="Pulido NewConcret">
+            </picture>
         </div>
         <div class="hero-ov"></div>
         <div class="hero-content">
             <div class="eyebrow">
                 <span class="eyebrow-line"></span>
-                <span class="eyebrow-tx">Soluciones para · Pulido de Hormigón</span>
+                <span class="eyebrow-tx">Sección · Pulido y Tratamiento</span>
             </div>
-            <h1 class="hero-h1">Brillo y resistencia<br><span class="red">extrema.</span></h1>
-            <p class="hero-p">Transformamos superficies industriales con tecnología de pulido avanzada, logrando acabados espejados de máxima durabilidad.</p>
+            <h1 class="hero-h1">Sistemas de<br><span class="red">pulido.</span></h1>
+            <p class="hero-p">Tecnología avanzada para el tratamiento de pisos. Maquinaria, químicos e insumos diamantados de alta performance.</p>
         </div>
     </div>
-
-
-
 
     <!-- FILTER BAR -->
     <div class="filter-bar" style="width: 100%; max-width: 100vw;">
@@ -868,9 +841,9 @@
         <div class="filter-pills hide-mobile">
             <button class="pill active" data-filter="all">Todos</button>
             <button class="pill" data-filter="materiales">Materiales</button>
+            <button class="pill" data-filter="productos-quimicos">Químicos</button>
             <button class="pill" data-filter="equipos">Equipos</button>
             <button class="pill" data-filter="insumos">Insumos</button>
-            <button class="pill" data-filter="productos-quimicos">Químicos</button>
         </div>
 
         <!-- Mobile Custom Select -->
@@ -879,9 +852,9 @@
             <div class="custom-select-options">
                 <div class="custom-option selected" data-value="all">Todas las categorías</div>
                 <div class="custom-option" data-value="materiales">Materiales</div>
+                <div class="custom-option" data-value="productos-quimicos">Químicos</div>
                 <div class="custom-option" data-value="equipos">Equipos</div>
                 <div class="custom-option" data-value="insumos">Insumos</div>
-                <div class="custom-option" data-value="productos-quimicos">Químicos</div>
             </div>
         </div>
 
@@ -905,31 +878,17 @@
         </div>
     </div>
 
-
-
-
-    <!-- PRODUCT GRID -->
-    <section class="sec" style="padding: 3rem 0 4rem !important; background: var(--nc-black); overflow-x: hidden;">
-        <div class="grid-wrap" id="productGrid">
-            <!-- JS RENDER -->
-        </div>
-
-        <!-- empty state -->
-        <div id="emptyState" style="display:none; text-align:center; padding: 5rem 2rem;">
-            <p style="color:var(--nc-mid); font-family:var(--font-m); font-size:0.8rem; letter-spacing:0.1em;">No se
-                encontraron productos en esta categoría.</p>
-        </div>
+    <!-- CATALOG SECTION -->
+    <section class="sec" style="background:var(--nc-black); overflow-x: hidden; padding: 2rem 0 4rem;">
+        <div class="grid-wrap in" id="productGrid"></div>
     </section>
 
-
-
-
-    <!-- MODAL ESTRUCTURA -->
+    <!-- ══ MODAL ══ -->
     <div class="modal-bg" id="modalBg">
         <div class="modal" id="modal">
-            <button class="modal-close" onclick="closeModal()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <button class="modal-close" id="modalClose">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
                 </svg>
             </button>
             <div class="modal-grid">
@@ -938,72 +897,43 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-cat" id="modalCat"></div>
-                    <h2 class="modal-name" id="modalName"></h2>
-                    <p class="modal-desc" id="modalDesc"></p>
-
+                    <div class="modal-name" id="modalName"></div>
+                    <div class="modal-desc" id="modalDesc"></div>
                     <div class="modal-feats-title">Características técnicas</div>
-                    <div class="modal-feats" id="modalFeats">
-                        <!-- JS RENDER -->
-                    </div>
-
+                    <div class="modal-feats" id="modalFeats"></div>
                     <div class="modal-actions">
-                        <a id="modalShop" href="" target="_blank" class="btn-ver">Ver en tienda</a>
-                        <a id="modalFicha" href="" target="_blank" class="btn-ft">Ficha técnica</a>
+                        <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">
+                            Ver en tienda
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3"
+                                    stroke-linecap="round"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn-ft" id="modalFicha" download="">
+                            Ficha técnica
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-    <!-- CTA (Desktop) -->
-    <section class="cta-sec hide-mobile" id="contacto">
-        <div class="cta-box in">
-            <div>
-                <h2 class="cta-h2">¿Qué necesitás<br>para tu próximo<br><span>trabajo?</span></h2>
-                <p class="cta-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
-            </div>
-            <div class="cta-acts">
-                <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener"
-                    class="btn-p">
-                    Consultar por WhatsApp
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                    </svg>
-                </a>
-                <div class="cta-phone">+54 9 2342 46-4082</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA (Mobile Redesign) -->
-    <section class="sec hide-desktop" id="contacto-mob"
-        style="padding:4rem 1.5rem !important; background:var(--nc-black); text-align:center;">
-        <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1 !important; margin-bottom:1rem;">Iniciá
-            tu<br><span>proyecto</span> hoy.</h2>
-        <p class="sec-p" style="margin-bottom:2.5rem;">Asesoramiento técnico inmediato por WhatsApp.</p>
-        <a href="https://wa.me/5492342464082" class="btn-p"
-            style="width:100%; justify-content:center; padding:1.2rem;">Escribinos por WhatsApp</a>
-    </section>
-
-
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/data/productos.js?v=2.1"></script>
-    <script src="../assets/js/main.js?v=1.2"></script>
-    <script src="../assets/js/layout.js?v=2.1"></script>
-    <script src="../assets/js/nav.js?v=1.3"></script>
+    <script src="../assets/data/productos.js?v=5"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav.js"></script>
     <script>
         function fixUrl(u) { if (!u) return ""; if (u.startsWith("http") || u.startsWith("/") || u.startsWith(".")) return u; return "https://" + u; }
 
         /* 1. STATE */
-        let activeSeccion = 'pulido';
+        const activeSeccion = 'pulido';
         let activeFilter = 'all';
         let activeSort = 'default';
-        let isListView = false;
+        const grid = document.getElementById('productGrid');
 
+        /* 2. HELPERS */
         function iconSVG(type) {
             const icons = {
                 down: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -1014,21 +944,28 @@
 
         function renderCard(p, delay) {
             const badge = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
-            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
-            const shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
+            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+            const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
             
-            // Dynamic category label
             let rawCat = p.cat_label || p.categoria;
             if (!rawCat && p.rutas) {
-                const route = p.rutas.find(r => (r.sección === activeSeccion || r.seccion === activeSeccion) && r.categoría);
+                const route = p.rutas.find(r => r.sección === activeSeccion && r.categoría);
                 if (route) rawCat = route.categoría;
             }
-            const catLabel = rawCat ? rawCat.charAt(0).toUpperCase() + rawCat.slice(1) : 'Producto';
+            if (!rawCat) rawCat = 'Producto';
+
+            const catMap = {
+                'materiales': 'Materiales',
+                'productos-quimicos': 'Químicos',
+                'equipos': 'Equipos',
+                'insumos': 'Insumos'
+            };
+            const catLabel = catMap[rawCat.toLowerCase()] || rawCat.charAt(0).toUpperCase() + rawCat.slice(1).replace(/-/g, ' ');
 
             return `
             <div class="pcard in d${delay}" data-id="${p.id}" onclick="openModal('${p.id}')">
                 <div class="pcard-img-wrap">
-                    <img class="pcard-img" src="../${p.imagen}" alt="${p.nombre}" loading="lazy" onerror="this.src='../assets/img/placeholder.png'">
+                    <img class="pcard-img" src="../${p.imagen.replace(/^\//, '')}" alt="${p.nombre}" loading="lazy" onerror="this.src='../assets/img/placeholder.png'">
                     <div class="pcard-img-ov"></div>
                     <div class="pcard-badge">${catLabel}</div>
                     ${badge}
@@ -1039,131 +976,52 @@
                     <div class="pcard-name">${p.nombre}</div>
                     <div class="pcard-desc">${p.descripcion}</div>
                     <div class="pcard-actions">
-                        <button class="btn-ver">Ver detalles ${iconSVG('arrow')}</button>
+                        <button class="btn-ver" onclick="openModal('${p.id}')">Ver detalles ${iconSVG('arrow')}</button>
                         ${shop ? `<a href="${fixUrl(shop)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>` : 
-                          (pdf ? `<a href="${fixUrl(pdf)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica ${iconSVG('down')}</a>` : 
-                          `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`)}
+                        (pdf ? `<a href="${fixUrl(pdf)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">${iconSVG('down')} Ficha Técnica</a>` : 
+                        `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`)}
                     </div>
                 </div>
             </div>`;
         }
 
-        function updateGrid() {
-            const grid = document.getElementById('productGrid');
-            const empty = document.getElementById('emptyState');
+        function render() {
+            if (!grid || typeof getProductos !== 'function') return;
+            let data = getProductos(activeSeccion, activeFilter);
+            const delays = [1, 2, 3, 1, 2, 3, 1, 2, 3];
+
+            if (activeSort === 'az') data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (activeSort === 'za') data.sort((a, b) => b.nombre.localeCompare(a.nombre));
+
+            if (!data.length) {
+                grid.innerHTML = '<div style="grid-column:1/-1; padding:10rem 2rem; text-align:center; color:var(--nc-ash); font-family:var(--font-m); text-transform:uppercase; letter-spacing:.1em; font-size:.8rem;">No hay productos en esta selección.</div>';
+                return;
+            }
+
+            grid.innerHTML = data.map((p, i) => renderCard(p, delays[i % delays.length])).join('');
             
-            // Get products using the centralized engine from main.js
-            let list = getProductos(activeSeccion, activeFilter);
-
-            // Sort
-            if (activeSort === 'az') list.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            if (activeSort === 'za') list.sort((a, b) => b.nombre.localeCompare(a.nombre));
-
-            if (list.length === 0) {
-                grid.innerHTML = '';
-                empty.style.display = 'block';
-            } else {
-                empty.style.display = 'none';
-                grid.innerHTML = list.map((p, i) => renderCard(p, (i % 3) + 1)).join('');
-                
-                // Observe new elements
+            if (window.obs) {
                 document.querySelectorAll('.pcard').forEach(el => window.obs.observe(el));
             }
         }
 
-        // --- MODAL LOGIC ---
-        function openModal(id) {
-            const p = productos.find(x => x.id === id);
-            if (!p) return;
-
-            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith(".pdf") ? p.storeUrl : "");
-            const shop = p.storeUrl && !p.storeUrl.endsWith(".pdf") ? p.storeUrl : "";
-
-            document.getElementById('modalImg').src = p.imagen;
-            document.getElementById('modalImg').alt = p.nombre;
-
-            const modalCat = document.getElementById('modalCat');
-            if (modalCat) {
-                let rawCat = p.cat_label || p.categoria;
-                if (!rawCat && p.rutas) {
-                    const route = p.rutas.find(r => r.sección === activeSeccion && r.categoría);
-                    if (route) rawCat = route.categoría;
-                }
-                const catMap = { 'productos-quimicos': 'Productos Químicos' };
-                const catName = catMap[rawCat] || (rawCat ? rawCat.charAt(0).toUpperCase() + rawCat.slice(1) : "");
-                modalCat.innerHTML = catName ? ("• " + catName.toUpperCase()) : "";
-            }
-
-            document.getElementById('modalName').textContent = p.nombre;
-            document.getElementById('modalDesc').textContent = p.descripcion;
-
-            // Features
-            const featsGrid = document.getElementById('modalFeats');
-            featsGrid.innerHTML = (p.specs || []).map(s => `
-                <div class="modal-feat">
-                    <span class="modal-feat-label">${s.clave}</span>
-                    <span class="modal-feat-val">${s.valor}</span>
-                </div>
-            `).join('');
-
-            // Buttons
-            const btnShop = document.getElementById('modalShop');
-            const btnFicha = document.getElementById('modalFicha');
-
-            if (shop) {
-                btnShop.href = fixUrl(shop);
-                btnShop.innerHTML = `Ver en tienda ${iconSVG('arrow')}`;
-                btnShop.style.display = 'flex';
-            } else {
-                const wp = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}%20(SKU:%20${p.sku})`;
-                btnShop.href = wp;
-                btnShop.innerHTML = `Consultar disponibilidad ${iconSVG('arrow')}`;
-                btnShop.style.display = 'flex';
-            }
-
-            if (pdf) {
-                btnFicha.href = fixUrl(pdf);
-                btnFicha.innerHTML = `Ficha técnica ${iconSVG('down')}`;
-                btnFicha.style.display = 'flex';
-            } else {
-                btnFicha.style.display = 'none';
-            }
-
-            document.getElementById('modalBg').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('modalBg').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // --- FILTER PILLS ---
+        /* 3. FILTERS */
         document.querySelectorAll('.pill').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 activeFilter = btn.dataset.filter;
-                updateGrid();
+                render();
             });
         });
 
-        // --- CUSTOM SELECTS (Filter & Sort) ---
+        // Mobile select
         function initCustomSelect(id, onSelect) {
             const wrap = document.getElementById(id);
             if (!wrap) return;
             const trigger = wrap.querySelector('.custom-select-trigger');
             const options = wrap.querySelectorAll('.custom-option');
-
-            trigger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                // Close other selects
-                document.querySelectorAll('.custom-select-wrap.open').forEach(w => {
-                    if (w !== wrap) w.classList.remove('open');
-                });
-                wrap.classList.toggle('open');
-            });
-
+            trigger.addEventListener('click', (e) => { e.stopPropagation(); wrap.classList.toggle('open'); });
             options.forEach(opt => {
                 opt.addEventListener('click', () => {
                     const val = opt.dataset.value;
@@ -1175,55 +1033,74 @@
                 });
             });
         }
-
         initCustomSelect('customFilter', (val) => {
             activeFilter = val;
-            // Sync desktop pills
-            document.querySelectorAll('.pill').forEach(p => {
-                p.classList.toggle('active', p.dataset.filter === val);
-            });
-            updateGrid();
+            document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.filter === val));
+            render();
         });
-
         initCustomSelect('customSort', (val) => {
             activeSort = val;
-            // Sync desktop select
-            const dSort = document.getElementById('sortSelect');
-            if (dSort) dSort.value = val;
-            updateGrid();
+            document.getElementById('sortSelect').value = val;
+            render();
         });
 
-        // Close all selects on click outside
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
-        });
-
-        // --- SORT (Desktop) ---
         document.getElementById('sortSelect').addEventListener('change', (e) => {
             activeSort = e.target.value;
-            // Sync mobile select
-            const mTrigger = document.querySelector('#customSort .custom-select-trigger');
-            const mOptions = document.querySelectorAll('#customSort .custom-option');
-            if (mTrigger) {
-                mOptions.forEach(opt => {
-                    if (opt.dataset.value === activeSort) {
-                        mTrigger.textContent = opt.textContent;
-                        opt.classList.add('selected');
-                    } else {
-                        opt.classList.remove('selected');
-                    }
-                });
+            render();
+        });
+
+        /* 4. MODAL LOGIC */
+        const modalBg = document.getElementById('modalBg');
+        function openModal(id) {
+            const p = productos.find(x => x.id === id);
+            if (!p) return;
+
+            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+            const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
+
+            document.getElementById('modalImg').src = '../' + p.imagen.replace(/^\//, '');
+            document.getElementById('modalCat').textContent = (p.cat_label || p.categoria || 'Pulido').toUpperCase();
+            document.getElementById('modalName').textContent = p.nombre;
+            document.getElementById('modalDesc').textContent = p.descripcion;
+            document.getElementById('modalFeats').innerHTML = (p.specs || []).map(s => `
+                <div class="modal-feat">
+                    <span class="modal-feat-label">${s.clave}</span>
+                    <span class="modal-feat-val">${s.valor}</span>
+                </div>`).join('');
+
+            const btnShop = document.getElementById('modalConsultar');
+            const btnFicha = document.getElementById('modalFicha');
+
+            if (shop) {
+                btnShop.href = fixUrl(shop);
+                btnShop.innerHTML = `<span>Ver en tienda</span> ${iconSVG('arrow')}`;
+            } else {
+                btnShop.href = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}`;
+                btnShop.innerHTML = `<span>Consultar disponibilidad</span> ${iconSVG('arrow')}`;
             }
-            updateGrid();
+
+            if (pdf) {
+                btnFicha.href = fixUrl(pdf);
+                btnFicha.style.display = 'inline-flex';
+            } else {
+                btnFicha.style.display = 'none';
+            }
+
+            modalBg.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() { modalBg.classList.remove('open'); document.body.style.overflow = ''; }
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        modalBg.addEventListener('click', e => { if (e.target === modalBg) closeModal(); });
+
+        /* 5. CURSOR */
+        const cur = document.getElementById('cur'), ring = document.getElementById('ring');
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+            ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
         });
 
-        // --- INIT ---
-        window.addEventListener('load', () => {
-            // Wait for products to load fromproductos.js
-            setTimeout(updateGrid, 100);
-            document.documentElement.classList.add('js-loaded');
-        });
-
+        window.addEventListener('load', render);
     </script>
 </body>
 

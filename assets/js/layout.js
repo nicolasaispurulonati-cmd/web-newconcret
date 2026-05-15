@@ -559,6 +559,31 @@
         const yearSpan = document.getElementById('ncYear');
         if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     }
+    
+    // 4. Global Toast System
+    window.showNCToast = function(message) {
+        let toast = document.getElementById('nc-global-toast');
+        if (!toast) {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                #nc-global-toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--nc-red, #C1121F); color: #fff; padding: 1.2rem 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; border-left: 4px solid #E5161E; box-shadow: 0 10px 30px rgba(0,0,0,0.8); transform: translateY(100px); opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100000; pointer-events: none; }
+                #nc-global-toast.show { transform: translateY(0); opacity: 1; visibility: visible; }
+            `;
+            document.head.appendChild(style);
+            
+            toast = document.createElement('div');
+            toast.id = 'nc-global-toast';
+            document.body.appendChild(toast);
+        }
+        
+        toast.textContent = message;
+        toast.classList.add('show');
+        
+        if (window.ncToastTimeout) clearTimeout(window.ncToastTimeout);
+        window.ncToastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 4000);
+    };
 
     // Execute immediately or on DOM load
     if (document.readyState === 'loading') {

@@ -155,7 +155,7 @@
             width: 100% !important;
             height: 100% !important;
             object-fit: contain !important;
-            padding: 1.5rem !important; /* Increased for better zoom safety */
+            padding: 1.5rem !important;
             transition: transform 0.8s var(--expo);
         }
 
@@ -169,8 +169,10 @@
             padding: 2.5rem 3rem !important;
             background: var(--nc-dark);
             justify-content: center;
-            order: 2; /* Información a la derecha */
+            order: 2;
         }
+
+
 
         .pcard-badge-new {
             position: absolute;
@@ -320,7 +322,7 @@
             -webkit-backdrop-filter: blur(15px);
             z-index: 10000;
             display: flex;
-            align-items: flex-start; /* Better for scrollable content */
+            align-items: flex-start;
             justify-content: center;
             padding: 2rem;
             opacity: 0;
@@ -336,7 +338,7 @@
 
         .modal-bg.open .modal {
             transform: translateY(0);
-            margin: auto; /* Keeps it centered if smaller than viewport */
+            margin: auto;
         }
 
         .modal-close {
@@ -412,10 +414,6 @@
         
         .modal-feat:first-child {
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .modal-feat-ic {
-            display: none !important; /* Remove icons as requested for a cleaner look */
         }
 
         .modal-feat-label {
@@ -504,6 +502,10 @@
             #ring {
                 display: none;
             }
+
+            body {
+                cursor: auto !important;
+            }
         }
 
 
@@ -587,7 +589,7 @@
                 justify-content: center !important;
                 height: 48px !important;
                 margin-bottom: 0;
-                font-size: 0.6rem !important; /* Slightly smaller to fit */
+                font-size: 0.6rem !important;
                 padding: 0 0.5rem !important;
             }
 
@@ -773,16 +775,7 @@
             .custom-option:active, .custom-option.selected {
                 background: var(--nc-carbon);
                 color: var(--nc-white);
-                padding-left: 1.2rem;
             }
-            
-            .custom-option.selected {
-                background: var(--nc-carbon);
-                color: var(--nc-white);
-            }
-
-            .filter-right { flex: 1; margin: 0 !important; }
-            .sort-select { display: none !important; }
         }
 
         @keyframes slideDown {
@@ -790,55 +783,28 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-  /* ── PAGE HEADER ── */
-  .page-header {
-    position: relative;
-    margin-top: 68px !important;
-    display: flex;
-    align-items: center;
-    padding: 4rem;
-    min-height: 420px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-image: 
-      linear-gradient(to right, rgba(10,10,10,.98) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.3) 100%),
-      linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
-      url('../assets/img/hero/reparacion.jpg');
-  }
-  .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
-  .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--nc-steel); padding-left: 2rem; z-index: 3; }
-  .ph-count b { display: block; font-size: 2.2rem; color: var(--nc-white); margin-bottom: 0.3rem; font-family: var(--font-d); font-weight: 800; }
-  
-  .ph-eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: 1.4rem; }
-  .ph-eyebrow-line { width: 32px; height: 1px; background: var(--nc-red); }
-  .ph-eyebrow-tx { font-family: var(--font-m); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-red); }
-  .ph-title { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--nc-white); text-transform: uppercase; line-height: 0.9; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-  .ph-desc { font-size: 1.1rem; color: var(--nc-ash); max-width: 600px; line-height: 1.5; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .65rem;
+            margin-bottom: 1.4rem;
+        }
 
-  @media (max-width: 900px) {
-    .page-header { 
-      margin-top: 66px !important; 
-      min-height: 65vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 1.5rem !important;
-      background-image: 
-        linear-gradient(to right, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.8) 30%, rgba(10,10,10,0.5) 60%, rgba(10,10,10,0.2) 100%),
-        linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 60%),
-        url('../assets/img/hero/reparacion.jpg') !important;
-    }
-    .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
-    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
-    .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--nc-steel); padding-top: 1.2rem; margin-top: 0; width: auto; }
-    .ph-count b { display: inline; font-size: 1.4rem; }
-  }
+        .eyebrow-line {
+            width: 32px;
+            height: 1px;
+            background: var(--nc-red);
+        }
 
-  .cta-sec { padding: 4rem 0; }
-  @media (max-width: 900px) { .cta-sec { padding: 2rem 0; } }
-</style>
+        .eyebrow-tx {
+            font-family: var(--font-m);
+            font-size: .64rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--nc-red);
+        }
+
+    </style>
 </head>
 
 <body>
@@ -848,26 +814,24 @@
 
     <div id="nav-placeholder"></div>
 
-    <!-- ══ PAGE HEADER ══ -->
-    <div class="page-header">
-        <div class="ph-inner">
-            <div>
-                <div class="ph-eyebrow">
-                    <span class="ph-eyebrow-line"></span>
-                    <span class="ph-eyebrow-tx">Soluciones para · Reparación de Hormigón</span>
-                </div>
-                <h1 class="ph-title">Reparación<br>Estructural</h1>
-                <p class="ph-desc">Materiales técnicos de alta performance para rehabilitar estructuras de hormigón.</p>
-            </div>
+    <!-- ══ PAGE HERO (Construcción Style) ══ -->
+    <div class="nc-cat-hero" data-watermark="REPARACION">
+        <div class="hero-bg">
+            <picture>
+                <source srcset="../assets/img/hero/reparacion-mobile.jpg" media="(max-width: 900px)">
+                <img src="../assets/img/hero/reparacion.jpg" alt="Reparación NewConcret">
+            </picture>
         </div>
-        <div class="ph-count">
-            <b id="total-count">0</b>
-            productos disponibles
+        <div class="hero-ov"></div>
+        <div class="hero-content">
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-tx">Soluciones para · Reparación de Hormigón</span>
+            </div>
+            <h1 class="hero-h1">Reparación<br><span class="red">estructural.</span></h1>
+            <p class="hero-p">Materiales técnicos de alta performance para rehabilitar superficies de hormigón.</p>
         </div>
     </div>
-
-
-
 
     <!-- FILTER BAR -->
     <div class="filter-bar" style="width: 100%; max-width: 100vw;">
@@ -877,7 +841,7 @@
         <div class="filter-pills hide-mobile">
             <button class="pill active" data-filter="all">Todos</button>
             <button class="pill" data-filter="materiales">Materiales</button>
-            <button class="pill" data-filter="productos-quimicos">Productos químicos</button>
+            <button class="pill" data-filter="productos-quimicos">Químicos</button>
             <button class="pill" data-filter="equipos">Equipos</button>
             <button class="pill" data-filter="insumos">Insumos</button>
         </div>
@@ -888,11 +852,12 @@
             <div class="custom-select-options">
                 <div class="custom-option selected" data-value="all">Todas las categorías</div>
                 <div class="custom-option" data-value="materiales">Materiales</div>
-                <div class="custom-option" data-value="productos-quimicos">Productos químicos</div>
+                <div class="custom-option" data-value="productos-quimicos">Químicos</div>
                 <div class="custom-option" data-value="equipos">Equipos</div>
                 <div class="custom-option" data-value="insumos">Insumos</div>
             </div>
         </div>
+
         <div class="filter-right">
             <!-- Desktop Sort -->
             <select class="sort-select hide-mobile" id="sortSelect">
@@ -953,19 +918,19 @@
         </div>
     </div>
 
-
+    <div id="footer-placeholder"></div>
 
     <script src="../assets/data/productos.js?v=5"></script>
     <script src="../assets/js/layout.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav.js"></script>
     <script>
         function fixUrl(u) { if (!u) return ""; if (u.startsWith("http") || u.startsWith("/") || u.startsWith(".")) return u; return "https://" + u; }
 
         /* 1. STATE */
-        let activeSeccion = 'reparacion';
+        const activeSeccion = 'reparacion';
         let activeFilter = 'all';
         let activeSort = 'default';
-        let isListView = false;
         const grid = document.getElementById('productGrid');
 
         /* 2. HELPERS */
@@ -979,10 +944,9 @@
 
         function renderCard(p, delay) {
             const badge = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
-            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
-            const shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
+            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+            const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
             
-            // Dynamic category label
             let rawCat = p.cat_label || p.categoria;
             if (!rawCat && p.rutas) {
                 const route = p.rutas.find(r => r.sección === activeSeccion && r.categoría);
@@ -992,54 +956,42 @@
 
             const catMap = {
                 'materiales': 'Materiales',
-                'productos-quimicos': 'Productos Químicos',
+                'productos-quimicos': 'Químicos',
                 'equipos': 'Equipos',
-                'insumos': 'Insumos',
-                'herramientas': 'Herramientas'
+                'insumos': 'Insumos'
             };
-            const catLabel = catMap[rawCat.toLowerCase()] || rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
+            const catLabel = catMap[rawCat.toLowerCase()] || rawCat.charAt(0).toUpperCase() + rawCat.slice(1).replace(/-/g, ' ');
 
             return `
-  <div class="pcard in d${delay}" data-id="${p.id}" data-cat="${p.categoria}">
-    <div class="pcard-img-wrap">
-      <img class="pcard-img" src="${p.imagen}" alt="${p.nombre}" loading="lazy" onerror="this.src='/assets/img/placeholder.png'">
-      <div class="pcard-img-ov"></div>
-      <div class="pcard-badge">${catLabel}</div>
-      ${badge}
-      <div class="pcard-sku">${p.sku}</div>
-    </div>
-    <div class="pcard-body">
-      <div class="pcard-cat">${catLabel}</div>
-      <div class="pcard-name">${p.nombre}</div>
-      <div class="pcard-desc">${p.descripcion}</div>
-      <div class="pcard-actions">
-        <button class="btn-ver" onclick="openModal('${p.id}')">
-          Ver detalles ${iconSVG('arrow')}
-        </button>
-        ${shop
-                    ? `<a href="${fixUrl(shop)}" target="_blank" rel="noopener" class="btn-ft" style="flex:1;">Ver en tienda</a>`
-                    : (pdf
-                        ? `<a href="${fixUrl(pdf)}" target="_blank" rel="noopener" class="btn-ft" style="flex:1;">Ficha técnica</a>`
-                        : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" style="flex:1;">Consultar</a>`
-                    )
-                }
-      </div>
-    </div>
-  </div>`;
+            <div class="pcard in d${delay}" data-id="${p.id}" onclick="openModal('${p.id}')">
+                <div class="pcard-img-wrap">
+                    <img class="pcard-img" src="../${p.imagen.replace(/^\//, '')}" alt="${p.nombre}" loading="lazy" onerror="this.src='../assets/img/placeholder.png'">
+                    <div class="pcard-img-ov"></div>
+                    <div class="pcard-badge">${catLabel}</div>
+                    ${badge}
+                    <div class="pcard-sku">${p.sku || ''}</div>
+                </div>
+                <div class="pcard-body">
+                    <div class="pcard-cat">${catLabel}</div>
+                    <div class="pcard-name">${p.nombre}</div>
+                    <div class="pcard-desc">${p.descripcion}</div>
+                    <div class="pcard-actions">
+                        <button class="btn-ver" onclick="openModal('${p.id}')">Ver detalles ${iconSVG('arrow')}</button>
+                        ${shop ? `<a href="${fixUrl(shop)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>` : 
+                        (pdf ? `<a href="${fixUrl(pdf)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">${iconSVG('down')} Ficha Técnica</a>` : 
+                        `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`)}
+                    </div>
+                </div>
+            </div>`;
         }
 
         function render() {
             if (!grid || typeof getProductos !== 'function') return;
             let data = getProductos(activeSeccion, activeFilter);
-            document.getElementById('total-count').textContent = data.length;
             const delays = [1, 2, 3, 1, 2, 3, 1, 2, 3];
 
-            // Handle Sorting
-            if (activeSort === 'az') {
-                data.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            } else if (activeSort === 'za') {
-                data.sort((a, b) => b.nombre.localeCompare(a.nombre));
-            }
+            if (activeSort === 'az') data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (activeSort === 'za') data.sort((a, b) => b.nombre.localeCompare(a.nombre));
 
             if (!data.length) {
                 grid.innerHTML = '<div style="grid-column:1/-1; padding:10rem 2rem; text-align:center; color:var(--nc-ash); font-family:var(--font-m); text-transform:uppercase; letter-spacing:.1em; font-size:.8rem;">No hay productos en esta selección.</div>';
@@ -1049,196 +1001,106 @@
             grid.innerHTML = data.map((p, i) => renderCard(p, delays[i % delays.length])).join('');
             
             if (window.obs) {
-                document.querySelectorAll('.reveal').forEach(el => window.obs.observe(el));
+                document.querySelectorAll('.pcard').forEach(el => window.obs.observe(el));
             }
         }
 
+        /* 3. FILTERS */
+        document.querySelectorAll('.pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.dataset.filter;
+                render();
+            });
+        });
+
+        // Mobile select
+        function initCustomSelect(id, onSelect) {
+            const wrap = document.getElementById(id);
+            if (!wrap) return;
+            const trigger = wrap.querySelector('.custom-select-trigger');
+            const options = wrap.querySelectorAll('.custom-option');
+            trigger.addEventListener('click', (e) => { e.stopPropagation(); wrap.classList.toggle('open'); });
+            options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    const val = opt.dataset.value;
+                    trigger.textContent = opt.textContent;
+                    options.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+                    wrap.classList.remove('open');
+                    onSelect(val);
+                });
+            });
+        }
+        initCustomSelect('customFilter', (val) => {
+            activeFilter = val;
+            document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.filter === val));
+            render();
+        });
+        initCustomSelect('customSort', (val) => {
+            activeSort = val;
+            document.getElementById('sortSelect').value = val;
+            render();
+        });
+
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            activeSort = e.target.value;
+            render();
+        });
+
         /* 4. MODAL LOGIC */
+        const modalBg = document.getElementById('modalBg');
         function openModal(id) {
             const p = productos.find(x => x.id === id);
             if (!p) return;
+            
+            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+            const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
 
-            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith(".pdf") ? p.storeUrl : "");
-            const shop = p.storeUrl && !p.storeUrl.endsWith(".pdf") ? p.storeUrl : "";
-
-            document.getElementById('modalImg').src = p.imagen;
-            document.getElementById('modalImg').alt = p.nombre;
-
-            const modalCat = document.getElementById('modalCat');
-            if (modalCat) {
-                const catName = p.categoria || p.cat_label || "";
-                modalCat.innerHTML = catName ? ("· " + catName.toUpperCase()) : "";
-            }
-
+            document.getElementById('modalImg').src = '../' + p.imagen.replace(/^\//, '');
+            document.getElementById('modalCat').textContent = (p.cat_label || p.categoria || 'Reparación').toUpperCase();
             document.getElementById('modalName').textContent = p.nombre;
             document.getElementById('modalDesc').textContent = p.descripcion;
+            document.getElementById('modalFeats').innerHTML = (p.specs || []).map(s => `
+                <div class="modal-feat">
+                    <span class="modal-feat-label">${s.clave}</span>
+                    <span class="modal-feat-val">${s.valor}</span>
+                </div>`).join('');
 
-            // Ficha button
+            const btnShop = document.getElementById('modalConsultar');
             const btnFicha = document.getElementById('modalFicha');
-            if (btnFicha) {
-                btnFicha.innerHTML = 'Ficha técnica';
-                if (pdf) {
-                    btnFicha.href = fixUrl(pdf);
-                    btnFicha.target = '_blank';
-                    btnFicha.style.display = 'inline-flex';
-                    btnFicha.style.opacity = '1';
-                    btnFicha.style.cursor = 'pointer';
-                    btnFicha.onclick = null;
-                } else {
-                    btnFicha.href = '#';
-                    btnFicha.style.opacity = '0.5';
-                    btnFicha.style.cursor = 'not-allowed';
-                    btnFicha.onclick = (e) => { e.preventDefault(); alert('Este producto no cuenta con documentación'); };
-                }
+
+            if (shop) {
+                btnShop.href = fixUrl(shop);
+                btnShop.innerHTML = `<span>Ver en tienda</span> ${iconSVG('arrow')}`;
+            } else {
+                btnShop.href = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}`;
+                btnShop.innerHTML = `<span>Consultar disponibilidad</span> ${iconSVG('arrow')}`;
             }
 
-            // Consultar/Tienda button
-            const btnC = document.getElementById('modalConsultar');
-            if (btnC) {
-                btnC.href = shop ? fixUrl(shop) : 'https://wa.link/ayeajp';
-                btnC.innerHTML = `<span>${shop ? 'Ver en tienda' : 'Consultar disponibilidad'}</span> ${iconSVG('arrow')}`;
+            if (pdf) {
+                btnFicha.href = fixUrl(pdf);
+                btnFicha.style.display = 'inline-flex';
+            } else {
+                btnFicha.style.display = 'none';
             }
 
-            const featsHTML = (p.specs || []).map(f => {
-                return `
-                    <div class="modal-feat">
-                        <span class="modal-feat-label">${f.clave}</span>
-                        <span class="modal-feat-val">${f.valor}</span>
-                    </div>
-                `;
-            }).join('');
-            document.getElementById('modalFeats').innerHTML = featsHTML;
-
-            document.getElementById('modalBg').classList.add('open');
+            modalBg.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
+        function closeModal() { modalBg.classList.remove('open'); document.body.style.overflow = ''; }
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        modalBg.addEventListener('click', e => { if (e.target === modalBg) closeModal(); });
 
-        function closeModal() {
-            document.getElementById('modalBg').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        /* 5. EVENTS */
-        document.addEventListener('DOMContentLoaded', () => {
-            render();
-
-            // Filter Pills logic
-            document.querySelectorAll('.pill').forEach(pill => {
-                pill.addEventListener('click', () => {
-                    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-                    pill.classList.add('active');
-                    activeFilter = pill.dataset.filter;
-                    render();
-                });
-            });
-
-            // --- Custom Select System (Mobile) ---
-            function initCustomSelect(containerId, triggerId, onSelect) {
-                const container = document.getElementById(containerId);
-                const trigger = document.getElementById(triggerId);
-                if (!trigger || !container) return;
-                
-                const options = container.querySelectorAll('.custom-option');
-                
-                trigger.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    document.querySelectorAll('.custom-select-wrap').forEach(w => {
-                        if (w.id !== containerId) w.classList.remove('open');
-                    });
-                    container.classList.toggle('open');
-                });
-                
-                options.forEach(opt => {
-                    opt.addEventListener('click', () => {
-                        const val = opt.dataset.value;
-                        const text = opt.textContent;
-                        
-                        trigger.textContent = containerId === 'customSort' ? `Ordenar: ${text}` : text;
-                        
-                        options.forEach(o => o.classList.remove('selected'));
-                        opt.classList.add('selected');
-                        
-                        container.classList.remove('open');
-                        onSelect(val);
-                    });
-                });
-            }
-
-            initCustomSelect('customFilter', 'customFilterTrigger', (val) => {
-                activeFilter = val;
-                document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.filter === val));
-                render();
-            });
-
-            initCustomSelect('customSort', 'customSortTrigger', (val) => {
-                activeSort = val;
-                const desktopSort = document.getElementById('sortSelect');
-                if (desktopSort) desktopSort.value = val;
-                render();
-            });
-
-            document.addEventListener('click', () => {
-                document.querySelectorAll('.custom-select-wrap').forEach(w => w.classList.remove('open'));
-            });
-
-            // Sorting logic
-            const sortSelect = document.getElementById('sortSelect');
-            if (sortSelect) {
-                sortSelect.addEventListener('change', (e) => {
-                    activeSort = e.target.value;
-                    render();
-                });
-            }
-
-            document.getElementById('modalClose').addEventListener('click', closeModal);
-            document.getElementById('modalBg').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+        /* 5. CURSOR */
+        const cur = document.getElementById('cur'), ring = document.getElementById('ring');
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+            ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
         });
-    </script>
 
-
-
-
-
-    <!-- CTA (Desktop) -->
-    <section class="cta-sec hide-mobile" id="contacto">
-        <div class="cta-box in">
-            <div>
-                <h2 class="cta-h2">¿Qué necesitás<br>para tu próximo<br><span>trabajo?</span></h2>
-                <p class="cta-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
-            </div>
-            <div class="cta-acts">
-                <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener"
-                    class="btn-p">
-                    Consultar por WhatsApp
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                    </svg>
-                </a>
-                <div class="cta-phone">+54 9 2342 46-4082</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA (Mobile Redesign) -->
-    <section class="sec hide-desktop" id="contacto-mob"
-        style="padding:4rem 1.5rem !important; background:var(--nc-black); text-align:center;">
-        <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1 !important; margin-bottom:1rem;">Iniciá
-            tu<br><span>proyecto</span> hoy.</h2>
-        <p class="sec-p" style="margin-bottom:2.5rem;">Asesoramiento técnico inmediato por WhatsApp.</p>
-        <a href="https://wa.me/5492342464082" class="btn-p"
-            style="width:100%; justify-content:center; padding:1.2rem;">Escribinos por WhatsApp</a>
-    </section>
-
-
-    <div id="footer-placeholder"></div>
-
-    <script src="../assets/data/productos.js?v=2.1"></script>
-    <script src="../assets/js/main.js?v=1.2"></script>
-    <script src="../assets/js/layout.js?v=2.1"></script>
-    <script src="../assets/js/nav.js?v=1.3"></script>
-    <script>
-      document.documentElement.classList.add('js-loaded');
+        window.addEventListener('load', render);
     </script>
 </body>
 

@@ -3,108 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Aglutinantes para relleno de microporos durante el pulido de pisos de hormigón.">
 <title>Aglutinantes — Químicos Pulido — NewConcret</title>
+<meta name="description" content="Aglutinantes líquidos para el relleno eficiente de microporos, generando una superficie lisa y densa en el pulido de hormigón.">
+<link rel="icon" type="image/x-icon" href="../../../logos/Favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" type="image/x-icon" href="../../../logos/Favicon.ico">
-<link rel="stylesheet" href="../../../assets/css/estilo.css?v=40">
+<link rel="stylesheet" href="../../../assets/css/estilo.css?v=42">
 <link rel="stylesheet" href="../../../assets/css/nav.css?v=1.3">
 <style>
+  :root {
+    --r:  var(--nc-red, #C1121F);
+    --rh: var(--nc-red-hot, #E5161E);
+    --bk: var(--nc-black, #0A0A0A);
+    --dk: var(--nc-dark, #111111);
+    --cb: var(--nc-carbon, #161616);
+    --st: var(--nc-steel, #272727);
+    --mi: var(--nc-mid, #555);
+    --as: var(--nc-ash, #888);
+    --st2: #303030;
+    --lt: var(--nc-light, #CACAC8);
+    --wh: var(--nc-white, #F4F4F2);
+    --fm: 'JetBrains Mono', monospace;
+    --fd: 'Barlow Condensed', sans-serif;
+    --ex: cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-  :root{--r:#C1121F;--bk:#0A0A0A;--dk:#111111;--cb:#161616;--st:#272727;--mi:#555;--as:#888;--lt:#CACAC8;--wh:#F4F4F2;--fm:'JetBrains Mono',monospace;--fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--ex:cubic-bezier(0.16,1,0.3,1);}
-  .nav-home{display:flex!important;}
-  @media(min-width:1024px){.grid-wrap{grid-template-columns:repeat(3,1fr)!important;gap:1.5px!important;}}
-  .products-section{padding:2.5rem;background:var(--bk);}
-  .grid-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5px;background:var(--st);}
-  .grid-wrap.list-view{grid-template-columns:1fr!important;}
-  .pcard{background:var(--dk);display:flex;flex-direction:column;position:relative;overflow:hidden;cursor:none;transition:background .25s;}
-  .pcard:hover{background:var(--cb);}
-  .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ex);z-index:2;}
-  .pcard:hover::before{transform:scaleX(1);}
-  .pcard-img-wrap{position:relative;overflow:hidden;aspect-ratio:1/1;flex-shrink:0;background:var(--cb);padding:1.5rem;display:flex;align-items:center;justify-content:center;}
-  .pcard-img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .6s var(--ex);}
-  .pcard:hover .pcard-img{transform:scale(1.08);}
-  .pcard-img-ov{display:none;}
-  .pcard-badge{position:absolute;top:1rem;left:1rem;z-index:1;font-family:var(--fm);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--r);background:rgba(10,10,10,.85);padding:.25rem .65rem;border:1px solid rgba(193,18,31,.3);}
-  .pcard-badge-new{position:absolute;top:1rem;right:1rem;z-index:1;font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--r);padding:.22rem .55rem;}
-  .pcard-sku{position:absolute;bottom:.75rem;right:1rem;z-index:1;font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;color:rgba(255,255,255,.25);}
-  .pcard-body{padding:1.6rem 1.75rem;flex:1;display:flex;flex-direction:column;}
-  .pcard-cat{font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--r);margin-bottom:.55rem;}
-  .pcard-name{font-family:var(--fd);font-weight:800;font-size:1.35rem;text-transform:uppercase;color:var(--wh);letter-spacing:.01em;line-height:1.05;margin-bottom:.6rem;}
-  .pcard-desc{font-size:.82rem;color:var(--as);line-height:1.6;margin-bottom:1.5rem;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-  .pcard-features{display:flex;flex-direction:column;margin-bottom:1.5rem;border:1px solid var(--st);}
-  .pcard-feat{display:flex;align-items:flex-start;gap:.8rem;padding:.65rem 1rem;border-bottom:1px solid var(--st);transition:background .2s;}
-  .pcard-feat:last-child{border-bottom:none;}
-  .pcard-feat-ic{width:22px;height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--st);color:var(--r);font-size:10px;}
-  .pcard-feat-tx{flex:1;}
-  .pcard-feat-label{font-family:var(--fm);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mi);display:block;margin-bottom:.1rem;}
-  .pcard-feat-val{font-family:var(--fd);font-weight:600;font-size:.9rem;color:var(--lt);}
-  .pcard-actions { margin-top: auto; display: flex; gap: 1px; background: var(--st); border: 1px solid var(--st); }
-  .btn-ver, .btn-ft {
-    flex: 1;
-    height: 50px;
+  body { background: var(--bk); color: var(--wh); cursor: none; overflow-x: hidden; }
+  #cur, #ring { position: fixed; pointer-events: none; z-index: 20000; border-radius: 50%; transform: translate(-50%, -50%); transition: transform 0.3s var(--ex), opacity 0.3s; }
+  #cur { width: 6px; height: 6px; background: var(--r); }
+  #ring { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); }
+  body.cur-grow #ring { width: 60px; height: 60px; background: rgba(193,18,31,0.1); border-color: var(--r); }
+  @media (pointer: coarse) { #cur, #ring { display: none; } body { cursor: auto; } }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    position: relative;
+    margin-top: 68px !important;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    font-family: var(--fd);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    transition: all 0.3s var(--ex);
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
+    padding: 3.5rem 4rem 3rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: 
+      linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
+      linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+      url('../../../assets/img/hero/pulido.jpg');
   }
+  .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+  
+  @media (max-width: 900px) {
+    .page-header { 
+      margin-top: 66px !important; 
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1.5rem !important;
+      background-image: 
+        linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
+        linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+        url('../../../assets/img/hero/pulido-mobile.jpg') !important;
+    }
+    .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
+    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
+    .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--st); padding-top: 1.2rem; margin-top: 0; width: auto; }
+    .ph-count b { display: inline; font-size: 1.4rem; }
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar { position: sticky; top: 68px; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.25rem 2.5rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--st); }
+  .filter-label { font-family: var(--fm); font-size: 0.6rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.16em; flex-shrink: 0; }
+  .filter-pills { display: flex; gap: 0.8rem; overflow-x: auto; scrollbar-width: none; flex: 1; }
+  .filter-pills::-webkit-scrollbar { display: none; }
+  .pill { padding: 0.35rem 0.9rem; background: transparent; border: 1px solid var(--st2); color: var(--as); font-family: var(--fd); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer; transition: all .2s var(--ex); white-space: nowrap; }
+  .pill:hover { color: var(--wh); border-color: var(--mi); }
+  .pill.active { background: var(--r); border-color: var(--r); color: #fff; }
+  .filter-right { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
+  .sort-select { background: var(--cb); border: 1px solid var(--st2); color: var(--as); font-family: var(--fm); font-size: 0.62rem; padding: 0.35rem 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; outline: none; transition: border-color .2s, color .2s; }
+  .sort-select:hover { border-color: var(--mi); color: var(--wh); }
+
+  @media (max-width: 900px) {
+    .filter-bar { top: 66px; padding: 0.8rem 1.5rem !important; gap: 0.6rem !important; flex-direction: row !important; align-items: center !important; }
+    .filter-label { display: none !important; }
+    .filter-right { flex: 1; display: flex !important; margin: 0 !important; }
+    .custom-select-wrap { flex: 1; position: relative; }
+    .custom-select-trigger { width: 100%; background: transparent; border: 1px solid var(--st); color: var(--as); padding: 0 0.8rem; font-family: var(--fm); font-size: 0.58rem; text-transform: uppercase; text-align: left; height: 38px; display: flex; align-items: center; position: relative; overflow: hidden; white-space: nowrap; }
+    .custom-select-trigger::after { content: ''; position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); border-left: 3px solid transparent; border-right: 3px solid transparent; border-top: 4px solid var(--r); transition: transform .3s; }
+    .custom-select-wrap.open .custom-select-trigger::after { transform: translateY(-50%) rotate(180deg); }
+    .custom-select-options { position: absolute; top: calc(100% + 5px); left: 0; right: 0; background: var(--dk); border: 1px solid var(--st); z-index: 1000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .custom-select-wrap.open .custom-select-options { display: flex; }
+    .custom-option { padding: 0.8rem 1rem; font-family: var(--fm); font-size: 0.62rem; text-transform: uppercase; color: var(--as); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .custom-option.selected { background: var(--cb); color: var(--wh); }
+  }
+
+  /* ── PRODUCTS SECTION ── */
+  .products-section { padding: 1rem 0 6rem; background: var(--bk); }
+  .prod-count-bar { padding: 1rem 4rem; display: flex; align-items: center; }
+  .prod-count-tx { font-family: var(--fm); font-size: 0.65rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.1em; }
+  .prod-count-tx b { color: var(--wh); font-weight: 600; margin: 0 0.3rem; }
+  @media (max-width: 900px) { .prod-count-bar { padding: 1rem 1.5rem; } }
+
+  .grid-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--st); border-top: 1px solid var(--st); border-bottom: 1px solid var(--st); }
+  @media (max-width: 1200px) { .grid-wrap { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) { .grid-wrap { grid-template-columns: 1fr; } }
+
+  /* ── PRODUCT CARD ── */
+  .pcard { background: var(--dk); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: background .3s; cursor: pointer; }
+  .pcard:hover { background: var(--cb); }
+  .pcard-img-wrap { position: relative; aspect-ratio: 1/1; background: var(--cb); padding: 2rem; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .pcard-img { width: 100%; height: 100%; object-fit: contain; transition: transform .6s var(--ex); }
+  .pcard:hover .pcard-img { transform: scale(1.08); }
+  .pcard-badge { position: absolute; top: 1rem; left: 1rem; z-index: 1; font-family: var(--fm); font-size: .58rem; text-transform: uppercase; color: var(--r); background: rgba(10,10,10,.8); padding: .3rem .7rem; border: 1px solid rgba(193,18,31,.3); }
+  .pcard-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+  .pcard-cat { font-family: var(--fm); font-size: .6rem; color: var(--r); text-transform: uppercase; margin-bottom: .6rem; }
+  .pcard-name { font-family: var(--fd); font-weight: 800; font-size: 1.5rem; color: var(--wh); text-transform: uppercase; line-height: 1.1; margin-bottom: .8rem; }
+  .pcard-desc { font-size: .85rem; color: var(--as); line-height: 1.6; margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-align: left; }
+  .pcard-features { display: flex; flex-direction: column; border: 1px solid var(--st); margin-bottom: 1.5rem; }
+  .pcard-feat { display: flex; justify-content: space-between; align-items: center; padding: .7rem 1rem; border-bottom: 1px solid var(--st); transition: background .2s; }
+  .pcard-feat:last-child { border-bottom: none; }
+  .pcard-feat-label { font-family: var(--fm); font-size: .58rem; color: var(--mi); text-transform: uppercase; }
+  .pcard-feat-val { font-family: var(--fd); font-weight: 600; font-size: .9rem; color: var(--lt); }
+  .pcard-actions { margin-top: auto; display: flex; gap: 1px; background: var(--st); border: 1px solid var(--st); }
+  .btn-ver, .btn-ft { flex: 1; height: 50px; display: flex; align-items: center; justify-content: center; gap: 0.6rem; font-family: var(--fd); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s var(--ex); cursor: pointer; border: none; text-decoration: none; }
   .btn-ver { background: var(--r); color: #fff; }
-  .btn-ver:hover { background: var(--rh); gap: 0.8rem; }
   .btn-ft { background: var(--dk); color: var(--as); }
   .btn-ft:hover { background: var(--cb); color: var(--wh); }
-  .modal-bg{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
-  .modal-bg.open{opacity:1;pointer-events:all;}
-  .modal{background:var(--dk);border:1px solid var(--st);width:100%;max-width:900px;position:relative;}
-  .modal-close{position:absolute;top:1.5rem;right:1.5rem;z-index:10;background:none;border:none;color:var(--as);cursor:none;}
-  .modal-close:hover{color:var(--wh);}
-  .modal-grid{display:grid;grid-template-columns:1.2fr 1fr;}
-  .modal-img{width:100%;height:100%;object-fit:contain;background:#000;padding:2rem;}
-  .modal-body{padding:3rem;}
-  .reveal{opacity:0;transform:translateY(20px);transition:all .7s var(--ex);}
-  .reveal.in{opacity:1;transform:none;}
-  body{cursor:none;}
 
-.page-header{margin-top:68px!important;background-image:linear-gradient(rgba(10,10,10,0.7),rgba(10,10,10,0.7)),url('../../../assets/img/hero/aglutinantes.jpg');background-size:cover;background-position:center;}
-  .hide-mobile { display: none !important; }
-  @media (min-width: 1024px) {
-    .hide-mobile { display: flex !important; }
-    .hide-desktop { display: none !important; }
-  }
+  /* ── MODAL ── */
+  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 10000; display: flex; align-items: flex-start; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: all .5s var(--ex); overflow-y: auto; }
+  .modal-bg.open { opacity: 1; visibility: visible; }
+  .modal { background: var(--dk); border: 1px solid var(--st); width: 100%; max-width: 860px; position: relative; transform: translateY(50px); transition: transform .6s var(--ex); margin: auto; }
+  .modal-bg.open .modal { transform: translateY(0); }
+  .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--st); color: var(--wh); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; }
+  .modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .modal-img { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: var(--cb); padding: 2rem; }
+  .modal-body { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .modal-cat { font-family: var(--fm); font-size: .65rem; color: var(--r); text-transform: uppercase; margin-bottom: .5rem; }
+  .modal-name { font-family: var(--fd); font-weight: 900; font-size: 2rem; color: var(--wh); text-transform: uppercase; margin-bottom: 1.2rem; line-height: 1.1; }
+  .modal-desc { font-size: .9rem; color: var(--lt); line-height: 1.6; margin-bottom: 2rem; }
+  .modal-feats-title { font-family: var(--fm); font-size: .55rem; color: var(--mi); text-transform: uppercase; margin-bottom: 1rem; border-bottom: 1px solid var(--st); padding-bottom: .5rem; }
+  .modal-actions { display: flex; gap: 1rem; margin-top: 2rem; }
+
+  @media (max-width: 900px) { .modal-grid { grid-template-columns: 1fr; } .modal-body { padding: 1.5rem; } }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: all .7s var(--ex); }
+  .reveal.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
+
 <div id="cur"></div>
 <div id="ring"></div>
 <div id="nav-placeholder"></div>
 
-<!-- PAGE HEADER -->
+<!-- ══ PAGE HEADER ══ -->
 <div class="page-header">
   <div class="ph-inner">
     <div>
-      <div class="ph-breadcrumb"><a href="../../../">Inicio</a><span>›</span><a href="../../../pulido/">Pulido</a><span>›</span><a href="../../../pulido/productos-quimicos/">Químicos</a><span>›</span><em>Aglutinantes</em></div>
-      <div class="ph-eyebrow"><span class="ph-eyebrow-line"></span><span class="ph-eyebrow-tx">Productos Químicos · Pulido</span></div>
+      <div class="ph-breadcrumb">
+        <a href="../../../">Inicio</a>
+        <span>›</span>
+        <a href="../../">Pulido</a>
+        <span>›</span>
+        <a href="../">Productos químicos</a>
+        <span>›</span>
+        <em>Aglutinantes</em>
+      </div>
+      <div class="ph-eyebrow">
+        <span class="ph-eyebrow-line"></span>
+        <span class="ph-eyebrow-tx">Pulido / Productos químicos</span>
+      </div>
       <h1 class="ph-title">Aglutinantes<br>para pulido</h1>
-      <p class="ph-desc">Aglutinantes líquidos para el relleno eficiente de microporos, generando una superficie lisa y densa.</p>
+      <p class="ph-desc">Aglutinantes líquidos para el relleno eficiente de microporos, generando una superficie lisa y densa en el pulido de hormigón.</p>
     </div>
-    <div class="ph-count"><b id="total-count">0</b> productos disponibles</div>
+  </div>
+  <div class="ph-count">
+    <b id="total-count">0</b>
+    productos disponibles
   </div>
 </div>
 
-<!-- FILTER BAR -->
+<!-- ══ FILTER BAR ══ -->
 <div class="filter-bar">
   <span class="filter-label">Filtrar:</span>
-  
-  <!-- Desktop Pills -->
   <div class="filter-pills hide-mobile">
     <button class="pill" data-filter="all">Todos</button>
     <button class="pill active" data-filter="aglutinantes">Aglutinantes</button>
@@ -115,11 +198,10 @@
     <button class="pill" data-filter="puentes-de-adherencia">Puentes</button>
   </div>
 
-  <!-- Mobile Custom Select -->
   <div class="custom-select-wrap hide-desktop" id="customFilter">
     <button class="custom-select-trigger" id="customFilterTrigger">Aglutinantes</button>
     <div class="custom-select-options">
-      <div class="custom-option" data-value="all">Todos</div>
+      <div class="custom-option" data-value="all">Todos los químicos</div>
       <div class="custom-option selected" data-value="aglutinantes">Aglutinantes</div>
       <div class="custom-option" data-value="densificadores">Densificadores</div>
       <div class="custom-option" data-value="detergentes">Detergentes</div>
@@ -130,7 +212,6 @@
   </div>
 
   <div class="filter-right">
-    <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
     <select class="sort-select" id="sortSelect">
       <option value="default">Destacados</option>
       <option value="az">A–Z</option>
@@ -139,13 +220,15 @@
   </div>
 </div>
 
-<!-- PRODUCTS -->
+<!-- ══ PRODUCTS ══ -->
 <section class="products-section">
-  <div class="prod-count-bar"><span class="prod-count-tx">Mostrando <b id="showing-count">0</b> productos</span></div>
+  <div class="prod-count-bar">
+    <span class="prod-count-tx">Mostrando <b id="showing-count">0</b> productos en esta categoría</span>
+  </div>
   <div class="grid-wrap" id="productGrid"></div>
 </section>
 
-
+<!-- ══ MODAL ══ -->
 <div class="modal-bg" id="modalBg">
   <div class="modal" id="modal">
     <button class="modal-close" id="modalClose">
@@ -154,20 +237,14 @@
     <div class="modal-grid">
       <img id="modalImg" src="" alt="" class="modal-img">
       <div class="modal-body">
-        <div class="modal-cat"  id="modalCat"></div>
+        <div class="modal-cat" id="modalCat"></div>
         <div class="modal-name" id="modalName"></div>
         <div class="modal-desc" id="modalDesc"></div>
         <div class="modal-feats-title">Características técnicas</div>
-        <div class="modal-feats" id="modalFeats"></div>
+        <div class="pcard-features" id="modalFeats"></div>
         <div class="modal-actions">
-          <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">
-            Consultar disponibilidad
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          </a>
-          <a href="#" class="btn-ft" id="modalFicha" download>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Ficha técnica
-          </a>
+          <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">Ver en tienda</a>
+          <a href="#" class="btn-ft" id="modalFicha" download>Ficha técnica</a>
         </div>
       </div>
     </div>
@@ -175,78 +252,72 @@
 </div>
 
 <div id="footer-placeholder"></div>
-<script src="../../../assets/js/layout.js?v=3.0"></script>
-<script src="../../../assets/data/productos.js?v=3.0"></script>
+
+<script src="../../../assets/js/layout.js"></script>
+<script src="../../../assets/js/main.js"></script>
+<script src="../../../assets/js/nav.js"></script>
+<script src="../../../assets/data/productos.js"></script>
+
 <script>
 const PAGE_SECCION      = 'pulido';
 const PAGE_CATEGORIA    = 'productos-quimicos';
 const PAGE_SUBCATEGORIA = 'aglutinantes';
 const ROOT              = '../../../';
 
-const ALL_PRODUCTS = typeof productos !== 'undefined' ? productos : [];
-let activeFilter = 'all';
+let activeFilter = PAGE_SUBCATEGORIA;
 let activeSort   = 'default';
-let isListView   = false;
 
-function matchProduct(p, seccion, categoria, subcategoria) {
-  if (p.rutas && p.rutas.length > 0) {
-    return p.rutas.some(function(r) {
-      var s  = r['sección']     || r['seccion']     || '';
-      var c  = r['categoría']   || r['categoria']   || '';
-      var sc = r['subcategoría']|| r['subcategoria']|| '';
-      if (s !== seccion) return false;
-      if (categoria   && c  !== categoria)   return false;
-      if (subcategoria && sc !== subcategoria) return false;
-      return true;
-    });
-  }
-  var inSec = Array.isArray(p.secciones) && p.secciones.indexOf(seccion) !== -1;
-  if (!inSec) return false;
-  if (categoria   && p.categoria   !== categoria)   return false;
-  if (subcategoria && p.subcategoria !== subcategoria) return false;
-  return true;
+function iconSVG(type) {
+  const icons = {
+    down: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    arrow: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
+  };
+  return icons[type] || '';
 }
 
-var arrowSVG = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
-var downSVG  = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function fixUrl(u) { if (!u) return ""; if (u.startsWith("http") || u.startsWith("/") || u.startsWith(".")) return u; return "https://" + u; }
 
 function renderCard(p, delay) {
-  var imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
-  var badge  = p.badge ? '<div class="pcard-badge-new">' + p.badge + '</div>' : '';
-  var feats  = (p.specs || []).slice(0,3).map(function(f) {
-    return '<div class="pcard-feat"><div class="pcard-feat-ic">' + (f.icono||'◉') + '</div><div class="pcard-feat-tx"><span class="pcard-feat-label">' + f.clave + '</span><span class="pcard-feat-val">' + f.valor + '</span></div></div>';
-  }).join('');
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
+  const badge  = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
+  const feats  = (p.specs || []).slice(0, 3).map(f => `<div class="pcard-feat"><span class="pcard-feat-label">${f.clave}</span><span class="pcard-feat-val">${f.valor}</span></div>`).join('');
+  
+  const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+  const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
 
-  var pdf  = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
-  var shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
-
-  return '<div class="pcard reveal d' + delay + '" data-id="' + p.id + '">' +
-    '<div class="pcard-img-wrap">' +
-      '<img class="pcard-img" src="' + imgSrc + '" alt="' + p.nombre + '" loading="lazy">' +
-      '<div class="pcard-img-ov"></div>' +
-      '<div class="pcard-badge">' + (p.cat_label||'Producto') + '</div>' + badge +
-      '<div class="pcard-sku">' + (p.sku||'') + '</div>' +
-    '</div>' +
-    '<div class="pcard-body">' +
-      '<div class="pcard-cat">' + (p.cat_label||'Categoría') + '</div>' +
-      '<div class="pcard-name">' + p.nombre + '</div>' +
-      '<div class="pcard-desc">' + p.descripcion + '</div>' +
-      '<div class="pcard-features">' + feats + '</div>' +
-      '<div class="pcard-actions">' +
-        '<button class="btn-ver" onclick="openModal(\'' + p.id + '\')">Ver detalles ' + arrowSVG + '</button>' +
-        (shop ? '<a href="' + shop + '" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>' : 
-          (pdf ? '<a href="' + pdf + '" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica ' + downSVG + '</a>' : 
-          '<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>')) +
-      '</div>' +
-    '</div>' +
-  '</div>';
+  return `
+  <div class="pcard reveal in d${delay}" data-id="${p.id}" onclick="openModal('${p.id}')">
+    <div class="pcard-img-wrap">
+      <img class="pcard-img" src="${imgSrc}" alt="${p.nombre}" loading="lazy">
+      <div class="pcard-badge">${p.cat_label || 'Producto'}</div>
+      ${badge}
+    </div>
+    <div class="pcard-body">
+      <div class="pcard-cat">${p.cat_label || 'Categoría'}</div>
+      <div class="pcard-name">${p.nombre}</div>
+      <div class="pcard-desc">${p.descripcion}</div>
+      <div class="pcard-features">${feats}</div>
+      <div class="pcard-actions">
+        <button class="btn-ver">Ver detalles ${iconSVG('arrow')}</button>
+        ${shop 
+          ? `<a href="${fixUrl(shop)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
+          : (pdf ? `<a href="${fixUrl(pdf)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ficha ${iconSVG('down')}</a>` : `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`)
+        }
+      </div>
+    </div>
+  </div>`;
 }
 
 function getFiltered() {
-  var sub = PAGE_SUBCATEGORIA || ((activeFilter === 'all') ? null : activeFilter);
-  return ALL_PRODUCTS.filter(function(p) {
-    return matchProduct(p, PAGE_SECCION, PAGE_CATEGORIA, sub);
-  }).sort(function(a, b) {
+  const sub = (activeFilter === 'all') ? null : activeFilter;
+  return productos.filter(p => {
+    if (!p.rutas) return false;
+    return p.rutas.some(r => 
+      (r.seccion || r.sección) === PAGE_SECCION && 
+      (r.categoria || r.categoría) === PAGE_CATEGORIA && 
+      (!sub || (r.subcategoria || r.subcategoría) === sub)
+    );
+  }).sort((a, b) => {
     if (activeSort === 'az') return a.nombre.localeCompare(b.nombre);
     if (activeSort === 'za') return b.nombre.localeCompare(a.nombre);
     return 0;
@@ -254,128 +325,98 @@ function getFiltered() {
 }
 
 function render() {
-  var grid = document.getElementById('productGrid');
-  var list = getFiltered();
-  var delays = [1,2,3,1,2,3,1,2,3];
+  const grid = document.getElementById('productGrid');
+  const list = getFiltered();
+  const delays = [1,2,3,1,2,3,1,2,3];
   document.getElementById('showing-count').textContent = list.length;
   document.getElementById('total-count').textContent   = list.length;
-  grid.classList.toggle('list-view', isListView);
-  if (!list.length) {
-    grid.innerHTML = '<div class="empty-state"><h3>Sin resultados</h3><p>No hay productos en esta categoría.</p></div>';
-    return;
-  }
-  grid.innerHTML = list.map(function(p, i) { return renderCard(p, delays[i % delays.length]); }).join('');
-  requestAnimationFrame(function() {
-    document.querySelectorAll('.reveal').forEach(function(el) { obsReveal.observe(el); });
-  });
+  grid.innerHTML = list.map((p, i) => renderCard(p, delays[i % delays.length])).join('');
+  if (window.obsReveal) document.querySelectorAll('.reveal').forEach(el => window.obsReveal.observe(el));
 }
 
-// Filter Pills (Desktop)
-document.querySelectorAll('.pill').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.pill').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    activeFilter = btn.dataset.filter;
-    render();
-  });
-});
-
-// Custom Select (Mobile)
-const customFilter = document.getElementById('customFilter');
-const customFilterTrigger = document.getElementById('customFilterTrigger');
-const customOptions = customFilter.querySelectorAll('.custom-option');
-
-if (customFilterTrigger) {
-  customFilterTrigger.addEventListener('click', function() {
-    customFilter.classList.toggle('open');
-  });
-}
-
-customOptions.forEach(function(opt) {
-  opt.addEventListener('click', function() {
-    customOptions.forEach(function(o) { o.classList.remove('selected'); });
-    opt.classList.add('selected');
-    activeFilter = opt.dataset.value;
-    customFilterTrigger.textContent = opt.textContent;
-    customFilter.classList.remove('open');
-    
-    // Sync desktop pills
-    document.querySelectorAll('.pill').forEach(function(btn) {
-      btn.classList.toggle('active', btn.dataset.filter === activeFilter);
+function initCustomSelect(id, onChange) {
+  const wrap = document.getElementById(id);
+  if (!wrap) return;
+  const trigger = wrap.querySelector('.custom-select-trigger');
+  const options = wrap.querySelectorAll('.custom-option');
+  trigger.addEventListener('click', (e) => { e.stopPropagation(); wrap.classList.toggle('open'); });
+  options.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const val = opt.dataset.value;
+      trigger.textContent = opt.textContent;
+      options.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      wrap.classList.remove('open');
+      onChange(val);
     });
-    
+  });
+}
+
+initCustomSelect('customFilter', (val) => {
+  activeFilter = val;
+  document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.filter === val));
+  render();
+});
+
+document.querySelectorAll('.pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const mobOpt = document.querySelector(`#customFilter .custom-option[data-value="${activeFilter}"]`);
+    if (mobOpt) {
+      document.getElementById('customFilterTrigger').textContent = mobOpt.textContent;
+      document.querySelectorAll('#customFilter .custom-option').forEach(o => o.classList.remove('selected'));
+      mobOpt.classList.add('selected');
+    }
     render();
   });
 });
 
-// Close custom select on click outside
-document.addEventListener('click', function(e) {
-  if (customFilter && !customFilter.contains(e.target)) {
-    customFilter.classList.remove('open');
-  }
-});
+document.getElementById('sortSelect').addEventListener('change', e => { activeSort = e.target.value; render(); });
 
-document.getElementById('sortSelect').addEventListener('change', function(e) { 
-  activeSort = e.target.value; 
-  render(); 
-});
-
-var modalBg = document.getElementById('modalBg');
 function openModal(id) {
-  var p = ALL_PRODUCTS.find(function(x) { return x.id === id; });
+  const p = productos.find(x => x.id === id);
   if (!p) return;
-  var pdf  = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
-  var shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
+  document.getElementById('modalImg').src = imgSrc;
+  document.getElementById('modalCat').textContent = (p.cat_label || 'Categoría').toUpperCase() + ' · ' + p.sku;
+  document.getElementById('modalName').textContent = p.nombre;
+  document.getElementById('modalDesc').textContent = p.descripcion;
+  document.getElementById('modalFeats').innerHTML = (p.specs || []).map(f => `<div class="pcard-feat"><span class="pcard-feat-label">${f.clave}</span><span class="pcard-feat-val">${f.valor}</span></div>`).join('');
+  
+  const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
+  const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+  
+  const btnShop = document.getElementById('modalConsultar');
+  if (shop) { btnShop.href = fixUrl(shop); btnShop.textContent = 'Ver en tienda'; }
+  else { btnShop.href = "https://wa.me/5492342464082"; btnShop.textContent = 'Consultar'; }
+  
+  const btnFicha = document.getElementById('modalFicha');
+  if (pdf) { btnFicha.href = fixUrl(pdf); btnFicha.style.display = 'inline-flex'; }
+  else { btnFicha.style.display = 'none'; }
 
-  var imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
-  document.getElementById('modalImg').src              = imgSrc;
-  document.getElementById('modalImg').alt              = p.nombre;
-  document.getElementById('modalCat').textContent      = (p.cat_label||'Categoría') + ' · ' + (p.sku || '');
-  document.getElementById('modalName').textContent     = p.nombre;
-  document.getElementById('modalDesc').textContent     = p.descripcion;
-
-  var btnShop = document.getElementById('modalConsultar');
-  var btnFicha = document.getElementById('modalFicha');
-
-  if (shop) {
-    btnShop.href = shop;
-    btnShop.innerHTML = 'Ver en tienda ' + arrowSVG;
-    btnShop.style.display = 'inline-flex';
-  } else {
-    btnShop.href = "https://wa.me/5492342464082";
-    btnShop.innerHTML = 'Consultar disponibilidad ' + arrowSVG;
-    btnShop.style.display = 'inline-flex';
-  }
-
-  if (pdf) {
-    btnFicha.href = pdf;
-    btnFicha.innerHTML = 'Ficha Técnica ' + downSVG;
-    btnFicha.style.display = 'inline-flex';
-  } else {
-    btnFicha.style.display = 'none';
-  }
-
-  document.getElementById('modalFeats').innerHTML = (p.specs||[]).map(function(f) {
-    return '<div class="modal-feat"><div class="modal-feat-ic">' + (f.icono||'◉') + '</div><div><span class="modal-feat-label">' + f.clave + '</span><span class="modal-feat-val">' + f.valor + '</span></div></div>';
-  }).join('');
-  modalBg.classList.add('open');
+  document.getElementById('modalBg').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeModal() { modalBg.classList.remove('open'); document.body.style.overflow = ''; }
+function closeModal() { document.getElementById('modalBg').classList.remove('open'); document.body.style.overflow = ''; }
 document.getElementById('modalClose').addEventListener('click', closeModal);
-modalBg.addEventListener('click', function(e) { if (e.target === modalBg) closeModal(); });
+document.getElementById('modalBg').addEventListener('click', e => { if (e.target === document.getElementById('modalBg')) closeModal(); });
 
-var cur = document.getElementById('cur'), ring = document.getElementById('ring');
-document.addEventListener('mousemove', function(e) { cur.style.left = e.clientX+'px'; cur.style.top = e.clientY+'px'; ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px'; });
-document.addEventListener('mousedown', function() { document.body.classList.add('cur-grow'); });
-document.addEventListener('mouseup',   function() { document.body.classList.remove('cur-grow'); });
+const cur = document.getElementById('cur'), ring = document.getElementById('ring');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+});
+document.addEventListener('mousedown', () => document.body.classList.add('cur-grow'));
+document.addEventListener('mouseup', () => document.body.classList.remove('cur-grow'));
 
-var obsReveal = new IntersectionObserver(function(entries) {
-  entries.forEach(function(en) { if (en.isIntersecting) en.target.classList.add('in'); });
+const obsReveal = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); });
 }, { threshold: 0.1 });
+window.obsReveal = obsReveal;
 
-render();
-
+window.addEventListener('load', render);
 </script>
 </body>
 </html>

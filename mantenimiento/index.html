@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantenimiento de Pisos — NewConcret</title>
+    <title>Mantenimiento y Cuidado de Pisos — NewConcret</title>
     <meta name="description"
-        content="Soluciones profesionales para el cuidado y protección de pisos de hormigón. Equipos, químicos y accesorios de alta gama.">
+        content="Sistemas profesionales para el mantenimiento, limpieza y protección de pisos industriales. Equipos, químicos y accesorios de alta performance. NewConcret, Buenos Aires.">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
     <link rel="stylesheet" href="../assets/css/estilo.css?v=41">
     <link rel="stylesheet" href="../assets/css/nav.css?v=1.3">
@@ -172,6 +172,8 @@
             order: 2;
         }
 
+
+
         .pcard-badge-new {
             position: absolute;
             top: 1.5rem;
@@ -222,6 +224,29 @@
             text-transform: uppercase;
             letter-spacing: 0.2em;
             margin-bottom: 0.8rem;
+        }
+
+        .pcard-name {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--nc-white);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .pcard-desc {
+            font-size: 0.88rem;
+            color: var(--nc-ash);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .btn-ver,
@@ -350,10 +375,6 @@
         .modal-name {
             font-family: var(--font-d);
             font-weight: 900;
-            font-size: 2.2rem;
-            color: var(--nc-white);
-            text-transform: uppercase;
-            line-height: 1;
             margin-bottom: 1.2rem;
             letter-spacing: -0.01em;
         }
@@ -422,6 +443,29 @@
             width: 100%;
         }
 
+        .modal-actions .btn-ver,
+        .modal-actions .btn-ft {
+            white-space: nowrap !important;
+        }
+
+        @media (max-width: 600px) {
+            .modal-actions {
+                gap: 0.5rem;
+            }
+            .btn-ver, .btn-ft {
+                font-size: 0.6rem !important;
+                padding: 0 0.5rem !important;
+                height: 45px !important;
+            }
+            .modal-img-container {
+                height: 300px;
+            }
+            .modal-img {
+                max-height: 250px !important;
+                padding: 1.5rem !important;
+            }
+        }
+
         /* 4. CURSOR */
         #cur,
         #ring {
@@ -452,15 +496,33 @@
             border-color: var(--nc-red);
         }
 
+        @media (pointer: coarse) {
+
+            #cur,
+            #ring {
+                display: none;
+            }
+
+            body {
+                cursor: auto !important;
+            }
+        }
+
+
         @media (max-width: 900px) {
             .grid-wrap {
                 grid-template-columns: 1fr !important;
                 gap: 1px;
             }
 
+            .pcard {
+                min-height: auto;
+            }
+
             .modal-bg {
                 padding: 1rem;
                 display: block;
+                overflow-y: auto;
             }
             
             .modal {
@@ -471,17 +533,49 @@
 
             .modal-grid {
                 grid-template-columns: 1fr;
+                min-height: auto;
             }
 
             .modal-img-container {
                 height: 300px;
-                border-right: none;
-                border-bottom: 1px solid var(--nc-steel);
-                aspect-ratio: auto;
+            }
+
+            .modal-img {
+                max-height: 300px !important;
+                padding: 1rem !important;
             }
 
             .modal-body {
                 padding: 2.5rem !important;
+            }
+            
+            .modal-img-container {
+                border-right: none;
+                border-bottom: 1px solid var(--nc-steel);
+                aspect-ratio: auto;
+                height: 300px;
+            }
+
+            .modal-name {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .modal-desc {
+                font-size: 0.9rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .modal-feats {
+                margin-bottom: 1.5rem;
+            }
+
+            .modal-feat {
+                padding: 0.7rem 0.5rem;
+            }
+
+            .modal-feat-val {
+                font-size: 0.75rem;
             }
 
             .modal-actions {
@@ -491,8 +585,25 @@
             
             .modal-actions .btn-ver, .modal-actions .btn-ft {
                 flex: 1 !important;
-                font-size: 0.6rem !important;
+                width: auto !important;
+                justify-content: center !important;
                 height: 48px !important;
+                margin-bottom: 0;
+                font-size: 0.6rem !important;
+                padding: 0 0.5rem !important;
+            }
+
+            .custom-option {
+                padding: 0.8rem 1.2rem;
+                min-height: 54px;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+            
+            .custom-option.selected {
+                background: var(--nc-carbon);
+                color: var(--nc-white);
             }
         }
 
@@ -569,6 +680,11 @@
             outline: none;
         }
 
+        .sort-select:hover {
+            border-color: var(--nc-mid);
+            color: var(--nc-white);
+        }
+
         @media (max-width: 900px) {
             .filter-bar {
                 padding: 0.8rem 1rem !important;
@@ -602,6 +718,7 @@
                 display: flex;
                 align-items: center;
                 position: relative;
+                transition: all 0.3s;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
@@ -617,6 +734,11 @@
                 border-left: 3px solid transparent;
                 border-right: 3px solid transparent;
                 border-top: 4px solid var(--nc-red);
+                transition: transform 0.3s;
+            }
+
+            .custom-select-wrap.open .custom-select-trigger::after {
+                transform: translateY(-50%) rotate(180deg);
             }
 
             .custom-select-options {
@@ -630,6 +752,7 @@
                 display: none;
                 flex-direction: column;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                animation: slideDown .3s var(--expo);
             }
 
             .custom-select-wrap.open .custom-select-options {
@@ -644,14 +767,20 @@
                 letter-spacing: 0.1em;
                 color: var(--nc-ash);
                 border-bottom: 1px solid rgba(255,255,255,0.05);
+                transition: all 0.2s;
             }
 
-            .custom-option.selected {
+            .custom-option:last-child { border-bottom: none; }
+
+            .custom-option:active, .custom-option.selected {
                 background: var(--nc-carbon);
                 color: var(--nc-white);
             }
+        }
 
-            .sort-select { display: none !important; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .eyebrow {
@@ -675,27 +804,23 @@
             color: var(--nc-red);
         }
 
-        .cta-sec {
-            padding: 4rem 0;
-        }
-
-        @media (max-width: 900px) {
-            .cta-sec {
-                padding: 2rem 0;
-            }
-        }
     </style>
 </head>
 
 <body>
+
     <div id="cur"></div>
     <div id="ring"></div>
+
     <div id="nav-placeholder"></div>
 
-    <!-- PAGE HERO -->
-    <div class="nc-cat-hero" data-watermark="Mantenim.">
+    <!-- ══ PAGE HERO (Construcción Style) ══ -->
+    <div class="nc-cat-hero" data-watermark="MANTENIMIENTO">
         <div class="hero-bg">
-            <img src="../assets/img/hero/mantenimiento.png" alt="Mantenimiento de Pisos NewConcret">
+            <picture>
+                <source srcset="../assets/img/hero/mantenimiento-mobile.png" media="(max-width: 900px)">
+                <img src="../assets/img/hero/mantenimiento.png" alt="Mantenimiento NewConcret">
+            </picture>
         </div>
         <div class="hero-ov"></div>
         <div class="hero-content">
@@ -703,8 +828,8 @@
                 <span class="eyebrow-line"></span>
                 <span class="eyebrow-tx">Soluciones para · Mantenimiento</span>
             </div>
-            <h1 class="hero-h1">Cuidado y protección<br><span class="red">permanente.</span></h1>
-            <p class="hero-p">Prolongamos la vida útil de tus pisos con sistemas profesionales de limpieza, sellado y restauración continua.</p>
+            <h1 class="hero-h1">Cuidado y<br><span class="red">protección.</span></h1>
+            <p class="hero-p">Sistemas profesionales para el mantenimiento, limpieza y protección de pisos industriales.</p>
         </div>
     </div>
 
@@ -720,7 +845,7 @@
             <button class="pill" data-filter="accesorios">Accesorios</button>
         </div>
 
-        <!-- Mobile Filter Select -->
+        <!-- Mobile Custom Select -->
         <div class="custom-select-wrap hide-desktop" id="customFilter">
             <button class="custom-select-trigger" id="customFilterTrigger">Todas las categorías</button>
             <div class="custom-select-options">
@@ -732,13 +857,14 @@
         </div>
 
         <div class="filter-right">
+            <!-- Desktop Sort -->
             <select class="sort-select hide-mobile" id="sortSelect">
                 <option value="default">Ordenar: Destacados</option>
                 <option value="az">Nombre A–Z</option>
                 <option value="za">Nombre Z–A</option>
             </select>
 
-            <!-- Mobile Sort Select -->
+            <!-- Mobile Custom Sort -->
             <div class="custom-select-wrap hide-desktop" id="customSort">
                 <button class="custom-select-trigger" id="customSortTrigger">Ordenar: Destacados</button>
                 <div class="custom-select-options">
@@ -750,19 +876,18 @@
         </div>
     </div>
 
-    <!-- PRODUCT GRID -->
-    <section class="sec" style="padding: 3rem 0 4rem !important; background: var(--nc-black); overflow-x: hidden;">
+    <!-- CATALOG SECTION -->
+    <section class="sec" style="background:var(--nc-black); overflow-x: hidden; padding: 2rem 0 4rem;">
         <div class="grid-wrap in" id="productGrid"></div>
-        <div id="emptyState" style="display:none; text-align:center; padding: 5rem 2rem;">
-            <p style="color:var(--nc-mid); font-family:var(--font-m); font-size:0.8rem; letter-spacing:0.1em;">No se encontraron productos en esta categoría.</p>
-        </div>
     </section>
 
-    <!-- MODAL -->
+    <!-- ══ MODAL ══ -->
     <div class="modal-bg" id="modalBg">
         <div class="modal" id="modal">
-            <button class="modal-close" onclick="closeModal()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+            <button class="modal-close" id="modalClose">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
             </button>
             <div class="modal-grid">
                 <div class="modal-img-container">
@@ -770,55 +895,43 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-cat" id="modalCat"></div>
-                    <h2 class="modal-name" id="modalName"></h2>
-                    <p class="modal-desc" id="modalDesc"></p>
+                    <div class="modal-name" id="modalName"></div>
+                    <div class="modal-desc" id="modalDesc"></div>
                     <div class="modal-feats-title">Características técnicas</div>
                     <div class="modal-feats" id="modalFeats"></div>
                     <div class="modal-actions">
-                        <a id="modalShop" href="" target="_blank" class="btn-ver">Ver en tienda</a>
-                        <a id="modalFicha" href="" target="_blank" class="btn-ft">Ficha técnica</a>
+                        <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">
+                            Ver en tienda
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3"
+                                    stroke-linecap="round"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn-ft" id="modalFicha" download="">
+                            Ficha técnica
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CTA -->
-    <section class="cta-sec hide-mobile" id="contacto">
-        <div class="cta-box in">
-            <div>
-                <h2 class="cta-h2">¿Necesitás un plan de<br><span>mantenimiento?</span></h2>
-                <p class="cta-sub">Asesoramiento técnico especializado para grandes superficies.</p>
-            </div>
-            <div class="cta-acts">
-                <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener" class="btn-p">
-                    Consultar por WhatsApp
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
-                </a>
-                <div class="cta-phone">+54 9 2342 46-4082</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="sec hide-desktop" id="contacto-mob" style="padding:4rem 1.5rem !important; background:var(--nc-black); text-align:center;">
-        <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1 !important; margin-bottom:1rem;">Iniciá tu<br><span>proyecto</span> hoy.</h2>
-        <p class="sec-p" style="margin-bottom:2.5rem;">Asesoramiento técnico inmediato por WhatsApp.</p>
-        <a href="https://wa.me/5492342464082" class="btn-p" style="width:100%; justify-content:center; padding:1.2rem;">Escribinos por WhatsApp</a>
-    </section>
-
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/data/productos.js?v=2.1"></script>
-    <script src="../assets/js/main.js?v=1.2"></script>
-    <script src="../assets/js/layout.js?v=2.1"></script>
-    <script src="../assets/js/nav.js?v=1.3"></script>
+    <script src="../assets/data/productos.js?v=5"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav.js"></script>
     <script>
         function fixUrl(u) { if (!u) return ""; if (u.startsWith("http") || u.startsWith("/") || u.startsWith(".")) return u; return "https://" + u; }
-        
-        let activeSeccion = 'mantenimiento';
+
+        /* 1. STATE */
+        const activeSeccion = 'mantenimiento';
         let activeFilter = 'all';
         let activeSort = 'default';
+        const grid = document.getElementById('productGrid');
 
+        /* 2. HELPERS */
         function iconSVG(type) {
             const icons = {
                 down: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -829,97 +942,83 @@
 
         function renderCard(p, delay) {
             const badge = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
-            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
-            const shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
+            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+            const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
             
             let rawCat = p.cat_label || p.categoria;
             if (!rawCat && p.rutas) {
-                const route = p.rutas.find(r => (r.sección === activeSeccion || r.seccion === activeSeccion) && r.categoría);
+                const route = p.rutas.find(r => r.sección === activeSeccion && r.categoría);
                 if (route) rawCat = route.categoría;
             }
-            const catLabel = rawCat ? rawCat.charAt(0).toUpperCase() + rawCat.slice(1) : 'Producto';
+            if (!rawCat) rawCat = 'Producto';
+
+            const catMap = {
+                'equipos': 'Equipos',
+                'productos-quimicos': 'Químicos',
+                'accesorios': 'Accesorios'
+            };
+            const catLabel = catMap[rawCat.toLowerCase()] || rawCat.charAt(0).toUpperCase() + rawCat.slice(1).replace(/-/g, ' ');
 
             return `
             <div class="pcard in d${delay}" data-id="${p.id}" onclick="openModal('${p.id}')">
                 <div class="pcard-img-wrap">
-                    <img class="pcard-img" src="../${p.imagen}" alt="${p.nombre}" loading="lazy" onerror="this.src='../assets/img/placeholder.png'">
+                    <img class="pcard-img" src="../${p.imagen.replace(/^\//, '')}" alt="${p.nombre}" loading="lazy" onerror="this.src='../assets/img/placeholder.png'">
                     <div class="pcard-img-ov"></div>
                     <div class="pcard-badge">${catLabel}</div>
                     ${badge}
-                    <div class="pcard-sku">${p.sku}</div>
+                    <div class="pcard-sku">${p.sku || ''}</div>
                 </div>
                 <div class="pcard-body">
                     <div class="pcard-cat">${catLabel}</div>
                     <div class="pcard-name">${p.nombre}</div>
                     <div class="pcard-desc">${p.descripcion}</div>
                     <div class="pcard-actions">
-                        <button class="btn-ver">Ver detalles ${iconSVG('arrow')}</button>
-                        ${shop ? `<a href="${fixUrl(shop)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ver en tienda</a>` : 
-                          (pdf ? `<a href="${fixUrl(pdf)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ficha técnica</a>` : 
-                          `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`)}
+                        <button class="btn-ver" onclick="openModal('${p.id}')">Ver detalles ${iconSVG('arrow')}</button>
+                        ${shop ? `<a href="${fixUrl(shop)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>` : 
+                        (pdf ? `<a href="${fixUrl(pdf)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">${iconSVG('down')} Ficha Técnica</a>` : 
+                        `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`)}
                     </div>
                 </div>
             </div>`;
         }
 
-        function updateGrid() {
-            const grid = document.getElementById('productGrid');
-            const empty = document.getElementById('emptyState');
-            
-            let list = productos.filter(p => {
-                const matchesSec = p.secciones && p.secciones.includes(activeSeccion);
-                if (!matchesSec) return false;
-                if (activeFilter === 'all') return true;
-                return p.categoria === activeFilter;
-            });
+        function render() {
+            if (!grid || typeof getProductos !== 'function') return;
+            let data = getProductos(activeSeccion, activeFilter);
+            const delays = [1, 2, 3, 1, 2, 3, 1, 2, 3];
 
-            if (activeSort === 'az') list.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            if (activeSort === 'za') list.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            if (activeSort === 'az') data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            else if (activeSort === 'za') data.sort((a, b) => b.nombre.localeCompare(a.nombre));
 
-            if (list.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; }
-            else { empty.style.display = 'none'; grid.innerHTML = list.map((p, i) => renderCard(p, (i % 3) + 1)).join(''); }
-        }
-
-        function openModal(id) {
-            const p = productos.find(x => x.id === id);
-            if (!p) return;
-            document.getElementById('modalImg').src = '../' + p.imagen;
-            
-            const modalCat = document.getElementById('modalCat');
-            if (modalCat) {
-                let rawCat = p.cat_label || p.categoria;
-                const catName = rawCat ? rawCat.charAt(0).toUpperCase() + rawCat.slice(1) : "";
-                modalCat.innerHTML = catName ? ("• " + catName.toUpperCase()) : "";
+            if (!data.length) {
+                grid.innerHTML = '<div style="grid-column:1/-1; padding:10rem 2rem; text-align:center; color:var(--nc-ash); font-family:var(--font-m); text-transform:uppercase; letter-spacing:.1em; font-size:.8rem;">No hay productos en esta selección.</div>';
+                return;
             }
 
-            document.getElementById('modalName').textContent = p.nombre;
-            document.getElementById('modalDesc').textContent = p.descripcion;
-            document.getElementById('modalFeats').innerHTML = (p.specs || []).map(s => `<div class="modal-feat"><span class="modal-feat-label">${s.clave}</span><span class="modal-feat-val">${s.valor}</span></div>`).join('');
+            grid.innerHTML = data.map((p, i) => renderCard(p, delays[i % delays.length])).join('');
             
-            const btnShop = document.getElementById('modalShop');
-            const btnFicha = document.getElementById('modalFicha');
-            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.endsWith('.pdf') ? p.storeUrl : '');
-            const shop = p.storeUrl && !p.storeUrl.endsWith('.pdf') ? p.storeUrl : '';
-
-            if (shop) { btnShop.style.display = 'flex'; btnShop.href = fixUrl(shop); btnShop.textContent = "Ver en tienda"; } else { btnShop.style.display = 'none'; }
-            if (pdf) { btnFicha.href = fixUrl(pdf); btnFicha.style.display = 'flex'; btnFicha.textContent = "Ficha Técnica"; } else { btnFicha.href = "https://wa.me/5492342464082"; btnFicha.style.display = 'flex'; btnFicha.textContent = "Consultar"; }
-
-            document.getElementById('modalBg').classList.add('open');
-            document.body.style.overflow = 'hidden';
+            if (window.obs) {
+                document.querySelectorAll('.pcard').forEach(el => window.obs.observe(el));
+            }
         }
 
-        function closeModal() { document.getElementById('modalBg').classList.remove('open'); document.body.style.overflow = ''; }
+        /* 3. FILTERS */
+        document.querySelectorAll('.pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.dataset.filter;
+                render();
+            });
+        });
 
+        // Mobile select
         function initCustomSelect(id, onSelect) {
             const wrap = document.getElementById(id);
             if (!wrap) return;
             const trigger = wrap.querySelector('.custom-select-trigger');
             const options = wrap.querySelectorAll('.custom-option');
-            trigger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                document.querySelectorAll('.custom-select-wrap.open').forEach(w => { if (w !== wrap) w.classList.remove('open'); });
-                wrap.classList.toggle('open');
-            });
+            trigger.addEventListener('click', (e) => { e.stopPropagation(); wrap.classList.toggle('open'); });
             options.forEach(opt => {
                 opt.addEventListener('click', () => {
                     const val = opt.dataset.value;
@@ -931,39 +1030,74 @@
                 });
             });
         }
-
         initCustomSelect('customFilter', (val) => {
             activeFilter = val;
             document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.filter === val));
-            updateGrid();
+            render();
         });
-
         initCustomSelect('customSort', (val) => {
             activeSort = val;
-            const dSort = document.getElementById('sortSelect');
-            if (dSort) dSort.value = val;
-            updateGrid();
-        });
-
-        document.querySelectorAll('.pill').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeFilter = btn.dataset.filter;
-                updateGrid();
-            });
+            document.getElementById('sortSelect').value = val;
+            render();
         });
 
         document.getElementById('sortSelect').addEventListener('change', (e) => {
             activeSort = e.target.value;
-            updateGrid();
+            render();
         });
 
-        document.addEventListener('click', () => document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open')));
-        window.addEventListener('load', () => {
-            setTimeout(updateGrid, 100);
-            document.documentElement.classList.add('js-loaded');
+        /* 4. MODAL LOGIC */
+        const modalBg = document.getElementById('modalBg');
+        function openModal(id) {
+            const p = productos.find(x => x.id === id);
+            if (!p) return;
+
+            const pdf = p.pdfUrl || (p.storeUrl && p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '');
+            const shop = p.storeUrl && !p.storeUrl.toLowerCase().endsWith('.pdf') ? p.storeUrl : '';
+
+            document.getElementById('modalImg').src = '../' + p.imagen.replace(/^\//, '');
+            document.getElementById('modalCat').textContent = (p.cat_label || p.categoria || 'Mantenimiento').toUpperCase();
+            document.getElementById('modalName').textContent = p.nombre;
+            document.getElementById('modalDesc').textContent = p.descripcion;
+            document.getElementById('modalFeats').innerHTML = (p.specs || []).map(s => `
+                <div class="modal-feat">
+                    <span class="modal-feat-label">${s.clave}</span>
+                    <span class="modal-feat-val">${s.valor}</span>
+                </div>`).join('');
+
+            const btnShop = document.getElementById('modalConsultar');
+            const btnFicha = document.getElementById('modalFicha');
+
+            if (shop) {
+                btnShop.href = fixUrl(shop);
+                btnShop.innerHTML = `<span>Ver en tienda</span> ${iconSVG('arrow')}`;
+            } else {
+                btnShop.href = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}`;
+                btnShop.innerHTML = `<span>Consultar disponibilidad</span> ${iconSVG('arrow')}`;
+            }
+
+            if (pdf) {
+                btnFicha.href = fixUrl(pdf);
+                btnFicha.style.display = 'inline-flex';
+            } else {
+                btnFicha.style.display = 'none';
+            }
+
+            modalBg.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() { modalBg.classList.remove('open'); document.body.style.overflow = ''; }
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        modalBg.addEventListener('click', e => { if (e.target === modalBg) closeModal(); });
+
+        /* 5. CURSOR */
+        const cur = document.getElementById('cur'), ring = document.getElementById('ring');
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+            ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
         });
+
+        window.addEventListener('load', render);
     </script>
 </body>
 

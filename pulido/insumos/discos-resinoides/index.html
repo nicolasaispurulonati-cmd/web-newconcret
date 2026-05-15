@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Discos Resinoides | Pulido | NewConcret</title>
-<meta name="description" content="Discos diamantados con liga de resina de alto rendimiento para el pulido fino, abrillantado y acabado espejo de superficies de hormigón.">
+<title>Discos Resinoides | NewConcret</title>
+<meta name="description" content="Discos resinoides para el pulido y abrillantado de pisos de hormigón.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../assets/css/estilo.css?v=40">
@@ -12,48 +12,77 @@
 <style>
   /* ── DESIGN TOKENS ── */
   :root {
-    --r:  #C1121F; --rh: #E5161E; --bk: #0A0A0A; --dk: #111111; --cb: #161616; --st: #272727; --mi: #555; --as: #888; --st2: #303030; --lt: #CACAC8; --wh: #F4F4F2;
-    --fm: 'JetBrains Mono', monospace; --fd: 'Barlow Condensed', sans-serif; --fb: 'Barlow', sans-serif; --ex: cubic-bezier(0.16, 1, 0.3, 1);
+    --r:  var(--nc-red, #C1121F);
+    --rh: var(--nc-red-hot, #E5161E);
+    --bk: var(--nc-black, #0A0A0A);
+    --dk: var(--nc-dark, #111111);
+    --cb: var(--nc-carbon, #161616);
+    --st: var(--nc-steel, #272727);
+    --mi: var(--nc-mid, #555);
+    --as: var(--nc-ash, #888);
+    --st2: #303030;
+    --lt: var(--nc-light, #CACAC8);
+    --wh: var(--nc-white, #F4F4F2);
+    
+    --fm: 'JetBrains Mono', monospace;
+    --fd: 'Barlow Condensed', sans-serif;
+    --fb: 'Barlow', sans-serif;
+    --ex: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   /* ── GLOBAL ADJS ── */
-  body { background: var(--bk); color: var(--wh); cursor: none; margin: 0; }
+  body { background: var(--bk); color: var(--wh); cursor: none; }
+  .js-loaded body { cursor: none; }
   #cur, #ring { position: fixed; pointer-events: none; z-index: 20000; border-radius: 50%; transform: translate(-50%, -50%); transition: transform 0.3s var(--ex), opacity 0.3s; }
   #cur { width: 6px; height: 6px; background: var(--r); }
   #ring { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); }
+  body.cur-grow #ring { width: 60px; height: 60px; background: rgba(193,18,31,0.1); border-color: var(--r); }
   @media (pointer: coarse) { #cur, #ring { display: none; } body { cursor: auto; } }
 
   /* ── PAGE HEADER ── */
   .page-header {
-    position: relative; margin-top: 68px !important; display: flex; align-items: center; padding: 4rem; min-height: 420px; overflow: hidden; background-size: cover; background-position: center;
-    background-image: linear-gradient(to right, rgba(10,10,10,.98) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.3) 100%), linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%), url('../../../assets/img/hero/pulido.jpg');
+    position: relative;
+    margin-top: 68px !important;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+    min-height: 420px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: 
+      linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
+      linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+      url('../../../assets/img/hero/pulido.jpg');
   }
   .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+  .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--st); padding-left: 2rem; z-index: 3; }
+  .ph-count b { display: block; font-size: 2.2rem; color: var(--wh); margin-bottom: 0.3rem; font-family: var(--font-d, 'Barlow Condensed', sans-serif); font-weight: 800; }
   
-  .ph-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-  .ph-eyebrow-line { width: 40px; height: 1px; background: var(--r); }
-  .ph-eyebrow-tx { font-family: var(--fm); font-size: 0.65rem; color: var(--as); text-transform: uppercase; letter-spacing: 0.15em; }
-
-  .ph-title { font-family: var(--fd); font-weight: 900; font-size: clamp(2.2rem, 5vw, 4.8rem); text-transform: uppercase; line-height: 0.95; margin: 0; color: var(--wh); letter-spacing: -0.01em; }
-  .ph-desc { font-family: var(--fb); font-size: 1rem; color: var(--lt); max-width: 440px; line-height: 1.6; font-weight: 300; margin-top: 1rem; opacity: 0.95; }
-  
-  .ph-count { position: absolute; bottom: 2rem; right: 4rem; text-align: right; border-left: 1px solid var(--st); padding-left: 2rem; z-index: 3; }
-  .ph-count b { display: block; font-size: 2.2rem; color: var(--wh); font-family: var(--fd); font-weight: 800; line-height: 1; margin-bottom: 0.3rem; }
-  .ph-count-tx { font-family: var(--fm); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mi); }
-
   @media (max-width: 900px) {
-    .page-header { padding: 1.5rem !important; min-height: 65vh; align-items: center; }
-    .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .ph-title { font-size: 3.8rem !important; }
-    .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--st); padding-top: 1.2rem; width: auto; }
-    .ph-count b { display: inline; font-size: 1.4rem; margin-right: 0.5rem; }
+    .page-header { 
+      margin-top: 66px !important; 
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1.5rem !important;
+      background-image: 
+        linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
+        linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+        url('../../../assets/img/hero/pulido-mobile.jpg') !important;
+    }
+    .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
+    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
+    .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--st); padding-top: 1.2rem; margin-top: 0; width: auto; }
+    .ph-count b { display: inline; font-size: 1.4rem; }
   }
 
   /* ── FILTER BAR ── */
-  .filter-bar { position: sticky; top: 68px; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.25rem 2.5rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--st); }
+  .filter-bar { position: sticky; top: 68px; z-index: 100; display: flex; align-items: center; justify-content: flex-start; gap: 1rem; padding: 1.25rem 2.5rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--st); }
   .filter-label { font-family: var(--fm); font-size: 0.6rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.16em; flex-shrink: 0; }
-  .filter-pills { display: flex; gap: 0.8rem; overflow-x: auto; scrollbar-width: none; flex: 1; }
-  .filter-pills::-webkit-scrollbar { display: none; }
+  .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; flex: 1; }
   .pill { padding: 0.35rem 0.9rem; background: transparent; border: 1px solid var(--st2); color: var(--as); font-family: var(--fd); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer; transition: all .2s var(--ex); white-space: nowrap; }
   .pill:hover { color: var(--wh); border-color: var(--mi); }
   .pill.active { background: var(--r); border-color: var(--r); color: #fff; }
@@ -61,121 +90,219 @@
   .filter-right { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
   .sort-select { background: var(--cb); border: 1px solid var(--st2); color: var(--as); font-family: var(--fm); font-size: 0.62rem; padding: 0.35rem 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; outline: none; transition: border-color .2s, color .2s; }
   .sort-select:hover { border-color: var(--mi); color: var(--wh); }
-
+  
   @media (max-width: 900px) {
-    .filter-bar { padding: 0.8rem 1.5rem !important; }
-    .filter-label { display: none; }
+    .filter-bar { top: 66px; padding: 0.8rem 1.5rem !important; gap: 0.6rem !important; flex-direction: row !important; align-items: center !important; }
+    .filter-label, .view-toggle { display: none !important; }
+    .filter-right { flex: 1; display: flex !important; margin: 0 !important; }
+    .custom-select-wrap { flex: 1; position: relative; }
+    .custom-select-trigger { width: 100%; background: transparent; border: 1px solid var(--st); color: var(--as); padding: 0 0.8rem; font-family: var(--fm); font-size: 0.58rem; text-transform: uppercase; text-align: left; height: 38px; display: flex; align-items: center; position: relative; overflow: hidden; white-space: nowrap; }
+    .custom-select-trigger::after { content: ''; position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); border-left: 3px solid transparent; border-right: 3px solid transparent; border-top: 4px solid var(--r); transition: transform .3s; }
+    .custom-select-wrap.open .custom-select-trigger::after { transform: translateY(-50%) rotate(180deg); }
+    .custom-select-options { position: absolute; top: calc(100% + 5px); left: 0; right: 0; background: var(--dk); border: 1px solid var(--st); z-index: 1000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .custom-select-wrap.open .custom-select-options { display: flex; }
+    .custom-option { padding: 0.8rem 1rem; font-family: var(--fm); font-size: 0.62rem; text-transform: uppercase; color: var(--as); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .custom-option.selected { background: var(--cb); color: var(--wh); }
   }
 
   /* ── PRODUCTS SECTION ── */
-  .products-section { padding: 1rem 0 6rem; background: var(--bk); }
-  .prod-count-bar { padding: 0 2.5rem 0.5rem; display: flex; align-items: center; }
+  .products-section { padding: 1rem 0 6rem; background: var(--bk); width: 100%; }
+  .prod-count-bar { padding: 0 1.5rem 0 !important; margin-bottom: 0.5rem !important; display: flex; align-items: center; }
   .prod-count-tx { font-family: var(--fm); font-size: 0.65rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.1em; }
   .prod-count-tx b { color: var(--wh); font-weight: 600; margin: 0 0.3rem; }
+  
+  @media (max-width: 900px) {
+    .products-section { padding-top: 0.8rem; }
+    .prod-count-bar { padding: 0 !important; justify-content: flex-start !important; }
+    .prod-count-tx { text-align: left !important; width: 100%; }
+  }
 
-  .grid-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--st); border-top: 1px solid var(--st); border-bottom: 1px solid var(--st); }
+  .grid-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--nc-steel);
+  }
   @media (max-width: 1200px) { .grid-wrap { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 900px) { .grid-wrap { grid-template-columns: 1fr !important; gap: 1px; } }
 
   /* ── PRODUCT CARD ── */
-  .pcard { background: var(--dk); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: background .4s var(--ex); cursor: pointer; }
-  .pcard:hover { background: var(--cb); }
-  .pcard-img-wrap { position: relative; aspect-ratio: 1/1; background: var(--bk); padding: 2rem; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .pcard-img { max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.8s var(--ex); z-index: 2; }
+  .pcard {
+    background: var(--nc-dark);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s var(--ex);
+    cursor: pointer;
+  }
+  .pcard:hover { background: var(--nc-carbon); }
+
+  .pcard-img-wrap {
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    background: var(--nc-black);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .pcard-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.8s var(--ex);
+    z-index: 2;
+  }
   .pcard:hover .pcard-img { transform: scale(1.08) translateY(-5px); }
-  
-  .pcard-img-ov { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(193, 18, 31, 0.05) 0%, transparent 70%); opacity: 0; transition: opacity 0.6s var(--ex); z-index: 1; }
+
+  .pcard-img-ov {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(193, 18, 31, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s var(--ex);
+    z-index: 1;
+  }
   .pcard:hover .pcard-img-ov { opacity: 1; }
 
-  .pcard-badge { 
-    position: absolute; top: 1.5rem; left: 1.5rem; 
-    background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    padding: 0.4rem 0.8rem; font-family: var(--fm); font-size: 0.6rem; color: var(--r); text-transform: uppercase; letter-spacing: 0.15em; border: 1px solid rgba(193, 18, 31, 0.3); z-index: 3; 
+  .pcard-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.4rem 0.8rem;
+    font-family: var(--fm);
+    font-size: 0.6rem;
+    color: var(--r);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid rgba(193, 18, 31, 0.3);
+    z-index: 3;
   }
-  
-  .pcard-sku { position: absolute; bottom: 1rem; right: 1.5rem; font-family: var(--fm); font-size: 0.65rem; color: var(--mi); opacity: 0.5; z-index: 3; text-transform: uppercase; }
 
-  .pcard-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; border-top: 1px solid var(--st); }
+  .pcard-sku {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    font-family: var(--fm);
+    font-size: 0.65rem;
+    color: var(--mi);
+    opacity: 0.5;
+    z-index: 3;
+    text-transform: uppercase;
+  }
+
+  .pcard-body {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--nc-steel);
+  }
   .pcard-cat { font-family: var(--fm); font-size: .6rem; color: var(--r); text-transform: uppercase; margin-bottom: .6rem; letter-spacing: 0.15em; }
-  .pcard-name { font-family: var(--fd); font-weight: 800; font-size: 1.5rem; color: var(--wh); text-transform: uppercase; line-height: 1.1; margin-bottom: .8rem; letter-spacing: 0.02em; }
-  .pcard-desc { font-family: var(--fb); font-size: .88rem; color: var(--as); line-height: 1.6; margin-bottom: 2rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 300; }
+  .pcard-name { font-family: var(--fd); font-weight: 800; font-size: 1.5rem; color: var(--wh); text-transform: uppercase; line-height: 1.1; margin-bottom: .8rem; }
+  .pcard-desc { font-size: .88rem; color: var(--as); line-height: 1.6; margin-bottom: 2rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-align: left; }
   
-  .pcard-features { display: flex; flex-direction: column; border: 1px solid var(--st); margin-bottom: 1.5rem; }
-  .pcard-feat { display: flex; justify-content: space-between; align-items: center; padding: .7rem 1.2rem; border-bottom: 1px solid var(--st); transition: background .2s; }
+  .pcard-features { display: flex; flex-direction: column; border: 1px solid var(--nc-steel); margin-bottom: 1.5rem; }
+  .pcard-feat { display: flex; justify-content: space-between; align-items: center; padding: .7rem 1rem; border-bottom: 1px solid var(--nc-steel); transition: background .2s; }
   .pcard-feat:last-child { border-bottom: none; }
   .pcard-feat:hover { background: rgba(255,255,255,0.03); }
   .pcard-feat-label { font-family: var(--fm); font-size: .58rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.05em; }
-  .pcard-feat-val { font-family: var(--fd); font-weight: 700; font-size: 1rem; color: var(--lt); }
+  .pcard-feat-val { font-family: var(--fd); font-weight: 600; font-size: .9rem; color: var(--lt); }
   
-  .pcard-actions { margin-top: auto; display: flex; gap: 1px; background: var(--st); border: 1px solid var(--st); }
-  .btn-ver, .btn-ft { flex: 1; height: 50px; display: flex; align-items: center; justify-content: center; gap: 0.6rem; font-family: var(--fd); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s var(--ex); cursor: pointer; border: none; text-decoration: none; }
-  
+  .pcard-actions { margin-top: auto; display: flex; gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
+  .btn-ver, .btn-ft {
+    flex: 1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--fd);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s var(--ex);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
   .btn-ver { background: var(--r); color: #fff; }
   .btn-ver:hover { background: var(--rh); gap: 0.8rem; }
-  
   .btn-ft { background: var(--dk); color: var(--as); }
   .btn-ft:hover { background: var(--cb); color: var(--wh); }
+
 
   /* ── MODAL ── */
   .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 10000; display: flex; align-items: flex-start; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: all .5s var(--ex); overflow-y: auto; }
   .modal-bg.open { opacity: 1; visibility: visible; }
   .modal { background: var(--dk); border: 1px solid var(--st); width: 100%; max-width: 860px; position: relative; transform: translateY(50px); transition: transform .6s var(--ex); margin: auto; }
   .modal-bg.open .modal { transform: translateY(0); }
-  .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--st); color: var(--wh); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: background .3s; }
+  .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--st); color: var(--wh); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; }
   .modal-close:hover { background: var(--r); }
-  
   .modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
   .modal-img { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: var(--cb); padding: 2rem; }
   .modal-body { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
-  
-  .modal-cat { font-family: var(--fm); font-size: .65rem; color: var(--r); text-transform: uppercase; margin-bottom: .8rem; letter-spacing: 0.12em; }
-  .modal-name { font-family: var(--fd); font-weight: 900; font-size: 2.2rem; color: var(--wh); text-transform: uppercase; margin-bottom: 1.2rem; line-height: 1.1; letter-spacing: 0.02em; }
-  .modal-desc { font-family: var(--fb); font-size: 1rem; color: var(--lt); line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
-  .modal-feats-title { font-family: var(--fm); font-size: .55rem; color: var(--mi); text-transform: uppercase; margin-bottom: 1rem; border-bottom: 1px solid var(--st); padding-bottom: .5rem; letter-spacing: 0.1em; }
-  
+  .modal-cat { font-family: var(--fm); font-size: .65rem; color: var(--r); text-transform: uppercase; margin-bottom: .5rem; }
+  .modal-name { font-family: var(--fd); font-weight: 900; font-size: 2rem; color: var(--wh); text-transform: uppercase; margin-bottom: 1.2rem; line-height: 1.1; overflow-wrap: break-word; }
+  .modal-desc { font-size: .9rem; color: var(--lt); line-height: 1.6; margin-bottom: 2rem; overflow-wrap: break-word; }
+  .modal-feats-title { font-family: var(--fm); font-size: .55rem; color: var(--mi); text-transform: uppercase; margin-bottom: 1rem; border-bottom: 1px solid var(--st); padding-bottom: .5rem; }
+  /* Modal uses pcard-feat classes for consistency */
   .modal-actions { display: flex; gap: 1rem; margin-top: 2rem; }
 
   @media (max-width: 900px) {
     .modal-grid { grid-template-columns: 1fr; }
-    .modal-body { padding: 2rem; }
+    .modal-body { padding: 1.5rem; }
     .modal { margin-top: 2rem; width: 100%; }
     .modal-bg { padding: 1rem; }
+    .modal-name { font-size: 1.6rem; }
+    .modal-actions { margin-top: 1rem; }
+    .cta-box { padding: 2.2rem 1.25rem !important; border-left: none !important; border-right: none !important; width: 100vw !important; max-width: 100vw !important; border-radius: 0 !important; margin-left: calc(-50vw + 50%) !important; margin-right: calc(-50vw + 50%) !important; }
+    #cta-section { padding: 2.5rem 0 0 !important; }
+    .cta-h2 { font-size: 1.8rem !important; line-height: 1.1 !important; margin-bottom: 0.8rem !important; }
   }
 
-  .reveal { opacity: 0; transform: translateY(25px); transition: all .8s var(--ex); }
+  /* ── ANIMATIONS ── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: all .7s var(--ex); }
   .reveal.in { opacity: 1; transform: none; }
-  .hide-mobile { display: none !important; }
-  @media (min-width: 1024px) {
-    .hide-mobile { display: flex !important; }
-    .hide-desktop { display: none !important; }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 </style>
+
 </head>
 <body>
 
-<div id="cur"></div><div id="ring"></div>
+<div id="cur"></div>
+<div id="ring"></div>
+
 <div id="nav-placeholder"></div>
+
 
 <!-- ══ PAGE HEADER ══ -->
 <div class="page-header">
   <div class="ph-inner">
     <div>
-      <div class="ph-breadcrumb">
-        <a href="../../../">Inicio</a> <span>›</span> <a href="../../">Pulido</a> <span>›</span> <a href="../">Insumos</a> <span>›</span> <em>Discos resinoides</em>
-      </div>
+
       <div class="ph-eyebrow">
         <span class="ph-eyebrow-line"></span>
-        <span class="ph-eyebrow-tx">Insumos de Pulido / NewConcret</span>
+        <span class="ph-eyebrow-tx">Construcción / Materiales</span>
       </div>
-      <h1 class="ph-title">Discos<br>resinoides</h1>
-      <p class="ph-desc">Discos diamantados con liga de resina de alto rendimiento para el pulido fino, abrillantado y acabado espejo de superficies de hormigón.</p>
+      <h1 class="ph-title">DISCOS<br>RESINOIDES</h1>
+      <p class="ph-desc">Productos para reforzar, proteger y mejorar el desempeño del hormigón en pisos industriales.</p>
     </div>
   </div>
   <div class="ph-count">
     <b id="total-count">0</b>
-    <span class="ph-count-tx">productos disponibles</span>
+    materiales disponibles
   </div>
 </div>
+
+
 
 <!-- ══ FILTER BAR ══ -->
 <div class="filter-bar">
@@ -183,22 +310,11 @@
   
   <!-- Desktop Pills -->
   <div class="filter-pills hide-mobile">
-    <button class="pill" data-filter="all">Todos</button>
-    <button class="pill" data-filter="metales-desbaste">Metales desbaste</button>
+    <button class="pill " data-filter="all">Todos</button>
+    <button class="pill " data-filter="metales-desbaste">Metales desbaste</button>
     <button class="pill active" data-filter="discos-resinoides">Discos resinoides</button>
-    <button class="pill" data-filter="panos-diamantados">Paños diamantados</button>
-  </div>
-
-  <!-- Mobile Custom Select -->
-  <div class="custom-select-wrap hide-desktop" id="customFilter">
-    <button class="custom-select-trigger" id="customFilterTrigger">Discos resinoides</button>
-    <div class="custom-select-options">
-      <div class="custom-option" data-value="all">Todos</div>
-      <div class="custom-option" data-value="metales-desbaste">Metales desbaste</div>
-      <div class="custom-option selected" data-value="discos-resinoides">Discos resinoides</div>
-      <div class="custom-option" data-value="panos-diamantados">Paños diamantados</div>
-    </div>
-  </div>
+    <button class="pill " data-filter="panos-diamantados">Paños diamantados</button>
+</div>
 
   <div class="filter-right">
     <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
@@ -213,31 +329,53 @@
 <!-- ══ PRODUCTS ══ -->
 <section class="products-section">
   <div class="prod-count-bar">
-    <span class="prod-count-tx">Mostrando <b id="showing-count">0</b> discos resinoides</span>
+    <span class="prod-count-tx">Mostrando <b id="showing-count">7</b> materiales de construcción</span>
   </div>
-  <div class="grid-wrap" id="productGrid"></div>
+
+  <div class="grid-wrap" id="productGrid">
+    <!-- Cards rendered by JS -->
+  </div>
+
+  <!-- ══ FINAL CTA ══ -->
+  <section id="cta-section" class="sec" style="padding: 5rem 0 3rem;">
+    <div class="cta-box in" style="border-left: none; border-right: none; background-image: linear-gradient(rgba(10, 10, 10, .8), rgba(10, 10, 10, .8)), url('../../../assets/img/hero/construccion-materiales.jpg');">
+        <div>
+            <h2 class="cta-h2">¿Qué necesitás<br>para tu próximo<br><span>trabajo?</span></h2>
+            <p class="cta-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
+        </div>
+        <div class="cta-acts">
+            <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener" class="btn-p">
+                Consultar por WhatsApp
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+            </a>
+            <div class="cta-phone">+54 9 2342 46-4082</div>
+        </div>
+    </div>
+  </section>
 </section>
 
 <!-- ══ MODAL ══ -->
 <div class="modal-bg" id="modalBg">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     </button>
     <div class="modal-grid">
-      <img id="modalImg" src="" class="modal-img">
+      <img id="modalImg" src="" alt="" class="modal-img">
       <div class="modal-body">
         <div class="modal-cat" id="modalCat"></div>
-        <h2 class="modal-name" id="modalName"></h2>
-        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-desc" id="modalDesc"></div>
         <div class="modal-feats-title">Características técnicas</div>
-        <div id="modalFeats" class="pcard-features"></div>
+        <div class="pcard-features" id="modalFeats"></div>
         <div class="modal-actions">
-          <a id="modalAction" href="" target="_blank" class="btn-ver" style="flex:1;">
-            Ver en Tienda
+          <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">
+            Ver en tienda
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
           </a>
-          <a id="modalFicha" href="" download class="btn-ft" style="display:none;">
+          <a href="#" class="btn-ft" id="modalFicha" download>
             Ficha técnica
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -252,111 +390,255 @@
 <script src="../../../assets/js/layout.js"></script>
 <script src="../../../assets/js/main.js"></script>
 <script src="../../../assets/js/nav.js"></script>
+
+
+<!-- CARGA DE BASE DE DATOS REAL -->
 <script src="../../../assets/data/productos.js"></script>
 
+<!-- ══════════════════════════════════════
+     PRODUCT DATA + RENDER LOGIC
+══════════════════════════════════════ -->
 <script>
-const PAGE_SECCION = 'pulido';
-const PAGE_CATEGORIA = 'insumos';
-const PAGE_SUBCATEGORIA = 'discos-resinoides';
-const ROOT = '../../../';
+/* ──────────────────────────────────────
+   1. DATA ADAPTER
+────────────────────────────────────── */
+const PAGE_SECCION      = 'construccion';
+const PAGE_CATEGORIA    = 'materiales';
+const PAGE_SUBCATEGORIA = null;
+const ROOT              = '../../../';
 
-let activeSort = 'default';
+const ALL_PRODUCTS = typeof productos !== 'undefined' ? productos : [];
+let activeFilter = PAGE_SUBCATEGORIA;
+let activeSort   = 'default';
 
-function matchProduct(p, sec, cat, sub) {
-  if (!p.visible) return false;
-  const norm = s => (s || '').toString().toLowerCase().trim();
-  const sT = norm(sec), cT = norm(cat), scT = norm(sub);
-
-  if (p.rutas && p.rutas.length > 0) {
-    return p.rutas.some(r => {
-      const s = norm(r['sección'] || r['seccion'] || r['secci\u00f3n']);
-      const c = norm(r['categoría'] || r['categoria'] || r['categor\u00eda']);
-      const sc = norm(r['subcategoría'] || r['subcategoria'] || r['subcategor\u00eda']);
-      return s === sT && (!cT || c === cT) && (!scT || sc === scT);
-    });
-  }
-  return norm(p.secciones && p.secciones[0]) === sT && norm(p.categoria) === cT && norm(p.subcategoria) === scT;
+/* ──────────────────────────────────────
+   3. RENDER
+────────────────────────────────────── */
+function iconSVG(type) {
+  const icons = {
+    down: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    arrow: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
+  };
+  return icons[type] || '';
 }
 
-function renderCard(p, i) {
-  const imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
-  const feats = (p.specs || []).slice(0,3).map(f => `
+function renderCard(p, delay) {
+  const badge = p.badge ? `<div class="pcard-badge-new">${p.badge}</div>` : '';
+  
+  // Resolve category label from routes if missing
+  let rawCat = p.cat_label;
+  if (!rawCat && p.rutas) {
+      // Prioritize route with subcategory for this category
+      const route = p.rutas.find(r => 
+        (r.sección === 'construccion' || r.seccion === 'construccion') && 
+        (r.categoría === 'materiales' || r.categoria === 'materiales') && 
+        (r.subcategoría || r.subcategoria)
+      );
+      if (route) {
+          rawCat = route.subcategoría || route.subcategoria;
+      } else {
+          // Fallback to first construction route
+          const fallback = p.rutas.find(r => (r.sección === 'construccion' || r.seccion === 'construccion'));
+          if (fallback) rawCat = fallback.subcategoría || fallback.subcategoria || fallback.categoría || fallback.categoria;
+      }
+  }
+  let catLabel = rawCat || 'Producto';
+  catLabel = catLabel.charAt(0).toUpperCase() + catLabel.slice(1).replace(/-/g, ' ');
+
+  const feats = (p.specs || []).slice(0, 3).map(f => `
     <div class="pcard-feat">
       <span class="pcard-feat-label">${f.clave}</span>
       <span class="pcard-feat-val">${f.valor}</span>
     </div>`).join('');
-  
-  const shopUrl = p.storeUrl || p.tiendaUrl;
-  const pdfUrl  = p.pdfUrl;
 
-  const btnTiendaFicha = shopUrl 
-    ? `<a href="${shopUrl}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ver en tienda <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></a>`
-    : (pdfUrl 
-        ? `<a href="${pdfUrl}" download class="btn-ft" onclick="event.stopPropagation()">Ficha técnica <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`
-        : `<a href="https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ver en tienda <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></a>`
-      );
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../../' + p.imagen.replace(/^\//, '');
+
+  const shop = p.tiendaUrl;
+  const pdf  = p.pdfUrl;
 
   return `
-    <div class="pcard reveal in" style="transition-delay: ${i*0.08}s" onclick="openModal('${p.id}')">
-      <div class="pcard-img-wrap">
-        <img src="${imgSrc}" class="pcard-img" alt="${p.nombre}">
-        <div class="pcard-img-ov"></div>
-        <div class="pcard-badge">Resinoides</div>
-        <div class="pcard-sku">${p.sku}</div>
+  <div class="pcard reveal in d${delay}" data-id="${p.id}" onclick="openModal('${p.id}')">
+    <div class="pcard-img-wrap">
+      <img class="pcard-img" src="${imgSrc}" alt="${p.nombre}" loading="lazy">
+      <div class="pcard-img-ov"></div>
+      <div class="pcard-badge">${catLabel}</div>
+      ${badge}
+      <div class="pcard-sku">${p.sku}</div>
+    </div>
+    <div class="pcard-body">
+      <div class="pcard-cat">${catLabel}</div>
+      <div class="pcard-name">${p.nombre}</div>
+      <div class="pcard-desc">${p.descripcion}</div>
+      <div class="pcard-features">${feats}</div>
+      <div class="pcard-actions">
+        <button class="btn-ver">
+          Ver detalles ${iconSVG('arrow')}
+        </button>
+        ${shop 
+          ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
+          : (pdf 
+              ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica ${iconSVG('down')}</a>`
+              : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
+            )
+        }
       </div>
-      <div class="pcard-body">
-        <div class="pcard-cat">Discos resinoides</div>
-        <h3 class="pcard-name">${p.nombre}</h3>
-        <p class="pcard-desc">${p.descripcion}</p>
-        <div class="pcard-features">${feats}</div>
-        <div class="pcard-actions">
-          <button class="btn-ver">Ver detalles <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
-          ${btnTiendaFicha}
-        </div>
-      </div>
-    </div>`;
+    </div>
+  </div>`;
+}
+
+function matchProduct(p, seccion, categoria, subcategoria) {
+  if (p.rutas && p.rutas.length > 0) {
+    return p.rutas.some(function(r) {
+      var s  = r['sección']     || r['seccion']     || '';
+      var c  = r['categoría']   || r['categoria']   || '';
+      var sc = r['subcategoría']|| r['subcategoria']|| '';
+      if (s !== seccion) return false;
+      if (categoria   && c  !== categoria)   return false;
+      if (subcategoria && sc !== subcategoria) return false;
+      return true;
+    });
+  }
+  return false;
+}
+
+function getFiltered() {
+  var sub = (activeFilter === 'all') ? null : activeFilter;
+  return ALL_PRODUCTS.filter(function(p) {
+    return matchProduct(p, PAGE_SECCION, PAGE_CATEGORIA, sub);
+  }).sort(function(a, b) {
+    if (activeSort === 'az') return a.nombre.localeCompare(b.nombre);
+    if (activeSort === 'za') return b.nombre.localeCompare(a.nombre);
+    return 0;
+  });
 }
 
 function render() {
-  const grid = document.getElementById('productGrid');
-  let items = (typeof productos !== 'undefined' ? productos : []).filter(p => matchProduct(p, PAGE_SECCION, PAGE_CATEGORIA, PAGE_SUBCATEGORIA));
-  
-  if (activeSort === 'az') items.sort((a,b) => a.nombre.localeCompare(b.nombre));
-  if (activeSort === 'za') items.sort((a,b) => b.nombre.localeCompare(a.nombre));
+  const grid   = document.getElementById('productGrid');
+  const list   = getFiltered();
+  const delays = [1,2,3,1,2,3,1,2,3,1,2];
 
-  document.getElementById('total-count').textContent = items.length;
-  document.getElementById('showing-count').textContent = items.length;
-  
-  if (items.length === 0) {
-    grid.innerHTML = '<div style="grid-column: 1/-1; padding: 10rem 5rem; text-align: center; color: var(--mi); font-family: var(--fm); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem;">No se encontraron productos en esta categoría.</div>';
+  document.getElementById('showing-count').textContent = list.length;
+  document.getElementById('total-count').textContent   = list.length;
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="empty-state"><h3>Sin resultados</h3><p>No hay productos en esta categoría.</p></div>`;
     return;
   }
 
-  grid.innerHTML = items.map((p, i) => renderCard(p, i)).join('');
+  grid.innerHTML = list.map((p,i) => renderCard(p, delays[i % delays.length])).join('');
+
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.reveal').forEach(el => obsReveal.observe(el));
+  });
 }
 
+/* ──────────────────────────────────────
+   4. FILTERS & SORT
+────────────────────────────────────── */
+function initCustomSelect(id, onChange) {
+  const wrap = document.getElementById(id);
+  if (!wrap) return;
+  const trigger = wrap.querySelector('.custom-select-trigger');
+  const options = wrap.querySelector('.custom-select-options');
+  const items = wrap.querySelectorAll('.custom-option');
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = wrap.classList.contains('open');
+    document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
+    if (!isOpen) wrap.classList.add('open');
+  });
+
+  items.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const val = opt.dataset.value;
+      trigger.textContent = opt.textContent;
+      items.forEach(i => i.classList.remove('selected'));
+      opt.classList.add('selected');
+      wrap.classList.remove('open');
+      if (onChange) onChange(val);
+    });
+  });
+}
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
+});
+
+// Sync Pills with Custom Select
+function syncPills(filterVal) {
+  document.querySelectorAll('.pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filterVal);
+  });
+  const mobOpt = document.querySelector(`#customFilter .custom-option[data-value="${filterVal}"]`);
+  if (mobOpt) {
+    document.getElementById('customFilterTrigger').textContent = mobOpt.textContent;
+    document.querySelectorAll('#customFilter .custom-option').forEach(o => o.classList.remove('selected'));
+    mobOpt.classList.add('selected');
+  }
+}
+
+document.querySelectorAll('.pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    syncPills(activeFilter);
+    render();
+  });
+});
+
+initCustomSelect('customFilter', (val) => {
+  activeFilter = val;
+  syncPills(val);
+  render();
+});
+
+initCustomSelect('customSort', (val) => {
+  activeSort = val;
+  const desktopSort = document.getElementById('sortSelect');
+  if (desktopSort) desktopSort.value = val;
+  render();
+});
+
+document.getElementById('sortSelect').addEventListener('change', e => {
+  activeSort = e.target.value;
+  const mobOpt = document.querySelector(`#customSort .custom-option[data-value="${activeSort}"]`);
+  if (mobOpt) {
+    document.getElementById('customSortTrigger').textContent = mobOpt.textContent;
+    document.querySelectorAll('#customSort .custom-option').forEach(o => o.classList.remove('selected'));
+    mobOpt.classList.add('selected');
+  }
+  render();
+});
+
+/* ──────────────────────────────────────
+   5. MODAL
+────────────────────────────────────── */
+const modalBg = document.getElementById('modalBg');
+const modalClose = document.getElementById('modalClose');
+
 function openModal(id) {
-  const p = productos.find(x => x.id === id);
+  const p = ALL_PRODUCTS.find(x => x.id === id);
   if (!p) return;
-  const imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
-  document.getElementById('modalImg').src = imgSrc;
-  document.getElementById('modalName').textContent = p.nombre;
-  document.getElementById('modalDesc').textContent = p.descripcion;
-  document.getElementById('modalCat').textContent = (p.cat_label || 'Discos resinoides') + ' · ' + p.sku;
-  document.getElementById('modalFeats').innerHTML = (p.specs || []).map(f => `
-    <div class="pcard-feat">
-      <span class="pcard-feat-label">${f.clave}</span>
-      <span class="pcard-feat-val">${f.valor}</span>
-    </div>`).join('');
+
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../../' + p.imagen.replace(/^\//, '');
   
-  const modalAction = document.getElementById('modalAction');
-  const shopUrl = p.storeUrl || p.tiendaUrl;
-  if (shopUrl) {
-    modalAction.href = shopUrl;
-    modalAction.innerHTML = `Ver en Tienda <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+  document.getElementById('modalImg').src    = imgSrc;
+  document.getElementById('modalImg').alt    = p.nombre;
+  document.getElementById('modalCat').textContent  = (p.cat_label || 'Categoría') + ' · ' + p.sku;
+  const modalName = document.getElementById('modalName');
+  modalName.textContent = p.nombre;
+  document.getElementById('modalDesc').textContent = p.descripcion;
+  
+  const modalTienda = document.getElementById('modalConsultar');
+  if (p.storeUrl) {
+    modalTienda.href = p.storeUrl;
+    modalTienda.innerHTML = `Ver en tienda <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+    modalTienda.target = "_blank";
   } else {
-    modalAction.href = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}%20(SKU:%20${p.sku})`;
-    modalAction.innerHTML = `Consultar disponibilidad <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+    const wp = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}%20(SKU:%20${p.sku})`;
+    modalTienda.href = wp;
+    modalTienda.innerHTML = `Consultar disponibilidad <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+    modalTienda.target = "_blank";
   }
 
   const modalFicha = document.getElementById('modalFicha');
@@ -367,26 +649,46 @@ function openModal(id) {
     modalFicha.style.display = 'none';
   }
 
-  document.getElementById('modalBg').classList.add('open');
+  const featsHTML = (p.specs || []).map(f => `
+    <div class="pcard-feat">
+      <span class="pcard-feat-label">${f.clave}</span>
+      <span class="pcard-feat-val">${f.valor}</span>
+    </div>`).join('');
+  document.getElementById('modalFeats').innerHTML = featsHTML;
+
+  modalBg.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal() { 
-  document.getElementById('modalBg').classList.remove('open'); 
+function closeModal() {
+  modalBg.classList.remove('open');
   document.body.style.overflow = '';
 }
 
-document.getElementById('sortSelect').addEventListener('change', e => {
-  activeSort = e.target.value;
-  render();
-});
+modalClose.addEventListener('click', closeModal);
+modalBg.addEventListener('click', e => { if(e.target === modalBg) closeModal(); });
 
-const cur = document.getElementById('cur'), ring = document.getElementById('ring');
+/* ──────────────────────────────────────
+   6. CURSOR & REVEALS
+────────────────────────────────────── */
+const cur  = document.getElementById('cur');
+const ring = document.getElementById('ring');
+
 document.addEventListener('mousemove', e => {
-  cur.style.left = ring.style.left = e.clientX + 'px';
-  cur.style.top = ring.style.top = e.clientY + 'px';
+  cur.style.left  = e.clientX + 'px';
+  cur.style.top   = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px';
+  ring.style.top  = e.clientY + 'px';
 });
 
+document.addEventListener('mousedown', () => document.body.classList.add('cur-grow'));
+document.addEventListener('mouseup',   () => document.body.classList.remove('cur-grow'));
+
+const obsReveal = new IntersectionObserver(entries => {
+  entries.forEach(en => { if(en.isIntersecting) en.target.classList.add('in'); });
+}, { threshold: 0.1 });
+
+// Initial render
 render();
 </script>
 </body>

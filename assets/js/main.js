@@ -132,17 +132,14 @@ function getProductos(seccion = null, categoria = null, subcategoria = null) {
 
             if (s !== seccion) return false;
 
-            // Root Section View
-            if (categoria === 'all' || !categoria) {
+            if (!categoria || categoria === 'all') {
                 return c === '';
             }
 
-            // Category View
-            if (!subcategoria) {
-                return c === categoria;
+            if (!subcategoria || subcategoria === 'all') {
+                return (c === categoria && sc === '');
             }
 
-            // Subcategory View
             return (c === categoria && sc === subcategoria);
         });
     });

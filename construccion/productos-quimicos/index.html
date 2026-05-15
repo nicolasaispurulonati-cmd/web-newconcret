@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Productos químicos para hormigón | NewConcret</title>
+<title>Productos químicos para hormigón | Newconcret</title>
 <meta name="description" content="Soluciones para mejorar la aplicación, adherencia, curado y terminación inicial del hormigón en obra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
     --st: var(--nc-steel, #272727);
     --mi: var(--nc-mid, #555);
     --as: var(--nc-ash, #888);
+    --st2: #303030;
     --lt: var(--nc-light, #CACAC8);
     --wh: var(--nc-white, #F4F4F2);
     
@@ -52,7 +53,7 @@
     background-image: 
       linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
       linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
-      url('../../assets/img/hero/quimicos-construccion.jpg');
+      url('../../assets/img/hero/construccion-quimicos.jpg');
   }
   .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
   .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--st); padding-left: 2rem; z-index: 3; }
@@ -70,7 +71,7 @@
       background-image: 
         linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
         linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
-        url('../../assets/img/hero/construccion-quimicos-mobile.png') !important;
+        url('../../assets/img/hero/construccion-quimicos-mobile.jpg') !important;
     }
     .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
     .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
@@ -79,19 +80,17 @@
   }
 
   /* ── FILTER BAR ── */
-  .filter-bar { position: sticky; top: 68px; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1rem 2.5rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--st); }
-  .filter-label { font-family: var(--fm); font-size: 0.65rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.15em; }
-  .filter-pills { display: flex; gap: 0.8rem; overflow-x: auto; scrollbar-width: none; }
-  .filter-pills::-webkit-scrollbar { display: none; }
-  .pill { padding: 0.6rem 1.4rem; background: transparent; border: 1px solid var(--st); color: var(--as); font-family: var(--fm); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all .3s var(--ex); white-space: nowrap; }
-  .pill:hover, .pill.active { background: var(--r); border-color: var(--r); color: #fff; }
+  .filter-bar { position: sticky; top: 68px; z-index: 100; display: flex; align-items: center; justify-content: flex-start; gap: 1rem; padding: 1.25rem 2.5rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--st); }
+  .filter-label { font-family: var(--fm); font-size: 0.6rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.16em; flex-shrink: 0; }
+  .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; flex: 1; }
+  .pill { padding: 0.35rem 0.9rem; background: transparent; border: 1px solid var(--st2); color: var(--as); font-family: var(--fd); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer; transition: all .2s var(--ex); white-space: nowrap; }
+  .pill:hover { color: var(--wh); border-color: var(--mi); }
+  .pill.active { background: var(--r); border-color: var(--r); color: #fff; }
   
-  .filter-right { display: flex; align-items: center; gap: 1.5rem; }
-  .sort-select { background: transparent; border: 1px solid var(--st); color: var(--as); font-family: var(--fm); font-size: 0.72rem; padding: 0.6rem 1rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; outline: none; }
-  .view-toggle { display: flex; border: 1px solid var(--st); }
-  .view-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; color: var(--mi); cursor: pointer; transition: all .3s; }
-  .view-btn.active { background: var(--st); color: var(--wh); }
-
+  .filter-right { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
+  .sort-select { background: var(--cb); border: 1px solid var(--st2); color: var(--as); font-family: var(--fm); font-size: 0.62rem; padding: 0.35rem 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; outline: none; transition: border-color .2s, color .2s; }
+  .sort-select:hover { border-color: var(--mi); color: var(--wh); }
+  
   @media (max-width: 900px) {
     .filter-bar { top: 66px; padding: 0.8rem 1.5rem !important; gap: 0.6rem !important; flex-direction: row !important; align-items: center !important; }
     .filter-label, .view-toggle { display: none !important; }
@@ -107,8 +106,8 @@
   }
 
   /* ── PRODUCTS SECTION ── */
-  .products-section { padding: 1rem 0 6rem; background: var(--bk); }
-  .prod-count-bar { padding: 0 4rem 0 !important; margin-bottom: 0.5rem !important; display: flex; align-items: center; }
+  .products-section { padding: 1rem 0 6rem; background: var(--bk); width: 100%; }
+  .prod-count-bar { padding: 0 1.5rem 0 !important; margin-bottom: 0.5rem !important; display: flex; align-items: center; }
   .prod-count-tx { font-family: var(--fm); font-size: 0.65rem; color: var(--mi); text-transform: uppercase; letter-spacing: 0.1em; }
   .prod-count-tx b { color: var(--wh); font-weight: 600; margin: 0 0.3rem; }
   
@@ -307,7 +306,7 @@
 
 <!-- ══ FILTER BAR ══ -->
 <div class="filter-bar">
-  <span class="filter-label">Filtrar por tipo:</span>
+  <span class="filter-label">Filtrar:</span>
   
   <!-- Desktop Pills -->
   <div class="filter-pills hide-mobile">
@@ -331,11 +330,11 @@
   </div>
 
   <div class="filter-right">
-    <!-- Desktop Sort -->
+    <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
     <select class="sort-select hide-mobile" id="sortSelect">
-      <option value="default">Ordenar: Destacados</option>
-      <option value="az">Nombre A–Z</option>
-      <option value="za">Nombre Z–A</option>
+      <option value="default">Destacados</option>
+      <option value="az">A–Z</option>
+      <option value="za">Z–A</option>
     </select>
 
     <!-- Mobile Custom Sort -->
@@ -346,8 +345,6 @@
         <div class="custom-option" data-value="az">Nombre A–Z</div>
         <div class="custom-option" data-value="za">Nombre Z–A</div>
       </div>
-    </div>
-
     </div>
   </div>
 </div>
@@ -364,7 +361,7 @@
 
   <!-- ══ FINAL CTA ══ -->
   <section id="cta-section" class="sec" style="padding: 5rem 0 3rem;">
-    <div class="cta-box in" style="border-left: none; border-right: none; background-image: linear-gradient(rgba(10, 10, 10, .8), rgba(10, 10, 10, .8)), url('../../assets/img/hero/quimicos-construccion.jpg');">
+    <div class="cta-box in" style="border-left: none; border-right: none; background-image: linear-gradient(rgba(10, 10, 10, .8), rgba(10, 10, 10, .8)), url('../../assets/img/hero/construccion-quimicos.jpg');">
         <div>
             <h2 class="cta-h2">¿Qué químico necesitás<br>para <span>tu obra?</span></h2>
             <p class="cta-sub">Asesoramiento técnico · Productos para obra nueva · Consultá disponibilidad</p>
@@ -402,8 +399,8 @@
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
           </a>
           <a href="#" class="btn-ft" id="modalFicha" download>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Ficha técnica
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>
@@ -423,7 +420,7 @@
 
 <!-- ══════════════════════════════════════
      PRODUCT DATA + RENDER LOGIC
-══════════════════════════════════════ -->
+ ══════════════════════════════════════ -->
 <script>
 /* ──────────────────────────────────────
    1. DATA ADAPTER
@@ -503,7 +500,7 @@ function renderCard(p, delay) {
         ${shop 
           ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
           : (pdf 
-              ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha</a>`
+              ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica ${iconSVG('down')}</a>`
               : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
             )
         }
