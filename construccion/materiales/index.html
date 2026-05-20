@@ -319,13 +319,37 @@
     <button class="pill" data-filter="mortero-cementicio">Mortero</button>
   </div>
 
+  <!-- Mobile Custom Select -->
+  <div class="custom-select-wrap hide-desktop" id="customFilter">
+    <button class="custom-select-trigger" id="customFilterTrigger">Todas las categorías</button>
+    <div class="custom-select-options">
+      <div class="custom-option selected" data-value="all">Todas las categorías</div>
+      <div class="custom-option" data-value="nylon">Nylon</div>
+      <div class="custom-option" data-value="microfibra">Microfibra</div>
+      <div class="custom-option" data-value="macrofibra">Macrofibra</div>
+      <div class="custom-option" data-value="endurecedor-superficial">Endurecedor</div>
+      <div class="custom-option" data-value="grouting">Grouting</div>
+      <div class="custom-option" data-value="mortero-cementicio">Mortero</div>
+    </div>
+  </div>
+
   <div class="filter-right">
     <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
-    <select class="sort-select" id="sortSelect">
+    <select class="sort-select hide-mobile" id="sortSelect">
       <option value="default">Destacados</option>
       <option value="az">A–Z</option>
       <option value="za">Z–A</option>
     </select>
+
+    <!-- Mobile Custom Sort -->
+    <div class="custom-select-wrap hide-desktop" id="customSort">
+      <button class="custom-select-trigger" id="customSortTrigger">Ordenar: Destacados</button>
+      <div class="custom-select-options">
+        <div class="custom-option selected" data-value="default">Destacados</div>
+        <div class="custom-option" data-value="az">Nombre A–Z</div>
+        <div class="custom-option" data-value="za">Nombre Z–A</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -456,7 +480,7 @@ function renderCard(p, delay) {
 
   const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../' + p.imagen.replace(/^\//, '');
 
-  const shop = p.tiendaUrl;
+  const shop = p.storeUrl;
   const pdf  = p.pdfUrl;
 
   return `
@@ -477,9 +501,9 @@ function renderCard(p, delay) {
         <button class="btn-ver">
           Ver detalles ${iconSVG('arrow')}
         </button>
-        ${shop 
+        ${shop
           ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
-          : (pdf 
+          : (pdf
               ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica ${iconSVG('down')}</a>`
               : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
             )

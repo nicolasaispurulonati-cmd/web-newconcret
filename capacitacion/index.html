@@ -6,10 +6,7 @@
     <meta name="description"
         content="NewConcret: Capacitaciones teóricas y prácticas sobre pulido y tratamiento de pisos de hormigón. Certificación profesional en Bragado, Buenos Aires.">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&amp;family=Barlow:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
-        rel="stylesheet">
+    
     <link rel="stylesheet" href="../assets/css/estilo.css?v=39">
     <link rel="stylesheet" href="../assets/css/nav.css?v=1.3">
     <style>
@@ -38,9 +35,6 @@
             --as: #888;
             --lt: #CACAC8;
             --wh: #F4F4F2;
-            --fd: 'Barlow Condensed', sans-serif;
-            --fb: 'Barlow', sans-serif;
-            --fm: 'JetBrains Mono', monospace;
             --ex: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -58,7 +52,7 @@
 
         /* Basic typography overrides for this specific page */
         body {
-            font-family: var(--fb);
+            font-family: var(--font-b);
             background: var(--bk);
             color: var(--wh);
             overflow-x: hidden;
@@ -143,7 +137,7 @@
         }
 
         .eyebrow-tx {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .64rem;
             letter-spacing: .2em;
             text-transform: uppercase;
@@ -151,7 +145,7 @@
         }
 
         .hero-h1 {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 900;
             font-size: clamp(3rem, 7vw, 6.5rem);
             line-height: .93;
@@ -205,7 +199,7 @@
         }
 
         .aside-num {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 900;
             font-size: 2rem;
             color: var(--wh);
@@ -220,7 +214,7 @@
         }
 
         .aside-lbl {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .58rem;
             letter-spacing: .14em;
             text-transform: uppercase;
@@ -248,7 +242,7 @@
         }
 
         .scroll-ind span {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .56rem;
             letter-spacing: .2em;
             text-transform: uppercase;
@@ -286,7 +280,7 @@
             display: inline-flex;
             align-items: center;
             gap: .65rem;
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 700;
             font-size: .78rem;
             letter-spacing: .18em;
@@ -325,7 +319,7 @@
             display: inline-flex;
             align-items: center;
             gap: .65rem;
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 600;
             font-size: .78rem;
             letter-spacing: .18em;
@@ -347,7 +341,7 @@
             display: inline-flex;
             align-items: center;
             gap: .7rem;
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 700;
             font-size: .78rem;
             letter-spacing: .18em;
@@ -407,7 +401,7 @@
         }
 
         .sec-label-tx {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .63rem;
             letter-spacing: .2em;
             text-transform: uppercase;
@@ -415,7 +409,7 @@
         }
 
         .sec-h2 {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 800;
             font-size: clamp(1.9rem, 3.8vw, 3.2rem);
             line-height: 1;
@@ -566,7 +560,7 @@
         }
 
         .step-num {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 900;
             font-size: 3.5rem;
             color: rgba(255, 255, 255, .06);
@@ -582,7 +576,7 @@
         }
 
         .step-label {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .6rem;
             letter-spacing: .15em;
             text-transform: uppercase;
@@ -612,7 +606,7 @@
 
         .obj-layout {
             display: grid;
-            grid-template-columns: 1fr 1.55fr;
+            grid-template-columns: 1fr 1.25fr;
             gap: 5rem;
             align-items: start;
             margin-top: 3.5rem;
@@ -667,10 +661,9 @@
 
         .pillar {
             background: var(--dk);
-            padding: 2rem;
+            padding: 2.25rem 2rem;
             display: flex;
             flex-direction: column;
-            gap: .75rem;
             position: relative;
             overflow: hidden;
             transition: background .3s;
@@ -700,7 +693,7 @@
             display: flex;
             align-items: center;
             color: var(--r);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.6rem;
         }
 
         .pillar-ic svg {
@@ -709,13 +702,14 @@
         }
 
         .pillar-title {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.35rem;
             text-transform: uppercase;
             color: var(--wh);
             letter-spacing: .02em;
             line-height: 1.1;
+            margin-bottom: 0.2rem;
         }
 
         .pillar-desc {
@@ -739,7 +733,7 @@
             gap: .7rem;
             background: var(--r);
             padding: .42rem 1.2rem;
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .64rem;
             letter-spacing: .16em;
             text-transform: uppercase;
@@ -830,7 +824,7 @@
         }
 
         .rstat-val {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 900;
             font-size: 1.9rem;
             color: var(--wh);
@@ -844,7 +838,7 @@
         }
 
         .rstat-desc {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .58rem;
             letter-spacing: .12em;
             text-transform: uppercase;
@@ -862,7 +856,7 @@
         }
 
         .vid-label {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .62rem;
             letter-spacing: .16em;
             text-transform: uppercase;
@@ -915,7 +909,7 @@
         }
 
         .vid-caption {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .57rem;
             letter-spacing: .1em;
             text-transform: uppercase;
@@ -991,7 +985,7 @@
         }
 
         .sede-card-body h4 {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 700;
             font-size: .95rem;
             text-transform: uppercase;
@@ -1027,7 +1021,7 @@
             background: var(--dk);
             border-bottom: 1px solid var(--st);
             padding: .6rem 1.25rem;
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .62rem;
             letter-spacing: .14em;
             text-transform: uppercase;
@@ -1101,7 +1095,7 @@
         }
 
         .cta-eyebrow-tx {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .62rem;
             letter-spacing: .18em;
             text-transform: uppercase;
@@ -1109,7 +1103,7 @@
         }
 
         .cta-h2 {
-            font-family: var(--fd);
+            font-family: var(--font-d);
             font-weight: 900;
             font-size: clamp(1.9rem, 3.8vw, 3.3rem);
             text-transform: uppercase;
@@ -1139,7 +1133,7 @@
         }
 
         .cta-phone {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .6rem;
             letter-spacing: .12em;
             text-transform: uppercase;
@@ -1161,7 +1155,7 @@
         }
 
         .footer-copy {
-            font-family: var(--fm);
+            font-family: var(--font-m);
             font-size: .6rem;
             letter-spacing: .1em;
             text-transform: uppercase;
@@ -1197,6 +1191,12 @@
                 min-height: 280px;
             }
 
+            /* Ocultar decoraciones que desbordan al colapsar a 1 columna */
+            .aprende-img-wrap::before,
+            .aprende-img-wrap::after {
+                display: none;
+            }
+
             .recap-vid-col {
                 margin-top: 0;
                 margin-left: auto;
@@ -1204,47 +1204,159 @@
             }
         }
 
-        @media(max-width:480px) {
-            .rstat {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-                padding: 1.5rem;
-            }
-        }
-
         @media(max-width:768px) {
-            .nav-links {
-                display: none;
-            }
 
+            /* -- SECCIONES -- */
+            /* !important: anula el "edge-to-edge" global de estilo.css en mobile */
             .sec {
-                padding: 4rem 1.5rem;
+                padding: 4rem 1.5rem !important;
             }
 
+            /* -- TITULOS DE SECCION (mas grandes en mobile) -- */
+            .sec-h2 {
+                font-size: clamp(2.3rem, 8.5vw, 3rem) !important;
+                line-height: 1.05;
+            }
+
+            .cta-h2 {
+                font-size: clamp(2.3rem, 8.5vw, 3rem);
+            }
+
+            /* -- HERO (no tocar) -- */
             .hero {
                 padding: 0 1.5rem 4rem;
                 min-height: 72vh;
             }
 
-            .cta-sec {
-                padding: 4rem 1.5rem;
+            .scroll-ind {
+                display: none;
             }
 
-            .cta-box {
-                padding: 2rem;
+            /* -- APRENDE -- */
+            .aprende-img-wrap img {
+                height: 240px;
+                min-height: unset;
             }
 
-            .footer-mini {
-                padding: 1.5rem;
+            .aprende-steps {
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            /* Pasos como tarjetas full-bleed (ancho de pantalla).
+               margin negativo = anula el padding 1.5rem de .sec;
+               el padding interno mantiene el texto separado de los bordes */
+            .step {
+                background: var(--dk);
+                border-top: 1px solid var(--st);
+                border-bottom: 1px solid var(--st);
+                padding: 1.5rem !important;
+                margin-left: -1.5rem;
+                margin-right: -1.5rem;
+            }
+
+            .step:first-child {
+                padding-top: 1.5rem !important;
+            }
+
+            .step:last-child {
+                padding-bottom: 1.5rem !important;
+            }
+
+            .step-num {
+                font-size: 2.6rem;
+                width: 48px;
+            }
+
+            /* -- OBJETIVOS -- */
+            .obj-card {
+                padding: 1.75rem;
             }
 
             .obj-pillars {
                 grid-template-columns: 1fr;
             }
 
+            .pillar {
+                padding: 1.75rem 1.25rem;
+            }
+
+            /* -- RECAP -- */
+            /* Fecha en un unico renglon, escalada para caber */
+            .recap-date-tag {
+                white-space: nowrap;
+                font-size: clamp(.44rem, 2.5vw, .64rem);
+                letter-spacing: .06em;
+                gap: .45rem;
+                padding: .42rem .9rem;
+            }
+
             .recap-stats {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            /* Unifica el valor "Teorico + Practico" con el resto de las stats */
+            .rstat-val.sm {
+                font-size: 1.9rem;
+                line-height: 1.1;
+            }
+
+            .recap-vid-col {
+                max-width: 100%;
+            }
+
+            /* -- SEDE -- */
+            .sede-map iframe {
+                height: 260px;
+            }
+
+            .sede-card {
+                padding: 1.25rem;
+            }
+
+            /* -- CTA -- */
+            .cta-sec {
+                padding: 4rem 1.5rem;
+            }
+
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-acts {
+                width: 100%;
+            }
+
+            .cta-acts .btn-wa,
+            .cta-acts .btn-p {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            /* -- FOOTER -- */
+            .footer-mini {
+                padding: 1.5rem;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+
+        @media(max-width:480px) {
+
+            /* Tarjetas de stats: rectangulos compactos, 2 por fila */
+            .recap-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .rstat {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding: 1.25rem;
             }
         }
     </style>
@@ -1357,7 +1469,7 @@
     </div>
 
     <!-- ¿QUÉ VAS A APRENDER? (Desktop) -->
-    <section class="aprende-sec sec hide-mobile" id="aprende">
+    <section class="aprende-sec sec" id="aprende">
         <div class="aprende-layout">
 
             <!-- Imagen -->
@@ -1676,17 +1788,20 @@
      CTA FINAL
     ══════════════════════════════════════════ -->
     <section class="cta-sec">
-        <div class="cta-box reveal">
-            <div>
+        <div class="cta-box reveal" style="overflow: hidden;">
+            <!-- Imagen de fondo dentro del box -->
+            <img src="../assets/img/hero/capacitaciones.jpg" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&amp;q=75'" alt="Capacitaciones NewConcret" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.35) saturate(.6); z-index: 0;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.3) 100%); z-index: 0;"></div>
+            
+            <div style="position: relative; z-index: 1;">
                 <div class="cta-eyebrow">
                     <span class="cta-eyebrow-ln"></span>
                     <span class="cta-eyebrow-tx">¿Querés capacitarte?</span>
                 </div>
                 <h2 class="cta-h2">Sumate a la<br>próxima <span>capacitación.</span></h2>
-                <p class="cta-sub">Consultanos por las próximas fechas y aranceles.
-                </p>
+                <p class="cta-sub">Consultanos por las próximas fechas y aranceles.</p>
             </div>
-            <div class="cta-acts">
+            <div class="cta-acts" style="position: relative; z-index: 1;">
                 <a href="https://wa.link/ayeajp" class="btn-wa" target="_blank" rel="noopener">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
@@ -1708,6 +1823,7 @@
     <div id="footer-placeholder"></div>
     <script src="../assets/js/layout.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav.js?v=3.0"></script>
     <script>
         document.documentElement.classList.add('js-loaded');
         const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: .07 });

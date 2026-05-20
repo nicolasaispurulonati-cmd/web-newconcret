@@ -1033,10 +1033,10 @@
           Ver detalles ${iconSVG('arrow')}
         </button>
         ${shop
-                    ? `<a href="${fixUrl(shop)}" target="_blank" rel="noopener" class="btn-ft" style="flex:1;">Ver en tienda</a>`
+                    ? `<a href="${fixUrl(shop)}" target="_blank" rel="noopener" class="btn-ft">Tienda</a>`
                     : (pdf
-                        ? `<a href="${fixUrl(pdf)}" target="_blank" rel="noopener" class="btn-ft" style="flex:1;">Ficha técnica</a>`
-                        : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" style="flex:1;">Consultar</a>`
+                        ? `<a href="${fixUrl(pdf)}" target="_blank" rel="noopener" class="btn-ft">Ficha Técnica ${iconSVG('down')}</a>`
+                        : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft">Consultar</a>`
                     )
                 }
       </div>
@@ -1252,8 +1252,13 @@
         <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1 !important; margin-bottom:1rem;">Iniciá
             tu<br><span>proyecto</span> hoy.</h2>
         <p class="sec-p" style="margin-bottom:2.5rem;">Asesoramiento técnico inmediato por WhatsApp.</p>
-        <a href="https://wa.me/5492342464082" class="btn-p"
-            style="width:100%; justify-content:center; padding:1.2rem;">Escribinos por WhatsApp</a>
+        <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener" class="btn-p"
+            style="width:100%; justify-content:center; padding:1.2rem;">
+            Consultar por WhatsApp
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+        </a>
     </section>
 
 

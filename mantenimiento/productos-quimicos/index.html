@@ -290,7 +290,7 @@
 
       <div class="ph-eyebrow">
         <span class="ph-eyebrow-line"></span>
-        <span class="ph-eyebrow-tx">Construcción / Materiales</span>
+        <span class="ph-eyebrow-tx">Mantenimiento / Químicos</span>
       </div>
       <h1 class="ph-title">QUÍMICOS DE<br>MANTENIMIENTO</h1>
       <p class="ph-desc">Productos para reforzar, proteger y mejorar el desempeño del hormigón en pisos industriales.</p>
@@ -310,19 +310,38 @@
   
   <!-- Desktop Pills -->
   <div class="filter-pills hide-mobile">
-    <button class="pill" onclick="window.location.href='../'">Todos</button>
-    <button class="pill " onclick="window.location.href='../equipos/'">Equipos</button>
-    <button class="pill active" onclick="window.location.href='../productos-quimicos/'">Químicos</button>
-    <button class="pill " onclick="window.location.href='../accesorios/'">Accesorios</button>
-</div>
+    <button class="pill active" data-filter="all">Todos</button>
+    <button class="pill" data-filter="selladores">Selladores</button>
+    <button class="pill" data-filter="desengrasantes">Desengrasantes</button>
+  </div>
+
+  <!-- Mobile Custom Select -->
+  <div class="custom-select-wrap hide-desktop" id="customFilter">
+    <button class="custom-select-trigger" id="customFilterTrigger">Todas las categorías</button>
+    <div class="custom-select-options">
+      <div class="custom-option selected" data-value="all">Todas las categorías</div>
+      <div class="custom-option" data-value="selladores">Selladores</div>
+      <div class="custom-option" data-value="desengrasantes">Desengrasantes</div>
+    </div>
+  </div>
 
   <div class="filter-right">
     <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
-    <select class="sort-select" id="sortSelect">
+    <select class="sort-select hide-mobile" id="sortSelect">
       <option value="default">Destacados</option>
       <option value="az">A–Z</option>
       <option value="za">Z–A</option>
     </select>
+
+    <!-- Mobile Custom Sort -->
+    <div class="custom-select-wrap hide-desktop" id="customSort">
+      <button class="custom-select-trigger" id="customSortTrigger">Ordenar: Destacados</button>
+      <div class="custom-select-options">
+        <div class="custom-option selected" data-value="default">Destacados</div>
+        <div class="custom-option" data-value="az">Nombre A–Z</div>
+        <div class="custom-option" data-value="za">Nombre Z–A</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -404,7 +423,7 @@
 ────────────────────────────────────── */
 const PAGE_SECCION      = 'mantenimiento';
 const PAGE_CATEGORIA    = 'productos-quimicos';
-const PAGE_SUBCATEGORIA = 'all';
+const PAGE_SUBCATEGORIA = null;
 const ROOT              = '../../../';
 
 const ALL_PRODUCTS = typeof productos !== 'undefined' ? productos : [];
@@ -549,6 +568,40 @@ function initCustomSelect(id, onChange) {
 
 document.addEventListener('click', () => {
   document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
+});
+
+// Sync Pills with Custom Select
+function syncPills(filterVal) {
+  document.querySelectorAll('.pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filterVal);
+  });
+  const mobOpt = document.querySelector(`#customFilter .custom-option[data-value="${filterVal}"]`);
+  if (mobOpt) {
+    document.getElementById('customFilterTrigger').textContent = mobOpt.textContent;
+    document.querySelectorAll('#customFilter .custom-option').forEach(o => o.classList.remove('selected'));
+    mobOpt.classList.add('selected');
+  }
+}
+
+document.querySelectorAll('.pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    syncPills(activeFilter);
+    render();
+  });
+});
+
+initCustomSelect('customFilter', (val) => {
+  activeFilter = val;
+  syncPills(val);
+  render();
+});
+
+initCustomSelect('customSort', (val) => {
+  activeSort = val;
+  const desktopSort = document.getElementById('sortSelect');
+  if (desktopSort) desktopSort.value = val;
+  render();
 });
 
 document.getElementById('sortSelect').addEventListener('change', e => {

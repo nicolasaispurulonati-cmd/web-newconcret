@@ -92,7 +92,7 @@
 
 /* MISIÓN, VISIÓN, VALORES — 3 CARDS */
 .mvv-sec { background: var(--nc-carbon); border-top: 1px solid var(--nc-steel); border-bottom: 1px solid var(--nc-steel); }
-.mvv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5px; background: var(--nc-steel); margin-top: 3.5rem; }
+.mvv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5px; background: var(--nc-steel); margin-top: 0; }
 .mvv-card {
   background: var(--nc-dark); padding: 2.5rem 2.25rem;
   position: relative; overflow: hidden;
@@ -271,12 +271,21 @@
 
 /* RESPONSIVE */
 @media (max-width: 1100px) {
+  .hero-nosotros { padding: 0 2rem 4rem; }
+  .hero-year { display: none; }
   .historia-layout, .valores-layout, .confianza-layout, .sede-layout { grid-template-columns: 1fr; gap: 3rem; }
   .equipo-grid { grid-template-columns: 1fr 1fr; }
   .mvv-grid { grid-template-columns: 1fr; }
   .historia-img-wrap img { height: 360px; }
 }
 @media (max-width: 900px) {
+  .sec { padding: 4rem 1.5rem !important; }
+  .hero-nosotros { padding: 0 1.25rem 3.5rem; }
+  .stats-bar-n { padding: 0 1.25rem; }
+  .s-card-n { padding: 2rem 1rem; }
+  .mvv-sec { padding: 3rem 0 !important; }
+  .mvv-card { padding: 2rem 1.5rem; gap: 0.8rem; }
+  .historia-img-wrap { margin: 1.5rem; }
   .stats-grid-n { grid-template-columns: 1fr 1fr; }
   .s-card-n { border-right: none; border-bottom: 1px solid var(--nc-steel); }
   .s-card-n:nth-child(odd) { border-right: 1px solid var(--nc-steel); }
@@ -284,6 +293,47 @@
   .hito { grid-template-columns: 100px 1fr; gap: 1.5rem; }
   .timeline-list::before { margin-left: 48px; }
   .hito-dot { left: 44px; }
+  .sede-card { padding: 1.25rem 1rem; }
+
+  /* CTA Redesign for Nosotros page */
+  .cta-sec {
+    padding: 3.5rem 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .cta-box {
+    padding: 3.6rem 1.5rem !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: linear-gradient(rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.82)), url('../img/hero/productos.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .cta-h2 {
+    font-size: 2.2rem !important;
+    line-height: 1.05 !important;
+  }
+  .cta-acts {
+    width: 100%;
+    align-items: stretch !important;
+    gap: 1rem !important;
+    margin-top: 1.5rem !important;
+  }
+  .cta-acts .btn-p {
+    width: 100% !important;
+    box-sizing: border-box;
+    justify-content: center;
+  }
 }
 @media (max-width: 600px) {
   .valor-item { grid-template-columns: 50px 1fr; }

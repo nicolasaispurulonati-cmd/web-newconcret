@@ -311,18 +311,39 @@
   <!-- Desktop Pills -->
   <div class="filter-pills hide-mobile">
     <button class="pill active" data-filter="all">Todos</button>
-    <button class="pill " data-filter="metales-desbaste">Metales desbaste</button>
-    <button class="pill " data-filter="discos-resinoides">Discos resinoides</button>
-    <button class="pill " data-filter="panos-diamantados">Paños diamantados</button>
-</div>
+    <button class="pill" data-filter="metales-desbaste">Metales desbaste</button>
+    <button class="pill" data-filter="discos-resinoides">Discos resinoides</button>
+    <button class="pill" data-filter="panos-diamantados">Paños diamantados</button>
+  </div>
+
+  <!-- Mobile Custom Select -->
+  <div class="custom-select-wrap hide-desktop" id="customFilter">
+    <button class="custom-select-trigger" id="customFilterTrigger">Todas las categorías</button>
+    <div class="custom-select-options">
+      <div class="custom-option selected" data-value="all">Todas las categorías</div>
+      <div class="custom-option" data-value="metales-desbaste">Metales desbaste</div>
+      <div class="custom-option" data-value="discos-resinoides">Discos resinoides</div>
+      <div class="custom-option" data-value="panos-diamantados">Paños diamantados</div>
+    </div>
+  </div>
 
   <div class="filter-right">
     <span class="filter-label hide-mobile" style="margin-right: -0.5rem;">Ordenar:</span>
-    <select class="sort-select" id="sortSelect">
+    <select class="sort-select hide-mobile" id="sortSelect">
       <option value="default">Destacados</option>
       <option value="az">A–Z</option>
       <option value="za">Z–A</option>
     </select>
+
+    <!-- Mobile Custom Sort -->
+    <div class="custom-select-wrap hide-desktop" id="customSort">
+      <button class="custom-select-trigger" id="customSortTrigger">Ordenar: Destacados</button>
+      <div class="custom-select-options">
+        <div class="custom-option selected" data-value="default">Destacados</div>
+        <div class="custom-option" data-value="az">Nombre A–Z</div>
+        <div class="custom-option" data-value="za">Nombre Z–A</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -402,8 +423,8 @@
 /* ──────────────────────────────────────
    1. DATA ADAPTER
 ────────────────────────────────────── */
-const PAGE_SECCION      = 'construccion';
-const PAGE_CATEGORIA    = 'materiales';
+const PAGE_SECCION      = 'pulido';
+const PAGE_CATEGORIA    = 'insumos';
 const PAGE_SUBCATEGORIA = null;
 const ROOT              = '../../';
 
@@ -428,21 +449,15 @@ function renderCard(p, delay) {
   // Resolve category label from routes if missing
   let rawCat = p.cat_label;
   if (!rawCat && p.rutas) {
-      // Prioritize route with subcategory for this category
-      const route = p.rutas.find(r => 
-        (r.sección === 'construccion' || r.seccion === 'construccion') && 
-        (r.categoría === 'materiales' || r.categoria === 'materiales') && 
-        (r.subcategoría || r.subcategoria)
+      const route = p.rutas.find(r =>
+        (r.sección === PAGE_SECCION || r.seccion === PAGE_SECCION) &&
+        (r.categoría === PAGE_CATEGORIA || r.categoria === PAGE_CATEGORIA)
       );
       if (route) {
-          rawCat = route.subcategoría || route.subcategoria;
-      } else {
-          // Fallback to first construction route
-          const fallback = p.rutas.find(r => (r.sección === 'construccion' || r.seccion === 'construccion'));
-          if (fallback) rawCat = fallback.subcategoría || fallback.subcategoria || fallback.categoría || fallback.categoria;
+          rawCat = route.subcategoría || route.subcategoria || route.categoría || route.categoria;
       }
   }
-  let catLabel = rawCat || 'Producto';
+  let catLabel = rawCat || 'Insumo';
   catLabel = catLabel.charAt(0).toUpperCase() + catLabel.slice(1).replace(/-/g, ' ');
 
   const feats = (p.specs || []).slice(0, 3).map(f => `
@@ -453,7 +468,7 @@ function renderCard(p, delay) {
 
   const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../' + p.imagen.replace(/^\//, '');
 
-  const shop = p.tiendaUrl;
+  const shop = p.storeUrl;
   const pdf  = p.pdfUrl;
 
   return `

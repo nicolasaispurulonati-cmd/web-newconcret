@@ -2353,40 +2353,52 @@ body {
 
 .test-card {
     background: var(--nc-dark);
-    padding: 2.75rem;
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
 }
 
 .test-card.feat {
     background: var(--nc-red);
     grid-column: span 2;
+    padding: 3rem 4rem;
+    min-height: auto;
 }
 
 .q-mark {
     font-family: var(--font-d);
     font-weight: 900;
-    font-size: 4.5rem;
-    color: rgba(255, 255, 255, .12);
-    line-height: .8;
-    margin-bottom: .9rem;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, .15);
+    line-height: .7;
+    margin-bottom: 0;
 }
 
 .test-card.feat .q-mark {
-    color: rgba(255, 255, 255, .22);
+    color: rgba(255, 255, 255, .25);
 }
 
 .test-txt {
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--nc-light);
-    margin-bottom: 1.75rem;
+    margin-bottom: 2rem;
     font-style: italic;
+    flex: 1;
 }
 
 .test-card.feat .test-txt {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, .88);
-    max-width: 680px;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, .9);
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.test-card.feat .test-auth {
+    margin-top: 2.5rem;
 }
 
 .test-auth {
@@ -2459,7 +2471,7 @@ body {
     align-items: center;
     border: 1px solid rgba(255, 255, 255, .1);
     padding: 5rem;
-    background: linear-gradient(rgba(10, 10, 10, .78), rgba(10, 10, 10, .78)), url('../img/hero/equipos-construccion.jpg');
+    background: linear-gradient(rgba(10, 10, 10, .78), rgba(10, 10, 10, .78)), url('../img/hero/productos.jpg');
     background-size: cover;
     background-position: center;
 }
