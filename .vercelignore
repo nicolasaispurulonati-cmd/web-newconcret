@@ -1,0 +1,14 @@
+node_modules
+server.js
+package.json
+package-lock.json
+fix_*.js
+gen_*.js
+migrate_*.js
+check_*.js
+debug_*.js
+scan-*.js
+generate-*.js
+temp_*.js
+admin
+.claude
