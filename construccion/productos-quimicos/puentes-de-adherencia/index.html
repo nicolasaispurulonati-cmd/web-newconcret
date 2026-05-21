@@ -490,7 +490,7 @@ function renderCard(p, delay) {
           Ver más ${iconSVG('arrow')}
         </button>
         ${pdf
-          ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha técnica</a>`
+          ? `<a href="${pdf}" download class="btn-ft" onclick="event.stopPropagation()">Ficha técnica ${iconSVG('down')}</a>`
           : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
         }
       </div>
