@@ -141,6 +141,16 @@
   @media (max-width: 900px) { .modal-grid { grid-template-columns: 1fr; } .modal-body { padding: 1.5rem; } }
   .reveal { opacity: 0; transform: translateY(20px); transition: all .7s var(--ex); }
   .reveal.in { opacity: 1; transform: none; }
+
+        /* Modal ficha técnica — red outline */
+        #modalFicha {
+            border: 1px solid var(--nc-red) !important;
+            color: var(--nc-red) !important;
+        }
+        #modalFicha:hover {
+            background: var(--nc-red) !important;
+            color: #fff !important;
+        }
 </style>
 </head>
 <body>
@@ -235,7 +245,7 @@
         <div class="pcard-features" id="modalFeats"></div>
         <div class="modal-actions">
           <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">Ver en tienda</a>
-          <a href="#" class="btn-ft" id="modalFicha" download>Ficha técnica</a>
+          <a href="#" class="btn-ft" id="modalFicha" download><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg> Ficha técnica</a>
         </div>
       </div>
     </div>
