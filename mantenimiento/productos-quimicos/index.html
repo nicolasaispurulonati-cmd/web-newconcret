@@ -475,14 +475,11 @@ function renderCard(p, delay) {
       <div class="pcard-features">${feats}</div>
       <div class="pcard-actions">
         <button class="btn-ver">
-          Ver detalles <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Ver más <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
         </button>
-        ${shop 
-          ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
-          : (pdf 
-              ? `<a href="${ROOT + pdf.replace(/^\//, '')}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`
-              : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
-            )
+        ${pdf
+          ? `<a href="${ROOT + pdf.replace(/^\//, '')}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha técnica <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`
+          : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
         }
       </div></div>
     </div>

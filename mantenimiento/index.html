@@ -588,7 +588,7 @@
                 justify-content: center !important;
                 height: 48px !important;
                 margin-bottom: 0;
-                font-size: 0.6rem !important;
+                font-size: 0.75rem !important;
                 padding: 0 0.5rem !important;
             }
 
@@ -972,7 +972,7 @@
                     <div class="pcard-name">${p.nombre}</div>
                     <div class="pcard-desc">${p.descripcion}</div>
                     <div class="pcard-actions">
-                        <button class="btn-ver" onclick="openModal('${p.id}')">Ver detalles ${iconSVG('arrow')}</button>
+                        <button class="btn-ver" onclick="openModal('${p.id}')">Ver más ${iconSVG('arrow')}</button>
                         ${pdf ? `<a href="${fixUrl(pdf)}" download class="btn-ft" onclick="event.stopPropagation()">Ficha técnica ${iconSVG('down')}</a>` :
                         `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`}
                     </div>

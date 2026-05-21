@@ -503,14 +503,11 @@ function renderCard(p, delay) {
       <div class="pcard-features">${feats}</div>
       <div class="pcard-actions">
         <button class="btn-ver">
-          Ver detalles ${iconSVG('arrow')}
+          Ver más ${iconSVG('arrow')}
         </button>
-        ${shop 
-          ? `<a href="${shop}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
-          : (pdf 
-              ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha</a>`
-              : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
-            )
+        ${pdf
+          ? `<a href="${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha técnica</a>`
+          : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
         }
       </div>
     </div>

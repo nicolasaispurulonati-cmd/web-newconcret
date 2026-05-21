@@ -371,11 +371,11 @@ function renderCard(p, delay) {
       <div class="pcard-features">${feats}</div>
       <div class="pcard-actions">
         <button class="btn-ver">
-          Ver detalles ${iconSVG('arrow')}
+          Ver más ${iconSVG('arrow')}
         </button>
         ${pdf 
-          ? `<a href="${ROOT + pdf.replace(/^\//, '')}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica ${iconSVG('down')}</a>`
-          : `<button class="btn-ft" onclick="event.stopPropagation(); window.showNCToast('Este equipo no cuenta con ficha técnica por el momento.')">Ficha Técnica ${iconSVG('down')}</button>`
+          ? `<a href="${ROOT + pdf.replace(/^\//, '')}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha técnica ${iconSVG('down')}</a>`
+          : `<button class="btn-ft" onclick="event.stopPropagation(); window.showNCToast('Este equipo no cuenta con ficha técnica por el momento.')">Ficha técnica ${iconSVG('down')}</button>`
         }
       </div>
     </div>

@@ -288,10 +288,10 @@ function renderCard(p, delay) {
       <div class="pcard-desc">${p.descripcion}</div>
       <div class="pcard-features">${feats}</div>
       <div class="pcard-actions">
-        <button class="btn-ver">Ver detalles ${iconSVG('arrow')}</button>
-        ${shop 
-          ? `<a href="${fixUrl(shop)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Tienda</a>`
-          : (pdf ? `<a href="${fixUrl(pdf)}" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Ficha ${iconSVG('down')}</a>` : `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`)
+        <button class="btn-ver">Ver más ${iconSVG('arrow')}</button>
+        ${pdf
+          ? `<a href="${fixUrl(pdf)}" download class="btn-ft" onclick="event.stopPropagation()">Ficha técnica ${iconSVG('down')}</a>`
+          : `<a href="https://wa.me/5492342464082" target="_blank" class="btn-ft" onclick="event.stopPropagation()">Consultar</a>`
         }
       </div>
     </div>
