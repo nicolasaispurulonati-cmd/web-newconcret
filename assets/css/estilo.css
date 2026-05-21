@@ -3198,12 +3198,17 @@ body {
         font-size: 3rem !important;
     }
 
-    /* Entrenamiento — tarjetas en mobile: número izq, texto der */
+    /* Entrenamiento — tarjetas en mobile: número izq, texto der, ancho completo */
+    #capacitaciones-mob .cap-pillars {
+        margin-left: -1.5rem !important;
+        margin-right: -1.5rem !important;
+    }
+
     #capacitaciones-mob .pillar-card {
         flex-direction: row !important;
         align-items: center !important;
         gap: 1.25rem !important;
-        padding: .9rem 1.25rem !important;
+        padding: .9rem 1.5rem !important;
     }
 
     #capacitaciones-mob .pillar-num {
