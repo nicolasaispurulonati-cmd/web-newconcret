@@ -146,6 +146,7 @@
             <a href="${root}construccion/equipos/" class="mob-grp-title">Equipos</a>
             <ul class="mob-links">
               <li><a href="${root}construccion/equipos/allanadoras/">Allanadoras <span class="mob-tag">Destacado</span></a></li>
+              <li><a href="${root}construccion/equipos/aserradoras/">Aserradoras</a></li>
             </ul>
           </div>
           <a href="${root}construccion/" class="mob-sub-cta">Ver construcción completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
@@ -270,6 +271,7 @@
         <a href="${root}construccion/equipos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Equipos</a>
         <ul class="mega-links">
           <li><a href="${root}construccion/equipos/allanadoras/">Allanadoras <span class="tag-new">Destacado</span></a></li>
+          <li><a href="${root}construccion/equipos/aserradoras/">Aserradoras</a></li>
         </ul>
       </div>
       <div class="mega-col">
@@ -614,6 +616,7 @@
             { name: 'Aditivo para llaneado', crumb: 'Construcción › Productos químicos', tags: ['aditivo','llaneado','llana','quimico','construccion'], href: root + 'construccion/productos-quimicos/aditivo-llaneado/', group: 'Construcción' },
             { name: 'Equipos para construcción', crumb: 'Construcción › Equipos', tags: ['equipos','maquinas','construccion'], href: root + 'construccion/equipos/', group: 'Construcción' },
             { name: 'Allanadoras', crumb: 'Construcción › Equipos', tags: ['allanadora','allanadoras','helicoptero','helicoptero','maquina','construccion','equipos'], href: root + 'construccion/equipos/allanadoras/', group: 'Construcción' },
+            { name: 'Aserradoras', crumb: 'Construcción › Equipos', tags: ['aserradora','aserradoras','sierra','corte','construccion','equipos'], href: root + 'construccion/equipos/aserradoras/', group: 'Construcción' },
             // REPARACIÓN
             { name: 'Reparación', crumb: 'Categoría 02', tags: ['reparacion','reparar','dano','fisura','crack'], href: root + 'reparacion/', group: 'Reparación' },
             { name: 'Materiales para reparación', crumb: 'Reparación › Materiales', tags: ['materiales','reparacion'], href: root + 'reparacion/materiales/', group: 'Reparación' },

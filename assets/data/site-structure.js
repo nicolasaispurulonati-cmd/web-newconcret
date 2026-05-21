@@ -30,7 +30,8 @@ const NEWCONCRET_STRUCTURE = {
       "equipos": {
         "label": "Equipos",
         "subcategories": [
-          { "slug": "allanadoras", "label": "Allanadoras" }
+          { "slug": "allanadoras", "label": "Allanadoras" },
+          { "slug": "aserradoras", "label": "Aserradoras" }
         ]
       }
     }
