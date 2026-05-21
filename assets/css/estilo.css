@@ -3198,6 +3198,41 @@ body {
         font-size: 3rem !important;
     }
 
+    /* Entrenamiento — tarjetas en mobile: número izq, texto der */
+    #capacitaciones-mob .pillar-card {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1.25rem !important;
+        padding: .9rem 1.25rem !important;
+    }
+
+    #capacitaciones-mob .pillar-num {
+        font-size: 2.2rem !important;
+        line-height: 1 !important;
+        flex-shrink: 0 !important;
+        width: 2.6rem !important;
+        text-align: center !important;
+    }
+
+    #capacitaciones-mob .pillar-info {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    #capacitaciones-mob .pillar-title {
+        font-size: 1.15rem !important;
+        margin-bottom: .3rem !important;
+    }
+
+    #capacitaciones-mob .pillar-label {
+        margin-bottom: .25rem !important;
+    }
+
+    #capacitaciones-mob .pillar-desc {
+        font-size: .82rem !important;
+        line-height: 1.45 !important;
+    }
+
     .cap-featured {
         grid-template-columns: 1fr !important;
     }
