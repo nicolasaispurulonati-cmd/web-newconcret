@@ -1086,3 +1086,41 @@ body.no-scroll {
 }
 
 body.search-open { overflow: hidden; }
+
+/* ─── MOBILE SEARCH ROW ─────────────────────────────────────────────────── */
+.mob-search-row {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: left;
+    transition: background .2s, border-color .2s;
+    -webkit-tap-highlight-color: transparent;
+}
+.mob-search-row:hover,
+.mob-search-row:active {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+.mob-search-row svg:first-child {
+    flex-shrink: 0;
+}
+.mob-search-row-txt {
+    flex: 1;
+    font-family: 'Barlow', sans-serif;
+    font-size: .85rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: .01em;
+}
+.mob-search-row-arr {
+    flex-shrink: 0;
+    opacity: .4;
+}

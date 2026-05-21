@@ -91,6 +91,11 @@
   </div>
 
   <div class="mob-body">
+    <button class="mob-search-row" id="mobSearchBtn" aria-label="Buscar productos y páginas">
+      <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.4"></circle><path d="M11.5 11.5l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path></svg>
+      <span class="mob-search-row-txt">Buscar productos y páginas...</span>
+      <svg class="mob-search-row-arr" width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
+    </button>
     <div class="mob-sec-label">Productos por categoría</div>
 
     <!-- Construcción -->
@@ -728,6 +733,9 @@
 
         var searchBtn = document.querySelector('.nav-search');
         if (searchBtn) searchBtn.addEventListener('click', openSearch);
+
+        var mobSearchBtn = document.getElementById('mobSearchBtn');
+        if (mobSearchBtn) mobSearchBtn.addEventListener('click', openSearch);
 
         var searchX = document.getElementById('ncSearchX');
         if (searchX) searchX.addEventListener('click', closeSearch);
