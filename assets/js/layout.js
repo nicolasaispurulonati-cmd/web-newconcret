@@ -59,7 +59,24 @@
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
     </a>
   </div>
+
+  <!-- Inline search bar (visible in search-mode) -->
+  <div class="nav-search-bar" id="navSearchBar" aria-hidden="true">
+    <svg class="nav-sb-icon" width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M11.5 11.5l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <input class="nav-sb-inp" id="ncSearchInput" type="text" placeholder="Buscar productos, categorías, páginas..." autocomplete="off" spellcheck="false">
+    <kbd class="nav-sb-kbd">ESC</kbd>
+    <button class="nav-sb-x" id="ncSearchX" aria-label="Cerrar búsqueda" tabindex="-1">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
 </nav>
+
+<!-- Search results panel (drops below nav) -->
+<div class="nc-search-drop hide-mobile" id="ncSearchDrop">
+  <div class="nc-search-drop-inner">
+    <div id="ncSearchResults"></div>
+  </div>
+</div>
 
 <nav class="mob-nav-bar hide-desktop" id="mob-nav" style="position:fixed; top:0; left:0; right:0; z-index:1500; height:66px; display:flex; align-items:center; justify-content:space-between; padding:0 0.5rem; background:rgba(10,10,10,0.94); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.1); transition: background .3s, border-color .3s;">
   <a href="${root}" class="logo">
@@ -396,20 +413,6 @@
   </div>
 </div>
 
-<!-- ── SEARCH OVERLAY ── -->
-<div class="nc-search-ov" id="ncSearch">
-  <div class="nc-search-hd">
-    <svg class="nc-search-icon" width="20" height="20" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M11.5 11.5l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    <input class="nc-search-inp" id="ncSearchInput" type="text" placeholder="Buscar categorías, productos, páginas..." autocomplete="off" spellcheck="false">
-    <kbd class="nc-search-kbd">ESC</kbd>
-    <button class="nc-search-x" id="ncSearchX" aria-label="Cerrar búsqueda">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-  </div>
-  <div class="nc-search-body">
-    <div id="ncSearchResults"></div>
-  </div>
-</div>
 `;
 
     const footerHtml = `
@@ -713,22 +716,29 @@
         }
 
         function openSearch() {
-            var ov = document.getElementById('ncSearch');
+            var navEl = document.getElementById('nav');
+            var bar = document.getElementById('navSearchBar');
+            var drop = document.getElementById('ncSearchDrop');
             var inp = document.getElementById('ncSearchInput');
-            if (!ov) return;
-            ov.classList.add('open');
-            document.body.classList.add('search-open');
+            if (!navEl) return;
+            closeAllMegas();
+            navEl.classList.add('search-mode');
+            if (bar) bar.setAttribute('aria-hidden', 'false');
+            if (drop) drop.classList.add('open');
             renderDefaultSearch();
-            setTimeout(function() { if (inp) inp.focus(); }, 50);
+            setTimeout(function() { if (inp) inp.focus(); }, 80);
         }
 
         function closeSearch() {
-            var ov = document.getElementById('ncSearch');
+            var navEl = document.getElementById('nav');
+            var bar = document.getElementById('navSearchBar');
+            var drop = document.getElementById('ncSearchDrop');
             var inp = document.getElementById('ncSearchInput');
-            if (!ov) return;
-            ov.classList.remove('open');
-            document.body.classList.remove('search-open');
-            if (inp) inp.value = '';
+            if (!navEl) return;
+            navEl.classList.remove('search-mode');
+            if (bar) bar.setAttribute('aria-hidden', 'true');
+            if (drop) drop.classList.remove('open');
+            if (inp) { inp.value = ''; inp.blur(); }
         }
 
         var searchBtn = document.querySelector('.nav-search');
@@ -753,7 +763,7 @@
             searchInput.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
-                    var items = document.querySelectorAll('#ncSearch .nc-srch-item');
+                    var items = document.querySelectorAll('#ncSearchDrop .nc-srch-item');
                     if (items.length) items[0].focus();
                 }
             });
@@ -762,7 +772,7 @@
         document.addEventListener('keydown', function(e) {
             var focused = document.activeElement;
             if (!focused || !focused.classList.contains('nc-srch-item')) return;
-            var items = Array.from(document.querySelectorAll('#ncSearch .nc-srch-item'));
+            var items = Array.from(document.querySelectorAll('#ncSearchDrop .nc-srch-item'));
             var idx = items.indexOf(focused);
             if (e.key === 'ArrowDown') {
                 e.preventDefault();
@@ -771,6 +781,16 @@
                 e.preventDefault();
                 if (idx > 0) { items[idx - 1].focus(); }
                 else if (searchInput) searchInput.focus();
+            }
+        });
+
+        // Click outside nav + dropdown closes search
+        document.addEventListener('click', function(e) {
+            var navEl = document.getElementById('nav');
+            var drop = document.getElementById('ncSearchDrop');
+            if (!navEl || !navEl.classList.contains('search-mode')) return;
+            if (!navEl.contains(e.target) && (!drop || !drop.contains(e.target))) {
+                closeSearch();
             }
         });
         // ── END SEARCH ──────────────────────────────────────────────────────
