@@ -390,6 +390,21 @@
     </div>
   </div>
 </div>
+
+<!-- ── SEARCH OVERLAY ── -->
+<div class="nc-search-ov" id="ncSearch">
+  <div class="nc-search-hd">
+    <svg class="nc-search-icon" width="20" height="20" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M11.5 11.5l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <input class="nc-search-inp" id="ncSearchInput" type="text" placeholder="Buscar categorías, productos, páginas..." autocomplete="off" spellcheck="false">
+    <kbd class="nc-search-kbd">ESC</kbd>
+    <button class="nc-search-x" id="ncSearchX" aria-label="Cerrar búsqueda">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="nc-search-body">
+    <div id="ncSearchResults"></div>
+  </div>
+</div>
 `;
 
     const footerHtml = `
@@ -558,6 +573,199 @@
         // Update year
         const yearSpan = document.getElementById('ncYear');
         if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+        // ── SEARCH ──────────────────────────────────────────────────────────
+        const SEARCH_DATA = [
+            // CONSTRUCCIÓN
+            { name: 'Construcción', crumb: 'Categoría 01', tags: ['construccion','hormigon','piso','nuevo'], href: root + 'construccion/', group: 'Construcción' },
+            { name: 'Materiales para construcción', crumb: 'Construcción › Materiales', tags: ['materiales','construccion'], href: root + 'construccion/materiales/', group: 'Construcción' },
+            { name: 'Nylon', crumb: 'Construcción › Materiales', tags: ['nylon','fibra','construccion','materiales'], href: root + 'construccion/materiales/nylon/', group: 'Construcción' },
+            { name: 'Microfibra', crumb: 'Construcción › Materiales', tags: ['microfibra','fibra','construccion','materiales'], href: root + 'construccion/materiales/microfibra/', group: 'Construcción' },
+            { name: 'Macrofibra', crumb: 'Construcción › Materiales', tags: ['macrofibra','fibra','construccion','materiales'], href: root + 'construccion/materiales/macrofibra/', group: 'Construcción' },
+            { name: 'Endurecedor superficial', crumb: 'Construcción › Materiales', tags: ['endurecedor','superficial','construccion','materiales'], href: root + 'construccion/materiales/endurecedor-superficial/', group: 'Construcción' },
+            { name: 'Grouting (construcción)', crumb: 'Construcción › Materiales', tags: ['grouting','relleno','nivelacion','construccion','materiales'], href: root + 'construccion/materiales/grouting/', group: 'Construcción' },
+            { name: 'Mortero cementicio (construcción)', crumb: 'Construcción › Materiales', tags: ['mortero','cementicio','cemento','construccion','materiales'], href: root + 'construccion/materiales/mortero-cementicio/', group: 'Construcción' },
+            { name: 'Productos químicos para construcción', crumb: 'Construcción › Productos químicos', tags: ['quimicos','quimico','construccion'], href: root + 'construccion/productos-quimicos/', group: 'Construcción' },
+            { name: 'Aglutinantes (construcción)', crumb: 'Construcción › Productos químicos', tags: ['aglutinante','aglutinantes','quimico','construccion'], href: root + 'construccion/productos-quimicos/aglutinantes/', group: 'Construcción' },
+            { name: 'Puentes de adherencia (construcción)', crumb: 'Construcción › Productos químicos', tags: ['puente','adherencia','adhesion','quimico','construccion'], href: root + 'construccion/productos-quimicos/puentes-de-adherencia/', group: 'Construcción' },
+            { name: 'Curadores', crumb: 'Construcción › Productos químicos', tags: ['curador','curadores','curado','quimico','construccion'], href: root + 'construccion/productos-quimicos/curadores/', group: 'Construcción' },
+            { name: 'Aditivo para llaneado', crumb: 'Construcción › Productos químicos', tags: ['aditivo','llaneado','llana','quimico','construccion'], href: root + 'construccion/productos-quimicos/aditivo-llaneado/', group: 'Construcción' },
+            { name: 'Equipos para construcción', crumb: 'Construcción › Equipos', tags: ['equipos','maquinas','construccion'], href: root + 'construccion/equipos/', group: 'Construcción' },
+            { name: 'Allanadoras', crumb: 'Construcción › Equipos', tags: ['allanadora','allanadoras','helicoptero','helicoptero','maquina','construccion','equipos'], href: root + 'construccion/equipos/allanadoras/', group: 'Construcción' },
+            // REPARACIÓN
+            { name: 'Reparación', crumb: 'Categoría 02', tags: ['reparacion','reparar','dano','fisura','crack'], href: root + 'reparacion/', group: 'Reparación' },
+            { name: 'Materiales para reparación', crumb: 'Reparación › Materiales', tags: ['materiales','reparacion'], href: root + 'reparacion/materiales/', group: 'Reparación' },
+            { name: 'Grouting (reparación)', crumb: 'Reparación › Materiales', tags: ['grouting','relleno','reparacion','materiales'], href: root + 'reparacion/materiales/grouting/', group: 'Reparación' },
+            { name: 'Mortero cementicio (reparación)', crumb: 'Reparación › Materiales', tags: ['mortero','cementicio','cemento','reparacion','materiales'], href: root + 'reparacion/materiales/mortero-cementicio/', group: 'Reparación' },
+            { name: 'Endurecedor superficial (reparación)', crumb: 'Reparación › Materiales', tags: ['endurecedor','superficial','reparacion','materiales'], href: root + 'reparacion/materiales/endurecedor-superficial/', group: 'Reparación' },
+            { name: 'Productos químicos para reparación', crumb: 'Reparación › Productos químicos', tags: ['quimicos','quimico','reparacion'], href: root + 'reparacion/productos-quimicos/', group: 'Reparación' },
+            { name: 'Aglutinantes (reparación)', crumb: 'Reparación › Productos químicos', tags: ['aglutinante','aglutinantes','quimico','reparacion'], href: root + 'reparacion/productos-quimicos/aglutinantes/', group: 'Reparación' },
+            { name: 'Puentes de adherencia (reparación)', crumb: 'Reparación › Productos químicos', tags: ['puente','adherencia','adhesion','quimico','reparacion'], href: root + 'reparacion/productos-quimicos/puentes-de-adherencia/', group: 'Reparación' },
+            { name: 'Equipos para reparación', crumb: 'Reparación › Equipos', tags: ['equipos','maquinas','reparacion'], href: root + 'reparacion/equipos/', group: 'Reparación' },
+            { name: 'Escarificadoras', crumb: 'Reparación › Equipos', tags: ['escarificadora','escarificadoras','escarificar','reparacion','equipos'], href: root + 'reparacion/equipos/escarificadoras/', group: 'Reparación' },
+            { name: 'Insumos para reparación', crumb: 'Reparación › Insumos', tags: ['insumos','accesorios','reparacion'], href: root + 'reparacion/insumos/', group: 'Reparación' },
+            { name: 'Accesorios amoladora', crumb: 'Reparación › Insumos', tags: ['accesorios','amoladora','disco','reparacion','insumos'], href: root + 'reparacion/insumos/accesorios-amoladora/', group: 'Reparación' },
+            { name: 'Ruedas de bujardado', crumb: 'Reparación › Insumos', tags: ['bujardado','rueda','bujarda','reparacion','insumos'], href: root + 'reparacion/insumos/bujardado/', group: 'Reparación' },
+            { name: 'Puntas martillo', crumb: 'Reparación › Insumos', tags: ['punta','martillo','cincel','reparacion','insumos'], href: root + 'reparacion/insumos/puntas-martillo/', group: 'Reparación' },
+            { name: 'Mechas copa', crumb: 'Reparación › Insumos', tags: ['mecha','copa','perforacion','reparacion','insumos'], href: root + 'reparacion/insumos/mechas-copa/', group: 'Reparación' },
+            // PULIDO
+            { name: 'Pulido', crumb: 'Categoría 03', tags: ['pulido','pulir','brillo','diamantado'], href: root + 'pulido/', group: 'Pulido' },
+            { name: 'Materiales para pulido', crumb: 'Pulido › Materiales', tags: ['materiales','pulido'], href: root + 'pulido/materiales/', group: 'Pulido' },
+            { name: 'Grouting (pulido)', crumb: 'Pulido › Materiales', tags: ['grouting','relleno','pulido','materiales'], href: root + 'pulido/materiales/grouting/', group: 'Pulido' },
+            { name: 'Mortero cementicio (pulido)', crumb: 'Pulido › Materiales', tags: ['mortero','cementicio','cemento','pulido','materiales'], href: root + 'pulido/materiales/mortero-cementicio/', group: 'Pulido' },
+            { name: 'Productos químicos para pulido', crumb: 'Pulido › Productos químicos', tags: ['quimicos','quimico','pulido'], href: root + 'pulido/productos-quimicos/', group: 'Pulido' },
+            { name: 'Aglutinantes (pulido)', crumb: 'Pulido › Productos químicos', tags: ['aglutinante','aglutinantes','quimico','pulido'], href: root + 'pulido/productos-quimicos/aglutinantes/', group: 'Pulido' },
+            { name: 'Puentes de adherencia (pulido)', crumb: 'Pulido › Productos químicos', tags: ['puente','adherencia','adhesion','quimico','pulido'], href: root + 'pulido/productos-quimicos/puentes-de-adherencia/', group: 'Pulido' },
+            { name: 'Densificadores', crumb: 'Pulido › Productos químicos', tags: ['densificador','densificadores','densificar','quimico','pulido'], href: root + 'pulido/productos-quimicos/densificadores/', group: 'Pulido' },
+            { name: 'Impermeabilizantes', crumb: 'Pulido › Productos químicos', tags: ['impermeabilizante','impermeabilizantes','impermeabilizar','quimico','pulido'], href: root + 'pulido/productos-quimicos/impermeabilizantes/', group: 'Pulido' },
+            { name: 'Selladores (pulido)', crumb: 'Pulido › Productos químicos', tags: ['sellador','selladores','sellar','quimico','pulido'], href: root + 'pulido/productos-quimicos/selladores/', group: 'Pulido' },
+            { name: 'Detergentes', crumb: 'Pulido › Productos químicos', tags: ['detergente','detergentes','limpieza','quimico','pulido'], href: root + 'pulido/productos-quimicos/detergentes/', group: 'Pulido' },
+            { name: 'Equipos para pulido', crumb: 'Pulido › Equipos', tags: ['equipos','maquinas','pulido'], href: root + 'pulido/equipos/', group: 'Pulido' },
+            { name: 'Pulidoras', crumb: 'Pulido › Equipos', tags: ['pulidora','pulidoras','maquina','pulido','equipos'], href: root + 'pulido/equipos/pulidoras/', group: 'Pulido' },
+            { name: 'Accesorios pulidoras', crumb: 'Pulido › Equipos', tags: ['accesorios','pulidoras','pulido','equipos'], href: root + 'pulido/equipos/accesorios-pulidoras/', group: 'Pulido' },
+            { name: 'Aspiradoras (pulido)', crumb: 'Pulido › Equipos', tags: ['aspiradora','aspiradoras','pulido','equipos'], href: root + 'pulido/equipos/aspiradoras/', group: 'Pulido' },
+            { name: 'Accesorios aspiradoras (pulido)', crumb: 'Pulido › Equipos', tags: ['accesorios','aspiradoras','pulido','equipos'], href: root + 'pulido/equipos/accesorios-aspiradoras/', group: 'Pulido' },
+            { name: 'Lustradoras (pulido)', crumb: 'Pulido › Equipos', tags: ['lustradora','lustradoras','lustrar','brillo','pulido','equipos'], href: root + 'pulido/equipos/lustradoras/', group: 'Pulido' },
+            { name: 'Lavasecapisos (pulido)', crumb: 'Pulido › Equipos', tags: ['lavasecapiso','lavasecapisos','lavar','secar','pulido','equipos'], href: root + 'pulido/equipos/lavasecapisos/', group: 'Pulido' },
+            { name: 'Insumos para pulido', crumb: 'Pulido › Insumos', tags: ['insumos','discos','abrasivos','pulido'], href: root + 'pulido/insumos/', group: 'Pulido' },
+            { name: 'Metales para desbaste', crumb: 'Pulido › Insumos', tags: ['metal','metales','desbaste','desbastar','pulido','insumos'], href: root + 'pulido/insumos/metales-desbaste/', group: 'Pulido' },
+            { name: 'Discos resinoides', crumb: 'Pulido › Insumos', tags: ['disco','resinoides','resina','pulido','insumos'], href: root + 'pulido/insumos/discos-resinoides/', group: 'Pulido' },
+            { name: 'Paños diamantados', crumb: 'Pulido › Insumos', tags: ['pano','panos','diamantado','diamantados','pulido','insumos'], href: root + 'pulido/insumos/panos-diamantados/', group: 'Pulido' },
+            // MANTENIMIENTO
+            { name: 'Mantenimiento', crumb: 'Categoría 04', tags: ['mantenimiento','mantener','conservar'], href: root + 'mantenimiento/', group: 'Mantenimiento' },
+            { name: 'Equipos para mantenimiento', crumb: 'Mantenimiento › Equipos', tags: ['equipos','maquinas','mantenimiento'], href: root + 'mantenimiento/equipos/', group: 'Mantenimiento' },
+            { name: 'Aspiradoras (mantenimiento)', crumb: 'Mantenimiento › Equipos', tags: ['aspiradora','aspiradoras','mantenimiento','equipos'], href: root + 'mantenimiento/equipos/aspiradoras/', group: 'Mantenimiento' },
+            { name: 'Lustradoras (mantenimiento)', crumb: 'Mantenimiento › Equipos', tags: ['lustradora','lustradoras','lustrar','brillo','mantenimiento','equipos'], href: root + 'mantenimiento/equipos/lustradoras/', group: 'Mantenimiento' },
+            { name: 'Lavasecapisos (mantenimiento)', crumb: 'Mantenimiento › Equipos', tags: ['lavasecapiso','lavasecapisos','lavar','secar','mantenimiento','equipos'], href: root + 'mantenimiento/equipos/lavasecapisos/', group: 'Mantenimiento' },
+            { name: 'Productos químicos para mantenimiento', crumb: 'Mantenimiento › Productos químicos', tags: ['quimicos','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/', group: 'Mantenimiento' },
+            { name: 'Selladores (mantenimiento)', crumb: 'Mantenimiento › Productos químicos', tags: ['sellador','selladores','sellar','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/selladores/', group: 'Mantenimiento' },
+            { name: 'Desengrasantes', crumb: 'Mantenimiento › Productos químicos', tags: ['desengrasante','desengrasantes','desengrasar','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/desengrasantes/', group: 'Mantenimiento' },
+            { name: 'Accesorios de mantenimiento', crumb: 'Mantenimiento › Accesorios', tags: ['accesorios','mantenimiento'], href: root + 'mantenimiento/accesorios/', group: 'Mantenimiento' },
+            { name: 'Mopas y pulverizadores', crumb: 'Mantenimiento › Accesorios', tags: ['mopa','mopas','pulverizador','pulverizadores','mantenimiento','accesorios'], href: root + 'mantenimiento/accesorios/mopas/', group: 'Mantenimiento' },
+            { name: 'Paños de lustre', crumb: 'Mantenimiento › Accesorios', tags: ['pano','panos','lustre','lustrar','mantenimiento','accesorios'], href: root + 'mantenimiento/accesorios/panos/', group: 'Mantenimiento' },
+            // EMPRESA
+            { name: 'Capacitaciones', crumb: 'Empresa', tags: ['capacitacion','capacitaciones','curso','cursos','formacion','aprender','training'], href: root + 'capacitacion/', group: 'Empresa' },
+            { name: 'Sistema NewConcret', crumb: 'Empresa › Sistema NC', tags: ['sistema','nc','newconcret','metodo','proceso'], href: root + 'sistema-newconcret/', group: 'Empresa' },
+            { name: 'Nosotros', crumb: 'Empresa', tags: ['nosotros','empresa','quienes','historia','equipo'], href: root + 'nosotros/', group: 'Empresa' },
+            { name: 'Contacto', crumb: 'Empresa', tags: ['contacto','contactar','consulta','consultar','whatsapp','telefono'], href: root + 'contacto/', group: 'Empresa' },
+        ];
+
+        function normStr(s) {
+            return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+        }
+
+        function runSearch(query) {
+            var q = normStr(query.trim());
+            if (!q) return null;
+            return SEARCH_DATA.filter(function(item) {
+                return normStr(item.name).includes(q) ||
+                    normStr(item.crumb).includes(q) ||
+                    item.tags.some(function(t) { return normStr(t).includes(q); });
+            });
+        }
+
+        var ARROW_SVG = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>';
+
+        function renderDefaultSearch() {
+            var container = document.getElementById('ncSearchResults');
+            if (!container) return;
+            var quickLinks = [
+                { name: 'Capacitaciones', href: root + 'capacitacion/', crumb: 'Empresa' },
+                { name: 'Pulidoras', href: root + 'pulido/equipos/pulidoras/', crumb: 'Pulido › Equipos' },
+                { name: 'Allanadoras', href: root + 'construccion/equipos/allanadoras/', crumb: 'Construcción › Equipos' },
+                { name: 'Densificadores', href: root + 'pulido/productos-quimicos/densificadores/', crumb: 'Pulido › Químicos' },
+                { name: 'Escarificadoras', href: root + 'reparacion/equipos/escarificadoras/', crumb: 'Reparación › Equipos' },
+                { name: 'Sistema NC', href: root + 'sistema-newconcret/', crumb: 'Empresa' },
+            ];
+            container.innerHTML = '<div class="nc-srch-hint-lbl">Accesos rápidos</div><div class="nc-srch-items">' +
+                quickLinks.map(function(l) {
+                    return '<a href="' + l.href + '" class="nc-srch-item"><div class="nc-srch-meta"><span class="nc-srch-crumb">' + l.crumb + '</span><span class="nc-srch-name">' + l.name + '</span></div><span class="nc-srch-arrow">' + ARROW_SVG + '</span></a>';
+                }).join('') + '</div>';
+        }
+
+        function renderSearchResults(results) {
+            var container = document.getElementById('ncSearchResults');
+            if (!container) return;
+            if (!results || results.length === 0) {
+                container.innerHTML = '<div class="nc-srch-empty">Sin resultados. Intentá con otro término.</div>';
+                return;
+            }
+            var groups = {};
+            results.forEach(function(r) {
+                if (!groups[r.group]) groups[r.group] = [];
+                groups[r.group].push(r);
+            });
+            var ORDER = ['Construcción','Reparación','Pulido','Mantenimiento','Empresa'];
+            var html = '';
+            ORDER.forEach(function(g) {
+                if (!groups[g]) return;
+                html += '<div class="nc-srch-group"><div class="nc-srch-group-lbl">' + g + '</div><div class="nc-srch-items">' +
+                    groups[g].map(function(item) {
+                        return '<a href="' + item.href + '" class="nc-srch-item"><div class="nc-srch-meta"><span class="nc-srch-crumb">' + item.crumb + '</span><span class="nc-srch-name">' + item.name + '</span></div><span class="nc-srch-arrow">' + ARROW_SVG + '</span></a>';
+                    }).join('') + '</div></div>';
+            });
+            container.innerHTML = html;
+        }
+
+        function openSearch() {
+            var ov = document.getElementById('ncSearch');
+            var inp = document.getElementById('ncSearchInput');
+            if (!ov) return;
+            ov.classList.add('open');
+            document.body.classList.add('search-open');
+            renderDefaultSearch();
+            setTimeout(function() { if (inp) inp.focus(); }, 50);
+        }
+
+        function closeSearch() {
+            var ov = document.getElementById('ncSearch');
+            var inp = document.getElementById('ncSearchInput');
+            if (!ov) return;
+            ov.classList.remove('open');
+            document.body.classList.remove('search-open');
+            if (inp) inp.value = '';
+        }
+
+        var searchBtn = document.querySelector('.nav-search');
+        if (searchBtn) searchBtn.addEventListener('click', openSearch);
+
+        var searchX = document.getElementById('ncSearchX');
+        if (searchX) searchX.addEventListener('click', closeSearch);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeSearch();
+        });
+
+        var searchInput = document.getElementById('ncSearchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                var val = this.value.trim();
+                if (!val) { renderDefaultSearch(); } else { renderSearchResults(runSearch(val)); }
+            });
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    var items = document.querySelectorAll('#ncSearch .nc-srch-item');
+                    if (items.length) items[0].focus();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', function(e) {
+            var focused = document.activeElement;
+            if (!focused || !focused.classList.contains('nc-srch-item')) return;
+            var items = Array.from(document.querySelectorAll('#ncSearch .nc-srch-item'));
+            var idx = items.indexOf(focused);
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (idx < items.length - 1) items[idx + 1].focus();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (idx > 0) { items[idx - 1].focus(); }
+                else if (searchInput) searchInput.focus();
+            }
+        });
+        // ── END SEARCH ──────────────────────────────────────────────────────
     }
     
     // 4. Global Toast System
