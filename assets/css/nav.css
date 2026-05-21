@@ -1100,6 +1100,75 @@ body.no-scroll {
     padding: 3rem 0 2rem;
 }
 
+body.search-open { overflow: hidden; }
+
+/* ─── MOBILE SEARCH OVERLAY ────────────────────────────────────────────── */
+.nc-mob-search-ov {
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    background: rgba(8, 8, 8, 0.99);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .22s, visibility .22s;
+    pointer-events: none;
+}
+.nc-mob-search-ov.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.nc-mob-search-hd {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    flex-shrink: 0;
+}
+.nc-mob-sb-icon {
+    color: var(--nc-red);
+    flex-shrink: 0;
+}
+.nc-mob-sb-inp {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #f4f4f2;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    caret-color: var(--nc-red);
+    min-width: 0;
+}
+.nc-mob-sb-inp::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+}
+.nc-mob-sb-x {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    padding: .35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+.nc-mob-search-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 1.25rem 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+
 /* ─── MOBILE SEARCH ROW ─────────────────────────────────────────────────── */
 .mob-search-row {
     display: flex;

@@ -222,6 +222,20 @@
   </div>
 </div>
 
+<!-- Mobile search overlay -->
+<div class="nc-mob-search-ov hide-desktop" id="ncMobSearchOv">
+  <div class="nc-mob-search-hd">
+    <svg class="nc-mob-sb-icon" width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M11.5 11.5l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <input class="nc-mob-sb-inp" id="ncSearchInputMob" type="text" placeholder="Buscar productos, páginas..." autocomplete="off" spellcheck="false">
+    <button class="nc-mob-sb-x" id="ncSearchXMob" aria-label="Cerrar búsqueda">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="nc-mob-search-body">
+    <div id="ncSearchResultsMob"></div>
+  </div>
+</div>
+
 <div class="mega" id="mega-construccion">
   <div class="mega-inner">
     <div class="mega-category-ident">
@@ -674,25 +688,26 @@
 
         var ARROW_SVG = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>';
 
-        function renderDefaultSearch() {
-            var container = document.getElementById('ncSearchResults');
+        var QUICK_LINKS = [
+            { name: 'Capacitaciones', href: root + 'capacitacion/', crumb: 'Empresa' },
+            { name: 'Pulidoras', href: root + 'pulido/equipos/pulidoras/', crumb: 'Pulido › Equipos' },
+            { name: 'Allanadoras', href: root + 'construccion/equipos/allanadoras/', crumb: 'Construcción › Equipos' },
+            { name: 'Densificadores', href: root + 'pulido/productos-quimicos/densificadores/', crumb: 'Pulido › Químicos' },
+            { name: 'Escarificadoras', href: root + 'reparacion/equipos/escarificadoras/', crumb: 'Reparación › Equipos' },
+            { name: 'Sistema NC', href: root + 'sistema-newconcret/', crumb: 'Empresa' },
+        ];
+
+        function renderDefaultSearch(targetId) {
+            var container = document.getElementById(targetId || 'ncSearchResults');
             if (!container) return;
-            var quickLinks = [
-                { name: 'Capacitaciones', href: root + 'capacitacion/', crumb: 'Empresa' },
-                { name: 'Pulidoras', href: root + 'pulido/equipos/pulidoras/', crumb: 'Pulido › Equipos' },
-                { name: 'Allanadoras', href: root + 'construccion/equipos/allanadoras/', crumb: 'Construcción › Equipos' },
-                { name: 'Densificadores', href: root + 'pulido/productos-quimicos/densificadores/', crumb: 'Pulido › Químicos' },
-                { name: 'Escarificadoras', href: root + 'reparacion/equipos/escarificadoras/', crumb: 'Reparación › Equipos' },
-                { name: 'Sistema NC', href: root + 'sistema-newconcret/', crumb: 'Empresa' },
-            ];
             container.innerHTML = '<div class="nc-srch-hint-lbl">Accesos rápidos</div><div class="nc-srch-items">' +
-                quickLinks.map(function(l) {
+                QUICK_LINKS.map(function(l) {
                     return '<a href="' + l.href + '" class="nc-srch-item"><div class="nc-srch-meta"><span class="nc-srch-crumb">' + l.crumb + '</span><span class="nc-srch-name">' + l.name + '</span></div><span class="nc-srch-arrow">' + ARROW_SVG + '</span></a>';
                 }).join('') + '</div>';
         }
 
-        function renderSearchResults(results) {
-            var container = document.getElementById('ncSearchResults');
+        function renderSearchResults(results, targetId) {
+            var container = document.getElementById(targetId || 'ncSearchResults');
             if (!container) return;
             if (!results || results.length === 0) {
                 container.innerHTML = '<div class="nc-srch-empty">Sin resultados. Intentá con otro término.</div>';
@@ -715,7 +730,8 @@
             container.innerHTML = html;
         }
 
-        function openSearch() {
+        // ── Desktop search (nav-inline) ──
+        function openSearchDesk() {
             var navEl = document.getElementById('nav');
             var bar = document.getElementById('navSearchBar');
             var drop = document.getElementById('ncSearchDrop');
@@ -725,40 +741,64 @@
             navEl.classList.add('search-mode');
             if (bar) bar.setAttribute('aria-hidden', 'false');
             if (drop) drop.classList.add('open');
-            renderDefaultSearch();
+            renderDefaultSearch('ncSearchResults');
             setTimeout(function() { if (inp) inp.focus(); }, 80);
         }
 
-        function closeSearch() {
+        function closeSearchDesk() {
             var navEl = document.getElementById('nav');
             var bar = document.getElementById('navSearchBar');
             var drop = document.getElementById('ncSearchDrop');
             var inp = document.getElementById('ncSearchInput');
-            if (!navEl) return;
-            navEl.classList.remove('search-mode');
+            if (navEl) navEl.classList.remove('search-mode');
             if (bar) bar.setAttribute('aria-hidden', 'true');
             if (drop) drop.classList.remove('open');
             if (inp) { inp.value = ''; inp.blur(); }
         }
 
+        // ── Mobile search (full-screen overlay) ──
+        function openSearchMob() {
+            var ov = document.getElementById('ncMobSearchOv');
+            var inp = document.getElementById('ncSearchInputMob');
+            if (!ov) return;
+            ov.classList.add('open');
+            document.body.classList.add('search-open');
+            renderDefaultSearch('ncSearchResultsMob');
+            setTimeout(function() { if (inp) inp.focus(); }, 80);
+        }
+
+        function closeSearchMob() {
+            var ov = document.getElementById('ncMobSearchOv');
+            var inp = document.getElementById('ncSearchInputMob');
+            if (ov) ov.classList.remove('open');
+            document.body.classList.remove('search-open');
+            if (inp) { inp.value = ''; inp.blur(); }
+        }
+
+        // ── Unified open/close (dispatch by screen width) ──
+        function openSearch() {
+            if (window.innerWidth <= 900) { openSearchMob(); } else { openSearchDesk(); }
+        }
+        function closeSearch() {
+            closeSearchDesk();
+            closeSearchMob();
+        }
+
+        // Desktop: search button
         var searchBtn = document.querySelector('.nav-search');
         if (searchBtn) searchBtn.addEventListener('click', openSearch);
 
-        var mobSearchBtn = document.getElementById('mobSearchBtn');
-        if (mobSearchBtn) mobSearchBtn.addEventListener('click', openSearch);
-
+        // Desktop: close ×
         var searchX = document.getElementById('ncSearchX');
         if (searchX) searchX.addEventListener('click', closeSearch);
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeSearch();
-        });
-
+        // Desktop: input handler
         var searchInput = document.getElementById('ncSearchInput');
         if (searchInput) {
             searchInput.addEventListener('input', function() {
                 var val = this.value.trim();
-                if (!val) { renderDefaultSearch(); } else { renderSearchResults(runSearch(val)); }
+                if (!val) { renderDefaultSearch('ncSearchResults'); }
+                else { renderSearchResults(runSearch(val), 'ncSearchResults'); }
             });
             searchInput.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowDown') {
@@ -769,29 +809,76 @@
             });
         }
 
+        // Desktop: arrow key nav in results
         document.addEventListener('keydown', function(e) {
             var focused = document.activeElement;
             if (!focused || !focused.classList.contains('nc-srch-item')) return;
             var items = Array.from(document.querySelectorAll('#ncSearchDrop .nc-srch-item'));
             var idx = items.indexOf(focused);
+            if (idx === -1) return;
             if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 if (idx < items.length - 1) items[idx + 1].focus();
             } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
-                if (idx > 0) { items[idx - 1].focus(); }
-                else if (searchInput) searchInput.focus();
+                if (idx > 0) { items[idx - 1].focus(); } else if (searchInput) searchInput.focus();
             }
         });
 
-        // Click outside nav + dropdown closes search
+        // Desktop: click outside closes search
         document.addEventListener('click', function(e) {
             var navEl = document.getElementById('nav');
             var drop = document.getElementById('ncSearchDrop');
             if (!navEl || !navEl.classList.contains('search-mode')) return;
             if (!navEl.contains(e.target) && (!drop || !drop.contains(e.target))) {
-                closeSearch();
+                closeSearchDesk();
             }
+        });
+
+        // Mobile: search button in drawer
+        var mobSearchBtn = document.getElementById('mobSearchBtn');
+        if (mobSearchBtn) mobSearchBtn.addEventListener('click', openSearchMob);
+
+        // Mobile: close ×
+        var searchXMob = document.getElementById('ncSearchXMob');
+        if (searchXMob) searchXMob.addEventListener('click', closeSearchMob);
+
+        // Mobile: input handler
+        var searchInputMob = document.getElementById('ncSearchInputMob');
+        if (searchInputMob) {
+            searchInputMob.addEventListener('input', function() {
+                var val = this.value.trim();
+                if (!val) { renderDefaultSearch('ncSearchResultsMob'); }
+                else { renderSearchResults(runSearch(val), 'ncSearchResultsMob'); }
+            });
+            searchInputMob.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    var items = document.querySelectorAll('#ncMobSearchOv .nc-srch-item');
+                    if (items.length) items[0].focus();
+                }
+            });
+        }
+
+        // Mobile: arrow key nav in results
+        document.addEventListener('keydown', function(e) {
+            var focused = document.activeElement;
+            if (!focused || !focused.classList.contains('nc-srch-item')) return;
+            var items = Array.from(document.querySelectorAll('#ncMobSearchOv .nc-srch-item'));
+            var idx = items.indexOf(focused);
+            if (idx === -1) return;
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (idx < items.length - 1) items[idx + 1].focus();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (idx > 0) { items[idx - 1].focus(); } else if (searchInputMob) searchInputMob.focus();
+            }
+        });
+
+        // Esc closes both
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeSearch();
         });
         // ── END SEARCH ──────────────────────────────────────────────────────
     }
