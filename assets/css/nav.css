@@ -903,14 +903,14 @@ body.no-scroll {
     transition: opacity .15s;
 }
 
-/* Inline search bar — sits absolutely inside the nav */
+/* Inline search bar — sits absolutely inside the nav, centered */
 .nav-search-bar {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     gap: .85rem;
-    padding: 0 2rem;
+    padding: 0 max(1.5rem, calc((100% - 640px) / 2));
     opacity: 0;
     pointer-events: none;
     transition: opacity .18s var(--expo, cubic-bezier(.16,1,.3,1));
