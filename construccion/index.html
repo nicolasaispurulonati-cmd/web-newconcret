@@ -1032,12 +1032,9 @@
         <button class="btn-ver" onclick="openModal('${p.id}')">
           Ver detalles ${iconSVG('arrow')}
         </button>
-        ${shop
-                    ? `<a href="${fixUrl(shop)}" target="_blank" rel="noopener" class="btn-ft">Tienda</a>`
-                    : (pdf
-                        ? `<a href="${fixUrl(pdf)}" target="_blank" rel="noopener" class="btn-ft">Ficha Técnica ${iconSVG('down')}</a>`
-                        : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft">Consultar</a>`
-                    )
+        ${pdf
+                    ? `<a href="${fixUrl(pdf)}" download class="btn-ft">Ficha técnica ${iconSVG('down')}</a>`
+                    : `<a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="btn-ft">Consultar</a>`
                 }
       </div>
     </div>
