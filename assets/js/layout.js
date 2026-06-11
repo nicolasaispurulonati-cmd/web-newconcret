@@ -472,10 +472,10 @@
       </ul>
     </div>
 
-    <div class="footer-col">
+    <div class="footer-col footer-col-contact">
       <div class="f-col-title">Contacto</div>
       <div class="f-contact">
-        <div class="f-contact-row">
+        <div class="f-contact-row f-contact-address">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           <span>Las Cigüeñas 217, Bragado,<br>Buenos Aires, Argentina</span>
         </div>

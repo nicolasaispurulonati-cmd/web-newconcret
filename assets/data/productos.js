@@ -7,12 +7,46 @@ const STORE_BASE = 'https://tiendalonati.com.ar';
 
 const productos = [
     {
+        "id": "prod_mpfnbk3b",
+        "nombre": "Aserradora CTE436",
+        "sku": "ASERRADORA",
+        "descripcion": "Aserradora para corte de juntas",
+        "imagen": "/assets/img/productos/aserradora-1-1779377279250.png",
+        "pdfUrl": "/assets/docs/corta-juntas-2-1779377320986.pdf",
+        "storeUrl": "",
+        "visible": true,
+        "rutas": [
+            {
+                "sección": "construccion",
+                "categoría": "",
+                "subcategoría": ""
+            },
+            {
+                "sección": "construccion",
+                "categoría": "equipos",
+                "subcategoría": ""
+            },
+            {
+                "sección": "construccion",
+                "categoría": "equipos",
+                "subcategoría": "aserradoras"
+            }
+        ],
+        "secciones": [
+            "construccion"
+        ],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
+        "specs": []
+    },
+    {
         "id": "prod_mp2xi1g1",
         "nombre": "Metales PCD Right/Left",
         "sku": "PCD-ROJO-AZUL",
         "descripcion": "Remoción de Recubrimientos",
         "imagen": "/assets/img/productos/epoxy-y-pcd-1778608255871.png",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/metales-pcd-1779301993506.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-poliuretano/",
         "visible": true,
         "rutas": [
@@ -109,7 +143,7 @@ const productos = [
     {
         "id": "metal-epoxi",
         "sku": "METALEPOXI",
-        "nombre": "Metal Epoxi",
+        "nombre": "Metal Epoxi Trapezoidal",
         "secciones": [
             "pulido"
         ],
@@ -209,7 +243,7 @@ const productos = [
     {
         "id": "tarsila-c1500-light",
         "sku": "TARSILAC1500",
-        "nombre": "Tarsila C1500 Light",
+        "nombre": "Lustradora Tarsila C1500 Light",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -217,7 +251,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Lustradora de Alta Velocidad",
+        "descripcion": "La Tarsila C1500 Light es una lustradora de alta velocidad,\ndiseñada para el mantenimiento, realce de brillo y conservación de pisos de hormigón tratados.",
         "imagen": "/assets/img/productos/tarseila-c1500-light-7-1773156559338.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/lustradora-tarsila-c1500-light/",
         "specs": [
@@ -275,7 +309,7 @@ const productos = [
     {
         "id": "tarsila-c1500",
         "sku": "TARSILAC1500",
-        "nombre": "Tarsila C1500",
+        "nombre": "Lustradora Tarsila C1500",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -283,14 +317,14 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Lustradora industrial",
+        "descripcion": "Tarsila C1500 es una lustradora industrial diseñada para obtener acabados de alto brillo en superficies de hormigón tratadas.",
         "imagen": "/assets/img/productos/1500-nueva-1778598427788.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/tarsila-c1500/",
         "specs": [
             {
                 "icono": "◉",
                 "clave": "Motor",
-                "valor": "5HP / RPM 1500"
+                "valor": "5HP"
             },
             {
                 "icono": "◉",
@@ -299,8 +333,8 @@ const productos = [
             },
             {
                 "icono": "◉",
-                "clave": "Peso",
-                "valor": "90 Kg"
+                "clave": "RPM",
+                "valor": "1500"
             }
         ],
         "pdfUrl": "/assets/docs/lustradora-tarsila-1500-1778598389073.pdf",
@@ -342,7 +376,7 @@ const productos = [
         "id": "prod_mp2spm6m",
         "nombre": "Lavasecapisos MB460",
         "sku": "MB460",
-        "descripcion": "Lavasecapisos con cable",
+        "descripcion": "Lavasecapisos MB460 es compacta y potente, ideal para la limpieza y mantenimiento de superficies pequeñas y medianas.",
         "imagen": "/assets/img/productos/mb460-1778600227857.png",
         "pdfUrl": "/assets/docs/mb460-1778600234967.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mb460/",
@@ -408,7 +442,7 @@ const productos = [
         "id": "prod_mp2t7yml",
         "nombre": "Lavasecapisos MX3",
         "sku": "MX3",
-        "descripcion": "Lavasecapisos a Batería",
+        "descripcion": "Lavasecapisos MX3 es un equipo autónomo a batería diseñado para limpiar y secar superficies en un solo paso, garantizando pisos completamente limpios, secos y libres de residuos.",
         "imagen": "/assets/img/productos/mx3-1778601166341.png",
         "pdfUrl": "/assets/docs/mx3-1778601171496.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mx3/",
@@ -474,10 +508,10 @@ const productos = [
         "id": "prod_mp2tfel4",
         "nombre": "Lavasecapisos MX3T",
         "sku": "MX3T",
-        "descripcion": "Lavasecapisos con tracción propia",
+        "descripcion": "La Lavasecapisos MX3T es un equipo autónomo a batería con tracción propia, diseñado para maximizar la productividad y reducir el esfuerzo del operador.",
         "imagen": "/assets/img/productos/mx3-1778601543367.png",
         "pdfUrl": "/assets/docs/mx3t-1778601462133.pdf",
-        "storeUrl": "",
+        "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mx3t",
         "visible": true,
         "rutas": [
             {
@@ -540,7 +574,7 @@ const productos = [
         "id": "prod_mp40z4uh",
         "nombre": "Lavasecapisos MB135",
         "sku": "LAV-MB135",
-        "descripcion": "Lavasecapisos hombre a bordo",
+        "descripcion": "Lavasecapisos MB135 es una máquina ride-on de doble cepillo diseñada para cubrir grandes superficies con máxima eficiencia y autonomía.",
         "imagen": "/assets/img/productos/mb135-1778674658727.png",
         "pdfUrl": "/assets/docs/mb135-1778674667448.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mb135/",
@@ -606,7 +640,7 @@ const productos = [
         "id": "prod_mp48pywy",
         "nombre": "Barredora M50",
         "sku": "BARR-MS50",
-        "descripcion": "Barredora hombre a bordo",
+        "descripcion": "Barredora MS50 es un equipo de alta capacidad diseñado para cubrir grandes superficies con máxima eficiencia, autonomía y potencia.",
         "imagen": "/assets/img/productos/ms50-1778687672939.png",
         "pdfUrl": "/assets/docs/ms50-1778687678615.pdf",
         "storeUrl": "",
@@ -629,13 +663,29 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "specs": []
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Eficiencia de Limpieza",
+                "valor": "7960 m²/h"
+            },
+            {
+                "icono": "◉",
+                "clave": "Tiempo de Trabajo",
+                "valor": "4 a 5 horas"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de Barrido",
+                "valor": "1500 mm"
+            }
+        ]
     },
     {
         "id": "prod_mp48ol0v",
         "nombre": "Barredora MS30",
         "sku": "BARR-MS30",
-        "descripcion": "Barredora hombre a bordo",
+        "descripcion": "Barredora MS30 es un equipo industrial diseñado para cubrir grandes superficies con máxima eficiencia, autonomía y capacidad de barrido.",
         "imagen": "/assets/img/productos/ms30-1778682885069.png",
         "pdfUrl": "/assets/docs/ms30-1778682911457.pdf",
         "storeUrl": "",
@@ -658,19 +708,35 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "specs": []
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Eficiencia de Limpeiza",
+                "valor": "5580 m²/h"
+            },
+            {
+                "icono": "◉",
+                "clave": "Tiempo de Trabajo",
+                "valor": "3 a 4 horas"
+            },
+            {
+                "icono": "◉",
+                "clave": "Ancho de Barrido",
+                "valor": "1150 mm"
+            }
+        ]
     },
     {
         "id": "frida-400-eco",
         "sku": "FRIDA400",
-        "nombre": "Frida 400 ECO",
+        "nombre": "Pulidora Frida 400 ECO",
         "secciones": [
             "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora semi-profesional",
+        "descripcion": "La pulidora más compacta de la línea Frida, pensada para trabajos\nsemiprofesionales y espacios reducidos.",
         "imagen": "/assets/img/productos/frida-400.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/frida-400/",
         "specs": [
@@ -713,14 +779,14 @@ const productos = [
     {
         "id": "frida-450",
         "sku": "FRIDA450",
-        "nombre": "Frida 450",
+        "nombre": "Pulidora Frida 450",
         "secciones": [
             "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora semi-profesional",
+        "descripcion": "Pulidora semiprofesional versátil, diseñada para realizar pulido, lavado y lustrado con mayor estabilidad y cobertura.",
         "imagen": "/assets/img/productos/frida-450.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/frida-450/",
         "specs": [
@@ -770,7 +836,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Barrera hidrófuga para humedad ascendente",
+        "descripcion": "Barrera hidrófuga de polietileno – 200 micrones",
         "imagen": "/assets/img/productos/nylonnegro.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/nylon-negro/",
         "specs": [
@@ -787,7 +853,7 @@ const productos = [
             {
                 "icono": "◉",
                 "clave": "Presentación",
-                "valor": "Segun necesidad"
+                "valor": "Rollos de 2 mts. de ancho"
             }
         ],
         "pdfUrl": "/assets/docs/ficha-tcnica-nylon-negro-1778596573206.pdf",
@@ -815,8 +881,7 @@ const productos = [
         "sku": "CONCRETDUR",
         "nombre": "Concret Dur",
         "secciones": [
-            "construccion",
-            "reparacion"
+            "construccion"
         ],
         "categoria": "",
         "cat_label": "",
@@ -856,21 +921,6 @@ const productos = [
                 "sección": "construccion",
                 "categoría": "materiales",
                 "subcategoría": "endurecedor-superficial"
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "",
-                "subcategoría": ""
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "materiales",
-                "subcategoría": ""
-            },
-            {
-                "sección": "reparacion",
-                "categoría": "materiales",
-                "subcategoría": "endurecedor-superficial"
             }
         ],
         "pdfUrl": "/assets/docs/ficha-tecnica-concret-dur-1778593121150.pdf",
@@ -888,14 +938,14 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Grouting de reparación estructural de secado rápido",
+        "descripcion": "Grouting de reparación estructural de secado rápido.",
         "imagen": "/assets/img/productos/concretfix.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-fix/",
         "specs": [
             {
                 "icono": "◉",
-                "clave": "Tipo",
-                "valor": "Grouting cementicio"
+                "clave": "Función",
+                "valor": "Reparación de superficie horizontaless"
             },
             {
                 "icono": "◉",
@@ -970,14 +1020,14 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Reparación, nivelación y terminación de superficies",
+        "descripcion": "Mortero cementicio modificado, pulible y de alto rendimiento.",
         "imagen": "/assets/img/productos/concretmicrostrong.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-microstrong/",
         "specs": [
             {
                 "icono": "◉",
-                "clave": "Tipo",
-                "valor": "Mortero cementicio"
+                "clave": "Función",
+                "valor": "Reparación, nivelación y terminación de superficies"
             },
             {
                 "icono": "◉",
@@ -1050,9 +1100,9 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Microfibra monofilamento",
+        "descripcion": "Microfibra de polipropileno virgen para hormigón.",
         "imagen": "/assets/img/productos/microfibra.png",
-        "storeUrl": "https://tiendalonati.com.ar/productos/microfibra3/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-micro-microfibra/",
         "specs": [
             {
                 "icono": "◉",
@@ -1100,9 +1150,9 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Macrofibra de polipropileno",
+        "descripcion": "Macrofibra de polipropileno estructural",
         "imagen": "/assets/img/productos/macrofibra.png",
-        "storeUrl": "${STORE_BASE}/productos/macrofibra/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-fibra-macrofibra/",
         "specs": [
             {
                 "icono": "◉",
@@ -1986,7 +2036,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora Satelital Profesional",
+        "descripcion": "Chavela 550s combina formato compacto con sistema satelital, logrando excelente control y uniformidad de corte.",
         "imagen": "/assets/img/productos/chavela-550.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-550s/",
         "specs": [
@@ -2029,14 +2079,14 @@ const productos = [
     {
         "id": "chavela-680",
         "sku": "CHAVELA680",
-        "nombre": "Chavela 680",
+        "nombre": "Pulidora Chavela 680",
         "secciones": [
             "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora Satelital Industrial",
+        "descripcion": "Chavela 680 es el inicio del pulido industrial, ofreciendo más peso, potencia y cobertura que la 550s.",
         "imagen": "/assets/img/productos/chavela-680.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-680/",
         "specs": [
@@ -2086,7 +2136,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora Satelital Industrial",
+        "descripcion": "Chavela 750 es una pulidora robusta y equilibrada, pensada para trabajos industriales donde se requiere potencia, estabilidad y control constante.",
         "imagen": "/assets/img/productos/chavela-750.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-750/",
         "specs": [
@@ -2136,7 +2186,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora Satelital Industrial a control remoto",
+        "descripcion": "Chavela 750CR está pensada para trabajos industriales donde la seguridad, el control y la productividad son determinantes.",
         "imagen": "/assets/img/productos/chavela-750cr.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-750cr/",
         "specs": [
@@ -2179,14 +2229,14 @@ const productos = [
     {
         "id": "chavela-850",
         "sku": "CHAVELA850",
-        "nombre": "Chavela 850",
+        "nombre": "Pulidora Chavela 850",
         "secciones": [
             "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora Satelital Industrial",
+        "descripcion": "Chavela 850 es una pulidora industrial profesional, diseñada para cubrir superficies grandes con alta velocidad y terminación\nde calidad.",
         "imagen": "/assets/img/productos/chavela-850.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-850/",
         "specs": [
@@ -2229,14 +2279,14 @@ const productos = [
     {
         "id": "chavela-900",
         "sku": "CHAVELA900",
-        "nombre": "Chavela 900",
+        "nombre": "Pulidora Chavela 900",
         "secciones": [
             "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora Satelital Industrial a control remoto",
+        "descripcion": "Chavela 900 incorpora control remoto, permitiendo maniobrar la máquina a distancia con menos fatiga y mayor precisión.",
         "imagen": "/assets/img/productos/chavela-900.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-900/",
         "specs": [
@@ -2279,14 +2329,14 @@ const productos = [
     {
         "id": "chavela-1366",
         "sku": "CHAVELA1366",
-        "nombre": "Chavela 1366",
+        "nombre": "Pulidora Chavela 1366",
         "secciones": [
             "pulido"
         ],
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Pulidora Satelital de dos Motores a Control Remoto",
+        "descripcion": "Chavela 1366 es la pulidora más potente de toda la línea, equipada con dos motores, control remoto y un ancho de trabajo superior.",
         "imagen": "/assets/img/productos/chavela-1366.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-1366/",
         "specs": [
@@ -3017,7 +3067,23 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "specs": []
+        "specs": [
+            {
+                "icono": "◉",
+                "clave": "Diámetro",
+                "valor": "180 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Espesor",
+                "valor": "3 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Granos",
+                "valor": "50 a 1500"
+            }
+        ]
     },
     {
         "id": "ruedas-de-bujardado",
@@ -3130,9 +3196,9 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Ciclón Preseparador de residuos",
-        "imagen": "/assets/img/productos/ciclon-1778598944444.png",
-        "storeUrl": "${STORE_BASE}/productos/ciclon-preseparador/",
+        "descripcion": "El Ciclón Preseparador NewConcret está diseñado para capturar hasta el 90% del polvo antes de que llegue a la aspiradora.",
+        "imagen": "/assets/img/productos/ciclon-2-1779469259240.png",
+        "storeUrl": "https://tiendalonati.com.ar/productos/ciclon-preseparador/",
         "specs": [
             {
                 "icono": "◉",
@@ -3182,13 +3248,13 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/cicln-1779304878286.pdf",
         "visible": true
     },
     {
         "id": "gala-b480",
         "sku": "GALAB480",
-        "nombre": "Gala B480",
+        "nombre": "Aspiradora Gala B480",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -3196,7 +3262,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Aspiradora Industrial Monofásica",
+        "descripcion": "Gala B480 es una aspiradora industrial monofásica equipada\ncon filtros HEPA, ideal para la recolección de polvo fino generado por pulidoras y herramientas de obra.",
         "imagen": "/assets/img/productos/b480-1778599117879.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-gala-b480/",
         "specs": [
@@ -3248,13 +3314,13 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/b480-1779304905143.pdf",
         "visible": true
     },
     {
         "id": "gala-b301",
         "sku": "GALAB301",
-        "nombre": "Gala B301",
+        "nombre": "Aspiradora Gala B301",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -3262,7 +3328,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Aspiradora Industrial Monofásica",
+        "descripcion": "Gala B301 es un equipo de aspiración industrial monofásico diseñado para la recolección eficiente de polvo en trabajos de pulido, desbaste y mantenimiento.",
         "imagen": "/assets/img/productos/gala-b301-4-1778599236971.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-b301",
         "specs": [
@@ -3314,13 +3380,13 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/b301-1779304984995.pdf",
         "visible": true
     },
     {
         "id": "gala-d301",
         "sku": "GALAD301",
-        "nombre": "Gala D301",
+        "nombre": "Aspiradora Gala D301",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -3328,8 +3394,8 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Aspiradora Monofásica",
-        "imagen": "/assets/img/productos/d301-1778598595180.png",
+        "descripcion": "Gala D301 es una aspiradora monofásica industrial con sistema de bolsa recolectora que simplifica la gestión del polvo y reduce la exposición del operador.",
+        "imagen": "/assets/img/productos/d301-roja-1779469269910.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-d301",
         "specs": [
             {
@@ -3380,13 +3446,13 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/d301-1779305077186.pdf",
         "visible": true
     },
     {
         "id": "gala-js400",
         "sku": "GALAJS400",
-        "nombre": "Gala JS400",
+        "nombre": "Aspiradora Gala JS400",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -3394,7 +3460,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Aspiradora Trifásica Compacta",
+        "descripcion": "Gala JS400 es una aspiradora trifásica compacta, ideal para\nquienes necesitan potencia industrial en un formato manejable.",
         "imagen": "/assets/img/productos/js400-1778598667668.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-js400",
         "specs": [
@@ -3446,13 +3512,13 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/js400-1779305112740.pdf",
         "visible": true
     },
     {
         "id": "gala-551",
         "sku": "GALA551",
-        "nombre": "Gala G551",
+        "nombre": "Aspiradora Gala G551",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -3460,8 +3526,8 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Aspiradora Industrial Trifásica",
-        "imagen": "/assets/img/productos/g551-1778598776964.png",
+        "descripcion": "Gala G551 es una aspiradora industrial trifásica diseñada para tareas exigentes de extracción de polvo.",
+        "imagen": "/assets/img/productos/g551-roja-1779469281846.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-g551/",
         "specs": [
             {
@@ -3512,13 +3578,13 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/g551-1779305159626.pdf",
         "visible": true
     },
     {
         "id": "gala-w552",
         "sku": "GALAW552",
-        "nombre": "Gala W552",
+        "nombre": "Aspiradora Gala W552",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -3526,8 +3592,8 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Aspiradora Industrial Trifásica",
-        "imagen": "/assets/img/productos/552-1778598825390.png",
+        "descripcion": "Gala W552 es una aspiradora industrial con filtración HEPA y\nsistema de bolsa recolectora, ideal para la recolección segura de polvo ultrafino.",
+        "imagen": "/assets/img/productos/w552-1779469292469.png",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-w552",
         "specs": [
             {
@@ -3578,7 +3644,7 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/w552-1779305304094.pdf",
         "visible": true
     },
     {

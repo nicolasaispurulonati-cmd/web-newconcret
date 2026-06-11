@@ -10,8 +10,10 @@
   <link rel="stylesheet" href="assets/css/nav.css?v=1.3">
   <style>
     /* Failsafe cursor visibility */
-    body:not(.js-loaded) { cursor: auto !important; }
-    .js-loaded body { cursor: none; }
+    html:not(.js-loaded) body, html:not(.js-loaded) body * { cursor: auto !important; }
+    @media (min-width: 901px) {
+      html.js-loaded body, html.js-loaded body * { cursor: none !important; }
+    }
 
     /* NEW FILTER BAR (Simplified for landing) */
     .filter-bar {
@@ -57,6 +59,118 @@
         }
         .filter-pills { width: 100%; }
     }
+
+    /* ── MOBILE HERO ── */
+    .hero-mob {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        /* top clears the fixed nav, bottom clears the absolute stats-bar (~59px) */
+        padding: 5rem 1.5rem 6rem;
+        overflow: hidden;
+    }
+    .hero-mob .hero-bg { position: absolute; inset: 0; }
+    .hero-mob .hero-bg video {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        filter: brightness(.35) saturate(.5);
+    }
+    .hero-mob .hero-ov {
+        position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(10,10,10,.97) 0%, transparent 60%);
+    }
+    .hero-mob .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .hero-mob .hero-h1 {
+        font-size: clamp(3.4rem, 14vw, 5rem);
+        line-height: .92;
+        margin-bottom: 2rem;
+    }
+    .hero-mob .hero-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+    .hero-mob .hero-btns .btn-p,
+    .hero-mob .hero-btns .btn-g { width: 100%; justify-content: center; }
+    .hero-mob .hero-stats-mob {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        z-index: 3;
+        display: flex;
+        gap: 0;
+        border-top: 1px solid var(--nc-steel);
+        background: rgba(10,10,10,.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* ── MOBILE SECTION FIXES (page-scoped, never touch estilo.css) ── */
+    @media (max-width: 768px) {
+        /* CTA: desktop padding (6rem 4rem) squeezes content to ~247px on a 375px screen.
+           No mobile override exists in estilo.css, so re-declare side padding here. */
+        .cta-nos { padding: 4rem 1.5rem !important; min-height: 56vh; }
+        /* CTA title at 3 lines on mobile (extra <br class="hide-desktop">);
+           tighten the gaps between title, subtitle and button. */
+        .cta-nos-h2 { font-size: 2.1rem; margin-bottom: .85rem; }
+        .cta-nos-sub { font-size: .9rem; margin-bottom: 1.4rem; }
+
+        /* Stats bar: global rule forces .stats-bar side padding to 0.5rem (8px),
+           pinning the cards to the device edge. Restore the site's 1.5rem standard. */
+        .stats-bar {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+        }
+
+        /* Brands carousel: inherits desktop 6rem vertical padding; the rest of the
+           mobile sections use 4rem. Converge on the standard. */
+        .brands-sec {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        /* Capacitación CTA (mobile): replace the full-red clip-path box with a
+           dark industrial card — red is carried by the accent rule + button, not a fill. */
+        #capacitaciones-mob .cap-cta-mob {
+            margin-top: 2rem;
+            background: var(--nc-black);
+            border: 1px solid var(--nc-steel);
+            border-top: 2px solid var(--nc-red);
+            padding: 1.75rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: .4rem;
+        }
+        #capacitaciones-mob .cap-cta-mob h3 {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: var(--nc-white);
+            line-height: 1;
+        }
+        #capacitaciones-mob .cap-cta-mob p {
+            font-size: .85rem;
+            font-weight: 300;
+            color: var(--nc-ash);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+        #capacitaciones-mob .cap-cta-mob .btn-p {
+            width: 100%;
+            justify-content: center;
+        }
+    }
   </style>
 </head>
 <body>
@@ -80,8 +194,7 @@
       <span class="eyebrow-tx">Maquinaria · Insumos · Capacitación · Desde 2010</span>
     </div>
     <h1 class="hero-h1">
-      Todo lo que<br>
-      necesitás para<br>
+      Todo para<br>
       <span class="red">trabajar</span><br>
       <span class="thin">el hormigón.</span>
     </h1>
@@ -121,24 +234,34 @@
   </div>
 </section>
 
-<!-- HERO (Mobile Redesign) -->
-<section class="hero hide-desktop" id="inicio-mob" style="min-height:100svh; display:flex; align-items:center; justify-content:flex-start; padding:0 0.75rem; position:relative; overflow:hidden;">
-  <div class="hero-bg" style="position:absolute; inset:0;">
-    <video src="assets/img/hero/principal.mp4" autoplay="" muted="" loop="" playsinline="" style="width:100%; height:100%; object-fit:cover; filter:brightness(.35) saturate(.5);"></video>
+<!-- HERO (Mobile) -->
+<section class="hero-mob hide-desktop" id="inicio-mob">
+  <div class="hero-bg">
+    <video src="assets/img/hero/principal.mp4" autoplay="" muted="" loop="" playsinline=""></video>
   </div>
-  <div class="hero-ov" style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.97) 0%, transparent 60%);"></div>
-  <div class="hero-content" style="position:relative; z-index:2; width:100%; text-align:left; display:flex; flex-direction:column; align-items:flex-start; padding-bottom: 5rem;">
-    <div class="eyebrow" style="display:inline-flex; align-items:center; gap:.65rem; margin-bottom:1rem;">
-      <span class="eyebrow-line" style="width:28px; height:1px; background:var(--nc-red);"></span>
-      <span class="eyebrow-tx" style="font-family:var(--font-m); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--nc-red);">Desde 2010 · Bragado</span>
+  <div class="hero-ov"></div>
+  <div class="hero-content">
+    <div class="eyebrow" style="margin-bottom:1.25rem;">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-tx">Maquinaria · Insumos · Capacitación</span>
     </div>
-    <h1 class="hero-h1" style="font-family:var(--font-d); font-weight:900; font-size:3.8rem; line-height:.91; letter-spacing:-.02em; text-transform:uppercase; color:var(--nc-white); margin-bottom:1.5rem;">Todo para<br>el trabajo del<br><span style="color:var(--nc-red);">hormigón.</span></h1>
-    <div class="hero-btns" style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem; width:100%;">
-      <a href="productos/" class="btn-p" style="padding: 0.8rem 1.4rem; font-size: 0.72rem;">Ver catálogo productos</a>
-      <a href="capacitacion/" class="btn-g" style="padding: 0.8rem 1.4rem; font-size: 0.72rem; border: 1px solid var(--nc-steel); color: var(--nc-white); background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%); display: inline-flex; align-items: center; justify-content: flex-start; text-decoration: none;">Inscribirme a capacitación</a>
+    <h1 class="hero-h1">
+      Todo para<br>
+      <span class="red">trabajar</span><br>
+      <span class="thin">el hormigón.</span>
+    </h1>
+    <div class="hero-btns">
+      <a href="productos/" class="btn-p">
+        Ver productos
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+      </a>
+      <a href="capacitacion/" class="btn-g">
+        Inscribirme a capacitación
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
+      </a>
     </div>
   </div>
-  <div class="hero-stats-mob hide-desktop" style="position:absolute; bottom:0; left:0; right:0; z-index:3; display:flex; gap:0; border-top:1px solid var(--nc-steel); background:rgba(10,10,10,.6); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);">
+  <div class="hero-stats-mob">
     <div class="hs-item"><div class="hs-num">2.000<em>+</em></div><div class="hs-lbl">clientes</div></div>
     <div class="hs-item"><div class="hs-num">16<em>+</em></div><div class="hs-lbl">años</div></div>
     <div class="hs-item"><div class="hs-num">500<em>+</em></div><div class="hs-lbl">alumnos</div></div>
@@ -364,28 +487,28 @@
       <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Producto estrella</span></div>
       <h2 class="sec-h2">Frida 450<br>Fabricada por nosotros.</h2>
       <p class="sec-p">Frida 450 es una pulidora semiprofesional versátil, diseñada para realizar pulido, lavado y lustrado con mayor estabilidad. Ideal para obras pequeñas y medianas que requieren resultados profesionales.</p>
-      <div class="specs-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1.25rem 3rem; margin-top:2rem; border-top:1px solid var(--nc-steel); padding-top:1.5rem;">
-        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+      <div class="specs-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1.25rem 3rem; margin-top:2rem; border:none;">
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); border-right:none; border-bottom:none; padding:0 0 0 1.2rem;">
           <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">5.5 HP</div>
           <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Motor Industrial</div>
         </div>
-        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); border-right:none; border-bottom:none; padding:0 0 0 1.2rem;">
           <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">450 mm</div>
           <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Diámetro de trabajo</div>
         </div>
-        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); border-right:none; border-bottom:none; padding:0 0 0 1.2rem;">
           <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">220 V</div>
           <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Conexión Monofásica</div>
         </div>
-        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); border-right:none; border-bottom:none; padding:0 0 0 1.2rem;">
           <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">800 RPM</div>
           <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Velocidad de giro</div>
         </div>
-        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); border-right:none; border-bottom:none; padding:0 0 0 1.2rem;">
           <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">115 kg</div>
           <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Peso operativo</div>
         </div>
-        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); padding-left:1.2rem;">
+        <div class="spec" style="display:block; border-left:2px solid var(--nc-red); border-right:none; border-bottom:none; padding:0 0 0 1.2rem;">
           <div class="spec-v" style="font-family:var(--font-d); font-weight:900; font-size:2rem; color:var(--nc-white); line-height:1; margin-bottom:.4rem;">4 Cabezales</div>
           <div class="spec-k" style="font-family:var(--font-m); font-size:.62rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.15em;">Montaje de insumos</div>
         </div>
@@ -531,43 +654,46 @@
 <section class="cap-sec sec hide-mobile" id="capacitaciones">
   <div class="cap-intro reveal">
     <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Capacitaciones</span></div>
-    <h2 class="sec-h2">Capacitaciones para<br>profesionales del piso</h2>
-    <p class="sec-p">Formamos especialistas con maquinaria de última generación y transferencia directa de conocimiento en obra.</p>
+    <h2 class="sec-h2">Formación teórica<br>y práctica en pulido</h2>
+    <p class="sec-p">Ofrecemos capacitaciones teóricas y prácticas sobre tratamientos de superficies cementícias. Brindamos la posibilidad de capacitarse y obtener la <strong>certificación profesional otorgada por NewConcret</strong>.</p>
+    <p class="sec-p" style="margin-top:1rem;">Las capacitaciones cubren diversas temáticas que permiten comprender todo el ciclo del tratamiento de pulido, logrando resultados inigualables. Con los conocimientos y herramientas adecuados, incluso los hormigones más antiguos y deteriorados podrán lucir perfectamente resistentes y embellecidos.</p>
   </div>
 
-  <div class="cap-pillars reveal d1">
-    <div class="pillar-card">
-      <div class="pillar-num">01</div>
-      <div class="pillar-info">
-        <span class="pillar-label">Fase de Inicio</span>
-        <h3 class="pillar-title">Fundamentos<br>Teóricos</h3>
-        <p class="pillar-desc">Estudio profundo de sustratos, dosificación de químicos y granulometría aplicada al pulido.</p>
+  <div class="cap-modules reveal d1">
+    <div class="cap-module">
+      <div class="cap-module-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
       </div>
+      <h3 class="cap-module-title">Teoría Técnica</h3>
+      <p class="cap-module-desc">Fundamentos del hormigón, tipos de sustrato, comportamiento frente al pulido y selección de materiales.</p>
     </div>
-    <div class="pillar-card">
-      <div class="pillar-num">02</div>
-      <div class="pillar-info">
-        <span class="pillar-label">Inmersión</span>
-        <h3 class="pillar-title">Práctica en<br>Obra Real</h3>
-        <p class="pillar-desc">Uso intensivo de la Frida 450 y equipos planetarios en superficies industriales activas.</p>
+    <div class="cap-module">
+      <div class="cap-module-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
       </div>
+      <h3 class="cap-module-title">Práctica Intensiva</h3>
+      <p class="cap-module-desc">Trabajo real con maquinaria profesional NewConcret en planta equipada: los asistentes observan una demostración completa de pulido.</p>
     </div>
-    <div class="pillar-card">
-      <div class="pillar-num">03</div>
-      <div class="pillar-info">
-        <span class="pillar-label">Certificación</span>
-        <h3 class="pillar-title">Masterclass &amp;<br>Diplomado</h3>
-        <p class="pillar-desc">Certificación oficial NewConcret respaldada por más de 16 años de trayectoria en el mercado.</p>
+    <div class="cap-module">
+      <div class="cap-module-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8"/><path d="M14 2v8"/><path d="M8.5 2h7"/><path d="M14 10a5 5 0 1 1-4 0"/></svg>
       </div>
+      <h3 class="cap-module-title">Productos en Acción</h3>
+      <p class="cap-module-desc">Demostración con densificadores, selladores, abrasivos y químicos de alta performance sobre piso real.</p>
+    </div>
+    <div class="cap-module">
+      <div class="cap-module-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h3 class="cap-module-title">Certificación Oficial</h3>
+      <p class="cap-module-desc">Certificado profesional emitido por NewConcret al finalizar la jornada, con aval de la empresa.</p>
     </div>
   </div>
-
-
 
   <div class="cap-cta-banner reveal d3">
     <div class="cap-cta-info">
       <h3>¿Listo para dar el siguiente paso?</h3>
-      <p>Nuevos cupos disponibles para el ciclo de invierno.</p>
+      <p>Nuevos cupos disponibles. Inscribite hoy.</p>
     </div>
     <a href="capacitacion/" class="btn-white">
       Ver próximas fechas
@@ -577,100 +703,139 @@
 </section>
 
 
-<!-- CAPACITACIONES (Mobile Premium Redesign) -->
-<section class="sec hide-desktop" id="capacitaciones-mob" style="background:var(--nc-black); padding:4rem 1.5rem !important;">
+<!-- CAPACITACIONES (Mobile Redesign) -->
+<section class="sec hide-desktop" id="capacitaciones-mob" style="background:var(--nc-carbon); padding:4rem 1.5rem !important;">
   <div class="cap-intro">
-    <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Entrenamiento</span></div>
-    <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Formamos expertos.</h2>
-  </div>
-  
-  <div class="cap-pillars" style="margin-top:1rem; display:flex; flex-direction:column; gap:0;">
-    <div class="pillar-card" style="border-bottom:2px solid rgba(193,18,31,0.5);">
-      <div class="pillar-num">01</div>
-      <div class="pillar-info">
-        <span class="pillar-label">Teoría</span>
-        <h3 class="pillar-title" style="font-size:1.4rem !important;">Fundamentos</h3>
-        <p class="pillar-desc">Estudio profundo de sustratos y químicos.</p>
-      </div>
-    </div>
-    <div class="pillar-card" style="border-bottom:2px solid rgba(193,18,31,0.5);">
-      <div class="pillar-num">02</div>
-      <div class="pillar-info">
-        <span class="pillar-label">Práctica</span>
-        <h3 class="pillar-title" style="font-size:1.4rem !important;">Obra Real</h3>
-        <p class="pillar-desc">Uso intensivo de maquinaria planetaria.</p>
-      </div>
-    </div>
-    <div class="pillar-card">
-      <div class="pillar-num">03</div>
-      <div class="pillar-info">
-        <span class="pillar-label">Aval</span>
-        <h3 class="pillar-title" style="font-size:1.4rem !important;">Certificado</h3>
-        <p class="pillar-desc">Diplomado oficial con validez nacional.</p>
-      </div>
-    </div>
+    <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Capacitaciones</span></div>
+    <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Formación teórica<br>y práctica.</h2>
+    <p class="sec-p" style="margin-top:1rem; font-size:.875rem;">Capacitaciones sobre tratamientos de superficies cementícias. Certificación profesional <strong>otorgada por NewConcret</strong>.</p>
   </div>
 
-  <div class="cap-cta-banner" style="margin-top: 2rem;">
-    <div class="cap-cta-info">
-      <h3>¿Querés aprender?</h3>
-      <p>Capacitate con los mejores equipos.</p>
+  <div style="margin-top:2rem; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--nc-steel);">
+
+    <div style="background:var(--nc-dark); padding:1.5rem 1.25rem;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:.75rem;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      <div style="font-family:var(--font-d); font-weight:800; font-size:.95rem; text-transform:uppercase; color:var(--nc-white); margin-bottom:.4rem;">Teoría Técnica</div>
+      <p style="font-size:.78rem; color:var(--nc-ash); line-height:1.5; font-weight:300;">Fundamentos del hormigón, sustratos y selección de materiales.</p>
     </div>
-    <a href="capacitacion/" class="btn-white">Ver calendario</a>
+
+    <div style="background:var(--nc-dark); padding:1.5rem 1.25rem;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:.75rem;"><circle cx="12" cy="12" r="9"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+      <div style="font-family:var(--font-d); font-weight:800; font-size:.95rem; text-transform:uppercase; color:var(--nc-white); margin-bottom:.4rem;">Práctica Intensiva</div>
+      <p style="font-size:.78rem; color:var(--nc-ash); line-height:1.5; font-weight:300;">Demostración real de pulido con maquinaria NewConcret en planta equipada.</p>
+    </div>
+
+    <div style="background:var(--nc-dark); padding:1.5rem 1.25rem;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:.75rem;"><path d="M10 2v8"/><path d="M14 2v8"/><path d="M8.5 2h7"/><path d="M14 10a5 5 0 1 1-4 0"/></svg>
+      <div style="font-family:var(--font-d); font-weight:800; font-size:.95rem; text-transform:uppercase; color:var(--nc-white); margin-bottom:.4rem;">Productos en Acción</div>
+      <p style="font-size:.78rem; color:var(--nc-ash); line-height:1.5; font-weight:300;">Demostración con densificadores, selladores, abrasivos y químicos sobre piso real.</p>
+    </div>
+
+    <div style="background:var(--nc-dark); padding:1.5rem 1.25rem;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:.75rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <div style="font-family:var(--font-d); font-weight:800; font-size:.95rem; text-transform:uppercase; color:var(--nc-white); margin-bottom:.4rem;">Certificación Oficial</div>
+      <p style="font-size:.78rem; color:var(--nc-ash); line-height:1.5; font-weight:300;">Certificado profesional emitido por NewConcret al finalizar la jornada.</p>
+    </div>
+
+  </div>
+
+  <div class="cap-cta-mob">
+    <h3>¿Querés capacitarte?</h3>
+    <p>Inscribite y obtené tu certificación profesional otorgada por NewConcret.</p>
+    <a href="capacitacion/" class="btn-p">
+      Ver calendario
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+    </a>
   </div>
 </section>
 
 
-<!-- PROCESO (Desktop) -->
-<section class="sec hide-mobile" style="background:var(--nc-carbon); padding-top:4rem; padding-bottom:4rem;">
-  <div class="sec-lbl reveal"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">¿Cómo comprarte?</span></div>
-  <h2 class="sec-h2 reveal">Simple y rápido</h2>
-  <div class="proc-steps">
-    <div class="proc-step reveal">
-      <div class="proc-n">01</div>
-      <div class="proc-t">Consultá por WhatsApp</div>
-      <div class="proc-d">Contanos qué tipo de trabajo vas a realizar y cuánto metraje tenés. Te asesoramos sin costo.</div>
-    </div>
-    <div class="proc-step reveal d1">
-      <div class="proc-n">02</div>
-      <div class="proc-t">Recibís tu cotización</div>
-      <div class="proc-d">Te enviamos precios, disponibilidad de stock y recomendación de insumos en menos de 2 horas.</div>
-    </div>
-    <div class="proc-step reveal d2">
-      <div class="proc-n">03</div>
-      <div class="proc-t">Comprás y retirás</div>
-      <div class="proc-d">Podés retirar en nuestro depósito o coordinar envío. Stock permanente de los productos más vendidos.</div>
-    </div>
-    <div class="proc-step reveal d3">
-      <div class="proc-n">04</div>
-      <div class="proc-t">Soporte post-venta</div>
-      <div class="proc-d">Canal de consultas técnicas exclusivo para clientes. Respondemos dudas durante la ejecución del trabajo.</div>
-    </div>
+<!-- PROCESO NC SYSTEM (Desktop) -->
+<section class="nc-ciclo-sec sec hide-mobile" id="proceso">
+  <div class="nc-ciclo-hd reveal">
+    <h2 class="sec-h2" style="max-width:700px;">Del hormigón<br>al piso terminado</h2>
+    <p class="sec-p" style="max-width:520px; margin-top:1.25rem;">Un piso industrial de calidad no depende de una sola etapa. El resultado final se construye desde la base, se corrige, se transforma mediante el pulido y se conserva con una rutina de mantenimiento profesional. En NewConcret acompañamos todo el ciclo.</p>
+  </div>
+
+  <div class="nc-ciclo-grid reveal d1">
+
+    <a href="construccion/" class="nc-ciclo-item">
+      <div class="nc-ciclo-tag">Construcción</div>
+      <p class="nc-ciclo-body">La construcción define la resistencia inicial, la planimetría y el comportamiento futuro de la superficie. Se trabaja sobre preparación del suelo, fibras, endurecedores superficiales, llaneado y curado.</p>
+      <div class="nc-ciclo-what">
+        <span class="nc-ciclo-what-lbl">Objetivo de esta etapa</span>
+        Lograr una base firme y correctamente terminada para soportar tránsito, cargas y maquinaria industrial.
+      </div>
+      <div class="nc-ciclo-cta">Ver equipos y materiales <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></div>
+    </a>
+
+    <a href="reparacion/" class="nc-ciclo-item">
+      <div class="nc-ciclo-tag">Reparación</div>
+      <p class="nc-ciclo-body">Antes de pulir o renovar una superficie, es necesario corregir los daños existentes. Grietas, juntas deterioradas, brocas en desuso, baches o zonas desgastadas afectan el resultado si no se tratan.</p>
+      <div class="nc-ciclo-what">
+        <span class="nc-ciclo-what-lbl">Objetivo de esta etapa</span>
+        Recuperar la continuidad del piso y preparar la superficie para las etapas posteriores.
+      </div>
+      <div class="nc-ciclo-cta">Ver productos de reparación <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></div>
+    </a>
+
+    <a href="pulido/" class="nc-ciclo-item">
+      <div class="nc-ciclo-tag">Pulido</div>
+      <p class="nc-ciclo-body">El pulido transforma el hormigón en una superficie más resistente, estética y fácil de mantener. A través de herramientas diamantadas, densificadores y selladores se logra el acabado buscado según el uso del espacio.</p>
+      <div class="nc-ciclo-what">
+        <span class="nc-ciclo-what-lbl">Objetivo de esta etapa</span>
+        Mayor brillo, mejor resistencia superficial, reducción de polvo y una terminación profesional adaptada a cada piso.
+      </div>
+      <div class="nc-ciclo-cta">Ver maquinaria e insumos <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></div>
+    </a>
+
+    <a href="mantenimiento/" class="nc-ciclo-item">
+      <div class="nc-ciclo-tag">Mantenimiento</div>
+      <p class="nc-ciclo-body">Un piso pulido necesita una rutina adecuada para conservar su brillo y vida útil. El mantenimiento evita el desgaste prematuro, reduce manchas y mantiene la superficie en condiciones profesionales.</p>
+      <div class="nc-ciclo-what">
+        <span class="nc-ciclo-what-lbl">Objetivo de esta etapa</span>
+        Conservar la estética del piso y prolongar la protección aplicada, reduciendo la necesidad de restauraciones profundas.
+      </div>
+      <div class="nc-ciclo-cta">Ver productos de mantenimiento <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></div>
+    </a>
+
   </div>
 </section>
 
-<!-- PROCESO (Mobile Redesign) -->
-<section class="sec hide-desktop" style="background:var(--nc-carbon); padding:2.5rem 1.5rem !important;">
-  <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Comprar es simple</span></div>
-  <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Pasos para tu compra.</h2>
-  <div class="proc-steps" style="display:grid; grid-template-columns:1fr; gap:0; border:1px solid var(--nc-steel); margin-top:2.5rem;">
-    <div class="proc-step" style="padding:1.5rem 1.2rem; border-bottom:1px solid var(--nc-steel); position:relative;">
-      <div class="proc-n" style="font-family:var(--font-d); font-weight:900; font-size:3rem; color:rgba(255,255,255,.05); line-height:1; position:absolute; right:1.5rem; top:1.5rem;">01</div>
-      <div class="proc-t" style="font-family:var(--font-d); font-weight:700; font-size:1rem; text-transform:uppercase; color:var(--nc-white); margin-bottom:.5rem;">Consultá</div>
-      <div class="proc-d" style="font-size:.82rem; color:var(--nc-ash); max-width:80%;">Escribinos por WhatsApp compartiendo tu proyecto.</div>
-    </div>
-    <div class="proc-step" style="padding:1.5rem 1.2rem; border-bottom:1px solid var(--nc-steel); position:relative;">
-      <div class="proc-n" style="font-family:var(--font-d); font-weight:900; font-size:3rem; color:rgba(255,255,255,.05); line-height:1; position:absolute; right:1.5rem; top:1.5rem;">02</div>
-      <div class="proc-t" style="font-family:var(--font-d); font-weight:700; font-size:1rem; text-transform:uppercase; color:var(--nc-white); margin-bottom:.5rem;">Cotización</div>
-      <div class="proc-d" style="font-size:.82rem; color:var(--nc-ash); max-width:80%;">Te enviamos precios y stock en tiempo real.</div>
-    </div>
-    <div class="proc-step" style="padding:1.5rem 1.2rem; position:relative;">
-      <div class="proc-n" style="font-family:var(--font-d); font-weight:900; font-size:3rem; color:rgba(255,255,255,.05); line-height:1; position:absolute; right:1.5rem; top:1.5rem;">03</div>
-      <div class="proc-t" style="font-family:var(--font-d); font-weight:700; font-size:1rem; text-transform:uppercase; color:var(--nc-white); margin-bottom:.5rem;">Retiro / Envío</div>
-      <div class="proc-d" style="font-size:.82rem; color:var(--nc-ash); max-width:80%;">Coordinamos la entrega de forma inmediata.</div>
-    </div>
+<!-- PROCESO NC SYSTEM (Mobile) -->
+<section class="sec hide-desktop" id="proceso-mob" style="background:var(--nc-black); padding:4rem 1.5rem !important;">
+  <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important; margin-bottom:1.25rem;">Del hormigón<br>al piso terminado</h2>
+  <p class="sec-p" style="font-size:.875rem; margin-bottom:2.5rem;">Acompañamos todo el ciclo: desde la construcción inicial hasta la conservación a largo plazo.</p>
+
+  <div style="display:flex; flex-direction:column; gap:0; border:1px solid var(--nc-steel);">
+
+    <a href="construccion/" style="display:block; padding:1.5rem 1.25rem; border-bottom:1px solid var(--nc-steel); text-decoration:none; position:relative;">
+      <div style="font-family:var(--font-d); font-weight:900; font-size:.65rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.18em; margin-bottom:.5rem;">Construcción</div>
+      <p style="font-size:.82rem; color:var(--nc-ash); line-height:1.55; font-weight:300; max-width:85%;">Preparación del suelo, fibras, endurecedores superficiales, llaneado y curado.</p>
+      <svg style="position:absolute; right:1.25rem; top:50%; transform:translateY(-50%);" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="var(--nc-red)" stroke-width="1.3" stroke-linecap="round"></path></svg>
+    </a>
+
+    <a href="reparacion/" style="display:block; padding:1.5rem 1.25rem; border-bottom:1px solid var(--nc-steel); text-decoration:none; position:relative;">
+      <div style="font-family:var(--font-d); font-weight:900; font-size:.65rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.18em; margin-bottom:.5rem;">Reparación</div>
+      <p style="font-size:.82rem; color:var(--nc-ash); line-height:1.55; font-weight:300; max-width:85%;">Grietas, juntas deterioradas, baches y zonas desgastadas corregidas antes del pulido.</p>
+      <svg style="position:absolute; right:1.25rem; top:50%; transform:translateY(-50%);" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="var(--nc-red)" stroke-width="1.3" stroke-linecap="round"></path></svg>
+    </a>
+
+    <a href="pulido/" style="display:block; padding:1.5rem 1.25rem; border-bottom:1px solid var(--nc-steel); text-decoration:none; position:relative;">
+      <div style="font-family:var(--font-d); font-weight:900; font-size:.65rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.18em; margin-bottom:.5rem;">Pulido</div>
+      <p style="font-size:.82rem; color:var(--nc-ash); line-height:1.55; font-weight:300; max-width:85%;">Herramientas diamantadas, densificadores y selladores para el acabado buscado.</p>
+      <svg style="position:absolute; right:1.25rem; top:50%; transform:translateY(-50%);" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="var(--nc-red)" stroke-width="1.3" stroke-linecap="round"></path></svg>
+    </a>
+
+    <a href="mantenimiento/" style="display:block; padding:1.5rem 1.25rem; text-decoration:none; position:relative;">
+      <div style="font-family:var(--font-d); font-weight:900; font-size:.65rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.18em; margin-bottom:.5rem;">Mantenimiento</div>
+      <p style="font-size:.82rem; color:var(--nc-ash); line-height:1.55; font-weight:300; max-width:85%;">Limpieza, abrillantado y protección para prolongar la vida útil del piso pulido.</p>
+      <svg style="position:absolute; right:1.25rem; top:50%; transform:translateY(-50%);" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="var(--nc-red)" stroke-width="1.3" stroke-linecap="round"></path></svg>
+    </a>
+
   </div>
 </section>
+
 
 <!-- TESTIMONIALS (Desktop) -->
 <!-- BRANDS CAROUSEL (Infinite loop) -->
@@ -786,31 +951,44 @@
         <div><div class="auth-name" style="font-size:.82rem; font-weight:700; color:#fff;">Gustavo Navarro</div><div style="font-size:.65rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.1em;">Pulidor independiente</div></div>
       </div>
     </div>
+    <div class="test-card" style="background:var(--nc-black); padding:1.2rem 1.5rem 2rem; border:1px solid var(--nc-steel); border-left:3px solid var(--nc-red); border-top:none;">
+      <div class="q-mark" style="font-size:2.5rem; color:var(--nc-red); margin-bottom:.3rem; line-height:1;">"</div>
+      <p class="test-txt" style="font-size:.9rem; line-height:1.6; color:var(--nc-light); margin-bottom:1.5rem;">"Una gran compañía en soluciones de aspiración industrial y los mejores tratamientos de pisos. Mucha experiencia y muy buen asesoramiento. Los recomiendo."</p>
+      <div class="test-auth" style="display:flex; align-items:center; gap:.8rem;">
+        <div class="auth-av" style="width:36px; height:36px; background:var(--nc-red); display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; color:#fff;">EL</div>
+        <div><div class="auth-name" style="font-size:.82rem; font-weight:700; color:#fff;">Eduardo Lagrenade</div><div style="font-size:.65rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.1em;">Pulidor independiente</div></div>
+      </div>
+    </div>
+    <div class="test-card" style="background:var(--nc-black); padding:1.2rem 1.5rem 2rem; border:1px solid var(--nc-steel); border-left:3px solid var(--nc-red); border-top:none;">
+      <div class="q-mark" style="font-size:2.5rem; color:var(--nc-red); margin-bottom:.3rem; line-height:1;">"</div>
+      <p class="test-txt" style="font-size:.9rem; line-height:1.6; color:var(--nc-light); margin-bottom:1.5rem;">"La calidad de los productos NewConcret no tiene comparación. Los resultados hablan solos en cada trabajo."</p>
+      <div class="test-auth" style="display:flex; align-items:center; gap:.8rem;">
+        <div class="auth-av" style="width:36px; height:36px; background:var(--nc-red); display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; color:#fff;">RC</div>
+        <div><div class="auth-name" style="font-size:.82rem; font-weight:700; color:#fff;">Ricardo Cañete</div><div style="font-size:.65rem; color:var(--nc-ash); text-transform:uppercase; letter-spacing:.1em;">Contratista · Buenos Aires</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CTA (Desktop) -->
-<section class="cta-sec hide-mobile" id="contacto">
-  <div class="cta-box reveal">
-    <div>
-      <h2 class="cta-h2">¿Qué necesitás para<br>tu próximo <span>trabajo?</span></h2>
-      <p class="cta-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
+<!-- CTA -->
+<section class="cta-nos" id="contacto">
+    <div class="cta-nos-bg">
+        <img src="assets/img/hero/pulido.jpg" alt="">
     </div>
-    <div class="cta-acts">
-      <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener" class="btn-p">
-        Consultar por WhatsApp
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-      </a>
-      <div class="cta-phone">+54 9 2342 46-4082</div>
+    <div class="cta-nos-ov"></div>
+    <div class="cta-nos-content reveal">
+        <h2 class="cta-nos-h2">Hacelo fácil, <br class="hide-desktop">hacelo rápido,<br>hacelo con <span>NewConcret.</span></h2>
+        <p class="cta-nos-sub hide-mobile">Tecnología, productos, capacitación y soporte técnico para pisos de hormigón más resistentes, durables y profesionales.</p>
+        <p class="cta-nos-sub hide-desktop">Tecnología, productos y soporte técnico para pisos de hormigón profesionales.</p>
+        <div class="cta-nos-acts">
+            <a href="https://wa.link/ayeajp" class="btn-p" target="_blank" rel="noopener">
+                Consultar por WhatsApp
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+            </a>
+        </div>
     </div>
-  </div>
-</section>
-
-<!-- CTA (Mobile Redesign) -->
-<section class="sec hide-desktop" id="contacto-mob" style="padding:2.5rem 1.5rem !important; background:var(--nc-black); text-align:center;">
-  <h2 class="sec-h2" style="font-size:2.2rem !important; line-height:1 !important; margin-bottom:.6rem;">Iniciá tu<br><span>proyecto</span> hoy.</h2>
-  <p class="sec-p" style="margin-bottom:1.5rem; font-size:.85rem;">Asesoramiento técnico inmediato por WhatsApp.</p>
-  <a href="https://wa.me/5492342464082" class="btn-p" style="padding:0.75rem 1.5rem; font-size:0.7rem; width:auto; display:inline-flex;">Escribinos por WhatsApp</a>
 </section>
 
 <div id="footer-placeholder"></div>

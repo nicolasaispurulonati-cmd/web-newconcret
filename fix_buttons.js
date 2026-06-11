@@ -1,41 +1,74 @@
 const fs = require('fs');
+const path = require('path');
+const ROOT = 'C:/newconcret-2.0';
 
-const files = [
-  'c:/newconcret-2.0/mantenimiento/accesorios/index.html',
-  'c:/newconcret-2.0/mantenimiento/equipos/index.html',
-  'c:/newconcret-2.0/mantenimiento/productos-quimicos/index.html'
-];
-
-for (const file of files) {
-  let content = fs.readFileSync(file, 'utf8');
-
-  // Replace the pcard-actions logic inside renderCard()
-  const oldActionsRegex = /<div class="pcard-actions">[\s\S]*?<\/div>/;
-
-  const newActions = `<div class="pcard-actions">
-        <button class="btn-ver">Ver detalles <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
-        \${pdf 
-          ? \`<a href="\${pdf}" target="_blank" rel="noopener" class="btn-ft" onclick="event.stopPropagation()">Ficha Técnica <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>\`
-          : \`<button class="btn-ft" onclick="event.stopPropagation(); window.showNCToast('Este producto no cuenta con ficha técnica por el momento.')">Ficha Técnica <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>\`
-        }
-      </div>`;
-
-  // Actually, there are two pcard-actions in the file: one in the CSS/HTML somewhere, and one inside renderCard.
-  // We need to replace only the one inside renderCard!
-  // It's after `<div class="pcard-features">\${feats}<\/div>`
-  
-  const targetSplit = `<div class="pcard-features">\${feats}</div>`;
-  const parts = content.split(targetSplit);
-  if (parts.length === 2) {
-    const endDivPos = parts[1].indexOf('</div>\n    </div>\n  </div>`;');
-    if (endDivPos !== -1) {
-       parts[1] = '\n      ' + newActions + parts[1].substring(endDivPos);
-       content = parts[0] + targetSplit + parts[1];
+function walk(dir) {
+  let results = [];
+  for (const f of fs.readdirSync(dir)) {
+    const full = path.join(dir, f);
+    const stat = fs.statSync(full);
+    if (stat.isDirectory() && f !== '.claude' && f !== 'node_modules' && f !== 'admin') {
+      results = results.concat(walk(full));
+    } else if (f.endsWith('.html')) {
+      results.push(full);
     }
   }
-
-  // Also, update "Ver detalles \${iconSVG('arrow')}" to just use raw SVG like before to avoid breaking if iconSVG is missing, but it is defined.
-  
-  fs.writeFileSync(file, content, 'utf8');
-  console.log('Fixed buttons in ' + file);
+  return results;
 }
+
+const files = walk(ROOT);
+let changed = 0;
+
+for (const filepath of files) {
+  let orig = fs.readFileSync(filepath, 'utf8');
+  if (!orig.includes('btn-ver') && !orig.includes('pcard-actions')) continue;
+  let c = orig;
+
+  // 1. Primary button: "Ver detalles" -> "Ver mas"
+  c = c.replace(/Ver detalles (\$\{iconSVG\('arrow'\)\})/g, 'Ver más $1');
+  c = c.replace(/Ver detalles (\$\{arrowSVG\})/g, 'Ver más $1');
+  c = c.replace(/Ver detalles (<svg[\s\S]*?<\/svg>)/g, 'Ver más $1');
+
+  // 2. CSS font-family in .btn-ver/.btn-ft block
+  c = c.replace(/(\.btn-ver,\s*\n\s*\.btn-ft\s*\{[^}]*)font-family:\s*var\(--font-m\)/gs,
+    '$1font-family: var(--font-d)');
+  c = c.replace(/(\.btn-ver,\s*\n\s*\.btn-ft\s*\{[^}]*)font-family:\s*var\(--fm\)/gs,
+    '$1font-family: var(--fd)');
+
+  // 3. CSS font-size 0.7rem -> 0.75rem in btn block
+  c = c.replace(/(\.btn-ver,\s*\n\s*\.btn-ft\s*\{[^}]*)font-size:\s*0\.7rem/gs,
+    '$1font-size: 0.75rem');
+
+  // 4. CSS font-weight 600 -> 700 in btn block
+  c = c.replace(/(\.btn-ver,\s*\n\s*\.btn-ft\s*\{[^}]*)font-weight:\s*600/gs,
+    '$1font-weight: 700');
+
+  // 5. Remove border from .btn-ft
+  c = c.replace(/(\.btn-ft\s*\{[^}]*)border:\s*1px solid var\(--(?:nc-steel|st)\);\s*\n/gs, '$1');
+
+  // 6. Mobile 0.6rem -> 0.75rem in button rules
+  c = c.replace(/(\.btn-ver,\s*\.btn-ft\s*\{[^}]*)font-size:\s*0\.6rem\s*!important/gs,
+    '$1font-size: 0.75rem !important');
+  c = c.replace(/(\.modal-actions\s*\.btn-ver[\s\S]{0,40}\.modal-actions\s*\.btn-ft\s*\{[^}]*)font-size:\s*0\.6rem\s*!important/gs,
+    '$1font-size: 0.75rem !important');
+
+  // 7. Secondary btn: shop->Tienda 3-way -> pdf->Ficha tecnica 2-way
+  c = c.replace(
+    /\$\{shop\s*\n(\s*)\? `<a href="\$\{(?:fixUrl\()?shop(?:\))?\}"[^`]*>(?:Tienda|Ver en Tienda)<\/a>`\s*\n\s*: \(pdf\s*\n\s*\? `(<a href="\$\{(?:fixUrl\()?pdf(?:\))?\}"[^`]*)(?:Ficha Técnica|Ficha técnica)([^`]*<\/a>)`\s*\n\s*: `(<a href="https:\/\/wa\.me\/[^`]*>)Consultar<\/a>`\s*\n\s*\)\s*\n\s*\}/gs,
+    (match, ind, pdfOpen, icon, waOpen) =>
+      '${pdf\n' + ind + '? `' + pdfOpen + 'Ficha técnica' + icon + '`\n' +
+      ind + ': `' + waOpen + 'Consultar</a>`\n' + ind.slice(2) + '}'
+  );
+
+  // 8. Capitalization: Ficha Tecnica -> Ficha tecnica
+  c = c.replace(/>Ficha Técnica</g, '>Ficha técnica<');
+  c = c.replace(/>Ficha Técnica (\$\{)/g, '>Ficha técnica $1');
+  c = c.replace(/Ficha Técnica " \+ downSVG/g, 'Ficha técnica " + downSVG');
+
+  if (c !== orig) {
+    fs.writeFileSync(filepath, c, 'utf8');
+    changed++;
+    console.log('ok ' + filepath.replace(ROOT + '/', '').replace(ROOT + path.sep, ''));
+  }
+}
+console.log('\n' + changed + ' files updated');

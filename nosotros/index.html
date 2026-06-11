@@ -1,217 +1,329 @@
-<html lang="es" class="js-loaded">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosotros — NewConcret</title>
     <meta name="description"
-        content="NewConcret: Conocé quiénes somos, nuestra historia, valores y el equipo detrás de la empresa líder en maquinaria e insumos para pisos de hormigón en Argentina.">
+        content="NewConcret: Especialistas en pisos de hormigón. Construcción, reparación, pulido y mantenimiento de superficies industriales. Tecnología, insumos, maquinaria y capacitación.">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="../logos/Favicon.ico">
     <link rel="stylesheet" href="../assets/css/estilo.css?v=40">
     <link rel="stylesheet" href="../assets/css/nav.css?v=1.3">
-    <link rel="stylesheet" href="../assets/css/nosotros.css?v=3.0">
+    <link rel="stylesheet" href="../assets/css/nosotros.css?v=5.0">
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&amp;family=Barlow:wght@300;400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
-    <style>
-        body:not(.js-loaded) {
-            cursor: auto !important;
-        }
-
-        .js-loaded body {
-            cursor: none;
-        }
-    </style>
 </head>
 
 <body>
 
-    <div id="cur" style="left: 521px; top: 475px;"></div>
-    <div id="ring" style="left: 521px; top: 475px;"></div>
+    <!-- SVG filter: colorize transparent PNG dots to brand red, preserving alpha -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;position:absolute;width:0;height:0" aria-hidden="true">
+        <defs>
+            <filter id="brandRed" color-interpolation-filters="sRGB">
+                <feColorMatrix type="matrix" values="0 0 0 0 0.757  0 0 0 0 0.071  0 0 0 0 0.122  0 0 0 1 0"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <div id="cur"></div>
+    <div id="ring"></div>
 
     <div id="nav-placeholder"></div>
 
-
-
     <!-- ══ HERO ══ -->
-    <section class="hero-nosotros">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&amp;q=75"
-                alt="NewConcret — Equipo y empresa" style="transform: translateY(0px);">
+    <section class="hero-nos">
+        <div class="hn-bg">
+            <picture>
+                <img src="../assets/img/fotos/nosotros.png" alt="Pisos de hormigón profesionales">
+            </picture>
         </div>
-        <div class="hero-ov"></div>
-        <div class="hero-content">
-            <div class="eyebrow">
+        <div class="hn-ov"></div>
+        <div class="hn-content">
+            <div class="eyebrow" style="margin-bottom:.75rem">
                 <span class="eyebrow-line"></span>
-                <span class="eyebrow-tx">La empresa · Bragado, Buenos Aires</span>
+                <span class="eyebrow-tx hide-mobile">Maquinaria · Insumos · Capacitación · Desde 2010</span>
+                <span class="eyebrow-tx hide-desktop">Desde 2010</span>
             </div>
-            <h1 class="hero-h1">Somos<br><span class="red">New</span><span class="red">Concret.</span><br><span
-                    class="thin">Desde 2010.</span></h1>
-            <p class="hero-p">Más de 16 años suministrando maquinaria industrial, insumos especializados y
-                capacitaciones a los profesionales que construyen, reparan y mantienen los pisos de Argentina.</p>
-            <div class="hero-btns">
-                <a href="#historia" class="btn-p">Nuestra historia</a>
+            <h1 class="hero-h1 hide-mobile">Especialistas en<br><span class="red">pisos de hormigón.</span><br><span class="thin">desde 2010.</span></h1>
+            <h1 class="hero-h1 hide-desktop">Especialistas<br>en pisos de<br><span class="red">Hormigón</span><br><span class="thin">Desde 2010</span></h1>
+            <p class="hn-p reveal d1 hide-mobile">Hace más de 15 años innovamos en el mercado argentino y
+                latinoamericano de pisos de hormigón: desarrollamos tecnología, insumos y maquinaria, y formamos a
+                los profesionales que los aplican.</p>
+            <p class="hn-p reveal d1 hide-desktop">Más de 15 años innovando en el mercado argentino y latinoamericano
+                de pisos de hormigón.</p>
+            <div class="hn-btns reveal d2">
+                <a href="#que-hacemos" class="btn-p">Lo que hacemos</a>
                 <a href="https://wa.link/ayeajp" class="btn-g" target="_blank" rel="noopener">Hablar con el equipo</a>
-            </div>
-        </div>
-        <div class="hero-year">
-            <div class="year-card">
-                <div class="year-num">2010</div>
-                <div class="year-label">Año de fundación</div>
-                <div class="year-tag">Bragado, Bs. As.</div>
             </div>
         </div>
     </section>
 
     <!-- ══ STATS ══ -->
-    <section class="stats-bar-n">
-        <div class="stats-grid-n">
-            <div class="s-card-n reveal in">
-                <div class="s-unit-n">Clientes activos</div>
-                <div class="s-num-n"><span class="cu" data-t="800">800</span><em>+</em></div>
-                <div class="s-desc-n">Constructoras y profesionales confían en nosotros.</div>
+    <section class="stats-nos">
+        <div class="sn-grid">
+            <div class="sn-item reveal">
+                <div class="sn-num"><span class="cu" data-t="16">0</span><em>+</em></div>
+                <div class="sn-label">Años de experiencia</div>
+                <div class="sn-desc">Especialización en pisos industriales desde 2010.</div>
             </div>
-            <div class="s-card-n reveal d1 in">
-                <div class="s-unit-n">Pulidores formados</div>
-                <div class="s-num-n"><span class="cu" data-t="300">300</span><em>+</em></div>
-                <div class="s-desc-n">Capacitaciones con certificación profesional.</div>
+            <div class="sn-item reveal d1">
+                <div class="sn-num"><span class="cu" data-t="2000">0</span><em>+</em></div>
+                <div class="sn-label">Clientes</div>
+                <div class="sn-desc">Empresas y profesionales en toda la región.</div>
             </div>
-            <div class="s-card-n reveal d2 in">
-                <div class="s-unit-n">Trayectoria</div>
-                <div class="s-num-n"><span class="cu" data-t="16">16</span><em>+</em></div>
-                <div class="s-desc-n">Años de experiencia que respaldan cada venta.</div>
+            <div class="sn-item reveal d2">
+                <div class="sn-num"><span class="cu" data-t="150000">0</span><em>+</em></div>
+                <div class="sn-label">Metros² pulidos</div>
+                <div class="sn-desc">Superficies tratadas con nuestras soluciones.</div>
             </div>
-            <div class="s-card-n reveal d3 in">
-                <div class="s-unit-n">Productos</div>
-                <div class="s-num-n"><span class="cu" data-t="150">150</span><em>+</em></div>
-                <div class="s-desc-n">Referencias permanentes en stock constante.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ══ HISTORIA ══ -->
-    <section class="historia-sec sec" id="historia">
-        <div class="historia-layout">
-            <div class="historia-img-wrap reveal">
-                <img src="../assets/img/fotos/inicio.JPG" alt="Equipo NewConcret">
-                <div class="img-badge">
-                    <div class="img-badge-year">2010</div>
-                    <div class="img-badge-label">Año de fundación</div>
-                </div>
-            </div>
-            <div class="reveal d1">
-                <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Quiénes
-                        somos</span></div>
-                <h2 class="sec-h2">Una empresa<br>nacida en la obra.</h2>
-                <div class="historia-body">
-                    <p>NewConcret nació en <em>Bragado, Buenos Aires</em>, de la mano de profesionales con experiencia
-                        directa en el tratamiento de pisos de hormigón. Nuestro objetivo: poner en manos de los
-                        pulidores las herramientas correctas.</p>
-                    <p>Hoy somos referentes nacionales con la única pulidora de fabricación propia: la <em>Frida
-                            450</em>.</p>
-                    <div class="historia-highlight">
-                        <p>"Fabricamos la <em>Frida 450</em> porque entendemos las condiciones reales de la obra
-                            argentina."</p>
-                    </div>
-                </div>
+            <div class="sn-item reveal d3">
+                <div class="sn-num"><span class="cu" data-t="8">0</span><em>+</em></div>
+                <div class="sn-label">Países</div>
+                <div class="sn-desc">Presencia en el mercado latinoamericano.</div>
             </div>
         </div>
     </section>
 
-    <!-- ══ MVV ══ -->
-    <section class="mvv-sec sec" style="padding-top: 3rem; padding-bottom: 3rem;">
-        <div class="mvv-grid">
-            <div class="mvv-card reveal d1">
-                <div class="mvv-tag">Misión</div>
-                <div class="mvv-title">Equipar a quienes trabajan</div>
-                <div class="mvv-desc">Proveemos maquinaria e insumos para que cada profesional logre resultados de alto
-                    estándar.</div>
+    <!-- ══ QUÉ HACEMOS ══ -->
+    <section class="sec qh-sec" id="que-hacemos">
+        <div class="qh-layout">
+            <div class="qh-intro reveal">
+                <div class="nos-hd">
+                    <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Soluciones integrales</span></div>
+                    <h2 class="sec-h2">Qué hacemos.</h2>
+                    <p class="nos-hd-sub">Soluciones integrales para pisos industriales. No vendemos solo productos
+                        o máquinas: desarrollamos soluciones para que cada superficie alcance su mejor desempeño
+                        según el uso, el tránsito y el resultado buscado.</p>
+                </div>
             </div>
-            <div class="mvv-card reveal d2">
-                <div class="mvv-tag">Visión</div>
-                <div class="mvv-title">Referente técnico</div>
-                <div class="mvv-desc">Ser la empresa que cada constructor elige cuando necesita soluciones reales y
-                    formación.</div>
-            </div>
-            <div class="mvv-card reveal d3">
-                <div class="mvv-tag">Compromiso</div>
-                <div class="mvv-title">Asesoramiento honesto</div>
-                <div class="mvv-desc">No vendemos lo más caro, sino lo que mejor resuelve el problema del cliente.</div>
+            <div class="qh-areas reveal d1">
+                <div class="qh-area">
+                    <div class="qh-n">01</div>
+                    <div class="qh-area-body">
+                        <div class="qh-area-title">Fabricación y comercialización de tecnología</div>
+                        <div class="qh-area-desc">Máquinas, herramientas e insumos profesionales para
+                            construcción, reparación, pulido y mantenimiento de pisos.</div>
+                    </div>
+                </div>
+                <div class="qh-area">
+                    <div class="qh-n">02</div>
+                    <div class="qh-area-body">
+                        <div class="qh-area-title">Soluciones a medida</div>
+                        <div class="qh-area-desc">Sistemas adaptados a cada proyecto, superficie y necesidad
+                            técnica.</div>
+                    </div>
+                </div>
+                <div class="qh-area">
+                    <div class="qh-n">03</div>
+                    <div class="qh-area-body">
+                        <div class="qh-area-title">Asesoramiento y capacitación profesional</div>
+                        <div class="qh-area-desc">Acompañamiento técnico para aplicadores, empresas y equipos
+                            que buscan mejorar sus procesos y resultados.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ══ VALORES ══ -->
-    <section class="valores-sec sec">
-        <div class="valores-layout">
-            <div class="valores-intro reveal">
-                <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">En números</span>
+    <!-- ══ PRESENCIA REGIONAL ══ -->
+    <section class="sec presencia-sec">
+<div class="presencia-layout">
+
+            <!-- LEFT: brand + texto + países -->
+            <div class="pres-left">
+                <div class="nos-hd reveal d1">
+                    <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Presencia regional</span></div>
+                    <h2 class="sec-h2">Tecnología, desarrollo<br>y presencia regional.</h2>
                 </div>
-                <h2 class="sec-h2">Principios que Guían.</h2>
-                <div class="v-stat-list">
-                    <div class="v-stat-item">
-                        <div class="v-stat-num">800<span>+</span></div>
-                        <div class="v-stat-desc">Clientes activos mensuales.</div>
-                    </div>
-                    <div class="v-stat-item">
-                        <div class="v-stat-num">300<span>+</span></div>
-                        <div class="v-stat-desc">Pulidores certificados.</div>
-                    </div>
+                <div class="pres-ps reveal d2">
+                    <p>En alianza con socios estratégicos, fabricamos maquinaria e insumos para el pulido de
+                        pisos, destinados al mercado latinoamericano.</p>
+                    <p>En Argentina desarrollamos productos químicos especializados para pisos de hormigón,
+                        que exportamos a distintos países de la región.</p>
                 </div>
-            </div>
-            <div class="reveal d1">
-                <div class="valores-list">
-                    <div class="valor-item">
-                        <div class="valor-num">01</div>
-                        <div>
-                            <div class="valor-name">Honestidad técnica</div>
-                            <div class="valor-desc">Recomendamos lo que resuelve, no lo que factura más.</div>
-                        </div>
+                <div class="pais-block reveal d3">
+                    <div class="pais-num-row">
+                        <span class="pais-count">+8</span>
+                        <span class="pais-label">Países</span>
                     </div>
-                    <div class="valor-item">
-                        <div class="valor-num">02</div>
-                        <div>
-                            <div class="valor-name">Stock Real</div>
-                            <div class="valor-desc">Disponibilidad permanente para que tu obra no pare.</div>
-                        </div>
-                    </div>
-                    <div class="valor-item">
-                        <div class="valor-num">03</div>
-                        <div>
-                            <div class="valor-name">Formación continua</div>
-                            <div class="valor-desc">Capacitamos porque creemos que un profesional formado hace mejores
-                                obras.</div>
-                        </div>
-                    </div>
-                    <div class="valor-item">
-                        <div class="valor-num">04</div>
-                        <div>
-                            <div class="valor-name">Fabricación local</div>
-                            <div class="valor-desc">La Frida 450 es argentina, diseñada para la realidad concreta del
-                                país.</div>
-                        </div>
-                    </div>
+                    <p class="pais-sub">Presencia en más de 8 países del mercado latinoamericano.</p>
                 </div>
             </div>
+
+            <!-- RIGHT: stats + mapa SVG -->
+            <div class="pres-right">
+                <div class="pres-stats reveal">
+                    <div class="pstat">
+                        <div class="pstat-num"><span class="cu" data-t="15">0</span><em>+</em></div>
+                        <div class="pstat-lbl">Años</div>
+                    </div>
+                    <div class="pstat">
+                        <div class="pstat-num"><span class="cu" data-t="2000">0</span><em>+</em></div>
+                        <div class="pstat-lbl">Clientes</div>
+                    </div>
+                    <div class="pstat">
+                        <div class="pstat-num"><span class="cu" data-t="150000">0</span><em>+</em></div>
+                        <div class="pstat-lbl">Metros pulidos</div>
+                    </div>
+                </div>
+
+                <div class="pres-map reveal d1">
+                    <img src="../assets/img/mapa-mundial.png" alt="Mapa de presencia regional NewConcret" class="pres-map-img"/>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══ LÍNEA PROFESIONAL ══ -->
+    <section class="sec linea-sec">
+        <div class="linea-hd reveal">
+            <div class="nos-hd">
+                <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Catálogo profesional</span></div>
+                <h2 class="sec-h2">Nuestra línea profesional.</h2>
+                <p class="nos-hd-sub">Máquinas, químicos e insumos para cada etapa del proceso.</p>
+            </div>
+        </div>
+        <div class="linea-list">
+            <div class="linea-item reveal">
+                <div class="linea-n">01</div>
+                <div class="linea-body">
+                    <div class="linea-title">Máquinas profesionales</div>
+                    <div class="linea-desc">Pulidoras, aspiradoras industriales, escarificadoras, lustradoras y
+                        lavasecapisos para trabajos de alto rendimiento.</div>
+                </div>
+                <a href="../productos/" class="linea-link" aria-label="Ver máquinas">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+            <div class="linea-item reveal d1">
+                <div class="linea-n">02</div>
+                <div class="linea-body">
+                    <div class="linea-title">Línea química especializada</div>
+                    <div class="linea-desc">Densificadores, ligantes, selladores, impermeabilizantes y productos
+                        de limpieza y mantenimiento para hormigón.</div>
+                </div>
+                <a href="../productos/" class="linea-link" aria-label="Ver química">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+            <div class="linea-item reveal d2">
+                <div class="linea-n">03</div>
+                <div class="linea-body">
+                    <div class="linea-title">Insumos de pulido</div>
+                    <div class="linea-desc">Pads metálicos, discos resinoides, discos PCD, brocas diamantadas,
+                        paños diamantados y herramientas específicas para cada etapa.</div>
+                </div>
+                <a href="../productos/" class="linea-link" aria-label="Ver insumos">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="linea-cta reveal d3">
+            <a href="../productos/" class="btn-g">Ver todos los productos</a>
+        </div>
+    </section>
+
+    <!-- ══ FORMACIÓN ══ -->
+    <section class="form-sec sec">
+        <div class="form-bg">
+            <picture>
+                <source media="(max-width: 900px)" srcset="../assets/img/hero/capacitaciones.jpg">
+                <img src="../assets/img/hero/capacitaciones.jpg" alt="Capacitación técnica en pisos de hormigón">
+            </picture>
+        </div>
+        <div class="form-ov"></div>
+        <div class="form-content">
+            <div class="nos-hd reveal">
+                <h2 class="form-h2">Formación profesional.</h2>
+                <p class="form-sub">Capacitación técnica permanente</p>
+            </div>
+            <div class="form-body reveal d1">
+                <p>Creemos que la calidad del resultado depende tanto del producto como del conocimiento técnico
+                    detrás de cada aplicación. Mantenemos un compromiso constante con la formación profesional,
+                    la actualización de procesos y la incorporación de nuevas tecnologías.</p>
+                <p>Acompañamos a aplicadores y clientes con asesoramiento técnico, capacitaciones y soporte para
+                    ejecutar proyectos con mayor seguridad, eficiencia y calidad.</p>
+            </div>
+            <div class="reveal d2">
+                <a href="../capacitacion/" class="btn-p">Ver capacitaciones
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:.25rem">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ NUESTRO SISTEMA ══ -->
+    <section class="sec sns-sec">
+        <div class="sns-hd reveal">
+            <div class="nos-hd">
+                <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Sistema NewConcret</span></div>
+                <h2 class="sec-h2">Nuestro sistema.</h2>
+                <p class="nos-hd-sub">Un piso no se termina cuando se pule. El sistema NewConcret acompaña todo
+                    el ciclo del hormigón, desde la preparación hasta el mantenimiento cotidiano.</p>
+            </div>
+        </div>
+        <div class="sns-grid">
+            <div class="sns-stage reveal">
+                <div class="sns-n">01</div>
+                <div class="sns-name">Construcción</div>
+                <div class="sns-desc">Bases firmes, hormigón bien trabajado, endurecedores, llaneado y
+                    curado.</div>
+            </div>
+            <div class="sns-stage reveal d1">
+                <div class="sns-n">02</div>
+                <div class="sns-name">Reparación</div>
+                <div class="sns-desc">Tratamiento de juntas, grietas, fisuras, brocas, baches y zonas
+                    deterioradas.</div>
+            </div>
+            <div class="sns-stage reveal d2">
+                <div class="sns-n">03</div>
+                <div class="sns-name">Pulido</div>
+                <div class="sns-desc">Secuencia diamantada, densificadores, selladores y terminaciones
+                    profesionales.</div>
+            </div>
+            <div class="sns-stage reveal d3">
+                <div class="sns-n">04</div>
+                <div class="sns-name">Mantenimiento</div>
+                <div class="sns-desc">Limpieza técnica, protección, recuperación de brillo y conservación de la
+                    vida útil.</div>
+            </div>
+        </div>
+        <div class="sns-cta reveal d4">
+            <a href="../sistema-newconcret/" class="btn-g">Ver el sistema completo</a>
         </div>
     </section>
 
     <!-- ══ CTA ══ -->
-    <section class="cta-sec">
-        <div class="cta-box reveal">
-            <div>
-                <div class="cta-eyebrow"><span class="cta-eyebrow-ln"></span><span class="cta-eyebrow-tx">¿Trabajamos
-                        juntos?</span></div>
-                <h2 class="cta-h2">Hablemos de tu<br>próximo <span>proyecto.</span></h2>
-                <p class="cta-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas.</p>
-            </div>
-            <div class="cta-acts">
+    <section class="cta-nos">
+        <div class="cta-nos-bg">
+            <img src="../assets/img/hero/pulido.jpg" alt="">
+        </div>
+        <div class="cta-nos-ov"></div>
+        <div class="cta-nos-content reveal">
+            <h2 class="cta-nos-h2">Hacelo fácil, hacelo rápido,<br>hacelo con <span>NewConcret.</span></h2>
+            <p class="cta-nos-sub">Tecnología, productos, capacitación y soporte técnico para pisos de hormigón
+                más resistentes, durables y profesionales.</p>
+            <div class="cta-nos-acts">
                 <a href="https://wa.link/ayeajp" class="btn-p" target="_blank" rel="noopener">
                     Consultar por WhatsApp
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                        </path>
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round"></path>
                     </svg>
                 </a>
             </div>
@@ -226,7 +338,9 @@
         document.documentElement.classList.add('js-loaded');
 
         /* Scroll reveal */
-        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: .07 });
+        const obs = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('in');
+        }), { threshold: .07 });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
         /* Count-up */
@@ -234,7 +348,7 @@
             const s = performance.now();
             (function f(n) {
                 const p = Math.min((n - s) / dur, 1), v = Math.round((1 - Math.pow(1 - p, 4)) * target);
-                el.textContent = target >= 100 ? v.toLocaleString('es-AR') : v;
+                el.textContent = target >= 1000 ? v.toLocaleString('es-AR') : v;
                 if (p < 1) requestAnimationFrame(f);
             })(s);
         }
