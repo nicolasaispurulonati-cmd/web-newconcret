@@ -11,6 +11,7 @@ const multer  = require('multer');
 const fs      = require('fs');
 const path    = require('path');
 const vm      = require('vm');
+const { generateBlog } = require('./generate-blog');
 
 const app  = express();
 const PORT = 8080;
@@ -68,6 +69,32 @@ const uploadDoc = multer({
   limits: { fileSize: 30 * 1024 * 1024 },  // 30 MB
   fileFilter: (req, file, cb) => {
     cb(null, path.extname(file.originalname).toLowerCase() === '.pdf');
+  }
+});
+
+// ── Multer: imágenes del blog (carpeta separada) ───────────────────────────
+const blogImgStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const dir = path.join(ROOT, 'assets', 'img', 'blog');
+    fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
+  },
+  filename: (req, file, cb) => {
+    const ext  = path.extname(file.originalname).toLowerCase();
+    const base = path.basename(file.originalname, ext)
+                     .replace(/\s+/g, '-')
+                     .replace(/[^a-z0-9\-]/gi, '')
+                     .toLowerCase();
+    cb(null, `${base}-${Date.now()}${ext}`);
+  }
+});
+
+const uploadBlogImg = multer({
+  storage: blogImgStorage,
+  limits: { fileSize: 20 * 1024 * 1024 },  // 20 MB
+  fileFilter: (req, file, cb) => {
+    const allowed = ['.jpg','.jpeg','.png','.webp','.gif','.svg'];
+    cb(null, allowed.includes(path.extname(file.originalname).toLowerCase()));
   }
 });
 
@@ -131,6 +158,63 @@ app.get('/api/get-productos', (req, res) => {
     res.json({ ok: true, productos: sandbox.productos || [] });
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// ══ BLOG ════════════════════════════════════════════════════════════════════
+
+// ── API: Subir imagen del blog ─────────────────────────────────────────────
+app.post('/api/upload/blog', uploadBlogImg.single('file'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'Archivo no válido o faltante.' });
+  const publicPath = '/assets/img/blog/' + req.file.filename;
+  console.log('[UPLOAD BLOG]', publicPath);
+  res.json({ ok: true, path: publicPath });
+});
+
+// ── API: Leer articulos.js fresco del disco ────────────────────────────────
+app.get('/api/get-articulos', (req, res) => {
+  try {
+    const filePath = path.join(ROOT, 'assets', 'data', 'articulos.js');
+    const code = fs.readFileSync(filePath, 'utf8')
+                   .replace(/const\s+articulos\s*=/, 'var articulos =');
+    const sandbox = {};
+    vm.createContext(sandbox);
+    vm.runInContext(code, sandbox);
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.json({ ok: true, articulos: sandbox.articulos || [] });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// ── API: Guardar articulos.js y regenerar el blog ──────────────────────────
+app.post('/api/save-articulos', (req, res) => {
+  try {
+    const { articulos } = req.body;
+    if (!Array.isArray(articulos)) {
+      return res.status(400).json({ error: 'Payload inválido: se esperaba array "articulos".' });
+    }
+
+    const filePath = path.join(ROOT, 'assets', 'data', 'articulos.js');
+    const content = [
+      '/*',
+      '   NEWCONCRET - articulos.js',
+      '   Blog / artículos. Editable desde el Panel Admin.',
+      '   El cuerpo se escribe en Markdown y se convierte a HTML al generar las páginas.',
+      '*/',
+      '',
+      `const articulos = ${JSON.stringify(articulos, null, 4)};`
+    ].join('\n');
+
+    fs.writeFileSync(filePath, content, 'utf8');
+
+    // Regenerar las páginas estáticas del blog automáticamente.
+    const result = generateBlog();
+    console.log('[SAVE] articulos.js actualizado —', articulos.length, 'artículos; páginas:', result.count);
+    res.json({ ok: true, count: articulos.length, paginas: result.count });
+  } catch (err) {
+    console.error('[SAVE ARTICULOS ERROR]', err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel — NewConcret</title>
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
-    <link rel="stylesheet" href="../assets/css/admin.css?v=2.0">
+    <link rel="stylesheet" href="../assets/css/admin.css?v=2.1">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="../assets/data/site-structure.js?v=3.0"></script>
+    <script src="../assets/js/vendor/marked.min.js"></script>
 </head>
 <body class="admin-body">
 
@@ -58,6 +59,10 @@
             <button class="admin-tab" id="tab-ordenar" onclick="switchTab('ordenar')">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="7" y1="12" x2="17" y2="12"></line><line x1="10" y1="18" x2="14" y2="18"></line></svg>
                 <span>Ordenar Páginas</span>
+            </button>
+            <button class="admin-tab" id="tab-blog" onclick="switchTab('blog')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="12" y2="17"></line></svg>
+                <span>Blog</span>
             </button>
         </div>
 
@@ -120,6 +125,17 @@
                 <div class="sortable-list" id="sortable-list"></div>
             </div>
 
+        </div>
+
+        <!-- ── PANEL: BLOG ── -->
+        <div id="panel-blog" style="display:none;">
+            <div class="toolbar">
+                <button onclick="openArticle(null)" class="btn-admin" style="background:#c1121f; width:auto; padding:0.7rem 1.5rem; margin-right:auto;">+ Nuevo Artículo</button>
+                <input type="text" id="blog-search" class="search-input" placeholder="Buscar por título o categoría...">
+            </div>
+            <div id="blog-list" class="product-grid">
+                <!-- Dinámico -->
+            </div>
         </div>
 
     </main>
@@ -226,6 +242,102 @@
     </div>
 </div>
 
+<!-- ── MODAL EDITOR DE ARTÍCULO ── -->
+<div id="article-modal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 1080px;">
+        <div class="modal-header">
+            <h2 id="article-modal-title" style="margin:0;">Editar Artículo</h2>
+            <button onclick="closeArticle()" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="article-form" onsubmit="return false;">
+                <input type="hidden" id="art-id">
+                <div class="editor-grid">
+                    <!-- Columna izquierda: metadatos -->
+                    <div>
+                        <div class="form-group">
+                            <label>Título del Artículo</label>
+                            <input type="text" id="art-titulo" oninput="onTituloInput()" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Slug (URL) — /blog/<span id="art-slug-preview"></span>/</label>
+                            <input type="text" id="art-slug" placeholder="se-genera-del-titulo">
+                        </div>
+                        <div class="form-group">
+                            <label>Resumen (aparece en el listado y en buscadores)</label>
+                            <textarea id="art-resumen" style="width:100%; height:70px; background:#000; color:#fff; border:1px solid #222; padding:10px; font-family: inherit;"></textarea>
+                        </div>
+                        <div style="display:flex; gap:1rem;">
+                            <div class="form-group" style="flex:1;">
+                                <label>Autor</label>
+                                <input type="text" id="art-autor" placeholder="Equipo NewConcret">
+                            </div>
+                            <div class="form-group" style="flex:0 0 160px;">
+                                <label>Fecha</label>
+                                <input type="date" id="art-fecha" style="width:100%;">
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:1rem;">
+                            <div class="form-group" style="flex:1;">
+                                <label>Categoría</label>
+                                <input type="text" id="art-categoria" placeholder="Guías" list="art-cat-list">
+                                <datalist id="art-cat-list">
+                                    <option value="Guías"><option value="Casos de obra"><option value="Novedades"><option value="Técnico">
+                                </datalist>
+                            </div>
+                            <div class="form-group" style="flex:0 0 120px;">
+                                <label>Visibilidad</label>
+                                <select id="art-visible" class="search-input" style="width:100%; padding:0.8rem;">
+                                    <option value="true">Visible</option>
+                                    <option value="false">Borrador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Etiquetas (separadas por coma)</label>
+                            <input type="text" id="art-etiquetas" placeholder="pulido, hormigón, industrial">
+                        </div>
+                        <div class="form-group">
+                            <label>Imagen de Portada</label>
+                            <div class="upload-wrapper" onclick="document.getElementById('art-upload-portada').click()">
+                                <img id="art-prev-portada" src="" class="preview-img hidden">
+                                <span id="art-label-portada" class="file-info">Clic para seleccionar imagen</span>
+                                <input type="file" id="art-upload-portada" hidden accept="image/*" onchange="uploadArticleImage(this, 'portada')">
+                                <input type="hidden" id="art-portada">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna derecha: cuerpo Markdown + preview -->
+                    <div>
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
+                            <label style="font-size:0.7rem; text-transform:uppercase; color:#888; margin:0;">Contenido (Markdown)</label>
+                            <div style="display:flex; gap:0.4rem;">
+                                <button type="button" onclick="mdWrap('**','**')" class="md-btn" title="Negrita"><b>B</b></button>
+                                <button type="button" onclick="mdHeading()" class="md-btn" title="Subtítulo">H2</button>
+                                <button type="button" onclick="mdWrap('[','](url)')" class="md-btn" title="Enlace">🔗</button>
+                                <button type="button" onclick="mdQuote()" class="md-btn" title="Cita">❝</button>
+                                <button type="button" onclick="document.getElementById('art-upload-inline').click()" class="md-btn" title="Insertar imagen">🖼</button>
+                                <input type="file" id="art-upload-inline" hidden accept="image/*" onchange="uploadArticleImage(this, 'inline')">
+                            </div>
+                        </div>
+                        <textarea id="art-cuerpo" oninput="renderMdPreview()" spellcheck="false"
+                            style="width:100%; height:240px; background:#000; color:#e8e8e8; border:1px solid #222; padding:12px; font-family:'JetBrains Mono', monospace; font-size:0.82rem; line-height:1.6; resize:vertical;"
+                            placeholder="Escribí el artículo en Markdown.&#10;&#10;## Subtítulo&#10;&#10;Un párrafo de texto. Podés usar **negrita**, listas y > citas."></textarea>
+                        <label style="font-size:0.7rem; text-transform:uppercase; color:#888; display:block; margin:1rem 0 0.5rem;">Vista previa</label>
+                        <div id="art-preview" class="md-preview"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button onclick="deleteArticle()" id="art-btn-delete" class="btn-admin" style="background:transparent; border:1px solid #c1121f; color:#c1121f; width:auto; margin-right:auto;">Eliminar Artículo</button>
+            <button onclick="closeArticle()" class="btn-admin" style="background:#222; width:auto;">Cancelar</button>
+            <button onclick="applyArticle()" class="btn-admin" style="width:auto;">Guardar Artículo</button>
+        </div>
+    </div>
+</div>
+
 <!-- ── TOAST CONTAINER ── -->
 <div id="toast-container" class="toast-container"></div>
 
@@ -238,7 +350,9 @@ function switchTab(name) {
     document.getElementById('tab-' + name).classList.add('active');
     document.getElementById('panel-productos').style.display = name === 'productos' ? 'block' : 'none';
     document.getElementById('panel-ordenar').style.display = name === 'ordenar' ? 'block' : 'none';
+    document.getElementById('panel-blog').style.display = name === 'blog' ? 'block' : 'none';
     if (name === 'ordenar') initReorderPanel();
+    if (name === 'blog') initBlogPanel();
 }
 let auth_token = localStorage.getItem('nc_auth_token');
 
@@ -1025,6 +1139,312 @@ function onDrop(e) {
     autoSave(`Orden actualizado`);
 }
 
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════
+     BLOG — gestión de artículos
+     ════════════════════════════════════════════════════════════════ -->
+<script>
+let currentArticles = [];
+let blogLoaded = false;
+let blogApiOk = true;   // false => servidor estático (sin /api): modo lectura + descarga
+
+if (window.marked) {
+    marked.setOptions({ breaks: false, gfm: true });
+}
+
+// ── INIT ──
+async function initBlogPanel() {
+    if (blogLoaded) { renderArticles(); return; }
+    let loaded = false;
+
+    // 1) Intentar la API del servidor Express (node server.js)
+    try {
+        const resp = await fetch('/api/get-articulos');
+        if (resp.ok) {
+            const data = await resp.json();
+            if (data.ok) { currentArticles = data.articulos || []; loaded = true; blogApiOk = true; }
+        }
+    } catch (err) { /* sin servidor Express */ }
+
+    // 2) Fallback: leer el data file directamente (modo sin servidor)
+    if (!loaded) {
+        try {
+            const txt = await (await fetch('../assets/data/articulos.js?ts=' + Date.now())).text();
+            currentArticles = new Function(txt + ';return typeof articulos!=="undefined"?articulos:[];')() || [];
+            loaded = true;
+            blogApiOk = false;
+            showToast('Modo lectura: para guardar y subir imágenes, ejecutá "node server.js".', 'error');
+        } catch (err) {
+            showToast('No se pudieron cargar los artículos.', 'error');
+        }
+    }
+
+    blogLoaded = loaded;
+    renderArticles();
+}
+
+document.getElementById('blog-search').addEventListener('input', renderArticles);
+
+function fmtFecha(iso) {
+    if (!iso) return 'Sin fecha';
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
+}
+
+// ── RENDER LISTA ──
+function renderArticles() {
+    const list = document.getElementById('blog-list');
+    const q = document.getElementById('blog-search').value.toLowerCase();
+    list.innerHTML = '';
+
+    const filtered = currentArticles.filter(a => {
+        if (!a) return false;
+        const t = (a.titulo || '').toLowerCase();
+        const c = (a.categoria || '').toLowerCase();
+        return t.includes(q) || c.includes(q);
+    }).sort((a, b) => String(b.fecha).localeCompare(String(a.fecha)));
+
+    if (filtered.length === 0) {
+        list.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:3rem; color:#555;">No hay artículos todavía. Creá el primero con “+ Nuevo Artículo”.</div>';
+        return;
+    }
+
+    filtered.forEach(a => {
+        const isHidden = a.visible === false;
+        const card = document.createElement('div');
+        card.className = 'admin-pcard' + (isHidden ? ' is-hidden' : '');
+        card.style.opacity = isHidden ? '0.55' : '1';
+        card.onclick = () => openArticle(a.id);
+        card.innerHTML = `
+            <img src="${a.portada || '../assets/img/hero/productos.jpg'}" alt="${a.titulo}" onerror="this.src='../assets/img/hero/productos.jpg'">
+            <div class="admin-pcard-info">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="flex:1; margin-right:10px;">${a.titulo || '(sin título)'}</h3>
+                    ${isHidden ? '<span style="font-size:0.6rem; background:#444; padding:2px 5px; border-radius:3px; flex-shrink:0;">BORRADOR</span>' : ''}
+                </div>
+                <p>${a.categoria || 'Sin categoría'} · ${fmtFecha(a.fecha)}</p>
+                <p style="margin-top:0.3rem; color:#777;">/blog/${a.slug || ''}/</p>
+            </div>
+        `;
+        list.appendChild(card);
+    });
+}
+
+// ── SLUG ──
+function slugify(s) {
+    return String(s || '').toLowerCase().trim()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+let slugTouched = false;
+function onTituloInput() {
+    const titulo = document.getElementById('art-titulo').value;
+    if (!slugTouched) {
+        const slug = slugify(titulo);
+        document.getElementById('art-slug').value = slug;
+        document.getElementById('art-slug-preview').textContent = slug;
+    }
+}
+document.getElementById('art-slug').addEventListener('input', function () {
+    slugTouched = true;
+    this.value = slugify(this.value);
+    document.getElementById('art-slug-preview').textContent = this.value;
+});
+
+// ── ABRIR / CERRAR EDITOR ──
+function openArticle(id) {
+    const a = id ? currentArticles.find(x => x.id === id) : null;
+    slugTouched = !!(a && a.slug);
+
+    document.getElementById('art-id').value      = a ? a.id : '';
+    document.getElementById('art-titulo').value  = a ? (a.titulo || '') : '';
+    document.getElementById('art-slug').value    = a ? (a.slug || '') : '';
+    document.getElementById('art-slug-preview').textContent = a ? (a.slug || '') : '';
+    document.getElementById('art-resumen').value = a ? (a.resumen || '') : '';
+    document.getElementById('art-autor').value   = a ? (a.autor || '') : 'Equipo NewConcret';
+    document.getElementById('art-fecha').value   = a ? (a.fecha || '') : new Date().toISOString().slice(0, 10);
+    document.getElementById('art-categoria').value = a ? (a.categoria || '') : '';
+    document.getElementById('art-visible').value = a ? String(a.visible !== false) : 'true';
+    document.getElementById('art-etiquetas').value = a ? (a.etiquetas || []).join(', ') : '';
+    document.getElementById('art-cuerpo').value  = a ? (a.cuerpo_md || '') : '';
+
+    const portada = a ? (a.portada || '') : '';
+    document.getElementById('art-portada').value = portada;
+    const prev = document.getElementById('art-prev-portada');
+    if (portada) { prev.src = portada; prev.classList.remove('hidden'); document.getElementById('art-label-portada').innerText = '✓ Portada cargada'; }
+    else { prev.src = ''; prev.classList.add('hidden'); document.getElementById('art-label-portada').innerText = 'Clic para seleccionar imagen'; }
+
+    document.getElementById('article-modal-title').innerText = a ? 'Editar Artículo' : 'Nuevo Artículo';
+    document.getElementById('art-btn-delete').style.display = a ? 'block' : 'none';
+
+    renderMdPreview();
+    document.getElementById('article-modal').style.display = 'flex';
+}
+function closeArticle() {
+    document.getElementById('article-modal').style.display = 'none';
+}
+
+// ── MARKDOWN: preview + helpers ──
+function renderMdPreview() {
+    const md = document.getElementById('art-cuerpo').value;
+    const out = document.getElementById('art-preview');
+    out.innerHTML = window.marked ? marked.parse(md || '') : md.replace(/\n/g, '<br>');
+}
+function mdInsert(text) {
+    const ta = document.getElementById('art-cuerpo');
+    const s = ta.selectionStart, e = ta.selectionEnd;
+    ta.value = ta.value.slice(0, s) + text + ta.value.slice(e);
+    ta.focus();
+    ta.selectionStart = ta.selectionEnd = s + text.length;
+    renderMdPreview();
+}
+function mdWrap(before, after) {
+    const ta = document.getElementById('art-cuerpo');
+    const s = ta.selectionStart, e = ta.selectionEnd;
+    const sel = ta.value.slice(s, e) || 'texto';
+    ta.value = ta.value.slice(0, s) + before + sel + after + ta.value.slice(e);
+    ta.focus();
+    ta.selectionStart = s + before.length;
+    ta.selectionEnd = s + before.length + sel.length;
+    renderMdPreview();
+}
+function mdHeading() {
+    const ta = document.getElementById('art-cuerpo');
+    const s = ta.selectionStart;
+    const lineStart = ta.value.lastIndexOf('\n', s - 1) + 1;
+    ta.value = ta.value.slice(0, lineStart) + '## ' + ta.value.slice(lineStart);
+    ta.focus();
+    renderMdPreview();
+}
+function mdQuote() { mdInsert('\n> '); }
+
+// ── SUBIDA DE IMÁGENES (portada o inline) ──
+async function uploadArticleImage(input, kind) {
+    if (!input.files || !input.files[0]) return;
+    if (!blogApiOk) {
+        showToast('La subida de imágenes necesita el servidor: ejecutá "node server.js".', 'error');
+        input.value = '';
+        return;
+    }
+    const file = input.files[0];
+    if (kind === 'portada') document.getElementById('art-label-portada').innerText = '⏳ Subiendo...';
+    else showToast('⏳ Subiendo imagen...', 'success');
+
+    const fd = new FormData();
+    fd.append('file', file);
+    try {
+        const resp = await fetch('/api/upload/blog', { method: 'POST', body: fd });
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.error || 'Error desconocido');
+
+        if (kind === 'portada') {
+            document.getElementById('art-portada').value = data.path;
+            const prev = document.getElementById('art-prev-portada');
+            prev.src = data.path; prev.classList.remove('hidden');
+            document.getElementById('art-label-portada').innerText = '✓ Portada cargada';
+        } else {
+            mdInsert(`\n![](${data.path})\n`);
+        }
+        showToast('✓ Imagen subida: ' + data.path, 'success');
+    } catch (err) {
+        if (kind === 'portada') document.getElementById('art-label-portada').innerText = '✗ Error al subir';
+        showToast('Error al subir imagen: ' + err.message, 'error');
+    } finally {
+        input.value = '';
+    }
+}
+
+// ── GUARDAR / ELIMINAR ──
+function applyArticle() {
+    const titulo = document.getElementById('art-titulo').value.trim();
+    if (!titulo) { showToast('El título es obligatorio.', 'error'); return; }
+
+    let slug = slugify(document.getElementById('art-slug').value || titulo);
+    if (!slug) slug = 'articulo-' + Date.now();
+
+    const id = document.getElementById('art-id').value || ('art-' + Date.now());
+
+    // Slug único (no choca con otro artículo)
+    const clash = currentArticles.some(a => a.slug === slug && a.id !== id);
+    if (clash) { showToast('Ya existe un artículo con ese slug. Cambialo.', 'error'); return; }
+
+    const articulo = {
+        id,
+        slug,
+        titulo,
+        resumen: document.getElementById('art-resumen').value.trim(),
+        portada: document.getElementById('art-portada').value.trim(),
+        autor: document.getElementById('art-autor').value.trim() || 'Equipo NewConcret',
+        fecha: document.getElementById('art-fecha').value || new Date().toISOString().slice(0, 10),
+        categoria: document.getElementById('art-categoria').value.trim(),
+        etiquetas: document.getElementById('art-etiquetas').value.split(',').map(t => t.trim()).filter(Boolean),
+        visible: document.getElementById('art-visible').value === 'true',
+        cuerpo_md: document.getElementById('art-cuerpo').value
+    };
+
+    const idx = currentArticles.findIndex(a => a.id === id);
+    if (idx >= 0) currentArticles[idx] = articulo;
+    else currentArticles.unshift(articulo);
+
+    saveArticles(`✓ Artículo guardado: ${titulo}`);
+    closeArticle();
+}
+
+function deleteArticle() {
+    const id = document.getElementById('art-id').value;
+    if (!id) return;
+    if (!confirm('¿Eliminar este artículo? Se quitará su página del blog.')) return;
+    currentArticles = currentArticles.filter(a => a.id !== id);
+    saveArticles('Artículo eliminado');
+    closeArticle();
+}
+
+function articulosFileContent() {
+    return [
+        '/*',
+        '   NEWCONCRET - articulos.js',
+        '   Blog / artículos. Editable desde el Panel Admin.',
+        '   El cuerpo se escribe en Markdown y se convierte a HTML al generar las páginas.',
+        '*/',
+        '',
+        `const articulos = ${JSON.stringify(currentArticles, null, 4)};`
+    ].join('\n');
+}
+
+function downloadArticulos() {
+    const blob = new Blob([articulosFileContent()], { type: 'application/javascript' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'articulos.js'; a.click();
+    URL.revokeObjectURL(url);
+}
+
+async function saveArticles(context) {
+    renderArticles();
+
+    // Sin servidor Express: no hay API; ofrecer descarga del data file.
+    if (!blogApiOk) {
+        downloadArticulos();
+        showToast('Modo sin servidor: se descargó articulos.js. Reemplazá assets/data/articulos.js y regenerá con "node generate-blog.js".', 'error');
+        return;
+    }
+
+    try {
+        const resp = await fetch('/api/save-articulos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ articulos: currentArticles })
+        });
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.error || 'Error del servidor');
+        showToast(`${context} — ${data.paginas} página(s) generada(s)`, 'success');
+    } catch (err) {
+        // La API falló a mitad de camino: fallback a descarga.
+        downloadArticulos();
+        showToast('Error al guardar por API (' + err.message + '). Se descargó articulos.js como respaldo.', 'error');
+    }
+}
 </script>
 </body>
 </html>

@@ -49,6 +49,7 @@
     <a href="${root}capacitacion/" class="nav-simple">Capacitaciones</a>
     <a href="${root}sistema-newconcret/" class="nav-simple">Sistema NC</a>
     <a href="${root}nosotros/" class="nav-simple">Nosotros</a>
+    <a href="${root}blog/" class="nav-simple">Blog</a>
   </div>
   <div class="nav-right">
     <button class="nav-search" aria-label="Buscar">
@@ -208,6 +209,7 @@
     <div class="mob-simple"><a href="${root}capacitacion/">Capacitaciones</a></div>
     <div class="mob-simple"><a href="${root}sistema-newconcret/">Sistema NC</a></div>
     <div class="mob-simple"><a href="${root}nosotros/">Nosotros</a></div>
+    <div class="mob-simple"><a href="${root}blog/">Blog</a></div>
     <div class="mob-simple"><a href="${root}contacto/">Contacto</a></div>
   </div>
 
@@ -468,6 +470,7 @@
         <li><a href="${root}sistema-newconcret/" class="f-link">Sistema NC</a></li>
         <li><a href="${root}capacitacion/" class="f-link">Capacitaciones</a></li>
         <li><a href="${root}nosotros/" class="f-link">Nosotros</a></li>
+        <li><a href="${root}blog/" class="f-link">Blog</a></li>
         <li><a href="${root}contacto/" class="f-link">Contacto</a></li>
       </ul>
     </div>
@@ -672,6 +675,7 @@
             { name: 'Capacitaciones', crumb: 'Empresa', tags: ['capacitacion','capacitaciones','curso','cursos','formacion','aprender','training'], href: root + 'capacitacion/', group: 'Empresa' },
             { name: 'Sistema NewConcret', crumb: 'Empresa › Sistema NC', tags: ['sistema','nc','newconcret','metodo','proceso'], href: root + 'sistema-newconcret/', group: 'Empresa' },
             { name: 'Nosotros', crumb: 'Empresa', tags: ['nosotros','empresa','quienes','historia','equipo'], href: root + 'nosotros/', group: 'Empresa' },
+            { name: 'Blog', crumb: 'Empresa', tags: ['blog','articulos','notas','novedades','guias','noticias'], href: root + 'blog/', group: 'Empresa' },
             { name: 'Contacto', crumb: 'Empresa', tags: ['contacto','contactar','consulta','consultar','whatsapp','telefono'], href: root + 'contacto/', group: 'Empresa' },
         ];
 
