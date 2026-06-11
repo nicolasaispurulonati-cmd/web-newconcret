@@ -66,7 +66,7 @@ function pagina({ title, description, ogImage, root, bodyClass, content }) {
     <link rel="icon" type="image/x-icon" href="/logos/Favicon.ico">
     <link rel="stylesheet" href="/assets/css/estilo.css?v=40">
     <link rel="stylesheet" href="/assets/css/nav.css?v=1.3">
-    <link rel="stylesheet" href="/assets/css/blog.css?v=1.4">
+    <link rel="stylesheet" href="/assets/css/blog.css?v=1.5">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
