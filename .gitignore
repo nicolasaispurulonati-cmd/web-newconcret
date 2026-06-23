@@ -128,3 +128,9 @@ _img_originals/
 # Tooling de skills (instalado con: npx skills add ...) — reproducible, no versionar
 .agents/
 skills-lock.json
+
+# Tooling local de Claude Code / skills (no es contenido del sitio)
+.claude/
+.impeccable/
+.bin/
+agent/
