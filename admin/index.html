@@ -455,7 +455,7 @@ function renderProducts() {
         card.style.opacity = isHidden ? '0.5' : '1';
         card.onclick = () => openEditor(p.id);
         card.innerHTML = `
-            <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='../assets/img/hero/productos.jpg'">
+            <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='../assets/img/hero/productos.webp'">
             <div class="admin-pcard-info">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <h3 style="flex:1; margin-right:10px;">${p.nombre}</h3>
@@ -1053,7 +1053,7 @@ function renderSortable() {
                 </svg>
             </div>
             <span class="sort-num">#${idx + 1}</span>
-            <img class="sort-img" src="${p.imagen || ''}" alt="${p.nombre}" onerror="this.src='../assets/img/hero/productos.jpg'">
+            <img class="sort-img" src="${p.imagen || ''}" alt="${p.nombre}" onerror="this.src='../assets/img/hero/productos.webp'">
             <div class="sort-info">
                 <div class="sort-name">${p.nombre}</div>
                 <div class="sort-meta">SKU: ${p.sku || 'N/A'}</div>
@@ -1217,7 +1217,7 @@ function renderArticles() {
         card.style.opacity = isHidden ? '0.55' : '1';
         card.onclick = () => openArticle(a.id);
         card.innerHTML = `
-            <img src="${a.portada || '../assets/img/hero/productos.jpg'}" alt="${a.titulo}" onerror="this.src='../assets/img/hero/productos.jpg'">
+            <img src="${a.portada || '../assets/img/hero/productos.webp'}" alt="${a.titulo}" onerror="this.src='../assets/img/hero/productos.webp'">
             <div class="admin-pcard-info">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <h3 style="flex:1; margin-right:10px;">${a.titulo || '(sin título)'}</h3>

@@ -247,7 +247,7 @@
         <div class="mega-cat-title">Cons&shy;truc&shy;ción</div>
         <div class="mega-cat-desc">Materiales, químicos y equipos para la construcción de nuevos pisos de hormigón.</div>
       </div>
-      <img src="${root}assets/img/hero/construccion.jpg" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/construccion.webp" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">
@@ -294,7 +294,7 @@
         <div class="mega-cat-title">Reparación</div>
         <div class="mega-cat-desc">Productos y equipos para recuperar pisos de hormigón con daños estructurales o superficiales.</div>
       </div>
-      <img src="${root}assets/img/hero/reparacion.jpg" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/reparacion.webp" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">
@@ -340,7 +340,7 @@
         <div class="mega-cat-title">Pulido</div>
         <div class="mega-cat-desc">Discos, abrasivos, densificadores y máquinas pulidoras para acabados industriales y decorativos.</div>
       </div>
-      <img src="${root}assets/img/hero/pulido.jpg" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/pulido.webp" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">
@@ -396,7 +396,7 @@
         <div class="mega-cat-title">Mante&shy;ni&shy;mien&shy;to</div>
         <div class="mega-cat-desc">Equipos, químicos y accesorios para mantener pisos pulidos en óptimas condiciones.</div>
       </div>
-      <img src="${root}assets/img/hero/mantenimiento.png" alt="" class="mega-cat-img">
+      <img src="${root}assets/img/hero/mantenimiento.webp" alt="" class="mega-cat-img">
     </div>
     <div class="mega-cols">
       <div class="mega-col">

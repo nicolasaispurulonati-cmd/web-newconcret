@@ -67,7 +67,6 @@ function pagina({ title, description, ogImage, root, bodyClass, content }) {
     <link rel="stylesheet" href="/assets/css/estilo.css?v=40">
     <link rel="stylesheet" href="/assets/css/nav.css?v=1.3">
     <link rel="stylesheet" href="/assets/css/blog.css?v=1.5">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
 
@@ -97,12 +96,12 @@ ${content}
 
 // ── Card de artículo (para el listado) ──────────────────────────────────────
 function card(a, i) {
-    const portada = a.portada || '/assets/img/hero/productos.jpg';
+    const portada = a.portada || '/assets/img/hero/productos.webp';
     const search  = [a.titulo, a.categoria, ...(a.etiquetas || [])].join(' ').toLowerCase();
     return `        <a class="blog-card reveal" data-search="${esc(search)}" style="--d:${i * 80}ms" href="/blog/${esc(a.slug)}/">
             <div class="blog-card-media">
                 <img src="${esc(portada)}" alt="${esc(a.titulo)}" loading="lazy"
-                     onerror="this.src='/assets/img/hero/productos.jpg'">
+                     onerror="this.src='/assets/img/hero/productos.webp'">
                 ${a.categoria ? `<span class="blog-chip">${esc(a.categoria)}</span>` : ''}
             </div>
             <div class="blog-card-body">
@@ -178,8 +177,8 @@ function htmlListado(arts) {
     const content = `    <header class="blog-hero">
         <div class="blog-hero-bg">
             <picture>
-                <source media="(max-width: 900px)" srcset="/assets/img/hero/pulido-mobile.jpg">
-                <img src="/assets/img/hero/pulido.jpg" alt="Blog NewConcret">
+                <source media="(max-width: 900px)" srcset="/assets/img/hero/pulido-mobile.webp">
+                <img src="/assets/img/hero/pulido.webp" alt="Blog NewConcret">
             </picture>
         </div>
         <div class="blog-hero-ov"></div>
@@ -199,7 +198,7 @@ ${script}`;
     return pagina({
         title: 'Blog — NewConcret',
         description: 'Guías técnicas, casos de obra y novedades sobre pisos de hormigón, pulido, reparación y mantenimiento.',
-        ogImage: '/assets/img/hero/productos.jpg',
+        ogImage: '/assets/img/hero/productos.webp',
         root: '../',
         bodyClass: 'blog-body',
         content
@@ -209,7 +208,7 @@ ${script}`;
 // ── Página: artículo ────────────────────────────────────────────────────────
 function htmlArticulo(a, todos) {
     const cuerpo  = marked.parse(a.cuerpo_md || '');
-    const portada = a.portada || '/assets/img/hero/productos.jpg';
+    const portada = a.portada || '/assets/img/hero/productos.webp';
 
     const tags = (a.etiquetas || []).length
         ? `        <div class="art-tags">${a.etiquetas.map(t => `<span class="art-tag">#${esc(t)}</span>`).join('')}</div>`

@@ -175,8 +175,8 @@
 </head>
 <body>
 
-<div id="cur" style="left: 1060px; top: 387px;"></div>
-<div id="ring" style="left: 1060px; top: 387px;"></div>
+<div id="cur"></div>
+<div id="ring"></div>
 
 <!-- MEGA BACKDROP -->
 <div id="nav-placeholder"></div>
@@ -184,7 +184,7 @@
 <!-- HERO (Desktop) -->
 <section class="hero hide-mobile" id="inicio">
   <div class="hero-bg">
-    <video src="assets/img/hero/principal.mp4" autoplay="" muted="" loop="" playsinline=""></video>
+    <video src="assets/img/hero/principal.mp4" poster="assets/img/hero/principal-poster.webp" autoplay="" muted="" loop="" playsinline="" preload="metadata"></video>
   </div>
   <div class="hero-ov"></div>
 
@@ -228,16 +228,12 @@
     </div>
   </div>
 
-  <div class="scroll-ind">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
 
 <!-- HERO (Mobile) -->
 <section class="hero-mob hide-desktop" id="inicio-mob">
   <div class="hero-bg">
-    <video src="assets/img/hero/principal.mp4" autoplay="" muted="" loop="" playsinline=""></video>
+    <video src="assets/img/hero/principal-mobile.mp4" poster="assets/img/hero/principal-poster.webp" autoplay="" muted="" loop="" playsinline="" preload="metadata"></video>
   </div>
   <div class="hero-ov"></div>
   <div class="hero-content">
@@ -277,7 +273,7 @@
       <div class="s-desc">Empresas constructoras, pulidores independientes y arquitectos confían en nuestros productos.</div>
     </div>
     <div class="s-card reveal d1">
-      <div class="s-unit">Pulidores formados</div>
+      <div class="s-unit">Pulidores capacitados</div>
       <div class="s-num"><span class="cu" data-t="500">0</span><em>+</em></div>
       <div class="s-desc">Capacitaciones técnicas presenciales y online en pulido, reparación y mantenimiento.</div>
     </div>
@@ -324,7 +320,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/construccion.jpg" alt="Construcción de pisos industriales"
+      <img src="assets/img/hero/construccion.webp" alt="Construcción de pisos industriales"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.3) 60%, transparent 100%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -347,7 +343,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/pulido.jpg" alt="Pulido de pisos de hormigón"
+      <img src="assets/img/hero/pulido.webp" alt="Pulido de pisos de hormigón"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -369,7 +365,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/mantenimiento.png" alt="Mantenimiento de pisos industriales"
+      <img src="assets/img/hero/mantenimiento.webp" alt="Mantenimiento de pisos industriales"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -377,7 +373,7 @@
         <div style="font-family:var(--font-m);font-size:.45rem;color:var(--nc-red);text-transform:uppercase;letter-spacing:.2em;margin-bottom:.4rem;">Cuidado y protección</div>
         <h3 style="font-family:var(--font-d);font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--nc-white);line-height:1;margin-bottom:.8rem;">Mantenimiento</h3>
         <div style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-m);font-size:.55rem;color:var(--nc-red);font-weight:700;text-transform:uppercase;letter-spacing:.1em;" class="maq-cta-link">
-          Ver
+          Explorar
           <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
         </div>
       </div>
@@ -391,7 +387,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/reparacion.jpg" alt="Reparación de pisos de hormigón"
+      <img src="assets/img/hero/reparacion.webp" alt="Reparación de pisos de hormigón"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -399,7 +395,7 @@
         <div style="font-family:var(--font-m);font-size:.45rem;color:var(--nc-red);text-transform:uppercase;letter-spacing:.2em;margin-bottom:.4rem;">Restauración técnica</div>
         <h3 style="font-family:var(--font-d);font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--nc-white);line-height:1;margin-bottom:.8rem;">Reparación</h3>
         <div style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-m);font-size:.55rem;color:var(--nc-red);font-weight:700;text-transform:uppercase;letter-spacing:.1em;" class="maq-cta-link">
-          Ver
+          Explorar
           <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
         </div>
       </div>
@@ -432,7 +428,7 @@
     
     <!-- CONSTRUCCIÓN -->
     <a href="construccion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/construccion-mobile.jpg" alt="Construcción" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img src="assets/img/hero/construccion-mobile.webp" alt="Construcción" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Equipos y químicos</div>
@@ -442,7 +438,7 @@
 
     <!-- PULIDO -->
     <a href="pulido/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/pulido.jpg" alt="Pulido" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img src="assets/img/hero/pulido.webp" alt="Pulido" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Desbaste y brillo</div>
@@ -452,7 +448,7 @@
 
     <!-- MANTENIMIENTO -->
     <a href="mantenimiento/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/mantenimiento.png" alt="Mantenimiento" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img src="assets/img/hero/mantenimiento.webp" alt="Mantenimiento" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Limpieza y protección</div>
@@ -462,7 +458,7 @@
 
     <!-- REPARACIÓN -->
     <a href="reparacion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/reparacion.jpg" alt="Reparación" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img src="assets/img/hero/reparacion.webp" alt="Reparación" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color:var(--nc-red); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Restauración de juntas</div>
@@ -973,7 +969,7 @@
 <!-- CTA -->
 <section class="cta-nos" id="contacto">
     <div class="cta-nos-bg">
-        <img src="assets/img/hero/pulido.jpg" alt="">
+        <img src="assets/img/hero/pulido.webp" alt="">
     </div>
     <div class="cta-nos-ov"></div>
     <div class="cta-nos-content reveal">

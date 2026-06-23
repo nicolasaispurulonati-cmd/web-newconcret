@@ -11,7 +11,30 @@ const multer  = require('multer');
 const fs      = require('fs');
 const path    = require('path');
 const vm      = require('vm');
+const sharp   = require('sharp');
 const { generateBlog } = require('./generate-blog');
+
+// ── Optimización: convierte la imagen recién subida a WebP redimensionado ────
+// Mantiene el sitio liviano de forma automática (mismos parámetros que
+// scripts/optimize-images.js). SVG y GIF se conservan tal cual.
+async function optimizeUpload(absPath, publicDir) {
+  const ext  = path.extname(absPath).toLowerCase();
+  const base = path.basename(absPath, ext);
+  if (ext === '.svg' || ext === '.gif') return publicDir + path.basename(absPath);
+  const webpAbs = path.join(path.dirname(absPath), base + '.webp');
+  try {
+    const buf = await sharp(absPath)
+      .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: 80, effort: 5 })
+      .toBuffer();
+    fs.writeFileSync(webpAbs, buf);
+    if (path.resolve(webpAbs) !== path.resolve(absPath)) fs.unlinkSync(absPath);
+    return publicDir + base + '.webp';
+  } catch (e) {
+    console.error('[OPTIMIZE ERROR]', e.message);
+    return publicDir + path.basename(absPath); // fallback: deja el original
+  }
+}
 
 const app  = express();
 const PORT = 8080;
@@ -99,9 +122,9 @@ const uploadBlogImg = multer({
 });
 
 // ── API: Subir imagen ──────────────────────────────────────────────────────
-app.post('/api/upload/imagen', uploadImg.single('file'), (req, res) => {
+app.post('/api/upload/imagen', uploadImg.single('file'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'Archivo no válido o faltante.' });
-  const publicPath = '/assets/img/productos/' + req.file.filename;
+  const publicPath = await optimizeUpload(req.file.path, '/assets/img/productos/');
   console.log('[UPLOAD IMG]', publicPath);
   res.json({ ok: true, path: publicPath });
 });
@@ -164,9 +187,9 @@ app.get('/api/get-productos', (req, res) => {
 // ══ BLOG ════════════════════════════════════════════════════════════════════
 
 // ── API: Subir imagen del blog ─────────────────────────────────────────────
-app.post('/api/upload/blog', uploadBlogImg.single('file'), (req, res) => {
+app.post('/api/upload/blog', uploadBlogImg.single('file'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'Archivo no válido o faltante.' });
-  const publicPath = '/assets/img/blog/' + req.file.filename;
+  const publicPath = await optimizeUpload(req.file.path, '/assets/img/blog/');
   console.log('[UPLOAD BLOG]', publicPath);
   res.json({ ok: true, path: publicPath });
 });

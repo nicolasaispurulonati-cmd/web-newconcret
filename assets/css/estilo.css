@@ -286,6 +286,8 @@ body {
 /* -- CURSOR -- */
 #cur {
     position: fixed;
+    left: 0;
+    top: 0;
     width: 10px;
     height: 10px;
     background: var(--nc-red);
@@ -293,7 +295,8 @@ body {
     pointer-events: none;
     z-index: 999999;
     transform: translate(-50%, -50%);
-    transition: transform .15s, background .2s, border-color .2s;
+    will-change: transform;
+    transition: background .2s, border-color .2s;
 }
 
 @media (max-width: 900px) {
@@ -310,6 +313,8 @@ body {
 
 #ring {
     position: fixed;
+    left: 0;
+    top: 0;
     width: 36px;
     height: 36px;
     border: 1px solid rgba(193, 18, 31, .45);
@@ -317,6 +322,7 @@ body {
     pointer-events: none;
     z-index: 999998;
     transform: translate(-50%, -50%);
+    will-change: transform;
     transition: width .3s, height .3s, border-color .2s;
 }
 

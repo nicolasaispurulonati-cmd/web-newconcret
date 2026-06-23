@@ -6,18 +6,36 @@
 (function() {
   'use strict';
 
-  // ── Cursor personalizado ──
+  // ── Cursor personalizado (optimizado) ──
+  // - Solo en punteros finos (mouse), no en táctil.
+  // - Se mueve con transform/translate3d (capa de composición, sin layout por frame).
+  // - El loop de rAF se detiene cuando el anillo alcanza al cursor (idle) y se
+  //   reanuda en el próximo mousemove. Antes corría infinito (la página nunca
+  //   quedaba inactiva, gasto de CPU/batería constante).
   const cur = document.getElementById('cur');
   const ring = document.getElementById('ring');
-  if (cur && ring) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    (function loop() {
-      cur.style.left = mx + 'px'; cur.style.top = my + 'px';
-      rx += (mx - rx) * .12; ry += (my - ry) * .12;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(loop);
-    })();
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+  if (cur && ring && finePointer) {
+    let mx = 0, my = 0, rx = 0, ry = 0, running = false;
+    const place = (el, x, y) => {
+      el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+    };
+    function render() {
+      place(cur, mx, my);                 // el punto sigue al cursor al instante
+      rx += (mx - rx) * .15;              // el anillo persigue con suavizado
+      ry += (my - ry) * .15;
+      place(ring, rx, ry);
+      if (Math.abs(mx - rx) > .1 || Math.abs(my - ry) > .1) {
+        requestAnimationFrame(render);
+      } else {
+        place(ring, mx, my);             // asienta exacto y corta el loop
+        running = false;
+      }
+    }
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      if (!running) { running = true; requestAnimationFrame(render); }
+    }, { passive: true });
   }
 
   // ── NAVIGATION LOGIC MOVED TO nav.js ──

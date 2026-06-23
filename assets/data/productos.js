@@ -11,7 +11,7 @@ const productos = [
         "nombre": "Aserradora CTE436",
         "sku": "ASERRADORA",
         "descripcion": "Aserradora para corte de juntas",
-        "imagen": "/assets/img/productos/aserradora-1-1779377279250.png",
+        "imagen": "/assets/img/productos/aserradora-1-1779377279250.webp",
         "pdfUrl": "/assets/docs/corta-juntas-2-1779377320986.pdf",
         "storeUrl": "",
         "visible": true,
@@ -45,7 +45,7 @@ const productos = [
         "nombre": "Metales PCD Right/Left",
         "sku": "PCD-ROJO-AZUL",
         "descripcion": "Remoción de Recubrimientos",
-        "imagen": "/assets/img/productos/epoxy-y-pcd-1778608255871.png",
+        "imagen": "/assets/img/productos/epoxy-y-pcd-1778608255871.webp",
         "pdfUrl": "/assets/docs/metales-pcd-1779301993506.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-poliuretano/",
         "visible": true,
@@ -95,7 +95,7 @@ const productos = [
         "nombre": "Metal Epoxi Circular",
         "sku": "EPOXI-CIRCULAR",
         "descripcion": "Metal para remoción de recubrimientos",
-        "imagen": "/assets/img/productos/circular-epoxy-2-1778608929665.png",
+        "imagen": "/assets/img/productos/circular-epoxy-2-1778608929665.webp",
         "pdfUrl": "",
         "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-circular/",
         "visible": true,
@@ -151,7 +151,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Metal PCD Right-Left",
-        "imagen": "/assets/img/productos/epoxy-1778605387003.png",
+        "imagen": "/assets/img/productos/epoxy-1778605387003.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-trapezoidal/",
         "specs": [
             {
@@ -201,7 +201,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste de Superficies",
-        "imagen": "/assets/img/productos/circulares-8-2-1778604202928.png",
+        "imagen": "/assets/img/productos/circulares-8-2-1778604202928.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/metales-circulares/",
         "specs": [
             {
@@ -252,7 +252,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "La Tarsila C1500 Light es una lustradora de alta velocidad,\ndiseñada para el mantenimiento, realce de brillo y conservación de pisos de hormigón tratados.",
-        "imagen": "/assets/img/productos/tarseila-c1500-light-7-1773156559338.png",
+        "imagen": "/assets/img/productos/tarseila-c1500-light-7-1773156559338.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/lustradora-tarsila-c1500-light/",
         "specs": [
             {
@@ -318,7 +318,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Tarsila C1500 es una lustradora industrial diseñada para obtener acabados de alto brillo en superficies de hormigón tratadas.",
-        "imagen": "/assets/img/productos/1500-nueva-1778598427788.png",
+        "imagen": "/assets/img/productos/1500-nueva-1778598427788.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/tarsila-c1500/",
         "specs": [
             {
@@ -377,7 +377,7 @@ const productos = [
         "nombre": "Lavasecapisos MB460",
         "sku": "MB460",
         "descripcion": "Lavasecapisos MB460 es compacta y potente, ideal para la limpieza y mantenimiento de superficies pequeñas y medianas.",
-        "imagen": "/assets/img/productos/mb460-1778600227857.png",
+        "imagen": "/assets/img/productos/mb460-1778600227857.webp",
         "pdfUrl": "/assets/docs/mb460-1778600234967.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mb460/",
         "visible": true,
@@ -443,7 +443,7 @@ const productos = [
         "nombre": "Lavasecapisos MX3",
         "sku": "MX3",
         "descripcion": "Lavasecapisos MX3 es un equipo autónomo a batería diseñado para limpiar y secar superficies en un solo paso, garantizando pisos completamente limpios, secos y libres de residuos.",
-        "imagen": "/assets/img/productos/mx3-1778601166341.png",
+        "imagen": "/assets/img/productos/mx3-1778601166341.webp",
         "pdfUrl": "/assets/docs/mx3-1778601171496.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mx3/",
         "visible": true,
@@ -509,7 +509,7 @@ const productos = [
         "nombre": "Lavasecapisos MX3T",
         "sku": "MX3T",
         "descripcion": "La Lavasecapisos MX3T es un equipo autónomo a batería con tracción propia, diseñado para maximizar la productividad y reducir el esfuerzo del operador.",
-        "imagen": "/assets/img/productos/mx3-1778601543367.png",
+        "imagen": "/assets/img/productos/mx3-1778601543367.webp",
         "pdfUrl": "/assets/docs/mx3t-1778601462133.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mx3t",
         "visible": true,
@@ -575,7 +575,7 @@ const productos = [
         "nombre": "Lavasecapisos MB135",
         "sku": "LAV-MB135",
         "descripcion": "Lavasecapisos MB135 es una máquina ride-on de doble cepillo diseñada para cubrir grandes superficies con máxima eficiencia y autonomía.",
-        "imagen": "/assets/img/productos/mb135-1778674658727.png",
+        "imagen": "/assets/img/productos/mb135-1778674658727.webp",
         "pdfUrl": "/assets/docs/mb135-1778674667448.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/lavasecapisos-mb135/",
         "visible": true,
@@ -641,7 +641,7 @@ const productos = [
         "nombre": "Barredora M50",
         "sku": "BARR-MS50",
         "descripcion": "Barredora MS50 es un equipo de alta capacidad diseñado para cubrir grandes superficies con máxima eficiencia, autonomía y potencia.",
-        "imagen": "/assets/img/productos/ms50-1778687672939.png",
+        "imagen": "/assets/img/productos/ms50-1778687672939.webp",
         "pdfUrl": "/assets/docs/ms50-1778687678615.pdf",
         "storeUrl": "",
         "visible": true,
@@ -686,7 +686,7 @@ const productos = [
         "nombre": "Barredora MS30",
         "sku": "BARR-MS30",
         "descripcion": "Barredora MS30 es un equipo industrial diseñado para cubrir grandes superficies con máxima eficiencia, autonomía y capacidad de barrido.",
-        "imagen": "/assets/img/productos/ms30-1778682885069.png",
+        "imagen": "/assets/img/productos/ms30-1778682885069.webp",
         "pdfUrl": "/assets/docs/ms30-1778682911457.pdf",
         "storeUrl": "",
         "visible": true,
@@ -737,7 +737,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "La pulidora más compacta de la línea Frida, pensada para trabajos\nsemiprofesionales y espacios reducidos.",
-        "imagen": "/assets/img/productos/frida-400.png",
+        "imagen": "/assets/img/productos/frida-400.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/frida-400/",
         "specs": [
             {
@@ -787,7 +787,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Pulidora semiprofesional versátil, diseñada para realizar pulido, lavado y lustrado con mayor estabilidad y cobertura.",
-        "imagen": "/assets/img/productos/frida-450.png",
+        "imagen": "/assets/img/productos/frida-450.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/frida-450/",
         "specs": [
             {
@@ -837,7 +837,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Barrera hidrófuga de polietileno – 200 micrones",
-        "imagen": "/assets/img/productos/nylonnegro.png",
+        "imagen": "/assets/img/productos/nylonnegro.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/nylon-negro/",
         "specs": [
             {
@@ -887,7 +887,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Endurecedor superficial no metálico para hormigón fresco",
-        "imagen": "/assets/img/productos/concretdur.png",
+        "imagen": "/assets/img/productos/concretdur.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-dur/",
         "specs": [
             {
@@ -939,7 +939,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Grouting de reparación estructural de secado rápido.",
-        "imagen": "/assets/img/productos/concretfix.png",
+        "imagen": "/assets/img/productos/concretfix.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-fix/",
         "specs": [
             {
@@ -1021,7 +1021,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Mortero cementicio modificado, pulible y de alto rendimiento.",
-        "imagen": "/assets/img/productos/concretmicrostrong.png",
+        "imagen": "/assets/img/productos/concretmicrostrong.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-microstrong/",
         "specs": [
             {
@@ -1101,7 +1101,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Microfibra de polipropileno virgen para hormigón.",
-        "imagen": "/assets/img/productos/microfibra.png",
+        "imagen": "/assets/img/productos/microfibra.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-micro-microfibra/",
         "specs": [
             {
@@ -1151,7 +1151,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Macrofibra de polipropileno estructural",
-        "imagen": "/assets/img/productos/macrofibra.png",
+        "imagen": "/assets/img/productos/macrofibra.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-fibra-macrofibra/",
         "specs": [
             {
@@ -1201,7 +1201,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aditivo facilitador de llaneado",
-        "imagen": "/assets/img/productos/concret-one-5-1777919261199.png",
+        "imagen": "/assets/img/productos/concret-one-5-1777919261199.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-one/",
         "specs": [
             {
@@ -1251,7 +1251,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Curador de membrana",
-        "imagen": "/assets/img/productos/scudo-5-1777920808015.png",
+        "imagen": "/assets/img/productos/scudo-5-1777920808015.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-scudo/",
         "specs": [
             {
@@ -1303,7 +1303,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Puente de adherencia",
-        "imagen": "/assets/img/productos/5-l-1777920757894.png",
+        "imagen": "/assets/img/productos/5-l-1777920757894.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-restor/",
         "specs": [
             {
@@ -1400,7 +1400,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aglutinante potenciado para sistemas de pulido",
-        "imagen": "/assets/img/productos/strong-5-1777920959883.png",
+        "imagen": "/assets/img/productos/strong-5-1777920959883.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-strong/",
         "specs": [
             {
@@ -1486,7 +1486,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Sellado profesional de juntas",
-        "imagen": "/assets/img/productos/sellador-newconcret-1777921719643.png",
+        "imagen": "/assets/img/productos/sellador-newconcret-1777921719643.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/sellador-poliuretanico/",
         "specs": [
             {
@@ -1541,7 +1541,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Para compactar y alisar hormigón",
-        "imagen": "/assets/img/productos/allanadora.png",
+        "imagen": "/assets/img/productos/allanadora.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/allanadora/",
         "specs": [
             {
@@ -1591,7 +1591,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Accesorio para pulido con allanadora",
-        "imagen": "/assets/img/productos/discos-allanadora.png",
+        "imagen": "/assets/img/productos/discos-allanadora.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-para-pulido-para-allanadora/",
         "specs": [
             {
@@ -1641,7 +1641,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Escarificadora",
-        "imagen": "/assets/img/productos/jackson-10-1777921631842.png",
+        "imagen": "/assets/img/productos/jackson-10-1777921631842.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/jackson-101/",
         "specs": [
             {
@@ -1691,7 +1691,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Escarificadora",
-        "imagen": "/assets/img/productos/jackson-15-1777921639477.png",
+        "imagen": "/assets/img/productos/jackson-15-1777921639477.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/jackson-151/",
         "specs": [
             {
@@ -1741,7 +1741,7 @@ const productos = [
         "cat_label": "Insumos",
         "subcategoria": "accesorios-amoladora",
         "descripcion": "Carcasa antipolvo para amoladora",
-        "imagen": "/assets/img/productos/carcasa-antipolvo.png",
+        "imagen": "/assets/img/productos/carcasa-antipolvo.webp",
         "storeUrl": "${STORE_BASE}/productos/carcaza-antipolvo-para-amoladora/",
         "specs": [
             {
@@ -1772,7 +1772,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Demolición puntual y apertura inicial",
-        "imagen": "/assets/img/productos/punta-sds-plus.png",
+        "imagen": "/assets/img/productos/punta-sds-plus.webp",
         "storeUrl": "${STORE_BASE}/productos/punta-sds-plus/",
         "specs": [
             {
@@ -1827,7 +1827,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Canaletas y ranuras",
-        "imagen": "/assets/img/productos/pala-angosta-sds-plus.png",
+        "imagen": "/assets/img/productos/pala-angosta-sds-plus.webp",
         "storeUrl": "${STORE_BASE}/productos/pala-angosta-sds-plus/",
         "specs": [
             {
@@ -1882,7 +1882,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Remoción de revestimientos",
-        "imagen": "/assets/img/productos/pala-ancha-sds-plus.png",
+        "imagen": "/assets/img/productos/pala-ancha-sds-plus.webp",
         "storeUrl": "${STORE_BASE}/productos/pala-ancha-sds-plus/",
         "specs": [
             {
@@ -1937,7 +1937,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Soporte para discos resinoides con sistema velcro",
-        "imagen": "/assets/img/productos/respaldo-amoladora.png",
+        "imagen": "/assets/img/productos/respaldo-amoladora.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/respaldo-de-amoladoras/",
         "specs": [
             {
@@ -1987,7 +1987,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Protección en trabajos de corte",
-        "imagen": "/assets/img/productos/carcasa-corte.png",
+        "imagen": "/assets/img/productos/carcasa-corte.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/carcasa-para-corte/",
         "specs": [
             {
@@ -2037,7 +2037,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Chavela 550s combina formato compacto con sistema satelital, logrando excelente control y uniformidad de corte.",
-        "imagen": "/assets/img/productos/chavela-550.png",
+        "imagen": "/assets/img/productos/chavela-550.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-550s/",
         "specs": [
             {
@@ -2087,7 +2087,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Chavela 680 es el inicio del pulido industrial, ofreciendo más peso, potencia y cobertura que la 550s.",
-        "imagen": "/assets/img/productos/chavela-680.png",
+        "imagen": "/assets/img/productos/chavela-680.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-680/",
         "specs": [
             {
@@ -2137,7 +2137,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Chavela 750 es una pulidora robusta y equilibrada, pensada para trabajos industriales donde se requiere potencia, estabilidad y control constante.",
-        "imagen": "/assets/img/productos/chavela-750.png",
+        "imagen": "/assets/img/productos/chavela-750.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-750/",
         "specs": [
             {
@@ -2187,7 +2187,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Chavela 750CR está pensada para trabajos industriales donde la seguridad, el control y la productividad son determinantes.",
-        "imagen": "/assets/img/productos/chavela-750cr.png",
+        "imagen": "/assets/img/productos/chavela-750cr.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-750cr/",
         "specs": [
             {
@@ -2237,7 +2237,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Chavela 850 es una pulidora industrial profesional, diseñada para cubrir superficies grandes con alta velocidad y terminación\nde calidad.",
-        "imagen": "/assets/img/productos/chavela-850.png",
+        "imagen": "/assets/img/productos/chavela-850.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-850/",
         "specs": [
             {
@@ -2287,7 +2287,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Chavela 900 incorpora control remoto, permitiendo maniobrar la máquina a distancia con menos fatiga y mayor precisión.",
-        "imagen": "/assets/img/productos/chavela-900.png",
+        "imagen": "/assets/img/productos/chavela-900.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-900/",
         "specs": [
             {
@@ -2337,7 +2337,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Chavela 1366 es la pulidora más potente de toda la línea, equipada con dos motores, control remoto y un ancho de trabajo superior.",
-        "imagen": "/assets/img/productos/chavela-1366.png",
+        "imagen": "/assets/img/productos/chavela-1366.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/chavela-1366/",
         "specs": [
             {
@@ -2387,7 +2387,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste de Superficies",
-        "imagen": "/assets/img/productos/1-1778604259666.png",
+        "imagen": "/assets/img/productos/1-1778604259666.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/metales-alto-rendimiento/",
         "specs": [
             {
@@ -2437,7 +2437,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste de Superficies",
-        "imagen": "/assets/img/productos/grano-30-2-1778604302525.png",
+        "imagen": "/assets/img/productos/grano-30-2-1778604302525.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/metales-eco/",
         "specs": [
             {
@@ -2481,7 +2481,7 @@ const productos = [
         "nombre": "Discos Resinoides Espesor 15 mm",
         "sku": "RESINOIDE-15MM",
         "descripcion": "Disco resinoide de 100mm de diámetro y 15mm de espesor",
-        "imagen": "/assets/img/productos/resinas-15mm-grano-50-2-1778610727067.png",
+        "imagen": "/assets/img/productos/resinas-15mm-grano-50-2-1778610727067.webp",
         "pdfUrl": "",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoide-15mm/",
         "visible": true,
@@ -2537,7 +2537,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste y Pulido de Superficies",
-        "imagen": "/assets/img/productos/metal-epoxy-trapezoidal-2-1778609116513.png",
+        "imagen": "/assets/img/productos/metal-epoxy-trapezoidal-2-1778609116513.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoide-12mm/",
         "specs": [
             {
@@ -2587,7 +2587,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste y Pulido de Superficies",
-        "imagen": "/assets/img/productos/grano-30-1778605279602.png",
+        "imagen": "/assets/img/productos/grano-30-1778605279602.webp",
         "storeUrl": "${STORE_BASE}/productos/discos-resinoides-diametro-100-mm-8-mm-espesor/",
         "specs": [
             {
@@ -2631,7 +2631,7 @@ const productos = [
         "nombre": "Discos Resinoides Espesor 3 mm",
         "sku": "RESINOIDE-3MM",
         "descripcion": "Disco resinoide de 100mm de diámetro y 3mm de espesot",
-        "imagen": "/assets/img/productos/grano-400-1778610389925.png",
+        "imagen": "/assets/img/productos/grano-400-1778610389925.webp",
         "pdfUrl": "",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoides-3mm/",
         "visible": true,
@@ -2687,7 +2687,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Paños diamantados para micro-pulido",
-        "imagen": "/assets/img/productos/3-pasos-2-1778605551012.png",
+        "imagen": "/assets/img/productos/3-pasos-2-1778605551012.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/panos-diamantados1/",
         "specs": [
             {
@@ -2731,7 +2731,7 @@ const productos = [
         "nombre": "Pads Manual de Pulido",
         "sku": "PADPULIDO",
         "descripcion": "Pads de pulido Manual",
-        "imagen": "/assets/img/productos/espnoja-manual-grano-100-1778611557051.png",
+        "imagen": "/assets/img/productos/espnoja-manual-grano-100-1778611557051.webp",
         "pdfUrl": "",
         "storeUrl": "https://tiendalonati.com.ar/productos/pads-manuales/",
         "visible": true,
@@ -2787,7 +2787,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Perforación en hormigón y superficies duras",
-        "imagen": "/assets/img/productos/mecha-copa-diamantada.png",
+        "imagen": "/assets/img/productos/mecha-copa-diamantada.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/mecha-copa-diamantada/",
         "specs": [
             {
@@ -2838,7 +2838,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Remoción de recubrimientos epoxi y adhesivos",
-        "imagen": "/assets/img/productos/epoxi-amoladora.png",
+        "imagen": "/assets/img/productos/epoxi-amoladora.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/diamantado-epoxy-para-amoladora-5aq8s/",
         "specs": [
             {
@@ -2904,7 +2904,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste agresivo y remoción de recubrimientos",
-        "imagen": "/assets/img/productos/metal-amoladora.png",
+        "imagen": "/assets/img/productos/metal-amoladora.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/disco-diamantado-amoladora/",
         "specs": [
             {
@@ -2970,7 +2970,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Desbaste, nivelación y pulido en zonas de difácil acceso",
-        "imagen": "/assets/img/productos/disco-flap.png",
+        "imagen": "/assets/img/productos/disco-flap.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-flap/",
         "specs": [
             {
@@ -3024,7 +3024,7 @@ const productos = [
         "nombre": "Resinas Diámetro 180 mm",
         "sku": "RESINAS-180",
         "descripcion": "Resinas de 3mm de espesor y 180 mm de diámetro",
-        "imagen": "/assets/img/productos/grano-800-1779290401067.png",
+        "imagen": "/assets/img/productos/grano-800-1779290401067.webp",
         "pdfUrl": "",
         "storeUrl": "",
         "visible": true,
@@ -3096,7 +3096,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Texturado de hormigón",
-        "imagen": "/assets/img/productos/ruedas-bujardado.png",
+        "imagen": "/assets/img/productos/ruedas-bujardado.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/ruedas-de-bujardado/",
         "specs": [
             {
@@ -3146,7 +3146,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Texturado de hormigón",
-        "imagen": "/assets/img/productos/bujardado.png",
+        "imagen": "/assets/img/productos/bujardado.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/ruedas-de-bujardado/",
         "specs": [
             {
@@ -3197,7 +3197,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "El Ciclón Preseparador NewConcret está diseñado para capturar hasta el 90% del polvo antes de que llegue a la aspiradora.",
-        "imagen": "/assets/img/productos/ciclon-2-1779469259240.png",
+        "imagen": "/assets/img/productos/ciclon-2-1779469259240.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/ciclon-preseparador/",
         "specs": [
             {
@@ -3263,7 +3263,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Gala B480 es una aspiradora industrial monofásica equipada\ncon filtros HEPA, ideal para la recolección de polvo fino generado por pulidoras y herramientas de obra.",
-        "imagen": "/assets/img/productos/b480-1778599117879.png",
+        "imagen": "/assets/img/productos/b480-1778599117879.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-gala-b480/",
         "specs": [
             {
@@ -3329,7 +3329,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Gala B301 es un equipo de aspiración industrial monofásico diseñado para la recolección eficiente de polvo en trabajos de pulido, desbaste y mantenimiento.",
-        "imagen": "/assets/img/productos/gala-b301-4-1778599236971.png",
+        "imagen": "/assets/img/productos/gala-b301-4-1778599236971.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-b301",
         "specs": [
             {
@@ -3395,7 +3395,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Gala D301 es una aspiradora monofásica industrial con sistema de bolsa recolectora que simplifica la gestión del polvo y reduce la exposición del operador.",
-        "imagen": "/assets/img/productos/d301-roja-1779469269910.png",
+        "imagen": "/assets/img/productos/d301-roja-1779469269910.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-d301",
         "specs": [
             {
@@ -3461,7 +3461,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Gala JS400 es una aspiradora trifásica compacta, ideal para\nquienes necesitan potencia industrial en un formato manejable.",
-        "imagen": "/assets/img/productos/js400-1778598667668.png",
+        "imagen": "/assets/img/productos/js400-1778598667668.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-js400",
         "specs": [
             {
@@ -3527,7 +3527,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Gala G551 es una aspiradora industrial trifásica diseñada para tareas exigentes de extracción de polvo.",
-        "imagen": "/assets/img/productos/g551-roja-1779469281846.png",
+        "imagen": "/assets/img/productos/g551-roja-1779469281846.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-g551/",
         "specs": [
             {
@@ -3593,7 +3593,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Gala W552 es una aspiradora industrial con filtración HEPA y\nsistema de bolsa recolectora, ideal para la recolección segura de polvo ultrafino.",
-        "imagen": "/assets/img/productos/w552-1779469292469.png",
+        "imagen": "/assets/img/productos/w552-1779469292469.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-industrial-gala-w552",
         "specs": [
             {
@@ -3659,7 +3659,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora Industrial Trifásica",
-        "imagen": "/assets/img/productos/sw551-roja-1778598895574.png",
+        "imagen": "/assets/img/productos/sw551-roja-1778598895574.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-gala-sw551/",
         "specs": [
             {
@@ -3718,7 +3718,7 @@ const productos = [
         "nombre": "Mopa y Cabo extensible",
         "sku": "MOPA",
         "descripcion": "Mopa y cambo extensible de 1.2 a 2.4 mts",
-        "imagen": "/assets/img/productos/kit-mopa-2-1779285095682.png",
+        "imagen": "/assets/img/productos/kit-mopa-2-1779285095682.webp",
         "pdfUrl": "",
         "storeUrl": "",
         "visible": true,
@@ -3752,7 +3752,7 @@ const productos = [
         "nombre": "Pulverizador",
         "sku": "PULVERIZADOR",
         "descripcion": "Pulverizador de 10 litros",
-        "imagen": "/assets/img/productos/pulverizador-2-1779285159180.png",
+        "imagen": "/assets/img/productos/pulverizador-2-1779285159180.webp",
         "pdfUrl": "",
         "storeUrl": "",
         "visible": true,
@@ -3786,7 +3786,7 @@ const productos = [
         "nombre": "Disco de Lustre de 20\"",
         "sku": "LUSTRE-20",
         "descripcion": "Disco de lustre de 20 pulgadas",
-        "imagen": "/assets/img/productos/pao-rojo-1778612094107.png",
+        "imagen": "/assets/img/productos/pao-rojo-1778612094107.webp",
         "pdfUrl": "",
         "storeUrl": "https://tiendalonati.com.ar/productos/pano-de-20/",
         "visible": true,
@@ -3852,7 +3852,7 @@ const productos = [
         "nombre": "Discos de Lustre de 17\"",
         "sku": "LUSTRE-17",
         "descripcion": "Paños de lustre de 17 pulgadas",
-        "imagen": "/assets/img/productos/pao-blanco-1778611869906.png",
+        "imagen": "/assets/img/productos/pao-blanco-1778611869906.webp",
         "pdfUrl": "",
         "storeUrl": "https://tiendalonati.com.ar/productos/panos-lustre/",
         "visible": true,
@@ -3954,7 +3954,7 @@ const productos = [
         "cat_label": "Equipos",
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "/assets/img/productos/cepillo-1778613646978.png",
+        "imagen": "/assets/img/productos/cepillo-1778613646978.webp",
         "storeUrl": "${STORE_BASE}/productos/cepillo-barredor-con-ruedas-mc75/",
         "specs": [
             {
@@ -3984,7 +3984,7 @@ const productos = [
         "cat_label": "Equipos",
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "/assets/img/productos/manguera-aspiradora-1778613632365.png",
+        "imagen": "/assets/img/productos/manguera-aspiradora-1778613632365.webp",
         "storeUrl": "${STORE_BASE}/productos/manguera-de-aspiracion-de-pvc-interior-liso/",
         "specs": [
             {
@@ -4054,7 +4054,7 @@ const productos = [
         "cat_label": "Equipos",
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "/assets/img/productos/adaptadores-de-manguera-1778613607167.png",
+        "imagen": "/assets/img/productos/adaptadores-de-manguera-1778613607167.webp",
         "storeUrl": "${STORE_BASE}/productos/terminales-para-manguera-mc-75/",
         "specs": [
             {
@@ -4084,7 +4084,7 @@ const productos = [
         "cat_label": "Equipos",
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
-        "imagen": "/assets/img/productos/pico-redondo-con-cepillo-1778613583922.png",
+        "imagen": "/assets/img/productos/pico-redondo-con-cepillo-1778613583922.webp",
         "storeUrl": "${STORE_BASE}/productos/cepillo-redondo-mc-75/",
         "specs": [
             {
@@ -4119,7 +4119,7 @@ const productos = [
         "cat_label": "Equipos",
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "Pico chato para aspiradoras NewConcret ",
-        "imagen": "/assets/img/productos/pico-chato-1778613541688.png",
+        "imagen": "/assets/img/productos/pico-chato-1778613541688.webp",
         "storeUrl": "${STORE_BASE}/productos/pico-chato-metalico-mc-75/",
         "specs": [
             {
@@ -4143,7 +4143,7 @@ const productos = [
         "nombre": "Velcro Auto Adhesivo",
         "sku": "VELCROAUTO",
         "descripcion": "Velcro Auto Adhesivo de 100 para adhesión de insumos",
-        "imagen": "/assets/img/productos/base-adhesiva-1778611780470.png",
+        "imagen": "/assets/img/productos/base-adhesiva-1778611780470.webp",
         "pdfUrl": "",
         "storeUrl": "https://tiendalonati.com.ar/productos/velcro-auto-adhesivo/",
         "visible": true,
@@ -4192,7 +4192,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "",
-        "imagen": "/assets/img/productos/empastinado-1778605511973.png",
+        "imagen": "/assets/img/productos/empastinado-1778605511973.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-empastinado/",
         "specs": [
             {
@@ -4226,7 +4226,7 @@ const productos = [
         "cat_label": "Equipos",
         "subcategoria": "accesorios-pulidoras",
         "descripcion": "Adaptador universal para pulidoras",
-        "imagen": "/assets/img/productos/adaptador-1-1778605650302.png",
+        "imagen": "/assets/img/productos/adaptador-1-1778605650302.webp",
         "storeUrl": "${STORE_BASE}/productos/adaptador-universal/",
         "specs": [
             {
@@ -4261,7 +4261,7 @@ const productos = [
         "cat_label": "Insumos",
         "subcategoria": "",
         "descripcion": "Base con velcro p/ Disco resinoide",
-        "imagen": "/assets/img/productos/base-con-velcro-1778605723104.png",
+        "imagen": "/assets/img/productos/base-con-velcro-1778605723104.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/base-con-velcro/",
         "specs": [],
         "rutas": [
@@ -4285,7 +4285,7 @@ const productos = [
         "cat_label": "Equipos",
         "subcategoria": "accesorios-pulidoras",
         "descripcion": "En pulidoras",
-        "imagen": "/assets/img/productos/pollera-pulidora-1778605789155.png",
+        "imagen": "/assets/img/productos/pollera-pulidora-1778605789155.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/faldas-para-pulidoras/",
         "specs": [],
         "rutas": [
@@ -4343,7 +4343,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Densificador a base de Sodio",
-        "imagen": "/assets/img/productos/sodium-5-l-1778605845082.png",
+        "imagen": "/assets/img/productos/sodium-5-l-1778605845082.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-sodium",
         "specs": [
             {
@@ -4393,7 +4393,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Densificador y sellador a base de litio",
-        "imagen": "/assets/img/productos/litium-5l-1778606771146.png",
+        "imagen": "/assets/img/productos/litium-5l-1778606771146.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-litium/",
         "specs": [
             {
@@ -4443,7 +4443,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Impermeabilizante oleo e hidro repelente",
-        "imagen": "/assets/img/productos/lock-5l-1778606821609.png",
+        "imagen": "/assets/img/productos/lock-5l-1778606821609.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-lock1/",
         "specs": [
             {
@@ -4494,7 +4494,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Sellador de Alto Brillo",
-        "imagen": "/assets/img/productos/max-5l-1778606902219.png",
+        "imagen": "/assets/img/productos/max-5l-1778606902219.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/selladores-concret-max/",
         "specs": [
             {
@@ -4560,7 +4560,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Sellador de Alto Solidos",
-        "imagen": "/assets/img/productos/finish-5l-1778606979003.png",
+        "imagen": "/assets/img/productos/finish-5l-1778606979003.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/concret-finish/",
         "specs": [
             {
@@ -4626,7 +4626,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Detergente removedor y desengrasante",
-        "imagen": "/assets/img/productos/concret-d-5-1778606889938.png",
+        "imagen": "/assets/img/productos/concret-d-5-1778606889938.webp",
         "storeUrl": "${STORE_BASE}/productos/concret-d1/",
         "specs": [
             {

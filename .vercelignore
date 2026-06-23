@@ -12,3 +12,5 @@ generate-*.js
 temp_*.js
 admin
 .claude
+_img_originals
+scripts
