@@ -14,3 +14,6 @@ admin
 .claude
 _img_originals
 scripts
+.env
+.env.example
+PRODUCT.md

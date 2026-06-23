@@ -31,7 +31,7 @@
             <button type="submit" class="btn-admin">Acceder al Sistema</button>
             <p id="error-msg" style="color: #c1121f; font-size: 0.8rem; margin-top: 1rem; display: none;"></p>
         </form>
-        <p style="font-size: 0.7rem; color: #555; margin-top: 2rem;">Acceso local: newconcret / admin2024</p>
+        <p style="font-size: 0.7rem; color: #555; margin-top: 2rem;">Panel local · solo personal autorizado de NewConcret</p>
     </div>
 </div>
 
@@ -354,23 +354,16 @@ function switchTab(name) {
     if (name === 'ordenar') initReorderPanel();
     if (name === 'blog') initBlogPanel();
 }
-let auth_token = localStorage.getItem('nc_auth_token');
-
 // ── AUTH LOGIC ──
+// Sesión real del lado del servidor: la cookie httpOnly la maneja el backend.
+// No se guardan credenciales ni tokens en el cliente.
 const loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
-    
-    // MOCK LOGIN for local development
-    if (user === 'newconcret' && pass === 'admin2024') {
-        const token = 'mock_token_' + Date.now();
-        localStorage.setItem('nc_auth_token', token);
-        auth_token = token;
-        initDashboard();
-        return;
-    }
+    const err  = document.getElementById('error-msg');
+    err.style.display = 'none';
 
     try {
         const resp = await fetch('/api/login', {
@@ -378,33 +371,30 @@ loginForm.addEventListener('submit', async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user, pass })
         });
-        
-        const data = await resp.json();
-        if (data.success) {
-            localStorage.setItem('nc_auth_token', data.token);
-            auth_token = data.token;
+        const data = await resp.json().catch(() => ({}));
+        if (resp.ok && data.ok) {
             initDashboard();
         } else {
-            const err = document.getElementById('error-msg');
-            err.innerText = data.message;
+            err.innerText = data.error || 'Usuario o contraseña incorrectos.';
             err.style.display = 'block';
         }
-    } catch(err) {
-        const errMsg = document.getElementById('error-msg');
-        errMsg.innerText = "Modo Local: Usa newconcret / admin2024";
-        errMsg.style.display = 'block';
+    } catch (e2) {
+        err.innerText = 'No se pudo conectar con el panel local. ¿Está corriendo el servidor?';
+        err.style.display = 'block';
     }
 });
 
-function logout() {
-    localStorage.removeItem('nc_auth_token');
+async function logout() {
+    try { await fetch('/api/logout', { method: 'POST' }); } catch (e) { /* noop */ }
     location.reload();
 }
 
-function checkAuth() {
-    if (auth_token) {
-        initDashboard();
-    }
+async function checkAuth() {
+    try {
+        const resp = await fetch('/api/session');
+        const data = await resp.json().catch(() => ({}));
+        if (data.authenticated) initDashboard();
+    } catch (e) { /* sin servidor: queda la pantalla de login */ }
 }
 
 // ── DASHBOARD LOGIC ──

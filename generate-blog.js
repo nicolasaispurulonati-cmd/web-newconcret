@@ -13,7 +13,26 @@ const fs   = require('fs');
 const path = require('path');
 const vm   = require('vm');
 const { marked } = require('marked');
+const sanitizeHtml = require('sanitize-html');
 const { DOMAIN, ORG, SITE } = require('./scripts/seo-config');
+
+// Sanitización del HTML del artículo: el cuerpo se escribe en Markdown desde el
+// admin, pero marked NO sanitiza (deja pasar <script>, onerror=, javascript:…).
+// Como estas páginas se sirven en producción, limpiamos el resultado.
+const SANITIZE = {
+  allowedTags: ['h1','h2','h3','h4','h5','h6','p','a','ul','ol','li','blockquote',
+    'code','pre','strong','em','b','i','u','s','del','hr','br','span','div',
+    'table','thead','tbody','tr','th','td','img','figure','figcaption'],
+  allowedAttributes: {
+    a:   ['href','title','target','rel'],
+    img: ['src','alt','title','loading','width','height'],
+    '*': ['class']
+  },
+  allowedSchemes: ['http','https','mailto','tel'],     // bloquea javascript:
+  transformTags: {
+    a: sanitizeHtml.simpleTransform('a', { rel: 'noopener noreferrer' })
+  }
+};
 
 // JSON-LD seguro (escapa "<" para no romper el <script>).
 const ldjson = obj => JSON.stringify(obj, null, 2).replace(/</g, '\\u003c');
@@ -243,7 +262,7 @@ ${script}`;
 
 // ── Página: artículo ────────────────────────────────────────────────────────
 function htmlArticulo(a, todos) {
-    const cuerpo  = marked.parse(a.cuerpo_md || '');
+    const cuerpo  = sanitizeHtml(marked.parse(a.cuerpo_md || ''), SANITIZE);
     const portada = a.portada || '/assets/img/hero/productos.webp';
 
     const tags = (a.etiquetas || []).length
