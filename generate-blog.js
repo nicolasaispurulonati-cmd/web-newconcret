@@ -13,6 +13,11 @@ const fs   = require('fs');
 const path = require('path');
 const vm   = require('vm');
 const { marked } = require('marked');
+const { DOMAIN, ORG, SITE } = require('./scripts/seo-config');
+
+// JSON-LD seguro (escapa "<" para no romper el <script>).
+const ldjson = obj => JSON.stringify(obj, null, 2).replace(/</g, '\\u003c');
+const absUrl = u => !u ? '' : (/^https?:\/\//.test(u) ? u : DOMAIN + (u.startsWith('/') ? '' : '/') + u);
 
 const ROOT = __dirname;
 
@@ -51,7 +56,8 @@ function slugify(s) {
 // ── Esqueleto HTML compartido ───────────────────────────────────────────────
 // `root` = ruta relativa a la raíz del sitio para el script layout.js
 // (layout.js calcula su root contando los "../" de su propio src).
-function pagina({ title, description, ogImage, root, bodyClass, content }) {
+function pagina({ title, description, ogImage, canonical, ogType = 'website', jsonld, root, bodyClass, content }) {
+    const ogImageAbs = ogImage ? absUrl(ogImage) : '';
     return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -59,10 +65,19 @@ function pagina({ title, description, ogImage, root, bodyClass, content }) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(description)}">
+    ${canonical ? `<link rel="canonical" href="${esc(canonical)}">` : ''}
+    <meta property="og:type" content="${esc(ogType)}">
+    <meta property="og:site_name" content="${esc(SITE.name)}">
+    <meta property="og:locale" content="${SITE.locale}">
     <meta property="og:title" content="${esc(title)}">
     <meta property="og:description" content="${esc(description)}">
-    ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ''}
-    <meta property="og:type" content="article">
+    ${canonical ? `<meta property="og:url" content="${esc(canonical)}">` : ''}
+    ${ogImageAbs ? `<meta property="og:image" content="${esc(ogImageAbs)}">` : ''}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${esc(title)}">
+    <meta name="twitter:description" content="${esc(description)}">
+    ${ogImageAbs ? `<meta name="twitter:image" content="${esc(ogImageAbs)}">` : ''}
+    ${jsonld ? `<script type="application/ld+json">\n${ldjson(jsonld)}\n    </script>` : ''}
     <link rel="icon" type="image/x-icon" href="/logos/Favicon.ico">
     <link rel="stylesheet" href="/assets/css/estilo.css?v=40">
     <link rel="stylesheet" href="/assets/css/nav.css?v=1.3">
@@ -195,10 +210,31 @@ ${cards}
     </section>
 ${script}`;
 
+    const canonical = `${DOMAIN}/blog/`;
     return pagina({
         title: 'Blog — NewConcret',
         description: 'Guías técnicas, casos de obra y novedades sobre pisos de hormigón, pulido, reparación y mantenimiento.',
         ogImage: '/assets/img/hero/productos.webp',
+        canonical,
+        ogType: 'website',
+        jsonld: {
+            '@context': 'https://schema.org',
+            '@graph': [
+                {
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
+                        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${DOMAIN}/` },
+                        { '@type': 'ListItem', position: 2, name: 'Blog', item: canonical }
+                    ]
+                },
+                {
+                    '@type': 'Blog', '@id': `${DOMAIN}/blog/#blog`, url: canonical,
+                    name: 'Blog NewConcret',
+                    description: 'Guías técnicas y novedades sobre pisos de hormigón.',
+                    inLanguage: SITE.inLanguage, publisher: { '@id': ORG.id }
+                }
+            ]
+        },
         root: '../',
         bodyClass: 'blog-body',
         content
@@ -255,10 +291,40 @@ ${tags}
 
 ${relHtml}`;
 
+    const canonical = `${DOMAIN}/blog/${a.slug}/`;
     return pagina({
         title: `${a.titulo} — NewConcret`,
         description: a.resumen || a.titulo,
         ogImage: portada,
+        canonical,
+        ogType: 'article',
+        jsonld: {
+            '@context': 'https://schema.org',
+            '@graph': [
+                {
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
+                        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${DOMAIN}/` },
+                        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${DOMAIN}/blog/` },
+                        { '@type': 'ListItem', position: 3, name: a.titulo, item: canonical }
+                    ]
+                },
+                {
+                    '@type': 'BlogPosting',
+                    headline: a.titulo,
+                    description: a.resumen || a.titulo,
+                    image: absUrl(portada),
+                    datePublished: a.fecha || undefined,
+                    dateModified: a.fecha || undefined,
+                    author: { '@type': a.autor && a.autor !== 'NewConcret' ? 'Person' : 'Organization', name: a.autor || 'NewConcret' },
+                    publisher: { '@id': ORG.id },
+                    mainEntityOfPage: canonical,
+                    inLanguage: SITE.inLanguage,
+                    articleSection: a.categoria || undefined,
+                    keywords: (a.etiquetas || []).join(', ') || undefined
+                }
+            ]
+        },
         root: '../../',
         bodyClass: 'blog-body art-page',
         content

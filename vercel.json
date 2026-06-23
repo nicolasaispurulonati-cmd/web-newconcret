@@ -3,6 +3,9 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "framework": null,
+  "redirects": [
+    { "source": "/newconcret-construccion.html", "destination": "/construccion/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/assets/img/(.*)",

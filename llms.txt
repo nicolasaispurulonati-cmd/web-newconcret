@@ -1,0 +1,25 @@
+# NewConcret
+
+> NewConcret es una empresa argentina especializada en pisos de hormigón. Comercializa maquinaria industrial, insumos técnicos (tratamientos químicos, discos diamantados, morteros) y dicta capacitaciones profesionales para el pulido, la construcción, la reparación y el mantenimiento de pisos de hormigón. Con sede en Bragado, Buenos Aires, da servicio en toda Argentina.
+
+NewConcret comercializa maquinaria, insumos y químicos para pisos de hormigón, y dicta capacitaciones profesionales. Sede en Bragado, Buenos Aires, Argentina. Atención por WhatsApp (https://wa.me/5492342464082) y email (info@newconcret.com).
+
+## Áreas
+- [Construcción de pisos de hormigón](https://newconcret.com/construccion/): Equipos (allanadoras, aserradoras), materiales (endurecedores, morteros, fibras) y químicos para la construcción de pisos industriales de hormigón.
+- [Pulido de pisos de hormigón](https://newconcret.com/pulido/): Pulidoras, aspiradoras, discos diamantados, densificadores y selladores para el pulido profesional de pisos de hormigón.
+- [Reparación de pisos de hormigón](https://newconcret.com/reparacion/): Escarificadoras, bujardado, mechas copa, morteros y químicos para la reparación de superficies de hormigón.
+- [Mantenimiento de pisos](https://newconcret.com/mantenimiento/): Lavasecapisos, lustradoras, aspiradoras, mopas, paños, desengrasantes y selladores para el mantenimiento de pisos pulidos.
+
+## Catálogo
+- [Catálogo completo de productos](https://newconcret.com/productos/): 89 productos de maquinaria, insumos y químicos para pisos de hormigón.
+
+## Páginas principales
+- [Inicio](https://newconcret.com/)
+- [Nosotros](https://newconcret.com/nosotros/): Quiénes somos y nuestra experiencia.
+- [Capacitaciones](https://newconcret.com/capacitacion/): Formación profesional en pulido y tratamiento de pisos de hormigón.
+- [Contacto](https://newconcret.com/contacto/): Las Cigüeñas 217, Bragado, Buenos Aires, Argentina.
+
+## Blog (guías técnicas)
+- [Cómo elegir el piso de hormigón pulido para tu obra](https://newconcret.com/blog/como-elegir-el-piso-de-hormigon-pulido/): Una guía práctica para decidir entre pulido, alisado y endurecido según el uso, el tránsito y el acabado que buscás.
+- [5 errores comunes al sellar juntas de hormigón](https://newconcret.com/blog/errores-comunes-al-sellar-juntas/): El sellado de juntas es clave para la durabilidad del piso. Repasamos los errores que más comprometen el resultado.
+- [Guía de mantenimiento para pisos pulidos](https://newconcret.com/blog/mantenimiento-de-pisos-pulidos/): Cómo conservar el brillo y la resistencia de un piso pulido con una rutina simple de limpieza y reposición.
