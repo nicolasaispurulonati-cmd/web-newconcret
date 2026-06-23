@@ -124,3 +124,7 @@ dist
 Thumbs.db
 # Backup de imágenes originales (pre-WebP) — no desplegar ni versionar
 _img_originals/
+
+# Tooling de skills (instalado con: npx skills add ...) — reproducible, no versionar
+.agents/
+skills-lock.json
