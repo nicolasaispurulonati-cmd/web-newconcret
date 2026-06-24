@@ -283,6 +283,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Oculta el cursor nativo (incluida la "mano" sobre links/botones) cuando se
+   usa el cursor personalizado: puntero fino + viewport de escritorio. Pisa los
+   `cursor: pointer` de botones/.pill/selects de las páginas de catálogo. En
+   táctil o ≤900px se restaura el cursor del sistema (media query de abajo). */
+@media (pointer: fine) and (min-width: 901px) {
+    body * { cursor: none !important; }
+}
+
 /* -- CURSOR -- */
 #cur {
     position: fixed;
