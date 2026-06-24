@@ -639,9 +639,7 @@ document.getElementById('modalClose').addEventListener('click', closeModal);
 modalBg.addEventListener('click', e => { if(e.target === modalBg) closeModal(); });
 
 const cur = document.getElementById('cur'), ring = document.getElementById('ring');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
-});
+/* cursor: lo posiciona main.js con transform (evita doble posicionamiento) */
 
 const obsReveal = new IntersectionObserver(entries => {
   entries.forEach(en => { if(en.isIntersecting) en.target.classList.add('in'); });
