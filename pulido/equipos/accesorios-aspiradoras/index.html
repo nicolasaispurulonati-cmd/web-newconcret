@@ -27,7 +27,7 @@
   }
 
   body { background: var(--bk); color: var(--wh); cursor: none; }
-  #cur, #ring { position: fixed; pointer-events: none; z-index: 20000; border-radius: 50%; transform: translate(-50%, -50%); transition: opacity 0.3s; }
+  #cur, #ring { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 20000; border-radius: 50%; transform: translate(-50%, -50%); transition: opacity 0.3s; }
   #cur { width: 6px; height: 6px; background: var(--r); }
   #ring { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); }
   @media (pointer: coarse) { #cur, #ring { display: none; } body { cursor: auto; } }
