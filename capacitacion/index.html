@@ -24,20 +24,6 @@
         /* ══════════════════════════════════════════
     TOKENS
 /* ══════════════════════════════════════════ */
-        :root {
-            --r: #C1121F;
-            --rh: #E5161E;
-            --bk: #0A0A0A;
-            --dk: #111111;
-            --cb: #161616;
-            --st: #242424;
-            --s2: #303030;
-            --mi: #555;
-            --as: #888;
-            --lt: #CACAC8;
-            --wh: #F4F4F2;
-            --ex: cubic-bezier(0.16, 1, 0.3, 1);
-        }
 
         *,
         *::before,
@@ -54,8 +40,8 @@
         /* Basic typography overrides for this specific page */
         body {
             font-family: var(--font-b);
-            background: var(--bk);
-            color: var(--wh);
+            background: var(--nc-black);
+            color: var(--nc-white);
             overflow-x: hidden;
         }
 
@@ -65,15 +51,15 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--bk);
+            background: var(--nc-black);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--s2);
+            background: var(--nc-steel-2);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--r);
+            background: var(--nc-red);
         }
 
         /* ═══════════════════════════════════════
@@ -128,13 +114,13 @@
             align-items: center;
             gap: .65rem;
             margin-bottom: 1.4rem;
-            animation: fadeUp .8s var(--ex) .2s both;
+            animation: fadeUp .8s var(--expo) .2s both;
         }
 
         .eyebrow-line {
             width: 32px;
             height: 1px;
-            background: var(--r);
+            background: var(--nc-red);
         }
 
         .eyebrow-tx {
@@ -142,7 +128,7 @@
             font-size: .64rem;
             letter-spacing: .2em;
             text-transform: uppercase;
-            color: var(--r);
+            color: var(--nc-red);
         }
 
         .hero-h1 {
@@ -152,35 +138,35 @@
             line-height: .93;
             letter-spacing: -.01em;
             text-transform: uppercase;
-            color: var(--wh);
+            color: var(--nc-white);
             margin-bottom: 1.25rem;
-            animation: fadeUp .8s var(--ex) .38s both;
+            animation: fadeUp .8s var(--expo) .38s both;
         }
 
         .hero-h1 .red {
-            color: var(--r);
+            color: var(--nc-red);
         }
 
         .hero-h1 .thin {
             font-weight: 300;
-            color: var(--as);
+            color: var(--nc-ash);
         }
 
         .hero-p {
             font-size: 1rem;
             font-weight: 300;
             line-height: 1.65;
-            color: var(--lt);
+            color: var(--nc-light);
             max-width: 460px;
             margin-bottom: 2.5rem;
-            animation: fadeUp .8s var(--ex) .52s both;
+            animation: fadeUp .8s var(--expo) .52s both;
         }
 
         .hero-btns {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            animation: fadeUp .8s var(--ex) .65s both;
+            animation: fadeUp .8s var(--expo) .65s both;
         }
 
         .hero-aside {
@@ -192,7 +178,7 @@
             flex-direction: column;
             gap: 2rem;
             align-items: flex-end;
-            animation: fadeUp .8s var(--ex) .9s both;
+            animation: fadeUp .8s var(--expo) .9s both;
         }
 
         .aside-stat {
@@ -203,13 +189,13 @@
             font-family: var(--font-d);
             font-weight: 900;
             font-size: 2rem;
-            color: var(--wh);
+            color: var(--nc-white);
             letter-spacing: -.02em;
             line-height: 1;
         }
 
         .aside-num em {
-            color: var(--r);
+            color: var(--nc-red);
             font-style: normal;
             font-size: .75em;
         }
@@ -219,7 +205,7 @@
             font-size: .58rem;
             letter-spacing: .14em;
             text-transform: uppercase;
-            color: var(--mi);
+            color: var(--nc-mid);
             margin-top: .2rem;
         }
 
@@ -238,7 +224,7 @@
         .scroll-line {
             width: 1px;
             height: 40px;
-            background: linear-gradient(to bottom, var(--r), transparent);
+            background: linear-gradient(to bottom, var(--nc-red), transparent);
             animation: pulse 2s ease-in-out infinite;
         }
 
@@ -247,7 +233,7 @@
             font-size: .56rem;
             letter-spacing: .2em;
             text-transform: uppercase;
-            color: var(--mi);
+            color: var(--nc-mid);
         }
 
         @keyframes pulse {
@@ -287,7 +273,7 @@
             letter-spacing: .18em;
             text-transform: uppercase;
             color: #fff;
-            background: var(--r);
+            background: var(--nc-red);
             padding: .9rem 1.8rem;
             text-decoration: none;
             clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
@@ -308,7 +294,7 @@
         }
 
         .btn-p:hover {
-            background: var(--rh);
+            background: var(--nc-red-hot);
             transform: translateY(-2px);
         }
 
@@ -325,16 +311,16 @@
             font-size: .78rem;
             letter-spacing: .18em;
             text-transform: uppercase;
-            color: var(--as);
+            color: var(--nc-ash);
             text-decoration: none;
             padding: .9rem 0;
-            border-bottom: 1px solid var(--st);
+            border-bottom: 1px solid var(--nc-steel);
             transition: color .2s, border-color .2s, gap .2s;
         }
 
         .btn-g:hover {
-            color: var(--wh);
-            border-color: var(--as);
+            color: var(--nc-white);
+            border-color: var(--nc-ash);
             gap: .9rem;
         }
 
@@ -394,7 +380,7 @@
         .sec-label-line {
             width: 22px;
             height: 2px;
-            background: var(--r);
+            background: var(--nc-red);
         }
 
         .recap-sec .sec-label {
@@ -406,7 +392,7 @@
             font-size: .63rem;
             letter-spacing: .2em;
             text-transform: uppercase;
-            color: var(--r);
+            color: var(--nc-red);
         }
 
         .sec-h2 {
@@ -416,7 +402,7 @@
             line-height: 1;
             letter-spacing: -.01em;
             text-transform: uppercase;
-            color: var(--wh);
+            color: var(--nc-white);
             margin-bottom: 1rem;
         }
 
@@ -428,13 +414,13 @@
             font-size: .95rem;
             font-weight: 300;
             line-height: 1.65;
-            color: var(--as);
+            color: var(--nc-ash);
         }
 
         .reveal {
             opacity: 0;
             transform: translateY(24px);
-            transition: opacity .75s var(--ex), transform .75s var(--ex);
+            transition: opacity .75s var(--expo), transform .75s var(--expo);
         }
 
         .reveal.in {
@@ -466,9 +452,9 @@
     ¿QUÉ VAS A APRENDER? — 3 PASOS
     ═══════════════════════════════════════ */
         .aprende-sec {
-            background: var(--cb);
-            border-top: 1px solid var(--st);
-            border-bottom: 1px solid var(--st);
+            background: var(--nc-carbon);
+            border-top: 1px solid var(--nc-steel);
+            border-bottom: 1px solid var(--nc-steel);
         }
 
         .aprende-layout {
@@ -499,7 +485,7 @@
             left: -1.25rem;
             right: 1.25rem;
             bottom: 1.25rem;
-            border: 1px solid var(--st);
+            border: 1px solid var(--nc-steel);
             z-index: 0;
         }
 
@@ -510,7 +496,7 @@
             right: -1.25rem;
             width: 80px;
             height: 80px;
-            background: var(--r);
+            background: var(--nc-red);
             z-index: 0;
             clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
         }
@@ -527,9 +513,9 @@
             align-items: flex-start;
             gap: 1.5rem;
             padding: 1.75rem 0;
-            border-bottom: 1px solid var(--st);
+            border-bottom: 1px solid var(--nc-steel);
             position: relative;
-            transition: padding-left .3s var(--ex);
+            transition: padding-left .3s var(--expo);
         }
 
         .step:first-child {
@@ -557,7 +543,7 @@
         }
 
         .step:hover::before {
-            background: var(--r);
+            background: var(--nc-red);
         }
 
         .step-num {
@@ -581,7 +567,7 @@
             font-size: .6rem;
             letter-spacing: .15em;
             text-transform: uppercase;
-            color: var(--r);
+            color: var(--nc-red);
             display: block;
             margin-bottom: .4rem;
         }
@@ -589,12 +575,12 @@
         .step-tx {
             font-size: .95rem;
             font-weight: 300;
-            color: var(--lt);
+            color: var(--nc-light);
             line-height: 1.6;
         }
 
         .step-tx strong {
-            color: var(--wh);
+            color: var(--nc-white);
             font-weight: 600;
         }
 
@@ -602,7 +588,7 @@
     OBJETIVOS DEL CURSO
     ═══════════════════════════════════════ */
         .obj-sec {
-            background: var(--bk);
+            background: var(--nc-black);
         }
 
         .obj-layout {
@@ -614,8 +600,8 @@
         }
 
         .obj-card {
-            background: var(--cb);
-            border: 1px solid var(--st);
+            background: var(--nc-carbon);
+            border: 1px solid var(--nc-steel);
             padding: 2.5rem;
             position: relative;
             overflow: hidden;
@@ -628,8 +614,8 @@
             left: 0;
             width: 3px;
             height: 0;
-            background: var(--r);
-            transition: height .5s var(--ex);
+            background: var(--nc-red);
+            transition: height .5s var(--expo);
         }
 
         .obj-card:hover::before {
@@ -639,7 +625,7 @@
         .obj-card p {
             font-size: .92rem;
             font-weight: 300;
-            color: var(--as);
+            color: var(--nc-ash);
             line-height: 1.7;
             margin-bottom: 1.1rem;
         }
@@ -649,7 +635,7 @@
         }
 
         .obj-card p strong {
-            color: var(--wh);
+            color: var(--nc-white);
             font-weight: 500;
         }
 
@@ -657,11 +643,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5px;
-            background: var(--st);
+            background: var(--nc-steel);
         }
 
         .pillar {
-            background: var(--dk);
+            background: var(--nc-dark);
             padding: 2.25rem 2rem;
             display: flex;
             flex-direction: column;
@@ -671,7 +657,7 @@
         }
 
         .pillar:hover {
-            background: var(--cb);
+            background: var(--nc-carbon);
         }
 
         .pillar::after {
@@ -681,8 +667,8 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--r);
-            transition: width .4s var(--ex);
+            background: var(--nc-red);
+            transition: width .4s var(--expo);
         }
 
         .pillar:hover::after {
@@ -693,7 +679,7 @@
             font-size: 1.15rem;
             display: flex;
             align-items: center;
-            color: var(--r);
+            color: var(--nc-red);
             margin-bottom: 0.6rem;
         }
 
@@ -707,7 +693,7 @@
             font-weight: 700;
             font-size: 1.35rem;
             text-transform: uppercase;
-            color: var(--wh);
+            color: var(--nc-white);
             letter-spacing: .02em;
             line-height: 1.1;
             margin-bottom: 0.2rem;
@@ -716,7 +702,7 @@
         .pillar-desc {
             font-size: .82rem;
             font-weight: 300;
-            color: var(--mi);
+            color: var(--nc-mid);
             line-height: 1.55;
         }
 
@@ -724,15 +710,15 @@
     RECAP — ÚLTIMA CAPACITACIÓN 7 MAR 2026
     ═══════════════════════════════════════ */
         .recap-sec {
-            background: var(--cb);
-            border-top: 1px solid var(--st);
+            background: var(--nc-carbon);
+            border-top: 1px solid var(--nc-steel);
         }
 
         .recap-date-tag {
             display: inline-flex;
             align-items: center;
             gap: .7rem;
-            background: var(--r);
+            background: var(--nc-red);
             padding: .42rem 1.2rem;
             font-family: var(--font-m);
             font-size: .64rem;
@@ -757,7 +743,7 @@
         .recap-text p {
             font-size: .9rem;
             font-weight: 300;
-            color: var(--as);
+            color: var(--nc-ash);
             line-height: 1.7;
             margin-bottom: 1.1rem;
         }
@@ -767,7 +753,7 @@
         }
 
         .recap-text strong {
-            color: var(--wh);
+            color: var(--nc-white);
             font-weight: 500;
         }
 
@@ -775,12 +761,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5px;
-            background: var(--st);
+            background: var(--nc-steel);
             margin-top: 2rem;
         }
 
         .rstat {
-            background: var(--dk);
+            background: var(--nc-dark);
             padding: 2rem;
             display: flex;
             align-items: center;
@@ -791,7 +777,7 @@
         }
 
         .rstat:hover {
-            background: var(--cb);
+            background: var(--nc-carbon);
         }
 
         .rstat::before {
@@ -801,10 +787,10 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: var(--r);
+            background: var(--nc-red);
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform .4s var(--ex);
+            transition: transform .4s var(--expo);
         }
 
         .rstat:hover::before {
@@ -813,7 +799,7 @@
 
         .rstat-icon {
             font-size: 1.2rem;
-            color: var(--r);
+            color: var(--nc-red);
             display: flex;
             align-items: center;
             flex-shrink: 0;
@@ -828,7 +814,7 @@
             font-family: var(--font-d);
             font-weight: 900;
             font-size: 1.9rem;
-            color: var(--wh);
+            color: var(--nc-white);
             letter-spacing: -.02em;
             line-height: 1;
         }
@@ -843,7 +829,7 @@
             font-size: .58rem;
             letter-spacing: .12em;
             text-transform: uppercase;
-            color: var(--mi);
+            color: var(--nc-mid);
         }
 
         /* Video column */
@@ -861,10 +847,10 @@
             font-size: .62rem;
             letter-spacing: .16em;
             text-transform: uppercase;
-            color: var(--as);
+            color: var(--nc-ash);
             padding: .55rem 1rem;
-            background: var(--st);
-            border: 1px solid var(--s2);
+            background: var(--nc-steel);
+            border: 1px solid var(--nc-steel-2);
             display: flex;
             align-items: center;
             gap: .55rem;
@@ -873,7 +859,7 @@
         .vid-dot {
             width: 6px;
             height: 6px;
-            background: var(--r);
+            background: var(--nc-red);
             border-radius: 50%;
             flex-shrink: 0;
             animation: blink 1.8s ease-in-out infinite;
@@ -896,7 +882,7 @@
             padding-bottom: 177.77%; /* 9:16 Aspect Ratio for Shorts */
             height: 0;
             overflow: hidden;
-            border: 1px solid var(--st);
+            border: 1px solid var(--nc-steel);
             border-top: none;
         }
 
@@ -914,19 +900,19 @@
             font-size: .57rem;
             letter-spacing: .1em;
             text-transform: uppercase;
-            color: var(--mi);
+            color: var(--nc-mid);
             padding: .55rem 1rem;
-            border: 1px solid var(--st);
+            border: 1px solid var(--nc-steel);
             border-top: none;
-            background: var(--dk);
+            background: var(--nc-dark);
         }
 
         /* ═══════════════════════════════════════
     SEDE / UBICACIÓN
     ═══════════════════════════════════════ */
         .sede-sec {
-            background: var(--bk);
-            border-top: 1px solid var(--st);
+            background: var(--nc-black);
+            border-top: 1px solid var(--nc-steel);
         }
 
         .sede-layout {
@@ -941,11 +927,11 @@
             display: flex;
             flex-direction: column;
             gap: 1.5px;
-            background: var(--st);
+            background: var(--nc-steel);
         }
 
         .sede-card {
-            background: var(--dk);
+            background: var(--nc-dark);
             padding: 1.55rem 1.75rem;
             display: flex;
             align-items: flex-start;
@@ -956,7 +942,7 @@
         }
 
         .sede-card:hover {
-            background: var(--cb);
+            background: var(--nc-carbon);
         }
 
         .sede-card::before {
@@ -971,18 +957,18 @@
         }
 
         .sede-card:hover::before {
-            background: var(--r);
+            background: var(--nc-red);
         }
 
         .sede-card-ic {
             width: 36px;
             height: 36px;
             flex-shrink: 0;
-            background: var(--st);
+            background: var(--nc-steel);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--r);
+            color: var(--nc-red);
         }
 
         .sede-card-body h4 {
@@ -991,19 +977,19 @@
             font-size: .95rem;
             text-transform: uppercase;
             letter-spacing: .04em;
-            color: var(--wh);
+            color: var(--nc-white);
             margin-bottom: .32rem;
         }
 
         .sede-card-body p {
             font-size: .84rem;
             font-weight: 300;
-            color: var(--as);
+            color: var(--nc-ash);
             line-height: 1.55;
         }
 
         .sede-card-body a {
-            color: var(--r);
+            color: var(--nc-red);
             text-decoration: none;
             transition: opacity .2s;
         }
@@ -1013,27 +999,27 @@
         }
 
         .sede-map {
-            border: 1px solid var(--st);
+            border: 1px solid var(--nc-steel);
             overflow: hidden;
             position: relative;
         }
 
         .sede-map-label {
-            background: var(--dk);
-            border-bottom: 1px solid var(--st);
+            background: var(--nc-dark);
+            border-bottom: 1px solid var(--nc-steel);
             padding: .6rem 1.25rem;
             font-family: var(--font-m);
             font-size: .62rem;
             letter-spacing: .14em;
             text-transform: uppercase;
-            color: var(--as);
+            color: var(--nc-ash);
             display: flex;
             align-items: center;
             gap: .55rem;
         }
 
         .sede-map-label b {
-            color: var(--r);
+            color: var(--nc-red);
         }
 
         .sede-map iframe {
@@ -1053,11 +1039,11 @@
     CTA FINAL
     ═══════════════════════════════════════ */
         .cta-sec {
-            background: var(--bk);
+            background: var(--nc-black);
             padding: 7rem 4rem;
             position: relative;
             overflow: hidden;
-            border-top: 1px solid var(--st);
+            border-top: 1px solid var(--nc-steel);
         }
 
         .cta-sec::before {
@@ -1078,7 +1064,7 @@
             grid-template-columns: 1fr auto;
             gap: 4rem;
             align-items: center;
-            border: 1px solid var(--st);
+            border: 1px solid var(--nc-steel);
             padding: 4rem;
         }
 
@@ -1092,7 +1078,7 @@
         .cta-eyebrow-ln {
             width: 22px;
             height: 2px;
-            background: var(--r);
+            background: var(--nc-red);
         }
 
         .cta-eyebrow-tx {
@@ -1100,7 +1086,7 @@
             font-size: .62rem;
             letter-spacing: .18em;
             text-transform: uppercase;
-            color: var(--r);
+            color: var(--nc-red);
         }
 
         .cta-h2 {
@@ -1108,18 +1094,18 @@
             font-weight: 900;
             font-size: clamp(1.9rem, 3.8vw, 3.3rem);
             text-transform: uppercase;
-            color: var(--wh);
+            color: var(--nc-white);
             line-height: .98;
             letter-spacing: -.01em;
         }
 
         .cta-h2 span {
-            color: var(--r);
+            color: var(--nc-red);
         }
 
         .cta-sub {
             font-size: .9rem;
-            color: var(--mi);
+            color: var(--nc-mid);
             margin-top: .9rem;
             font-weight: 300;
             line-height: 1.6;
@@ -1138,7 +1124,7 @@
             font-size: .6rem;
             letter-spacing: .12em;
             text-transform: uppercase;
-            color: var(--mi);
+            color: var(--nc-mid);
         }
 
         /* ═══════════════════════════════════════
@@ -1146,8 +1132,8 @@
     ═══════════════════════════════════════ */
         .footer-mini {
             padding: 1.5rem 4rem;
-            background: var(--cb);
-            border-top: 1px solid var(--st);
+            background: var(--nc-carbon);
+            border-top: 1px solid var(--nc-steel);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1160,11 +1146,11 @@
             font-size: .6rem;
             letter-spacing: .1em;
             text-transform: uppercase;
-            color: var(--s2);
+            color: var(--nc-steel-2);
         }
 
         .footer-copy b {
-            color: var(--mi);
+            color: var(--nc-mid);
         }
 
         /* ═══════════════════════════════════════
@@ -1248,9 +1234,9 @@
                margin negativo = anula el padding 1.5rem de .sec;
                el padding interno mantiene el texto separado de los bordes */
             .step {
-                background: var(--dk);
-                border-top: 1px solid var(--st);
-                border-bottom: 1px solid var(--st);
+                background: var(--nc-dark);
+                border-top: 1px solid var(--nc-steel);
+                border-bottom: 1px solid var(--nc-steel);
                 padding: 1.5rem !important;
                 margin-left: -1.5rem;
                 margin-right: -1.5rem;
@@ -1794,7 +1780,7 @@
                     </div>
                     <div class="sede-card-body">
                         <h4>Horario de capacitaciones</h4>
-                        <p>Jornadas de <strong style="color:var(--wh);">8 horas</strong> con modalidad teórico-práctica.
+                        <p>Jornadas de <strong style="color:var(--nc-white);">8 horas</strong> con modalidad teórico-práctica.
                             Consultanos
                             por las próximas fechas.</p>
                     </div>
