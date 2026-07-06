@@ -640,6 +640,8 @@
 
         .cta-acts {
             display: flex;
+            flex-direction: row;      /* estilo.css pone column; acá va horizontal */
+            align-items: center;      /* evita que estilo.css (flex-start) lo pegue a la izquierda */
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
