@@ -353,7 +353,7 @@
             padding: 2.5rem 0;
             border-bottom: 1px solid var(--st);
             opacity: 0;
-            transform: translateX(-20px);
+            transform: translateY(16px);   /* reveal vertical: no corre el dot fuera de la línea (antes translateX movía el punto en horizontal) */
             transition: opacity .7s var(--ex), transform .7s var(--ex), background .3s;
         }
         .tl-step:last-child { border-bottom: none; }
@@ -384,7 +384,7 @@
             margin-top: .35rem;
             transition: border-color .4s, background .4s, transform .4s var(--ex);
             position: relative;
-            left: -6px;
+            left: 0;                  /* centra el dot en la línea (antes -6px lo corría) */
         }
 
         .tl-step.active .tl-dot,
