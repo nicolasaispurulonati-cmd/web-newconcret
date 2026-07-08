@@ -163,7 +163,7 @@
       </button>
       <div class="mob-sub" id="sub-reparacion">
         <div class="mob-sub-inner">
-          <div><a href="${root}reparacion/materiales/" class="mob-grp-title">Materiales <span class="mob-tag">Destacado</span></a><ul class="mob-links"><li><a href="${root}reparacion/materiales/grouting/">Grouting</a></li><li><a href="${root}reparacion/materiales/mortero-cementicio/">Mortero cementicio</a></li><li><a href="${root}reparacion/materiales/endurecedor-superficial/">Endurecedor superficial</a></li></ul></div>
+          <div><a href="${root}reparacion/materiales/" class="mob-grp-title">Materiales <span class="mob-tag">Destacado</span></a><ul class="mob-links"><li><a href="${root}reparacion/materiales/grouting/">Grouting</a></li><li><a href="${root}reparacion/materiales/mortero-cementicio/">Mortero cementicio</a></li></ul></div>
           <div><a href="${root}reparacion/productos-quimicos/" class="mob-grp-title">Productos químicos</a><ul class="mob-links"><li><a href="${root}reparacion/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}reparacion/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li></ul></div>
           <div><a href="${root}reparacion/equipos/" class="mob-grp-title">Equipos</a><ul class="mob-links"><li><a href="${root}reparacion/equipos/escarificadoras/">Escarificadoras</a></li></ul></div>
           <div><a href="${root}reparacion/insumos/" class="mob-grp-title">Insumos</a><ul class="mob-links"><li><a href="${root}reparacion/insumos/accesorios-amoladora/">Accesorios amoladora</a></li><li><a href="${root}reparacion/insumos/bujardado/">Ruedas de bujardado</a></li><li><a href="${root}reparacion/insumos/puntas-martillo/">Puntas martillo</a></li><li><a href="${root}reparacion/insumos/mechas-copa/">Mechas copa</a></li></ul></div>
@@ -302,7 +302,6 @@
         <ul class="mega-links">
           <li><a href="${root}reparacion/materiales/grouting/">Grouting</a></li>
           <li><a href="${root}reparacion/materiales/mortero-cementicio/">Mortero cementicio</a></li>
-          <li><a href="${root}reparacion/materiales/endurecedor-superficial/">Endurecedor superficial</a></li>
         </ul>
       </div>
       <div class="mega-col">
@@ -625,7 +624,6 @@
             { name: 'Materiales para reparación', crumb: 'Reparación › Materiales', tags: ['materiales','reparacion'], href: root + 'reparacion/materiales/', group: 'Reparación' },
             { name: 'Grouting (reparación)', crumb: 'Reparación › Materiales', tags: ['grouting','relleno','reparacion','materiales'], href: root + 'reparacion/materiales/grouting/', group: 'Reparación' },
             { name: 'Mortero cementicio (reparación)', crumb: 'Reparación › Materiales', tags: ['mortero','cementicio','cemento','reparacion','materiales'], href: root + 'reparacion/materiales/mortero-cementicio/', group: 'Reparación' },
-            { name: 'Endurecedor superficial (reparación)', crumb: 'Reparación › Materiales', tags: ['endurecedor','superficial','reparacion','materiales'], href: root + 'reparacion/materiales/endurecedor-superficial/', group: 'Reparación' },
             { name: 'Productos químicos para reparación', crumb: 'Reparación › Productos químicos', tags: ['quimicos','quimico','reparacion'], href: root + 'reparacion/productos-quimicos/', group: 'Reparación' },
             { name: 'Aglutinantes (reparación)', crumb: 'Reparación › Productos químicos', tags: ['aglutinante','aglutinantes','quimico','reparacion'], href: root + 'reparacion/productos-quimicos/aglutinantes/', group: 'Reparación' },
             { name: 'Puentes de adherencia (reparación)', crumb: 'Reparación › Productos químicos', tags: ['puente','adherencia','adhesion','quimico','reparacion'], href: root + 'reparacion/productos-quimicos/puentes-de-adherencia/', group: 'Reparación' },

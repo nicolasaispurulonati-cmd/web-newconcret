@@ -460,30 +460,6 @@ const PAGES = [
     pills: `<button class="pill active" data-filter="all">Mortero cementicio</button>`
   },
   {
-    file: 'reparacion/materiales/endurecedor-superficial/index.html',
-    root: '../../../', seccion: 'reparacion', categoria: 'materiales', subcategoria: 'endurecedor-superficial',
-    title: 'Endurecedor Superficial — Materiales Reparación — NewConcret',
-    metaDesc: 'Endurecedor superficial no metálico para refuerzo de pisos de hormigón en reparación.',
-    hero: '../../../assets/img/hero/endurecedor.jpg',
-    eyebrow: 'Materiales · Reparación',
-    breadcrumb: `<a href="../../../">Inicio</a><span>›</span><a href="../../../reparacion/">Reparación</a><span>›</span><a href="../../../reparacion/materiales/">Materiales</a><span>›</span><em>Endurecedor superficial</em>`,
-    h1: 'Endurecedor<br>superficial',
-    desc: 'Endurecedor superficial no metálico para refuerzo de resistencia al desgaste en reparación.',
-    pills: `<button class="pill active" data-filter="all">Endurecedor superficial</button>`
-  },
-  {
-    file: 'reparacion/materiales/nylon/index.html',
-    root: '../../../', seccion: 'reparacion', categoria: 'materiales', subcategoria: 'nylon',
-    title: 'Nylon — Materiales Reparación — NewConcret',
-    metaDesc: 'Nylon negro de 200 micrones para barrera hidrófuga en reparación de pisos de hormigón.',
-    hero: '../../../assets/img/hero/nylon.jpg',
-    eyebrow: 'Materiales · Reparación',
-    breadcrumb: `<a href="../../../">Inicio</a><span>›</span><a href="../../../reparacion/">Reparación</a><span>›</span><a href="../../../reparacion/materiales/">Materiales</a><span>›</span><em>Nylon</em>`,
-    h1: 'Nylon<br>barrera hidrófuga',
-    desc: 'Nylon negro de 200 micrones para barrera hidrófuga en trabajos de reparación de pisos.',
-    pills: `<button class="pill active" data-filter="all">Nylon</button>`
-  },
-  {
     file: 'reparacion/productos-quimicos/aglutinantes/index.html',
     root: '../../../', seccion: 'reparacion', categoria: 'productos-quimicos', subcategoria: 'aglutinantes',
     title: 'Aglutinantes — Químicos Reparación — NewConcret',
