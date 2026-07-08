@@ -190,7 +190,7 @@ body.no-scroll {
     align-items: center;
     padding: 0 1rem;
     height: 68px;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     border: none;
     background: none;
     cursor: pointer;
@@ -309,7 +309,7 @@ body.no-scroll {
     font-size: .62rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     margin-bottom: .5rem;
 }
 
@@ -326,7 +326,7 @@ body.no-scroll {
 .mega-cat-desc {
     font-size: .82rem;
     font-weight: 300;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     line-height: 1.55;
     margin-top: 1rem;
 }
@@ -426,7 +426,7 @@ body.no-scroll {
     font-size: .52rem;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     background: rgba(193, 18, 31, .08);
     padding: .15rem .4rem;
     margin-left: .6rem;
@@ -446,7 +446,7 @@ body.no-scroll {
     font-size: .74rem;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     text-decoration: none;
     margin-top: 1.25rem;
     padding-top: 1rem;
@@ -562,7 +562,7 @@ body.no-scroll {
         font-size: .58rem;
         letter-spacing: .18em;
         text-transform: uppercase;
-        color: var(--nc-mid);
+        color: var(--nc-ash);
         padding: 1.4rem 1.5rem .65rem;
         border-bottom: 1px solid rgba(255, 255, 255, .035);
     }
@@ -621,7 +621,7 @@ body.no-scroll {
     .mob-cat-n {
         font-family: var(--font-m);
         font-size: .56rem;
-        color: var(--nc-mid);
+        color: var(--nc-ash);
         letter-spacing: .1em;
         width: 18px;
         text-align: right;
@@ -629,7 +629,7 @@ body.no-scroll {
     }
 
     .mob-cat-btn.open .mob-cat-n {
-        color: var(--nc-red);
+        color: var(--nc-red-hot);
     }
 
     .mob-cat-name {
@@ -655,7 +655,7 @@ body.no-scroll {
         border: 1px solid var(--nc-steel);
         flex-shrink: 0;
         transition: all .35s var(--expo);
-        color: var(--nc-mid);
+        color: var(--nc-ash);
     }
 
     .mob-cat-btn.open .mob-arrow {
@@ -688,7 +688,7 @@ body.no-scroll {
         font-size: .58rem;
         letter-spacing: .16em;
         text-transform: uppercase;
-        color: var(--nc-red);
+        color: var(--nc-red-hot);
         display: flex;
         align-items: center;
         gap: .5rem;
@@ -725,7 +725,7 @@ body.no-scroll {
         font-family: var(--font-b);
         font-size: .88rem;
         font-weight: 300;
-        color: var(--nc-mid);
+        color: var(--nc-ash);
         text-decoration: none;
         border-bottom: 1px solid rgba(255, 255, 255, .04);
         transition: all .2s var(--expo);
@@ -756,7 +756,7 @@ body.no-scroll {
         font-size: .52rem;
         letter-spacing: .1em;
         text-transform: uppercase;
-        color: var(--nc-red);
+        color: var(--nc-red-hot);
         background: rgba(193, 18, 31, .12);
         padding: .12rem .4rem;
         margin-left: auto;
@@ -773,7 +773,7 @@ body.no-scroll {
         font-size: .72rem;
         letter-spacing: .14em;
         text-transform: uppercase;
-        color: var(--nc-red);
+        color: var(--nc-red-hot);
         text-decoration: none;
         border-bottom: 1px solid rgba(193, 18, 31, .3);
         padding-bottom: .2rem;
@@ -826,7 +826,7 @@ body.no-scroll {
     }
 
     .mob-simple a.active {
-        color: var(--nc-red);
+        color: var(--nc-red-hot);
     }
 
     .mob-simple a.active::before {
@@ -921,7 +921,7 @@ body.no-scroll {
 }
 
 .nav-sb-icon {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     flex-shrink: 0;
 }
 
@@ -1130,7 +1130,7 @@ body.search-open { overflow: hidden; }
     flex-shrink: 0;
 }
 .nc-mob-sb-icon {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     flex-shrink: 0;
 }
 .nc-mob-sb-inp {

@@ -51,7 +51,7 @@
     margin-top: 1.3rem;
     color: var(--nc-white);
 }
-.blog-hero-h1 .red { color: var(--nc-red); }
+.blog-hero-h1 .red { color: var(--nc-red-hot); }
 .blog-hero-p {
     margin-top: 1.25rem;
     max-width: 50ch;
@@ -94,7 +94,7 @@
     font-size: .95rem;
     padding: .95rem .9rem;
 }
-.blog-search input::placeholder { color: var(--nc-mid); }
+.blog-search input::placeholder { color: var(--nc-ash); }
 .blog-search-x {
     background: none;
     border: none;
@@ -105,7 +105,7 @@
     padding: 0 1rem;
     transition: color .2s;
 }
-.blog-search-x:hover { color: var(--nc-red); }
+.blog-search-x:hover { color: var(--nc-red-hot); }
 .blog-count {
     font-family: var(--font-m);
     font-size: .72rem;
@@ -211,7 +211,7 @@
     font-size: .72rem;
     letter-spacing: .1em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 .blog-card-more svg { transition: transform .3s var(--expo); }
 .blog-card:hover .blog-card-more svg { transform: translateX(4px); }
@@ -262,7 +262,7 @@
     margin-bottom: 1.4rem;
     transition: color .25s;
 }
-.art-back:hover { color: var(--nc-red); }
+.art-back:hover { color: var(--nc-red-hot); }
 .art-hero-chip { position: static; display: inline-block; margin-bottom: 1rem; }
 .art-title {
     font-family: var(--font-d);
@@ -285,7 +285,7 @@
     color: var(--nc-light);
 }
 .art-author { color: var(--nc-white); font-weight: 600; }
-.art-dot { color: var(--nc-mid); }
+.art-dot { color: var(--nc-ash); }
 
 /* ════ ARTÍCULO — CUERPO ════ */
 .art-body {
@@ -301,7 +301,7 @@
 .art-body > * + * { margin-top: 1.5rem; }
 .art-body p { color: var(--nc-light); }
 .art-body strong { color: var(--nc-white); font-weight: 600; }
-.art-body a { color: var(--nc-red); text-decoration: underline; text-underline-offset: 3px; }
+.art-body a { color: var(--nc-red-hot); text-decoration: underline; text-underline-offset: 3px; }
 
 .art-body h2 {
     font-family: var(--font-d);
@@ -325,7 +325,7 @@
 }
 .art-body ul, .art-body ol { padding-left: 1.3rem; }
 .art-body li { margin-top: .55rem; }
-.art-body li::marker { color: var(--nc-red); }
+.art-body li::marker { color: var(--nc-red-hot); }
 
 .art-body img {
     width: 100%;

@@ -420,7 +420,7 @@ body {
     font-size: .68rem;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     line-height: 1;
 }
 
@@ -437,7 +437,7 @@ body {
 }
 
 .hero-h1 .red {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .hero-h1 .thin {
@@ -488,7 +488,7 @@ body {
 }
 
 .aside-num em {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-style: normal;
     font-size: .75em;
 }
@@ -718,7 +718,7 @@ body {
     font-size: .66rem;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .sec-h2 {
@@ -814,22 +814,22 @@ body {
     font-size: .62rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     margin-bottom: 1rem;
 }
 
 .ph-breadcrumb a {
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     text-decoration: none;
     transition: color .2s;
 }
 
 .ph-breadcrumb a:hover {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .ph-breadcrumb span {
-    color: var(--nc-steel);
+    color: var(--nc-ash);
 }
 
 .ph-eyebrow {
@@ -850,7 +850,7 @@ body {
     font-size: .62rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .ph-title {
@@ -878,7 +878,7 @@ body {
     font-size: .65rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     align-self: flex-end;
 }
 
@@ -909,7 +909,7 @@ body {
     font-size: .6rem;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     flex-shrink: 0;
 }
 
@@ -979,7 +979,7 @@ body {
     background: none;
     border: 1px solid var(--nc-steel);
     cursor: none;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     transition: all .2s;
 }
 
@@ -1010,7 +1010,7 @@ body {
     font-size: .63rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
 }
 
 .prod-count-tx b {
@@ -1101,7 +1101,7 @@ body {
     font-size: .62rem;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     margin-bottom: .4rem;
 }
 
@@ -1116,7 +1116,7 @@ body {
 }
 
 .s-num em {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-style: normal;
     font-size: .72em;
 }
@@ -1124,7 +1124,7 @@ body {
 .s-desc {
     font-size: .84rem;
     font-weight: 300;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     line-height: 1.5;
 }
 
@@ -1206,7 +1206,7 @@ body {
     font-size: .78rem;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     padding: .85rem 1.75rem;
     border-bottom: 2px solid transparent;
     cursor: none;
@@ -1321,7 +1321,7 @@ body {
     font-size: .58rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     background: rgba(10, 10, 10, .85);
     padding: .25rem .65rem;
     border: 1px solid rgba(193, 18, 31, .3);
@@ -1371,7 +1371,7 @@ body {
     font-size: .58rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     margin-bottom: .7rem;
     font-weight: 500;
 }
@@ -1412,7 +1412,7 @@ body {
     font-weight: 600;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     text-decoration: none;
     transition: color .2s, gap .2s;
 }
@@ -1525,7 +1525,7 @@ body {
     align-items: center;
     justify-content: center;
     background: var(--nc-steel);
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-size: 11px;
     margin-top: .1rem;
     border-radius: 0;
@@ -1542,7 +1542,7 @@ body {
     font-size: .55rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     display: block;
     margin-bottom: .2rem;
 }
@@ -1642,7 +1642,7 @@ body {
     font-size: .6rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     margin-bottom: .5rem;
 }
 
@@ -1659,7 +1659,7 @@ body {
 .modal-desc {
     font-size: .88rem;
     font-weight: 300;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     line-height: 1.65;
     margin-bottom: 0.2rem;
 }
@@ -1669,7 +1669,7 @@ body {
     font-size: .62rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     margin-bottom: .75rem;
     margin-top: 0;
 }
@@ -1729,7 +1729,7 @@ body {
     font-size: .58rem;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     margin-top: .18rem;
 }
 
@@ -1821,7 +1821,7 @@ body {
     font-family: var(--font-d);
     font-weight: 900;
     font-size: 1.9rem;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     line-height: 1;
 }
 
@@ -1830,7 +1830,7 @@ body {
     font-size: .58rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     margin-top: .2rem;
 }
 
@@ -1871,7 +1871,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-size: 13px;
 }
 
@@ -1949,7 +1949,7 @@ body {
     font-size: .62rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     text-decoration: none;
     transition: opacity .2s;
 }
@@ -2212,7 +2212,7 @@ body {
 
 .cap-feat-ic {
     font-size: 1.1rem;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     margin-top: .15rem;
 }
 
@@ -2268,7 +2268,7 @@ body {
     font-size: .78rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     background: #fff;
     padding: .9rem 1.8rem;
     text-decoration: none;
@@ -2397,7 +2397,7 @@ body {
 }
 
 .nc-ciclo-item:hover .nc-ciclo-tag {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .nc-ciclo-body {
@@ -2426,7 +2426,7 @@ body {
     font-size: .58rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-weight: 500;
 }
 
@@ -2438,7 +2438,7 @@ body {
     font-size: .62rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-weight: 700;
     transition: gap .3s;
 }
@@ -2688,7 +2688,7 @@ body {
 }
 
 .cta-h2 span {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .cta-sub {
@@ -2761,7 +2761,7 @@ body {
     margin-bottom: 1.5rem;
     text-wrap: balance;
 }
-.cta-nos-h2 span { color: var(--nc-red); }
+.cta-nos-h2 span { color: var(--nc-red-hot); }
 .cta-nos-sub {
     font-size: 1rem;
     font-weight: 300;
@@ -2795,7 +2795,7 @@ body {
 
 .footer-brand p {
     font-size: .85rem;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     line-height: 1.6;
     font-weight: 300;
     margin-top: 1.1rem;
@@ -2820,14 +2820,14 @@ body {
 
 .f-links a {
     font-size: .84rem;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     text-decoration: none;
     font-weight: 300;
     transition: color .2s;
 }
 
 .f-links a:hover {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .footer-bot {
@@ -2841,7 +2841,7 @@ body {
     font-size: .62rem;
     letter-spacing: .11em;
     text-transform: uppercase;
-    color: var(--nc-steel);
+    color: var(--nc-ash);
 }
 
 /* -- FOOTER PREMIUM -- */
@@ -2938,7 +2938,7 @@ body {
 }
 
 .f-link:hover {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 
 .f-contact {
@@ -2958,7 +2958,7 @@ body {
 
 .f-contact-row svg {
     flex-shrink: 0;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     margin-top: 0.1rem;
 }
 
@@ -2978,7 +2978,7 @@ body {
     align-items: center;
     font-family: var(--font-m);
     font-size: 0.58rem;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     text-transform: uppercase;
     letter-spacing: 0.12em;
 }
@@ -3313,7 +3313,7 @@ body {
     }
 
     .hs-num em {
-        color: var(--nc-red);
+        color: var(--nc-red-hot);
         font-style: normal;
         font-size: .8em;
     }
@@ -3323,7 +3323,7 @@ body {
         font-size: .48rem;
         letter-spacing: .1em;
         text-transform: uppercase;
-        color: var(--nc-mid);
+        color: var(--nc-ash);
         margin-top: .2rem;
     }
 
@@ -3403,7 +3403,7 @@ body {
         font-family: var(--font-d);
         font-weight: 900;
         font-size: 3.5rem;
-        color: var(--nc-red);
+        color: var(--nc-red-hot);
         line-height: 1;
     }
 

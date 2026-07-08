@@ -571,7 +571,7 @@ body.admin-body {
 }
 
 .sort-handle {
-  color: #444;
+  color: var(--admin-muted);
   cursor: grab;
   display: flex;
   align-items: center;
@@ -584,7 +584,7 @@ body.admin-body {
 
 .sort-num {
   font-size: 0.65rem;
-  color: #555;
+  color: var(--admin-muted);
   font-weight: 700;
   font-family: monospace;
   min-width: 22px;
@@ -632,7 +632,7 @@ body.admin-body {
 
 .sort-badge.hidden-badge {
   border-color: #444;
-  color: #555;
+  color: var(--admin-muted);
 }
 
 /* ── REORDER EMPTY STATE ── */
@@ -645,7 +645,7 @@ body.admin-body {
 }
 
 .reorder-empty svg { color: var(--admin-accent); opacity: 0.8; margin-bottom: 1.5rem; filter: drop-shadow(0 0 8px rgba(193, 18, 31, 0.3)); }
-.reorder-empty h3 { font-size: 1rem; margin-bottom: 0.5rem; color: #555; }
+.reorder-empty h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--admin-muted); }
 .reorder-empty p { font-size: 0.8rem; margin: 0; }
 
 /* ── UTILS ── */
