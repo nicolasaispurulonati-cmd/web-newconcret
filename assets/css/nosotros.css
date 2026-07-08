@@ -127,7 +127,7 @@
     gap: .2rem;
 }
 .sn-num em {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-style: normal;
     font-weight: 900;
     font-size: clamp(1.1rem, 1.6vw, 1.6rem);
@@ -142,7 +142,7 @@
 .sn-desc {
     font-size: .8rem;
     font-weight: 300;
-    color: var(--nc-mid);
+    color: var(--nc-ash);
     line-height: 1.5;
     margin-top: .45rem;
 }
@@ -191,12 +191,13 @@
     font-family: var(--font-d);
     font-weight: 900;
     font-size: 2.8rem;
-    color: rgba(193,18,31,.28);
+    color: var(--nc-ash);
+    opacity: .7;
     line-height: 1;
-    transition: color .3s;
+    transition: color .3s, opacity .3s;
     margin-top: -.2rem;
 }
-.qh-area:hover .qh-n { color: rgba(193,18,31,.55); }
+.qh-area:hover .qh-n { color: var(--nc-red-hot); opacity: 1; }
 .qh-area-title {
     font-family: var(--font-d);
     font-weight: 800;
@@ -258,12 +259,12 @@
     font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: .06em;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 .pres-x {
     font-family: var(--font-m);
     font-size: .85rem;
-    color: var(--nc-steel);
+    color: var(--nc-ash);
 }
 .pres-partner {
     font-family: var(--font-d);
@@ -314,7 +315,7 @@
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: .02em;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 .pais-sub {
     font-size: .86rem;
@@ -368,7 +369,7 @@
     gap: .15rem;
 }
 .pstat-num em {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     font-style: normal;
     font-size: clamp(.8rem, 1.1vw, 1rem);
 }
@@ -478,11 +479,12 @@
     font-family: var(--font-d);
     font-weight: 900;
     font-size: 2.8rem;
-    color: rgba(193,18,31,.28);
+    color: var(--nc-ash);
+    opacity: .7;
     line-height: 1;
-    transition: color .3s;
+    transition: color .3s, opacity .3s;
 }
-.linea-item:hover .linea-n { color: rgba(193,18,31,.55); }
+.linea-item:hover .linea-n { color: var(--nc-red-hot); opacity: 1; }
 .linea-title {
     font-family: var(--font-d);
     font-weight: 800;
@@ -508,7 +510,7 @@
     padding: .5rem;
 }
 .linea-item:hover .linea-link {
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     transform: translateX(5px);
 }
 .linea-cta { display: flex; }
@@ -570,7 +572,7 @@
     font-size: .62rem;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
 }
 .form-body {
     display: flex;
@@ -626,7 +628,7 @@
     font-size: .58rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--nc-red);
+    color: var(--nc-red-hot);
     margin-bottom: 1rem;
 }
 .sns-name {
@@ -704,7 +706,7 @@
     margin-bottom: 1.5rem;
     text-wrap: balance;
 }
-.cta-nos-h2 span { color: var(--nc-red); }
+.cta-nos-h2 span { color: var(--nc-red-hot); }
 .cta-nos-sub {
     font-size: 1rem;
     font-weight: 300;
