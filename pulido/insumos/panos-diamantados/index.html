@@ -47,13 +47,13 @@
       justify-content: center;
       align-items: flex-start;
       padding: 1.5rem !important;
-      background-image: 
-        linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
-        linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+      background-image:
+        /* mobile: velo vertical — el texto ocupa todo el ancho, un gradiente horizontal lo deja sin fondo a la derecha */
+        linear-gradient(to top, rgba(10,10,10,.90) 0%, rgba(10,10,10,.75) 50%, rgba(10,10,10,.45) 100%),
         url('../../../assets/img/hero/pulido-mobile.webp') !important;
     }
     .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
-    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
+    .ph-title { font-size: clamp(2.6rem, 9.5vw, 3.8rem) !important; line-height: 0.95; }
     .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--nc-steel); padding-top: 1.2rem; margin-top: 0; width: auto; }
     .ph-count b { display: inline; font-size: 1.4rem; }
   }
@@ -425,6 +425,10 @@
 }
 </script>
     <!-- seo:end -->
+<style>
+  /* CTA final: solo desktop — en mobile la página muestra únicamente el listado */
+  @media (max-width: 900px) { #cta-section { display: none !important; } }
+</style>
 </head>
 <body>
 

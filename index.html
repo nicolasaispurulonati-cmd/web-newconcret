@@ -88,6 +88,10 @@
         flex-direction: column;
         align-items: flex-start;
     }
+    /* el eyebrow es una etiqueta: debe leerse más angosto que el h1 que introduce */
+    .hero-mob .eyebrow { gap: .55rem; }
+    .hero-mob .eyebrow-line { width: 20px; }
+    .hero-mob .eyebrow-tx { font-size: .6rem; letter-spacing: .12em; }
     .hero-mob .hero-h1 {
         font-size: clamp(3.4rem, 14vw, 5rem);
         line-height: .92;
@@ -96,12 +100,24 @@
     .hero-mob .hero-btns {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         gap: 1rem;
-        width: 100%;
+        /* fit-content + stretch: ambos botones toman el ancho del label más largo,
+           sin estirarse al ancho de la pantalla */
+        width: fit-content;
+        align-items: stretch;
     }
     .hero-mob .hero-btns .btn-p,
-    .hero-mob .hero-btns .btn-g { width: 100%; justify-content: center; }
+    .hero-mob .hero-btns .btn-g {
+        justify-content: space-between;
+        letter-spacing: .12em;
+        padding: .95rem 1.4rem;
+    }
+    .hero-mob .hero-btns .btn-g {
+        background: var(--nc-carbon);
+        border: 1px solid var(--nc-steel);
+        color: var(--nc-white);
+        clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
+    }
     .hero-mob .hero-stats-mob {
         position: absolute;
         bottom: 0; left: 0; right: 0;
@@ -136,6 +152,13 @@
         .brands-sec {
             padding-top: 4rem;
             padding-bottom: 4rem;
+        }
+
+        /* El hueco hasta las cards lo fijaba el margin-bottom:4rem de .cap-intro (regla global,
+           compartida con desktop), que colapsaba con el margin-top:2rem del grid y ganaba.
+           Anulándolo acá, el espaciado pasa a ser el 2rem que el grid ya declara. */
+        #capacitaciones-mob .cap-intro {
+            margin-bottom: 0;
         }
 
         /* Capacitación CTA (mobile): replace the full-red clip-path box with a
@@ -336,22 +359,22 @@
     <div class="s-card reveal">
       <div class="s-unit">Clientes activos</div>
       <div class="s-num"><span class="cu" data-t="2000">0</span><em>+</em></div>
-      <div class="s-desc">Empresas constructoras, pulidores independientes y arquitectos confían en nuestros productos.</div>
+      <div class="s-desc">Constructoras y pulidores</div>
     </div>
     <div class="s-card reveal d1">
       <div class="s-unit">Pulidores capacitados</div>
       <div class="s-num"><span class="cu" data-t="500">0</span><em>+</em></div>
-      <div class="s-desc">Capacitaciones técnicas presenciales y online en pulido, reparación y mantenimiento.</div>
+      <div class="s-desc">Presencial y online</div>
     </div>
     <div class="s-card reveal d2">
       <div class="s-unit">Años en el mercado</div>
       <div class="s-num"><span class="cu" data-t="16">0</span><em>+</em></div>
-      <div class="s-desc">Trayectoria que respalda cada máquina vendida y cada insumo recomendado.</div>
+      <div class="s-desc">De trayectoria</div>
     </div>
     <div class="s-card reveal d3">
       <div class="s-unit">Productos en stock</div>
       <div class="s-num"><span class="cu" data-t="150">0</span><em>+</em></div>
-      <div class="s-desc">Referencias disponibles en maquinaria, abrasivos, químicos y accesorios para pisos.</div>
+      <div class="s-desc">Máquinas e insumos</div>
     </div>
   </div>
 </section>
@@ -502,6 +525,16 @@
       </div>
     </a>
 
+    <!-- REPARACIÓN -->
+    <a href="reparacion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
+      <img src="assets/img/hero/reparacion.webp" alt="Reparación" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
+      <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
+        <div style="font-family:var(--font-m); font-size:.55rem; color: var(--nc-red-hot); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Restauración de juntas</div>
+        <h3 style="font-family:var(--font-d); font-weight:900; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Reparación</h3>
+      </div>
+    </a>
+
     <!-- PULIDO -->
     <a href="pulido/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
       <img src="assets/img/hero/pulido.webp" alt="Pulido" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
@@ -519,16 +552,6 @@
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color: var(--nc-red-hot); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Limpieza y protección</div>
         <h3 style="font-family:var(--font-d); font-weight:900; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Mantenimiento</h3>
-      </div>
-    </a>
-
-    <!-- REPARACIÓN -->
-    <a href="reparacion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/reparacion.webp" alt="Reparación" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
-      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
-      <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
-        <div style="font-family:var(--font-m); font-size:.55rem; color: var(--nc-red-hot); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Restauración de juntas</div>
-        <h3 style="font-family:var(--font-d); font-weight:900; font-size:1.6rem; text-transform:uppercase; color:var(--nc-white); line-height:1;">Reparación</h3>
       </div>
     </a>
 
@@ -613,9 +636,11 @@
       <div class="spec" style="border-right:1px solid var(--nc-steel); padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color: var(--nc-ash); margin-bottom:.2rem;">Potencia</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">220 V</div></div>
       <div class="spec" style="padding:1rem !important;"><div class="spec-k" style="font-family:var(--font-m); font-size:.5rem; text-transform:uppercase; color: var(--nc-ash); margin-bottom:.2rem;">Montaje</div><div class="spec-v" style="font-family:var(--font-d); font-weight:800; font-size:1.1rem; color:var(--nc-white);">4 Cabez.</div></div>
     </div>
-    <div style="display:flex; gap:.85rem; margin-top:2.5rem; flex-wrap:wrap;">
-      <a href="https://wa.me/5492342464082" class="btn-p" style="flex:1; justify-content:center; padding:.85rem 1.2rem; font-size:.85rem;">Consultar por Frida</a>
-      <a href="assets/docs/frida-450-1778596781261.pdf" download class="btn-g" style="flex:1; justify-content:center; padding:.85rem 1.2rem; font-size:.85rem; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.75); gap:.55rem; transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.55)';this.style.color='#fff';" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.75)';">
+    <!-- una fila: "Ficha técnica" + su ícono es el que manda el ancho. Con tracking .18em no entra
+         en pantallas de 360px, por eso va en .12em (igual que los botones del hero mobile). -->
+    <div style="display:flex; gap:10px; margin-top:2.5rem;">
+      <a href="https://wa.me/5492342464082" class="btn-p" style="flex:1; justify-content:center; padding:.9rem .8rem; font-size:.85rem; letter-spacing:.12em; border:1px solid transparent;">Consultar</a>
+      <a href="assets/docs/frida-450-1778596781261.pdf" download class="btn-g" style="flex:1; justify-content:center; padding:.9rem .8rem; font-size:.85rem; letter-spacing:.12em; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.75); gap:.55rem; transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.55)';this.style.color='#fff';" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.75)';">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Ficha técnica
       </a>
@@ -676,37 +701,38 @@
     <div class="sec-lbl" style="margin-bottom:0.6rem;"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Tratamientos químicos</span></div>
     <h2 class="sec-h2" style="font-size:2.1rem !important; line-height:1 !important;">Químicos para<br>cada etapa.</h2>
   </div>
-  <div class="insumos-list" style="display:flex; flex-direction:column; gap:1px; background:var(--nc-steel); margin-top:2rem;">
+  <!-- los márgenes negativos cancelan el padding lateral de la sección: las cards van a sangre -->
+  <div class="insumos-list" style="display:flex; flex-direction:column; gap:1px; background:var(--nc-steel); margin-top:2rem; margin-left:-1.5rem; margin-right:-1.5rem;">
     <!-- DENSIFICADORES -->
     <a href="pulido/productos-quimicos/densificadores/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
-      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8"></path><path d="M14 2v8"></path><path d="M8.5 2h7"></path><path d="M14 10a5 5 0 1 1-4 0"></path></svg></span>
+      <span class="ins-icon" style="flex-shrink:0; display:flex; margin-bottom:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8"></path><path d="M14 2v8"></path><path d="M8.5 2h7"></path><path d="M14 10a5 5 0 1 1-4 0"></path></svg></span>
       <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
-        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Densificadores</div>
-        <div class="ins-link" style="font-size:.6rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+        <div class="ins-name" style="font-size:1.15rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Densificadores</div>
+        <div class="ins-link" style="font-size:.68rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
       </div>
     </a>
     <!-- IMPERMEABILIZANTES -->
     <a href="pulido/productos-quimicos/impermeabilizantes/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
-      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+      <span class="ins-icon" style="flex-shrink:0; display:flex; margin-bottom:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
       <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
-        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Impermeabiliz.</div>
-        <div class="ins-link" style="font-size:.6rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+        <div class="ins-name" style="font-size:1.15rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Impermeabiliz.</div>
+        <div class="ins-link" style="font-size:.68rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
       </div>
     </a>
     <!-- SELLADORES -->
     <a href="pulido/productos-quimicos/selladores/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
-      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+      <span class="ins-icon" style="flex-shrink:0; display:flex; margin-bottom:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
       <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
-        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Selladores</div>
-        <div class="ins-link" style="font-size:.6rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+        <div class="ins-name" style="font-size:1.15rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Selladores</div>
+        <div class="ins-link" style="font-size:.68rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
       </div>
     </a>
     <!-- DETERGENTES -->
     <a href="pulido/productos-quimicos/detergentes/" class="ins-card" style="background:var(--nc-dark); padding:1.2rem 1.5rem; text-decoration:none; display:flex; align-items:center; gap:1.2rem;">
-      <span class="ins-icon" style="flex-shrink:0; display:flex;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="M16.24 16.24l2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="M16.24 7.76l2.83-2.83"></path></svg></span>
+      <span class="ins-icon" style="flex-shrink:0; display:flex; margin-bottom:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="M16.24 16.24l2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="M16.24 7.76l2.83-2.83"></path></svg></span>
       <div style="flex-grow:1; display:flex; flex-direction:column; align-items:flex-start;">
-        <div class="ins-name" style="font-size:1rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Detergentes</div>
-        <div class="ins-link" style="font-size:.6rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
+        <div class="ins-name" style="font-size:1.15rem !important; margin-bottom:.2rem; color:var(--nc-white); font-weight:700;">Detergentes</div>
+        <div class="ins-link" style="font-size:.68rem !important; color: var(--nc-red-hot); font-weight:700; text-transform:uppercase; letter-spacing:.1em;">Ver más</div>
       </div>
     </a>
   </div>
@@ -773,7 +799,8 @@
     <p class="sec-p" style="margin-top:1rem; font-size:.875rem;">Capacitaciones sobre tratamientos de superficies cementícias. Certificación profesional <strong>otorgada por NewConcret</strong>.</p>
   </div>
 
-  <div style="margin-top:2rem; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--nc-steel);">
+  <!-- los márgenes negativos cancelan el padding lateral de la sección: el grid 2x2 va a sangre -->
+  <div style="margin-top:2rem; margin-left:-1.5rem; margin-right:-1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--nc-steel);">
 
     <div style="background:var(--nc-dark); padding:1.5rem 1.25rem;">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--nc-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:.75rem;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>

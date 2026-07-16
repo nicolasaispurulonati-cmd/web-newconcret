@@ -342,7 +342,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Macrofibra de polipropileno",
         "imagen": "/assets/img/productos/macrofibra.png",
-        "storeUrl": "${STORE_BASE}/productos/macrofibra/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-fibra-macrofibra/",
         "specs": [
             {
                 "icono": "◉",
@@ -898,7 +898,7 @@ const productos = [
         "subcategoria": "accesorios-amoladora",
         "descripcion": "Carcasa antipolvo para amoladora",
         "imagen": "/assets/img/productos/carcasa-antipolvo.png",
-        "storeUrl": "${STORE_BASE}/productos/carcaza-antipolvo-para-amoladora/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/carcasa-antipolvo-para-amoladora/",
         "specs": [
             {
                 "icono": "◉",
@@ -929,7 +929,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Demolición puntual y apertura inicial",
         "imagen": "/assets/img/productos/punta-sds-plus.png",
-        "storeUrl": "${STORE_BASE}/productos/punta-sds-plus/",
+        "storeUrl": "",
         "specs": [
             {
                 "icono": "◉",
@@ -984,7 +984,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Canaletas y ranuras",
         "imagen": "/assets/img/productos/pala-angosta-sds-plus.png",
-        "storeUrl": "${STORE_BASE}/productos/pala-angosta-sds-plus/",
+        "storeUrl": "",
         "specs": [
             {
                 "icono": "◉",
@@ -1039,7 +1039,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Remoción de revestimientos",
         "imagen": "/assets/img/productos/pala-ancha-sds-plus.png",
-        "storeUrl": "${STORE_BASE}/productos/pala-ancha-sds-plus/",
+        "storeUrl": "",
         "specs": [
             {
                 "icono": "◉",
@@ -3239,7 +3239,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Ciclón Preseparador de residuos",
         "imagen": "/assets/img/productos/ciclon-1778598944444.png",
-        "storeUrl": "${STORE_BASE}/productos/ciclon-preseparador/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/ciclon-preseparador/",
         "specs": [
             {
                 "icono": "◉",
@@ -3304,7 +3304,7 @@ const productos = [
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
         "imagen": "/assets/img/productos/extension-aspiradora-1778613659418.png",
-        "storeUrl": "${STORE_BASE}/productos/extension-curva-para-cepillo-barredor/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-extension-curva/",
         "specs": [
             {
                 "icono": "◉",
@@ -3334,7 +3334,7 @@ const productos = [
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
         "imagen": "/assets/img/productos/cepillo-1778613646978.png",
-        "storeUrl": "${STORE_BASE}/productos/cepillo-barredor-con-ruedas-mc75/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/cepillo-barredor-para-asiradora/",
         "specs": [
             {
                 "icono": "◉",
@@ -3364,7 +3364,7 @@ const productos = [
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
         "imagen": "/assets/img/productos/manguera-aspiradora-1778613632365.png",
-        "storeUrl": "${STORE_BASE}/productos/manguera-de-aspiracion-de-pvc-interior-liso/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/manguera-de-aspiracion-pvc-4umte/",
         "specs": [
             {
                 "icono": "◉",
@@ -3404,7 +3404,7 @@ const productos = [
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
         "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/bifurcacion-8cd7ec039f0771391217310967788401-480-0.webp",
-        "storeUrl": "${STORE_BASE}/productos/bifurcacion-metalica-mc75/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/bifurcacion-metalica-mc75/",
         "specs": [
             {
                 "icono": "◉",
@@ -3434,7 +3434,7 @@ const productos = [
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
         "imagen": "/assets/img/productos/adaptadores-de-manguera-1778613607167.png",
-        "storeUrl": "${STORE_BASE}/productos/terminales-para-manguera-mc-75/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/terminales-para-manguera-mc-75/",
         "specs": [
             {
                 "icono": "◉",
@@ -3464,7 +3464,7 @@ const productos = [
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "",
         "imagen": "/assets/img/productos/pico-redondo-con-cepillo-1778613583922.png",
-        "storeUrl": "${STORE_BASE}/productos/cepillo-redondo-mc-75/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/cepillo-redondo-aspiracion/",
         "specs": [
             {
                 "icono": "◉",
@@ -3499,7 +3499,7 @@ const productos = [
         "subcategoria": "accesorios-aspiradoras",
         "descripcion": "Pico chato para aspiradoras NewConcret ",
         "imagen": "/assets/img/productos/pico-chato-1778613541688.png",
-        "storeUrl": "${STORE_BASE}/productos/pico-chato-metalico-mc-75/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/pico-chato-para-aspiradora-mc-75-eijsi/",
         "specs": [
             {
                 "icono": "◉",
@@ -3779,7 +3779,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Desbaste y Pulido de Superficies",
         "imagen": "/assets/img/productos/grano-30-1778605279602.png",
-        "storeUrl": "${STORE_BASE}/productos/discos-resinoides-diametro-100-mm-8-mm-espesor/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoides-100-8-espesor/",
         "specs": [
             {
                 "icono": "◉",
@@ -3911,7 +3911,7 @@ const productos = [
         "subcategoria": "accesorios-pulidoras",
         "descripcion": "Adaptador universal para pulidoras",
         "imagen": "/assets/img/productos/adaptador-1-1778605650302.png",
-        "storeUrl": "${STORE_BASE}/productos/adaptador-universal/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/adaptador-universal-para-segmentos-metalicos-ygg07/",
         "specs": [
             {
                 "icono": "◉",
@@ -3997,7 +3997,7 @@ const productos = [
         "subcategoria": "r",
         "descripcion": "",
         "imagen": "https://acdn.mitiendanube.com/stores/003/469/628/products/restor1-06d0849cb3d57c801617095792871763-1024-1024.webp",
-        "storeUrl": "${STORE_BASE}/productos/concret-restor1/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-restor/",
         "specs": [
             {
                 "icono": "◉",
@@ -4179,7 +4179,7 @@ const productos = [
         "subcategoria": "",
         "descripcion": "Detergente removedor y desengrasante",
         "imagen": "/assets/img/productos/concret-d-5-1778606889938.png",
-        "storeUrl": "${STORE_BASE}/productos/concret-d1/",
+        "storeUrl": "https://tiendalonati.com.ar/productos/concret-d/",
         "specs": [
             {
                 "icono": "◉",

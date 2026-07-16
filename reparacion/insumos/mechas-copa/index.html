@@ -27,12 +27,12 @@
     background-size: cover;
     background-position: center;
     background-image: 
-      linear-gradient(to right, rgba(10,10,10,.98) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.3) 100%),
+      linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
       linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
       url('../../../assets/img/hero/reparacion-materiales.webp');
   }
   .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
-  .ph-count { text-align: right; border-left: 1px solid var(--nc-steel); padding-left: 2rem; }
+  .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--nc-steel); padding-left: 2rem; z-index: 3; }
   .ph-count b { display: block; font-size: 2.2rem; color: var(--nc-white); margin-bottom: 0.3rem; font-family: var(--font-d); font-weight: 800; }
   
   @media (max-width: 900px) {
@@ -44,13 +44,13 @@
       justify-content: center;
       align-items: flex-start;
       padding: 1.5rem !important;
-      background-image: 
-        linear-gradient(to right, rgba(10,10,10,.98) 0%, rgba(10,10,10,.8) 30%, rgba(10,10,10,.5) 60%, rgba(10,10,10,.2) 100%),
-        linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
+      background-image:
+        /* mobile: velo vertical — el texto ocupa todo el ancho, un gradiente horizontal lo deja sin fondo a la derecha */
+        linear-gradient(to top, rgba(10,10,10,.90) 0%, rgba(10,10,10,.75) 50%, rgba(10,10,10,.45) 100%),
         url('../../../assets/img/hero/reparacion-materiales-mobile.webp') !important;
     }
     .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
-    .ph-title { font-size: 3.8rem !important; line-height: 0.95; }
+    .ph-title { font-size: clamp(2.6rem, 9.5vw, 3.8rem) !important; line-height: 0.95; }
     .ph-count { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; text-align: left !important; border-left: none !important; border-top: 1px solid var(--nc-steel); padding-top: 1.2rem; margin-top: 0; width: auto; }
     .ph-count b { display: inline; font-size: 1.4rem; }
   }
@@ -273,10 +273,10 @@
       <h1 class="ph-title">Mechas Copa<br>Diamantadas</h1>
       <p class="ph-desc">Mechas copa de alta precisión para perforaciones técnicas en hormigón y mampostería.</p>
     </div>
-    <div class="ph-count">
-      <b id="total-count">0</b>
-      productos disponibles
-    </div>
+  </div>
+  <div class="ph-count">
+    <b id="total-count">0</b>
+    productos disponibles
   </div>
 </div>
 
