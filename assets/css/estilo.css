@@ -2715,6 +2715,11 @@ body {
     color: var(--nc-ash);
 }
 
+/* en el CTA centrado el teléfono cuelga debajo del botón, no dentro de .cta-acts */
+.cta-nos .cta-phone {
+    margin-top: 1.25rem;
+}
+
 /* -- CTA IMAGEN (nosotros-style, reutilizable) -- */
 .cta-nos {
     position: relative;

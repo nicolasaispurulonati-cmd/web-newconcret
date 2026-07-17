@@ -256,12 +256,7 @@
     .modal { margin-top: 2rem; width: 100%; }
     .modal-bg { padding: 1rem; }
     .modal-name { font-size: 1.6rem; }
-    .modal-actions { margin-top: 1rem; }
-    .cta-box { padding: 2.2rem 1.25rem !important; border-left: none !important; border-right: none !important; width: 100vw !important; max-width: 100vw !important; border-radius: 0 !important; margin-left: calc(-50vw + 50%) !important; margin-right: calc(-50vw + 50%) !important; }
-    #cta-section { padding: 2.5rem 0 0 !important; }
-    .cta-h2 { font-size: 1.8rem !important; line-height: 1.1 !important; margin-bottom: 0.8rem !important; }
-  }
-
+    .modal-actions { margin-top: 1rem; }
   /* ── ANIMATIONS ── */
   .reveal { opacity: 0; transform: translateY(20px); transition: all .7s var(--expo); }
   .reveal.in { opacity: 1; transform: none; }
@@ -449,23 +444,25 @@
   </div>
 
   <!-- ══ FINAL CTA ══ -->
-  <section id="cta-section" class="sec" style="padding: 5rem 0 3rem;">
-    <div class="cta-box in" style="border-left: none; border-right: none; background-image: linear-gradient(rgba(10, 10, 10, .8), rgba(10, 10, 10, .8)), url('../../../assets/img/hero/construccion-macro.webp');">
-        <div>
-            <h2 class="cta-h2">¿Qué necesitás<br>para tu próximo<br><span>trabajo?</span></h2>
-            <p class="cta-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
-        </div>
-        <div class="cta-acts">
-            <a href="https://api.whatsapp.com/send?phone=5492342464082" target="_blank" rel="noopener" class="btn-p">
-                Consultar por WhatsApp
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
-                </svg>
-            </a>
-            <div class="cta-phone">+54 9 2342 46-4082</div>
-        </div>
+  <section id="cta-section" class="cta-nos">
+  <div class="cta-nos-bg">
+    <img src="../../../assets/img/hero/construccion-macro.webp" alt="">
+  </div>
+  <div class="cta-nos-ov"></div>
+  <div class="cta-nos-content reveal">
+    <h2 class="cta-nos-h2">¿Qué necesitás<br>para tu próximo<br><span>trabajo?</span></h2>
+    <p class="cta-nos-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
+    <div class="cta-nos-acts">
+      <a href="https://wa.me/5492342464082" class="btn-p" target="_blank" rel="noopener">
+        Consultar por WhatsApp
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </a>
     </div>
-  </section>
+    <div class="cta-phone">+54 9 2342 46-4082</div>
+  </div>
+</section>
 </section>
 
 <!-- ══ MODAL ══ -->
