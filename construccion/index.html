@@ -1343,7 +1343,7 @@
                     <div class="modal-feats-title">Características técnicas</div>
                     <div class="modal-feats" id="modalFeats"></div>
                     <div class="modal-actions">
-                        <a href="#" class="btn-ver" style="flex:1;" id="modalConsultar">
+                        <a href="#" target="_blank" rel="noopener" class="btn-ver" style="flex:1;" id="modalConsultar">
                             Ver en tienda
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                                 <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3"
@@ -1492,15 +1492,22 @@
                 if (pdf) {
                     btnFicha.href = fixUrl(pdf);
                     btnFicha.target = '_blank';
+                    btnFicha.setAttribute('download', '');
                     btnFicha.style.display = 'inline-flex';
                     btnFicha.style.opacity = '1';
                     btnFicha.style.cursor = 'pointer';
                     btnFicha.onclick = null;
                 } else {
-                    btnFicha.href = '#';
-                    btnFicha.style.opacity = '0.5';
-                    btnFicha.style.cursor = 'not-allowed';
-                    btnFicha.onclick = (e) => { e.preventDefault(); alert('Este producto no cuenta con documentación'); };
+                    // sin PDF: consulta por WhatsApp, igual que la card. El ancla
+                    // trae download: hacia WhatsApp hay que quitarlo o intenta descargar.
+                    btnFicha.innerHTML = 'Consultar';
+                    btnFicha.href = 'https://wa.me/5492342464082';
+                    btnFicha.target = '_blank';
+                    btnFicha.rel = 'noopener';
+                    btnFicha.removeAttribute('download');
+                    btnFicha.style.opacity = '1';
+                    btnFicha.style.cursor = 'pointer';
+                    btnFicha.onclick = null;
                 }
             }
 
