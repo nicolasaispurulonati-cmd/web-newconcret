@@ -100,7 +100,7 @@ function pagina({ title, description, ogImage, canonical, ogType = 'website', js
     <link rel="icon" type="image/x-icon" href="/logos/Favicon.ico">
     <link rel="stylesheet" href="/assets/css/estilo.css?v=40">
     <link rel="stylesheet" href="/assets/css/nav.css?v=1.3">
-    <link rel="stylesheet" href="/assets/css/blog.css?v=1.5">
+    <link rel="stylesheet" href="/assets/css/blog.css?v=1.6">
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
 
