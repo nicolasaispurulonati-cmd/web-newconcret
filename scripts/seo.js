@@ -94,6 +94,14 @@ function extractDesc(html) {
   return m ? m[1].trim() : '';
 }
 
+// og:image = hero propio de la página (primer hero desktop referenciado, CSS o <img>)
+function extractHeroImage(html) {
+  for (const m of html.matchAll(/(?:url\(\s*['"]?|src=["'])[./]*(assets\/img\/hero\/[^'")\s]+\.webp)/gi)) {
+    if (!/-mobile\.webp$/i.test(m[1])) return DOMAIN + '/' + m[1];
+  }
+  return '';
+}
+
 // ── Productos bajo un prefijo de ruta (ej. "construccion/equipos") ───────────
 function productsUnder(products, prefix) {
   const seen = new Set();
@@ -243,7 +251,7 @@ function buildBlock(rel, html, products) {
   const url   = canonicalOf(rel);
   let   title = extractTitle(html) || TITLE_FIX[segs.join('/')] || ORG.name;
   const desc  = extractDesc(html) || ORG.description;
-  const ogImg = DEFAULT_OG_IMAGE;
+  const ogImg = extractHeroImage(html) || DEFAULT_OG_IMAGE;
   const graph = buildJsonLd(rel, segs, url, title, desc, products);
 
   const ld = graph.length === 1
