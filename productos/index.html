@@ -1173,9 +1173,9 @@
                     btnFicha.style.opacity = '1';
                     btnFicha.style.cursor = 'pointer';
                     btnFicha.onclick = null;
-                } else {
-                    // sin PDF: consulta por WhatsApp, igual que la card. El ancla
-                    // trae download: hacia WhatsApp hay que quitarlo o intenta descargar.
+                } else if (shop) {
+                    // sin PDF pero con tienda: el secundario consulta por WhatsApp.
+                    // El ancla trae download: hacia WhatsApp hay que quitarlo o intenta descargar.
                     btnFicha.innerHTML = 'Consultar';
                     btnFicha.href = 'https://wa.me/5492342464082';
                     btnFicha.target = '_blank';
@@ -1184,6 +1184,10 @@
                     btnFicha.style.opacity = '1';
                     btnFicha.style.cursor = 'pointer';
                     btnFicha.onclick = null;
+                    btnFicha.style.display = 'inline-flex';
+                } else {
+                    // sin ficha ni tienda: el primario ya es "Consultar", no duplicar.
+                    btnFicha.style.display = 'none';
                 }
             }
 

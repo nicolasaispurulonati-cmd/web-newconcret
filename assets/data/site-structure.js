@@ -127,6 +127,7 @@ const NEWCONCRET_STRUCTURE = {
       "productos-quimicos": {
         "label": "Productos químicos",
         "subcategories": [
+          { "slug": "sistema-newconcret", "label": "Sistema NewConcret" },
           { "slug": "selladores", "label": "Selladores" },
           { "slug": "desengrasantes", "label": "Desengrasantes" }
         ]

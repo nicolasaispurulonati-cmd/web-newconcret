@@ -58,8 +58,9 @@ function listPages() {
       const full = path.join(dir, e.name);
       const rel  = path.relative(ROOT, full).replace(/\\/g, '/');
       if (e.isDirectory()) {
-        if (/^(node_modules|\.git|\.claude|_img_originals|sistema-newconcret|admin|2|scripts)$/.test(e.name)) continue;
+        if (/^(node_modules|\.git|\.claude|_img_originals|admin|2|scripts)$/.test(e.name)) continue;
         if (rel === 'assets/fonts') continue;
+        if (rel === 'sistema-newconcret') continue;   // landing top-level con SEO propio; NO la subpágina de mantenimiento
         walk(full);
       } else if (e.name.endsWith('.html')) {
         if (rel.startsWith('blog/')) continue;             // lo maneja generate-blog.js

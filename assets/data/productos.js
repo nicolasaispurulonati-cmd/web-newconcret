@@ -39,9 +39,21 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "specs": [
-            { "icono": "◉", "clave": "Potencia de corte", "valor": "5,5 HP" },
-            { "icono": "◉", "clave": "Profundidad máx. de corte", "valor": "65 mm" },
-            { "icono": "◉", "clave": "Voltaje", "valor": "380V trifásico" }
+            {
+                "icono": "◉",
+                "clave": "Potencia de corte",
+                "valor": "5,5 HP"
+            },
+            {
+                "icono": "◉",
+                "clave": "Profundidad máx. de corte",
+                "valor": "65 mm"
+            },
+            {
+                "icono": "◉",
+                "clave": "Voltaje",
+                "valor": "380V trifásico"
+            }
         ]
     },
     {
@@ -100,7 +112,7 @@ const productos = [
         "sku": "EPOXI-CIRCULAR",
         "descripcion": "Segmento metálico circular para remover epoxi, poliuretanos y pinturas de alta adherencia.",
         "imagen": "/assets/img/productos/circular-epoxy-2-1778608929665.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/metales-pcd-1784565821117.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/metal-epoxy-circular/",
         "visible": true,
         "rutas": [
@@ -191,7 +203,7 @@ const productos = [
                 "subcategoría": "metales-desbaste"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/metales-pcd-1784565832502.pdf",
         "visible": true
     },
     {
@@ -1388,7 +1400,7 @@ const productos = [
                 "subcategoría": "puentes-de-adherencia"
             }
         ],
-        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-restor-1777920767131.pdf",
+        "pdfUrl": "/assets/docs/ficha-tcnica-concret-restor-1784567925973.pdf",
         "visible": true
     },
     {
@@ -1531,7 +1543,7 @@ const productos = [
                 "subcategoría": ""
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/sellador-poliuretanico-1784565941992.pdf",
         "visible": true
     },
     {
@@ -1738,12 +1750,10 @@ const productos = [
         "id": "carcasa-antipolvo",
         "sku": "CARCASAANTIPOLVO",
         "nombre": "Carcasa antipolvo",
-        "secciones": [
-            "reparacion"
-        ],
-        "categoria": "insumos",
-        "cat_label": "Insumos",
-        "subcategoria": "accesorios-amoladora",
+        "secciones": [],
+        "categoria": "",
+        "cat_label": "",
+        "subcategoria": "",
         "descripcion": "Carcasa con salida para aspiradora que contiene el polvo al desbastar con amoladora.",
         "imagen": "/assets/img/productos/carcasa-antipolvo.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/carcasa-antipolvo-para-amoladora/",
@@ -1763,7 +1773,10 @@ const productos = [
                 "clave": "Aplicación",
                 "valor": "Desbaste, lijado y nivelado"
             }
-        ]
+        ],
+        "pdfUrl": "/assets/docs/carcasa-amol-1784566103208.pdf",
+        "visible": true,
+        "rutas": []
     },
     {
         "id": "punta-sds-plus",
@@ -2427,7 +2440,7 @@ const productos = [
                 "subcategoría": "metales-desbaste"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/metales-alto-rend-1784566864058.pdf",
         "visible": true
     },
     {
@@ -2477,7 +2490,7 @@ const productos = [
                 "subcategoría": "metales-desbaste"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/metales-eco-1784566876326.pdf",
         "visible": true
     },
     {
@@ -2486,7 +2499,7 @@ const productos = [
         "sku": "RESINOIDE-15MM",
         "descripcion": "Disco resinoide de 15 mm de espesor para pulido de alto rendimiento con contacto constante.",
         "imagen": "/assets/img/productos/resinas-15mm-grano-50-2-1778610727067.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/resinas-15-1784566889822.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoide-15mm/",
         "visible": true,
         "rutas": [
@@ -2577,7 +2590,7 @@ const productos = [
                 "subcategoría": "discos-resinoides"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/resinas-12-1784566901158.pdf",
         "visible": true
     },
     {
@@ -2610,7 +2623,7 @@ const productos = [
                 "valor": "Velcro"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/resinas-8-1784566911519.pdf",
         "visible": true,
         "rutas": [
             {
@@ -2636,7 +2649,7 @@ const productos = [
         "sku": "RESINOIDE-3MM",
         "descripcion": "Disco resinoide fino y flexible para las etapas finales de pulido y abrillantado.",
         "imagen": "/assets/img/productos/grano-400-1778610389925.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/resinas-3-1784566921326.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoides-3mm/",
         "visible": true,
         "rutas": [
@@ -2727,7 +2740,7 @@ const productos = [
                 "subcategoría": "panos-diamantados"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/pads-1784566933628.pdf",
         "visible": true
     },
     {
@@ -2736,7 +2749,7 @@ const productos = [
         "sku": "PADPULIDO",
         "descripcion": "Pads diamantados con base de esponja para retoques manuales en orillas, mesadas y esquinas.",
         "imagen": "/assets/img/productos/espnoja-manual-grano-100-1778611557051.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/esponjas-1784566942049.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/pads-manuales/",
         "visible": true,
         "rutas": [
@@ -2791,7 +2804,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Mecha copa diamantada para perforar hormigón, piedra y cerámica con mínima vibración.",
-        "imagen": "/assets/img/productos/mecha-copa-diamantada.webp",
+        "imagen": "/assets/img/productos/mecha-copa-45mm-1784565295486.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/mecha-copa-diamantada/",
         "specs": [
             {
@@ -2810,7 +2823,7 @@ const productos = [
                 "valor": "Amoladora – rosca M14"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/mecha-copa-1784566952910.pdf",
         "visible": true,
         "rutas": [
             {
@@ -3029,7 +3042,7 @@ const productos = [
         "sku": "RESINAS-180",
         "descripcion": "Disco resinoide de 180 mm y 3 mm de espesor: flexible para curvas, bordes y zonas irregulares.",
         "imagen": "/assets/img/productos/grano-800-1779290401067.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/resinas-180-1784566970662.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/discos-resinoides-180/",
         "visible": true,
         "rutas": [
@@ -3654,7 +3667,7 @@ const productos = [
     {
         "id": "gala-sw551-trifsica",
         "sku": "GALASW551",
-        "nombre": "Gala SW551 Trifásica",
+        "nombre": "Aspiradora Gala SW551",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -3714,7 +3727,7 @@ const productos = [
                 "subcategoría": "aspiradoras"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/sw551-1784567798376.pdf",
         "visible": true
     },
     {
@@ -3723,7 +3736,7 @@ const productos = [
         "sku": "MOPA",
         "descripcion": "Aplicador con cabo extensible y mopa de microfibra para extender densificadores y selladores de forma uniforme.",
         "imagen": "/assets/img/productos/kit-mopa-2-1779285095682.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/aplicador-1784567004869.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/aplicador-para-pisos/",
         "visible": true,
         "rutas": [
@@ -3773,7 +3786,7 @@ const productos = [
         "sku": "PULVERIZADOR",
         "descripcion": "Pulverizador a presión de 10 litros con lanza de acero inoxidable y boquilla regulable.",
         "imagen": "/assets/img/productos/pulverizador-2-1779285159180.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/pulverizador-1784567014987.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/pulverizador/",
         "visible": true,
         "rutas": [
@@ -3823,7 +3836,7 @@ const productos = [
         "sku": "LUSTRE-20",
         "descripcion": "Paño de lustre de 20” en fibras sintéticas de alta densidad para lustrado, lavado y mantenimiento.",
         "imagen": "/assets/img/productos/pao-rojo-1778612094107.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/paos-lavado-1784567028420.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/pano-de-20/",
         "visible": true,
         "rutas": [
@@ -3889,7 +3902,7 @@ const productos = [
         "sku": "LUSTRE-17",
         "descripcion": "Paño de lustre de 17” en fibras sintéticas de alta densidad; la abrasividad varía según el color.",
         "imagen": "/assets/img/productos/pao-blanco-1778611869906.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/paos-lavado-1784567036632.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/panos-lustre/",
         "visible": true,
         "rutas": [
@@ -3979,7 +3992,7 @@ const productos = [
                 "valor": "Superficies amplias, esquinas y zonas bajas"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-aspiradora-1784567045490.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4019,7 +4032,7 @@ const productos = [
                 "valor": "Grandes superficies"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-aspiradora-1784567068756.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4059,7 +4072,7 @@ const productos = [
                 "valor": "Liso, optimiza el flujo de aire"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-aspiradora-1784567073929.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4099,7 +4112,7 @@ const productos = [
                 "valor": "2 × 40 mm"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-aspiradora-1784567832291.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4139,7 +4152,7 @@ const productos = [
                 "valor": "Conexión manguera–accesorio"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-aspiradora-1784567061127.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4179,7 +4192,7 @@ const productos = [
                 "valor": "Rincones, maquinaria y superficies delicadas"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-aspiradora-1784567055024.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4219,7 +4232,7 @@ const productos = [
                 "valor": "Ranuras y espacios estrechos"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-aspiradora-1784567081253.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4235,7 +4248,7 @@ const productos = [
         "sku": "VELCROAUTO",
         "descripcion": "Velcro autoadhesivo de 100 mm que convierte una base en superficie de fijación para discos resinoides.",
         "imagen": "/assets/img/productos/base-adhesiva-1778611780470.webp",
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-pulidora-1784567086542.pdf",
         "storeUrl": "https://tiendalonati.com.ar/productos/velcro-auto-adhesivo/",
         "visible": true,
         "rutas": [
@@ -4302,7 +4315,7 @@ const productos = [
                 "valor": "Velcro"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/resinas-empastinado-1784567098375.pdf",
         "visible": true,
         "rutas": []
     },
@@ -4348,7 +4361,7 @@ const productos = [
                 "subcategoría": ""
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-pulidora-1784567115118.pdf",
         "visible": true
     },
     {
@@ -4388,7 +4401,7 @@ const productos = [
                 "subcategoría": ""
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-pulidora-1784567122498.pdf",
         "visible": true
     },
     {
@@ -4433,7 +4446,7 @@ const productos = [
                 "subcategoría": ""
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/acc-pulidora-1784567128370.pdf",
         "visible": true
     },
     {
@@ -4512,7 +4525,7 @@ const productos = [
                 "subcategoría": "densificadores"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/ficha-tcnica-concret-sodium-1784567193545.pdf",
         "visible": true
     },
     {
@@ -4567,7 +4580,7 @@ const productos = [
                 "subcategoría": "densificadores"
             }
         ],
-        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-litium-1778606790413.pdf",
+        "pdfUrl": "/assets/docs/ficha-tcnica-concret-litium-1784567228412.pdf",
         "visible": true
     },
     {
@@ -4661,7 +4674,7 @@ const productos = [
                 "valor": "5, 10 y 20 litros"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/ficha-tcnica-concret-max-1784567208842.pdf",
         "visible": true,
         "rutas": [
             {
@@ -4764,7 +4777,7 @@ const productos = [
                 "subcategoría": "selladores"
             }
         ],
-        "pdfUrl": "/assets/docs/ficha-tcnica---new-concret---concret-finish-1778606985264.pdf",
+        "pdfUrl": "/assets/docs/ficha-tcnica-concret-finish-1784567219919.pdf",
         "visible": true
     },
     {
@@ -4830,7 +4843,7 @@ const productos = [
                 "subcategoría": "desengrasantes"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/ficha-tcnica-concret-d-1784567245888.pdf",
         "visible": true
     },
     {
@@ -4845,7 +4858,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Aspiradora industrial de tres motores para sólidos y líquidos, con tanque de acero inoxidable de 60 litros.",
-        "imagen": "/assets/img/productos/gala-jb3.webp",
+        "imagen": "/assets/img/productos/jb3-1784565356385.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/aspiradora-gala-jb3-7v7t1/",
         "specs": [
             {
@@ -4911,13 +4924,13 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Tratamiento de 3 pasos que endurece, protege y da brillo premium a los pisos de hormigón.",
-        "imagen": "/assets/img/productos/sistema-newconcret-5l.webp",
+        "imagen": "/assets/img/productos/kit-nc-5l-sfondo-1784565744336.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/sistema-newconcret/",
         "specs": [
             {
                 "icono": "◉",
                 "clave": "Contenido",
-                "valor": "Concret Sodium, Concret Lock y Concret Max"
+                "valor": "Concret Sodium, Concret Lock y Concret Finish"
             },
             {
                 "icono": "◉",
@@ -4959,10 +4972,10 @@ const productos = [
             {
                 "sección": "mantenimiento",
                 "categoría": "productos-quimicos",
-                "subcategoría": "selladores"
+                "subcategoría": "sistema-newconcret"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/sistema-3-pasos-nc-1784565561209.pdf",
         "visible": true
     },
     {
@@ -4976,7 +4989,7 @@ const productos = [
         "cat_label": "",
         "subcategoria": "",
         "descripcion": "Paño de microfibra con velcro para mopa, para aplicar densificadores y selladores sin marcas.",
-        "imagen": "/assets/img/productos/pano-microfibra-60.webp",
+        "imagen": "/assets/img/productos/pao-mopa-4-1784565760881.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/pano-de-microfibra/",
         "specs": [
             {
@@ -5012,7 +5025,7 @@ const productos = [
                 "subcategoría": "panos"
             }
         ],
-        "pdfUrl": "",
+        "pdfUrl": "/assets/docs/aplicador-1784568012313.pdf",
         "visible": true
     }
 ];

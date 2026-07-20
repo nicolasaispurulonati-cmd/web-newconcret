@@ -1783,10 +1783,22 @@
             }
 
             if (pdf) {
-                btnFicha.href = fixUrl(pdf);
-                btnFicha.style.display = 'inline-flex';
+              btnFicha.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg> Ficha técnica';
+              btnFicha.href = fixUrl(pdf);
+              btnFicha.target = '_blank';
+              btnFicha.setAttribute('download', '');
+              btnFicha.onclick = null;
+              btnFicha.style.display = 'inline-flex';
+            } else if (shop) {
+              btnFicha.innerHTML = 'Consultar';
+              btnFicha.href = 'https://wa.me/5492342464082';
+              btnFicha.target = '_blank';
+              btnFicha.rel = 'noopener';
+              btnFicha.removeAttribute('download');
+              btnFicha.onclick = null;
+              btnFicha.style.display = 'inline-flex';
             } else {
-                btnFicha.style.display = 'none';
+              btnFicha.style.display = 'none';
             }
 
             modalBg.classList.add('open');

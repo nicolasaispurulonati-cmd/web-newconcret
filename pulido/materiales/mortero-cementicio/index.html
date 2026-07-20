@@ -420,7 +420,6 @@ function renderCard(p, delay) {
     </div>`).join('');
 
   const imgSrc = p.imagen.startsWith('http') ? p.imagen : ROOT + p.imagen.replace(/^\//, '');
-  const shop = p.tiendaUrl;
   const pdf  = p.pdfUrl;
 
   return `
@@ -543,11 +542,32 @@ function openModal(id) {
   document.getElementById('modalCat').textContent  = (p.cat_label || 'Categoría') + ' · ' + p.sku;
   document.getElementById('modalName').textContent = p.nombre;
   document.getElementById('modalDesc').textContent = p.descripcion;
-  const wp = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}%20(SKU:%20${p.sku})`;
-  document.getElementById('modalConsultar').href = wp;
+  const modalTienda = document.getElementById('modalConsultar');
+  if (p.storeUrl) {
+    modalTienda.href = p.storeUrl;
+    modalTienda.innerHTML = `Ver en tienda <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+    modalTienda.target = "_blank";
+  } else {
+    const wp = `https://wa.me/5492342464082?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.nombre)}%20(SKU:%20${p.sku})`;
+    modalTienda.href = wp;
+    modalTienda.innerHTML = `Consultar disponibilidad <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+    modalTienda.target = "_blank";
+  }
   const modalFicha = document.getElementById('modalFicha');
   if (p.pdfUrl) {
+    modalFicha.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg> Ficha técnica';
     modalFicha.href = p.pdfUrl;
+    modalFicha.target = '_blank';
+    modalFicha.setAttribute('download', '');
+    modalFicha.onclick = null;
+    modalFicha.style.display = 'inline-flex';
+  } else if (p.storeUrl) {
+    modalFicha.innerHTML = 'Consultar';
+    modalFicha.href = 'https://wa.me/5492342464082';
+    modalFicha.target = '_blank';
+    modalFicha.rel = 'noopener';
+    modalFicha.removeAttribute('download');
+    modalFicha.onclick = null;
     modalFicha.style.display = 'inline-flex';
   } else {
     modalFicha.style.display = 'none';
