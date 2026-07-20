@@ -10,7 +10,7 @@ const productos = [
         "id": "prod_mpfnbk3b",
         "nombre": "Aserradora CTE436",
         "sku": "ASERRADORA",
-        "descripcion": "Aserradora para corte de juntas",
+        "descripcion": "Aserradora para corte de juntas en pisos de hormigón, con motor trifásico de 5,5 HP, guía láser y aspiración de polvo integrada.",
         "imagen": "/assets/img/productos/aserradora-1-1779377279250.webp",
         "pdfUrl": "/assets/docs/corta-juntas-2-1779377320986.pdf",
         "storeUrl": "",
@@ -38,7 +38,11 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "specs": []
+        "specs": [
+            { "icono": "◉", "clave": "Potencia de corte", "valor": "5,5 HP" },
+            { "icono": "◉", "clave": "Profundidad máx. de corte", "valor": "65 mm" },
+            { "icono": "◉", "clave": "Voltaje", "valor": "380V trifásico" }
+        ]
     },
     {
         "id": "prod_mp2xi1g1",
@@ -1005,7 +1009,7 @@ const productos = [
                 "subcategoría": "grouting"
             }
         ],
-        "pdfUrl": "/assets/docs/1776186110601_Ficha_Tecnica_Concret_Fix.pdf",
+        "pdfUrl": "/assets/docs/ficha-tecnica-concret-fix-1784316616373.pdf",
         "visible": true
     },
     {
@@ -1309,7 +1313,7 @@ const productos = [
             {
                 "icono": "◉",
                 "clave": "Presentación",
-                "valor": "5, 20 y 200 litros"
+                "valor": "5, 10 y 20 litros"
             },
             {
                 "icono": "◉",
@@ -1406,7 +1410,7 @@ const productos = [
             {
                 "icono": "◉",
                 "clave": "Presentación",
-                "valor": "Bidón de 5 litros"
+                "valor": "5, 10 y 20 litros"
             },
             {
                 "icono": "◉",
@@ -4447,7 +4451,7 @@ const productos = [
             {
                 "icono": "◉",
                 "clave": "Presentación",
-                "valor": "5, 20 y 200 litros"
+                "valor": "5, 10 y 20 litros"
             },
             {
                 "icono": "◉",
@@ -4539,6 +4543,11 @@ const productos = [
                 "icono": "◉",
                 "clave": "Ventaja",
                 "valor": "No forma película ni altera el color"
+            },
+            {
+                "icono": "◉",
+                "clave": "Presentación",
+                "valor": "5, 10 y 20 litros"
             }
         ],
         "rutas": [
@@ -4589,6 +4598,11 @@ const productos = [
                 "icono": "◉",
                 "clave": "Uso",
                 "valor": "Ladrillos, lajas, piedras y mampostería"
+            },
+            {
+                "icono": "◉",
+                "clave": "Presentación",
+                "valor": "5, 10 y 20 litros"
             }
         ],
         "rutas": [
@@ -4640,6 +4654,11 @@ const productos = [
                 "icono": "◉",
                 "clave": "Efecto",
                 "valor": "Alto brillo sin ceras"
+            },
+            {
+                "icono": "◉",
+                "clave": "Presentación",
+                "valor": "5, 10 y 20 litros"
             }
         ],
         "pdfUrl": "",
@@ -4706,6 +4725,11 @@ const productos = [
                 "icono": "◉",
                 "clave": "Uso",
                 "valor": "Interior y exterior, tránsito medio"
+            },
+            {
+                "icono": "◉",
+                "clave": "Presentación",
+                "valor": "5, 10 y 20 litros"
             }
         ],
         "rutas": [

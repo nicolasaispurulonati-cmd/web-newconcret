@@ -2782,6 +2782,17 @@ body {
     flex-wrap: wrap;
 }
 
+/* en las páginas de producto el CTA va más bajo que en landing/capacitación/nosotros */
+#cta-section.cta-nos,
+.cta-nos.hide-mobile {
+    min-height: 40vh;
+    padding: 3.5rem 4rem;
+}
+#cta-section.cta-nos .cta-nos-sub,
+.cta-nos.hide-mobile .cta-nos-sub {
+    margin-bottom: 2rem;
+}
+
 /* -- FOOTER -- */
 .footer {
     background: var(--nc-carbon);
