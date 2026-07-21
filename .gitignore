@@ -134,3 +134,16 @@ skills-lock.json
 .impeccable/
 .bin/
 agent/
+
+# Scripts de un solo uso / scratch (migraciones puntuales, debug). No versionar:
+# el tooling permanente (seo, optimize-*, set-admin-password) no matchea estos patrones.
+scripts/fix_*.js
+scripts/gen_*.js
+scripts/migrate_*.js
+scripts/check_*.js
+scripts/debug_*.js
+scripts/temp_*.js
+scripts/scan-*.js
+
+# Config de Vercel (se deja de usar tras migrar el hosting)
+.vercel/
