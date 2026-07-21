@@ -66,6 +66,14 @@ const ROOT = __dirname;
 
 const PORT = Number(process.env.PORT) || 8080;
 const HOST = process.env.HOST || '127.0.0.1';   // solo localhost por defecto
+
+// Cookie de sesión: el flag `secure` obliga a que viaje solo por HTTPS. En
+// localhost (HTTP) debe quedar en false o el navegador no la manda. Se activa
+// automáticamente al escuchar en una interfaz que no sea loopback; se puede
+// forzar con COOKIE_SECURE=true/false (ej. HTTPS terminado por un reverse proxy).
+const COOKIE_SECURE = process.env.COOKIE_SECURE !== undefined
+  ? process.env.COOKIE_SECURE === 'true'
+  : !['127.0.0.1', 'localhost', '::1'].includes(HOST);
 const SESSION_TTL = 8 * 60 * 60 * 1000;          // 8 horas
 const ADMIN_USER  = process.env.ADMIN_USER || 'admin';
 const PASS_HASH   = process.env.ADMIN_PASSWORD_HASH || '';  // formato salt:hash (scrypt)
@@ -150,7 +158,7 @@ app.post('/api/login', (req, res) => {
     attempts.delete(ip);
     const token = signToken({ u: ADMIN_USER, exp: Date.now() + SESSION_TTL });
     res.cookie('nc_session', token, {
-      httpOnly: true, sameSite: 'strict', secure: false, path: '/', maxAge: SESSION_TTL
+      httpOnly: true, sameSite: 'strict', secure: COOKIE_SECURE, path: '/', maxAge: SESSION_TTL
     });
     return res.json({ ok: true });
   }
