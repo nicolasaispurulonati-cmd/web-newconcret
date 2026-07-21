@@ -48,7 +48,7 @@ function readProductos() {
 
 // Páginas a NO indexar (huérfanas / duplicadas / legacy). No reciben canonical
 // ni entran al sitemap. newconcret-construccion.html duplica /construccion/.
-const EXCLUDE = new Set(['newconcret-construccion.html']);
+const EXCLUDE = new Set(['newconcret-construccion.html', '404.html']);
 
 // Lista todas las páginas .html deployables (excluye tooling, admin, fonts, blog).
 function listPages() {

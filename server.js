@@ -384,6 +384,14 @@ app.get('/{*splat}', (req, res, next) => {
   next();
 });
 
+// ── 404: página de error de la marca ───────────────────────────────────────
+// Cualquier ruta que no matcheó estáticos, API ni el fallback de directorios
+// cae acá. Sirve el 404.html con el status correcto (paridad con Vercel, que
+// lo hace automáticamente). Útil al autohospedar en un servidor Node propio.
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(ROOT, '404.html'));
+});
+
 // ── Start ──────────────────────────────────────────────────────────────────
 app.listen(PORT, HOST, () => {
   console.log(`\n✓ NewConcret Server  →  http://localhost:${PORT}`);
