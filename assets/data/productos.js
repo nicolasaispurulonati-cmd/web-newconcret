@@ -4915,7 +4915,7 @@ const productos = [
     {
         "id": "sistema-newconcret-5l",
         "sku": "SISTEMANEWCONCRET5L",
-        "nombre": "Sistema NewConcret 5L",
+        "nombre": "Sistema 3 Pasos",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -4972,7 +4972,7 @@ const productos = [
             {
                 "sección": "mantenimiento",
                 "categoría": "productos-quimicos",
-                "subcategoría": "sistema-newconcret"
+                "subcategoría": "sistema-3-pasos"
             }
         ],
         "pdfUrl": "/assets/docs/sistema-3-pasos-nc-1784565561209.pdf",
