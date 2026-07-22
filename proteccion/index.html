@@ -44,28 +44,24 @@
       linear-gradient(105deg, rgba(10,10,10,.95) 0%, rgba(10,10,10,.75) 38%, rgba(10,10,10,.30) 70%, rgba(10,10,10,.55) 100%),
       linear-gradient(to top, var(--nc-black) 2%, rgba(10,10,10,0) 45%); }
   .s3-hero-inner { position: relative; z-index: 2; width: 100%; }
-  .s3-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 3rem; padding-bottom: clamp(2rem, 4vw, 3.5rem); }
+  .s3-hero-grid { padding-bottom: clamp(2rem, 4vw, 3.5rem); }
   .s3-hero-h1 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; line-height: 0.86; letter-spacing: -0.015em; font-size: clamp(3.4rem, 12vw, 9rem); margin: 1.6rem 0 0; color: var(--nc-white); }
   .s3-hero-h1 .red { color: var(--nc-red-hot); }
   .s3-hero-p { max-width: 46ch; margin-top: 1.8rem; font-family: var(--font-b); font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.6; color: var(--nc-light); }
   .s3-hero-acts { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.4rem; }
 
-  /* Botones */
-  .s3-btn { font-family: var(--font-m); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; text-decoration: none; padding: 1.05rem 1.9rem; display: inline-flex; align-items: center; gap: 0.65rem; border: 1px solid transparent; transition: background .35s var(--expo), color .35s var(--expo), border-color .35s var(--expo), transform .2s var(--expo); }
+  /* Botones — mismo sistema tipográfico que el resto del sitio (.btn-p / .btn-ft en estilo.css) */
+  .s3-btn { font-family: var(--font-d); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 0.95rem 1.9rem; display: inline-flex; align-items: center; gap: 0.7rem; transition: transform .2s, color .2s, border-color .2s, background .2s; }
   .s3-btn svg { width: 15px; height: 15px; }
-  .s3-btn:active { transform: translateY(1px); }
-  .s3-btn-primary { background: var(--nc-red); color: #fff; border-color: var(--nc-red); }
-  .s3-btn-primary:hover { background: var(--nc-white); color: var(--nc-black); border-color: var(--nc-white); }
-  .s3-btn-ghost { background: transparent; color: var(--nc-white); border-color: var(--nc-steel-2); }
-  .s3-btn-ghost:hover { border-color: var(--nc-white); background: rgba(255,255,255,0.04); }
+  .s3-btn-primary { position: relative; overflow: hidden; background: var(--nc-red); color: #fff; clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%); }
+  .s3-btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .14), transparent); transition: left .5s; }
+  .s3-btn-primary:hover::before { left: 100%; }
+  .s3-btn-primary:hover { transform: translateY(-2px); }
+  .s3-btn-ghost { font-weight: 600; font-size: 0.72rem; letter-spacing: 0.14em; gap: 0.45rem; color: var(--nc-white); background: transparent; border: 1px solid var(--nc-steel-2); padding: 0.85rem 1.3rem; }
+  .s3-btn-ghost:hover { color: #fff; border-color: var(--nc-ash); background: rgba(255, 255, 255, .1); }
   .s3-btn-sm { padding: 0.75rem 1.25rem; font-size: 0.66rem; letter-spacing: 0.12em; }
-
-  /* Stats verticales del hero (columna derecha) */
-  .s3-hero-stats { display: flex; flex-direction: column; gap: 0; border-left: 1px solid var(--nc-steel); padding-left: 2rem; min-width: 190px; }
-  .s3-hero-stat { padding: 0.9rem 0; }
-  .s3-hero-stat + .s3-hero-stat { border-top: 1px solid var(--nc-steel); }
-  .s3-hero-stat b { display: block; font-family: var(--font-d); font-weight: 800; font-size: 2.4rem; line-height: 1; color: var(--nc-white); }
-  .s3-hero-stat span { font-family: var(--font-m); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--nc-ash); }
+  .s3-btn-ficha { margin-top: 1.1rem; padding: 0.6rem 1.05rem; font-size: 0.6rem; gap: 0.5rem; }
+  .s3-btn-ficha svg { width: 12px; height: 12px; }
 
   /* Strip inferior — los 4 pasos */
   .s3-hero-strip { position: relative; z-index: 2; border-top: 1px solid var(--nc-steel); display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -173,8 +169,9 @@
 
   /* Equipo recomendado */
   .s3-tools { margin-top: 2.4rem; border-top: 1px solid var(--nc-steel); display: grid; grid-template-columns: repeat(3, 1fr); }
-  .s3-tool { padding: 1.5rem var(--pad) 1.5rem 0; border-right: 1px solid var(--nc-steel); text-decoration: none; transition: background .3s; }
-  .s3-tool:last-child { border-right: none; }
+  .s3-tool { padding: 1.6rem clamp(1.2rem, 2.5vw, 2.2rem); border-right: 1px solid var(--nc-steel); text-decoration: none; transition: background .3s; }
+  .s3-tool:first-child { padding-left: 0; }
+  .s3-tool:last-child { border-right: none; padding-right: 0; }
   .s3-tool:hover { background: rgba(255,255,255,0.02); }
   .s3-tool span { font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--nc-red-hot); }
   .s3-tool b { display: block; font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: 1.05rem; color: var(--nc-white); margin-top: 0.4rem; }
@@ -196,26 +193,11 @@
   .s3-faq-a-inner { padding: 0 0 1.8rem; }
   .s3-faq-a p { font-family: var(--font-b); font-size: 0.98rem; line-height: 1.7; color: var(--nc-ash); max-width: 68ch; }
 
-  /* ═══ CTA FINAL ═══ */
-  .s3-cta { position: relative; overflow: hidden; }
-  .s3-cta-bg { position: absolute; inset: 0; z-index: 0; }
-  .s3-cta-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.28; }
-  .s3-cta-ov { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, var(--nc-black) 10%, rgba(10,10,10,.6) 100%); }
-  .s3-cta-inner { position: relative; z-index: 2; padding: clamp(3.5rem, 6vw, 5.5rem) 0; }
-  .s3-cta-h2 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: clamp(2.2rem, 5.5vw, 4.5rem); line-height: 0.92; color: var(--nc-white); max-width: 18ch; }
-  .s3-cta-h2 .red { color: var(--nc-red-hot); }
-  .s3-cta-sub { font-family: var(--font-b); font-size: 1rem; color: var(--nc-light); margin-top: 1.4rem; }
-  .s3-cta-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem; margin-top: 2.4rem; }
-  .s3-cta-phone { font-family: var(--font-d); font-weight: 800; font-size: 1.5rem; color: var(--nc-white); letter-spacing: 0.02em; }
+  /* CTA final: usa el componente global .cta-nos de estilo.css */
 
   /* ═══ RESPONSIVE ═══ */
   @media (max-width: 900px) {
     .s3-hero { min-height: 92dvh; padding-top: 6rem; }
-    .s3-hero-grid { grid-template-columns: 1fr; gap: 2.2rem; }
-    .s3-hero-stats { flex-direction: row; border-left: none; border-top: 1px solid var(--nc-steel); padding-left: 0; padding-top: 1rem; min-width: 0; gap: 2rem; }
-    .s3-hero-stat { padding: 0; }
-    .s3-hero-stat + .s3-hero-stat { border-top: none; }
-    .s3-hero-stat b { font-size: 1.9rem; }
     .s3-hero-strip { grid-template-columns: repeat(2, 1fr); }
     .s3-hero-strip a { border-bottom: 1px solid var(--nc-steel); padding: 1.1rem var(--pad); }
     .s3-hero-strip a:nth-child(2) { border-right: none; }
@@ -312,12 +294,6 @@
             <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="s3-btn s3-btn-ghost">Consultar asesoramiento</a>
           </div>
         </div>
-
-        <div class="s3-hero-stats s3-reveal" style="--i:2">
-          <div class="s3-hero-stat"><b>25</b><span>Años de garantía</span></div>
-          <div class="s3-hero-stat"><b>+16</b><span>Años de rendimiento</span></div>
-          <div class="s3-hero-stat"><b>3</b><span>Pasos + preparación</span></div>
-        </div>
       </div>
     </div>
   </div>
@@ -374,6 +350,10 @@
         </div>
         <span class="s3-step-prod">Concret <b>D</b></span>
         <span class="s3-step-role">Preparación · Detergente desengrasante</span>
+        <a href="../assets/docs/ficha-tcnica-concret-d-1784567245888.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret D">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Ficha técnica (PDF)
+        </a>
       </div>
       <div class="s3-step-body">
         <p>El punto de partida obligatorio. Con Tecnología de Doble Polaridad Activa (DPA), Concret D rompe la adherencia de la suciedad y encapsula grasas incluso en superficies porosas, eliminando restos orgánicos y contaminantes que impedirían la correcta reacción del sistema. Una superficie limpia es lo que asegura que el densificado y el sellado alcancen su máxima eficacia.</p>
@@ -392,12 +372,6 @@
           <div class="s3-meta-cell"><b>Fregar</b><span>Cepillo o mopa</span></div>
           <div class="s3-meta-cell"><b>Enjuagar</b><span>Y secar antes del Paso 1</span></div>
         </div>
-        <div style="margin-top: 1.4rem;">
-          <a href="../assets/docs/ficha-tcnica-concret-d-1784567245888.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm">
-            <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Ficha técnica Concret D
-          </a>
-        </div>
       </div>
     </article>
 
@@ -410,6 +384,10 @@
         </div>
         <span class="s3-step-prod">Concret <b>Sodium</b></span>
         <span class="s3-step-role">Densificador de alta penetración</span>
+        <a href="../assets/docs/ficha-tcnica-concret-sodium-1784567193545.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret Sodium">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Ficha técnica (PDF)
+        </a>
       </div>
       <div class="s3-step-body">
         <p>La base de la resistencia. Penetra en la red capilar del hormigón y reacciona con la cal libre para cerrar los poros desde el interior. El resultado es una superficie mucho más dura, resistente al desgaste y totalmente libre de polvo. Apto tanto para hormigón nuevo como para pisos existentes que requieran recuperación.</p>
@@ -428,12 +406,6 @@
           <div class="s3-meta-cell"><b>30 min</b><span>Reacción (gel resbaladizo)</span></div>
           <div class="s3-meta-cell"><b>Nuevo o viejo</b><span>Sobre cualquier hormigón</span></div>
         </div>
-        <div style="margin-top: 1.4rem;">
-          <a href="../assets/docs/ficha-tcnica-concret-sodium-1784567193545.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm">
-            <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Ficha técnica Concret Sodium
-          </a>
-        </div>
       </div>
     </article>
 
@@ -446,6 +418,10 @@
         </div>
         <span class="s3-step-prod">Concret <b>Lock</b></span>
         <span class="s3-step-role">Impermeabilizante · Escudo protector</span>
+        <a href="../assets/docs/ficha-tcnica---new-concret---concret-lock-1778606837774.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret Lock">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Ficha técnica (PDF)
+        </a>
       </div>
       <div class="s3-step-body">
         <p>El escudo invisible. Una vez densificado el piso, Concret Lock crea una barrera de alta tecnología que bloquea la penetración de agua, aceites y contaminantes sin alterar el aspecto natural del hormigón. Permite que el sustrato libere vapor de agua, evitando ampollamientos y desprendimientos, y protege el densificado del paso anterior.</p>
@@ -464,12 +440,6 @@
           <div class="s3-meta-cell"><b>2ª mano</b><span>Húmedo sobre húmedo si es poroso</span></div>
           <div class="s3-meta-cell"><b>Curar</b><span>Antes del Paso 3</span></div>
         </div>
-        <div style="margin-top: 1.4rem;">
-          <a href="../assets/docs/ficha-tcnica---new-concret---concret-lock-1778606837774.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm">
-            <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Ficha técnica Concret Lock
-          </a>
-        </div>
       </div>
     </article>
 
@@ -482,6 +452,10 @@
         </div>
         <span class="s3-step-prod">Concret <b>Finish</b></span>
         <span class="s3-step-role">Sellador de altos sólidos</span>
+        <a href="../assets/docs/ficha-tcnica-concret-finish-1784567219919.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret Finish">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Ficha técnica (PDF)
+        </a>
       </div>
       <div class="s3-step-body">
         <p>El toque final de distinción. Sellador de altos sólidos que produce un efecto espejo sobre el hormigón: brillo superior, suavidad excepcional al tacto y una capa de sacrificio adicional contra el tráfico intenso. Facilita el mantenimiento diario y eleva la estética al máximo nivel.</p>
@@ -500,12 +474,6 @@
           <div class="s3-meta-cell"><b>Lustradora</b><span>Alta velocidad + paño blanco</span></div>
           <div class="s3-meta-cell"><b>Efecto espejo</b><span>Terminación final</span></div>
         </div>
-        <div style="margin-top: 1.4rem;">
-          <a href="../assets/docs/ficha-tcnica-concret-finish-1784567219919.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm">
-            <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Ficha técnica Concret Finish
-          </a>
-        </div>
       </div>
     </article>
 
@@ -516,13 +484,13 @@
         <p style="font-family: var(--font-b); font-size: 0.92rem; color: var(--nc-ash); margin: 0;">Descargá la ficha técnica unificada o adquirí el sistema en nuestra tienda oficial.</p>
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: 0.9rem;">
-        <a href="../assets/docs/sistema-3-pasos-nc-1784565561209.pdf" target="_blank" download class="s3-btn s3-btn-primary">
-          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          Descargar Ficha Técnica del Sistema 3 Pasos
-        </a>
-        <a href="https://tiendalonati.com.ar/productos/sistema-newconcret/" target="_blank" rel="noopener" class="s3-btn s3-btn-ghost">
+        <a href="https://tiendalonati.com.ar/productos/sistema-newconcret/" target="_blank" rel="noopener" class="s3-btn s3-btn-primary">
+          Ver en tienda
           <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Ver en tienda el Sistema 3 Pasos
+        </a>
+        <a href="../assets/docs/sistema-3-pasos-nc-1784565561209.pdf" target="_blank" download class="s3-btn s3-btn-ghost">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Ficha técnica del sistema (PDF)
         </a>
       </div>
     </div>
@@ -587,9 +555,9 @@
           <p>Manteniendo el piso con Concret D, la garantía de 25 años se extiende a una garantía de por vida. El uso de químicos ajenos al sistema anula la cobertura técnica.</p>
         </div>
         <div style="margin-top: 1.8rem;">
-          <a href="../assets/docs/sistema-3-pasos-nc-garantia.pdf" target="_blank" download class="s3-btn s3-btn-primary">
+          <a href="../assets/docs/sistema-3-pasos-nc-garantia.pdf" target="_blank" download class="s3-btn s3-btn-ghost">
             <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Descargar Garantía
+            Descargar garantía (PDF)
           </a>
         </div>
       </div>
@@ -607,9 +575,9 @@
         <p class="s3-maint-p">Resistencia no es indestructibilidad. El cuidado diario con Concret D mantiene el brillo, protege el sellado y es lo que extiende la garantía de por vida. Un plan de limpieza frecuente es significativamente más eficiente y económico que una restauración profunda.</p>
         <p class="s3-maint-p">Ver la <a href="../mantenimiento/productos-quimicos/desengrasantes/" class="s3-inline-link">gama de mantenimiento y desengrasantes</a> recomendada para conservar el piso.</p>
         <div style="margin-top: 1.8rem;">
-          <a href="../assets/docs/sistema-3-pasos-nc-mantenimiento.pdf" target="_blank" download class="s3-btn s3-btn-primary">
+          <a href="../assets/docs/sistema-3-pasos-nc-mantenimiento.pdf" target="_blank" download class="s3-btn s3-btn-ghost">
             <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Descargar Mantenimiento
+            Guía de mantenimiento (PDF)
           </a>
         </div>
       </div>
@@ -664,21 +632,24 @@
   </div>
 </section>
 
-<!-- ═══════════ CTA FINAL ═══════════ -->
-<section class="s3-cta">
-  <div class="s3-cta-bg"><img src="../assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp" alt=""></div>
-  <div class="s3-cta-ov"></div>
-  <div class="s3-cta-inner">
-    <div class="s3-wrap">
-      <h2 class="s3-cta-h2 s3-reveal">¿Listo para proteger <span class="red">tu piso?</span></h2>
-      <p class="s3-cta-sub s3-reveal" style="--i:1">Asesoramiento técnico sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
-      <div class="s3-cta-acts s3-reveal" style="--i:2">
-        <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="s3-btn s3-btn-primary">Consultar por WhatsApp
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-        </a>
-        <span class="s3-cta-phone">+54 9 2342 46-4082</span>
-      </div>
+<!-- ═══════════ CTA FINAL (componente global .cta-nos) ═══════════ -->
+<section class="cta-nos">
+  <div class="cta-nos-bg">
+    <img src="../assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp" alt="">
+  </div>
+  <div class="cta-nos-ov"></div>
+  <div class="cta-nos-content s3-reveal">
+    <h2 class="cta-nos-h2">¿Listo para proteger<br><span>tu piso?</span></h2>
+    <p class="cta-nos-sub">Asesoramiento sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
+    <div class="cta-nos-acts">
+      <a href="https://wa.me/5492342464082" class="btn-p" target="_blank" rel="noopener">
+        Consultar por WhatsApp
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </a>
     </div>
+    <div class="cta-phone">+54 9 2342 46-4082</div>
   </div>
 </section>
 
