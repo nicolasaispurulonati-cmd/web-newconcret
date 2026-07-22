@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 5. Active Link Highlighting ──
   const currentPath = window.location.pathname;
-  document.querySelectorAll('.nav-simple, .nav-cat, .mob-simple a').forEach(a => {
+  document.querySelectorAll('.nav-simple, .nav-cat, .mob-simple a, .mob-cat-btn').forEach(a => {
     let href = a.getAttribute('href');
     if (!href) return;
     const parts = href.split('/');

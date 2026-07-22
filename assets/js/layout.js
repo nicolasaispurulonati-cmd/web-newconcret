@@ -176,7 +176,7 @@
     <!-- Protección -->
     <div class="mob-cat">
       <a href="${root}proteccion/" class="mob-cat-btn" style="text-decoration:none;">
-        <div class="mob-cat-left"><span class="mob-cat-name">Protección</span></div>
+        <div class="mob-cat-left"><span class="mob-cat-n">03</span><span class="mob-cat-name">Protección</span></div>
         <div class="mob-arrow"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
       </a>
     </div>
@@ -184,7 +184,7 @@
     <!-- Pulido -->
     <div class="mob-cat">
       <button class="mob-cat-btn" data-sub="sub-pulido" aria-expanded="false">
-        <div class="mob-cat-left"><span class="mob-cat-n">03</span><span class="mob-cat-name">Pulido</span></div>
+        <div class="mob-cat-left"><span class="mob-cat-n">04</span><span class="mob-cat-name">Pulido</span></div>
         <div class="mob-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
       </button>
       <div class="mob-sub" id="sub-pulido">
@@ -201,7 +201,7 @@
     <!-- Mantenimiento -->
     <div class="mob-cat">
       <button class="mob-cat-btn" data-sub="sub-mantenimiento" aria-expanded="false">
-        <div class="mob-cat-left"><span class="mob-cat-n">04</span><span class="mob-cat-name">Mantenimiento</span></div>
+        <div class="mob-cat-left"><span class="mob-cat-n">05</span><span class="mob-cat-name">Mantenimiento</span></div>
         <div class="mob-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
       </button>
       <div class="mob-sub" id="sub-mantenimiento">
