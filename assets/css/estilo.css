@@ -2872,7 +2872,7 @@ body {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 4rem;
-    margin-bottom: 5rem;
+    margin-bottom: 2.5rem;
 }
 
 .footer-brand {

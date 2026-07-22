@@ -171,11 +171,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://newconcret.com/mantenimiento/productos-quimicos/sistema-3-pasos/</loc>
-    <lastmod>2026-07-21</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://newconcret.com/nosotros/</loc>
     <lastmod>2026-07-20</lastmod>
     <priority>0.8</priority>
@@ -183,6 +178,11 @@
   <url>
     <loc>https://newconcret.com/productos/</loc>
     <lastmod>2026-07-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://newconcret.com/proteccion/</loc>
+    <lastmod>2026-07-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

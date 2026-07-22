@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema 3 Pasos | Protección | NewConcret</title>
+<meta name="description" content="El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.">
+<link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
+<link rel="stylesheet" href="../assets/css/estilo.css?v=42">
+<link rel="stylesheet" href="../assets/css/nav.css?v=1.4">
+<style>
+  /* ══════════════════════════════════════════════════════════
+     PROTECCIÓN · Sistema 3 Pasos — hoja de estilo de página
+     Usa los tokens de marca (estilo.css). Prefijo s3- para aislar.
+     ══════════════════════════════════════════════════════════ */
+
+  body { background: var(--nc-black); color: var(--nc-white); cursor: none; }
+  .js-loaded body { cursor: none; }
+  @media (pointer: coarse) { #cur, #ring { display: none; } body { cursor: auto; } }
+  #cur, #ring { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 20000; border-radius: 50%; transform: translate(-50%, -50%); transition: opacity 0.3s; }
+  #cur { width: 6px; height: 6px; background: var(--nc-red); }
+  #ring { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); }
+  body.cur-grow #ring { width: 60px; height: 60px; background: rgba(193,18,31,0.1); border-color: var(--nc-red); }
+
+  .s3 { --pad: clamp(1.25rem, 5vw, 6rem); }
+  .s3-wrap { max-width: 1400px; margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+  /* ── Reveal (IntersectionObserver → .in) ── */
+  .s3-reveal { opacity: 0; transform: translateY(30px); transition: opacity .9s var(--expo), transform .9s var(--expo); transition-delay: calc(var(--i, 0) * 85ms); will-change: opacity, transform; }
+  .s3-reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .s3-reveal { opacity: 1 !important; transform: none !important; transition: none; } }
+
+  /* ── Eyebrow / section label ── */
+  .s3-eyebrow { display: inline-flex; align-items: center; gap: 0.85rem; font-family: var(--font-m); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.28em; color: var(--nc-red-hot); font-weight: 500; }
+  .s3-eyebrow::before { content: ''; width: 34px; height: 1px; background: var(--nc-red); display: inline-block; }
+
+  /* ═══ HERO ═══ */
+  .s3-hero { position: relative; min-height: 100dvh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; padding: 8rem 0 0; }
+  .s3-hero-inner { flex: 0 0 auto; }
+  .s3-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .s3-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .s3-hero-ov { position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(105deg, rgba(10,10,10,.95) 0%, rgba(10,10,10,.75) 38%, rgba(10,10,10,.30) 70%, rgba(10,10,10,.55) 100%),
+      linear-gradient(to top, var(--nc-black) 2%, rgba(10,10,10,0) 45%); }
+  .s3-hero-inner { position: relative; z-index: 2; width: 100%; }
+  .s3-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 3rem; padding-bottom: clamp(2rem, 4vw, 3.5rem); }
+  .s3-hero-h1 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; line-height: 0.86; letter-spacing: -0.015em; font-size: clamp(3.4rem, 12vw, 9rem); margin: 1.6rem 0 0; color: var(--nc-white); }
+  .s3-hero-h1 .red { color: var(--nc-red-hot); }
+  .s3-hero-p { max-width: 46ch; margin-top: 1.8rem; font-family: var(--font-b); font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.6; color: var(--nc-light); }
+  .s3-hero-acts { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.4rem; }
+
+  /* Botones */
+  .s3-btn { font-family: var(--font-m); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; text-decoration: none; padding: 1.05rem 1.9rem; display: inline-flex; align-items: center; gap: 0.65rem; border: 1px solid transparent; transition: background .35s var(--expo), color .35s var(--expo), border-color .35s var(--expo), transform .2s var(--expo); }
+  .s3-btn svg { width: 15px; height: 15px; }
+  .s3-btn:active { transform: translateY(1px); }
+  .s3-btn-primary { background: var(--nc-red); color: #fff; border-color: var(--nc-red); }
+  .s3-btn-primary:hover { background: var(--nc-white); color: var(--nc-black); border-color: var(--nc-white); }
+  .s3-btn-ghost { background: transparent; color: var(--nc-white); border-color: var(--nc-steel-2); }
+  .s3-btn-ghost:hover { border-color: var(--nc-white); background: rgba(255,255,255,0.04); }
+
+  /* Stats verticales del hero (columna derecha) */
+  .s3-hero-stats { display: flex; flex-direction: column; gap: 0; border-left: 1px solid var(--nc-steel); padding-left: 2rem; min-width: 190px; }
+  .s3-hero-stat { padding: 0.9rem 0; }
+  .s3-hero-stat + .s3-hero-stat { border-top: 1px solid var(--nc-steel); }
+  .s3-hero-stat b { display: block; font-family: var(--font-d); font-weight: 800; font-size: 2.4rem; line-height: 1; color: var(--nc-white); }
+  .s3-hero-stat span { font-family: var(--font-m); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--nc-ash); }
+
+  /* Strip inferior — los 4 pasos */
+  .s3-hero-strip { position: relative; z-index: 2; border-top: 1px solid var(--nc-steel); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .s3-hero-strip a { text-decoration: none; padding: 1.4rem var(--pad); display: flex; align-items: baseline; gap: 0.9rem; border-right: 1px solid var(--nc-steel); transition: background .35s var(--expo); }
+  .s3-hero-strip a:last-child { border-right: none; }
+  .s3-hero-strip a:hover { background: rgba(255,255,255,0.03); }
+  .s3-hs-n { font-family: var(--font-m); font-size: 0.62rem; color: var(--nc-red-hot); letter-spacing: 0.1em; }
+  .s3-hs-name { font-family: var(--font-d); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--nc-light); }
+  .s3-hs-role { display: block; font-family: var(--font-b); font-size: 0.72rem; color: var(--nc-ash); margin-top: 0.15rem; }
+
+  /* ═══ INTRO / PROMESA ═══ */
+  .s3-intro { padding: clamp(4.5rem, 9vw, 9rem) 0; border-bottom: 1px solid var(--nc-steel); }
+  .s3-intro-grid { display: grid; grid-template-columns: 0.9fr 1.6fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .s3-intro-lead { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: clamp(1.8rem, 3.4vw, 3rem); line-height: 1.02; letter-spacing: -0.01em; color: var(--nc-white); }
+  .s3-intro-lead .red { color: var(--nc-red-hot); }
+  .s3-intro-p { font-family: var(--font-b); font-size: 1.05rem; line-height: 1.7; color: var(--nc-light); max-width: 60ch; }
+  .s3-outcomes { margin-top: 2.6rem; border-top: 1px solid var(--nc-steel); }
+  .s3-outcome { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem 1.6rem; padding: 1.5rem 0; border-bottom: 1px solid var(--nc-steel); align-items: baseline; }
+  .s3-outcome-k { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--nc-white); white-space: nowrap; }
+  .s3-outcome-k i { font-style: normal; color: var(--nc-red-hot); }
+  .s3-outcome-d { font-family: var(--font-b); font-size: 0.95rem; line-height: 1.6; color: var(--nc-ash); }
+
+  /* ═══ SECTION HEAD genérico ═══ */
+  .s3-sec { padding: clamp(4.5rem, 9vw, 9rem) 0; }
+  .s3-sec-head { max-width: 720px; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+  .s3-sec-h2 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.01em; margin-top: 1.3rem; color: var(--nc-white); }
+  .s3-sec-h2 .red { color: var(--nc-red-hot); }
+  .s3-sec-intro { font-family: var(--font-b); font-size: 1.02rem; line-height: 1.65; color: var(--nc-ash); margin-top: 1.4rem; max-width: 56ch; }
+
+  /* ═══ PASOS ═══ */
+  .s3-steps { border-top: 1px solid var(--nc-steel); background: var(--nc-black); }
+  .s3-step { position: relative; display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(1.5rem, 5vw, 4.5rem); padding: clamp(3rem, 6vw, 5.5rem) 0; border-bottom: 1px solid var(--nc-steel); align-items: start; }
+  .s3-step:nth-child(even) .s3-step-media { order: 2; }
+  .s3-step-media { position: sticky; top: 110px; text-align: center; }
+  .s3-step-visual { position: relative; display: flex; align-items: center; justify-content: center; min-height: clamp(250px, 26vw, 340px); }
+  .s3-step-visual::before { content: ''; position: absolute; z-index: 0; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 74%; aspect-ratio: 1; background: radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%); pointer-events: none; }
+  .s3-step-visual .s3-step-num { position: absolute; z-index: 0; top: 50%; transform: translateY(-50%); pointer-events: none; }
+  .s3-step:nth-child(odd) .s3-step-visual .s3-step-num { left: 0; right: auto; }
+  .s3-step:nth-child(even) .s3-step-visual .s3-step-num { right: 0; left: auto; }
+  .s3-step-num { font-family: var(--font-d); font-weight: 900; font-size: clamp(4.5rem, 12vw, 9.5rem); line-height: 0.8; color: transparent; -webkit-text-stroke: 1px var(--nc-steel-2); letter-spacing: -0.02em; }
+  .s3-step-img { position: relative; z-index: 1; height: clamp(210px, 23vw, 300px); width: auto; object-fit: contain; filter: drop-shadow(0 20px 34px rgba(0,0,0,0.55)); animation: s3-float 6.5s ease-in-out infinite; }
+  @keyframes s3-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  @media (prefers-reduced-motion: reduce) { .s3-step-img { animation: none; } }
+  .s3-step-prod { display: block; font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: clamp(1.4rem, 2.3vw, 1.9rem); line-height: 1; color: var(--nc-white); margin-top: 1rem; }
+  .s3-step-prod b { color: var(--nc-red-hot); font-weight: 800; }
+  .s3-step-role { display: block; margin-top: 0.55rem; font-family: var(--font-m); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--nc-ash); }
+  .s3-step-body p { font-family: var(--font-b); font-size: 1.02rem; line-height: 1.7; color: var(--nc-light); max-width: 56ch; }
+  .s3-feats { list-style: none; margin: 1.8rem 0 0; padding: 0; display: flex; flex-direction: column; }
+  .s3-feats li { display: grid; grid-template-columns: auto 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--nc-steel); }
+  .s3-feats li svg { width: 18px; height: 18px; color: var(--nc-red-hot); margin-top: 0.15rem; flex-shrink: 0; }
+  .s3-feat-k { font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.02em; color: var(--nc-white); }
+  .s3-feat-d { display: block; font-family: var(--font-b); font-size: 0.9rem; line-height: 1.55; color: var(--nc-ash); margin-top: 0.2rem; }
+  .s3-step-meta { display: flex; flex-wrap: wrap; gap: 0; margin-top: 1.8rem; border: 1px solid var(--nc-steel); }
+  .s3-meta-cell { flex: 1 1 33%; padding: 1rem 1.2rem; border-right: 1px solid var(--nc-steel); min-width: 120px; }
+  .s3-meta-cell:last-child { border-right: none; }
+  .s3-meta-cell b { display: block; font-family: var(--font-d); font-weight: 800; font-size: 1.3rem; color: var(--nc-white); line-height: 1; }
+  .s3-meta-cell span { font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--nc-ash); }
+
+  /* ═══ FLUJO (círculo virtuoso) ═══ */
+  .s3-flow { border-bottom: 1px solid var(--nc-steel); padding: clamp(3rem, 6vw, 5rem) 0; }
+  .s3-flow-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--nc-steel); }
+  .s3-flow-node { padding: 1.6rem 1.4rem; border-right: 1px solid var(--nc-steel); position: relative; }
+  .s3-flow-node:last-child { border-right: none; }
+  .s3-flow-node b { font-family: var(--font-d); font-weight: 800; color: var(--nc-red-hot); font-size: 0.9rem; letter-spacing: 0.08em; }
+  .s3-flow-node .n { display: block; font-family: var(--font-d); font-weight: 800; text-transform: uppercase; color: var(--nc-white); font-size: 1.15rem; margin-top: 0.3rem; }
+  .s3-flow-node p { font-family: var(--font-b); font-size: 0.82rem; line-height: 1.5; color: var(--nc-ash); margin-top: 0.55rem; }
+
+  /* ═══ POR QUÉ ═══ */
+  .s3-why { border-bottom: 1px solid var(--nc-steel); }
+  .s3-why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 clamp(2rem, 5vw, 4.5rem); border-top: 1px solid var(--nc-steel); }
+  .s3-why-item { display: grid; grid-template-columns: auto 1fr; gap: 1.3rem; padding: 1.9rem 0; border-bottom: 1px solid var(--nc-steel); }
+  .s3-why-n { font-family: var(--font-d); font-weight: 800; font-size: 1rem; color: var(--nc-red-hot); letter-spacing: 0.05em; }
+  .s3-why-t { font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: 1.15rem; color: var(--nc-white); letter-spacing: 0.01em; }
+  .s3-why-d { font-family: var(--font-b); font-size: 0.92rem; line-height: 1.6; color: var(--nc-ash); margin-top: 0.45rem; }
+
+  /* ═══ GARANTÍA ═══ */
+  .s3-war { position: relative; border-bottom: 1px solid var(--nc-steel); overflow: hidden; }
+  .s3-war-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .s3-war-big { font-family: var(--font-d); font-weight: 900; line-height: 0.8; letter-spacing: -0.02em; }
+  .s3-war-big .yrs { display: block; font-size: clamp(6rem, 16vw, 13rem); color: var(--nc-white); }
+  .s3-war-big .lbl { display: block; font-size: clamp(1.3rem, 3vw, 2.2rem); color: var(--nc-red-hot); text-transform: uppercase; margin-top: 0.4rem; letter-spacing: 0.02em; }
+  .s3-war-note { font-family: var(--font-m); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--nc-ash); margin-top: 1.6rem; }
+  .s3-war-p { font-family: var(--font-b); font-size: 1.05rem; line-height: 1.7; color: var(--nc-light); max-width: 52ch; }
+  .s3-cover { margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--nc-steel); border-left: 1px solid var(--nc-steel); }
+  .s3-cover div { padding: 1.3rem 1.4rem; border-right: 1px solid var(--nc-steel); border-bottom: 1px solid var(--nc-steel); display: flex; align-items: center; gap: 0.8rem; }
+  .s3-cover svg { width: 18px; height: 18px; color: var(--nc-red-hot); flex-shrink: 0; }
+  .s3-cover span { font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: 0.92rem; letter-spacing: 0.02em; color: var(--nc-white); }
+  .s3-war-extend { margin-top: 2rem; padding: 1.5rem 1.6rem; border: 1px solid var(--nc-red-dim); background: rgba(193,18,31,0.06); }
+  .s3-war-extend b { font-family: var(--font-d); font-weight: 800; text-transform: uppercase; color: var(--nc-white); font-size: 1.05rem; }
+  .s3-war-extend p { font-family: var(--font-b); font-size: 0.9rem; line-height: 1.6; color: var(--nc-light); margin-top: 0.5rem; }
+
+  /* ═══ MANTENIMIENTO ═══ */
+  .s3-maint { border-bottom: 1px solid var(--nc-steel); }
+  .s3-maint-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .s3-maint-h { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 0.98; color: var(--nc-white); }
+  .s3-maint-h .red { color: var(--nc-red-hot); }
+  .s3-maint-p { font-family: var(--font-b); font-size: 1rem; line-height: 1.7; color: var(--nc-light); margin-top: 1.4rem; max-width: 54ch; }
+  .s3-maint-aside { border-left: 1px solid var(--nc-steel); padding-left: 1.8rem; }
+  .s3-maint-aside .ph { font-family: var(--font-d); font-weight: 900; font-size: 3rem; color: var(--nc-white); line-height: 1; }
+  .s3-maint-aside .ph small { color: var(--nc-red-hot); font-size: 1.4rem; }
+  .s3-maint-aside .cap { font-family: var(--font-m); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--nc-ash); margin-top: 0.5rem; }
+  .s3-maint-aside p { font-family: var(--font-b); font-size: 0.9rem; line-height: 1.6; color: var(--nc-ash); margin-top: 1.2rem; }
+  .s3-inline-link { color: var(--nc-white); text-decoration: none; border-bottom: 1px solid var(--nc-red); transition: color .3s; }
+  .s3-inline-link:hover { color: var(--nc-red-hot); }
+
+  /* Equipo recomendado */
+  .s3-tools { margin-top: 2.4rem; border-top: 1px solid var(--nc-steel); display: grid; grid-template-columns: repeat(3, 1fr); }
+  .s3-tool { padding: 1.5rem var(--pad) 1.5rem 0; border-right: 1px solid var(--nc-steel); text-decoration: none; transition: background .3s; }
+  .s3-tool:last-child { border-right: none; }
+  .s3-tool:hover { background: rgba(255,255,255,0.02); }
+  .s3-tool span { font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--nc-red-hot); }
+  .s3-tool b { display: block; font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: 1.05rem; color: var(--nc-white); margin-top: 0.4rem; }
+  .s3-tool small { display: block; font-family: var(--font-b); font-size: 0.82rem; color: var(--nc-ash); margin-top: 0.35rem; line-height: 1.5; }
+
+  /* ═══ FAQ ═══ */
+  .s3-faq { border-bottom: 1px solid var(--nc-steel); }
+  .s3-faq-list { border-top: 1px solid var(--nc-steel); }
+  .s3-faq-item { border-bottom: 1px solid var(--nc-steel); }
+  .s3-faq-q { width: 100%; background: none; border: none; cursor: none; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.7rem 0; font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: 0.01em; color: var(--nc-light); transition: color .3s; }
+  .s3-faq-q:hover { color: var(--nc-white); }
+  .s3-faq-item.open .s3-faq-q { color: var(--nc-white); }
+  .s3-faq-ic { flex-shrink: 0; width: 22px; height: 22px; position: relative; }
+  .s3-faq-ic::before, .s3-faq-ic::after { content: ''; position: absolute; background: var(--nc-red-hot); transition: transform .35s var(--expo), opacity .35s; }
+  .s3-faq-ic::before { top: 10px; left: 0; width: 22px; height: 2px; }
+  .s3-faq-ic::after { top: 0; left: 10px; width: 2px; height: 22px; }
+  .s3-faq-item.open .s3-faq-ic::after { transform: scaleY(0); opacity: 0; }
+  .s3-faq-a { max-height: 0; overflow: hidden; transition: max-height .45s var(--expo); }
+  .s3-faq-a-inner { padding: 0 0 1.8rem; }
+  .s3-faq-a p { font-family: var(--font-b); font-size: 0.98rem; line-height: 1.7; color: var(--nc-ash); max-width: 68ch; }
+
+  /* ═══ CTA FINAL ═══ */
+  .s3-cta { position: relative; overflow: hidden; }
+  .s3-cta-bg { position: absolute; inset: 0; z-index: 0; }
+  .s3-cta-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.28; }
+  .s3-cta-ov { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, var(--nc-black) 10%, rgba(10,10,10,.6) 100%); }
+  .s3-cta-inner { position: relative; z-index: 2; padding: clamp(4.5rem, 9vw, 8rem) 0; }
+  .s3-cta-h2 { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: clamp(2.2rem, 5.5vw, 4.5rem); line-height: 0.92; color: var(--nc-white); max-width: 18ch; }
+  .s3-cta-h2 .red { color: var(--nc-red-hot); }
+  .s3-cta-sub { font-family: var(--font-b); font-size: 1rem; color: var(--nc-light); margin-top: 1.4rem; }
+  .s3-cta-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem; margin-top: 2.4rem; }
+  .s3-cta-phone { font-family: var(--font-d); font-weight: 800; font-size: 1.5rem; color: var(--nc-white); letter-spacing: 0.02em; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 900px) {
+    .s3-hero { min-height: 92dvh; padding-top: 6rem; }
+    .s3-hero-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+    .s3-hero-stats { flex-direction: row; border-left: none; border-top: 1px solid var(--nc-steel); padding-left: 0; padding-top: 1rem; min-width: 0; gap: 2rem; }
+    .s3-hero-stat { padding: 0; }
+    .s3-hero-stat + .s3-hero-stat { border-top: none; }
+    .s3-hero-stat b { font-size: 1.9rem; }
+    .s3-hero-strip { grid-template-columns: repeat(2, 1fr); }
+    .s3-hero-strip a { border-bottom: 1px solid var(--nc-steel); padding: 1.1rem var(--pad); }
+    .s3-hero-strip a:nth-child(2) { border-right: none; }
+    .s3-intro-grid, .s3-war-grid, .s3-maint-grid { grid-template-columns: 1fr; }
+    .s3-step { grid-template-columns: 1fr; gap: 1.2rem; }
+    .s3-step:nth-child(even) .s3-step-media { order: 0; }
+    .s3-step-media { position: static; }
+    .s3-step-visual { min-height: 230px; }
+    .s3-flow-track { grid-template-columns: 1fr 1fr; }
+    .s3-flow-node:nth-child(2) { border-right: none; }
+    .s3-flow-node { border-bottom: 1px solid var(--nc-steel); }
+    .s3-why-grid { grid-template-columns: 1fr; }
+    .s3-cover { grid-template-columns: 1fr; }
+    .s3-maint-aside { border-left: none; border-top: 1px solid var(--nc-steel); padding-left: 0; padding-top: 1.6rem; }
+    .s3-tools { grid-template-columns: 1fr; }
+    .s3-tool { border-right: none; border-bottom: 1px solid var(--nc-steel); padding: 1.3rem 0; }
+    .s3-meta-cell { flex-basis: 50%; }
+  }
+</style>
+
+    <!-- seo:start (auto — scripts/seo.js · NO editar a mano) -->
+    <link rel="canonical" href="https://newconcret.com/proteccion/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NewConcret">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:title" content="Sistema 3 Pasos | Protección | NewConcret">
+    <meta property="og:description" content="El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.">
+    <meta property="og:url" content="https://newconcret.com/proteccion/">
+    <meta property="og:image" content="https://newconcret.com/assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sistema 3 Pasos | Protección | NewConcret">
+    <meta name="twitter:description" content="El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.">
+    <meta name="twitter:image" content="https://newconcret.com/assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://newconcret.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Protección",
+          "item": "https://newconcret.com/proteccion/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://newconcret.com/proteccion/",
+      "name": "Sistema 3 Pasos | Protección | NewConcret",
+      "description": "El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.",
+      "isPartOf": {
+        "@id": "https://newconcret.com/#website"
+      }
+    }
+  ]
+}
+</script>
+    <!-- seo:end -->
+</head>
+<body class="s3">
+
+<div id="cur"></div>
+<div id="ring"></div>
+
+<div id="nav-placeholder"></div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="s3-hero">
+  <div class="s3-hero-bg">
+    <img src="../assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp" alt="Piso de hormigón tratado con el Sistema 3 Pasos NewConcret">
+  </div>
+  <div class="s3-hero-ov"></div>
+
+  <div class="s3-hero-inner">
+    <div class="s3-wrap">
+      <div class="s3-hero-grid">
+        <div>
+          <div class="s3-eyebrow s3-reveal">Sistema de protección · Hormigón</div>
+          <h1 class="s3-hero-h1 s3-reveal" style="--i:1">Sistema<br><span class="red">3 Pasos</span></h1>
+          <p class="s3-hero-p s3-reveal" style="--i:2">Un proceso técnico que densifica, impermeabiliza y sella el hormigón desde el poro. Protección extrema, cero desprendimiento de polvo y un acabado de brillo premium sobre pisos nuevos o existentes.</p>
+          <div class="s3-hero-acts s3-reveal" style="--i:3">
+            <a href="#pasos" class="s3-btn s3-btn-primary">Ver los pasos
+              <svg viewBox="0 0 13 13" fill="none"><path d="M6.5 2.5v8M3 7l3.5 3.5L10 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path></svg>
+            </a>
+            <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="s3-btn s3-btn-ghost">Consultar asesoramiento</a>
+          </div>
+        </div>
+
+        <div class="s3-hero-stats s3-reveal" style="--i:2">
+          <div class="s3-hero-stat"><b>25</b><span>Años de garantía</span></div>
+          <div class="s3-hero-stat"><b>+16</b><span>Años de rendimiento</span></div>
+          <div class="s3-hero-stat"><b>3</b><span>Pasos + preparación</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="s3-hero-strip" aria-label="Etapas del sistema">
+    <a href="#paso-0"><span class="s3-hs-n">00</span><span><span class="s3-hs-name">Concret D</span><span class="s3-hs-role">Preparación</span></span></a>
+    <a href="#paso-1"><span class="s3-hs-n">01</span><span><span class="s3-hs-name">Concret Sodium</span><span class="s3-hs-role">Densificador</span></span></a>
+    <a href="#paso-2"><span class="s3-hs-n">02</span><span><span class="s3-hs-name">Concret Lock</span><span class="s3-hs-role">Impermeabilizante</span></span></a>
+    <a href="#paso-3"><span class="s3-hs-n">03</span><span><span class="s3-hs-name">Concret Finish</span><span class="s3-hs-role">Sellador</span></span></a>
+  </nav>
+</section>
+
+<!-- ═══════════ INTRO / PROMESA ═══════════ -->
+<section class="s3-intro">
+  <div class="s3-wrap">
+    <div class="s3-intro-grid">
+      <h2 class="s3-intro-lead s3-reveal">Excelencia <span class="red">en 3 pasos</span> sobre el hormigón.</h2>
+      <div>
+        <p class="s3-intro-p s3-reveal">El Sistema 3 Pasos actúa sobre la estructura interna del hormigón, no sobre una película superficial. Cada etapa reacciona con la matriz del piso para elevar drásticamente su resistencia estructural y su valor estético, logrando superficies densificadas, de alta dureza y libres de polvo, con propiedades impermeables y oleorrepelentes.</p>
+        <div class="s3-outcomes s3-reveal" style="--i:1">
+          <div class="s3-outcome">
+            <div class="s3-outcome-k"><i>01 —</i> Densificado</div>
+            <div class="s3-outcome-d">Poros cerrados desde el interior. Alta dureza, resistencia a la abrasión y cero desprendimiento de polvo.</div>
+          </div>
+          <div class="s3-outcome">
+            <div class="s3-outcome-k"><i>02 —</i> Impermeable</div>
+            <div class="s3-outcome-d">Barrera hidrofóbica y oleorrepelente que bloquea agua, aceites y manchas, dejando respirar al sustrato.</div>
+          </div>
+          <div class="s3-outcome">
+            <div class="s3-outcome-k"><i>03 —</i> Brillo premium</div>
+            <div class="s3-outcome-d">Terminación de alto brillo, suave al tacto y de máxima resistencia a las manchas y al tránsito intenso.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PASOS ═══════════ -->
+<section class="s3-sec s3-steps" id="pasos">
+  <div class="s3-wrap">
+    <div class="s3-sec-head s3-reveal">
+      <div class="s3-eyebrow">El proceso · 4 etapas</div>
+      <h2 class="s3-sec-h2">Cómo se aplica el <span class="red">sistema</span></h2>
+      <p class="s3-sec-intro">Cada paso prepara el terreno para el siguiente. El orden y los tiempos de reacción son lo que garantiza el resultado: una química que trabaja penetrando el poro, no cubriéndolo.</p>
+    </div>
+
+    <!-- Paso 0 -->
+    <article class="s3-step s3-reveal" id="paso-0">
+      <div class="s3-step-media">
+        <div class="s3-step-visual">
+          <div class="s3-step-num">00</div>
+          <img class="s3-step-img" src="../assets/img/productos/concret-d-5-1778606889938.webp" alt="Bidón de Concret D 5 litros" loading="lazy" width="1024" height="1024">
+        </div>
+        <span class="s3-step-prod">Concret <b>D</b></span>
+        <span class="s3-step-role">Preparación · Detergente desengrasante</span>
+      </div>
+      <div class="s3-step-body">
+        <p>El punto de partida obligatorio. Con Tecnología de Doble Polaridad Activa (DPA), Concret D rompe la adherencia de la suciedad y encapsula grasas incluso en superficies porosas, eliminando restos orgánicos y contaminantes que impedirían la correcta reacción del sistema. Una superficie limpia es lo que asegura que el densificado y el sellado alcancen su máxima eficacia.</p>
+        <ul class="s3-feats">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Doble Polaridad Activa</span><span class="s3-feat-d">Rompe la adherencia de la suciedad y maximiza su extracción.</span></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Acción profunda, baja espuma</span><span class="s3-feat-d">Remueve aceite, grasa, hollín y marcas de neumáticos sin dificultar la limpieza mecánica.</span></span>
+          </li>
+        </ul>
+        <div class="s3-step-meta">
+          <div class="s3-meta-cell"><b>Diluir</b><span>En agua según suciedad</span></div>
+          <div class="s3-meta-cell"><b>Fregar</b><span>Cepillo o mopa</span></div>
+          <div class="s3-meta-cell"><b>Enjuagar</b><span>Y secar antes del Paso 1</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paso 1 -->
+    <article class="s3-step s3-reveal" id="paso-1">
+      <div class="s3-step-media">
+        <div class="s3-step-visual">
+          <div class="s3-step-num">01</div>
+          <img class="s3-step-img" src="../assets/img/productos/sodium-5-l-1778605845082.webp" alt="Bidón de Concret Sodium 5 litros" loading="lazy" width="1024" height="1024">
+        </div>
+        <span class="s3-step-prod">Concret <b>Sodium</b></span>
+        <span class="s3-step-role">Densificador de alta penetración</span>
+      </div>
+      <div class="s3-step-body">
+        <p>La base de la resistencia. Penetra en la red capilar del hormigón y reacciona con la cal libre para cerrar los poros desde el interior. El resultado es una superficie mucho más dura, resistente al desgaste y totalmente libre de polvo. Apto tanto para hormigón nuevo como para pisos existentes que requieran recuperación.</p>
+        <ul class="s3-feats">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Refuerzo estructural</span><span class="s3-feat-d">Incrementa la dureza y la resistencia a la abrasión de la matriz del suelo.</span></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Cero polvo</span><span class="s3-feat-d">Sella la porosidad interna y detiene el desprendimiento de partículas para siempre.</span></span>
+          </li>
+        </ul>
+        <div class="s3-step-meta">
+          <div class="s3-meta-cell"><b>1 L / 10 m²</b><span>Rendimiento aprox.</span></div>
+          <div class="s3-meta-cell"><b>30 min</b><span>Reacción (gel resbaladizo)</span></div>
+          <div class="s3-meta-cell"><b>Nuevo o viejo</b><span>Sobre cualquier hormigón</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paso 2 -->
+    <article class="s3-step s3-reveal" id="paso-2">
+      <div class="s3-step-media">
+        <div class="s3-step-visual">
+          <div class="s3-step-num">02</div>
+          <img class="s3-step-img" src="../assets/img/productos/lock-5l-1778606821609.webp" alt="Bidón de Concret Lock 5 litros" loading="lazy" width="1024" height="1024">
+        </div>
+        <span class="s3-step-prod">Concret <b>Lock</b></span>
+        <span class="s3-step-role">Impermeabilizante · Escudo protector</span>
+      </div>
+      <div class="s3-step-body">
+        <p>El escudo invisible. Una vez densificado el piso, Concret Lock crea una barrera de alta tecnología que bloquea la penetración de agua, aceites y contaminantes sin alterar el aspecto natural del hormigón. Permite que el sustrato libere vapor de agua, evitando ampollamientos y desprendimientos, y protege el densificado del paso anterior.</p>
+        <ul class="s3-feats">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Protección invisible</span><span class="s3-feat-d">Barrera hidrofóbica y oleofóbica que no altera el aspecto del piso.</span></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Transpirable y antimanchas</span><span class="s3-feat-d">Deja salir el vapor y evita que los contaminantes penetren en la red capilar.</span></span>
+          </li>
+        </ul>
+        <div class="s3-step-meta">
+          <div class="s3-meta-cell"><b>Uniforme</b><span>Pulverizador + mopa</span></div>
+          <div class="s3-meta-cell"><b>2ª mano</b><span>Húmedo sobre húmedo si es poroso</span></div>
+          <div class="s3-meta-cell"><b>Curar</b><span>Antes del Paso 3</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paso 3 -->
+    <article class="s3-step s3-reveal" id="paso-3">
+      <div class="s3-step-media">
+        <div class="s3-step-visual">
+          <div class="s3-step-num">03</div>
+          <img class="s3-step-img" src="../assets/img/productos/finish-5l-1778606979003.webp" alt="Bidón de Concret Finish 5 litros" loading="lazy" width="1024" height="1024">
+        </div>
+        <span class="s3-step-prod">Concret <b>Finish</b></span>
+        <span class="s3-step-role">Sellador de altos sólidos</span>
+      </div>
+      <div class="s3-step-body">
+        <p>El toque final de distinción. Sellador de altos sólidos que produce un efecto espejo sobre el hormigón: brillo superior, suavidad excepcional al tacto y una capa de sacrificio adicional contra el tráfico intenso. Facilita el mantenimiento diario y eleva la estética al máximo nivel.</p>
+        <ul class="s3-feats">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Acabado premium</span><span class="s3-feat-d">Efecto espejo, alta resistencia a rayas, manchas y desgaste del uso diario.</span></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><span class="s3-feat-k">Capa de sacrificio</span><span class="s3-feat-d">Protege la capa superior y bloquea la penetración de agentes externos.</span></span>
+          </li>
+        </ul>
+        <div class="s3-step-meta">
+          <div class="s3-meta-cell"><b>2 capas</b><span>Cobertura total</span></div>
+          <div class="s3-meta-cell"><b>Lustradora</b><span>Alta velocidad + paño blanco</span></div>
+          <div class="s3-meta-cell"><b>Efecto espejo</b><span>Terminación final</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════ FLUJO ═══════════ -->
+<section class="s3-flow">
+  <div class="s3-wrap">
+    <div class="s3-sec-head s3-reveal" style="margin-bottom: 2rem;">
+      <div class="s3-eyebrow">El círculo virtuoso</div>
+    </div>
+    <div class="s3-flow-track s3-reveal" style="--i:1">
+      <div class="s3-flow-node"><b>00</b><span class="n">Preparar</span><p>Concret D elimina contaminantes y abre los poros para recibir el tratamiento.</p></div>
+      <div class="s3-flow-node"><b>01</b><span class="n">Densificar</span><p>Concret Sodium endurece la estructura y detiene el polvo para siempre.</p></div>
+      <div class="s3-flow-node"><b>02</b><span class="n">Blindar</span><p>Concret Lock crea la barrera hidrofóbica y oleofóbica que protege la inversión.</p></div>
+      <div class="s3-flow-node"><b>03</b><span class="n">Sellar</span><p>Concret Finish aporta el brillo premium y facilita el mantenimiento posterior.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ POR QUÉ ═══════════ -->
+<section class="s3-sec s3-why">
+  <div class="s3-wrap">
+    <div class="s3-sec-head s3-reveal">
+      <div class="s3-eyebrow">Ventajas</div>
+      <h2 class="s3-sec-h2">Por qué elegir el <span class="red">Sistema 3 Pasos</span></h2>
+    </div>
+    <div class="s3-why-grid s3-reveal">
+      <div class="s3-why-item"><div class="s3-why-n">01</div><div><div class="s3-why-t">Alta rentabilidad</div><div class="s3-why-d">Optimiza costos operativos y maximiza la vida útil del hormigón.</div></div></div>
+      <div class="s3-why-item"><div class="s3-why-n">02</div><div><div class="s3-why-t">Aplicación ágil</div><div class="s3-why-d">Procesos simplificados que reducen los tiempos de obra y de mano de obra.</div></div></div>
+      <div class="s3-why-item"><div class="s3-why-n">03</div><div><div class="s3-why-t">Fórmulas listas para usar</div><div class="s3-why-d">Productos pre-mezclados que garantizan consistencia y eliminan errores de preparación.</div></div></div>
+      <div class="s3-why-item"><div class="s3-why-n">04</div><div><div class="s3-why-t">Calidad certificada</div><div class="s3-why-d">Respaldado por estándares técnicos con comportamiento superior en entornos exigentes.</div></div></div>
+      <div class="s3-why-item"><div class="s3-why-n">05</div><div><div class="s3-why-t">Mantenimiento simplificado</div><div class="s3-why-d">Reduce la frecuencia de intervenciones profundas y mantiene la estética por años.</div></div></div>
+      <div class="s3-why-item"><div class="s3-why-n">06</div><div><div class="s3-why-t">Alto rendimiento</div><div class="s3-why-d">Equilibrio entre protección estructural y terminación estética premium.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GARANTÍA ═══════════ -->
+<section class="s3-sec s3-war">
+  <div class="s3-wrap">
+    <div class="s3-war-grid">
+      <div class="s3-reveal">
+        <div class="s3-eyebrow">Respaldo NewConcret</div>
+        <div class="s3-war-big" style="margin-top: 1.4rem;">
+          <span class="yrs">25</span>
+          <span class="lbl">Años de garantía</span>
+        </div>
+        <div class="s3-war-note">Con posibilidad de extenderla de por vida</div>
+      </div>
+      <div class="s3-reveal" style="--i:1">
+        <p class="s3-war-p">Con más de 16 años de rendimiento comprobado, NewConcret respalda el sistema con una de las garantías más extensas de la industria. Durante 25 años desde el tratamiento, la superficie permanece repelente al agua, resistente al polvo, endurecida y resistente a la abrasión. Si algún área dejara de cumplirlo, NewConcret suministra a su costo el sistema para volver a tratarla.</p>
+        <div class="s3-cover">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2s7 3 7 8c0 6-7 12-7 12S5 16 5 10c0-5 7-8 7-8z" stroke-linejoin="round"></path></svg><span>Repelente al agua</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20s2-6 8-6 8 6 8 6M12 3v6M9 6h6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Resistente al polvo</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 4v6c0 4-3 6-7 8-4-2-7-4-7-8V7l7-4z" stroke-linejoin="round"></path></svg><span>Endurecido</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M12 3v18" stroke-linecap="round"></path></svg><span>Resistente a la abrasión</span></div>
+        </div>
+        <div class="s3-war-extend">
+          <b>De 25 años a de por vida</b>
+          <p>Manteniendo el piso con Concret D, la garantía de 25 años se extiende a una garantía de por vida. El uso de químicos ajenos al sistema anula la cobertura técnica.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MANTENIMIENTO ═══════════ -->
+<section class="s3-sec s3-maint">
+  <div class="s3-wrap">
+    <div class="s3-maint-grid">
+      <div class="s3-reveal">
+        <div class="s3-eyebrow">Cuidado a largo plazo</div>
+        <h2 class="s3-maint-h" style="margin-top: 1.3rem;">El mantenimiento <span class="red">preserva el sistema</span></h2>
+        <p class="s3-maint-p">Resistencia no es indestructibilidad. El cuidado diario con Concret D mantiene el brillo, protege el sellado y es lo que extiende la garantía de por vida. Un plan de limpieza frecuente es significativamente más eficiente y económico que una restauración profunda.</p>
+        <p class="s3-maint-p">Ver la <a href="../mantenimiento/productos-quimicos/desengrasantes/" class="s3-inline-link">gama de mantenimiento y desengrasantes</a> recomendada para conservar el piso.</p>
+      </div>
+      <div class="s3-maint-aside s3-reveal" style="--i:1">
+        <div class="ph">9<small>–</small>10</div>
+        <div class="cap">Rango de pH ideal</div>
+        <p>Concret D acompaña la alcalinidad natural del hormigón: remueve grasas sin agredir la pasta de cemento. Los limpiadores con ácidos, sulfatos o solventes opacan el brillo y degradan el sellado.</p>
+      </div>
+    </div>
+
+    <div class="s3-tools s3-reveal" style="--i:2">
+      <a href="../mantenimiento/equipos/lustradoras/" class="s3-tool"><span>Maquinaria</span><b>Lustradora Tarsila C1500</b><small>Alta velocidad con paño blanco para elevar el brillo del Paso 3.</small></a>
+      <a href="../mantenimiento/equipos/lavasecapisos/" class="s3-tool"><span>Maquinaria</span><b>Lavasecapisos MB460</b><small>Limpieza húmeda eficiente y secado inmediato en grandes superficies.</small></a>
+      <a href="../mantenimiento/accesorios/mopas/" class="s3-tool"><span>Accesorios</span><b>Mopa y pulverizador</b><small>Herramientas complementarias para la aplicación y el mantenimiento diario.</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="s3-sec s3-faq">
+  <div class="s3-wrap">
+    <div class="s3-sec-head s3-reveal">
+      <div class="s3-eyebrow">Dudas frecuentes</div>
+      <h2 class="s3-sec-h2">Preguntas <span class="red">frecuentes</span></h2>
+    </div>
+    <div class="s3-faq-list s3-reveal">
+      <div class="s3-faq-item">
+        <button class="s3-faq-q" type="button">¿Puedo aplicar el sistema sobre hormigón viejo?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Sí. El sistema es ideal tanto para obras nuevas como para la restauración de pisos existentes. En hormigones antiguos, el Paso 0 (Concret D) y el Paso 1 (Concret Sodium) son críticos para recuperar la dureza perdida y detener el desprendimiento de polvo.</p></div></div>
+      </div>
+      <div class="s3-faq-item">
+        <button class="s3-faq-q" type="button">¿Cuánto debo esperar entre cada paso?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Entre el Paso 0 y 1, la superficie debe estar visualmente seca. Entre el 1 y el 2 se recomienda esperar a que el densificador haya reaccionado y secado (aprox. 4 horas según el clima). Entre el 2 y el 3, el impermeabilizante debe haber penetrado totalmente. Para habilitar tránsito pesado o derrame de líquidos, se recomienda un curado total de 24 horas.</p></div></div>
+      </div>
+      <div class="s3-faq-item">
+        <button class="s3-faq-q" type="button">¿Qué pasa si uso un desengrasante común en lugar de Concret D?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Los limpiadores domésticos o neutros no tienen la Tecnología DPA necesaria para encapsular grasas en superficies porosas. Además, muchos contienen sulfatos o ácidos que opacan el brillo del sistema y degradan el sellado de Concret Finish.</p></div></div>
+      </div>
+      <div class="s3-faq-item">
+        <button class="s3-faq-q" type="button">¿El sistema hace que el piso sea resbaladizo?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>No. A diferencia de las ceras tradicionales que crean una película gruesa, el sistema trabaja penetrando el poro. El Paso 3 (Concret Finish) mejora la tracción y la suavidad sin comprometer la seguridad del tránsito peatonal.</p></div></div>
+      </div>
+      <div class="s3-faq-item">
+        <button class="s3-faq-q" type="button">¿Con qué frecuencia debo reaplicar los productos?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Concret D se usa en cada lavado (2–3 veces por semana). Concret Finish, según el tráfico, admite un refuerzo técnico cada 6 a 12 meses para mantener el brillo espejo. Concret Sodium y Concret Lock son tratamientos de largo plazo que, con un buen mantenimiento, no requieren reaplicación frecuente.</p></div></div>
+      </div>
+      <div class="s3-faq-item">
+        <button class="s3-faq-q" type="button">¿Cómo se activa la garantía?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>La garantía se activa al demostrar el uso integral del sistema (Pasos 0 al 3) y el mantenimiento exclusivo con Concret D. El uso de químicos ajenos a NewConcret anula la cobertura técnica.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA FINAL ═══════════ -->
+<section class="s3-cta">
+  <div class="s3-cta-bg"><img src="../assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp" alt=""></div>
+  <div class="s3-cta-ov"></div>
+  <div class="s3-cta-inner">
+    <div class="s3-wrap">
+      <h2 class="s3-cta-h2 s3-reveal">¿Listo para proteger <span class="red">tu piso?</span></h2>
+      <p class="s3-cta-sub s3-reveal" style="--i:1">Asesoramiento técnico sin cargo · Respuesta en menos de 2 horas · Stock permanente</p>
+      <div class="s3-cta-acts s3-reveal" style="--i:2">
+        <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="s3-btn s3-btn-primary">Consultar por WhatsApp
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+        </a>
+        <span class="s3-cta-phone">+54 9 2342 46-4082</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/main.js?v=3.0"></script>
+<script src="../assets/js/nav.js?v=3.0"></script>
+<script>
+  document.documentElement.classList.add('js-loaded');
+
+  /* Scroll reveal */
+  (function () {
+    var els = document.querySelectorAll('.s3-reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { obs.observe(e); });
+  })();
+
+  /* FAQ accordion */
+  (function () {
+    var items = document.querySelectorAll('.s3-faq-item');
+    items.forEach(function (item) {
+      var btn = item.querySelector('.s3-faq-q');
+      var ans = item.querySelector('.s3-faq-a');
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+        items.forEach(function (o) { o.classList.remove('open'); o.querySelector('.s3-faq-a').style.maxHeight = null; });
+        if (!isOpen) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+      });
+    });
+  })();
+
+  /* Smooth anchor scroll (compensa nav sticky) */
+  (function () {
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        if (id.length < 2) return;
+        var t = document.querySelector(id);
+        if (!t) return;
+        e.preventDefault();
+        var y = t.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

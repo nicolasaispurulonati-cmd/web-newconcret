@@ -71,7 +71,8 @@ const LABELS = {
   impermeabilizantes: 'Impermeabilizantes', escarificadoras: 'Escarificadoras',
   'accesorios-amoladora': 'Accesorios de Amoladora', bujardado: 'Bujardado', 'mechas-copa': 'Mechas Copa',
   'puntas-martillo': 'Puntas de Martillo', productos: 'Productos', nosotros: 'Nosotros',
-  contacto: 'Contacto', capacitacion: 'Capacitaciones', blog: 'Blog'
+  contacto: 'Contacto', capacitacion: 'Capacitaciones', blog: 'Blog',
+  proteccion: 'Protección', 'sistema-3-pasos': 'Sistema 3 Pasos'
 };
 
 function label(seg) {

@@ -4,7 +4,9 @@
   "outputDirectory": ".",
   "framework": null,
   "redirects": [
-    { "source": "/newconcret-construccion.html", "destination": "/construccion/", "permanent": true }
+    { "source": "/newconcret-construccion.html", "destination": "/construccion/", "permanent": true },
+    { "source": "/mantenimiento/productos-quimicos/sistema-3-pasos", "destination": "/proteccion/", "permanent": true },
+    { "source": "/mantenimiento/productos-quimicos/sistema-3-pasos/", "destination": "/proteccion/", "permanent": true }
   ],
   "headers": [
     {
