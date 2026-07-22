@@ -744,7 +744,7 @@
     .hn-p { max-width: 100%; }
     .hn-btns { justify-content: flex-start; }
     /* hero h1 sized to match the other pages' hero titles (e.g. Capacitaciones).
-       Shorter mobile lines ("Especialistas / en pisos de / Hormigón / Desde 2010")
+       Shorter mobile lines ("Especialistas / en pisos de / Hormigón / Hace más de 30 años")
        allow a bigger size. !important overrides the global `.hero-h1 { …!important }`. */
     .hero-nos .hero-h1 { font-size: clamp(2.9rem, 13.4vw, 3.6rem) !important; line-height: 1.02; }
     /* full-bleed counters: section padding 0 so the grid spans edge to edge */
