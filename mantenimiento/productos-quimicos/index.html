@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Químicos para Mantenimiento | NewConcret</title>
 <meta name="description" content="Productos químicos especializados para la limpieza, cuidado y protección de pisos de hormigón.">
-<link rel="stylesheet" href="../../../assets/css/estilo.css?v=43">
-<link rel="stylesheet" href="../../../assets/css/nav.css?v=1.5">
+<link rel="stylesheet" href="../../assets/css/estilo.css?v=43">
+<link rel="stylesheet" href="../../assets/css/nav.css?v=1.5">
 <style>
   /* ── DESIGN TOKENS ── */
   /* ── GLOBAL ADJS ── */
@@ -32,7 +32,7 @@
     background-image: 
       linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
       linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 60%),
-      url('../../../assets/img/hero/pulido-quimicos-selladores.webp');
+      url('../../assets/img/hero/pulido-quimicos-selladores.webp');
   }
   .ph-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
   .ph-count { position: absolute; bottom: 1rem; right: 4rem; text-align: right; border-left: 1px solid var(--nc-steel); padding-left: 2rem; z-index: 3; }
@@ -50,7 +50,7 @@
       background-image:
         /* mobile: velo vertical — el texto ocupa todo el ancho, un gradiente horizontal lo deja sin fondo a la derecha */
         linear-gradient(to top, rgba(10,10,10,.90) 0%, rgba(10,10,10,.75) 50%, rgba(10,10,10,.45) 100%),
-        url('../../../assets/img/hero/pulido-quimicos-selladores-mobile.webp') !important;
+        url('../../assets/img/hero/pulido-quimicos-selladores-mobile.webp') !important;
     }
     .ph-inner { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
     .ph-title { font-size: clamp(2.6rem, 9.5vw, 3.8rem) !important; line-height: 0.95; }
@@ -507,7 +507,7 @@
   <!-- ══ FINAL CTA ══ -->
   <section id="cta-section" class="cta-nos">
   <div class="cta-nos-bg">
-    <img src="../../../assets/img/hero/construccion-materiales.webp" alt="">
+    <img src="../../assets/img/hero/construccion-materiales.webp" alt="">
   </div>
   <div class="cta-nos-ov"></div>
   <div class="cta-nos-content reveal">
@@ -556,13 +556,13 @@
 
 <div id="footer-placeholder"></div>
 
-<script src="../../../assets/js/layout.js"></script>
-<script src="../../../assets/js/main.js"></script>
-<script src="../../../assets/js/nav.js"></script>
+<script src="../../assets/js/layout.js"></script>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/nav.js"></script>
 
 
 <!-- CARGA DE BASE DE DATOS REAL -->
-<script src="../../../assets/data/productos.js"></script>
+<script src="../../assets/data/productos.js"></script>
 
 <!-- ══════════════════════════════════════
      PRODUCT DATA + RENDER LOGIC
@@ -574,7 +574,7 @@
 const PAGE_SECCION      = 'mantenimiento';
 const PAGE_CATEGORIA    = 'productos-quimicos';
 const PAGE_SUBCATEGORIA = null;
-const ROOT              = '../../../';
+const ROOT              = '../../';
 
 const ALL_PRODUCTS = typeof productos !== 'undefined' ? productos : [];
 let activeFilter = 'all';
@@ -606,7 +606,7 @@ function renderCard(p, delay) {
       <span class="pcard-feat-val">${f.valor}</span>
     </div>`).join('');
 
-  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../../' + p.imagen.replace(/^\//, '');
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../' + p.imagen.replace(/^\//, '');
 
   const shop = p.storeUrl;
   const pdf  = p.pdfUrl;
@@ -772,7 +772,7 @@ function openModal(id) {
   const p = ALL_PRODUCTS.find(x => x.id === id);
   if (!p) return;
 
-  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../../' + p.imagen.replace(/^\//, '');
+  const imgSrc = p.imagen.startsWith('http') ? p.imagen : '../../' + p.imagen.replace(/^\//, '');
   
   document.getElementById('modalImg').src    = imgSrc;
   document.getElementById('modalImg').alt    = p.nombre;
