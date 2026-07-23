@@ -290,7 +290,7 @@
           Ver todos los productos
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
         </a>
-        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-ver-todos" target="_blank" style="margin-top: 0.6rem; opacity: 0.75;">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-catalogo" target="_blank">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
     </div>
   </div>
@@ -336,7 +336,7 @@
           <li><a href="${root}reparacion/insumos/mechas-copa/">Mechas copa</a></li>
         </ul>
         <a href="${root}reparacion/" class="mega-ver-todos">Ver reparación completo <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg></a>
-        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-ver-todos" target="_blank" style="margin-top: 0.6rem; opacity: 0.75;">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-catalogo" target="_blank">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
     </div>
   </div>
@@ -393,7 +393,7 @@
           Ver pulido completo
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
         </a>
-        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-ver-todos" target="_blank" style="margin-top: 0.6rem; opacity: 0.75;">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-catalogo" target="_blank">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
     </div>
   </div>
@@ -438,7 +438,7 @@
           Ver mantenimiento completo
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
         </a>
-        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-ver-todos" target="_blank" style="margin-top: 0.6rem; opacity: 0.75;">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+        <a href="${root}assets/docs/catalogo-newconcret-2026.pdf" class="mega-catalogo" target="_blank">Descargar catálogo (PDF) <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
     </div>
   </div>
