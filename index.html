@@ -66,8 +66,8 @@
         min-height: 100svh;
         display: flex;
         align-items: center;
-        /* top clears the fixed nav, bottom clears the absolute stats-bar (~59px) */
-        padding: 5rem 1.5rem 6rem;
+        /* top clears the fixed nav; contenido centrado (sin barra de stats inferior) */
+        padding: 5rem 1.5rem;
         overflow: hidden;
     }
     .hero-mob .hero-bg { position: absolute; inset: 0; }
@@ -120,17 +120,6 @@
         border: 1px solid var(--nc-steel);
         color: var(--nc-white);
         clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
-    }
-    .hero-mob .hero-stats-mob {
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        z-index: 3;
-        display: flex;
-        gap: 0;
-        border-top: 1px solid var(--nc-steel);
-        background: rgba(10,10,10,.6);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
     }
 
     /* ── MOBILE SECTION FIXES (page-scoped, never touch estilo.css) ──
@@ -200,34 +189,15 @@
             width: 100%;
             justify-content: center;
         }
+    }
 
-        /* Barra de stats del hero mobile: .hs-item/.hs-num/.hs-lbl están estilados
-           en estilo.css pero gateados a ≤768px. A 769–900px (tablets en vertical)
-           los ítems perdían flex:1, padding y bordes y se amontonaban ("2.000+30+500+").
-           Se redeclaran acá con los mismos valores para cubrir todo el rango mobile. */
-        .hero-mob .hs-item {
-            flex: 1;
-            padding: .8rem .5rem;
-            border-right: 1px solid var(--nc-steel);
-            text-align: center;
-        }
-        .hero-mob .hs-item:last-child { border-right: none; }
-        .hero-mob .hs-num {
-            font-family: var(--font-d);
-            font-weight: 900;
-            font-size: 1.25rem;
-            color: var(--nc-white);
-            line-height: 1;
-        }
-        .hero-mob .hs-num em { color: var(--nc-red-hot); font-style: normal; font-size: .8em; }
-        .hero-mob .hs-lbl {
-            font-family: var(--font-m);
-            font-size: .48rem;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--nc-ash);
-            margin-top: .2rem;
-        }
+    /* Stats cards: la grilla pasa a 2 columnas desde ≤1100px (estilo.css), pero la
+       reducción de padding de las cards está gateada a ≤768px. Entre 769–1100px
+       (tablets) las cards conservaban el padding vertical de desktop (3.5rem) y las
+       dos filas quedaban muy separadas. Se reduce el padding en ese rango.
+       El !important de estilo.css a ≤768px sigue ganando en teléfonos. */
+    @media (max-width: 1100px) {
+        .stats-bar .s-card { padding: 2.25rem 1.75rem; }
     }
   </style>
     <!-- seo:start (auto — scripts/seo.js · NO editar a mano) -->
@@ -372,11 +342,6 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
       </a>
     </div>
-  </div>
-  <div class="hero-stats-mob">
-    <div class="hs-item"><div class="hs-num">2.000<em>+</em></div><div class="hs-lbl">clientes</div></div>
-    <div class="hs-item"><div class="hs-num">30<em>+</em></div><div class="hs-lbl">años</div></div>
-    <div class="hs-item"><div class="hs-num">500<em>+</em></div><div class="hs-lbl">alumnos</div></div>
   </div>
 </section>
 
