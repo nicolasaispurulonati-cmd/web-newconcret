@@ -199,6 +199,52 @@
     @media (max-width: 1100px) {
         .stats-bar .s-card { padding: 2.25rem 1.75rem; }
     }
+
+    /* Stats en mobile (≤768px): lista vertical editorial. Cada stat es una fila a lo
+       ancho — número grande a la izquierda (columna de ancho fijo para que los
+       divisores queden alineados), label + descripción a la derecha, filas separadas
+       por hairlines. Reemplaza el 2×2 de cajas. Overrides sobre estilo.css:
+       .stats-grid pasa a 1 columna y el padding usa !important para vencer el global. */
+    @media (max-width: 768px) {
+        .stats-bar .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .stats-bar .s-card {
+            display: grid;
+            grid-template-columns: 7.5rem 1fr;
+            grid-template-areas:
+                "num unit"
+                "num desc";
+            column-gap: 1.25rem;
+            row-gap: .2rem;
+            align-content: center;
+            padding: 1.5rem .25rem !important;   /* vence el 2rem 1rem !important global */
+            border: none;
+            border-bottom: 1px solid var(--nc-steel);
+        }
+        .stats-bar .s-card:last-child { border-bottom: none; }
+        .stats-bar .s-num {
+            grid-area: num;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1.25rem;
+            border-right: 1px solid var(--nc-steel);
+            font-size: 2.5rem;
+            margin-bottom: 0;
+        }
+        .stats-bar .s-unit {
+            grid-area: unit;
+            align-self: end;
+            margin-bottom: 0;
+        }
+        .stats-bar .s-desc {
+            grid-area: desc;
+            align-self: start;
+        }
+    }
   </style>
     <!-- seo:start (auto — scripts/seo.js · NO editar a mano) -->
     <link rel="canonical" href="https://newconcret.com/">
