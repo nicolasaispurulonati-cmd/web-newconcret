@@ -1249,9 +1249,10 @@ body.search-open { overflow: hidden; }
     align-items: center;
     gap: .65rem;
     /* inset lateral de 1.5rem para alinear la caja con la columna de contenido
-       del drawer (section-labels, categorías y footer usan ese mismo inset) */
+       del drawer (section-labels, categorías y footer usan ese mismo inset).
+       margin-top da aire respecto al header (antes iba pegado); bottom reducido. */
     width: calc(100% - 3rem);
-    margin: 0 1.5rem 1.25rem;
+    margin: 1.25rem 1.5rem 0.9rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
