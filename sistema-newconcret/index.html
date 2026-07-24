@@ -659,7 +659,7 @@
             letter-spacing: -.025em;
             text-transform: uppercase;
             color: var(--wh);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             text-wrap: balance;
         }
         .cta-h2 span { color: var(--rh); }
@@ -669,8 +669,8 @@
             font-weight: 300;
             color: var(--lt);
             line-height: 1.65;
-            max-width: 44ch;
-            margin: 0 auto 2.75rem;
+            max-width: none;      /* en desktop entra en un solo renglón */
+            margin: 0 auto 2rem;
         }
 
         .cta-acts {
@@ -727,6 +727,8 @@
             .cta-sec { padding: 4rem 1.5rem; min-height: 50vh; }
             /* as large as possible while the longest line ("Asesoramiento hoy.") stays on one line → 2 lines total */
             .cta-h2 { font-size: 2.6rem; }
+            /* en mobile no hay espacio para un renglón: vuelve a acotar el ancho */
+            .cta-sub { max-width: 30ch; }
             .cta-acts a { width: 100%; justify-content: center; box-sizing: border-box; }
         }
     </style>
