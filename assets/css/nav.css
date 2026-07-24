@@ -905,6 +905,35 @@ body.no-scroll {
         clip-path: polygon(0 0, 100% 0, 100% 74%, 94% 100%, 0 100%);
         transition: background .2s, transform .2s;
     }
+
+    /* Descargar catálogo: acción secundaria del drawer (equivale al link de
+       catálogo de los mega menús de desktop). Bordeada, no rellena, para no
+       competir con el CTA rojo de contacto. */
+    .mob-catalogo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .6rem;
+        font-family: var(--font-m);
+        font-size: .66rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--nc-light);
+        background: transparent;
+        border: 1px solid var(--nc-steel);
+        padding: .8rem;
+        text-decoration: none;
+        transition: border-color .2s, color .2s, background .2s;
+    }
+    .mob-catalogo svg { opacity: .6; transition: opacity .2s; }
+    .mob-catalogo:hover,
+    .mob-catalogo:active {
+        border-color: var(--nc-red);
+        color: #fff;
+        background: rgba(255,255,255,.02);
+    }
+    .mob-catalogo:hover svg,
+    .mob-catalogo:active svg { opacity: 1; }
     /* ── HAMBURGER ICON ANIMATION ── */
     .hamburger {
         display: flex;
