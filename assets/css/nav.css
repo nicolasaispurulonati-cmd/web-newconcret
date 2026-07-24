@@ -1248,12 +1248,14 @@ body.search-open { overflow: hidden; }
     display: flex;
     align-items: center;
     gap: .65rem;
-    width: 100%;
+    /* inset lateral de 1.5rem para alinear la caja con la columna de contenido
+       del drawer (section-labels, categorías y footer usan ese mismo inset) */
+    width: calc(100% - 3rem);
+    margin: 0 1.5rem 1.25rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     padding: .75rem 1rem;
-    margin-bottom: 1.25rem;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.4);
     text-align: left;
