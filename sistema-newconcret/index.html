@@ -471,6 +471,29 @@
             padding: .6rem 0;
         }
 
+        /* Desktop ancho: cada etapa en 2 columnas — descripción a la izquierda,
+           objetivo de la etapa a la derecha, para usar el ancho disponible
+           (antes todo se apilaba a la izquierda y la derecha quedaba vacía). */
+        @media (min-width: 1080px) {
+            .tl-body {
+                display: grid;
+                grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+                column-gap: 3.5rem;
+                padding-right: 0;
+                align-content: start;
+                grid-template-areas:
+                    "label goal"
+                    "title goal"
+                    "desc  goal"
+                    "link  goal";
+            }
+            .tl-label { grid-area: label; }
+            .tl-title { grid-area: title; }
+            .tl-desc  { grid-area: desc; max-width: none; }
+            .tl-goal  { grid-area: goal; align-self: center; margin-top: 0; }
+            .tl-link  { grid-area: link; justify-self: start; }
+        }
+
         /* ── GALLERY ── */
         .gallery-sec { background: var(--bk); }
 
