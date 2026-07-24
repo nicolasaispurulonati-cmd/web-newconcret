@@ -51,7 +51,7 @@
         color: var(--nc-white);
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         .filter-bar {
             flex-direction: column;
             align-items: flex-start;
@@ -93,7 +93,10 @@
     .hero-mob .eyebrow-line { width: 20px; }
     .hero-mob .eyebrow-tx { font-size: .6rem; letter-spacing: .12em; }
     .hero-mob .hero-h1 {
-        font-size: clamp(3.4rem, 14vw, 5rem);
+        /* tope subido de 5rem a 6.5rem: a 5rem el título quedaba chico en tablets
+           anchas (768–900px), donde 14vw ya está capado. No afecta a teléfonos,
+           que gobiernan por el mínimo (3.4rem). */
+        font-size: clamp(3.4rem, 14vw, 6.5rem);
         line-height: .92;
         margin-bottom: 2rem;
     }
@@ -130,8 +133,12 @@
         -webkit-backdrop-filter: blur(10px);
     }
 
-    /* ── MOBILE SECTION FIXES (page-scoped, never touch estilo.css) ── */
-    @media (max-width: 768px) {
+    /* ── MOBILE SECTION FIXES (page-scoped, never touch estilo.css) ──
+       Breakpoint a 900px (no 768px) para coincidir con el switch de contenido
+       hide-mobile/hide-desktop y las reglas mobile globales de estilo.css, que
+       actúan a ≤900px. A 768px quedaba una franja 769–900px (tablets en vertical)
+       con el contenido mobile pero sin estos ajustes. */
+    @media (max-width: 900px) {
         /* CTA: desktop padding (6rem 4rem) squeezes content to ~247px on a 375px screen.
            No mobile override exists in estilo.css, so re-declare side padding here. */
         .cta-nos { padding: 4rem 1.5rem !important; min-height: 56vh; }
@@ -192,6 +199,34 @@
         #capacitaciones-mob .cap-cta-mob .btn-p {
             width: 100%;
             justify-content: center;
+        }
+
+        /* Barra de stats del hero mobile: .hs-item/.hs-num/.hs-lbl están estilados
+           en estilo.css pero gateados a ≤768px. A 769–900px (tablets en vertical)
+           los ítems perdían flex:1, padding y bordes y se amontonaban ("2.000+30+500+").
+           Se redeclaran acá con los mismos valores para cubrir todo el rango mobile. */
+        .hero-mob .hs-item {
+            flex: 1;
+            padding: .8rem .5rem;
+            border-right: 1px solid var(--nc-steel);
+            text-align: center;
+        }
+        .hero-mob .hs-item:last-child { border-right: none; }
+        .hero-mob .hs-num {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: var(--nc-white);
+            line-height: 1;
+        }
+        .hero-mob .hs-num em { color: var(--nc-red-hot); font-style: normal; font-size: .8em; }
+        .hero-mob .hs-lbl {
+            font-family: var(--font-m);
+            font-size: .48rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--nc-ash);
+            margin-top: .2rem;
         }
     }
   </style>
