@@ -78,7 +78,7 @@
             min-height: 88vh;
             display: flex;
             align-items: flex-end;
-            padding: 0 4rem 5rem;
+            padding: 6rem 4rem 5rem;
             overflow: hidden;
             margin-top: 66px;
         }
@@ -1129,6 +1129,10 @@
             color: var(--nc-ash);
         }
 
+        /* CTA: separación interna más pareja — el subtítulo tenía 2.75rem
+           de margen inferior, muy despegado del botón frente a los 1.5rem del resto */
+        .cta-nos .cta-nos-sub { margin-bottom: 1.75rem; }
+
         /* ═══════════════════════════════════════
     FOOTER
     ═══════════════════════════════════════ */
@@ -1473,11 +1477,11 @@
             <div class="sec-lbl"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Academia NewConcret</span>
             </div>
             <h1
-                style="font-family:var(--font-d); font-weight:900; font-size:3.2rem; text-transform:uppercase; color:var(--nc-white); line-height:.9; margin-bottom:1rem;">
+                style="font-family:var(--font-d); font-weight:900; font-size:3.7rem; text-transform:uppercase; color:var(--nc-white); line-height:.9; margin-bottom:1rem;">
                 Formación<br><span style="color:var(--nc-red);">certificada</span><br><span style="font-weight:300; color:var(--nc-light);">en hormigón.</span></h1>
             <p style="font-size:.92rem; font-weight:300; color:var(--nc-light); line-height:1.55; margin-bottom:1.75rem; max-width:92%;">
                 Curso teórico-práctico sobre reparación, pulido y embellecimiento de pisos.</p>
-            <a href="#aprende" class="btn-p" style="width:100%; justify-content:center;">Ver el programa</a>
+            <a href="#aprende" class="btn-p" style="align-self:flex-start;">Ver el programa</a>
         </div>
     </section>
     <div class="hero-stats-mob hide-desktop"
