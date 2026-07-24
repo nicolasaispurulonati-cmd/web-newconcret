@@ -66,10 +66,14 @@
         /* ── HERO ── */
         .hero-sistema {
             position: relative;
-            min-height: 100svh;
+            /* resta el nav fijo (66px) para que el hero entre en un viewport y la
+               franja de etapas quede visible sin scrollear */
+            min-height: calc(100svh - 66px);
             display: flex;
             align-items: center;
-            padding: 0 4rem;
+            /* padding-bottom = alto de la franja: centra el contenido en el
+               espacio libre por encima de ella, no detrás */
+            padding: 0 4rem 72px;
             overflow: hidden;
             margin-top: 66px;
         }
