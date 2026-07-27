@@ -251,11 +251,15 @@
     /* altura fija (menor) de la imagen en mobile para acortar el modal y reducir el
        scroll vertical. min-height:0 anula el min-height:280px de estilo.css que, si no,
        bloquea el height:200px (mismo motivo por el que estilo.css no lo lograba solo). */
-    .modal-img { height: 200px; min-height: 0; aspect-ratio: auto; }
-    .modal-body { padding: 1.5rem; }
+    .modal-img { height: 200px; min-height: 0; aspect-ratio: auto; padding: 1rem; }
+    /* menos padding-top: acerca el título a la imagen (antes sobraba espacio) */
+    .modal-body { padding: 1rem 1.5rem 1.5rem; }
     .modal { margin-top: 2rem; width: 100%; }
-    .modal-bg { padding: 1rem; }
+    /* menos padding lateral: el modal aprovecha más ancho de pantalla */
+    .modal-bg { padding: 1rem 0.5rem; }
     .modal-name { font-size: 1.6rem; }
+    /* más aire entre la descripción y el bloque de características técnicas */
+    .modal-desc { margin-bottom: 2.75rem; }
     /* botones apilados a lo ancho en mobile: en fila se aplastaban y el texto
        ("Consultar disponibilidad") desbordaba el botón, empujando el ancho */
     .modal-actions { margin-top: 1rem; flex-direction: column; }
