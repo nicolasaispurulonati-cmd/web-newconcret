@@ -256,7 +256,10 @@
     .modal { margin-top: 2rem; width: 100%; }
     .modal-bg { padding: 1rem; }
     .modal-name { font-size: 1.6rem; }
-    .modal-actions { margin-top: 1rem; }
+    /* botones apilados a lo ancho en mobile: en fila se aplastaban y el texto
+       ("Consultar disponibilidad") desbordaba el botón, empujando el ancho */
+    .modal-actions { margin-top: 1rem; flex-direction: column; }
+    .modal-actions > a { width: 100%; justify-content: center; }
   }
 
   /* ── ANIMATIONS ── */
