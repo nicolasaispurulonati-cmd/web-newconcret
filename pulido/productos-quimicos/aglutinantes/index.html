@@ -122,15 +122,15 @@
   .modal-bg.open .modal { transform: translateY(0); }
   .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid var(--nc-steel); color: var(--nc-white); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; }
   .modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
-  .modal-img { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: var(--nc-carbon); padding: 2rem; }
-  .modal-body { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .modal-img { width: 100%; min-width: 0; aspect-ratio: 1/1; object-fit: contain; background: var(--nc-carbon); padding: 2rem; }
+  .modal-body { min-width: 0; padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
   .modal-cat { font-family: var(--font-m); font-size: .65rem; color: var(--nc-red-hot); text-transform: uppercase; margin-bottom: .5rem; }
   .modal-name { font-family: var(--font-d); font-weight: 900; font-size: 2rem; color: var(--nc-white); text-transform: uppercase; margin-bottom: 1.2rem; line-height: 1.1; }
   .modal-desc { font-size: .9rem; color: var(--nc-light); line-height: 1.6; margin-bottom: 2rem; }
   .modal-feats-title { font-family: var(--font-m); font-size: .55rem; color: var(--nc-ash); text-transform: uppercase; margin-bottom: 1rem; border-bottom: 1px solid var(--nc-steel); padding-bottom: .5rem; }
   .modal-actions { display: flex; gap: 1rem; margin-top: 2rem; }
 
-  @media (max-width: 900px) { .modal-grid { grid-template-columns: 1fr; } .modal-body { padding: 1.5rem; } }
+  @media (max-width: 900px) { .modal-grid { grid-template-columns: 1fr; } .modal-img { height: 200px; min-height: 0; aspect-ratio: auto; } .modal-body { padding: 1.5rem; } }
 
   .reveal { opacity: 0; transform: translateY(20px); transition: all .7s var(--expo); }
   .reveal.in { opacity: 1; transform: none; }
