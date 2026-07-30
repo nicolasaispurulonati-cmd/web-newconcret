@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es" class="js-loaded">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajos realizados | NewConcret</title>
+    <meta name="description" content="Obras realizadas con el Sistema NewConcret: pisos de hormigón construidos, reparados, pulidos y mantenidos en plantas industriales, alimenticias, centros logísticos y comercios.">
+    <!-- Página con imágenes placeholder: no indexar hasta cargar las obras reales -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
+    <link rel="stylesheet" href="../assets/css/estilo.css?v=43">
+    <link rel="stylesheet" href="../assets/css/nav.css?v=2.0">
+
+    <style>
+        /* ── TOKENS ── */
+        :root {
+            --r:  #C1121F;
+            --rh: #E5161E;
+            --bk: #0A0A0A;
+            --dk: #111111;
+            --cb: #161616;
+            --st: #242424;
+            --s2: #303030;
+            --mi: #555;
+            --as: #888;
+            --lt: #CACAC8;
+            --wh: #F4F4F2;
+            --ex: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bk);
+            color: var(--wh);
+            font-family: var(--font-b);
+            overflow-x: hidden;
+        }
+
+        /* ── CURSOR ── */
+        @media (min-width: 901px) {
+            html.js-loaded body,
+            html.js-loaded body * { cursor: none !important; }
+        }
+        @media (max-width: 900px) {
+            body, body * { cursor: auto !important; }
+        }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .8s var(--ex), transform .8s var(--ex);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { transition: none; opacity: 1; transform: none; }
+            * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+        }
+
+        /* ── EYEBROW ── */
+        .tb-eyebrow {
+            display: inline-flex; align-items: center; gap: .85rem;
+            font-family: var(--font-m);
+            font-size: .6rem;
+            text-transform: uppercase;
+            letter-spacing: .28em;
+            color: var(--rh);
+            font-weight: 500;
+        }
+        .tb-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--r); display: inline-block; }
+
+        /* ═══ HERO ═══ */
+        .tb-hero {
+            margin-top: 66px;
+            padding: clamp(4rem, 8vw, 7rem) 4rem 3rem;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 3rem;
+            align-items: end;
+            border-bottom: 1px solid var(--st);
+        }
+        .tb-h1 {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: .88;
+            letter-spacing: -.02em;
+            text-transform: uppercase;
+            color: var(--wh);
+            margin-top: 1.1rem;
+            animation: tbFadeUp .9s var(--ex) .2s both;
+        }
+        .tb-h1 .red { color: var(--rh); }
+        .tb-hero-side {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            padding-bottom: .4rem;
+            animation: tbFadeUp .9s var(--ex) .45s both;
+        }
+        .tb-hero-p {
+            font-size: .97rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--lt);
+            max-width: 44ch;
+        }
+        .tb-hero-count { display: flex; align-items: baseline; gap: .8rem; }
+        .tb-hero-count b {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 2.4rem;
+            line-height: 1;
+            color: var(--wh);
+        }
+        .tb-hero-count span {
+            font-family: var(--font-m);
+            font-size: .6rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--as);
+        }
+        @keyframes tbFadeUp {
+            from { opacity: 0; transform: translateY(26px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        /* ═══ FILTROS ═══ */
+        .tb-filter {
+            position: sticky;
+            top: 66px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.1rem 4rem;
+            background: rgba(10,10,10,.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--st);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tb-filter::-webkit-scrollbar { display: none; }
+        .tb-filter-lbl {
+            font-family: var(--font-m);
+            font-size: .58rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--mi);
+            flex-shrink: 0;
+        }
+        .tb-pill {
+            flex-shrink: 0;
+            padding: .38rem .95rem;
+            background: transparent;
+            border: 1px solid var(--s2);
+            color: var(--as);
+            font-family: var(--font-d);
+            font-weight: 600;
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            transition: all .25s var(--ex);
+            white-space: nowrap;
+        }
+        .tb-pill:hover { color: var(--wh); border-color: var(--mi); }
+        .tb-pill.active { background: var(--r); border-color: var(--r); color: #fff; }
+
+        /* ═══ GRILLA DE OBRAS ═══ */
+        .tb-sec { padding: clamp(2.5rem, 5vw, 4rem) 4rem clamp(4rem, 7vw, 6rem); }
+        .tb-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2px;
+        }
+        .tb-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--cb);
+            grid-column: span 5;
+            aspect-ratio: 4 / 3;
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity .7s var(--ex), transform .7s var(--ex);
+        }
+        .tb-card.in { opacity: 1; transform: none; }
+        /* ritmo editorial: ancha / angosta alternadas por fila */
+        .tb-card:nth-child(4n+1) { grid-column: span 7; aspect-ratio: 16 / 10; }
+        .tb-card:nth-child(4n+4) { grid-column: span 7; aspect-ratio: 16 / 10; }
+
+        .tb-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(.82) saturate(.9);
+            transition: transform 1s var(--ex), filter .5s;
+        }
+        .tb-card:hover img { transform: scale(1.05); filter: brightness(.6) saturate(.85); }
+
+        .tb-card::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%; height: 2px;
+            background: var(--r);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .5s var(--ex);
+            z-index: 3;
+        }
+        .tb-card:hover::after { transform: scaleX(1); }
+
+        .tb-card-ov {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,.88) 0%, rgba(10,10,10,.25) 45%, transparent 70%);
+            z-index: 1;
+        }
+        .tb-card-meta {
+            position: absolute;
+            left: 1.6rem; right: 1.6rem; bottom: 1.4rem;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+        }
+        .tb-card-rubro {
+            font-family: var(--font-m);
+            font-size: .56rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--rh);
+        }
+        .tb-card-cliente {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+            line-height: .95;
+            text-transform: uppercase;
+            color: var(--wh);
+            letter-spacing: -.01em;
+        }
+        .tb-card-lugar { font-size: .8rem; font-weight: 300; color: var(--lt); }
+        .tb-card-ver {
+            display: inline-flex; align-items: center; gap: .5rem;
+            margin-top: .55rem;
+            font-family: var(--font-d);
+            font-weight: 600;
+            font-size: .62rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--wh);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .4s var(--ex), transform .4s var(--ex);
+        }
+        .tb-card-ver svg { width: 13px; height: 13px; }
+        .tb-card:hover .tb-card-ver { opacity: 1; transform: none; }
+        .tb-card-count {
+            position: absolute;
+            top: 1.2rem; right: 1.4rem;
+            z-index: 2;
+            font-family: var(--font-m);
+            font-size: .58rem;
+            letter-spacing: .14em;
+            color: #fff;
+            background: rgba(10,10,10,.6);
+            backdrop-filter: blur(8px);
+            padding: .32rem .65rem;
+        }
+
+        /* estado vacío del filtro */
+        .tb-empty {
+            display: none;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--as);
+            font-size: .9rem;
+            font-weight: 300;
+        }
+
+        /* ═══ LIGHTBOX ═══ */
+        .tb-lb {
+            position: fixed; inset: 0;
+            z-index: 10000;
+            background: rgba(10,10,10,.93);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .45s var(--ex), visibility .45s;
+        }
+        .tb-lb.open { opacity: 1; visibility: visible; }
+
+        .tb-lb-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 4rem;
+            border-bottom: 1px solid var(--st);
+        }
+        .tb-lb-info { display: flex; flex-direction: column; gap: .2rem; }
+        .tb-lb-rubro { font-family: var(--font-m); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--rh); }
+        .tb-lb-cliente { font-family: var(--font-d); font-weight: 900; font-size: 1.4rem; text-transform: uppercase; color: var(--wh); line-height: 1; }
+        .tb-lb-close {
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            background: transparent;
+            border: 1px solid var(--s2);
+            color: var(--lt);
+            transition: all .25s var(--ex);
+        }
+        .tb-lb-close:hover { border-color: var(--rh); color: #fff; background: rgba(193,18,31,.15); }
+        .tb-lb-close svg { width: 15px; height: 15px; }
+
+        .tb-lb-stage {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 6.5rem;
+            min-height: 0;
+            position: relative;
+        }
+        .tb-lb-stage img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border: 1px solid var(--st);
+            animation: tbLbIn .5s var(--ex);
+        }
+        @keyframes tbLbIn {
+            from { opacity: 0; transform: scale(.97) translateY(10px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        .tb-lb-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(22,22,22,.8);
+            border: 1px solid var(--s2);
+            color: var(--lt);
+            transition: all .25s var(--ex);
+            z-index: 2;
+        }
+        .tb-lb-nav:hover { border-color: var(--rh); color: #fff; background: rgba(193,18,31,.2); }
+        .tb-lb-nav svg { width: 16px; height: 16px; }
+        .tb-lb-prev { left: 1.5rem; }
+        .tb-lb-next { right: 1.5rem; }
+
+        .tb-lb-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 4rem 1.4rem;
+            border-top: 1px solid var(--st);
+        }
+        .tb-lb-caption { font-size: .82rem; font-weight: 300; color: var(--lt); }
+        .tb-lb-counter { font-family: var(--font-m); font-size: .62rem; letter-spacing: .18em; color: var(--as); }
+        .tb-lb-counter b { color: var(--wh); font-weight: 500; }
+
+        body.tb-lb-lock { overflow: hidden; }
+
+        /* ═══ CTA ═══ */
+        .tb-cta {
+            border-top: 1px solid var(--st);
+            background: var(--cb);
+            padding: clamp(3.5rem, 6vw, 5.5rem) 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .tb-cta-h {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3.6vw, 3rem);
+            line-height: .95;
+            text-transform: uppercase;
+            color: var(--wh);
+        }
+        .tb-cta-h span { color: var(--rh); }
+        .tb-btn {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: .8rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: .95rem 1.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            position: relative; overflow: hidden;
+            background: var(--r); color: #fff;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
+            transition: transform .2s;
+        }
+        .tb-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+            transition: left .5s;
+        }
+        .tb-btn:hover::before { left: 100%; }
+        .tb-btn:hover { transform: translateY(-2px); }
+        .tb-btn svg { width: 15px; height: 15px; }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 900px) {
+            .tb-hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem 2.5rem;
+                gap: 1.8rem;
+                align-items: start;
+            }
+            .tb-filter { padding: .9rem 1.5rem; }
+            .tb-sec { padding: 2rem 1.5rem 4rem; }
+            .tb-grid { grid-template-columns: 1fr; gap: 2px; }
+            .tb-card,
+            .tb-card:nth-child(4n+1),
+            .tb-card:nth-child(4n+4) { grid-column: span 1; aspect-ratio: 16 / 11; }
+            .tb-card-meta { left: 1.2rem; right: 1.2rem; bottom: 1.1rem; }
+            /* en touch no hay hover: el CTA del card queda siempre visible */
+            .tb-card-ver { opacity: 1; transform: none; }
+
+            .tb-lb-top { padding: 1rem 1.25rem; }
+            .tb-lb-stage { padding: 1rem 1rem 1rem; }
+            .tb-lb-nav { width: 42px; height: 42px; top: auto; bottom: -60px; }
+            .tb-lb-stage .tb-lb-prev { left: auto; right: calc(50% + 8px); }
+            .tb-lb-stage .tb-lb-next { right: calc(50% - 50px); }
+            .tb-lb-stage { margin-bottom: 70px; }
+            .tb-lb-bottom { padding: .9rem 1.25rem 1.1rem; }
+            .tb-lb-caption { font-size: .74rem; max-width: 55%; }
+
+            .tb-cta { padding: 3rem 1.5rem; }
+            .tb-cta > a { width: 100%; justify-content: center; box-sizing: border-box; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cur"></div>
+    <div id="ring"></div>
+    <div id="nav-placeholder"></div>
+
+    <!-- HERO -->
+    <section class="tb-hero">
+        <div>
+            <span class="tb-eyebrow" style="animation: tbFadeUp .9s var(--ex) .1s both;">Obras</span>
+            <h1 class="tb-h1">Trabajos<br><span class="red">realizados.</span></h1>
+        </div>
+        <div class="tb-hero-side">
+            <p class="tb-hero-p">Pisos de hormigón construidos, reparados, pulidos y mantenidos con el Sistema NewConcret. Cada obra, con sus fotos reales.</p>
+            <div class="tb-hero-count">
+                <b id="tbCount">0</b>
+                <span>obras<br>documentadas</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTROS -->
+    <nav class="tb-filter" id="tbFilter" aria-label="Filtrar obras por rubro">
+        <span class="tb-filter-lbl">Filtrar</span>
+        <!-- pills generadas desde los datos -->
+    </nav>
+
+    <!-- GRILLA -->
+    <section class="tb-sec">
+        <div class="tb-grid" id="tbGrid"></div>
+        <div class="tb-empty" id="tbEmpty">No hay obras cargadas en este rubro todavía.</div>
+    </section>
+
+    <!-- CTA -->
+    <section class="tb-cta">
+        <h2 class="tb-cta-h reveal in">¿Tu piso puede ser<br><span>el próximo?</span></h2>
+        <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="tb-btn">
+            Escribinos por WhatsApp
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
+        </a>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="tb-lb" id="tbLb" role="dialog" aria-modal="true" aria-label="Fotos de la obra">
+        <div class="tb-lb-top">
+            <div class="tb-lb-info">
+                <span class="tb-lb-rubro" id="tbLbRubro"></span>
+                <span class="tb-lb-cliente" id="tbLbCliente"></span>
+            </div>
+            <button class="tb-lb-close" id="tbLbClose" aria-label="Cerrar">
+                <svg viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <div class="tb-lb-stage">
+            <button class="tb-lb-nav tb-lb-prev" id="tbLbPrev" aria-label="Foto anterior">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <img id="tbLbImg" src="" alt="">
+            <button class="tb-lb-nav tb-lb-next" id="tbLbNext" aria-label="Foto siguiente">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <div class="tb-lb-bottom">
+            <span class="tb-lb-caption" id="tbLbCaption"></span>
+            <span class="tb-lb-counter"><b id="tbLbIdx">1</b> / <span id="tbLbTotal">1</span></span>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/layout.js?v=3.3"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav.js?v=3.0"></script>
+    <script>
+        document.documentElement.classList.add('js-loaded');
+
+        /* ══════════════════════════════════════════════════════════════
+           OBRAS — para agregar un trabajo, sumá un objeto a esta lista.
+           - cliente: nombre que se muestra grande
+           - rubro:   se usa para el filtro (se generan solos)
+           - lugar:   texto chico bajo el cliente
+           - fotos:   [{ src, caption }] — la primera es la portada
+           ⚠ PLACEHOLDERS: las fotos actuales son provisorias; reemplazar
+             por las imágenes reales de cada obra (assets/img/obras/...).
+           ══════════════════════════════════════════════════════════════ */
+        const OBRAS = [
+            {
+                cliente: 'Ford',
+                rubro: 'Automotriz',
+                lugar: 'Planta industrial · Buenos Aires',
+                fotos: [
+                    { src: '../assets/img/fotos/Despues 1.webp', caption: 'Piso pulido terminado — nave principal' },
+                    { src: '../assets/img/fotos/Antes 1.webp',   caption: 'Estado previo de la superficie' }
+                ]
+            },
+            {
+                cliente: 'Bagley',
+                rubro: 'Alimenticia',
+                lugar: 'Planta de producción',
+                fotos: [
+                    { src: '../assets/img/fotos/Despues 2.webp', caption: 'Superficie renovada — sector de producción' },
+                    { src: '../assets/img/fotos/Antes 2.webp',   caption: 'Estado previo de la superficie' }
+                ]
+            },
+            {
+                cliente: 'Centro logístico',
+                rubro: 'Logística',
+                lugar: 'Depósito de alto tránsito',
+                fotos: [
+                    { src: '../assets/img/fotos/inicio.webp', caption: 'Piso industrial de hormigón pulido' }
+                ]
+            },
+            {
+                cliente: 'Showroom',
+                rubro: 'Comercial',
+                lugar: 'Local comercial',
+                fotos: [
+                    { src: '../assets/img/fotos/nosotros.webp', caption: 'Terminación llaneado pulido' }
+                ]
+            }
+        ];
+
+        /* ── Render de la grilla ── */
+        const grid   = document.getElementById('tbGrid');
+        const empty  = document.getElementById('tbEmpty');
+        const filter = document.getElementById('tbFilter');
+
+        OBRAS.forEach((o, i) => {
+            const card = document.createElement('article');
+            card.className = 'tb-card';
+            card.dataset.rubro = o.rubro;
+            card.dataset.idx = i;
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', 'Ver fotos de ' + o.cliente);
+            card.innerHTML =
+                '<img src="' + o.fotos[0].src + '" alt="Obra ' + o.cliente + ' — ' + o.lugar + '" loading="lazy">' +
+                '<div class="tb-card-ov"></div>' +
+                '<span class="tb-card-count">' + o.fotos.length + ' foto' + (o.fotos.length > 1 ? 's' : '') + '</span>' +
+                '<div class="tb-card-meta">' +
+                    '<span class="tb-card-rubro">' + o.rubro + '</span>' +
+                    '<span class="tb-card-cliente">' + o.cliente + '</span>' +
+                    '<span class="tb-card-lugar">' + o.lugar + '</span>' +
+                    '<span class="tb-card-ver">Ver fotos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>' +
+                '</div>';
+            grid.appendChild(card);
+        });
+
+        /* contador del hero */
+        document.getElementById('tbCount').textContent = OBRAS.length;
+
+        /* ── Filtros (se generan desde los rubros presentes) ── */
+        const rubros = ['Todos', ...new Set(OBRAS.map(o => o.rubro))];
+        rubros.forEach((r, i) => {
+            const b = document.createElement('button');
+            b.className = 'tb-pill' + (i === 0 ? ' active' : '');
+            b.textContent = r;
+            b.addEventListener('click', () => {
+                filter.querySelectorAll('.tb-pill').forEach(p => p.classList.remove('active'));
+                b.classList.add('active');
+                let visibles = 0;
+                grid.querySelectorAll('.tb-card').forEach(c => {
+                    const show = r === 'Todos' || c.dataset.rubro === r;
+                    c.style.display = show ? '' : 'none';
+                    if (show) {
+                        visibles++;
+                        /* re-dispara la animación de entrada */
+                        c.classList.remove('in');
+                        void c.offsetWidth;
+                        c.classList.add('in');
+                    }
+                });
+                empty.style.display = visibles ? 'none' : 'block';
+            });
+            filter.appendChild(b);
+        });
+
+        /* ── Reveal en cascada de los cards ── */
+        const cardObs = new IntersectionObserver(entries => {
+            entries.forEach((e, k) => {
+                if (e.isIntersecting) {
+                    e.target.style.transitionDelay = (Math.min(k, 3) * 90) + 'ms';
+                    e.target.classList.add('in');
+                    cardObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: .12 });
+        grid.querySelectorAll('.tb-card').forEach(c => cardObs.observe(c));
+
+        const revObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); } });
+        }, { threshold: .07 });
+        document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+        /* ── Lightbox ── */
+        const lb        = document.getElementById('tbLb');
+        const lbImg     = document.getElementById('tbLbImg');
+        const lbCliente = document.getElementById('tbLbCliente');
+        const lbRubro   = document.getElementById('tbLbRubro');
+        const lbCaption = document.getElementById('tbLbCaption');
+        const lbIdx     = document.getElementById('tbLbIdx');
+        const lbTotal   = document.getElementById('tbLbTotal');
+        let curObra = 0, curFoto = 0;
+
+        function lbShow() {
+            const o = OBRAS[curObra], f = o.fotos[curFoto];
+            /* reinicia la animación de entrada de la imagen */
+            lbImg.style.animation = 'none';
+            void lbImg.offsetWidth;
+            lbImg.style.animation = '';
+            lbImg.src = f.src;
+            lbImg.alt = 'Obra ' + o.cliente + ' — foto ' + (curFoto + 1);
+            lbCliente.textContent = o.cliente;
+            lbRubro.textContent   = o.rubro + ' · ' + o.lugar;
+            lbCaption.textContent = f.caption || '';
+            lbIdx.textContent     = curFoto + 1;
+            lbTotal.textContent   = o.fotos.length;
+        }
+        function lbOpen(i) {
+            curObra = i; curFoto = 0;
+            lbShow();
+            lb.classList.add('open');
+            document.body.classList.add('tb-lb-lock');
+        }
+        function lbClose() {
+            lb.classList.remove('open');
+            document.body.classList.remove('tb-lb-lock');
+        }
+        function lbStep(d) {
+            const n = OBRAS[curObra].fotos.length;
+            curFoto = (curFoto + d + n) % n;
+            lbShow();
+        }
+
+        grid.addEventListener('click', e => {
+            const card = e.target.closest('.tb-card');
+            if (card) lbOpen(+card.dataset.idx);
+        });
+        grid.addEventListener('keydown', e => {
+            const card = e.target.closest('.tb-card');
+            if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); lbOpen(+card.dataset.idx); }
+        });
+        document.getElementById('tbLbClose').addEventListener('click', lbClose);
+        document.getElementById('tbLbPrev').addEventListener('click', () => lbStep(-1));
+        document.getElementById('tbLbNext').addEventListener('click', () => lbStep(1));
+        lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+        document.addEventListener('keydown', e => {
+            if (!lb.classList.contains('open')) return;
+            if (e.key === 'Escape')     lbClose();
+            if (e.key === 'ArrowLeft')  lbStep(-1);
+            if (e.key === 'ArrowRight') lbStep(1);
+        });
+
+        /* swipe en mobile */
+        let touchX = null;
+        lb.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+        lb.addEventListener('touchend', e => {
+            if (touchX === null) return;
+            const dx = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(dx) > 45) lbStep(dx > 0 ? -1 : 1);
+            touchX = null;
+        }, { passive: true });
+    </script>
+</body>
+</html>
