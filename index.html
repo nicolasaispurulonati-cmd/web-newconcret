@@ -252,6 +252,77 @@
             align-self: start;
         }
     }
+
+    /* ── LAS 4 ETAPAS (tira numerada, del Sistema NC) ── */
+    .eth-sec { background: var(--nc-carbon); border-top: 1px solid var(--nc-steel); padding: 5.5rem 4rem; }
+    .eth-eyebrow {
+        display: inline-flex; align-items: center; gap: .85rem;
+        font-family: var(--font-m); font-size: .6rem;
+        text-transform: uppercase; letter-spacing: .28em;
+        color: var(--nc-red-hot); font-weight: 500;
+        margin-bottom: 1.2rem;
+    }
+    .eth-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--nc-red); display: inline-block; }
+    .eth-head { margin-bottom: 3rem; max-width: 720px; }
+    .eth-head .sec-p { margin-top: 1.25rem; max-width: 52ch; }
+
+    .eth-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--nc-steel);
+    }
+    .eth-et {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: .9rem;
+        padding: 2.2rem 1.8rem 2rem;
+        border-right: 1px solid var(--nc-steel);
+        text-decoration: none;
+        overflow: hidden;
+        transition: background .4s var(--expo);
+    }
+    .eth-et:last-child { border-right: none; }
+    .eth-et::after {
+        content: '';
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%; height: 2px;
+        background: var(--nc-red);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .5s var(--expo);
+    }
+    .eth-et:hover { background: rgba(255,255,255,.03); }
+    .eth-et:hover::after { transform: scaleX(1); }
+    .eth-et-num { font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; color: var(--nc-red-hot); text-transform: uppercase; }
+    .eth-et-name {
+        font-family: var(--font-d);
+        font-weight: 800;
+        font-size: 1.35rem;
+        text-transform: uppercase;
+        color: var(--nc-white);
+        line-height: 1;
+    }
+    .eth-et-desc { font-size: .84rem; font-weight: 300; line-height: 1.6; color: var(--nc-ash); flex: 1; }
+    .eth-et-link {
+        display: inline-flex; align-items: center; gap: .5rem;
+        font-family: var(--font-d);
+        font-weight: 600;
+        font-size: .64rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--nc-light);
+    }
+    .eth-et-link svg { width: 13px; height: 13px; transition: transform .35s var(--expo); }
+    .eth-et:hover .eth-et-link svg { transform: translateX(5px); }
+
+    @media (max-width: 900px) {
+        .eth-sec { padding: 4rem 1.5rem; }
+        .eth-strip { grid-template-columns: 1fr; }
+        .eth-et { border-right: none; border-bottom: 1px solid var(--nc-steel); }
+        .eth-et:last-child { border-bottom: none; }
+    }
   </style>
     <!-- seo:start (auto — scripts/seo.js · NO editar a mano) -->
     <link rel="canonical" href="https://newconcret.com/">
@@ -963,6 +1034,42 @@
       <svg style="position:absolute; right:1.25rem; top:50%; transform:translateY(-50%);" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="var(--nc-red)" stroke-width="1.3" stroke-linecap="round"></path></svg>
     </a>
 
+  </div>
+</section>
+
+<!-- LAS 4 ETAPAS (tira numerada, del Sistema NC) -->
+<section class="eth-sec" id="etapas">
+  <div class="eth-head reveal">
+    <span class="eth-eyebrow">Las cuatro etapas</span>
+    <h2 class="sec-h2">El proceso donde<br>el sistema trabaja</h2>
+    <p class="sec-p">Gracias a los cuatro elementos del sistema — maquinaria, insumos, químicos y conocimiento — NewConcret participa en las cuatro etapas del ciclo de vida del piso.</p>
+  </div>
+
+  <div class="eth-strip reveal d1">
+    <a class="eth-et" href="construccion/">
+      <span class="eth-et-num">Etapa 01</span>
+      <span class="eth-et-name">Construcción</span>
+      <span class="eth-et-desc">La base que define la resistencia, la planimetría y la vida útil del piso.</span>
+      <span class="eth-et-link">Ver construcción <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
+    <a class="eth-et" href="reparacion/">
+      <span class="eth-et-num">Etapa 02</span>
+      <span class="eth-et-name">Reparación</span>
+      <span class="eth-et-desc">Recuperar la continuidad de la superficie antes de renovarla.</span>
+      <span class="eth-et-link">Ver reparación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
+    <a class="eth-et" href="pulido/">
+      <span class="eth-et-num">Etapa 03</span>
+      <span class="eth-et-name">Pulido</span>
+      <span class="eth-et-desc">La transformación del hormigón en una superficie resistente y estética.</span>
+      <span class="eth-et-link">Ver pulido <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
+    <a class="eth-et" href="mantenimiento/">
+      <span class="eth-et-num">Etapa 04</span>
+      <span class="eth-et-name">Mantenimiento</span>
+      <span class="eth-et-desc">Sostener el resultado en el tiempo con la rutina y los productos correctos.</span>
+      <span class="eth-et-link">Ver mantenimiento <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
   </div>
 </section>
 
