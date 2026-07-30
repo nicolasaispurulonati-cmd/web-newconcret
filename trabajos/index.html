@@ -398,26 +398,34 @@
 
         body.tb-lb-lock { overflow: hidden; }
 
-        /* ═══ CTA ═══ */
+        /* ═══ CTA (patrón del sitio: foto + overlay radial, centrado) ═══ */
         .tb-cta {
-            border-top: 1px solid var(--st);
-            background: var(--cb);
-            padding: clamp(3.5rem, 6vw, 5.5rem) 4rem;
+            position: relative;
+            min-height: 62vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            padding: 5rem 4rem;
+            overflow: hidden;
         }
-        .tb-cta-h {
+        .tb-cta-bg { position: absolute; inset: 0; }
+        .tb-cta-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.3) saturate(.6); }
+        .tb-cta-ov { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(10,10,10,.45), rgba(10,10,10,.92)); }
+        .tb-cta-content { position: relative; z-index: 2; }
+        .tb-cta-h2 {
             font-family: var(--font-d);
             font-weight: 900;
-            font-size: clamp(1.8rem, 3.6vw, 3rem);
-            line-height: .95;
             text-transform: uppercase;
+            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            line-height: .92;
+            letter-spacing: -.015em;
             color: var(--wh);
+            margin-bottom: 1.25rem;
         }
-        .tb-cta-h span { color: var(--rh); }
+        .tb-cta-h2 span { color: var(--rh); }
+        .tb-cta-sub { font-size: .95rem; font-weight: 300; color: var(--lt); margin: 0 auto 2rem; }
+        .tb-cta-acts { display: flex; justify-content: center; gap: .9rem; flex-wrap: wrap; }
         .tb-btn {
             font-family: var(--font-d);
             font-weight: 700;
@@ -474,8 +482,9 @@
             .tb-lb-bottom { padding: .9rem 1.25rem 1.1rem; }
             .tb-lb-caption { font-size: .74rem; max-width: 55%; }
 
-            .tb-cta { padding: 3rem 1.5rem; }
-            .tb-cta > a { width: 100%; justify-content: center; box-sizing: border-box; }
+            .tb-cta { padding: 4rem 1.5rem; min-height: 50vh; }
+            .tb-cta-sub { max-width: 30ch; }
+            .tb-cta-acts a { width: 100%; justify-content: center; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -517,12 +526,21 @@
     </section>
 
     <!-- CTA -->
-    <section class="tb-cta">
-        <h2 class="tb-cta-h reveal in">¿Tu piso puede ser<br><span>el próximo?</span></h2>
-        <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="tb-btn">
-            Escribinos por WhatsApp
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
-        </a>
+    <section class="tb-cta" id="contacto">
+        <div class="tb-cta-bg">
+            <img src="../assets/img/fotos/Despues%202.webp" alt="">
+        </div>
+        <div class="tb-cta-ov"></div>
+        <div class="tb-cta-content reveal">
+            <h2 class="tb-cta-h2">¿Tu piso puede ser<br><span>el próximo?</span></h2>
+            <p class="tb-cta-sub">Contactanos y te asesoramos sin costo. Respuesta inmediata.</p>
+            <div class="tb-cta-acts">
+                <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="tb-btn">
+                    Escribinos por WhatsApp
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- LIGHTBOX -->
