@@ -67,7 +67,7 @@ const LABELS = {
   desengrasantes: 'Desengrasantes', selladores: 'Selladores',
   'accesorios-aspiradoras': 'Accesorios de Aspiradoras', 'accesorios-pulidoras': 'Accesorios de Pulidoras',
   pulidoras: 'Pulidoras', 'discos-resinoides': 'Discos Resinoides', 'metales-desbaste': 'Metales de Desbaste',
-  'panos-diamantados': 'Paños Diamantados', densificadores: 'Densificadores', detergentes: 'Detergentes',
+  'panos-diamantados': 'Paños Diamantados', densificadores: 'Densificadores',
   impermeabilizantes: 'Impermeabilizantes', escarificadoras: 'Escarificadoras',
   'accesorios-amoladora': 'Accesorios de Amoladora', bujardado: 'Bujardado', 'mechas-copa': 'Mechas Copa',
   'puntas-martillo': 'Puntas de Martillo', productos: 'Productos', nosotros: 'Nosotros',

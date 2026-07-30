@@ -190,7 +190,7 @@
       <div class="mob-sub" id="sub-pulido">
         <div class="mob-sub-inner">
           <div><a href="${root}pulido/materiales/" class="mob-grp-title">Materiales</a><ul class="mob-links"><li><a href="${root}pulido/materiales/grouting/">Grouting</a></li><li><a href="${root}pulido/materiales/mortero-cementicio/">Mortero cementicio</a></li></ul></div>
-          <div><a href="${root}pulido/productos-quimicos/" class="mob-grp-title">Productos químicos <span class="mob-tag">Destacado</span></a><ul class="mob-links"><li><a href="${root}pulido/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}pulido/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li><li><a href="${root}pulido/productos-quimicos/densificadores/">Densificadores</a></li><li><a href="${root}pulido/productos-quimicos/impermeabilizantes/">Impermeabilizantes</a></li><li><a href="${root}pulido/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}pulido/productos-quimicos/detergentes/">Detergentes</a></li></ul></div>
+          <div><a href="${root}pulido/productos-quimicos/" class="mob-grp-title">Productos químicos <span class="mob-tag">Destacado</span></a><ul class="mob-links"><li><a href="${root}pulido/productos-quimicos/aglutinantes/">Aglutinantes</a></li><li><a href="${root}pulido/productos-quimicos/puentes-de-adherencia/">Puentes de adherencia</a></li><li><a href="${root}pulido/productos-quimicos/densificadores/">Densificadores</a></li><li><a href="${root}pulido/productos-quimicos/impermeabilizantes/">Impermeabilizantes</a></li><li><a href="${root}pulido/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}pulido/productos-quimicos/desengrasantes/">Desengrasantes</a></li></ul></div>
           <div><a href="${root}pulido/equipos/" class="mob-grp-title">Equipos</a><ul class="mob-links"><li><a href="${root}pulido/equipos/pulidoras/">Pulidoras <span class="mob-tag">Destacado</span></a></li><li><a href="${root}pulido/equipos/accesorios-pulidoras/">Accesorios pulidoras</a></li><li><a href="${root}pulido/equipos/aspiradoras/">Aspiradoras</a></li><li><a href="${root}pulido/equipos/accesorios-aspiradoras/">Accesorios aspiradoras</a></li><li><a href="${root}pulido/equipos/lustradoras/">Lustradoras</a></li><li><a href="${root}pulido/equipos/lavasecapisos/">Lavasecapisos</a></li></ul></div>
           <div><a href="${root}pulido/insumos/" class="mob-grp-title">Insumos</a><ul class="mob-links"><li><a href="${root}pulido/insumos/metales-desbaste/">Metales para desbaste</a></li><li><a href="${root}pulido/insumos/discos-resinoides/">Discos resinoides</a></li><li><a href="${root}pulido/insumos/panos-diamantados/">Paños diamantados</a></li></ul></div>
           <a href="${root}pulido/" class="mob-sub-cta">Ver pulido completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
@@ -368,7 +368,7 @@
           <li><a href="${root}pulido/productos-quimicos/densificadores/">Densificadores</a></li>
           <li><a href="${root}pulido/productos-quimicos/impermeabilizantes/">Impermeabilizantes</a></li>
           <li><a href="${root}pulido/productos-quimicos/selladores/">Selladores</a></li>
-          <li><a href="${root}pulido/productos-quimicos/detergentes/">Detergentes</a></li>
+          <li><a href="${root}pulido/productos-quimicos/desengrasantes/">Desengrasantes</a></li>
         </ul>
       </div>
       <div class="mega-col">
@@ -660,7 +660,7 @@
             { name: 'Densificadores', crumb: 'Pulido › Productos químicos', tags: ['densificador','densificadores','densificar','quimico','pulido'], href: root + 'pulido/productos-quimicos/densificadores/', group: 'Pulido' },
             { name: 'Impermeabilizantes', crumb: 'Pulido › Productos químicos', tags: ['impermeabilizante','impermeabilizantes','impermeabilizar','quimico','pulido'], href: root + 'pulido/productos-quimicos/impermeabilizantes/', group: 'Pulido' },
             { name: 'Selladores (pulido)', crumb: 'Pulido › Productos químicos', tags: ['sellador','selladores','sellar','quimico','pulido'], href: root + 'pulido/productos-quimicos/selladores/', group: 'Pulido' },
-            { name: 'Detergentes', crumb: 'Pulido › Productos químicos', tags: ['detergente','detergentes','limpieza','quimico','pulido'], href: root + 'pulido/productos-quimicos/detergentes/', group: 'Pulido' },
+            { name: 'Desengrasantes', crumb: 'Pulido › Productos químicos', tags: ['desengrasante','desengrasantes','limpieza','quimico','pulido'], href: root + 'pulido/productos-quimicos/desengrasantes/', group: 'Pulido' },
             { name: 'Equipos para pulido', crumb: 'Pulido › Equipos', tags: ['equipos','maquinas','pulido'], href: root + 'pulido/equipos/', group: 'Pulido' },
             { name: 'Pulidoras', crumb: 'Pulido › Equipos', tags: ['pulidora','pulidoras','maquina','pulido','equipos'], href: root + 'pulido/equipos/pulidoras/', group: 'Pulido' },
             { name: 'Accesorios pulidoras', crumb: 'Pulido › Equipos', tags: ['accesorios','pulidoras','pulido','equipos'], href: root + 'pulido/equipos/accesorios-pulidoras/', group: 'Pulido' },

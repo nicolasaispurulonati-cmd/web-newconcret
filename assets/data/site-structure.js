@@ -89,7 +89,7 @@ const NEWCONCRET_STRUCTURE = {
           { "slug": "densificadores", "label": "Densificadores" },
           { "slug": "impermeabilizantes", "label": "Impermeabilizantes" },
           { "slug": "selladores", "label": "Selladores" },
-          { "slug": "detergentes", "label": "Detergentes" }
+          { "slug": "desengrasantes", "label": "Desengrasantes" }
         ]
       },
       "equipos": {

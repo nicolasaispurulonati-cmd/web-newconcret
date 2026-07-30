@@ -551,13 +551,13 @@ const PAGES = [
     file: 'pulido/productos-quimicos/index.html',
     root: '../../', seccion: 'pulido', categoria: 'productos-quimicos', subcategoria: null,
     title: 'Productos Químicos — Pulido — NewConcret',
-    metaDesc: 'Densificadores, selladores, aglutinantes y detergentes para el sistema de pulido de hormigón.',
+    metaDesc: 'Densificadores, selladores, aglutinantes y desengrasantes para el sistema de pulido de hormigón.',
     hero: '../../assets/img/hero/aglutinantes.webp',
     eyebrow: 'Subcategoría de Pulido',
     breadcrumb: `<a href="../../">Inicio</a><span>›</span><a href="../../pulido/">Pulido</a><span>›</span><em>Productos químicos</em>`,
     h1: 'Productos<br>químicos',
     desc: 'Tratamientos químicos para endurecer, proteger y mantener pisos de hormigón pulido.',
-    pills: `<button class="pill active" data-filter="all">Todos</button><button class="pill" data-filter="aglutinantes">Aglutinantes</button><button class="pill" data-filter="puentes-de-adherencia">Puentes adherencia</button><button class="pill" data-filter="densificadores">Densificadores</button><button class="pill" data-filter="impermeabilizantes">Impermeabilizantes</button><button class="pill" data-filter="selladores">Selladores</button><button class="pill" data-filter="detergentes">Detergentes</button>`
+    pills: `<button class="pill active" data-filter="all">Todos</button><button class="pill" data-filter="aglutinantes">Aglutinantes</button><button class="pill" data-filter="puentes-de-adherencia">Puentes adherencia</button><button class="pill" data-filter="densificadores">Densificadores</button><button class="pill" data-filter="impermeabilizantes">Impermeabilizantes</button><button class="pill" data-filter="selladores">Selladores</button><button class="pill" data-filter="desengrasantes">Desengrasantes</button>`
   },
   {
     file: 'pulido/equipos/index.html',
@@ -673,16 +673,16 @@ const PAGES = [
     pills: `<button class="pill active" data-filter="all">Selladores</button>`
   },
   {
-    file: 'pulido/productos-quimicos/detergentes/index.html',
-    root: '../../../', seccion: 'pulido', categoria: 'productos-quimicos', subcategoria: 'detergentes',
-    title: 'Detergentes — Químicos Pulido — NewConcret',
-    metaDesc: 'Detergentes de mantenimiento para la limpieza diaria de pisos de hormigón pulido.',
+    file: 'pulido/productos-quimicos/desengrasantes/index.html',
+    root: '../../../', seccion: 'pulido', categoria: 'productos-quimicos', subcategoria: 'desengrasantes',
+    title: 'Desengrasantes — Químicos Pulido — NewConcret',
+    metaDesc: 'Desengrasantes de mantenimiento para la limpieza diaria de pisos de hormigón pulido.',
     hero: '../../../assets/img/hero/aglutinantes.webp',
     eyebrow: 'Productos Químicos · Pulido',
-    breadcrumb: `<a href="../../../">Inicio</a><span>›</span><a href="../../../pulido/">Pulido</a><span>›</span><a href="../../../pulido/productos-quimicos/">Químicos</a><span>›</span><em>Detergentes</em>`,
-    h1: 'Detergentes<br>de mantenimiento',
-    desc: 'Detergentes especializados para la limpieza y mantenimiento sin dañar el brillo del hormigón pulido.',
-    pills: `<button class="pill active" data-filter="all">Detergentes</button>`
+    breadcrumb: `<a href="../../../">Inicio</a><span>›</span><a href="../../../pulido/">Pulido</a><span>›</span><a href="../../../pulido/productos-quimicos/">Químicos</a><span>›</span><em>Desengrasantes</em>`,
+    h1: 'Desengrasantes<br>de mantenimiento',
+    desc: 'Desengrasantes especializados para la limpieza y mantenimiento sin dañar el brillo del hormigón pulido.',
+    pills: `<button class="pill active" data-filter="all">Desengrasantes</button>`
   },
 
   {
@@ -854,11 +854,11 @@ const PAGES = [
     file: 'mantenimiento/productos-quimicos/desengrasantes/index.html',
     root: '../../../', seccion: 'mantenimiento', categoria: 'productos-quimicos', subcategoria: 'desengrasantes',
     title: 'Desengrasantes — Químicos Mantenimiento — NewConcret',
-    metaDesc: 'Detergentes y desengrasantes industriales para limpieza profunda.',
+    metaDesc: 'Desengrasantes industriales para limpieza profunda.',
     hero: '../../../assets/img/hero/mantenimiento.webp',
     eyebrow: 'Productos Químicos · Mantenimiento',
     breadcrumb: `<a href="../../../">Inicio</a><span>›</span><a href="../../../mantenimiento/">Mantenimiento</a><span>›</span><a href="../../../mantenimiento/productos-quimicos/">Químicos</a><span>›</span><em>Desengrasantes</em>`,
-    h1: 'Detergentes y<br>desengrasantes',
+    h1: 'Desengrasantes<br>industriales',
     desc: 'Químicos de limpieza profunda formulados para no atacar el sellador base.',
     pills: `<button class="pill active" data-filter="all">Desengrasantes</button>`
   },

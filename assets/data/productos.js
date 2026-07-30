@@ -4759,7 +4759,7 @@ const productos = [
             {
                 "sección": "pulido",
                 "categoría": "productos-quimicos",
-                "subcategoría": "detergentes"
+                "subcategoría": "desengrasantes"
             },
             {
                 "sección": "mantenimiento",

@@ -6,7 +6,9 @@
   "redirects": [
     { "source": "/newconcret-construccion.html", "destination": "/construccion/", "permanent": true },
     { "source": "/mantenimiento/productos-quimicos/sistema-3-pasos", "destination": "/proteccion/", "permanent": true },
-    { "source": "/mantenimiento/productos-quimicos/sistema-3-pasos/", "destination": "/proteccion/", "permanent": true }
+    { "source": "/mantenimiento/productos-quimicos/sistema-3-pasos/", "destination": "/proteccion/", "permanent": true },
+    { "source": "/pulido/productos-quimicos/detergentes", "destination": "/pulido/productos-quimicos/desengrasantes/", "permanent": true },
+    { "source": "/pulido/productos-quimicos/detergentes/", "destination": "/pulido/productos-quimicos/desengrasantes/", "permanent": true }
   ],
   "headers": [
     {
