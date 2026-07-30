@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es" class="js-loaded">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema NewConcret — Cuatro elementos, cuatro etapas</title>
+    <meta name="description" content="El Sistema NewConcret en cuatro partes iguales: maquinaria, insumos, químicos y conocimiento. Cuatro elementos presentes en las cuatro etapas del piso: construcción, reparación, pulido y mantenimiento.">
+    <!-- Página alternativa (versión B) del Sistema NewConcret: no indexar hasta definir cuál queda -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/x-icon" href="../../logos/Favicon.ico">
+    <link rel="stylesheet" href="../../assets/css/estilo.css?v=43">
+    <link rel="stylesheet" href="../../assets/css/nav.css?v=2.0">
+
+    <style>
+        /* ── TOKENS ── */
+        :root {
+            --r:  #C1121F;
+            --rh: #E5161E;
+            --bk: #0A0A0A;
+            --dk: #111111;
+            --cb: #161616;
+            --st: #242424;
+            --s2: #303030;
+            --mi: #555;
+            --as: #888;
+            --lt: #CACAC8;
+            --wh: #F4F4F2;
+            --ex: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bk);
+            color: var(--wh);
+            font-family: var(--font-b);
+            overflow-x: hidden;
+        }
+
+        /* ── CURSOR ── */
+        @media (min-width: 901px) {
+            html.js-loaded body,
+            html.js-loaded body * { cursor: none !important; }
+        }
+        @media (max-width: 900px) {
+            body, body * { cursor: auto !important; }
+        }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .8s var(--ex), transform .8s var(--ex);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+        .d1 { transition-delay: .1s; }
+        .d2 { transition-delay: .2s; }
+        .d3 { transition-delay: .3s; }
+        .d4 { transition-delay: .4s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { transition: none; opacity: 1; transform: none; }
+            * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+        }
+
+        /* ── BOTONES (aislados de la página) ── */
+        .q-btn {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: .8rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: .95rem 1.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            transition: transform .2s, color .2s, border-color .2s, background .2s;
+        }
+        .q-btn svg { width: 15px; height: 15px; }
+        .q-btn:active { transform: scale(.98); }
+        .q-btn-p {
+            position: relative; overflow: hidden;
+            background: var(--r); color: #fff;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
+        }
+        .q-btn-p::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+            transition: left .5s;
+        }
+        .q-btn-p:hover::before { left: 100%; }
+        .q-btn-p:hover { transform: translateY(-2px); }
+        .q-btn-g {
+            font-weight: 600; font-size: .72rem; letter-spacing: .14em;
+            color: var(--wh); background: transparent;
+            border: 1px solid var(--s2);
+            padding: .85rem 1.3rem;
+        }
+        .q-btn-g:hover { color: #fff; border-color: var(--as); background: rgba(255,255,255,.08); }
+
+        /* ── EYEBROW ── */
+        .q-eyebrow {
+            display: inline-flex; align-items: center; gap: .85rem;
+            font-family: var(--font-m);
+            font-size: .6rem;
+            text-transform: uppercase;
+            letter-spacing: .28em;
+            color: var(--rh);
+            font-weight: 500;
+        }
+        .q-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--r); display: inline-block; }
+
+        /* ═══ HERO ═══ */
+        .q-hero {
+            position: relative;
+            min-height: calc(100svh - 66px);
+            margin-top: 66px;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: clamp(2rem, 5vw, 5rem);
+            padding: 3rem 4rem 4rem;
+            overflow: hidden;
+        }
+        /* textura de fondo: retícula técnica muy tenue */
+        .q-hero::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background-image:
+                linear-gradient(var(--dk) 1px, transparent 1px),
+                linear-gradient(90deg, var(--dk) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(ellipse 90% 80% at 70% 45%, #000 0%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 80% at 70% 45%, #000 0%, transparent 75%);
+            pointer-events: none;
+        }
+
+        .q-hero-copy { position: relative; z-index: 2; }
+
+        .q-hero-h1 {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(3rem, 6.6vw, 5.6rem);
+            line-height: .88;
+            letter-spacing: -.02em;
+            text-transform: uppercase;
+            color: var(--wh);
+            margin: 1.1rem 0 1.4rem;
+            animation: qFadeUp .9s var(--ex) .25s both;
+        }
+        .q-hero-h1 .red { color: var(--rh); }
+        .q-hero-h1 .thin { font-weight: 300; color: var(--as); }
+
+        .q-hero-p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--lt);
+            max-width: 440px;
+            margin-bottom: 2.2rem;
+            animation: qFadeUp .9s var(--ex) .45s both;
+        }
+
+        @keyframes qFadeUp {
+            from { opacity: 0; transform: translateY(26px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        /* Leyenda de cuartos, sincronizada con el gráfico */
+        .q-legend { margin-bottom: 2.4rem; border-top: 1px solid var(--st); animation: qFadeUp .9s var(--ex) .6s both; }
+        .q-leg-row {
+            display: grid;
+            grid-template-columns: 2.6rem 1fr auto;
+            align-items: center;
+            gap: 1.1rem;
+            padding: .85rem 0;
+            border-bottom: 1px solid var(--st);
+            transition: background .35s var(--ex), padding-left .35s var(--ex);
+        }
+        .q-leg-row:hover { background: rgba(255,255,255,.02); }
+        .q-leg-num {
+            font-family: var(--font-m);
+            font-size: .62rem;
+            letter-spacing: .1em;
+            color: var(--mi);
+            transition: color .3s;
+        }
+        .q-leg-name {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: .98rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--lt);
+            transition: color .3s;
+        }
+        .q-leg-pct {
+            font-family: var(--font-d);
+            font-weight: 800;
+            font-size: .85rem;
+            color: var(--mi);
+            transition: color .3s;
+        }
+        .q-leg-row.on .q-leg-num  { color: var(--rh); }
+        .q-leg-row.on .q-leg-name { color: var(--wh); }
+        .q-leg-row.on .q-leg-pct  { color: var(--rh); }
+
+        .q-hero-acts { display: flex; flex-wrap: wrap; gap: .9rem; animation: qFadeUp .9s var(--ex) .7s both; }
+
+        /* ── EL GRÁFICO (torta 4×25%) ── */
+        .q-chart-wrap {
+            position: relative; z-index: 1;
+            justify-self: center;
+            width: min(100%, 480px);
+            aspect-ratio: 1 / 1;
+            animation: qFadeUp 1s var(--ex) .5s both;
+        }
+        .q-chart { width: 100%; height: 100%; display: block; overflow: visible; }
+
+        /* anillo punteado exterior en rotación perpetua */
+        .q-orbit {
+            fill: none;
+            stroke: var(--s2);
+            stroke-width: 1;
+            stroke-dasharray: 2 9;
+            transform-box: view-box;
+            transform-origin: 50% 50%;
+            animation: qSpin 90s linear infinite;
+        }
+        @keyframes qSpin { to { transform: rotate(360deg); } }
+
+        .q-seg {
+            transform-box: view-box;
+            transform-origin: 50% 50%;
+            transition: transform .55s var(--ex), opacity .6s var(--ex);
+            opacity: 0;
+            transform: scale(.82);
+        }
+        .q-chart.drawn .q-seg { opacity: 1; transform: translate(0, 0) scale(1); }
+        .q-chart.drawn .q-seg:nth-child(2) { transition-delay: .08s; }
+        .q-chart.drawn .q-seg:nth-child(3) { transition-delay: .16s; }
+        .q-chart.drawn .q-seg:nth-child(4) { transition-delay: .24s; }
+
+        .q-seg path {
+            fill: var(--cb);
+            stroke: var(--st);
+            stroke-width: 1;
+            transition: fill .4s var(--ex), stroke .4s var(--ex);
+        }
+        .q-seg text {
+            font-family: var(--font-d);
+            font-weight: 800;
+            font-size: 21px;
+            fill: var(--mi);
+            text-anchor: middle;
+            dominant-baseline: central;
+            letter-spacing: .02em;
+            transition: fill .4s;
+            pointer-events: none;
+        }
+        /* cuarto activo: se separa de la torta y toma el acento */
+        .q-chart.drawn .q-seg.on { transform: translate(var(--tx), var(--ty)) scale(1); }
+        .q-seg.on path { fill: var(--r); stroke: var(--rh); }
+        .q-seg.on text { fill: #fff; }
+
+        /* centro del gráfico */
+        .q-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .q-center-num {
+            font-family: var(--font-m);
+            font-size: .58rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--rh);
+            margin-bottom: .45rem;
+            min-height: .9em;
+        }
+        .q-center-name {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(1.15rem, 2vw, 1.6rem);
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: .01em;
+            color: var(--wh);
+            max-width: 60%;
+        }
+        .q-center-sub {
+            font-family: var(--font-b);
+            font-weight: 300;
+            font-size: .72rem;
+            color: var(--as);
+            margin-top: .55rem;
+            max-width: 55%;
+            line-height: 1.5;
+        }
+        .q-center.swap .q-center-num,
+        .q-center.swap .q-center-name,
+        .q-center.swap .q-center-sub { animation: qSwap .45s var(--ex); }
+        @keyframes qSwap {
+            0%   { opacity: 0; transform: translateY(7px); }
+            100% { opacity: 1; transform: none; }
+        }
+
+        /* ═══ SECCIONES GENÉRICAS ═══ */
+        .q-sec { padding: clamp(4rem, 7vw, 7rem) 4rem; }
+        .q-wrap { max-width: 1400px; margin: 0 auto; }
+        .q-h2 {
+            font-family: var(--font-d);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+            line-height: .95;
+            letter-spacing: -.01em;
+            color: var(--wh);
+            margin-top: 1.2rem;
+        }
+        .q-h2 .red { color: var(--rh); }
+        .q-lead {
+            font-size: .98rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--lt);
+            max-width: 52ch;
+        }
+
+        /* ═══ LOS 4 ELEMENTOS ═══ */
+        .q-elems { background: var(--dk); border-top: 1px solid var(--st); border-bottom: 1px solid var(--st); }
+        .q-elems-head {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: end;
+            margin-bottom: clamp(2.5rem, 5vw, 4rem);
+        }
+        .q-elems-head .q-lead { padding-bottom: .4rem; }
+
+        .q-elem-list { border-top: 1px solid var(--st); }
+        .q-elem {
+            display: grid;
+            grid-template-columns: 7.5rem 1.15fr 1.6fr auto;
+            gap: clamp(1.2rem, 3vw, 3rem);
+            align-items: center;
+            padding: 2.1rem 0;
+            border-bottom: 1px solid var(--st);
+            text-decoration: none;
+            transition: background .4s var(--ex);
+        }
+        .q-elem:hover { background: rgba(255,255,255,.025); }
+        .q-elem-pct {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+            line-height: 1;
+            color: var(--s2);
+            letter-spacing: -.02em;
+            transition: color .4s var(--ex);
+        }
+        .q-elem:hover .q-elem-pct { color: var(--rh); }
+        .q-elem-id { display: flex; flex-direction: column; gap: .35rem; }
+        .q-elem-num { font-family: var(--font-m); font-size: .58rem; letter-spacing: .22em; color: var(--mi); text-transform: uppercase; }
+        .q-elem-name {
+            font-family: var(--font-d);
+            font-weight: 800;
+            font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--wh);
+        }
+        .q-elem-desc {
+            font-size: .9rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--as);
+            max-width: 46ch;
+        }
+        .q-elem-cta {
+            display: inline-flex; align-items: center; gap: .5rem;
+            font-family: var(--font-d);
+            font-weight: 600;
+            font-size: .68rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--lt);
+            white-space: nowrap;
+        }
+        .q-elem-cta svg { width: 14px; height: 14px; transition: transform .35s var(--ex); }
+        .q-elem:hover .q-elem-cta { color: #fff; }
+        .q-elem:hover .q-elem-cta svg { transform: translateX(5px); }
+
+        /* ═══ MATRIZ 4×4 ═══ */
+        .q-matrix-sec { position: relative; overflow: hidden; }
+        .q-matrix-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.4fr;
+            gap: clamp(2.5rem, 6vw, 6rem);
+            align-items: center;
+        }
+        .q-matrix-copy .q-lead { margin-top: 1.4rem; }
+        .q-matrix-stat {
+            margin-top: 2.4rem;
+            display: flex;
+            align-items: baseline;
+            gap: .9rem;
+        }
+        .q-matrix-stat b {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 2.6rem;
+            color: var(--wh);
+            letter-spacing: -.02em;
+        }
+        .q-matrix-stat span {
+            font-family: var(--font-m);
+            font-size: .6rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--as);
+            max-width: 22ch;
+            line-height: 1.6;
+        }
+
+        .q-matrix { border: 1px solid var(--st); background: var(--dk); }
+        .q-mx-table { display: grid; grid-template-columns: minmax(8.5rem, auto) repeat(4, 1fr); }
+        .q-mx-cell {
+            padding: 1.15rem .6rem;
+            border-top: 1px solid var(--st);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .q-mx-cell:nth-child(5n+1) { justify-content: flex-start; padding-left: 1.4rem; border-right: 1px solid var(--st); }
+        .q-mx-head { border-top: none !important; }
+        .q-mx-col {
+            font-family: var(--font-m);
+            font-size: .55rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--as);
+            text-align: center;
+            line-height: 1.5;
+        }
+        .q-mx-row {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: .82rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--lt);
+        }
+        .q-dot {
+            width: 11px; height: 11px;
+            background: var(--r);
+            transform: scale(0);
+            transition: transform .5s var(--ex);
+            transition-delay: calc(var(--i) * 55ms);
+        }
+        .q-matrix.lit .q-dot { transform: scale(1); }
+
+        /* ═══ ETAPAS ═══ */
+        .q-etapas { background: var(--cb); border-top: 1px solid var(--st); }
+        .q-etapas-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 720px; }
+        .q-etapas-head .q-lead { margin-top: 1.4rem; }
+
+        .q-et-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--st);
+        }
+        .q-et {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: .9rem;
+            padding: 2.2rem 1.8rem 2rem;
+            border-right: 1px solid var(--st);
+            text-decoration: none;
+            overflow: hidden;
+            transition: background .4s var(--ex);
+        }
+        .q-et:last-child { border-right: none; }
+        .q-et::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%; height: 2px;
+            background: var(--r);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .5s var(--ex);
+        }
+        .q-et:hover { background: rgba(255,255,255,.03); }
+        .q-et:hover::after { transform: scaleX(1); }
+        .q-et-num { font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; color: var(--rh); }
+        .q-et-name {
+            font-family: var(--font-d);
+            font-weight: 800;
+            font-size: 1.35rem;
+            text-transform: uppercase;
+            color: var(--wh);
+            line-height: 1;
+        }
+        .q-et-desc { font-size: .84rem; font-weight: 300; line-height: 1.6; color: var(--as); flex: 1; }
+        .q-et-link {
+            display: inline-flex; align-items: center; gap: .5rem;
+            font-family: var(--font-d);
+            font-weight: 600;
+            font-size: .64rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--lt);
+        }
+        .q-et-link svg { width: 13px; height: 13px; transition: transform .35s var(--ex); }
+        .q-et:hover .q-et-link svg { transform: translateX(5px); }
+
+        /* ═══ CTA ═══ */
+        .q-cta {
+            position: relative;
+            min-height: 62vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5rem 4rem;
+            overflow: hidden;
+        }
+        .q-cta-bg { position: absolute; inset: 0; }
+        .q-cta-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.3) saturate(.6); }
+        .q-cta-ov { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(10,10,10,.45), rgba(10,10,10,.92)); }
+        .q-cta-content { position: relative; z-index: 2; }
+        .q-cta-h2 {
+            font-family: var(--font-d);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            line-height: .92;
+            letter-spacing: -.015em;
+            color: var(--wh);
+            margin-bottom: 1.25rem;
+        }
+        .q-cta-h2 span { color: var(--rh); }
+        .q-cta-sub { font-size: .95rem; font-weight: 300; color: var(--lt); margin: 0 auto 2rem; }
+        .q-cta-acts { display: flex; justify-content: center; gap: .9rem; flex-wrap: wrap; }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 1080px) {
+            .q-elem { grid-template-columns: 5.5rem 1fr auto; }
+            .q-elem-desc { display: none; }
+        }
+
+        @media (max-width: 900px) {
+            .q-hero {
+                grid-template-columns: 1fr;
+                padding: 2.5rem 1.5rem 3.5rem;
+                gap: 2.5rem;
+                min-height: 0;
+            }
+            .q-chart-wrap { width: min(84vw, 380px); order: 2; }
+            .q-hero-copy { order: 1; }
+            .q-legend { margin-bottom: 2rem; }
+            .q-hero-acts a { flex: 1; justify-content: center; }
+
+            .q-sec { padding: 3.5rem 1.5rem; }
+
+            .q-elems-head { grid-template-columns: 1fr; gap: 1.2rem; align-items: start; }
+            .q-elem { grid-template-columns: 1fr; gap: .8rem; padding: 1.8rem 0; }
+            .q-elem-pct { font-size: 1.7rem; order: 2; }
+            .q-elem-id { order: 1; }
+            .q-elem-desc { display: block; order: 3; max-width: none; }
+            .q-elem-cta { order: 4; }
+
+            .q-matrix-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+            .q-mx-table { grid-template-columns: minmax(6.4rem, auto) repeat(4, 1fr); }
+            .q-mx-cell { padding: .9rem .3rem; }
+            .q-mx-cell:nth-child(5n+1) { padding-left: .9rem; }
+            .q-mx-row { font-size: .68rem; }
+            .q-mx-col { font-size: .48rem; letter-spacing: .08em; }
+            .q-dot { width: 9px; height: 9px; }
+
+            .q-et-strip { grid-template-columns: 1fr; }
+            .q-et { border-right: none; border-bottom: 1px solid var(--st); }
+            .q-et:last-child { border-bottom: none; }
+
+            .q-cta { padding: 4rem 1.5rem; min-height: 50vh; }
+            .q-cta-sub { max-width: 30ch; }
+            .q-cta-acts a { width: 100%; justify-content: center; box-sizing: border-box; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cur"></div>
+    <div id="ring"></div>
+    <div id="nav-placeholder"></div>
+
+    <!-- HERO: la torta de 4 cuartos -->
+    <section class="q-hero">
+        <div class="q-hero-copy">
+            <span class="q-eyebrow" style="animation: qFadeUp .9s var(--ex) .15s both;">Sistema NewConcret</span>
+            <h1 class="q-hero-h1">
+                Un sistema,<br>
+                <span class="red">cuatro partes</span><br>
+                <span class="thin">iguales.</span>
+            </h1>
+            <p class="q-hero-p">Maquinaria, insumos, químicos y conocimiento. Cada elemento aporta el 25% del resultado: si falta uno, el sistema queda incompleto. NewConcret integra los cuatro y por eso puede participar en todos los procesos del piso.</p>
+
+            <div class="q-legend" id="qLegend">
+                <div class="q-leg-row" data-seg="0"><span class="q-leg-num">01</span><span class="q-leg-name">Maquinaria</span><span class="q-leg-pct">25%</span></div>
+                <div class="q-leg-row" data-seg="1"><span class="q-leg-num">02</span><span class="q-leg-name">Insumos</span><span class="q-leg-pct">25%</span></div>
+                <div class="q-leg-row" data-seg="2"><span class="q-leg-num">03</span><span class="q-leg-name">Químicos</span><span class="q-leg-pct">25%</span></div>
+                <div class="q-leg-row" data-seg="3"><span class="q-leg-num">04</span><span class="q-leg-name">Conocimiento</span><span class="q-leg-pct">25%</span></div>
+            </div>
+
+            <div class="q-hero-acts">
+                <a href="#elementos" class="q-btn q-btn-p">Conocer el sistema</a>
+                <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="q-btn q-btn-g">Consultar presupuesto</a>
+            </div>
+        </div>
+
+        <div class="q-chart-wrap">
+            <svg class="q-chart" id="qChart" viewBox="0 0 400 400" role="img" aria-label="Gráfico del sistema: cuatro cuartos iguales de 25% — maquinaria, insumos, químicos y conocimiento"></svg>
+            <div class="q-center" id="qCenter">
+                <div class="q-center-num" id="qCenterNum">Sistema completo</div>
+                <div class="q-center-name" id="qCenterName">100%</div>
+                <div class="q-center-sub" id="qCenterSub">Cuatro elementos, un solo proveedor.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOS 4 ELEMENTOS -->
+    <section class="q-sec q-elems" id="elementos">
+        <div class="q-wrap">
+            <div class="q-elems-head">
+                <div class="reveal">
+                    <span class="q-eyebrow">Los cuatro elementos</span>
+                    <h2 class="q-h2">Cada cuarto<br>hace <span class="red">al todo.</span></h2>
+                </div>
+                <p class="q-lead reveal d1">Un piso no se resuelve con una máquina, ni con un químico, ni con un consumible suelto. Se resuelve cuando los cuatro elementos trabajan juntos — y cuando hay criterio para combinarlos.</p>
+            </div>
+
+            <div class="q-elem-list reveal">
+                <a class="q-elem" href="../../pulido/equipos/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 01</span>
+                        <span class="q-elem-name">Maquinaria</span>
+                    </span>
+                    <span class="q-elem-desc">Pulidoras, allanadoras, aserradoras, escarificadoras y aspiradoras. El equipo define el ritmo, la precisión y la escala de cada trabajo.</span>
+                    <span class="q-elem-cta">Ver equipos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-elem" href="../../pulido/insumos/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 02</span>
+                        <span class="q-elem-name">Insumos</span>
+                    </span>
+                    <span class="q-elem-desc">Herramientas diamantadas, fibras, discos y paños. El consumible correcto para cada grano, cada dureza de hormigón y cada terminación.</span>
+                    <span class="q-elem-cta">Ver insumos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-elem" href="../../pulido/productos-quimicos/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 03</span>
+                        <span class="q-elem-name">Químicos</span>
+                    </span>
+                    <span class="q-elem-desc">Densificadores, selladores, impermeabilizantes y desengrasantes. La química que endurece, protege y mantiene la superficie en el tiempo.</span>
+                    <span class="q-elem-cta">Ver químicos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-elem" href="../../capacitacion/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 04</span>
+                        <span class="q-elem-name">Conocimiento</span>
+                    </span>
+                    <span class="q-elem-desc">Capacitación técnica, acompañamiento en obra y criterio para decidir. Es el elemento que hace rendir a los otros tres.</span>
+                    <span class="q-elem-cta">Ver capacitación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATRIZ: 4 elementos × 4 etapas -->
+    <section class="q-sec q-matrix-sec">
+        <div class="q-wrap q-matrix-grid">
+            <div class="q-matrix-copy reveal">
+                <span class="q-eyebrow">Elementos × etapas</span>
+                <h2 class="q-h2">Presentes en<br><span class="red">cada cruce.</span></h2>
+                <p class="q-lead">Construcción, reparación, pulido y mantenimiento: en cada etapa del proceso intervienen los cuatro elementos del sistema. Por eso NewConcret puede acompañar el ciclo de vida completo del piso sin depender de terceros.</p>
+                <div class="q-matrix-stat">
+                    <b>16/16</b>
+                    <span>cruces cubiertos con una misma línea de trabajo</span>
+                </div>
+            </div>
+
+            <div class="q-matrix reveal d1" id="qMatrix">
+                <div class="q-mx-table">
+                    <div class="q-mx-cell q-mx-head"></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Maqui-<br>naria</span></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Insu-<br>mos</span></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Quími-<br>cos</span></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Conoci-<br>miento</span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Construcción</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:0"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:1"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:2"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:3"></span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Reparación</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:4"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:5"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:6"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:7"></span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Pulido</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:8"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:9"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:10"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:11"></span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Mantenimiento</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:12"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:13"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:14"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:15"></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAS 4 ETAPAS -->
+    <section class="q-sec q-etapas">
+        <div class="q-wrap">
+            <div class="q-etapas-head reveal">
+                <span class="q-eyebrow">Las cuatro etapas</span>
+                <h2 class="q-h2">El proceso donde<br>el sistema <span class="red">trabaja.</span></h2>
+                <p class="q-lead">Gracias a los cuatro elementos, NewConcret participa en las cuatro etapas del ciclo de vida del piso — desde el hormigón fresco hasta el mantenimiento diario.</p>
+            </div>
+
+            <div class="q-et-strip reveal d1">
+                <a class="q-et" href="../../construccion/">
+                    <span class="q-et-num">Etapa 01</span>
+                    <span class="q-et-name">Construcción</span>
+                    <span class="q-et-desc">La base que define la resistencia, la planimetría y la vida útil del piso.</span>
+                    <span class="q-et-link">Ver construcción <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-et" href="../../reparacion/">
+                    <span class="q-et-num">Etapa 02</span>
+                    <span class="q-et-name">Reparación</span>
+                    <span class="q-et-desc">Recuperar la continuidad de la superficie antes de renovarla.</span>
+                    <span class="q-et-link">Ver reparación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-et" href="../../pulido/">
+                    <span class="q-et-num">Etapa 03</span>
+                    <span class="q-et-name">Pulido</span>
+                    <span class="q-et-desc">La transformación del hormigón en una superficie resistente y estética.</span>
+                    <span class="q-et-link">Ver pulido <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-et" href="../../mantenimiento/">
+                    <span class="q-et-num">Etapa 04</span>
+                    <span class="q-et-name">Mantenimiento</span>
+                    <span class="q-et-desc">Sostener el resultado en el tiempo con la rutina y los productos correctos.</span>
+                    <span class="q-et-link">Ver mantenimiento <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="q-cta" id="contacto">
+        <div class="q-cta-bg">
+            <img src="../../assets/img/hero/sistemanewconcret-2.webp" alt="">
+        </div>
+        <div class="q-cta-ov"></div>
+        <div class="q-cta-content reveal">
+            <h2 class="q-cta-h2">El sistema completo,<br><span>en un solo lugar.</span></h2>
+            <p class="q-cta-sub">Contactanos y te asesoramos sin costo. Respuesta inmediata.</p>
+            <div class="q-cta-acts">
+                <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="q-btn q-btn-p">
+                    Escribinos por WhatsApp
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
+                </a>
+                <a href="../../productos/" class="q-btn q-btn-g">Ver todos los productos</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../assets/js/layout.js?v=3.3"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/nav.js?v=3.0"></script>
+    <script>
+        document.documentElement.classList.add('js-loaded');
+
+        // ── Scroll Reveal
+        const revObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); } });
+        }, { threshold: .07 });
+        document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+        // ── Gráfico de torta: 4 cuartos iguales ─────────────────────────────
+        const SEGS = [
+            { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.' },
+            { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.' },
+            { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.' },
+            { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.' }
+        ];
+
+        const svg   = document.getElementById('qChart');
+        const CX = 200, CY = 200, R_OUT = 182, R_IN = 116;
+        const GAP = 2.5 * Math.PI / 180;           // separación entre cuartos
+        const NS  = 'http://www.w3.org/2000/svg';
+
+        // anillo punteado exterior (rotación perpetua)
+        const orbit = document.createElementNS(NS, 'circle');
+        orbit.setAttribute('cx', CX); orbit.setAttribute('cy', CY); orbit.setAttribute('r', 196);
+        orbit.setAttribute('class', 'q-orbit');
+        svg.appendChild(orbit);
+
+        function pt(r, a) { return [CX + r * Math.cos(a), CY + r * Math.sin(a)]; }
+
+        function sectorPath(a0, a1) {
+            const [x1, y1] = pt(R_OUT, a0), [x2, y2] = pt(R_OUT, a1);
+            const [x3, y3] = pt(R_IN, a1), [x4, y4] = pt(R_IN, a0);
+            return `M${x1} ${y1} A${R_OUT} ${R_OUT} 0 0 1 ${x2} ${y2} L${x3} ${y3} A${R_IN} ${R_IN} 0 0 0 ${x4} ${y4} Z`;
+        }
+
+        const segEls = SEGS.map((s, i) => {
+            const start = -Math.PI / 2 + i * Math.PI / 2 + GAP / 2;
+            const end   = -Math.PI / 2 + (i + 1) * Math.PI / 2 - GAP / 2;
+            const mid   = (start + end) / 2;
+
+            const g = document.createElementNS(NS, 'g');
+            g.setAttribute('class', 'q-seg');
+            // desplazamiento hacia afuera del cuarto activo, sobre su bisectriz
+            g.style.setProperty('--tx', (Math.cos(mid) * 9).toFixed(2) + 'px');
+            g.style.setProperty('--ty', (Math.sin(mid) * 9).toFixed(2) + 'px');
+
+            const p = document.createElementNS(NS, 'path');
+            p.setAttribute('d', sectorPath(start, end));
+            g.appendChild(p);
+
+            const [tx, ty] = pt((R_OUT + R_IN) / 2, mid);
+            const t = document.createElementNS(NS, 'text');
+            t.setAttribute('x', tx); t.setAttribute('y', ty);
+            t.textContent = '25%';
+            g.appendChild(t);
+
+            svg.appendChild(g);
+            return g;
+        });
+
+        // ── Estado activo: sincroniza torta, leyenda y centro
+        const legRows    = document.querySelectorAll('.q-leg-row');
+        const center     = document.getElementById('qCenter');
+        const centerNum  = document.getElementById('qCenterNum');
+        const centerName = document.getElementById('qCenterName');
+        const centerSub  = document.getElementById('qCenterSub');
+        let  activeIdx   = -1;
+
+        function setActive(i) {
+            if (i === activeIdx) return;
+            activeIdx = i;
+            segEls.forEach((g, k) => g.classList.toggle('on', k === i));
+            legRows.forEach((r, k) => r.classList.toggle('on', k === i));
+            center.classList.remove('swap');
+            void center.offsetWidth;               // reinicia la animación del centro
+            center.classList.add('swap');
+            if (i < 0) {
+                centerNum.textContent  = 'Sistema completo';
+                centerName.textContent = '100%';
+                centerSub.textContent  = 'Cuatro elementos, un solo proveedor.';
+            } else {
+                centerNum.textContent  = SEGS[i].num;
+                centerName.textContent = SEGS[i].name;
+                centerSub.textContent  = SEGS[i].sub;
+            }
+        }
+
+        // rotación automática hasta que el usuario interactúa
+        let autoTimer = null, resumeTimer = null, autoIdx = -1;
+        function startAuto() {
+            stopAuto();
+            autoTimer = setInterval(() => { autoIdx = (autoIdx + 1) % 4; setActive(autoIdx); }, 3200);
+        }
+        function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+        function userTouched() {
+            stopAuto();
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => { autoIdx = activeIdx; startAuto(); }, 7000);
+        }
+
+        segEls.forEach((g, i) => {
+            g.addEventListener('pointerenter', () => { userTouched(); setActive(i); });
+            g.addEventListener('click',        () => { userTouched(); setActive(i); });
+        });
+        legRows.forEach((r, i) => {
+            r.addEventListener('pointerenter', () => { userTouched(); setActive(i); });
+            r.addEventListener('click',        () => { userTouched(); setActive(i); });
+        });
+        svg.addEventListener('pointerleave', () => { /* mantiene el último activo */ });
+
+        // dibuja la torta al entrar en viewport y arranca el ciclo
+        const chartObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    svg.classList.add('drawn');
+                    setTimeout(startAuto, 900);
+                    chartObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: .3 });
+        chartObs.observe(svg);
+
+        // ── Matriz 4×4: enciende los puntos en cascada
+        const matrix = document.getElementById('qMatrix');
+        const mxObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { matrix.classList.add('lit'); mxObs.unobserve(e.target); }
+            });
+        }, { threshold: .3 });
+        mxObs.observe(matrix);
+    </script>
+</body>
+</html>
