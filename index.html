@@ -253,7 +253,7 @@
         }
     }
 
-    /* ── LAS 4 ETAPAS (tira numerada, del Sistema NC) ── */
+    /* ── LOS 4 ELEMENTOS DEL SISTEMA (4 x 25%) ── */
     .eth-sec { background: var(--nc-carbon); border-top: 1px solid var(--nc-steel); padding: 5.5rem 4rem; }
     .eth-eyebrow {
         display: inline-flex; align-items: center; gap: .85rem;
@@ -295,6 +295,18 @@
     }
     .eth-et:hover { background: rgba(255,255,255,.03); }
     .eth-et:hover::after { transform: scaleX(1); }
+    .eth-et-pct {
+        font-family: var(--font-d);
+        font-weight: 900;
+        font-size: 2.4rem;
+        line-height: 1;
+        color: var(--nc-steel-2, #303030);
+        letter-spacing: -.02em;
+        transition: color .4s var(--expo);
+        margin-bottom: .2rem;
+    }
+    .eth-et-pct em { font-style: normal; font-size: 1.2rem; font-weight: 800; }
+    .eth-et:hover .eth-et-pct { color: var(--nc-red-hot); }
     .eth-et-num { font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; color: var(--nc-red-hot); text-transform: uppercase; }
     .eth-et-name {
         font-family: var(--font-d);
@@ -1037,38 +1049,42 @@
   </div>
 </section>
 
-<!-- LAS 4 ETAPAS (tira numerada, del Sistema NC) -->
-<section class="eth-sec" id="etapas">
+<!-- LOS 4 ELEMENTOS DEL SISTEMA (4 x 25%, del Sistema NC) -->
+<section class="eth-sec" id="elementos">
   <div class="eth-head reveal">
-    <span class="eth-eyebrow">Las cuatro etapas</span>
-    <h2 class="sec-h2">El proceso donde<br>el sistema trabaja</h2>
-    <p class="sec-p">Gracias a los cuatro elementos del sistema — maquinaria, insumos, químicos y conocimiento — NewConcret participa en las cuatro etapas del ciclo de vida del piso.</p>
+    <span class="eth-eyebrow">El sistema NewConcret</span>
+    <h2 class="sec-h2">Un sistema,<br>cuatro partes iguales</h2>
+    <p class="sec-p">Maquinaria, insumos, químicos y conocimiento: cada elemento aporta el 25% del resultado. NewConcret integra los cuatro, y por eso puede participar en todos los procesos del piso.</p>
   </div>
 
   <div class="eth-strip reveal d1">
-    <a class="eth-et" href="construccion/">
-      <span class="eth-et-num">Etapa 01</span>
-      <span class="eth-et-name">Construcción</span>
-      <span class="eth-et-desc">La base que define la resistencia, la planimetría y la vida útil del piso.</span>
-      <span class="eth-et-link">Ver construcción <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    <a class="eth-et" href="pulido/equipos/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 01</span>
+      <span class="eth-et-name">Maquinaria</span>
+      <span class="eth-et-desc">Pulidoras, allanadoras, aserradoras y aspiradoras. El equipo define el ritmo y la precisión del trabajo.</span>
+      <span class="eth-et-link">Ver equipos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     </a>
-    <a class="eth-et" href="reparacion/">
-      <span class="eth-et-num">Etapa 02</span>
-      <span class="eth-et-name">Reparación</span>
-      <span class="eth-et-desc">Recuperar la continuidad de la superficie antes de renovarla.</span>
-      <span class="eth-et-link">Ver reparación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    <a class="eth-et" href="pulido/insumos/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 02</span>
+      <span class="eth-et-name">Insumos</span>
+      <span class="eth-et-desc">Herramientas diamantadas, fibras, discos y paños. El consumible correcto para cada terminación.</span>
+      <span class="eth-et-link">Ver insumos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     </a>
-    <a class="eth-et" href="pulido/">
-      <span class="eth-et-num">Etapa 03</span>
-      <span class="eth-et-name">Pulido</span>
-      <span class="eth-et-desc">La transformación del hormigón en una superficie resistente y estética.</span>
-      <span class="eth-et-link">Ver pulido <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    <a class="eth-et" href="pulido/productos-quimicos/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 03</span>
+      <span class="eth-et-name">Químicos</span>
+      <span class="eth-et-desc">Densificadores, selladores, impermeabilizantes y desengrasantes. La química que endurece y protege.</span>
+      <span class="eth-et-link">Ver químicos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     </a>
-    <a class="eth-et" href="mantenimiento/">
-      <span class="eth-et-num">Etapa 04</span>
-      <span class="eth-et-name">Mantenimiento</span>
-      <span class="eth-et-desc">Sostener el resultado en el tiempo con la rutina y los productos correctos.</span>
-      <span class="eth-et-link">Ver mantenimiento <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    <a class="eth-et" href="capacitacion/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 04</span>
+      <span class="eth-et-name">Conocimiento</span>
+      <span class="eth-et-desc">Capacitación técnica y acompañamiento en obra. El elemento que hace rendir a los otros tres.</span>
+      <span class="eth-et-link">Ver capacitación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     </a>
   </div>
 </section>
