@@ -265,8 +265,9 @@
     .eth-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--nc-red); display: inline-block; }
     .eth-top {
         display: grid;
-        grid-template-columns: 1fr minmax(300px, 420px);
-        gap: clamp(2rem, 5vw, 5rem);
+        /* col texto = su contenido; el grafico se centra en el espacio restante */
+        grid-template-columns: auto minmax(300px, 1fr);
+        gap: clamp(2rem, 4vw, 4rem);
         align-items: center;
         margin-bottom: 3rem;
     }
@@ -276,7 +277,7 @@
     /* ── gráfico de torta 4×25% (portado del Sistema NC alternativo) ── */
     .eth-chart-wrap {
         position: relative;
-        justify-self: end;
+        justify-self: center;
         width: min(100%, 420px);
         aspect-ratio: 1 / 1;
     }
