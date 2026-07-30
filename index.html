@@ -888,6 +888,169 @@
   </div>
 </section>
 
+
+<!-- LOS 4 ELEMENTOS DEL SISTEMA (4 x 25%, del Sistema NC) -->
+<section class="eth-sec" id="elementos">
+  <div class="eth-top">
+    <div class="eth-head reveal">
+      <span class="eth-eyebrow">El sistema NewConcret</span>
+      <h2 class="sec-h2">Un sistema,<br>cuatro partes iguales</h2>
+      <p class="sec-p">Maquinaria, insumos, químicos y conocimiento: cada elemento aporta el 25% del resultado. NewConcret integra los cuatro, y por eso puede participar en todos los procesos del piso.</p>
+    </div>
+
+    <div class="eth-chart-wrap reveal d1">
+      <svg class="eth-chart" id="ethChart" viewBox="0 0 400 400" role="img" aria-label="Gráfico del sistema: cuatro cuartos iguales de 25% — maquinaria, insumos, químicos y conocimiento"></svg>
+      <div class="eth-center" id="ethCenter">
+        <div class="eth-center-num" id="ethCenterNum">Sistema completo</div>
+        <div class="eth-center-name" id="ethCenterName">100%</div>
+        <div class="eth-center-sub" id="ethCenterSub">Cuatro elementos, un solo proveedor.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eth-strip reveal d1">
+    <a class="eth-et" href="pulido/equipos/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 01</span>
+      <span class="eth-et-name">Maquinaria</span>
+      <span class="eth-et-desc">Pulidoras, allanadoras, aserradoras y aspiradoras. El equipo define el ritmo y la precisión del trabajo.</span>
+      <span class="eth-et-link">Ver equipos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
+    <a class="eth-et" href="pulido/insumos/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 02</span>
+      <span class="eth-et-name">Insumos</span>
+      <span class="eth-et-desc">Herramientas diamantadas, fibras, discos y paños. El consumible correcto para cada terminación.</span>
+      <span class="eth-et-link">Ver insumos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
+    <a class="eth-et" href="pulido/productos-quimicos/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 03</span>
+      <span class="eth-et-name">Químicos</span>
+      <span class="eth-et-desc">Densificadores, selladores, impermeabilizantes y desengrasantes. La química que endurece y protege.</span>
+      <span class="eth-et-link">Ver químicos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
+    <a class="eth-et" href="capacitacion/">
+      <span class="eth-et-pct">25<em>%</em></span>
+      <span class="eth-et-num">Elemento 04</span>
+      <span class="eth-et-name">Conocimiento</span>
+      <span class="eth-et-desc">Capacitación técnica y acompañamiento en obra. El elemento que hace rendir a los otros tres.</span>
+      <span class="eth-et-link">Ver capacitación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<script>
+(function () {
+  // ── Gráfico de torta 4×25% (portado del Sistema NC alternativo) ──
+  var SEGS = [
+    { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.' },
+    { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.' },
+    { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.' },
+    { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.' }
+  ];
+
+  var svg = document.getElementById('ethChart');
+  if (!svg) return;
+  var CX = 200, CY = 200, R_OUT = 182, R_IN = 116;
+  var GAP = 2.5 * Math.PI / 180;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  var orbit = document.createElementNS(NS, 'circle');
+  orbit.setAttribute('cx', CX); orbit.setAttribute('cy', CY); orbit.setAttribute('r', 196);
+  orbit.setAttribute('class', 'eth-orbit');
+  svg.appendChild(orbit);
+
+  function pt(r, a) { return [CX + r * Math.cos(a), CY + r * Math.sin(a)]; }
+  function sectorPath(a0, a1) {
+    var p1 = pt(R_OUT, a0), p2 = pt(R_OUT, a1), p3 = pt(R_IN, a1), p4 = pt(R_IN, a0);
+    return 'M' + p1[0] + ' ' + p1[1] + ' A' + R_OUT + ' ' + R_OUT + ' 0 0 1 ' + p2[0] + ' ' + p2[1] +
+           ' L' + p3[0] + ' ' + p3[1] + ' A' + R_IN + ' ' + R_IN + ' 0 0 0 ' + p4[0] + ' ' + p4[1] + ' Z';
+  }
+
+  var segEls = SEGS.map(function (s, i) {
+    var start = -Math.PI / 2 + i * Math.PI / 2 + GAP / 2;
+    var end   = -Math.PI / 2 + (i + 1) * Math.PI / 2 - GAP / 2;
+    var mid   = (start + end) / 2;
+
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'eth-seg');
+    g.style.setProperty('--tx', (Math.cos(mid) * 9).toFixed(2) + 'px');
+    g.style.setProperty('--ty', (Math.sin(mid) * 9).toFixed(2) + 'px');
+
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', sectorPath(start, end));
+    g.appendChild(p);
+
+    var tp = pt((R_OUT + R_IN) / 2, mid);
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', tp[0]); t.setAttribute('y', tp[1]);
+    t.textContent = '25%';
+    g.appendChild(t);
+
+    svg.appendChild(g);
+    return g;
+  });
+
+  var etItems    = document.querySelectorAll('#elementos .eth-et');
+  var center     = document.getElementById('ethCenter');
+  var centerNum  = document.getElementById('ethCenterNum');
+  var centerName = document.getElementById('ethCenterName');
+  var centerSub  = document.getElementById('ethCenterSub');
+  var activeIdx  = -1;
+
+  function setActive(i) {
+    if (i === activeIdx) return;
+    activeIdx = i;
+    segEls.forEach(function (g, k) { g.classList.toggle('on', k === i); });
+    etItems.forEach(function (r, k) { r.classList.toggle('on', k === i); });
+    center.classList.remove('swap');
+    void center.offsetWidth;
+    center.classList.add('swap');
+    if (i < 0) {
+      centerNum.textContent  = 'Sistema completo';
+      centerName.textContent = '100%';
+      centerSub.textContent  = 'Cuatro elementos, un solo proveedor.';
+    } else {
+      centerNum.textContent  = SEGS[i].num;
+      centerName.textContent = SEGS[i].name;
+      centerSub.textContent  = SEGS[i].sub;
+    }
+  }
+
+  var autoTimer = null, resumeTimer = null, autoIdx = -1;
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(function () { autoIdx = (autoIdx + 1) % 4; setActive(autoIdx); }, 3200);
+  }
+  function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+  function userTouched() {
+    stopAuto();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function () { autoIdx = activeIdx; startAuto(); }, 7000);
+  }
+
+  segEls.forEach(function (g, i) {
+    g.addEventListener('pointerenter', function () { userTouched(); setActive(i); });
+    g.addEventListener('click',        function () { userTouched(); setActive(i); });
+  });
+  etItems.forEach(function (r, i) {
+    r.addEventListener('pointerenter', function () { userTouched(); setActive(i); });
+  });
+
+  var chartObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        svg.classList.add('drawn');
+        setTimeout(startAuto, 900);
+        chartObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: .3 });
+  chartObs.observe(svg);
+})();
+</script>
+
 <!-- INSUMOS PREVIEW (Desktop) -->
 <section class="sec hide-mobile" id="insumos" style="background:var(--nc-black); padding-bottom:3rem;">
   <div class="reveal">
@@ -1157,168 +1320,6 @@
 
   </div>
 </section>
-
-<!-- LOS 4 ELEMENTOS DEL SISTEMA (4 x 25%, del Sistema NC) -->
-<section class="eth-sec" id="elementos">
-  <div class="eth-top">
-    <div class="eth-head reveal">
-      <span class="eth-eyebrow">El sistema NewConcret</span>
-      <h2 class="sec-h2">Un sistema,<br>cuatro partes iguales</h2>
-      <p class="sec-p">Maquinaria, insumos, químicos y conocimiento: cada elemento aporta el 25% del resultado. NewConcret integra los cuatro, y por eso puede participar en todos los procesos del piso.</p>
-    </div>
-
-    <div class="eth-chart-wrap reveal d1">
-      <svg class="eth-chart" id="ethChart" viewBox="0 0 400 400" role="img" aria-label="Gráfico del sistema: cuatro cuartos iguales de 25% — maquinaria, insumos, químicos y conocimiento"></svg>
-      <div class="eth-center" id="ethCenter">
-        <div class="eth-center-num" id="ethCenterNum">Sistema completo</div>
-        <div class="eth-center-name" id="ethCenterName">100%</div>
-        <div class="eth-center-sub" id="ethCenterSub">Cuatro elementos, un solo proveedor.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="eth-strip reveal d1">
-    <a class="eth-et" href="pulido/equipos/">
-      <span class="eth-et-pct">25<em>%</em></span>
-      <span class="eth-et-num">Elemento 01</span>
-      <span class="eth-et-name">Maquinaria</span>
-      <span class="eth-et-desc">Pulidoras, allanadoras, aserradoras y aspiradoras. El equipo define el ritmo y la precisión del trabajo.</span>
-      <span class="eth-et-link">Ver equipos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-    </a>
-    <a class="eth-et" href="pulido/insumos/">
-      <span class="eth-et-pct">25<em>%</em></span>
-      <span class="eth-et-num">Elemento 02</span>
-      <span class="eth-et-name">Insumos</span>
-      <span class="eth-et-desc">Herramientas diamantadas, fibras, discos y paños. El consumible correcto para cada terminación.</span>
-      <span class="eth-et-link">Ver insumos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-    </a>
-    <a class="eth-et" href="pulido/productos-quimicos/">
-      <span class="eth-et-pct">25<em>%</em></span>
-      <span class="eth-et-num">Elemento 03</span>
-      <span class="eth-et-name">Químicos</span>
-      <span class="eth-et-desc">Densificadores, selladores, impermeabilizantes y desengrasantes. La química que endurece y protege.</span>
-      <span class="eth-et-link">Ver químicos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-    </a>
-    <a class="eth-et" href="capacitacion/">
-      <span class="eth-et-pct">25<em>%</em></span>
-      <span class="eth-et-num">Elemento 04</span>
-      <span class="eth-et-name">Conocimiento</span>
-      <span class="eth-et-desc">Capacitación técnica y acompañamiento en obra. El elemento que hace rendir a los otros tres.</span>
-      <span class="eth-et-link">Ver capacitación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-    </a>
-  </div>
-</section>
-
-<script>
-(function () {
-  // ── Gráfico de torta 4×25% (portado del Sistema NC alternativo) ──
-  var SEGS = [
-    { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.' },
-    { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.' },
-    { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.' },
-    { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.' }
-  ];
-
-  var svg = document.getElementById('ethChart');
-  if (!svg) return;
-  var CX = 200, CY = 200, R_OUT = 182, R_IN = 116;
-  var GAP = 2.5 * Math.PI / 180;
-  var NS = 'http://www.w3.org/2000/svg';
-
-  var orbit = document.createElementNS(NS, 'circle');
-  orbit.setAttribute('cx', CX); orbit.setAttribute('cy', CY); orbit.setAttribute('r', 196);
-  orbit.setAttribute('class', 'eth-orbit');
-  svg.appendChild(orbit);
-
-  function pt(r, a) { return [CX + r * Math.cos(a), CY + r * Math.sin(a)]; }
-  function sectorPath(a0, a1) {
-    var p1 = pt(R_OUT, a0), p2 = pt(R_OUT, a1), p3 = pt(R_IN, a1), p4 = pt(R_IN, a0);
-    return 'M' + p1[0] + ' ' + p1[1] + ' A' + R_OUT + ' ' + R_OUT + ' 0 0 1 ' + p2[0] + ' ' + p2[1] +
-           ' L' + p3[0] + ' ' + p3[1] + ' A' + R_IN + ' ' + R_IN + ' 0 0 0 ' + p4[0] + ' ' + p4[1] + ' Z';
-  }
-
-  var segEls = SEGS.map(function (s, i) {
-    var start = -Math.PI / 2 + i * Math.PI / 2 + GAP / 2;
-    var end   = -Math.PI / 2 + (i + 1) * Math.PI / 2 - GAP / 2;
-    var mid   = (start + end) / 2;
-
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('class', 'eth-seg');
-    g.style.setProperty('--tx', (Math.cos(mid) * 9).toFixed(2) + 'px');
-    g.style.setProperty('--ty', (Math.sin(mid) * 9).toFixed(2) + 'px');
-
-    var p = document.createElementNS(NS, 'path');
-    p.setAttribute('d', sectorPath(start, end));
-    g.appendChild(p);
-
-    var tp = pt((R_OUT + R_IN) / 2, mid);
-    var t = document.createElementNS(NS, 'text');
-    t.setAttribute('x', tp[0]); t.setAttribute('y', tp[1]);
-    t.textContent = '25%';
-    g.appendChild(t);
-
-    svg.appendChild(g);
-    return g;
-  });
-
-  var etItems    = document.querySelectorAll('#elementos .eth-et');
-  var center     = document.getElementById('ethCenter');
-  var centerNum  = document.getElementById('ethCenterNum');
-  var centerName = document.getElementById('ethCenterName');
-  var centerSub  = document.getElementById('ethCenterSub');
-  var activeIdx  = -1;
-
-  function setActive(i) {
-    if (i === activeIdx) return;
-    activeIdx = i;
-    segEls.forEach(function (g, k) { g.classList.toggle('on', k === i); });
-    etItems.forEach(function (r, k) { r.classList.toggle('on', k === i); });
-    center.classList.remove('swap');
-    void center.offsetWidth;
-    center.classList.add('swap');
-    if (i < 0) {
-      centerNum.textContent  = 'Sistema completo';
-      centerName.textContent = '100%';
-      centerSub.textContent  = 'Cuatro elementos, un solo proveedor.';
-    } else {
-      centerNum.textContent  = SEGS[i].num;
-      centerName.textContent = SEGS[i].name;
-      centerSub.textContent  = SEGS[i].sub;
-    }
-  }
-
-  var autoTimer = null, resumeTimer = null, autoIdx = -1;
-  function startAuto() {
-    stopAuto();
-    autoTimer = setInterval(function () { autoIdx = (autoIdx + 1) % 4; setActive(autoIdx); }, 3200);
-  }
-  function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
-  function userTouched() {
-    stopAuto();
-    clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(function () { autoIdx = activeIdx; startAuto(); }, 7000);
-  }
-
-  segEls.forEach(function (g, i) {
-    g.addEventListener('pointerenter', function () { userTouched(); setActive(i); });
-    g.addEventListener('click',        function () { userTouched(); setActive(i); });
-  });
-  etItems.forEach(function (r, i) {
-    r.addEventListener('pointerenter', function () { userTouched(); setActive(i); });
-  });
-
-  var chartObs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        svg.classList.add('drawn');
-        setTimeout(startAuto, 900);
-        chartObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: .3 });
-  chartObs.observe(svg);
-})();
-</script>
 
 
 <!-- TESTIMONIALS (Desktop) -->
