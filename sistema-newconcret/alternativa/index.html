@@ -528,6 +528,108 @@
         .q-et-link svg { width: 13px; height: 13px; transition: transform .35s var(--ex); }
         .q-et:hover .q-et-link svg { transform: translateX(5px); }
 
+        /* ═══ BENEFICIOS DEL HORMIGÓN PULIDO ═══ */
+        .q-ben { border-top: 1px solid var(--st); }
+        .q-ben-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 720px; }
+        .q-ben-head .q-lead { margin-top: 1.4rem; max-width: 72ch; }
+
+        .q-ben-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--st);
+            border: 1px solid var(--st);
+        }
+        .q-ben-item {
+            background: var(--dk);
+            padding: 2.75rem 2.5rem;
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 0 1.5rem;
+            align-items: start;
+            position: relative;
+            overflow: hidden;
+            transition: background .3s;
+        }
+        .q-ben-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 0;
+            background: var(--r);
+            transition: width .5s var(--ex);
+        }
+        .q-ben-item:hover::before { width: 3px; }
+        .q-ben-item:hover { background: rgba(255,255,255,.02); }
+        .q-ben-n {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: var(--as);
+            opacity: .7;
+            line-height: 1;
+            padding-top: .1rem;
+            transition: color .4s, opacity .4s;
+            user-select: none;
+        }
+        .q-ben-item:hover .q-ben-n { color: var(--rh); opacity: 1; }
+        .q-ben-content { display: flex; flex-direction: column; gap: .5rem; }
+        .q-ben-title {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            color: var(--wh);
+            line-height: 1;
+            letter-spacing: -.01em;
+        }
+        .q-ben-desc {
+            font-size: .88rem;
+            font-weight: 300;
+            color: var(--as);
+            line-height: 1.6;
+            max-width: 38ch;
+            text-wrap: pretty;
+        }
+
+        /* ═══ ANTES Y DESPUÉS ═══ */
+        .q-gallery { background: var(--dk); border-top: 1px solid var(--st); }
+        .q-gallery-head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 720px; }
+        .q-gallery-head .q-lead { margin-top: 1.4rem; }
+
+        .q-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: var(--st);
+        }
+        .q-gallery-card {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        .q-gallery-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(.9);
+            transition: transform .9s var(--ex), filter .6s;
+        }
+        .q-gallery-card:hover img { transform: scale(1.06); filter: brightness(.75); }
+        .q-gallery-badge {
+            position: absolute;
+            bottom: 1.25rem; left: 1.25rem;
+            font-family: var(--font-m);
+            font-size: .58rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: #fff;
+            background: rgba(10,10,10,.65);
+            backdrop-filter: blur(10px);
+            padding: .35rem .75rem;
+        }
+        .q-badge-antes   { border-left: 2px solid #555; }
+        .q-badge-despues { border-left: 2px solid var(--r); }
+
         /* ═══ CTA ═══ */
         .q-cta {
             position: relative;
@@ -595,6 +697,12 @@
             .q-et-strip { grid-template-columns: 1fr; }
             .q-et { border-right: none; border-bottom: 1px solid var(--st); }
             .q-et:last-child { border-bottom: none; }
+
+            .q-ben-list { grid-template-columns: 1fr; }
+            .q-ben-item { padding: 2rem 1.5rem; }
+            .q-ben-desc { max-width: none; }
+
+            .q-gallery-grid { grid-template-columns: 1fr; }
 
             .q-cta { padding: 4rem 1.5rem; min-height: 50vh; }
             .q-cta-sub { max-width: 30ch; }
@@ -782,6 +890,90 @@
                     <span class="q-et-desc">Sostener el resultado en el tiempo con la rutina y los productos correctos.</span>
                     <span class="q-et-link">Ver mantenimiento <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS DEL HORMIGÓN PULIDO -->
+    <section class="q-sec q-ben">
+        <div class="q-wrap">
+            <div class="q-ben-head reveal">
+                <span class="q-eyebrow">El resultado</span>
+                <h2 class="q-h2">Beneficios del<br><span class="red">hormigón pulido.</span></h2>
+                <p class="q-lead">Tratamiento mecánico con herramientas diamantadas sobre hormigón nuevo o existente. Se logra nivelación, dureza y cierre de poros sin demoler ni recubrir.</p>
+            </div>
+
+            <div class="q-ben-list reveal d1">
+                <div class="q-ben-item">
+                    <div class="q-ben-n">01</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Acabado de alta definición</div>
+                        <div class="q-ben-desc">Superficie sin poros, con reflectividad controlada y aspecto profesional. Disponible en mate, satinado o alto brillo según el proyecto.</div>
+                    </div>
+                </div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">02</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Resistencia al tráfico pesado</div>
+                        <div class="q-ben-desc">Apto para centros logísticos, depósitos, plantas industriales y superficies con tránsito de montacargas y maquinaria.</div>
+                    </div>
+                </div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">03</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Normas LEED</div>
+                        <div class="q-ben-desc">Proceso sin compuestos orgánicos volátiles (COV). Cumple con las exigencias ambientales internacionales de construcción sustentable.</div>
+                    </div>
+                </div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">04</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Versatilidad de aplicación</div>
+                        <div class="q-ben-desc">Plantas industriales, centros logísticos, depósitos y grandes obras donde el tránsito pesado y la resistencia son críticos. También comercios, showrooms y hogares. El sistema se adapta a cada tipo de uso y exigencia.</div>
+                    </div>
+                </div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">05</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Bajo costo de mantenimiento</div>
+                        <div class="q-ben-desc">Una vez sellado, el piso pulido requiere limpieza convencional y reaplicaciones periódicas de protector. Sin alfombras, sin plastificados, sin reemplazos.</div>
+                    </div>
+                </div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">06</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Recupera lo que ya existe</div>
+                        <div class="q-ben-desc">No se demuele ni se superpone. El proceso trabaja sobre el hormigón existente, incluso sobre superficies antiguas o deterioradas, conservando el sustrato original.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANTES Y DESPUÉS -->
+    <section class="q-sec q-gallery">
+        <div class="q-wrap">
+            <div class="q-gallery-head reveal">
+                <span class="q-eyebrow">Transformaciones</span>
+                <h2 class="q-h2">Antes y <span class="red">después.</span></h2>
+            </div>
+            <div class="q-gallery-grid">
+                <div class="q-gallery-card reveal">
+                    <img src="../../assets/img/fotos/Antes%201.webp" alt="Piso de hormigón antes del tratamiento NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-antes">Antes</div>
+                </div>
+                <div class="q-gallery-card reveal d1">
+                    <img src="../../assets/img/fotos/Despues%201.webp" alt="Piso de hormigón después del pulido NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-despues">Después</div>
+                </div>
+                <div class="q-gallery-card reveal d2">
+                    <img src="../../assets/img/fotos/Antes%202.webp" alt="Piso industrial antes del sistema NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-antes">Antes</div>
+                </div>
+                <div class="q-gallery-card reveal d3">
+                    <img src="../../assets/img/fotos/Despues%202.webp" alt="Piso industrial después del sistema NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-despues">Después</div>
+                </div>
             </div>
         </div>
     </section>
