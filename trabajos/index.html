@@ -77,11 +77,11 @@
             position: relative;
             margin-top: 66px;
             min-height: 62svh;
-            padding: 4rem 4rem 3rem;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 3rem;
-            align-items: end;
+            padding: 4rem 4rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
             overflow: hidden;
             border-bottom: 1px solid var(--st);
         }
@@ -119,8 +119,9 @@
         .tb-hero-side {
             display: flex;
             flex-direction: column;
-            gap: 1.6rem;
-            padding-bottom: .4rem;
+            align-items: flex-start;
+            gap: 1.8rem;
+            margin-top: 1.6rem;
             animation: tbFadeUp .9s var(--ex) .45s both;
         }
         .tb-hero-p {
@@ -128,13 +129,13 @@
             font-weight: 300;
             line-height: 1.65;
             color: var(--lt);
-            max-width: 44ch;
+            max-width: 46ch;
         }
         .tb-hero-count {
             display: flex;
             align-items: center;
             gap: .9rem;
-            border-top: 1px solid var(--st);
+            border-top: 1px solid var(--s2);
             padding-top: 1.2rem;
         }
         .tb-hero-count b {
@@ -446,12 +447,10 @@
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 900px) {
             .tb-hero {
-                grid-template-columns: 1fr;
                 min-height: 58svh;
                 padding: 3rem 1.5rem 2.5rem;
-                gap: 1.8rem;
-                align-items: end;
             }
+            .tb-hero-side { margin-top: 1.4rem; gap: 1.4rem; }
             .tb-hero-ov {
                 background:
                     linear-gradient(to top, rgba(10,10,10,.94) 0%, rgba(10,10,10,.6) 55%, rgba(10,10,10,.35) 100%);
