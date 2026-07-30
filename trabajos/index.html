@@ -72,16 +72,38 @@
         }
         .tb-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--r); display: inline-block; }
 
-        /* ═══ HERO ═══ */
+        /* ═══ HERO (foto de obra + overlay, como los heros del sitio) ═══ */
         .tb-hero {
+            position: relative;
             margin-top: 66px;
-            padding: clamp(4rem, 8vw, 7rem) 4rem 3rem;
+            min-height: 62svh;
+            padding: 4rem 4rem 3rem;
             display: grid;
             grid-template-columns: 1.4fr 1fr;
             gap: 3rem;
             align-items: end;
+            overflow: hidden;
             border-bottom: 1px solid var(--st);
         }
+        .tb-hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .tb-hero-bg img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(.38) saturate(.6);
+            animation: tbHeroZoom 9s var(--ex) both;
+        }
+        @keyframes tbHeroZoom {
+            from { transform: scale(1.07); }
+            to   { transform: scale(1); }
+        }
+        .tb-hero-ov {
+            position: absolute; inset: 0; z-index: 1;
+            background:
+                linear-gradient(to right, rgba(10,10,10,.92) 0%, rgba(10,10,10,.55) 45%, rgba(10,10,10,.15) 100%),
+                linear-gradient(to top,   rgba(10,10,10,.95) 0%, transparent 55%);
+        }
+        .tb-hero > div:not(.tb-hero-bg):not(.tb-hero-ov) { position: relative; z-index: 2; }
+
         .tb-h1 {
             font-family: var(--font-d);
             font-weight: 900;
@@ -108,7 +130,13 @@
             color: var(--lt);
             max-width: 44ch;
         }
-        .tb-hero-count { display: flex; align-items: baseline; gap: .8rem; }
+        .tb-hero-count {
+            display: flex;
+            align-items: center;
+            gap: .9rem;
+            border-top: 1px solid var(--st);
+            padding-top: 1.2rem;
+        }
         .tb-hero-count b {
             font-family: var(--font-d);
             font-weight: 900;
@@ -122,6 +150,7 @@
             letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--as);
+            line-height: 1.6;
         }
         @keyframes tbFadeUp {
             from { opacity: 0; transform: translateY(26px); }
@@ -418,9 +447,14 @@
         @media (max-width: 900px) {
             .tb-hero {
                 grid-template-columns: 1fr;
+                min-height: 58svh;
                 padding: 3rem 1.5rem 2.5rem;
                 gap: 1.8rem;
-                align-items: start;
+                align-items: end;
+            }
+            .tb-hero-ov {
+                background:
+                    linear-gradient(to top, rgba(10,10,10,.94) 0%, rgba(10,10,10,.6) 55%, rgba(10,10,10,.35) 100%);
             }
             .tb-filter { padding: .9rem 1.5rem; }
             .tb-sec { padding: 2rem 1.5rem 4rem; }
@@ -454,6 +488,10 @@
 
     <!-- HERO -->
     <section class="tb-hero">
+        <div class="tb-hero-bg">
+            <img src="../assets/img/fotos/Despues%201.webp" alt="Piso de hormigón pulido terminado — obra NewConcret">
+        </div>
+        <div class="tb-hero-ov"></div>
         <div>
             <span class="tb-eyebrow" style="animation: tbFadeUp .9s var(--ex) .1s both;">Obras</span>
             <h1 class="tb-h1">Trabajos<br><span class="red">realizados.</span></h1>
