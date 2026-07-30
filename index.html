@@ -263,8 +263,114 @@
         margin-bottom: 1.2rem;
     }
     .eth-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--nc-red); display: inline-block; }
-    .eth-head { margin-bottom: 3rem; max-width: 720px; }
+    .eth-top {
+        display: grid;
+        grid-template-columns: 1fr minmax(300px, 420px);
+        gap: clamp(2rem, 5vw, 5rem);
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+    .eth-head { max-width: 720px; }
     .eth-head .sec-p { margin-top: 1.25rem; max-width: 52ch; }
+
+    /* ── gráfico de torta 4×25% (portado del Sistema NC alternativo) ── */
+    .eth-chart-wrap {
+        position: relative;
+        justify-self: end;
+        width: min(100%, 420px);
+        aspect-ratio: 1 / 1;
+    }
+    .eth-chart { width: 100%; height: 100%; display: block; overflow: visible; }
+    .eth-orbit {
+        fill: none;
+        stroke: var(--nc-steel-2, #303030);
+        stroke-width: 1;
+        stroke-dasharray: 2 9;
+        transform-box: view-box;
+        transform-origin: 50% 50%;
+        animation: ethSpin 90s linear infinite;
+    }
+    @keyframes ethSpin { to { transform: rotate(360deg); } }
+    .eth-seg {
+        transform-box: view-box;
+        transform-origin: 50% 50%;
+        transition: transform .55s var(--expo), opacity .6s var(--expo);
+        opacity: 0;
+        transform: scale(.82);
+    }
+    .eth-chart.drawn .eth-seg { opacity: 1; transform: translate(0, 0) scale(1); }
+    .eth-chart.drawn .eth-seg:nth-child(2) { transition-delay: .08s; }
+    .eth-chart.drawn .eth-seg:nth-child(3) { transition-delay: .16s; }
+    .eth-chart.drawn .eth-seg:nth-child(4) { transition-delay: .24s; }
+    .eth-seg path {
+        fill: var(--nc-carbon);
+        stroke: var(--nc-steel);
+        stroke-width: 1;
+        transition: fill .4s var(--expo), stroke .4s var(--expo);
+    }
+    .eth-seg text {
+        font-family: var(--font-d);
+        font-weight: 800;
+        font-size: 21px;
+        fill: var(--nc-mid, #555);
+        text-anchor: middle;
+        dominant-baseline: central;
+        letter-spacing: .02em;
+        transition: fill .4s;
+        pointer-events: none;
+    }
+    .eth-chart.drawn .eth-seg.on { transform: translate(var(--tx), var(--ty)) scale(1); }
+    .eth-seg.on path { fill: var(--nc-red); stroke: var(--nc-red-hot); }
+    .eth-seg.on text { fill: #fff; }
+    .eth-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        pointer-events: none;
+    }
+    .eth-center-num {
+        font-family: var(--font-m);
+        font-size: .58rem;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+        color: var(--nc-red-hot);
+        margin-bottom: .45rem;
+        min-height: .9em;
+    }
+    .eth-center-name {
+        font-family: var(--font-d);
+        font-weight: 900;
+        font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: .01em;
+        color: var(--nc-white);
+        max-width: 60%;
+    }
+    .eth-center-sub {
+        font-family: var(--font-b);
+        font-weight: 300;
+        font-size: .7rem;
+        color: var(--nc-ash);
+        margin-top: .55rem;
+        max-width: 55%;
+        line-height: 1.5;
+    }
+    .eth-center.swap .eth-center-num,
+    .eth-center.swap .eth-center-name,
+    .eth-center.swap .eth-center-sub { animation: ethSwap .45s var(--expo); }
+    @keyframes ethSwap {
+        0%   { opacity: 0; transform: translateY(7px); }
+        100% { opacity: 1; transform: none; }
+    }
+    /* item de la tira sincronizado con el gráfico */
+    .eth-et.on { background: rgba(255,255,255,.03); }
+    .eth-et.on .eth-et-pct { color: var(--nc-red-hot); }
+    .eth-et.on::after { transform: scaleX(1); }
 
     .eth-strip {
         display: grid;
@@ -331,6 +437,8 @@
 
     @media (max-width: 900px) {
         .eth-sec { padding: 4rem 1.5rem; }
+        .eth-top { grid-template-columns: 1fr; gap: 2.2rem; margin-bottom: 2.5rem; }
+        .eth-chart-wrap { justify-self: center; width: min(78vw, 340px); }
         .eth-strip { grid-template-columns: 1fr; }
         .eth-et { border-right: none; border-bottom: 1px solid var(--nc-steel); }
         .eth-et:last-child { border-bottom: none; }
@@ -1051,10 +1159,21 @@
 
 <!-- LOS 4 ELEMENTOS DEL SISTEMA (4 x 25%, del Sistema NC) -->
 <section class="eth-sec" id="elementos">
-  <div class="eth-head reveal">
-    <span class="eth-eyebrow">El sistema NewConcret</span>
-    <h2 class="sec-h2">Un sistema,<br>cuatro partes iguales</h2>
-    <p class="sec-p">Maquinaria, insumos, químicos y conocimiento: cada elemento aporta el 25% del resultado. NewConcret integra los cuatro, y por eso puede participar en todos los procesos del piso.</p>
+  <div class="eth-top">
+    <div class="eth-head reveal">
+      <span class="eth-eyebrow">El sistema NewConcret</span>
+      <h2 class="sec-h2">Un sistema,<br>cuatro partes iguales</h2>
+      <p class="sec-p">Maquinaria, insumos, químicos y conocimiento: cada elemento aporta el 25% del resultado. NewConcret integra los cuatro, y por eso puede participar en todos los procesos del piso.</p>
+    </div>
+
+    <div class="eth-chart-wrap reveal d1">
+      <svg class="eth-chart" id="ethChart" viewBox="0 0 400 400" role="img" aria-label="Gráfico del sistema: cuatro cuartos iguales de 25% — maquinaria, insumos, químicos y conocimiento"></svg>
+      <div class="eth-center" id="ethCenter">
+        <div class="eth-center-num" id="ethCenterNum">Sistema completo</div>
+        <div class="eth-center-name" id="ethCenterName">100%</div>
+        <div class="eth-center-sub" id="ethCenterSub">Cuatro elementos, un solo proveedor.</div>
+      </div>
+    </div>
   </div>
 
   <div class="eth-strip reveal d1">
@@ -1088,6 +1207,117 @@
     </a>
   </div>
 </section>
+
+<script>
+(function () {
+  // ── Gráfico de torta 4×25% (portado del Sistema NC alternativo) ──
+  var SEGS = [
+    { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.' },
+    { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.' },
+    { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.' },
+    { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.' }
+  ];
+
+  var svg = document.getElementById('ethChart');
+  if (!svg) return;
+  var CX = 200, CY = 200, R_OUT = 182, R_IN = 116;
+  var GAP = 2.5 * Math.PI / 180;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  var orbit = document.createElementNS(NS, 'circle');
+  orbit.setAttribute('cx', CX); orbit.setAttribute('cy', CY); orbit.setAttribute('r', 196);
+  orbit.setAttribute('class', 'eth-orbit');
+  svg.appendChild(orbit);
+
+  function pt(r, a) { return [CX + r * Math.cos(a), CY + r * Math.sin(a)]; }
+  function sectorPath(a0, a1) {
+    var p1 = pt(R_OUT, a0), p2 = pt(R_OUT, a1), p3 = pt(R_IN, a1), p4 = pt(R_IN, a0);
+    return 'M' + p1[0] + ' ' + p1[1] + ' A' + R_OUT + ' ' + R_OUT + ' 0 0 1 ' + p2[0] + ' ' + p2[1] +
+           ' L' + p3[0] + ' ' + p3[1] + ' A' + R_IN + ' ' + R_IN + ' 0 0 0 ' + p4[0] + ' ' + p4[1] + ' Z';
+  }
+
+  var segEls = SEGS.map(function (s, i) {
+    var start = -Math.PI / 2 + i * Math.PI / 2 + GAP / 2;
+    var end   = -Math.PI / 2 + (i + 1) * Math.PI / 2 - GAP / 2;
+    var mid   = (start + end) / 2;
+
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'eth-seg');
+    g.style.setProperty('--tx', (Math.cos(mid) * 9).toFixed(2) + 'px');
+    g.style.setProperty('--ty', (Math.sin(mid) * 9).toFixed(2) + 'px');
+
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', sectorPath(start, end));
+    g.appendChild(p);
+
+    var tp = pt((R_OUT + R_IN) / 2, mid);
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', tp[0]); t.setAttribute('y', tp[1]);
+    t.textContent = '25%';
+    g.appendChild(t);
+
+    svg.appendChild(g);
+    return g;
+  });
+
+  var etItems    = document.querySelectorAll('#elementos .eth-et');
+  var center     = document.getElementById('ethCenter');
+  var centerNum  = document.getElementById('ethCenterNum');
+  var centerName = document.getElementById('ethCenterName');
+  var centerSub  = document.getElementById('ethCenterSub');
+  var activeIdx  = -1;
+
+  function setActive(i) {
+    if (i === activeIdx) return;
+    activeIdx = i;
+    segEls.forEach(function (g, k) { g.classList.toggle('on', k === i); });
+    etItems.forEach(function (r, k) { r.classList.toggle('on', k === i); });
+    center.classList.remove('swap');
+    void center.offsetWidth;
+    center.classList.add('swap');
+    if (i < 0) {
+      centerNum.textContent  = 'Sistema completo';
+      centerName.textContent = '100%';
+      centerSub.textContent  = 'Cuatro elementos, un solo proveedor.';
+    } else {
+      centerNum.textContent  = SEGS[i].num;
+      centerName.textContent = SEGS[i].name;
+      centerSub.textContent  = SEGS[i].sub;
+    }
+  }
+
+  var autoTimer = null, resumeTimer = null, autoIdx = -1;
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(function () { autoIdx = (autoIdx + 1) % 4; setActive(autoIdx); }, 3200);
+  }
+  function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+  function userTouched() {
+    stopAuto();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function () { autoIdx = activeIdx; startAuto(); }, 7000);
+  }
+
+  segEls.forEach(function (g, i) {
+    g.addEventListener('pointerenter', function () { userTouched(); setActive(i); });
+    g.addEventListener('click',        function () { userTouched(); setActive(i); });
+  });
+  etItems.forEach(function (r, i) {
+    r.addEventListener('pointerenter', function () { userTouched(); setActive(i); });
+  });
+
+  var chartObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        svg.classList.add('drawn');
+        setTimeout(startAuto, 900);
+        chartObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: .3 });
+  chartObs.observe(svg);
+})();
+</script>
 
 
 <!-- TESTIMONIALS (Desktop) -->
