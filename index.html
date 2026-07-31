@@ -253,6 +253,13 @@
         }
     }
 
+    /* ── CTA a trabajos realizados, bajo el carrusel de marcas ── */
+    .brands-cta { display: flex; justify-content: center; margin-top: 3rem; }
+    @media (max-width: 900px) {
+        .brands-cta { margin-top: 2.2rem; padding: 0 1.5rem; }
+        .brands-cta a { width: 100%; justify-content: center; box-sizing: border-box; }
+    }
+
     /* ── LOS 4 ELEMENTOS DEL SISTEMA (4 x 25%) ── */
     .eth-sec { background: var(--nc-carbon); border-top: 1px solid var(--nc-steel); padding: 5.5rem 4rem; }
     .eth-eyebrow {
@@ -1381,7 +1388,15 @@
       <div class="brand-item"><img src="assets/img/logosempresas/zucamor.png" alt="Zucamor"></div>
     </div>
   </div>
-</div></section>
+</div>
+
+  <div class="brands-cta reveal">
+    <a href="trabajos/" class="btn-g">
+      Ver todos los trabajos
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
+    </a>
+  </div>
+</section>
 
 <section class="test-sec sec hide-mobile">
   <div class="sec-lbl reveal"><span class="sec-lbl-ln"></span><span class="sec-lbl-tx">Lo que dicen nuestros clientes</span></div>
