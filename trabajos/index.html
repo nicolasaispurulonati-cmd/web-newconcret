@@ -219,9 +219,13 @@
         /* ritmo editorial: ancha / angosta alternadas por fila */
         .tb-card:nth-child(4n+1) { grid-column: span 7; aspect-ratio: 16 / 10; }
         .tb-card:nth-child(4n+4) { grid-column: span 7; aspect-ratio: 16 / 10; }
-        /* con una cantidad impar de obras el último card queda solo en su fila:
-           en vez de dejar el hueco, ocupa el ancho completo */
-        .tb-card:last-child:nth-child(odd) { grid-column: span 12; aspect-ratio: 21 / 9; }
+        /* Con una cantidad impar de obras el último card queda solo en su fila:
+           en vez de dejar el hueco, ocupa el ancho completo.
+           Va acotado a desktop a propósito: en la grilla mobile de 1 columna un
+           "span 12" generaría 11 columnas implícitas y desarmaría toda la grilla. */
+        @media (min-width: 901px) {
+            .tb-card:last-child:nth-child(odd) { grid-column: span 12; aspect-ratio: 21 / 9; }
+        }
 
         .tb-card img {
             width: 100%; height: 100%;
@@ -494,10 +498,23 @@
             .tb-filter { padding: .9rem 1.5rem; }
             .tb-sec { padding: 2rem 1.5rem 4rem; }
             .tb-grid { grid-template-columns: 1fr; gap: 2px; }
+            /* card más alto que en desktop: el bloque de datos ocupa una porción
+               fija, así que con un card bajo le comía casi el 40% a la foto */
             .tb-card,
             .tb-card:nth-child(4n+1),
-            .tb-card:nth-child(4n+4) { grid-column: span 1; aspect-ratio: 16 / 11; }
-            .tb-card-meta { left: 1.2rem; right: 1.2rem; bottom: 1.1rem; }
+            .tb-card:nth-child(4n+4) { grid-column: span 1; aspect-ratio: 4 / 3; }
+            .tb-card-meta { left: 1.2rem; right: 1.2rem; bottom: 1.1rem; gap: .35rem; }
+            /* el velo arranca más arriba: las portadas son pisos pulidos muy
+               claros y el texto blanco necesita respaldo */
+            .tb-card-ov {
+                background: linear-gradient(to top, rgba(10,10,10,.92) 0%, rgba(10,10,10,.45) 40%, transparent 72%);
+            }
+            /* tipografía: en desktop estos tamaños los sostiene el hover, en
+               mobile quedaban en 9px y no se leían */
+            .tb-card-rubro  { font-size: .62rem; letter-spacing: .18em; }
+            .tb-card-lugar  { font-size: .84rem; }
+            .tb-card-ver    { font-size: .68rem; }
+            .tb-card-count  { font-size: .62rem; padding: .35rem .7rem; top: 1rem; right: 1.1rem; }
             /* en touch no hay hover: el CTA del card queda siempre visible */
             .tb-card-ver { opacity: 1; transform: none; }
 
