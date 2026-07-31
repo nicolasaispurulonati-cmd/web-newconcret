@@ -354,13 +354,32 @@
             min-height: 0;
             position: relative;
         }
-        .tb-lb-stage img {
+        /* marco: recorta la foto cuando esta ampliada y lleva la animacion de
+           entrada, para no pisar el transform que usa el zoom */
+        .tb-lb-frame {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            overflow: hidden;
+            border: 1px solid var(--st);
+            animation: tbLbIn .5s var(--ex);
+            touch-action: none;
+        }
+        .tb-lb-frame img {
+            display: block;
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            border: 1px solid var(--st);
-            animation: tbLbIn .5s var(--ex);
+            transform-origin: center center;
+            transition: transform .35s var(--ex);
+            cursor: zoom-in;
+            user-select: none;
+            -webkit-user-drag: none;
+            will-change: transform;
         }
+        .tb-lb-frame.zoomed img { cursor: grab; transition: transform .18s var(--ex); }
+        .tb-lb-frame.dragging img { cursor: grabbing; transition: none; }
         @keyframes tbLbIn {
             from { opacity: 0; transform: scale(.97) translateY(10px); }
             to   { opacity: 1; transform: none; }
@@ -394,7 +413,15 @@
         .tb-lb-counter { font-family: var(--font-m); font-size: .62rem; letter-spacing: .18em; color: var(--as); }
         .tb-lb-counter b { color: var(--wh); font-weight: 500; }
 
-        body.tb-lb-lock { overflow: hidden; }
+        /* bloqueo de scroll de fondo: position:fixed ademas de overflow porque en
+           iOS Safari overflow:hidden solo no alcanza. El desplazamiento se guarda
+           en JS y se restaura al cerrar. */
+        body.tb-lb-lock {
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+        }
+        .tb-lb { overscroll-behavior: contain; }
 
         /* ═══ CTA (patrón del sitio: foto + overlay radial, centrado) ═══ */
         .tb-cta {
@@ -556,7 +583,9 @@
             <button class="tb-lb-nav tb-lb-prev" id="tbLbPrev" aria-label="Foto anterior">
                 <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
-            <img id="tbLbImg" src="" alt="">
+            <div class="tb-lb-frame" id="tbLbFrame">
+                <img id="tbLbImg" src="" alt="">
+            </div>
             <button class="tb-lb-nav tb-lb-next" id="tbLbNext" aria-label="Foto siguiente">
                 <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
@@ -686,25 +715,64 @@
 
         /* ── Lightbox ── */
         const lb        = document.getElementById('tbLb');
+        const lbFrame   = document.getElementById('tbLbFrame');
         const lbImg     = document.getElementById('tbLbImg');
         const lbCliente = document.getElementById('tbLbCliente');
         const lbRubro   = document.getElementById('tbLbRubro');
-        const lbCaption = document.getElementById('tbLbCaption');
+        const lbHint    = document.getElementById('tbLbCaption');
         const lbIdx     = document.getElementById('tbLbIdx');
         const lbTotal   = document.getElementById('tbLbTotal');
-        let curObra = 0, curFoto = 0;
+        let curObra = 0, curFoto = 0, scrollPrev = 0;
+
+        /* ── Zoom de la foto ── */
+        const ZOOM_MAX = 3, ZOOM_CLICK = 2.2;
+        let zoom = 1, panX = 0, panY = 0;
+        const tactil = window.matchMedia('(pointer: coarse)').matches;
+
+        function aplicarZoom(animar) {
+            lbImg.style.transition = animar ? '' : 'none';
+            lbImg.style.transform = 'translate(' + panX + 'px, ' + panY + 'px) scale(' + zoom + ')';
+            lbFrame.classList.toggle('zoomed', zoom > 1);
+            lbHint.textContent = zoom > 1
+                ? 'Arrastrá para moverte · ' + (tactil ? 'tocá' : 'click') + ' para reducir'
+                : (tactil ? 'Tocá la foto para ampliar' : 'Click en la foto para ampliar');
+        }
+        /* impide que la foto ampliada se despegue de los bordes del marco */
+        function limitarPan() {
+            const f = lbFrame.getBoundingClientRect();
+            const maxX = Math.max(0, (lbImg.clientWidth  * zoom - f.width)  / 2);
+            const maxY = Math.max(0, (lbImg.clientHeight * zoom - f.height) / 2);
+            panX = Math.min(maxX, Math.max(-maxX, panX));
+            panY = Math.min(maxY, Math.max(-maxY, panY));
+        }
+        function resetZoom() { zoom = 1; panX = panY = 0; aplicarZoom(false); }
+        /* lleva el zoom a z dejando quieto el punto (cx,cy) de la pantalla */
+        function zoomA(z, cx, cy) {
+            z = Math.min(ZOOM_MAX, Math.max(1, z));
+            const f = lbFrame.getBoundingClientRect();
+            const dx = cx - (f.left + f.width / 2);
+            const dy = cy - (f.top + f.height / 2);
+            if (z === 1) { panX = panY = 0; }
+            else {
+                panX = dx - (dx - panX) / zoom * z;
+                panY = dy - (dy - panY) / zoom * z;
+            }
+            zoom = z;
+            limitarPan();
+            aplicarZoom(true);
+        }
 
         function lbShow() {
             const o = OBRAS[curObra];
-            /* reinicia la animación de entrada de la imagen */
-            lbImg.style.animation = 'none';
-            void lbImg.offsetWidth;
-            lbImg.style.animation = '';
+            resetZoom();
+            /* reinicia la animación de entrada del marco */
+            lbFrame.style.animation = 'none';
+            void lbFrame.offsetWidth;
+            lbFrame.style.animation = '';
             lbImg.src = o.srcs[curFoto];
             lbImg.alt = 'Obra ' + o.cliente + ' — foto ' + (curFoto + 1) + ' de ' + o.srcs.length;
             lbCliente.textContent = o.cliente;
             lbRubro.textContent   = o.rubro + ' · ' + o.lugar;
-            lbCaption.textContent = '';
             lbIdx.textContent     = curFoto + 1;
             lbTotal.textContent   = o.srcs.length;
         }
@@ -712,11 +780,17 @@
             curObra = i; curFoto = 0;
             lbShow();
             lb.classList.add('open');
+            /* congela el fondo en su posición actual */
+            scrollPrev = window.scrollY;
+            document.body.style.top = -scrollPrev + 'px';
             document.body.classList.add('tb-lb-lock');
         }
         function lbClose() {
             lb.classList.remove('open');
             document.body.classList.remove('tb-lb-lock');
+            document.body.style.top = '';
+            window.scrollTo(0, scrollPrev);
+            resetZoom();
         }
         function lbStep(d) {
             const n = OBRAS[curObra].srcs.length;
@@ -735,7 +809,10 @@
         document.getElementById('tbLbClose').addEventListener('click', lbClose);
         document.getElementById('tbLbPrev').addEventListener('click', () => lbStep(-1));
         document.getElementById('tbLbNext').addEventListener('click', () => lbStep(1));
-        lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+        /* cerrar al tocar fuera de la foto */
+        lb.addEventListener('click', e => {
+            if (e.target === lb || e.target.classList.contains('tb-lb-stage')) lbClose();
+        });
         document.addEventListener('keydown', e => {
             if (!lb.classList.contains('open')) return;
             if (e.key === 'Escape')     lbClose();
@@ -743,14 +820,72 @@
             if (e.key === 'ArrowRight') lbStep(1);
         });
 
-        /* swipe en mobile */
-        let touchX = null;
-        lb.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-        lb.addEventListener('touchend', e => {
-            if (touchX === null) return;
-            const dx = e.changedTouches[0].clientX - touchX;
-            if (Math.abs(dx) > 45) lbStep(dx > 0 ? -1 : 1);
-            touchX = null;
+        /* ── Interacción con la foto: zoom, paneo y swipe ── */
+        let abajo = false, iniX = 0, iniY = 0, panIniX = 0, panIniY = 0, huboArrastre = false;
+        let pinchando = false, pinchDist = 0, pinchZoom = 1;
+
+        const dist = t => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+
+        /* click/tap alterna entre ampliada y normal, centrado en el punto tocado */
+        lbFrame.addEventListener('click', e => {
+            if (huboArrastre) { huboArrastre = false; return; }
+            zoomA(zoom > 1 ? 1 : ZOOM_CLICK, e.clientX, e.clientY);
+        });
+
+        /* rueda del mouse: zoom continuo */
+        lbFrame.addEventListener('wheel', e => {
+            e.preventDefault();
+            zoomA(zoom * (e.deltaY < 0 ? 1.18 : 1 / 1.18), e.clientX, e.clientY);
+        }, { passive: false });
+
+        lbFrame.addEventListener('pointerdown', e => {
+            if (pinchando) return;
+            abajo = true; huboArrastre = false;
+            iniX = e.clientX; iniY = e.clientY;
+            panIniX = panX; panIniY = panY;
+            try { lbFrame.setPointerCapture(e.pointerId); } catch (_) { /* puntero ya liberado */ }
+        });
+        lbFrame.addEventListener('pointermove', e => {
+            if (!abajo || pinchando) return;
+            const dx = e.clientX - iniX, dy = e.clientY - iniY;
+            if (zoom > 1) {
+                if (Math.hypot(dx, dy) > 3) { huboArrastre = true; lbFrame.classList.add('dragging'); }
+                panX = panIniX + dx; panY = panIniY + dy;
+                limitarPan();
+                aplicarZoom(false);
+            }
+        });
+        lbFrame.addEventListener('pointerup', e => {
+            if (!abajo) return;
+            abajo = false;
+            lbFrame.classList.remove('dragging');
+            /* sin zoom, un desplazamiento horizontal cambia de foto */
+            const dx = e.clientX - iniX;
+            if (zoom === 1 && Math.abs(dx) > 45) {
+                huboArrastre = true;
+                lbStep(dx > 0 ? -1 : 1);
+            }
+        });
+        lbFrame.addEventListener('pointercancel', () => {
+            abajo = false; lbFrame.classList.remove('dragging');
+        });
+
+        /* pellizcar con dos dedos */
+        lbFrame.addEventListener('touchstart', e => {
+            if (e.touches.length === 2) {
+                pinchando = true; abajo = false;
+                pinchDist = dist(e.touches); pinchZoom = zoom;
+            }
+        }, { passive: true });
+        lbFrame.addEventListener('touchmove', e => {
+            if (!pinchando || e.touches.length !== 2) return;
+            e.preventDefault();
+            const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+            const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+            zoomA(pinchZoom * (dist(e.touches) / pinchDist), cx, cy);
+        }, { passive: false });
+        lbFrame.addEventListener('touchend', e => {
+            if (e.touches.length < 2) { pinchando = false; huboArrastre = true; }
         }, { passive: true });
     </script>
 </body>
