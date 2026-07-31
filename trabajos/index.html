@@ -219,6 +219,9 @@
         /* ritmo editorial: ancha / angosta alternadas por fila */
         .tb-card:nth-child(4n+1) { grid-column: span 7; aspect-ratio: 16 / 10; }
         .tb-card:nth-child(4n+4) { grid-column: span 7; aspect-ratio: 16 / 10; }
+        /* con una cantidad impar de obras el último card queda solo en su fila:
+           en vez de dejar el hueco, ocupa el ancho completo */
+        .tb-card:last-child:nth-child(odd) { grid-column: span 12; aspect-ratio: 21 / 9; }
 
         .tb-card img {
             width: 100%; height: 100%;
@@ -621,6 +624,14 @@
            ══════════════════════════════════════════════════════════════ */
         const OBRAS = [
             {
+                cliente: 'Movistar Arena',
+                rubro: 'Estadios',
+                lugar: 'Estadio cubierto',
+                carpeta: 'movistar-arena',
+                fotos: 16,
+                portada: 14
+            },
+            {
                 cliente: 'Ford',
                 rubro: 'Automotriz',
                 lugar: 'Centro logístico',
@@ -669,12 +680,20 @@
                 portada: 8
             },
             {
-                cliente: 'Egger',
-                rubro: 'Madera',
+                cliente: 'Papel Misionero',
+                rubro: 'Papelera',
                 lugar: 'Planta industrial',
-                carpeta: 'egger',
-                fotos: 9,
-                portada: 4
+                carpeta: 'papel-misionero',
+                fotos: 18,
+                portada: 13
+            },
+            {
+                cliente: 'Comercios',
+                rubro: 'Comercial',
+                lugar: 'Locales y showrooms',
+                carpeta: 'comercios',
+                fotos: 13,
+                portada: 9
             },
             {
                 cliente: 'Niza',
@@ -683,6 +702,14 @@
                 carpeta: 'niza',
                 fotos: 12,
                 portada: 12
+            },
+            {
+                cliente: 'Casas',
+                rubro: 'Residencial',
+                lugar: 'Viviendas particulares',
+                carpeta: 'casas',
+                fotos: 7,
+                portada: 6
             }
         ];
 
