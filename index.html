@@ -340,14 +340,20 @@
         text-align: center;
         pointer-events: none;
     }
-    .eth-center-num {
-        font-family: var(--font-m);
-        font-size: .58rem;
-        letter-spacing: .3em;
-        text-transform: uppercase;
+    /* icono de la categoria activa, arriba del texto */
+    .eth-center-ico {
+        width: clamp(30px, 4.6vw, 40px);
+        height: clamp(30px, 4.6vw, 40px);
+        margin-bottom: .75rem;
         color: var(--nc-red-hot);
-        margin-bottom: .45rem;
-        min-height: .9em;
+    }
+    .eth-center-ico svg {
+        width: 100%; height: 100%; display: block;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
     }
     .eth-center-name {
         font-family: var(--font-d);
@@ -368,7 +374,7 @@
         max-width: 55%;
         line-height: 1.5;
     }
-    .eth-center.swap .eth-center-num,
+    .eth-center.swap .eth-center-ico,
     .eth-center.swap .eth-center-name,
     .eth-center.swap .eth-center-sub { animation: ethSwap .45s var(--expo); }
     @keyframes ethSwap {
@@ -908,7 +914,7 @@
     <div class="eth-chart-wrap reveal d1">
       <svg class="eth-chart" id="ethChart" viewBox="0 0 400 400" role="img" aria-label="Gráfico del sistema: cuatro cuartos iguales de 25% — maquinaria, insumos, químicos y conocimiento"></svg>
       <div class="eth-center" id="ethCenter">
-        <div class="eth-center-num" id="ethCenterNum">Sistema completo</div>
+        <div class="eth-center-ico" id="ethCenterIco"></div>
         <div class="eth-center-name" id="ethCenterName">100%</div>
         <div class="eth-center-sub" id="ethCenterSub">Cuatro elementos, un solo proveedor.</div>
       </div>
@@ -950,11 +956,21 @@
 <script>
 (function () {
   // ── Gráfico de torta 4×25% (portado del Sistema NC alternativo) ──
+  // iconos del centro (trazo, heredan el color del contenedor)
+  var svg24 = function (d) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>'; };
+  var ICONOS = {
+    maquinaria:   svg24('<path d="M3.5 19h12"/><path d="M5.5 19v-3.2h8V19"/><path d="M13.2 15.8L17 7"/><path d="M15 6.6h4.2"/>'),
+    insumos:      svg24('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.6"/><path d="M12 4v2.6M12 17.4V20M4 12h2.6M17.4 12H20"/>'),
+    quimicos:     svg24('<path d="M12 3.6c3.2 4 5.2 6.7 5.2 9.2a5.2 5.2 0 0 1-10.4 0c0-2.5 2-5.2 5.2-9.2z"/>'),
+    conocimiento: svg24('<path d="M12 6.6C10.3 5.3 8.3 4.7 5.6 4.7v12c2.7 0 4.7.6 6.4 1.9 1.7-1.3 3.7-1.9 6.4-1.9v-12c-2.7 0-4.7.6-6.4 1.9z"/><path d="M12 6.6v12"/>'),
+    sistema:      svg24('<rect x="3.8" y="3.8" width="7" height="7"/><rect x="13.2" y="3.8" width="7" height="7"/><rect x="3.8" y="13.2" width="7" height="7"/><rect x="13.2" y="13.2" width="7" height="7"/>')
+  };
+
   var SEGS = [
-    { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.' },
-    { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.' },
-    { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.' },
-    { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.' }
+    { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.',       ico: ICONOS.maquinaria },
+    { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.', ico: ICONOS.insumos },
+    { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.',  ico: ICONOS.quimicos },
+    { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.',  ico: ICONOS.conocimiento }
   ];
 
   var svg = document.getElementById('ethChart');
@@ -1001,7 +1017,7 @@
 
   var etItems    = document.querySelectorAll('#elementos .eth-et');
   var center     = document.getElementById('ethCenter');
-  var centerNum  = document.getElementById('ethCenterNum');
+  var centerIco  = document.getElementById('ethCenterIco');
   var centerName = document.getElementById('ethCenterName');
   var centerSub  = document.getElementById('ethCenterSub');
   var activeIdx  = -1;
@@ -1015,15 +1031,18 @@
     void center.offsetWidth;
     center.classList.add('swap');
     if (i < 0) {
-      centerNum.textContent  = 'Sistema completo';
+      centerIco.innerHTML    = ICONOS.sistema;
       centerName.textContent = '100%';
       centerSub.textContent  = 'Cuatro elementos, un solo proveedor.';
     } else {
-      centerNum.textContent  = SEGS[i].num;
+      centerIco.innerHTML    = SEGS[i].ico;
       centerName.textContent = SEGS[i].name;
       centerSub.textContent  = SEGS[i].sub;
     }
   }
+
+  /* estado inicial del centro (antes de la primera rotación) */
+  centerIco.innerHTML = ICONOS.sistema;
 
   var autoTimer = null, resumeTimer = null, autoIdx = -1;
   function startAuto() {

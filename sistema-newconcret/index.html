@@ -278,14 +278,20 @@
             text-align: center;
             pointer-events: none;
         }
-        .q-center-num {
-            font-family: var(--font-m);
-            font-size: .58rem;
-            letter-spacing: .3em;
-            text-transform: uppercase;
+        /* icono de la categoria activa, arriba del texto */
+        .q-center-ico {
+            width: clamp(30px, 4.6vw, 40px);
+            height: clamp(30px, 4.6vw, 40px);
+            margin-bottom: .75rem;
             color: var(--rh);
-            margin-bottom: .45rem;
-            min-height: .9em;
+        }
+        .q-center-ico svg {
+            width: 100%; height: 100%; display: block;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
         .q-center-name {
             font-family: var(--font-d);
@@ -306,7 +312,7 @@
             max-width: 55%;
             line-height: 1.5;
         }
-        .q-center.swap .q-center-num,
+        .q-center.swap .q-center-ico,
         .q-center.swap .q-center-name,
         .q-center.swap .q-center-sub { animation: qSwap .45s var(--ex); }
         @keyframes qSwap {
@@ -747,7 +753,7 @@
         <div class="q-chart-wrap">
             <svg class="q-chart" id="qChart" viewBox="0 0 400 400" role="img" aria-label="Gráfico del sistema: cuatro cuartos iguales de 25% — maquinaria, insumos, químicos y conocimiento"></svg>
             <div class="q-center" id="qCenter">
-                <div class="q-center-num" id="qCenterNum">Sistema completo</div>
+                <div class="q-center-ico" id="qCenterIco"></div>
                 <div class="q-center-name" id="qCenterName">100%</div>
                 <div class="q-center-sub" id="qCenterSub">Cuatro elementos, un solo proveedor.</div>
             </div>
@@ -1016,12 +1022,27 @@
         }, { threshold: .07 });
         document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
+        // ── Iconos del centro del gráfico (trazo, heredan el color del contenedor)
+        const svg24 = d => '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>';
+        const ICONOS = {
+            // pulidora de piso: disco, cuerpo y manija
+            maquinaria:   svg24('<path d="M3.5 19h12"/><path d="M5.5 19v-3.2h8V19"/><path d="M13.2 15.8L17 7"/><path d="M15 6.6h4.2"/>'),
+            // disco diamantado visto de frente
+            insumos:      svg24('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.6"/><path d="M12 4v2.6M12 17.4V20M4 12h2.6M17.4 12H20"/>'),
+            // gota de producto químico
+            quimicos:     svg24('<path d="M12 3.6c3.2 4 5.2 6.7 5.2 9.2a5.2 5.2 0 0 1-10.4 0c0-2.5 2-5.2 5.2-9.2z"/>'),
+            // libro abierto: capacitación
+            conocimiento: svg24('<path d="M12 6.6C10.3 5.3 8.3 4.7 5.6 4.7v12c2.7 0 4.7.6 6.4 1.9 1.7-1.3 3.7-1.9 6.4-1.9v-12c-2.7 0-4.7.6-6.4 1.9z"/><path d="M12 6.6v12"/>'),
+            // los cuatro cuartos juntos: estado por defecto
+            sistema:      svg24('<rect x="3.8" y="3.8" width="7" height="7"/><rect x="13.2" y="3.8" width="7" height="7"/><rect x="3.8" y="13.2" width="7" height="7"/><rect x="13.2" y="13.2" width="7" height="7"/>')
+        };
+
         // ── Gráfico de torta: 4 cuartos iguales ─────────────────────────────
         const SEGS = [
-            { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.' },
-            { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.' },
-            { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.' },
-            { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.' }
+            { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.',      ico: ICONOS.maquinaria },
+            { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.', ico: ICONOS.insumos },
+            { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.',  ico: ICONOS.quimicos },
+            { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.',  ico: ICONOS.conocimiento }
         ];
 
         const svg   = document.getElementById('qChart');
@@ -1071,7 +1092,7 @@
         // ── Estado activo: sincroniza torta, leyenda y centro
         const legRows    = document.querySelectorAll('.q-leg-row');
         const center     = document.getElementById('qCenter');
-        const centerNum  = document.getElementById('qCenterNum');
+        const centerIco  = document.getElementById('qCenterIco');
         const centerName = document.getElementById('qCenterName');
         const centerSub  = document.getElementById('qCenterSub');
         let  activeIdx   = -1;
@@ -1085,15 +1106,18 @@
             void center.offsetWidth;               // reinicia la animación del centro
             center.classList.add('swap');
             if (i < 0) {
-                centerNum.textContent  = 'Sistema completo';
+                centerIco.innerHTML    = ICONOS.sistema;
                 centerName.textContent = '100%';
                 centerSub.textContent  = 'Cuatro elementos, un solo proveedor.';
             } else {
-                centerNum.textContent  = SEGS[i].num;
+                centerIco.innerHTML    = SEGS[i].ico;
                 centerName.textContent = SEGS[i].name;
                 centerSub.textContent  = SEGS[i].sub;
             }
         }
+
+        /* estado inicial del centro (antes de la primera rotación) */
+        centerIco.innerHTML = ICONOS.sistema;
 
         // rotación automática hasta que el usuario interactúa
         let autoTimer = null, resumeTimer = null, autoIdx = -1;
