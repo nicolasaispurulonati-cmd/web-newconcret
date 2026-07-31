@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema NewConcret — Del hormigón al piso terminado</title>
-    <meta name="description" content="El sistema integral NewConcret para el ciclo de vida completo del piso de hormigón: construcción, reparación, pulido y mantenimiento. Todo con una misma línea de productos.">
+    <title>Sistema NewConcret — Cuatro elementos, cuatro etapas</title>
+    <meta name="description" content="El Sistema NewConcret en cuatro partes iguales: maquinaria, insumos, químicos y conocimiento. Cuatro elementos presentes en las cuatro etapas del piso: construcción, reparación, pulido y mantenimiento.">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
     <link rel="stylesheet" href="../assets/css/estilo.css?v=43">
     <link rel="stylesheet" href="../assets/css/nav.css?v=2.0">
@@ -56,177 +56,489 @@
         .d2 { transition-delay: .2s; }
         .d3 { transition-delay: .3s; }
         .d4 { transition-delay: .4s; }
-        .d5 { transition-delay: .5s; }
 
         @media (prefers-reduced-motion: reduce) {
             .reveal { transition: none; opacity: 1; transform: none; }
-            * { animation-duration: .01ms !important; }
+            * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
         }
 
-        /* ── HERO ── */
-        .hero-sistema {
-            position: relative;
-            /* resta el nav fijo (66px) para que el hero entre en un viewport y la
-               franja de etapas quede visible sin scrollear */
-            min-height: calc(100svh - 66px);
-            display: flex;
+        /* ── BOTONES (aislados de la página) ── */
+        .q-btn {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: .8rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: .95rem 1.9rem;
+            display: inline-flex;
             align-items: center;
-            /* padding-bottom = alto de la franja: centra el contenido en el
-               espacio libre por encima de ella, no detrás */
-            padding: 0 4rem 72px;
-            overflow: hidden;
-            margin-top: 66px;
+            gap: .7rem;
+            transition: transform .2s, color .2s, border-color .2s, background .2s;
         }
+        .q-btn svg { width: 15px; height: 15px; }
+        .q-btn:active { transform: scale(.98); }
+        .q-btn-p {
+            position: relative; overflow: hidden;
+            background: var(--r); color: #fff;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 93% 100%, 0 100%);
+        }
+        .q-btn-p::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+            transition: left .5s;
+        }
+        .q-btn-p:hover::before { left: 100%; }
+        .q-btn-p:hover { transform: translateY(-2px); }
+        .q-btn-g {
+            font-weight: 600; font-size: .72rem; letter-spacing: .14em;
+            color: var(--wh); background: transparent;
+            border: 1px solid var(--s2);
+            padding: .85rem 1.3rem;
+        }
+        .q-btn-g:hover { color: #fff; border-color: var(--as); background: rgba(255,255,255,.08); }
 
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img {
+        /* ── EYEBROW ── */
+        .q-eyebrow {
+            display: inline-flex; align-items: center; gap: .85rem;
+            font-family: var(--font-m);
+            font-size: .6rem;
+            text-transform: uppercase;
+            letter-spacing: .28em;
+            color: var(--rh);
+            font-weight: 500;
+        }
+        .q-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--r); display: inline-block; }
+
+        /* ═══ HERO ═══ */
+        .q-hero {
+            position: relative;
+            min-height: calc(100svh - 66px);
+            margin-top: 66px;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: clamp(2rem, 5vw, 5rem);
+            padding: 3rem 4rem 4rem;
+            overflow: hidden;
+        }
+        /* imagen de fondo + overlay, como el hero de la página original */
+        .q-hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .q-hero-bg img {
             width: 100%; height: 100%;
             object-fit: cover;
             filter: brightness(.32) saturate(.55);
         }
-
-        .hero-ov {
+        .q-hero-ov {
             position: absolute; inset: 0; z-index: 1;
             background:
+                /* dim extra detrás del gráfico para que el centro se lea bien */
+                radial-gradient(circle at 72% 45%, rgba(10,10,10,.5), transparent 58%),
                 linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.1) 100%),
                 linear-gradient(to top,   rgba(10,10,10,.95) 0%, transparent 55%);
         }
 
-        .hero-content { position: relative; z-index: 2; max-width: 760px; }
+        .q-hero-copy { position: relative; z-index: 2; }
 
-        .hero-h1 {
+        .q-hero-h1 {
             font-family: var(--font-d);
             font-weight: 900;
-            font-size: clamp(3.2rem, 7.5vw, 6rem);
+            font-size: clamp(3rem, 6.6vw, 5.6rem);
             line-height: .88;
             letter-spacing: -.02em;
             text-transform: uppercase;
             color: var(--wh);
-            margin-bottom: 1.5rem;
-            animation: fadeUp .9s var(--ex) .3s both;
+            margin: 1.1rem 0 1.4rem;
+            animation: qFadeUp .9s var(--ex) .25s both;
         }
-        .hero-h1 .red { color: var(--rh); }
-        .hero-h1 .thin { font-weight: 300; color: var(--as); }
+        .q-hero-h1 .red { color: var(--rh); }
+        .q-hero-h1 .thin { font-weight: 300; color: var(--as); }
 
-        .hero-p {
+        .q-hero-p {
             font-size: 1rem;
             font-weight: 300;
             line-height: 1.65;
             color: var(--lt);
-            max-width: 460px;
-            margin-bottom: 2.5rem;
-            animation: fadeUp .9s var(--ex) .5s both;
+            max-width: 440px;
+            margin-bottom: 2.2rem;
+            animation: qFadeUp .9s var(--ex) .45s both;
         }
 
-        .hero-btns {
-            display: flex; gap: 1.2rem; flex-wrap: wrap;
-            animation: fadeUp .9s var(--ex) .7s both;
+        @keyframes qFadeUp {
+            from { opacity: 0; transform: translateY(26px); }
+            to   { opacity: 1; transform: none; }
         }
 
-        /* ── HERO STAT STRIP ── */
-        .hero-strip {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 72px;
-            background: rgba(10,10,10,.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 1px solid var(--st);
-            border-bottom: 2px solid var(--r);
+        /* Leyenda de cuartos, sincronizada con el gráfico */
+        .q-legend { margin-bottom: 2.4rem; border-top: 1px solid var(--st); animation: qFadeUp .9s var(--ex) .6s both; }
+        .q-leg-row {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            z-index: 5;
-            animation: fadeUp .8s var(--ex) 1s both;
+            grid-template-columns: 2.6rem 1fr auto;
+            align-items: center;
+            gap: 1.1rem;
+            padding: .85rem 0;
+            border-bottom: 1px solid var(--st);
+            transition: background .35s var(--ex), padding-left .35s var(--ex);
         }
-        .hs-item {
+        .q-leg-row:hover { background: rgba(255,255,255,.02); }
+        .q-leg-num {
+            font-family: var(--font-m);
+            font-size: .62rem;
+            letter-spacing: .1em;
+            color: var(--mi);
+            transition: color .3s;
+        }
+        .q-leg-name {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: .98rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--lt);
+            transition: color .3s;
+        }
+        .q-leg-pct {
+            font-family: var(--font-d);
+            font-weight: 800;
+            font-size: .85rem;
+            color: var(--mi);
+            transition: color .3s;
+        }
+        .q-leg-row.on .q-leg-num  { color: var(--rh); }
+        .q-leg-row.on .q-leg-name { color: var(--wh); }
+        .q-leg-row.on .q-leg-pct  { color: var(--rh); }
+
+        .q-hero-acts { display: flex; flex-wrap: wrap; gap: .9rem; animation: qFadeUp .9s var(--ex) .7s both; }
+
+        /* ── EL GRÁFICO (torta 4×25%) ── */
+        .q-chart-wrap {
+            position: relative; z-index: 2;
+            justify-self: center;
+            width: min(100%, 480px);
+            aspect-ratio: 1 / 1;
+            animation: qFadeUp 1s var(--ex) .5s both;
+        }
+        .q-chart { width: 100%; height: 100%; display: block; overflow: visible; }
+
+        /* anillo punteado exterior en rotación perpetua */
+        .q-orbit {
+            fill: none;
+            stroke: var(--s2);
+            stroke-width: 1;
+            stroke-dasharray: 2 9;
+            transform-box: view-box;
+            transform-origin: 50% 50%;
+            animation: qSpin 90s linear infinite;
+        }
+        @keyframes qSpin { to { transform: rotate(360deg); } }
+
+        .q-seg {
+            transform-box: view-box;
+            transform-origin: 50% 50%;
+            transition: transform .55s var(--ex), opacity .6s var(--ex);
+            opacity: 0;
+            transform: scale(.82);
+        }
+        .q-chart.drawn .q-seg { opacity: 1; transform: translate(0, 0) scale(1); }
+        .q-chart.drawn .q-seg:nth-child(2) { transition-delay: .08s; }
+        .q-chart.drawn .q-seg:nth-child(3) { transition-delay: .16s; }
+        .q-chart.drawn .q-seg:nth-child(4) { transition-delay: .24s; }
+
+        .q-seg path {
+            fill: var(--cb);
+            stroke: var(--st);
+            stroke-width: 1;
+            transition: fill .4s var(--ex), stroke .4s var(--ex);
+        }
+        .q-seg text {
+            font-family: var(--font-d);
+            font-weight: 800;
+            font-size: 21px;
+            fill: var(--mi);
+            text-anchor: middle;
+            dominant-baseline: central;
+            letter-spacing: .02em;
+            transition: fill .4s;
+            pointer-events: none;
+        }
+        /* cuarto activo: se separa de la torta y toma el acento */
+        .q-chart.drawn .q-seg.on { transform: translate(var(--tx), var(--ty)) scale(1); }
+        .q-seg.on path { fill: var(--r); stroke: var(--rh); }
+        .q-seg.on text { fill: #fff; }
+
+        /* centro del gráfico */
+        .q-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .q-center-num {
+            font-family: var(--font-m);
+            font-size: .58rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--rh);
+            margin-bottom: .45rem;
+            min-height: .9em;
+        }
+        .q-center-name {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(1.15rem, 2vw, 1.6rem);
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: .01em;
+            color: var(--wh);
+            max-width: 60%;
+        }
+        .q-center-sub {
+            font-family: var(--font-b);
+            font-weight: 300;
+            font-size: .72rem;
+            color: var(--as);
+            margin-top: .55rem;
+            max-width: 55%;
+            line-height: 1.5;
+        }
+        .q-center.swap .q-center-num,
+        .q-center.swap .q-center-name,
+        .q-center.swap .q-center-sub { animation: qSwap .45s var(--ex); }
+        @keyframes qSwap {
+            0%   { opacity: 0; transform: translateY(7px); }
+            100% { opacity: 1; transform: none; }
+        }
+
+        /* ═══ SECCIONES GENÉRICAS ═══ */
+        .q-sec { padding: clamp(4rem, 7vw, 7rem) 4rem; }
+        .q-wrap { max-width: 1400px; margin: 0 auto; }
+        .q-h2 {
+            font-family: var(--font-d);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+            line-height: .95;
+            letter-spacing: -.01em;
+            color: var(--wh);
+            margin-top: 1.2rem;
+        }
+        .q-h2 .red { color: var(--rh); }
+        .q-lead {
+            font-size: .98rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--lt);
+            max-width: 52ch;
+        }
+
+        /* ═══ LOS 4 ELEMENTOS ═══ */
+        .q-elems { background: var(--dk); border-top: 1px solid var(--st); border-bottom: 1px solid var(--st); }
+        .q-elems-head {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: end;
+            margin-bottom: clamp(2.5rem, 5vw, 4rem);
+        }
+        .q-elems-head .q-lead { padding-bottom: .4rem; }
+
+        .q-elem-list { border-top: 1px solid var(--st); }
+        .q-elem {
+            display: grid;
+            grid-template-columns: 7.5rem 1.15fr 1.6fr auto;
+            gap: clamp(1.2rem, 3vw, 3rem);
+            align-items: center;
+            padding: 2.1rem 0;
+            border-bottom: 1px solid var(--st);
+            text-decoration: none;
+            transition: background .4s var(--ex);
+        }
+        .q-elem:hover { background: rgba(255,255,255,.025); }
+        .q-elem-pct {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+            line-height: 1;
+            color: var(--s2);
+            letter-spacing: -.02em;
+            transition: color .4s var(--ex);
+        }
+        .q-elem:hover .q-elem-pct { color: var(--rh); }
+        .q-elem-id { display: flex; flex-direction: column; gap: .35rem; }
+        .q-elem-num { font-family: var(--font-m); font-size: .58rem; letter-spacing: .22em; color: var(--mi); text-transform: uppercase; }
+        .q-elem-name {
+            font-family: var(--font-d);
+            font-weight: 800;
+            font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--wh);
+        }
+        .q-elem-desc {
+            font-size: .9rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--as);
+            max-width: 46ch;
+        }
+        .q-elem-cta {
+            display: inline-flex; align-items: center; gap: .5rem;
+            font-family: var(--font-d);
+            font-weight: 600;
+            font-size: .68rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--lt);
+            white-space: nowrap;
+        }
+        .q-elem-cta svg { width: 14px; height: 14px; transition: transform .35s var(--ex); }
+        .q-elem:hover .q-elem-cta { color: #fff; }
+        .q-elem:hover .q-elem-cta svg { transform: translateX(5px); }
+
+        /* ═══ MATRIZ 4×4 ═══ */
+        .q-matrix-sec { position: relative; overflow: hidden; }
+        .q-matrix-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.4fr;
+            gap: clamp(2.5rem, 6vw, 6rem);
+            align-items: center;
+        }
+        .q-matrix-copy .q-lead { margin-top: 1.4rem; }
+        .q-matrix-stat {
+            margin-top: 2.4rem;
+            display: flex;
+            align-items: center;
+            gap: .9rem;
+        }
+        .q-matrix-stat b {
+            font-family: var(--font-d);
+            font-weight: 900;
+            font-size: 2.6rem;
+            color: var(--wh);
+            letter-spacing: -.02em;
+        }
+        .q-matrix-stat span {
+            font-family: var(--font-m);
+            font-size: .6rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--as);
+            max-width: 22ch;
+            line-height: 1.6;
+        }
+
+        .q-matrix { border: 1px solid var(--st); background: var(--dk); }
+        .q-mx-table { display: grid; grid-template-columns: minmax(8.5rem, auto) repeat(4, 1fr); }
+        .q-mx-cell {
+            padding: 1.15rem .6rem;
+            border-top: 1px solid var(--st);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: .7rem;
-            border-right: 1px solid var(--st);
-            padding: 0 1rem;
-            transition: background .3s;
         }
-        .hs-item:last-child { border-right: none; }
-        .hs-item:hover { background: rgba(255,255,255,.03); }
-        .hs-num {
-            font-family: var(--font-d);
-            font-weight: 900;
-            font-size: 1rem;
-            color: var(--rh);
-            line-height: 1;
-            opacity: .6;
-        }
-        .hs-name {
+        .q-mx-cell:nth-child(5n+1) { justify-content: flex-start; padding-left: 1.4rem; border-right: 1px solid var(--st); }
+        .q-mx-head { border-top: none !important; }
+        .q-mx-col {
             font-family: var(--font-m);
-            font-size: .65rem;
+            font-size: .55rem;
+            letter-spacing: .14em;
             text-transform: uppercase;
-            letter-spacing: .12em;
             color: var(--as);
+            text-align: center;
+            line-height: 1.5;
+            white-space: nowrap;
         }
-
-        /* scroll indicator */
-        .scroll-ind {
-            position: absolute; bottom: 5.5rem; left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            display: flex; flex-direction: column; align-items: center; gap: .4rem;
-        }
-        .scroll-line {
-            width: 1px; height: 44px;
-            background: linear-gradient(to bottom, var(--r), transparent);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        .scroll-ind span {
-            font-family: var(--font-m);
-            font-size: .58rem;
-            letter-spacing: .2em;
+        .q-mx-row {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: .82rem;
+            letter-spacing: .06em;
             text-transform: uppercase;
-            color: var(--wh);
+            color: var(--lt);
         }
+        .q-dot {
+            width: 11px; height: 11px;
+            background: var(--r);
+            transform: scale(0);
+            transition: transform .5s var(--ex);
+            transition-delay: calc(var(--i) * 55ms);
+        }
+        .q-matrix.lit .q-dot { transform: scale(1); }
 
-        /* ── SECCIONES ── */
-        .sec { padding: 6.5rem 4rem; }
+        /* ═══ ETAPAS ═══ */
+        .q-etapas { background: var(--cb); border-top: 1px solid var(--st); }
+        .q-etapas-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 720px; }
+        .q-etapas-head .q-lead { margin-top: 1.4rem; }
 
-        /* ── BENEFICIOS (reemplaza car-grid) ── */
-        .beneficios-sec { background: var(--cb); }
-
-        .ben-hd {
+        .q-et-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--st);
+        }
+        .q-et {
+            position: relative;
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
-            margin-bottom: 5rem;
+            gap: .9rem;
+            padding: 2.2rem 1.8rem 2rem;
+            border-right: 1px solid var(--st);
+            text-decoration: none;
+            overflow: hidden;
+            transition: background .4s var(--ex);
         }
-
-        .ben-hd h2 {
+        .q-et:last-child { border-right: none; }
+        .q-et::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%; height: 2px;
+            background: var(--r);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .5s var(--ex);
+        }
+        .q-et:hover { background: rgba(255,255,255,.03); }
+        .q-et:hover::after { transform: scaleX(1); }
+        .q-et-num { font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; color: var(--rh); }
+        .q-et-name {
             font-family: var(--font-d);
             font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: .95;
+            font-size: 1.35rem;
             text-transform: uppercase;
             color: var(--wh);
-            text-wrap: balance;
+            line-height: 1;
         }
-
-        .ben-hd p {
-            font-size: .97rem;
-            font-weight: 300;
-            line-height: 1.7;
+        .q-et-desc { font-size: .84rem; font-weight: 300; line-height: 1.6; color: var(--as); flex: 1; }
+        .q-et-link {
+            display: inline-flex; align-items: center; gap: .5rem;
+            font-family: var(--font-d);
+            font-weight: 600;
+            font-size: .64rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
             color: var(--lt);
-            max-width: 72ch;
-            text-wrap: pretty;
         }
+        .q-et-link svg { width: 13px; height: 13px; transition: transform .35s var(--ex); }
+        .q-et:hover .q-et-link svg { transform: translateX(5px); }
 
-        /* Lista de beneficios — editorial, no cards */
-        .ben-list {
+        /* ═══ BENEFICIOS DEL HORMIGÓN PULIDO ═══ */
+        .q-ben { border-top: 1px solid var(--st); }
+        .q-ben-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 720px; }
+        .q-ben-head .q-lead { margin-top: 1.4rem; max-width: 72ch; }
+
+        .q-ben-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
             background: var(--st);
             border: 1px solid var(--st);
         }
-
-        .ben-item {
+        .q-ben-item {
             background: var(--dk);
             padding: 2.75rem 2.5rem;
             display: grid;
@@ -237,17 +549,7 @@
             overflow: hidden;
             transition: background .3s;
         }
-
-        .ben-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 2.5rem; right: 2.5rem;
-            height: 1px;
-            background: var(--st);
-        }
-
-        /* animated entry line */
-        .ben-item::before {
+        .q-ben-item::before {
             content: '';
             position: absolute;
             left: 0; top: 0; bottom: 0;
@@ -255,10 +557,9 @@
             background: var(--r);
             transition: width .5s var(--ex);
         }
-        .ben-item:hover::before { width: 3px; }
-        .ben-item:hover { background: rgba(255,255,255,.02); }
-
-        .ben-n {
+        .q-ben-item:hover::before { width: 3px; }
+        .q-ben-item:hover { background: rgba(255,255,255,.02); }
+        .q-ben-n {
             font-family: var(--font-d);
             font-weight: 900;
             font-size: 2.2rem;
@@ -269,11 +570,9 @@
             transition: color .4s, opacity .4s;
             user-select: none;
         }
-        .ben-item:hover .ben-n { color: var(--rh); opacity: 1; }
-
-        .ben-content { display: flex; flex-direction: column; gap: .5rem; }
-
-        .ben-title {
+        .q-ben-item:hover .q-ben-n { color: var(--rh); opacity: 1; }
+        .q-ben-content { display: flex; flex-direction: column; gap: .5rem; }
+        .q-ben-title {
             font-family: var(--font-d);
             font-weight: 700;
             font-size: 1.15rem;
@@ -282,8 +581,7 @@
             line-height: 1;
             letter-spacing: -.01em;
         }
-
-        .ben-desc {
+        .q-ben-desc {
             font-size: .88rem;
             font-weight: 300;
             color: var(--as);
@@ -292,245 +590,30 @@
             text-wrap: pretty;
         }
 
-        /* ── PROCESO — Timeline vertical ── */
-        .proceso-sec { background: var(--bk); }
+        /* ═══ ANTES Y DESPUÉS ═══ */
+        .q-gallery { background: var(--dk); border-top: 1px solid var(--st); }
+        .q-gallery-head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 720px; }
+        .q-gallery-head .q-lead { margin-top: 1.4rem; }
 
-        .proceso-hd {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            margin-bottom: 4rem;
-        }
-
-        .proceso-hd h2 {
-            font-family: var(--font-d);
-            font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: .95;
-            text-transform: uppercase;
-            color: var(--wh);
-        }
-
-        .proceso-hd p {
-            font-size: .97rem;
-            font-weight: 300;
-            color: var(--lt);
-            max-width: 72ch;
-            line-height: 1.7;
-            text-wrap: pretty;
-        }
-
-        .timeline {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        /* vertical progress line */
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 31px;
-            top: 0; bottom: 0;
-            width: 1px;
-            background: var(--st);
-            z-index: 0;
-        }
-
-        .timeline-line-fill {
-            position: absolute;
-            left: 31px;
-            top: 0;
-            width: 1px;
-            height: 0%;
-            background: var(--r);
-            z-index: 1;
-            transition: height 1.4s var(--ex);
-        }
-        .timeline-line-fill.filled { height: 100%; }
-
-        .tl-step {
-            display: grid;
-            grid-template-columns: 64px 1fr;
-            gap: 0 2.5rem;
-            position: relative;
-            padding: 2.5rem 0;
-            border-bottom: 1px solid var(--st);
-            opacity: 0;
-            transform: translateY(16px);   /* reveal vertical: no corre el dot fuera de la línea (antes translateX movía el punto en horizontal) */
-            transition: opacity .7s var(--ex), transform .7s var(--ex), background .3s;
-        }
-        .tl-step:last-child { border-bottom: none; }
-        .tl-step.in { opacity: 1; transform: none; }
-
-        /* stagger */
-        .tl-step:nth-child(1) { transition-delay: .05s; }
-        .tl-step:nth-child(2) { transition-delay: .15s; }
-        .tl-step:nth-child(3) { transition-delay: .25s; }
-        .tl-step:nth-child(4) { transition-delay: .35s; }
-        .tl-step:nth-child(5) { transition-delay: .45s; }
-
-        .tl-num-wrap {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: .1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tl-dot {
-            width: 14px; height: 14px;
-            border-radius: 50%;
-            border: 2px solid var(--st);
-            background: var(--cb);
-            flex-shrink: 0;
-            margin-top: .35rem;
-            transition: border-color .4s, background .4s, transform .4s var(--ex);
-            position: relative;
-            left: 0;                  /* centra el dot en la línea (antes -6px lo corría) */
-        }
-
-        .tl-step.active .tl-dot,
-        .tl-step:hover   .tl-dot {
-            border-color: var(--r);
-            background: var(--r);
-            transform: scale(1.4);
-        }
-
-        .tl-body { padding-right: 2rem; }
-
-        .tl-label {
-            font-family: var(--font-m);
-            font-size: .58rem;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: var(--rh);
-            margin-bottom: .4rem;
-            opacity: 0;
-            transition: opacity .5s .3s;
-        }
-        .tl-step.in .tl-label { opacity: 1; }
-
-        .tl-title {
-            font-family: var(--font-d);
-            font-weight: 800;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            color: var(--wh);
-            line-height: 1;
-            margin-bottom: .75rem;
-            letter-spacing: -.01em;
-        }
-
-        .tl-desc {
-            font-size: .92rem;
-            font-weight: 300;
-            color: var(--as);
-            line-height: 1.65;
-            max-width: 52ch;
-            text-wrap: pretty;
-        }
-
-        .tl-tag {
-            display: inline-block;
-            margin-top: 1rem;
-            font-family: var(--font-m);
-            font-size: .6rem;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-            color: var(--lt);
-            background: rgba(255,255,255,.05);
-            border: 1px solid var(--st);
-            padding: .3rem .8rem;
-        }
-
-        .tl-goal {
-            margin-top: 1.25rem;
-            padding: 1rem 1.25rem;
-            border-left: 2px solid var(--r);
-            background: rgba(193,18,31,.05);
-        }
-        .tl-goal-label {
-            font-family: var(--font-m);
-            font-size: .58rem;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            color: var(--rh);
-            margin-bottom: .35rem;
-        }
-        .tl-goal-text {
-            font-size: .88rem;
-            font-weight: 300;
-            color: var(--lt);
-            line-height: 1.6;
-            text-wrap: pretty;
-        }
-
-        .tl-link {
-            margin-top: 1.4rem;
-            font-size: .72rem;
-            letter-spacing: .14em;
-            padding: .6rem 0;
-        }
-
-        /* Desktop ancho: cada etapa en 2 columnas — descripción a la izquierda,
-           objetivo de la etapa a la derecha, para usar el ancho disponible
-           (antes todo se apilaba a la izquierda y la derecha quedaba vacía). */
-        @media (min-width: 1080px) {
-            .tl-body {
-                display: grid;
-                grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-                column-gap: 3.5rem;
-                padding-right: 0;
-                align-content: start;
-                grid-template-areas:
-                    "label goal"
-                    "title goal"
-                    "desc  goal"
-                    "link  goal";
-            }
-            .tl-label { grid-area: label; }
-            .tl-title { grid-area: title; }
-            .tl-desc  { grid-area: desc; max-width: none; }
-            .tl-goal  { grid-area: goal; align-self: center; margin-top: 0; }
-            .tl-link  { grid-area: link; justify-self: start; }
-        }
-
-        /* ── GALLERY ── */
-        .gallery-sec { background: var(--bk); }
-
-        .gallery-hd { margin-bottom: 3rem; }
-        .gallery-hd h2 {
-            font-family: var(--font-d);
-            font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: .95;
-            text-transform: uppercase;
-            color: var(--wh);
-        }
-
-        .gallery-grid {
+        .q-gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2px;
             background: var(--st);
         }
-        .gallery-card {
+        .q-gallery-card {
             position: relative;
             aspect-ratio: 16/10;
             overflow: hidden;
         }
-        .gallery-card img {
+        .q-gallery-card img {
             width: 100%; height: 100%;
             object-fit: cover;
             filter: brightness(.9);
             transition: transform .9s var(--ex), filter .6s;
         }
-        .gallery-card:hover img { transform: scale(1.06); filter: brightness(.75); }
-
-        .gallery-badge {
+        .q-gallery-card:hover img { transform: scale(1.06); filter: brightness(.75); }
+        .q-gallery-badge {
             position: absolute;
             bottom: 1.25rem; left: 1.25rem;
             font-family: var(--font-m);
@@ -542,194 +625,86 @@
             backdrop-filter: blur(10px);
             padding: .35rem .75rem;
         }
-        .badge-antes  { border-left: 2px solid #555; }
-        .badge-despues{ border-left: 2px solid var(--r); }
+        .q-badge-antes   { border-left: 2px solid #555; }
+        .q-badge-despues { border-left: 2px solid var(--r); }
 
-        /* ── STATS ── */
-        .stats-sec {
-            background: var(--bk);
-            border-top: 1px solid var(--st);
-            border-bottom: 1px solid var(--st);
-            padding: 0 4rem;
-        }
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-        }
-        .s-item {
-            padding: 4.5rem 0 4.5rem 3rem;
-            border-right: 1px solid var(--st);
-            position: relative;
-            overflow: hidden;
-            transition: background .3s;
-        }
-        .s-item:last-child { border-right: none; }
-
-        .s-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--r);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform .55s var(--ex);
-        }
-        .s-item:hover::before { transform: scaleX(1); }
-        .s-item:hover { background: rgba(255,255,255,.015); }
-
-        .s-num {
-            font-family: var(--font-d);
-            font-weight: 900;
-            font-size: clamp(3.5rem, 5vw, 5.5rem);
-            color: var(--wh);
-            line-height: 1;
-            margin-bottom: .75rem;
-            display: flex;
-            align-items: baseline;
-            gap: .25rem;
-        }
-        .s-num em {
-            font-style: normal;
-            font-size: clamp(1.2rem, 1.8vw, 1.8rem);
-            color: var(--rh);
-            font-weight: 900;
-        }
-        .s-lbl {
-            font-family: var(--font-m);
-            font-size: .62rem;
-            text-transform: uppercase;
-            letter-spacing: .16em;
-            color: var(--as);
-        }
-
-        /* ── CTA ── */
-        .cta-sec {
+        /* ═══ CTA ═══ */
+        .q-cta {
             position: relative;
             min-height: 62vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 4rem;
+            padding: 5rem 4rem;
             overflow: hidden;
         }
-
-        .cta-sec::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--r);
-            z-index: 3;
-        }
-
-        .cta-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-        .cta-bg img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: brightness(.22) saturate(.5);
-        }
-
-        .cta-ov {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background:
-                radial-gradient(ellipse 80% 60% at 50% 60%, rgba(10,10,10,.3) 0%, rgba(10,10,10,.88) 100%),
-                linear-gradient(to top, rgba(10,10,10,.98) 0%, transparent 60%);
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 700px;
-        }
-
-        .cta-h2 {
+        .q-cta-bg { position: absolute; inset: 0; }
+        .q-cta-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.3) saturate(.6); }
+        .q-cta-ov { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(10,10,10,.45), rgba(10,10,10,.92)); }
+        .q-cta-content { position: relative; z-index: 2; }
+        .q-cta-h2 {
             font-family: var(--font-d);
             font-weight: 900;
-            font-size: clamp(3rem, 5.5vw, 5rem);
-            line-height: .92;
-            letter-spacing: -.025em;
             text-transform: uppercase;
+            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            line-height: .92;
+            letter-spacing: -.015em;
             color: var(--wh);
             margin-bottom: 1.25rem;
-            text-wrap: balance;
         }
-        .cta-h2 span { color: var(--rh); }
+        .q-cta-h2 span { color: var(--rh); }
+        .q-cta-sub { font-size: .95rem; font-weight: 300; color: var(--lt); margin: 0 auto 2rem; }
+        .q-cta-acts { display: flex; justify-content: center; gap: .9rem; flex-wrap: wrap; }
 
-        .cta-sub {
-            font-size: 1rem;
-            font-weight: 300;
-            color: var(--lt);
-            line-height: 1.65;
-            max-width: none;      /* en desktop entra en un solo renglón */
-            margin: 0 auto 2rem;
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 1080px) {
+            .q-elem { grid-template-columns: 5.5rem 1fr auto; }
+            .q-elem-desc { display: none; }
         }
 
-        .cta-acts {
-            display: flex;
-            flex-direction: row;      /* estilo.css pone column; acá va horizontal */
-            align-items: center;      /* evita que estilo.css (flex-start) lo pegue a la izquierda */
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* ── KEYFRAMES ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: none; }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: .3; }
-            50%       { opacity: 1; }
-        }
-
-        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
-            /* bottom padding lifts the (centered) content clear of the absolute 2×2 strip */
-            .hero-sistema { padding: 3rem 1.5rem 9rem; min-height: 86svh; align-items: center; }
-            /* texto secundario más chico en mobile, acorde a proteccion/capacitacion */
-            .hero-p { font-size: .95rem; line-height: 1.55; margin-bottom: 2rem; }
-            /* Show the 4-stage overview as a 2×2 grid instead of hiding it.
-               Strip stays absolute at the bottom; height grows to two rows. */
-            .hero-strip { grid-template-columns: 1fr 1fr; height: auto; }
-            .hs-item { padding: .9rem 1rem; }
-            .hs-item:nth-child(2), .hs-item:nth-child(4) { border-right: none; }
-            .hs-item:nth-child(1), .hs-item:nth-child(2) { border-bottom: 1px solid var(--st); }
-            .scroll-ind { display: none; } /* would collide with the taller 2×2 strip */
-            .sec { padding: 4rem 1.5rem !important; }
-            .ben-hd { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
-            .ben-list { grid-template-columns: 1fr; }
-            .ben-item { padding: 1.75rem 1.5rem; grid-template-columns: 40px 1fr; gap: 0 1rem; }
-            .timeline::before { left: 23px; }
-            .timeline-line-fill { left: 23px; }
-            .tl-step { grid-template-columns: 48px 1fr; gap: 0 1rem; }
-            /* desktop nudges the dot -6px; on the 48px mobile column that pushes it
-               left of the line. Center it on the line instead. */
-            .tl-dot { left: 0; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .stats-sec { padding: 0 1rem; }
-            /* single row: 3 compact columns with vertical dividers */
-            .stats-row { grid-template-columns: repeat(3, 1fr); }
-            .s-item { padding: 2.5rem .5rem; border-right: 1px solid var(--st); border-bottom: none; text-align: center; }
-            .s-item:last-child { border-right: none; }
-            .s-num { font-size: 1.55rem; justify-content: center; margin-bottom: .4rem; }
-            .s-num em { font-size: .8rem; }
-            .s-lbl { font-size: .5rem; letter-spacing: .1em; }
-            .cta-sec { padding: 4rem 1.5rem; min-height: 50vh; }
-            /* as large as possible while the longest line ("Asesoramiento hoy.") stays on one line → 2 lines total */
-            .cta-h2 { font-size: 2.6rem; }
-            /* en mobile no hay espacio para un renglón: vuelve a acotar el ancho */
-            .cta-sub { max-width: 30ch; }
-            .cta-acts a { width: 100%; justify-content: center; box-sizing: border-box; }
+            .q-hero {
+                grid-template-columns: 1fr;
+                padding: 2.5rem 1.5rem 3.5rem;
+                gap: 2.5rem;
+                min-height: 0;
+            }
+            .q-chart-wrap { width: min(84vw, 380px); order: 2; }
+            .q-hero-copy { order: 1; }
+            .q-legend { margin-bottom: 2rem; }
+            .q-hero-acts a { flex: 1; justify-content: center; }
+
+            .q-sec { padding: 3.5rem 1.5rem; }
+
+            .q-elems-head { grid-template-columns: 1fr; gap: 1.2rem; align-items: start; }
+            .q-elem { grid-template-columns: 1fr; gap: .8rem; padding: 1.8rem 0; }
+            .q-elem-pct { font-size: 1.7rem; order: 2; }
+            .q-elem-id { order: 1; }
+            .q-elem-desc { display: block; order: 3; max-width: none; }
+            .q-elem-cta { order: 4; }
+
+            .q-matrix-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+            .q-mx-table { grid-template-columns: minmax(6.4rem, auto) repeat(4, 1fr); }
+            .q-mx-cell { padding: .9rem .3rem; }
+            .q-mx-cell:nth-child(5n+1) { padding-left: .9rem; }
+            .q-mx-row { font-size: .68rem; }
+            .q-mx-col { font-size: .48rem; letter-spacing: .08em; }
+            .q-dot { width: 9px; height: 9px; }
+
+            .q-et-strip { grid-template-columns: 1fr; }
+            .q-et { border-right: none; border-bottom: 1px solid var(--st); }
+            .q-et:last-child { border-bottom: none; }
+
+            .q-ben-list { grid-template-columns: 1fr; }
+            .q-ben-item { padding: 2rem 1.5rem; }
+            .q-ben-desc { max-width: none; }
+
+            .q-gallery-grid { grid-template-columns: 1fr; }
+
+            .q-cta { padding: 4rem 1.5rem; min-height: 50vh; }
+            .q-cta-sub { max-width: 30ch; }
+            .q-cta-acts a { width: 100%; justify-content: center; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -739,245 +714,283 @@
     <div id="ring"></div>
     <div id="nav-placeholder"></div>
 
-    <!-- HERO -->
-    <section class="hero-sistema">
-        <div class="hero-bg">
+    <!-- HERO: la torta de 4 cuartos -->
+    <section class="q-hero">
+        <div class="q-hero-bg">
             <img src="../assets/img/hero/sistemanewconcret-2.webp" alt="Sistema NewConcret — piso de hormigón pulido">
         </div>
-        <div class="hero-ov"></div>
+        <div class="q-hero-ov"></div>
 
-        <div class="hero-content">
-            <h1 class="hero-h1">
-                Sistema<br>
-                <span class="red">NewConcret</span><br>
-                <span class="thin">para pisos.</span>
+        <div class="q-hero-copy">
+            <span class="q-eyebrow" style="animation: qFadeUp .9s var(--ex) .15s both;">Sistema NewConcret</span>
+            <h1 class="q-hero-h1">
+                Un sistema,<br>
+                <span class="red">cuatro partes</span><br>
+                <span class="thin">iguales.</span>
             </h1>
-            <p class="hero-p">El sistema integral que acompaña todo el ciclo de vida del piso de hormigón: construcción, reparación, pulido y mantenimiento. Sin demoliciones ni recubrimientos costosos.</p>
-            <div class="hero-btns">
-                <a href="../productos/" class="btn-p">Ver productos</a>
-                <a href="https://wa.link/ayeajp" class="btn-g" target="_blank" rel="noopener">Consultar presupuesto</a>
+            <p class="q-hero-p">Maquinaria, insumos, químicos y conocimiento. Cada elemento aporta el 25% del resultado: si falta uno, el sistema queda incompleto. NewConcret integra los cuatro y por eso puede participar en todos los procesos del piso.</p>
+
+            <div class="q-legend" id="qLegend">
+                <div class="q-leg-row" data-seg="0"><span class="q-leg-num">01</span><span class="q-leg-name">Maquinaria</span><span class="q-leg-pct">25%</span></div>
+                <div class="q-leg-row" data-seg="1"><span class="q-leg-num">02</span><span class="q-leg-name">Insumos</span><span class="q-leg-pct">25%</span></div>
+                <div class="q-leg-row" data-seg="2"><span class="q-leg-num">03</span><span class="q-leg-name">Químicos</span><span class="q-leg-pct">25%</span></div>
+                <div class="q-leg-row" data-seg="3"><span class="q-leg-num">04</span><span class="q-leg-name">Conocimiento</span><span class="q-leg-pct">25%</span></div>
+            </div>
+
+            <div class="q-hero-acts">
+                <a href="#elementos" class="q-btn q-btn-p">Conocer el sistema</a>
+                <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="q-btn q-btn-g">Consultar presupuesto</a>
             </div>
         </div>
 
-        <div class="hero-strip">
-            <div class="hs-item"><div class="hs-num">01</div><div class="hs-name">Construcción</div></div>
-            <div class="hs-item"><div class="hs-num">02</div><div class="hs-name">Reparación</div></div>
-            <div class="hs-item"><div class="hs-num">03</div><div class="hs-name">Pulido</div></div>
-            <div class="hs-item"><div class="hs-num">04</div><div class="hs-name">Mantenimiento</div></div>
-        </div>
-
-        <div class="scroll-ind">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+        <div class="q-chart-wrap">
+            <svg class="q-chart" id="qChart" viewBox="0 0 400 400" role="img" aria-label="Gráfico del sistema: cuatro cuartos iguales de 25% — maquinaria, insumos, químicos y conocimiento"></svg>
+            <div class="q-center" id="qCenter">
+                <div class="q-center-num" id="qCenterNum">Sistema completo</div>
+                <div class="q-center-name" id="qCenterName">100%</div>
+                <div class="q-center-sub" id="qCenterSub">Cuatro elementos, un solo proveedor.</div>
+            </div>
         </div>
     </section>
 
-    <!-- PROCESO — Timeline -->
-    <section class="proceso-sec sec" id="proceso">
-        <div class="proceso-hd reveal">
-            <h2>4 etapas para<br>una nueva superficie</h2>
-            <p>Un mismo sistema de productos NewConcret cubre las cuatro etapas, de la construcción al mantenimiento. Y cada una condiciona a la siguiente: una base bien construida, una reparación previa y un mantenimiento sostenido definen el resultado final del piso.</p>
+    <!-- LOS 4 ELEMENTOS -->
+    <section class="q-sec q-elems" id="elementos">
+        <div class="q-wrap">
+            <div class="q-elems-head">
+                <div class="reveal">
+                    <span class="q-eyebrow">Los cuatro elementos</span>
+                    <h2 class="q-h2">Cada cuarto<br>hace <span class="red">al todo.</span></h2>
+                </div>
+                <p class="q-lead reveal d1">Un piso no se resuelve con una máquina, ni con un químico, ni con un consumible suelto. Se resuelve cuando los cuatro elementos trabajan juntos — y cuando hay criterio para combinarlos.</p>
+            </div>
+
+            <div class="q-elem-list reveal">
+                <a class="q-elem" href="../pulido/equipos/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 01</span>
+                        <span class="q-elem-name">Maquinaria</span>
+                    </span>
+                    <span class="q-elem-desc">Pulidoras, allanadoras, aserradoras, escarificadoras y aspiradoras. El equipo define el ritmo, la precisión y la escala de cada trabajo.</span>
+                    <span class="q-elem-cta">Ver equipos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-elem" href="../pulido/insumos/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 02</span>
+                        <span class="q-elem-name">Insumos</span>
+                    </span>
+                    <span class="q-elem-desc">Herramientas diamantadas, fibras, discos y paños. El consumible correcto para cada grano, cada dureza de hormigón y cada terminación.</span>
+                    <span class="q-elem-cta">Ver insumos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-elem" href="../pulido/productos-quimicos/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 03</span>
+                        <span class="q-elem-name">Químicos</span>
+                    </span>
+                    <span class="q-elem-desc">Densificadores, selladores, impermeabilizantes y desengrasantes. La química que endurece, protege y mantiene la superficie en el tiempo.</span>
+                    <span class="q-elem-cta">Ver químicos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-elem" href="../capacitacion/">
+                    <span class="q-elem-pct">25%</span>
+                    <span class="q-elem-id">
+                        <span class="q-elem-num">Elemento 04</span>
+                        <span class="q-elem-name">Conocimiento</span>
+                    </span>
+                    <span class="q-elem-desc">Capacitación técnica, acompañamiento en obra y criterio para decidir. Es el elemento que hace rendir a los otros tres.</span>
+                    <span class="q-elem-cta">Ver capacitación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+            </div>
         </div>
+    </section>
 
-        <div class="timeline" id="timeline">
-            <div class="timeline-line-fill" id="timelineFill"></div>
-
-            <div class="tl-step">
-                <div class="tl-num-wrap">
-                    <div class="tl-dot"></div>
-                </div>
-                <div class="tl-body">
-                    <div class="tl-label">Etapa 01</div>
-                    <div class="tl-title">Construcción</div>
-                    <div class="tl-desc">Todo buen piso comienza antes del pulido. La construcción define la resistencia inicial, la planimetría, la durabilidad y el comportamiento futuro de la superficie.<br><br>En esta etapa se trabaja sobre la preparación del suelo, la colocación del hormigón, el uso de fibras, endurecedores superficiales, llaneado y curado. Cada decisión influye directamente en la vida útil del piso.</div>
-                    <div class="tl-goal">
-                        <div class="tl-goal-label">Qué buscamos en esta etapa</div>
-                        <div class="tl-goal-text">Lograr una base firme, resistente y correctamente terminada para soportar tránsito, cargas, maquinaria y el uso diario de la industria.</div>
-                    </div>
-                    <a href="../construccion/" class="btn-g tl-link">
-                        Ver productos de construcción
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                    </a>
+    <!-- MATRIZ: 4 elementos × 4 etapas -->
+    <section class="q-sec q-matrix-sec">
+        <div class="q-wrap q-matrix-grid">
+            <div class="q-matrix-copy reveal">
+                <span class="q-eyebrow">Elementos × etapas</span>
+                <h2 class="q-h2">Presentes en<br><span class="red">cada cruce.</span></h2>
+                <p class="q-lead">Construcción, reparación, pulido y mantenimiento: en cada etapa del proceso intervienen los cuatro elementos del sistema. Por eso NewConcret puede acompañar el ciclo de vida completo del piso sin depender de terceros.</p>
+                <div class="q-matrix-stat">
+                    <b>16/16</b>
+                    <span>cruces cubiertos con una misma línea de trabajo</span>
                 </div>
             </div>
 
-            <div class="tl-step">
-                <div class="tl-num-wrap">
-                    <div class="tl-dot"></div>
-                </div>
-                <div class="tl-body">
-                    <div class="tl-label">Etapa 02</div>
-                    <div class="tl-title">Reparación</div>
-                    <div class="tl-desc">Antes de pulir o renovar una superficie, es necesario corregir los daños existentes. Grietas, fisuras, juntas deterioradas, brocas en desuso, baches o zonas desgastadas pueden afectar el resultado final si no se tratan correctamente.<br><br>La reparación permite recuperar la continuidad del piso, proteger las herramientas de trabajo y preparar la superficie para las etapas posteriores.</div>
-                    <div class="tl-goal">
-                        <div class="tl-goal-label">Qué trabajamos en esta etapa</div>
-                        <div class="tl-goal-text">Reparación de juntas, tratamiento de grietas y fisuras, eliminación de anclajes en desuso, bacheos, nivelaciones y reconstrucción de zonas dañadas.</div>
-                    </div>
-                    <a href="../reparacion/" class="btn-g tl-link">
-                        Ver productos de reparación
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                    </a>
+            <div class="q-matrix reveal d1" id="qMatrix">
+                <div class="q-mx-table">
+                    <div class="q-mx-cell q-mx-head"></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Maquinaria</span></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Insumos</span></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Químicos</span></div>
+                    <div class="q-mx-cell q-mx-head"><span class="q-mx-col">Conocimiento</span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Construcción</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:0"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:1"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:2"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:3"></span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Reparación</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:4"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:5"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:6"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:7"></span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Pulido</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:8"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:9"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:10"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:11"></span></div>
+
+                    <div class="q-mx-cell"><span class="q-mx-row">Mantenimiento</span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:12"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:13"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:14"></span></div>
+                    <div class="q-mx-cell"><span class="q-dot" style="--i:15"></span></div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="tl-step">
-                <div class="tl-num-wrap">
-                    <div class="tl-dot"></div>
-                </div>
-                <div class="tl-body">
-                    <div class="tl-label">Etapa 03</div>
-                    <div class="tl-title">Pulido</div>
-                    <div class="tl-desc">El pulido transforma el hormigón en una superficie más resistente, estética y fácil de mantener. A través de herramientas diamantadas, densificadores, selladores y una secuencia progresiva de granos, se logra el acabado buscado según el uso del espacio.<br><br>Puede trabajarse con diferentes terminaciones: llaneado pulido, sal y pimienta o exposición a la piedra, según el nivel de tránsito, la estética deseada y la exigencia del proyecto.</div>
-                    <div class="tl-goal">
-                        <div class="tl-goal-label">Qué logramos en esta etapa</div>
-                        <div class="tl-goal-text">Mayor brillo, mejor resistencia superficial, reducción de polvo, facilidad de limpieza y una terminación profesional adaptada a cada tipo de piso.</div>
-                    </div>
-                    <a href="../pulido/" class="btn-g tl-link">
-                        Ver productos de pulido
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                    </a>
-                </div>
+    <!-- LAS 4 ETAPAS -->
+    <section class="q-sec q-etapas">
+        <div class="q-wrap">
+            <div class="q-etapas-head reveal">
+                <span class="q-eyebrow">Las cuatro etapas</span>
+                <h2 class="q-h2">El proceso donde<br>el sistema <span class="red">trabaja.</span></h2>
+                <p class="q-lead">Gracias a los cuatro elementos, NewConcret participa en las cuatro etapas del ciclo de vida del piso — desde el hormigón fresco hasta el mantenimiento diario.</p>
             </div>
 
-            <div class="tl-step">
-                <div class="tl-num-wrap">
-                    <div class="tl-dot"></div>
-                </div>
-                <div class="tl-body">
-                    <div class="tl-label">Etapa 04</div>
-                    <div class="tl-title">Mantenimiento</div>
-                    <div class="tl-desc">Un piso pulido necesita una rutina adecuada para conservar su brillo, protección y vida útil. El mantenimiento evita el desgaste prematuro, reduce manchas, controla partículas abrasivas y mantiene la superficie en condiciones profesionales.<br><br>En esta etapa se utilizan productos y equipos específicos para limpieza, abrillantado, protección y recuperación de brillo, evitando productos agresivos o incompatibles con el hormigón tratado.</div>
-                    <div class="tl-goal">
-                        <div class="tl-goal-label">Qué aseguramos en esta etapa</div>
-                        <div class="tl-goal-text">Conservar la estética del piso, prolongar la protección aplicada y reducir la necesidad de reparaciones o restauraciones profundas.</div>
-                    </div>
-                    <a href="../mantenimiento/" class="btn-g tl-link">
-                        Ver productos de mantenimiento
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                    </a>
-                </div>
+            <div class="q-et-strip reveal d1">
+                <a class="q-et" href="../construccion/">
+                    <span class="q-et-num">Etapa 01</span>
+                    <span class="q-et-name">Construcción</span>
+                    <span class="q-et-desc">La base que define la resistencia, la planimetría y la vida útil del piso.</span>
+                    <span class="q-et-link">Ver construcción <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-et" href="../reparacion/">
+                    <span class="q-et-num">Etapa 02</span>
+                    <span class="q-et-name">Reparación</span>
+                    <span class="q-et-desc">Recuperar la continuidad de la superficie antes de renovarla.</span>
+                    <span class="q-et-link">Ver reparación <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-et" href="../pulido/">
+                    <span class="q-et-num">Etapa 03</span>
+                    <span class="q-et-name">Pulido</span>
+                    <span class="q-et-desc">La transformación del hormigón en una superficie resistente y estética.</span>
+                    <span class="q-et-link">Ver pulido <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
+                <a class="q-et" href="../mantenimiento/">
+                    <span class="q-et-num">Etapa 04</span>
+                    <span class="q-et-name">Mantenimiento</span>
+                    <span class="q-et-desc">Sostener el resultado en el tiempo con la rutina y los productos correctos.</span>
+                    <span class="q-et-link">Ver mantenimiento <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                </a>
             </div>
-
         </div>
     </section>
 
     <!-- BENEFICIOS DEL HORMIGÓN PULIDO -->
-    <section class="beneficios-sec sec">
-        <div class="ben-hd reveal">
-            <h2>Beneficios del<br>hormigón pulido</h2>
-            <p>Tratamiento mecánico con herramientas diamantadas sobre hormigón nuevo o existente. Se logra nivelación, dureza y cierre de poros sin demoler ni recubrir.</p>
-        </div>
+    <section class="q-sec q-ben">
+        <div class="q-wrap">
+            <div class="q-ben-head reveal">
+                <span class="q-eyebrow">El resultado</span>
+                <h2 class="q-h2">Beneficios del<br><span class="red">hormigón pulido.</span></h2>
+                <p class="q-lead">Tratamiento mecánico con herramientas diamantadas sobre hormigón nuevo o existente. Se logra nivelación, dureza y cierre de poros sin demoler ni recubrir.</p>
+            </div>
 
-        <div class="ben-list reveal d1">
-
-            <div class="ben-item">
-                <div class="ben-n">01</div>
-                <div class="ben-content">
-                    <div class="ben-title">Acabado de alta definición</div>
-                    <div class="ben-desc">Superficie sin poros, con reflectividad controlada y aspecto profesional. Disponible en mate, satinado o alto brillo según el proyecto.</div>
+            <div class="q-ben-list reveal d1">
+                <div class="q-ben-item">
+                    <div class="q-ben-n">01</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Acabado de alta definición</div>
+                        <div class="q-ben-desc">Superficie sin poros, con reflectividad controlada y aspecto profesional. Disponible en mate, satinado o alto brillo según el proyecto.</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="ben-item">
-                <div class="ben-n">02</div>
-                <div class="ben-content">
-                    <div class="ben-title">Resistencia al tráfico pesado</div>
-                    <div class="ben-desc">Apto para centros logísticos, depósitos, plantas industriales y superficies con tránsito de montacargas y maquinaria.</div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">02</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Resistencia al tráfico pesado</div>
+                        <div class="q-ben-desc">Apto para centros logísticos, depósitos, plantas industriales y superficies con tránsito de montacargas y maquinaria.</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="ben-item">
-                <div class="ben-n">03</div>
-                <div class="ben-content">
-                    <div class="ben-title">Normas LEED</div>
-                    <div class="ben-desc">Proceso sin compuestos orgánicos volátiles (COV). Cumple con las exigencias ambientales internacionales de construcción sustentable.</div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">03</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Normas LEED</div>
+                        <div class="q-ben-desc">Proceso sin compuestos orgánicos volátiles (COV). Cumple con las exigencias ambientales internacionales de construcción sustentable.</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="ben-item">
-                <div class="ben-n">04</div>
-                <div class="ben-content">
-                    <div class="ben-title">Versatilidad de aplicación</div>
-                    <div class="ben-desc">Plantas industriales, centros logísticos, depósitos y grandes obras donde el tránsito pesado y la resistencia son críticos. También comercios, showrooms y hogares. El sistema se adapta a cada tipo de uso y exigencia.</div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">04</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Versatilidad de aplicación</div>
+                        <div class="q-ben-desc">Plantas industriales, centros logísticos, depósitos y grandes obras donde el tránsito pesado y la resistencia son críticos. También comercios, showrooms y hogares. El sistema se adapta a cada tipo de uso y exigencia.</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="ben-item">
-                <div class="ben-n">05</div>
-                <div class="ben-content">
-                    <div class="ben-title">Bajo costo de mantenimiento</div>
-                    <div class="ben-desc">Una vez sellado, el piso pulido requiere limpieza convencional y reaplicaciones periódicas de protector. Sin alfombras, sin plastificados, sin reemplazos.</div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">05</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Bajo costo de mantenimiento</div>
+                        <div class="q-ben-desc">Una vez sellado, el piso pulido requiere limpieza convencional y reaplicaciones periódicas de protector. Sin alfombras, sin plastificados, sin reemplazos.</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="ben-item">
-                <div class="ben-n">06</div>
-                <div class="ben-content">
-                    <div class="ben-title">Recupera lo que ya existe</div>
-                    <div class="ben-desc">No se demuele ni se superpone. El proceso trabaja sobre el hormigón existente, incluso sobre superficies antiguas o deterioradas, conservando el sustrato original.</div>
+                <div class="q-ben-item">
+                    <div class="q-ben-n">06</div>
+                    <div class="q-ben-content">
+                        <div class="q-ben-title">Recupera lo que ya existe</div>
+                        <div class="q-ben-desc">No se demuele ni se superpone. El proceso trabaja sobre el hormigón existente, incluso sobre superficies antiguas o deterioradas, conservando el sustrato original.</div>
+                    </div>
                 </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- TRANSFORMACIONES -->
-    <section class="gallery-sec sec">
-        <div class="gallery-hd reveal">
-            <h2>Antes y después</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-card reveal">
-                <img src="../assets/img/fotos/Antes%201.webp" alt="Piso de hormigón antes del tratamiento NewConcret">
-                <div class="gallery-badge badge-antes">Antes</div>
-            </div>
-            <div class="gallery-card reveal d1">
-                <img src="../assets/img/fotos/Despues%201.webp" alt="Piso de hormigón después del pulido NewConcret">
-                <div class="gallery-badge badge-despues">Después</div>
-            </div>
-            <div class="gallery-card reveal d2">
-                <img src="../assets/img/fotos/Antes%202.webp" alt="Piso industrial antes del sistema NewConcret">
-                <div class="gallery-badge badge-antes">Antes</div>
-            </div>
-            <div class="gallery-card reveal d3">
-                <img src="../assets/img/fotos/Despues%202.webp" alt="Piso industrial después del sistema NewConcret">
-                <div class="gallery-badge badge-despues">Después</div>
             </div>
         </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats-sec">
-        <div class="stats-row">
-            <div class="s-item reveal">
-                <div class="s-num"><span class="cu" data-t="100000">0</span><em>m²</em></div>
-                <div class="s-lbl">Metros pulidos</div>
+    <!-- ANTES Y DESPUÉS -->
+    <section class="q-sec q-gallery">
+        <div class="q-wrap">
+            <div class="q-gallery-head reveal">
+                <span class="q-eyebrow">Transformaciones</span>
+                <h2 class="q-h2">Antes y <span class="red">después.</span></h2>
             </div>
-            <div class="s-item reveal d1">
-                <div class="s-num"><span class="cu" data-t="2000">0</span><em>+</em></div>
-                <div class="s-lbl">Clientes activos</div>
-            </div>
-            <div class="s-item reveal d2">
-                <div class="s-num"><span class="cu" data-t="30">0</span><em>+</em></div>
-                <div class="s-lbl">Años de experiencia</div>
+            <div class="q-gallery-grid">
+                <div class="q-gallery-card reveal">
+                    <img src="../assets/img/fotos/Antes%201.webp" alt="Piso de hormigón antes del tratamiento NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-antes">Antes</div>
+                </div>
+                <div class="q-gallery-card reveal d1">
+                    <img src="../assets/img/fotos/Despues%201.webp" alt="Piso de hormigón después del pulido NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-despues">Después</div>
+                </div>
+                <div class="q-gallery-card reveal d2">
+                    <img src="../assets/img/fotos/Antes%202.webp" alt="Piso industrial antes del sistema NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-antes">Antes</div>
+                </div>
+                <div class="q-gallery-card reveal d3">
+                    <img src="../assets/img/fotos/Despues%202.webp" alt="Piso industrial después del sistema NewConcret" loading="lazy">
+                    <div class="q-gallery-badge q-badge-despues">Después</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="cta-sec" id="contacto">
-        <div class="cta-bg">
-            <img src="../assets/img/hero/pulido.webp" alt="">
+    <section class="q-cta" id="contacto">
+        <div class="q-cta-bg">
+            <img src="../assets/img/hero/sistemanewconcret-2.webp" alt="">
         </div>
-        <div class="cta-ov"></div>
-        <div class="cta-content reveal">
-            <h2 class="cta-h2">¿Querés empezar?<br><span>Asesoramiento hoy.</span></h2>
-            <p class="cta-sub">Contactanos y te asesoramos sin costo. Respuesta inmediata.</p>
-            <div class="cta-acts">
-                <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="btn-p">
+        <div class="q-cta-ov"></div>
+        <div class="q-cta-content reveal">
+            <h2 class="q-cta-h2">El sistema completo,<br><span>en un solo lugar.</span></h2>
+            <p class="q-cta-sub">Contactanos y te asesoramos sin costo. Respuesta inmediata.</p>
+            <div class="q-cta-acts">
+                <a href="https://wa.link/ayeajp" target="_blank" rel="noopener" class="q-btn q-btn-p">
                     Escribinos por WhatsApp
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:.5rem;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
                 </a>
+                <a href="../productos/" class="q-btn q-btn-g">Ver todos los productos</a>
             </div>
         </div>
     </section>
@@ -996,50 +1009,128 @@
         }, { threshold: .07 });
         document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
-        // ── Timeline steps reveal + dot activation
-        const tlSteps = document.querySelectorAll('.tl-step');
-        const tlFill  = document.getElementById('timelineFill');
-        const tlWrap  = document.getElementById('timeline');
+        // ── Gráfico de torta: 4 cuartos iguales ─────────────────────────────
+        const SEGS = [
+            { num: 'Elemento 01', name: 'Maquinaria',   sub: 'El equipo que define ritmo y precisión.' },
+            { num: 'Elemento 02', name: 'Insumos',      sub: 'El consumible correcto para cada terminación.' },
+            { num: 'Elemento 03', name: 'Químicos',     sub: 'La química que endurece, protege y mantiene.' },
+            { num: 'Elemento 04', name: 'Conocimiento', sub: 'El criterio que hace rendir a los otros tres.' }
+        ];
 
-        const tlObs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    // activate dot on the step in view
-                    tlSteps.forEach(s => s.classList.remove('active'));
-                    e.target.classList.add('active');
-                }
-            });
-        }, { threshold: .4, rootMargin: '0px 0px -10% 0px' });
-        tlSteps.forEach(s => tlObs.observe(s));
+        const svg   = document.getElementById('qChart');
+        const CX = 200, CY = 200, R_OUT = 182, R_IN = 116;
+        const GAP = 2.5 * Math.PI / 180;           // separación entre cuartos
+        const NS  = 'http://www.w3.org/2000/svg';
 
-        // Animate the vertical line as user scrolls through timeline
-        const lineObs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    tlFill.classList.add('filled');
-                    lineObs.unobserve(e.target);
-                }
-            });
-        }, { threshold: .05 });
-        if (tlWrap) lineObs.observe(tlWrap);
+        // anillo punteado exterior (rotación perpetua)
+        const orbit = document.createElementNS(NS, 'circle');
+        orbit.setAttribute('cx', CX); orbit.setAttribute('cy', CY); orbit.setAttribute('r', 196);
+        orbit.setAttribute('class', 'q-orbit');
+        svg.appendChild(orbit);
 
-        // ── Count-up
-        function countUp(el, target, dur = 1800) {
-            const s = performance.now();
-            (function tick(n) {
-                const p = Math.min((n - s) / dur, 1);
-                const v = Math.round((1 - Math.pow(1 - p, 4)) * target);
-                el.textContent = target >= 100 ? v.toLocaleString('es-AR') : v;
-                if (p < 1) requestAnimationFrame(tick);
-            })(s);
+        function pt(r, a) { return [CX + r * Math.cos(a), CY + r * Math.sin(a)]; }
+
+        function sectorPath(a0, a1) {
+            const [x1, y1] = pt(R_OUT, a0), [x2, y2] = pt(R_OUT, a1);
+            const [x3, y3] = pt(R_IN, a1), [x4, y4] = pt(R_IN, a0);
+            return `M${x1} ${y1} A${R_OUT} ${R_OUT} 0 0 1 ${x2} ${y2} L${x3} ${y3} A${R_IN} ${R_IN} 0 0 0 ${x4} ${y4} Z`;
         }
-        const coObs = new IntersectionObserver(entries => {
+
+        const segEls = SEGS.map((s, i) => {
+            const start = -Math.PI / 2 + i * Math.PI / 2 + GAP / 2;
+            const end   = -Math.PI / 2 + (i + 1) * Math.PI / 2 - GAP / 2;
+            const mid   = (start + end) / 2;
+
+            const g = document.createElementNS(NS, 'g');
+            g.setAttribute('class', 'q-seg');
+            // desplazamiento hacia afuera del cuarto activo, sobre su bisectriz
+            g.style.setProperty('--tx', (Math.cos(mid) * 9).toFixed(2) + 'px');
+            g.style.setProperty('--ty', (Math.sin(mid) * 9).toFixed(2) + 'px');
+
+            const p = document.createElementNS(NS, 'path');
+            p.setAttribute('d', sectorPath(start, end));
+            g.appendChild(p);
+
+            const [tx, ty] = pt((R_OUT + R_IN) / 2, mid);
+            const t = document.createElementNS(NS, 'text');
+            t.setAttribute('x', tx); t.setAttribute('y', ty);
+            t.textContent = '25%';
+            g.appendChild(t);
+
+            svg.appendChild(g);
+            return g;
+        });
+
+        // ── Estado activo: sincroniza torta, leyenda y centro
+        const legRows    = document.querySelectorAll('.q-leg-row');
+        const center     = document.getElementById('qCenter');
+        const centerNum  = document.getElementById('qCenterNum');
+        const centerName = document.getElementById('qCenterName');
+        const centerSub  = document.getElementById('qCenterSub');
+        let  activeIdx   = -1;
+
+        function setActive(i) {
+            if (i === activeIdx) return;
+            activeIdx = i;
+            segEls.forEach((g, k) => g.classList.toggle('on', k === i));
+            legRows.forEach((r, k) => r.classList.toggle('on', k === i));
+            center.classList.remove('swap');
+            void center.offsetWidth;               // reinicia la animación del centro
+            center.classList.add('swap');
+            if (i < 0) {
+                centerNum.textContent  = 'Sistema completo';
+                centerName.textContent = '100%';
+                centerSub.textContent  = 'Cuatro elementos, un solo proveedor.';
+            } else {
+                centerNum.textContent  = SEGS[i].num;
+                centerName.textContent = SEGS[i].name;
+                centerSub.textContent  = SEGS[i].sub;
+            }
+        }
+
+        // rotación automática hasta que el usuario interactúa
+        let autoTimer = null, resumeTimer = null, autoIdx = -1;
+        function startAuto() {
+            stopAuto();
+            autoTimer = setInterval(() => { autoIdx = (autoIdx + 1) % 4; setActive(autoIdx); }, 3200);
+        }
+        function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+        function userTouched() {
+            stopAuto();
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => { autoIdx = activeIdx; startAuto(); }, 7000);
+        }
+
+        segEls.forEach((g, i) => {
+            g.addEventListener('pointerenter', () => { userTouched(); setActive(i); });
+            g.addEventListener('click',        () => { userTouched(); setActive(i); });
+        });
+        legRows.forEach((r, i) => {
+            r.addEventListener('pointerenter', () => { userTouched(); setActive(i); });
+            r.addEventListener('click',        () => { userTouched(); setActive(i); });
+        });
+        svg.addEventListener('pointerleave', () => { /* mantiene el último activo */ });
+
+        // dibuja la torta al entrar en viewport y arranca el ciclo
+        const chartObs = new IntersectionObserver(entries => {
             entries.forEach(e => {
-                if (e.isIntersecting) { countUp(e.target, +e.target.dataset.t); coObs.unobserve(e.target); }
+                if (e.isIntersecting) {
+                    svg.classList.add('drawn');
+                    setTimeout(startAuto, 900);
+                    chartObs.unobserve(e.target);
+                }
             });
-        }, { threshold: .5 });
-        document.querySelectorAll('.cu').forEach(el => coObs.observe(el));
+        }, { threshold: .3 });
+        chartObs.observe(svg);
+
+        // ── Matriz 4×4: enciende los puntos en cascada
+        const matrix = document.getElementById('qMatrix');
+        const mxObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { matrix.classList.add('lit'); mxObs.unobserve(e.target); }
+            });
+        }, { threshold: .3 });
+        mxObs.observe(matrix);
     </script>
 </body>
 </html>
