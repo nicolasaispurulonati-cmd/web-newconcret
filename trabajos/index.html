@@ -522,7 +522,7 @@
     <!-- HERO -->
     <section class="tb-hero">
         <div class="tb-hero-bg">
-            <img src="../assets/img/trabajos/bagley/bagley-05.webp" alt="Piso de hormigón pulido con árido expuesto en planta industrial">
+            <img src="../assets/img/trabajos/bagley/bagley-06.webp" alt="Piso de hormigón pulido con árido expuesto en planta industrial">
         </div>
         <div class="tb-hero-ov"></div>
         <div>
@@ -613,16 +613,36 @@
            - rubro:   se usa para el filtro (las píldoras se generan solas)
            - lugar:   texto chico bajo el cliente
            - fotos:   cuántas fotos tiene la obra (se arman las rutas solas)
-           - portada: nº de foto que se usa como tapa del card (por defecto 1)
+           - portada: nº de foto que se usa como tapa del card (por defecto 1).
+                      Conviene apuntar a una del piso ya terminado y brillante.
+           Las fotos van numeradas como línea de tiempo de la obra: primero el
+           piso en su peor estado, después el trabajo en curso y al final el
+           resultado terminado.
            ══════════════════════════════════════════════════════════════ */
         const OBRAS = [
+            {
+                cliente: 'Ford',
+                rubro: 'Automotriz',
+                lugar: 'Centro logístico',
+                carpeta: 'ford',
+                fotos: 35,
+                portada: 27
+            },
+            {
+                cliente: 'Arcor',
+                rubro: 'Alimenticia',
+                lugar: 'Planta de producción',
+                carpeta: 'arcor',
+                fotos: 15,
+                portada: 9
+            },
             {
                 cliente: 'AGD',
                 rubro: 'Agroindustria',
                 lugar: 'Planta industrial',
                 carpeta: 'agd',
                 fotos: 34,
-                portada: 1
+                portada: 30
             },
             {
                 cliente: 'Bagley',
@@ -633,20 +653,36 @@
                 portada: 5
             },
             {
-                cliente: 'Niza',
-                rubro: 'Alimenticia',
-                lugar: 'Planta de producción',
-                carpeta: 'niza',
-                fotos: 12,
-                portada: 1
-            },
-            {
                 cliente: 'Vital',
                 rubro: 'Retail',
                 lugar: 'Salón de ventas',
                 carpeta: 'vital',
                 fotos: 15,
-                portada: 1
+                portada: 14
+            },
+            {
+                cliente: 'Cartocor',
+                rubro: 'Packaging',
+                lugar: 'Planta industrial',
+                carpeta: 'cartocor',
+                fotos: 11,
+                portada: 8
+            },
+            {
+                cliente: 'Egger',
+                rubro: 'Madera',
+                lugar: 'Planta industrial',
+                carpeta: 'egger',
+                fotos: 9,
+                portada: 4
+            },
+            {
+                cliente: 'Niza',
+                rubro: 'Alimenticia',
+                lugar: 'Planta de producción',
+                carpeta: 'niza',
+                fotos: 12,
+                portada: 12
             }
         ];
 
