@@ -30,6 +30,7 @@
     <img src="${root}logos/logonewconcret-blanco.png" alt="NewConcret" class="logo-img">
   </a>
   <div class="nav-main">
+    <a href="${root}sistema-newconcret/" class="nav-simple">Sistema NC</a>
     <button class="nav-cat" data-mega="construccion">
       Construcción
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -48,7 +49,6 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     </button>
     <a href="${root}capacitacion/" class="nav-simple">Capacitaciones</a>
-    <a href="${root}sistema-newconcret/" class="nav-simple">Sistema NC</a>
     <a href="${root}nosotros/" class="nav-simple">Nosotros</a>
     <a href="${root}blog/" class="nav-simple">Blog</a>
   </div>
@@ -115,6 +115,8 @@
       <span class="mob-search-row-txt">Buscar productos y páginas...</span>
       <svg class="mob-search-row-arr" width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
     </button>
+    <div class="mob-simple"><a href="${root}sistema-newconcret/">Sistema NC</a></div>
+
     <div class="mob-sec-label">Productos por categoría</div>
 
     <!-- Construcción -->
@@ -216,7 +218,6 @@
 
     <div class="mob-sec-label" style="margin-top:.5rem;">Empresa</div>
     <div class="mob-simple"><a href="${root}capacitacion/">Capacitaciones</a></div>
-    <div class="mob-simple"><a href="${root}sistema-newconcret/">Sistema NC</a></div>
     <div class="mob-simple"><a href="${root}nosotros/">Nosotros</a></div>
     <div class="mob-simple"><a href="${root}blog/">Blog</a></div>
     <div class="mob-simple"><a href="${root}contacto/">Contacto</a></div>
