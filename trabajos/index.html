@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabajos realizados | NewConcret</title>
     <meta name="description" content="Obras realizadas con el Sistema NewConcret: pisos de hormigón construidos, reparados, pulidos y mantenidos en plantas industriales, alimenticias, centros logísticos y comercios.">
-    <!-- Página con imágenes placeholder: no indexar hasta cargar las obras reales -->
-    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
     <link rel="stylesheet" href="../assets/css/estilo.css?v=43">
     <link rel="stylesheet" href="../assets/css/nav.css?v=2.0">
@@ -497,7 +495,7 @@
     <!-- HERO -->
     <section class="tb-hero">
         <div class="tb-hero-bg">
-            <img src="../assets/img/fotos/Despues%201.webp" alt="Piso de hormigón pulido terminado — obra NewConcret">
+            <img src="../assets/img/trabajos/bagley/bagley-05.webp" alt="Piso de hormigón pulido con árido expuesto en planta industrial">
         </div>
         <div class="tb-hero-ov"></div>
         <div>
@@ -578,50 +576,41 @@
         document.documentElement.classList.add('js-loaded');
 
         /* ══════════════════════════════════════════════════════════════
-           OBRAS — para agregar un trabajo, sumá un objeto a esta lista.
+           OBRAS — para agregar un trabajo:
+             1. dejá las fotos en assets/img/trabajos/<carpeta>/ nombradas
+                <carpeta>-01.webp, <carpeta>-02.webp, ... (webp, máx 1600px)
+             2. sumá un objeto acá con la cantidad de fotos
            - cliente: nombre que se muestra grande
-           - rubro:   se usa para el filtro (se generan solos)
+           - rubro:   se usa para el filtro (las píldoras se generan solas)
            - lugar:   texto chico bajo el cliente
-           - fotos:   [{ src, caption }] — la primera es la portada
-           ⚠ PLACEHOLDERS: las fotos actuales son provisorias; reemplazar
-             por las imágenes reales de cada obra (assets/img/obras/...).
+           - fotos:   cuántas fotos tiene la obra (se arman las rutas solas)
+           - portada: nº de foto que se usa como tapa del card (por defecto 1)
            ══════════════════════════════════════════════════════════════ */
         const OBRAS = [
             {
-                cliente: 'Ford',
-                rubro: 'Automotriz',
-                lugar: 'Planta industrial · Buenos Aires',
-                fotos: [
-                    { src: '../assets/img/fotos/Despues 1.webp', caption: 'Piso pulido terminado — nave principal' },
-                    { src: '../assets/img/fotos/Antes 1.webp',   caption: 'Estado previo de la superficie' }
-                ]
+                cliente: 'AGD',
+                rubro: 'Agroindustria',
+                lugar: 'Planta industrial',
+                carpeta: 'agd',
+                fotos: 34,
+                portada: 1
             },
             {
                 cliente: 'Bagley',
                 rubro: 'Alimenticia',
                 lugar: 'Planta de producción',
-                fotos: [
-                    { src: '../assets/img/fotos/Despues 2.webp', caption: 'Superficie renovada — sector de producción' },
-                    { src: '../assets/img/fotos/Antes 2.webp',   caption: 'Estado previo de la superficie' }
-                ]
-            },
-            {
-                cliente: 'Centro logístico',
-                rubro: 'Logística',
-                lugar: 'Depósito de alto tránsito',
-                fotos: [
-                    { src: '../assets/img/fotos/inicio.webp', caption: 'Piso industrial de hormigón pulido' }
-                ]
-            },
-            {
-                cliente: 'Showroom',
-                rubro: 'Comercial',
-                lugar: 'Local comercial',
-                fotos: [
-                    { src: '../assets/img/fotos/nosotros.webp', caption: 'Terminación llaneado pulido' }
-                ]
+                carpeta: 'bagley',
+                fotos: 9,
+                portada: 5
             }
         ];
+
+        /* arma las rutas a partir de la carpeta y la cantidad de fotos */
+        OBRAS.forEach(o => {
+            o.srcs = Array.from({ length: o.fotos }, (_, i) =>
+                `../assets/img/trabajos/${o.carpeta}/${o.carpeta}-${String(i + 1).padStart(2, '0')}.webp`);
+            o.portadaSrc = o.srcs[(o.portada || 1) - 1] || o.srcs[0];
+        });
 
         /* ── Render de la grilla ── */
         const grid   = document.getElementById('tbGrid');
@@ -637,9 +626,9 @@
             card.setAttribute('role', 'button');
             card.setAttribute('aria-label', 'Ver fotos de ' + o.cliente);
             card.innerHTML =
-                '<img src="' + o.fotos[0].src + '" alt="Obra ' + o.cliente + ' — ' + o.lugar + '" loading="lazy">' +
+                '<img src="' + o.portadaSrc + '" alt="Obra ' + o.cliente + ' — ' + o.lugar + '" loading="lazy">' +
                 '<div class="tb-card-ov"></div>' +
-                '<span class="tb-card-count">' + o.fotos.length + ' foto' + (o.fotos.length > 1 ? 's' : '') + '</span>' +
+                '<span class="tb-card-count">' + o.srcs.length + ' foto' + (o.srcs.length > 1 ? 's' : '') + '</span>' +
                 '<div class="tb-card-meta">' +
                     '<span class="tb-card-rubro">' + o.rubro + '</span>' +
                     '<span class="tb-card-cliente">' + o.cliente + '</span>' +
@@ -706,18 +695,18 @@
         let curObra = 0, curFoto = 0;
 
         function lbShow() {
-            const o = OBRAS[curObra], f = o.fotos[curFoto];
+            const o = OBRAS[curObra];
             /* reinicia la animación de entrada de la imagen */
             lbImg.style.animation = 'none';
             void lbImg.offsetWidth;
             lbImg.style.animation = '';
-            lbImg.src = f.src;
-            lbImg.alt = 'Obra ' + o.cliente + ' — foto ' + (curFoto + 1);
+            lbImg.src = o.srcs[curFoto];
+            lbImg.alt = 'Obra ' + o.cliente + ' — foto ' + (curFoto + 1) + ' de ' + o.srcs.length;
             lbCliente.textContent = o.cliente;
             lbRubro.textContent   = o.rubro + ' · ' + o.lugar;
-            lbCaption.textContent = f.caption || '';
+            lbCaption.textContent = '';
             lbIdx.textContent     = curFoto + 1;
-            lbTotal.textContent   = o.fotos.length;
+            lbTotal.textContent   = o.srcs.length;
         }
         function lbOpen(i) {
             curObra = i; curFoto = 0;
@@ -730,7 +719,7 @@
             document.body.classList.remove('tb-lb-lock');
         }
         function lbStep(d) {
-            const n = OBRAS[curObra].fotos.length;
+            const n = OBRAS[curObra].srcs.length;
             curFoto = (curFoto + d + n) % n;
             lbShow();
         }
