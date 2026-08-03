@@ -481,8 +481,31 @@
         .eth-center-ico { margin-bottom: .5rem; }
         .eth-center-sub { font-size: .62rem; margin-top: .4rem; max-width: 42%; }
         .eth-strip { grid-template-columns: 1fr; }
-        .eth-et { border-right: none; border-bottom: 1px solid var(--nc-steel); }
+        /* en una card ancha y baja el apilado vertical deja el icono suelto
+           arriba de todo: acá pasa a anclar una fila de encabezado junto al
+           nombre, con el 25% de badge a la derecha */
+        .eth-et {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            grid-template-areas:
+                "ico  num  pct"
+                "ico  name pct"
+                "desc desc desc"
+                "link link link";
+            align-items: center;
+            column-gap: 1.1rem;
+            row-gap: 0;
+            padding: 1.7rem 1.5rem 1.6rem;
+            border-right: none;
+            border-bottom: 1px solid var(--nc-steel);
+        }
         .eth-et:last-child { border-bottom: none; }
+        .eth-et-ico  { grid-area: ico;  width: 46px; height: 46px; margin-bottom: 0; }
+        .eth-et-num  { grid-area: num;  align-self: end; }
+        .eth-et-name { grid-area: name; align-self: start; margin-top: .3rem; font-size: 1.25rem; }
+        .eth-et-pct  { grid-area: pct;  font-size: 1.9rem; margin-bottom: 0; text-align: right; }
+        .eth-et-desc { grid-area: desc; margin-top: 1.1rem; }
+        .eth-et-link { grid-area: link; margin-top: 1.15rem; }
     }
   </style>
     <!-- seo:start (auto — scripts/seo.js · NO editar a mano) -->
