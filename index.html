@@ -434,6 +434,20 @@
     }
     .eth-et-pct em { font-style: normal; font-size: 1.2rem; font-weight: 800; }
     .eth-et:hover .eth-et-pct { color: var(--nc-red-hot); }
+    /* icono de la categoría, mismo tratamiento que el centro del gráfico:
+       la silueta la da el alfa del PNG y el rojo el color heredado */
+    .eth-et-ico {
+        width: 38px; height: 38px;
+        color: var(--nc-red-hot);
+        margin-bottom: .3rem;
+    }
+    .eth-et-ico i {
+        display: block; width: 100%; height: 100%;
+        background-color: currentColor;
+        -webkit-mask: var(--ico) center / contain no-repeat;
+                mask: var(--ico) center / contain no-repeat;
+    }
+    .eth-et-ico svg { display: block; width: 100%; height: 100%; fill: currentColor; }
     .eth-et-num { font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; color: var(--nc-red-hot); text-transform: uppercase; }
     .eth-et-name {
         font-family: var(--font-d);
@@ -930,6 +944,7 @@
 
   <div class="eth-strip reveal d1">
     <a class="eth-et" href="pulido/equipos/">
+      <span class="eth-et-ico"><i style="--ico:url(assets/img/iconos/maquinaria.png)"></i></span>
       <span class="eth-et-pct">25<em>%</em></span>
       <span class="eth-et-num">Elemento 01</span>
       <span class="eth-et-name">Maquinaria</span>
@@ -937,6 +952,7 @@
       <span class="eth-et-link">Ver equipos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     </a>
     <a class="eth-et" href="pulido/insumos/">
+      <span class="eth-et-ico"><i style="--ico:url(assets/img/iconos/insumos.png)"></i></span>
       <span class="eth-et-pct">25<em>%</em></span>
       <span class="eth-et-num">Elemento 02</span>
       <span class="eth-et-name">Insumos</span>
@@ -944,6 +960,7 @@
       <span class="eth-et-link">Ver insumos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     </a>
     <a class="eth-et" href="pulido/productos-quimicos/">
+      <span class="eth-et-ico"><i style="--ico:url(assets/img/iconos/quimicos.png)"></i></span>
       <span class="eth-et-pct">25<em>%</em></span>
       <span class="eth-et-num">Elemento 03</span>
       <span class="eth-et-name">Químicos</span>
@@ -951,6 +968,7 @@
       <span class="eth-et-link">Ver químicos <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     </a>
     <a class="eth-et" href="capacitacion/">
+      <span class="eth-et-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.4 8.4 12 13.8l8.6-4.4v5.2a1 1 0 0 0 2 0V8.4L12 3z"/><path d="M5.6 11.6v3.9c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-3.9L12 15.1l-6.4-3.5z"/></svg></span>
       <span class="eth-et-pct">25<em>%</em></span>
       <span class="eth-et-num">Elemento 04</span>
       <span class="eth-et-name">Conocimiento</span>
