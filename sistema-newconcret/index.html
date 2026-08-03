@@ -280,9 +280,9 @@
         }
         /* icono de la categoria activa, arriba del texto */
         .q-center-ico {
-            width: clamp(42px, 6.4vw, 58px);
-            height: clamp(42px, 6.4vw, 58px);
-            margin-bottom: .8rem;
+            width: clamp(58px, 9vw, 84px);
+            height: clamp(58px, 9vw, 84px);
+            margin-bottom: .7rem;
             color: var(--rh);
         }
         /* iconos macizos: a este tamaño el trazo fino se perdía */
@@ -308,15 +308,18 @@
             text-transform: uppercase;
             letter-spacing: .01em;
             color: var(--wh);
-            max-width: 60%;
+            max-width: 46%;
         }
+        /* el ancho útil no es el del contenedor cuadrado sino el del hueco del
+           anillo, que se angosta hacia abajo: los anchos se acotan al cuadrado
+           inscripto en ese círculo para que el texto nunca pise el gráfico */
         .q-center-sub {
             font-family: var(--font-b);
             font-weight: 300;
-            font-size: .72rem;
+            font-size: .7rem;
             color: var(--as);
-            margin-top: .55rem;
-            max-width: 55%;
+            margin-top: .5rem;
+            max-width: 44%;
             line-height: 1.5;
         }
         .q-center.swap .q-center-ico,
@@ -684,7 +687,10 @@
                 gap: 2.5rem;
                 min-height: 0;
             }
-            .q-chart-wrap { width: min(84vw, 380px); order: 2; }
+            .q-chart-wrap { width: min(88vw, 380px); order: 2; }
+            /* el hueco es más chico acá: el detalle achica para no tocar el anillo */
+            .q-center-ico { margin-bottom: .5rem; }
+            .q-center-sub { font-size: .64rem; margin-top: .4rem; max-width: 42%; }
             .q-hero-copy { order: 1; }
             .q-legend { margin-bottom: 2rem; }
             .q-hero-acts a { flex: 1; justify-content: center; }
@@ -1056,7 +1062,8 @@
         ];
 
         const svg   = document.getElementById('qChart');
-        const CX = 200, CY = 200, R_OUT = 182, R_IN = 116;
+        /* hueco interior amplio: adentro va el icono grande + nombre + detalle */
+        const CX = 200, CY = 200, R_OUT = 182, R_IN = 130;
         const GAP = 2.5 * Math.PI / 180;           // separación entre cuartos
         const NS  = 'http://www.w3.org/2000/svg';
 

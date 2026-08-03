@@ -342,9 +342,9 @@
     }
     /* icono de la categoria activa, arriba del texto */
     .eth-center-ico {
-        width: clamp(42px, 6.4vw, 58px);
-        height: clamp(42px, 6.4vw, 58px);
-        margin-bottom: .8rem;
+        width: clamp(58px, 9vw, 84px);
+        height: clamp(58px, 9vw, 84px);
+        margin-bottom: .7rem;
         color: var(--nc-red-hot);
     }
     /* iconos macizos: a este tamaño el trazo fino se perdía */
@@ -370,15 +370,18 @@
         text-transform: uppercase;
         letter-spacing: .01em;
         color: var(--nc-white);
-        max-width: 60%;
+        max-width: 46%;
     }
+    /* el ancho útil no es el del contenedor cuadrado sino el del hueco del
+       anillo, que se angosta hacia abajo: los anchos se acotan al cuadrado
+       inscripto en ese círculo para que el texto nunca pise el gráfico */
     .eth-center-sub {
         font-family: var(--font-b);
         font-weight: 300;
-        font-size: .7rem;
+        font-size: .68rem;
         color: var(--nc-ash);
-        margin-top: .55rem;
-        max-width: 55%;
+        margin-top: .5rem;
+        max-width: 44%;
         line-height: 1.5;
     }
     .eth-center.swap .eth-center-ico,
@@ -437,9 +440,9 @@
     /* icono de la categoría, mismo tratamiento que el centro del gráfico:
        la silueta la da el alfa del PNG y el rojo el color heredado */
     .eth-et-ico {
-        width: 38px; height: 38px;
+        width: 54px; height: 54px;
         color: var(--nc-red-hot);
-        margin-bottom: .3rem;
+        margin-bottom: .4rem;
     }
     .eth-et-ico i {
         display: block; width: 100%; height: 100%;
@@ -473,7 +476,10 @@
     @media (max-width: 900px) {
         .eth-sec { padding: 4rem 1.5rem; }
         .eth-top { grid-template-columns: 1fr; gap: 2.2rem; margin-bottom: 2.5rem; }
-        .eth-chart-wrap { justify-self: center; width: min(78vw, 340px); }
+        .eth-chart-wrap { justify-self: center; width: min(86vw, 360px); }
+        /* el hueco es más chico acá: el detalle achica para no tocar el anillo */
+        .eth-center-ico { margin-bottom: .5rem; }
+        .eth-center-sub { font-size: .62rem; margin-top: .4rem; max-width: 42%; }
         .eth-strip { grid-template-columns: 1fr; }
         .eth-et { border-right: none; border-bottom: 1px solid var(--nc-steel); }
         .eth-et:last-child { border-bottom: none; }
@@ -1008,7 +1014,8 @@
 
   var svg = document.getElementById('ethChart');
   if (!svg) return;
-  var CX = 200, CY = 200, R_OUT = 182, R_IN = 116;
+  /* hueco interior amplio: adentro va el icono grande + nombre + detalle */
+  var CX = 200, CY = 200, R_OUT = 182, R_IN = 130;
   var GAP = 2.5 * Math.PI / 180;
   var NS = 'http://www.w3.org/2000/svg';
 
