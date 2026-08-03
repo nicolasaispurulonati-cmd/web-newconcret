@@ -280,18 +280,25 @@
         }
         /* icono de la categoria activa, arriba del texto */
         .q-center-ico {
-            width: clamp(30px, 4.6vw, 40px);
-            height: clamp(30px, 4.6vw, 40px);
-            margin-bottom: .75rem;
+            width: clamp(42px, 6.4vw, 58px);
+            height: clamp(42px, 6.4vw, 58px);
+            margin-bottom: .8rem;
             color: var(--rh);
         }
+        /* iconos macizos: a este tamaño el trazo fino se perdía */
         .q-center-ico svg {
             width: 100%; height: 100%; display: block;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.4;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+            fill: currentColor;
+            stroke: none;
+        }
+        /* iconos de imagen: la silueta sale del alfa del PNG y el rojo del color
+           heredado, así el acento sigue atado al token de marca */
+        .q-center-ico .q-ico-img {
+            display: block;
+            width: 100%; height: 100%;
+            background-color: currentColor;
+            -webkit-mask: var(--ico) center / contain no-repeat;
+                    mask: var(--ico) center / contain no-repeat;
         }
         .q-center-name {
             font-family: var(--font-d);
@@ -1024,17 +1031,20 @@
 
         // ── Iconos del centro del gráfico (trazo, heredan el color del contenedor)
         const svg24 = d => '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>';
+        // los tres primeros usan los PNG de assets/img/iconos como máscara
+        const icoMask = f => '<i class="q-ico-img" style="--ico:url(../assets/img/iconos/' + f + ')"></i>';
         const ICONOS = {
-            // pulidora de piso: disco, cuerpo y manija
-            maquinaria:   svg24('<path d="M3.5 19h12"/><path d="M5.5 19v-3.2h8V19"/><path d="M13.2 15.8L17 7"/><path d="M15 6.6h4.2"/>'),
-            // disco diamantado visto de frente
-            insumos:      svg24('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.6"/><path d="M12 4v2.6M12 17.4V20M4 12h2.6M17.4 12H20"/>'),
-            // gota de producto químico
-            quimicos:     svg24('<path d="M12 3.6c3.2 4 5.2 6.7 5.2 9.2a5.2 5.2 0 0 1-10.4 0c0-2.5 2-5.2 5.2-9.2z"/>'),
-            // libro abierto: capacitación
-            conocimiento: svg24('<path d="M12 6.6C10.3 5.3 8.3 4.7 5.6 4.7v12c2.7 0 4.7.6 6.4 1.9 1.7-1.3 3.7-1.9 6.4-1.9v-12c-2.7 0-4.7.6-6.4 1.9z"/><path d="M12 6.6v12"/>'),
-            // los cuatro cuartos juntos: estado por defecto
-            sistema:      svg24('<rect x="3.8" y="3.8" width="7" height="7"/><rect x="13.2" y="3.8" width="7" height="7"/><rect x="3.8" y="13.2" width="7" height="7"/><rect x="13.2" y="13.2" width="7" height="7"/>')
+            maquinaria:   icoMask('maquinaria.png'),
+            insumos:      icoMask('insumos.png'),
+            quimicos:     icoMask('quimicos.png'),
+            // birrete: la capacitación
+            conocimiento: svg24('<path d="M12 3 1.4 8.4 12 13.8l8.6-4.4v5.2a1 1 0 0 0 2 0V8.4L12 3z"/>' +
+                                '<path d="M5.6 11.6v3.9c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-3.9L12 15.1l-6.4-3.5z"/>'),
+            // los cuatro cuartos del propio gráfico: estado por defecto
+            sistema:      svg24('<path d="M11.1 2.9A9.15 9.15 0 0 0 2.9 11.1h8.2V2.9z"/>' +
+                                '<path d="M12.9 2.9v8.2h8.2a9.15 9.15 0 0 0-8.2-8.2z"/>' +
+                                '<path d="M12.9 12.9v8.2a9.15 9.15 0 0 0 8.2-8.2h-8.2z"/>' +
+                                '<path d="M2.9 12.9a9.15 9.15 0 0 0 8.2 8.2v-8.2H2.9z"/>')
         };
 
         // ── Gráfico de torta: 4 cuartos iguales ─────────────────────────────
