@@ -1037,15 +1037,13 @@
 
         // ── Iconos del centro del gráfico (trazo, heredan el color del contenedor)
         const svg24 = d => '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>';
-        // los tres primeros usan los PNG de assets/img/iconos como máscara
+        // los cuatro elementos usan los PNG de assets/img/iconos como máscara
         const icoMask = f => '<i class="q-ico-img" style="--ico:url(../assets/img/iconos/' + f + ')"></i>';
         const ICONOS = {
             maquinaria:   icoMask('maquinaria.png'),
             insumos:      icoMask('insumos.png'),
             quimicos:     icoMask('quimicos.png'),
-            // birrete: la capacitación
-            conocimiento: svg24('<path d="M12 3 1.4 8.4 12 13.8l8.6-4.4v5.2a1 1 0 0 0 2 0V8.4L12 3z"/>' +
-                                '<path d="M5.6 11.6v3.9c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-3.9L12 15.1l-6.4-3.5z"/>'),
+            conocimiento: icoMask('conocimiento.png'),
             // los cuatro cuartos del propio gráfico: estado por defecto
             sistema:      svg24('<path d="M11.1 2.9A9.15 9.15 0 0 0 2.9 11.1h8.2V2.9z"/>' +
                                 '<path d="M12.9 2.9v8.2h8.2a9.15 9.15 0 0 0-8.2-8.2z"/>' +
