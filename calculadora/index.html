@@ -109,7 +109,11 @@
   .cl-mod-tag { display: inline-flex; align-items: center; gap: .45rem; align-self: flex-start; font-family: var(--font-m); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-red-hot); border: 1px solid rgba(193,18,31,.4); padding: .35rem .6rem; }
 
   /* Grilla de formulario */
-  .cl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px; }
+  /* align-items:start para que cada panel mida lo que ocupa su contenido.
+     Estirados a la altura del mas alto, a los cortos les quedaban 166px
+     de vacio abajo. Las tarjetas de resultado si se estiran, porque ahi
+     el estirado alinea los botones al pie de cada una. */
+  .cl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px; align-items: start; }
   .cl-grid--duo { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
   .cl-panel { background: var(--cl-surf); border: 1px solid var(--cl-edge); padding: 1.9rem 1.7rem; box-shadow: var(--cl-lift); }
   .cl-panel--wide { grid-column: 1 / -1; }
@@ -447,6 +451,23 @@
     return parseFloat(v.toFixed(d)).toString().replace('.', ',');
   }
 
+  // "1 litro" / "2 litros". Con superficies chicas salia "1 litros",
+  // y "1 bolsa(s)" quedaba con el plural entre parentesis al pedo.
+  // Acepta el numero o ya formateado por num() ("6,7").
+  function plural(n, sing, plur) {
+    var v = typeof n === 'number' ? n : parseFloat(String(n).replace(',', '.'));
+    return n + ' ' + (Math.abs(v) === 1 ? sing : (plur || sing + 's'));
+  }
+
+  // Los liquidos se muestran con un decimal en vez de redondeados: con
+  // Math.round, 1 m² de Sodium daba "0 litros" mientras la linea de
+  // abajo pedia un bidon, y en el otro sentido 110 m² de One redondeaba
+  // 7,3 a 7 y quedaba corto. La cantidad a comprar la sigue diciendo la
+  // linea de presentaciones, que ya redondea para arriba.
+  function litros(v) {
+    return plural(num(v, 1), 'litro');
+  }
+
   // ────────────────────────────────────────────────────────────────
   // ROUTER
   // ────────────────────────────────────────────────────────────────
@@ -742,15 +763,15 @@
     resIdx = 0;
     var cards = resultCard('Nylon negro 200 micrones', num(r.m2, 1) + ' m²', 'nylon');
     if (r.usaMacrofibra) cards += resultCard('Macrofibra Concret Fibra',
-      num(r.macrofibra_kg, 1) + ' kg\n' + r.macrofibra_bolsas + ' bolsa(s) de 5 kg', 'macrofibra');
+      num(r.macrofibra_kg, 1) + ' kg\n' + plural(r.macrofibra_bolsas, 'bolsa') + ' de 5 kg', 'macrofibra');
     if (r.usaMicrofibra) cards += resultCard('Microfibra',
-      num(r.microfibra_kg, 1) + ' kg\n' + r.microfibra_bolsas + ' bolsa(s) de 600 g', 'microfibra');
+      num(r.microfibra_kg, 1) + ' kg\n' + plural(r.microfibra_bolsas, 'bolsa') + ' de 600 g', 'microfibra');
     if (r.usaDur) cards += resultCard('Concret Dur 100',
-      num(r.dur_kg, 1) + ' kg\n' + r.dur_bolsas + ' bolsa(s) de 25 kg', 'dur');
+      num(r.dur_kg, 1) + ' kg\n' + plural(r.dur_bolsas, 'bolsa') + ' de 25 kg', 'dur');
     cards += resultCard('Concret One · llaneado',
-      Math.round(r.one_litros) + ' litros\n' + bidones(r.one_litros), 'one');
+      litros(r.one_litros) + '\n' + bidones(r.one_litros), 'one');
     cards += resultCard('Concret Scudo · curado',
-      Math.round(r.scudo_litros) + ' litros\n' + bidones(r.scudo_litros), 'scudo');
+      litros(r.scudo_litros) + '\n' + bidones(r.scudo_litros), 'scudo');
     if (r.usaJuntas) {
       cards += resultCard('Cuadrícula de juntas',
         'Cortes cada ' + num(r.junta_min_m, 1) + ' – ' + num(r.junta_max_m, 1) + ' m\n' +
@@ -758,7 +779,7 @@
         'Momento de corte: entre 6 y 24 h del colado\n' +
         'Cortá siempre en esquinas y junto a columnas o muros', 'juntas', null);
       if (r.juntas_cartuchos > 0) cards += resultCard('Sellador poliuretano',
-        r.juntas_cartuchos + ' cartucho(s)\nCartuchos de 600 ml', 'juntas');
+        plural(r.juntas_cartuchos, 'cartucho') + '\nCartuchos de 600 ml', 'juntas');
     }
 
     app.innerHTML =
@@ -814,11 +835,11 @@
     resIdx = 0;
     var cards = '';
     if (r.usaSodium) cards += resultCard('Paso 1 · Concret Sodium',
-      Math.round(r.sodium_litros) + ' litros\n' + bidones(r.sodium_litros), 'sodium');
+      litros(r.sodium_litros) + '\n' + bidones(r.sodium_litros), 'sodium');
     if (r.usaLock) cards += resultCard('Paso 2 · Concret Lock',
-      Math.round(r.lock_litros) + ' litros\n' + bidones(r.lock_litros), 'lock');
+      litros(r.lock_litros) + '\n' + bidones(r.lock_litros), 'lock');
     if (r.usaFinish) cards += resultCard('Paso 3 · Concret Finish',
-      Math.round(r.finish_litros) + ' litros\n' + bidones(r.finish_litros), 'finish');
+      litros(r.finish_litros) + '\n' + bidones(r.finish_litros), 'finish');
 
     app.innerHTML =
       bar('Módulo 02 · Resultado', 'Materiales necesarios', 'proteccion', '02') +
@@ -877,16 +898,16 @@
     if (usaFix) {
       var areaF = val('r_fix_area'), prof = val('r_fix_prof');
       if (areaF === null || prof === null) { toast('Completá área y profundidad para Concret Fix'); return; }
-      var litros = areaF * prof; // 1 m² x 1 mm = 1 L
-      r.fix_litros = Math.round(litros);
-      r.fix_bolsas25 = Math.ceil(litros / 15); // rinde 15 L por bolsa de 25 kg
+      var vol = areaF * prof; // 1 m² x 1 mm = 1 L
+      r.fix_litros = vol;
+      r.fix_bolsas25 = Math.ceil(vol / 15); // rinde 15 L por bolsa de 25 kg
     }
     if (usaMicroStrong) {
       var areaM = val('r_ms_area'), esp = val('r_ms_esp');
       if (areaM === null || esp === null) { toast('Completá área y espesor para MicroStrong'); return; }
       // Rendimiento promedio entre Fino (1,9) y Grueso (2,1) kg/m² por mm.
       var kg = areaM * esp * 2.0;
-      r.ms_kg = Math.round(kg);
+      r.ms_kg = kg;
       r.ms_bolsas10 = Math.ceil(kg / 10);
     }
 
@@ -899,9 +920,9 @@
     resIdx = 0;
     var cards = '';
     if (r.usaFix) cards += resultCard('Concret Fix · grouting',
-      r.fix_litros + ' L a rellenar\n' + r.fix_bolsas25 + ' bolsa(s) de 25 kg', 'fix');
+      num(r.fix_litros, 1) + ' L a rellenar\n' + plural(r.fix_bolsas25, 'bolsa') + ' de 25 kg', 'fix');
     if (r.usaMicroStrong) cards += resultCard('Concret MicroStrong · mortero',
-      r.ms_kg + ' kg\n' + r.ms_bolsas10 + ' bolsa(s) de 10 kg', 'microstrong');
+      num(r.ms_kg, 1) + ' kg\n' + plural(r.ms_bolsas10, 'bolsa') + ' de 10 kg', 'microstrong');
 
     app.innerHTML =
       bar('Módulo 03 · Resultado', 'Materiales de reparación', 'reparacion', '03') +
