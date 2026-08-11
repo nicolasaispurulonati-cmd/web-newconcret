@@ -86,9 +86,12 @@
   .cl-bar-n { margin-left: auto; font-family: var(--font-d); font-weight: 900; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--nc-mid); letter-spacing: .02em; }
 
   /* Módulos del menú */
-  .cl-mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--cl-edge); border: 1px solid var(--cl-edge); }
-  .cl-mod { position: relative; display: flex; flex-direction: column; gap: 1.4rem; background: var(--cl-surf); border: none; padding: 2.2rem 1.9rem 2rem; text-align: left; color: inherit; font: inherit; transition: background .3s var(--expo); overflow: hidden; box-shadow: var(--cl-lift); }
-  .cl-mod::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--nc-red); transform: scaleY(0); transform-origin: top; transition: transform .45s var(--expo); }
+  /* Las tarjetas se separan y cada una lleva su propio contorno, en vez
+     del bloque continuo cosido con un hairline de 1px. */
+  .cl-mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+  .cl-mod { position: relative; display: flex; flex-direction: column; gap: 1.4rem; background: var(--cl-surf); border: 1px solid var(--cl-edge); padding: 2.2rem 1.9rem 2rem; text-align: left; color: inherit; font: inherit; transition: background .3s var(--expo), border-color .25s; overflow: hidden; box-shadow: var(--cl-lift); }
+  .cl-mod:hover { border-color: var(--nc-red); }
+  .cl-mod::after { content: ''; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 2px; background: var(--nc-red); transform: scaleY(0); transform-origin: top; transition: transform .45s var(--expo); }
   .cl-mod:hover { background: var(--cl-surf-up); }
   .cl-mod:hover::after { transform: scaleY(1); }
   .cl-mod-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
@@ -106,9 +109,9 @@
   .cl-mod-tag { display: inline-flex; align-items: center; gap: .45rem; align-self: flex-start; font-family: var(--font-m); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-red-hot); border: 1px solid rgba(193,18,31,.4); padding: .35rem .6rem; }
 
   /* Grilla de formulario */
-  .cl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--cl-edge); border: 1px solid var(--cl-edge); }
+  .cl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px; }
   .cl-grid--duo { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
-  .cl-panel { background: var(--cl-surf); padding: 1.9rem 1.7rem; box-shadow: var(--cl-lift); }
+  .cl-panel { background: var(--cl-surf); border: 1px solid var(--cl-edge); padding: 1.9rem 1.7rem; box-shadow: var(--cl-lift); }
   .cl-panel--wide { grid-column: 1 / -1; }
   @media (min-width: 1100px) { .cl-grid--main { grid-template-columns: 1.35fr 1fr 1fr; } .cl-grid--main .cl-panel--wide { grid-column: span 1; } }
 
@@ -164,8 +167,8 @@
   .cl-note { font-size: .82rem; color: var(--nc-ash); font-weight: 400; line-height: 1.65; margin-top: 1.4rem; max-width: 720px; }
 
   /* Resumen */
-  .cl-chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--cl-edge); border: 1px solid var(--cl-edge); margin-bottom: 2rem; }
-  .cl-chip { background: var(--cl-surf); padding: 1.2rem 1.3rem; box-shadow: var(--cl-lift); }
+  .cl-chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+  .cl-chip { background: var(--cl-surf); border: 1px solid var(--cl-edge); padding: 1.2rem 1.3rem; box-shadow: var(--cl-lift); }
   .cl-chip .k { font-family: var(--font-m); font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--nc-light); }
   .cl-chip .v { font-family: var(--font-d); font-weight: 900; font-size: 1.9rem; line-height: 1.1; margin-top: .35rem; letter-spacing: -.01em; color: #fff; }
   .cl-chip .v small { font-family: var(--font-m); font-weight: 500; font-size: .76rem; color: var(--nc-light); margin-left: .3rem; letter-spacing: .1em; text-transform: uppercase; }
@@ -173,9 +176,10 @@
   /* Resultados */
   .cl-sec-h { display: flex; align-items: center; gap: .85rem; font-family: var(--font-m); font-size: .64rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-light); margin: 0 0 1.2rem; }
   .cl-sec-h::before { content: ''; width: 22px; height: 1px; background: var(--nc-red); }
-  .cl-res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--cl-edge); border: 1px solid var(--cl-edge); }
-  .cl-res { position: relative; background: var(--cl-surf); padding: 1.8rem 1.7rem; display: flex; flex-direction: column; box-shadow: var(--cl-lift); }
-  .cl-res::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--nc-red); }
+  .cl-res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px; }
+  .cl-res { position: relative; background: var(--cl-surf); border: 1px solid var(--cl-edge); padding: 1.8rem 1.7rem; display: flex; flex-direction: column; box-shadow: var(--cl-lift); transition: border-color .25s; }
+  .cl-res:hover { border-color: var(--nc-red); }
+  .cl-res::after { content: ''; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 2px; background: var(--nc-red); }
   .cl-res-n { font-family: var(--font-m); font-size: .62rem; letter-spacing: .22em; color: var(--nc-ash); margin-bottom: .5rem; }
   .cl-res-t { font-family: var(--font-d); font-weight: 700; font-size: .95rem; letter-spacing: .13em; text-transform: uppercase; color: #fff; margin-bottom: .9rem; }
   .cl-res-v { font-family: var(--font-d); font-weight: 900; font-size: 1.85rem; line-height: 1.15; letter-spacing: -.01em; color: #fff; }
@@ -189,6 +193,7 @@
   /* Dentro del resultado la ficha es un boton, a la par de Comprar */
   .cl-res .cl-info { margin: 0; padding: .72rem 1.05rem; border: 1px solid var(--nc-steel-2); color: var(--nc-white); font-size: .68rem; transition: border-color .2s, background .2s, color .2s; }
   .cl-res .cl-info:hover { border-color: var(--nc-ash); background: rgba(255,255,255,.06); color: #fff; }
+
 
   /* Modal ficha técnica */
   .cl-modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.82); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 9000; padding: 1.25rem; }
@@ -234,9 +239,10 @@
   @media print {
     .nav, .mob-nav-bar, .mob-progress, .footer, #nav-placeholder, #footer-placeholder,
     .cl-cta, .cl-acts, .cl-res-acts, .cl-info, #cur, #ring, .cl-bar-back { display: none !important; }
-    body, .cl-panel, .cl-res, .cl-chip { background: #fff !important; color: #000 !important; }
+    /* las tarjetas en rojo tambien se aplanan a blanco para no gastar tinta */
+    body, .cl-panel, .cl-res, .cl-chip { background: #fff !important; color: #000 !important; box-shadow: none !important; }
     .cl-res-v, .cl-chip .v, .cl-bar-t { color: #000 !important; }
-    .cl-res-s, .cl-res-t, .cl-chip .k { color: #444 !important; }
+    .cl-res-s, .cl-res-t, .cl-chip .k, .cl-res-n { color: #444 !important; }
     .cl-res-grid, .cl-chips { background: #ccc !important; border-color: #ccc !important; }
   }
 </style>
