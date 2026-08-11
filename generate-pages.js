@@ -932,6 +932,9 @@ ${CSS}
       <div class="ph-eyebrow"><span class="ph-eyebrow-line"></span><span class="ph-eyebrow-tx">${p.eyebrow}</span></div>
       <h1 class="ph-title">${p.h1}</h1>
       <p class="ph-desc">${p.desc}</p>
+      <div class="ph-acts" style="margin-top:1.6rem;">
+        <a href="${p.root}calculadora/" class="btn-p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19"></rect><path d="M7.5 6.5h9M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M8 18.5h4M16 15v3.5"></path></svg>Calcular materiales</a>
+      </div>
     </div>
     <div class="ph-count"><b id="total-count">0</b> productos disponibles</div>
   </div>
