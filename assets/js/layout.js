@@ -49,6 +49,7 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     </button>
     <a href="${root}capacitacion/" class="nav-simple">Capacitaciones</a>
+    <a href="${root}calculadora/" class="nav-simple nav-tool">Calculadora</a>
     <a href="${root}nosotros/" class="nav-simple">Nosotros</a>
     <a href="${root}blog/" class="nav-simple">Blog</a>
   </div>
@@ -215,6 +216,9 @@
         </div>
       </div>
     </div>
+
+    <div class="mob-sec-label" style="margin-top:.5rem;">Herramientas</div>
+    <div class="mob-simple"><a href="${root}calculadora/">Calculadora de materiales</a></div>
 
     <div class="mob-sec-label" style="margin-top:.5rem;">Empresa</div>
     <div class="mob-simple"><a href="${root}capacitacion/">Capacitaciones</a></div>
@@ -486,6 +490,7 @@
       <ul class="f-links">
         <li><a href="${root}" class="f-link">Inicio</a></li>
         <li><a href="${root}sistema-newconcret/" class="f-link">Sistema NC</a></li>
+        <li><a href="${root}calculadora/" class="f-link">Calculadora de materiales</a></li>
         <li><a href="${root}capacitacion/" class="f-link">Capacitaciones</a></li>
         <li><a href="${root}nosotros/" class="f-link">Nosotros</a></li>
         <li><a href="${root}blog/" class="f-link">Blog</a></li>
@@ -692,6 +697,7 @@
             // EMPRESA
             { name: 'Capacitaciones', crumb: 'Empresa', tags: ['capacitacion','capacitaciones','curso','cursos','formacion','aprender','training'], href: root + 'capacitacion/', group: 'Empresa' },
             { name: 'Sistema NewConcret', crumb: 'Empresa › Sistema NC', tags: ['sistema','nc','newconcret','metodo','proceso'], href: root + 'sistema-newconcret/', group: 'Empresa' },
+            { name: 'Calculadora de materiales', crumb: 'Herramientas', tags: ['calculadora','calcular','calculo','materiales','cantidad','cantidades','rendimiento','m2','m3','presupuesto','nylon','fibra','endurecedor','juntas'], href: root + 'calculadora/', group: 'Herramientas' },
             { name: 'Nosotros', crumb: 'Empresa', tags: ['nosotros','empresa','quienes','historia','equipo'], href: root + 'nosotros/', group: 'Empresa' },
             { name: 'Blog', crumb: 'Empresa', tags: ['blog','articulos','notas','novedades','guias','noticias'], href: root + 'blog/', group: 'Empresa' },
             { name: 'Contacto', crumb: 'Empresa', tags: ['contacto','contactar','consulta','consultar','whatsapp','telefono'], href: root + 'contacto/', group: 'Empresa' },
@@ -743,7 +749,9 @@
                 if (!groups[r.group]) groups[r.group] = [];
                 groups[r.group].push(r);
             });
-            var ORDER = ['Construcción','Reparación','Pulido','Mantenimiento','Empresa'];
+            var ORDER = ['Construcción','Reparación','Pulido','Mantenimiento','Protección','Empresa','Herramientas'];
+            // Cualquier grupo nuevo que no esté en ORDER se muestra igual, al final.
+            Object.keys(groups).forEach(function(g) { if (ORDER.indexOf(g) === -1) ORDER.push(g); });
             var html = '';
             ORDER.forEach(function(g) {
                 if (!groups[g]) return;

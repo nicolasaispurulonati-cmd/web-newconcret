@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es" class="js-loaded">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de materiales para pisos de hormigón — NewConcret</title>
+<meta name="description" content="Calculá en segundos los materiales de tu obra de hormigón: nylon, macrofibra, microfibra, endurecedor, curador, juntas, Sistema 3 Pasos y productos de reparación. Herramienta técnica gratuita de NewConcret.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
+<link rel="stylesheet" href="../assets/css/estilo.css?v=43">
+<link rel="stylesheet" href="../assets/css/nav.css?v=2.0">
+<style>
+  /* ══════════════════════════════════════════════════════════
+     CALCULADORA DE MATERIALES — hoja de estilo de página
+     Usa los tokens de marca (estilo.css). Prefijo cl- para aislar.
+     ══════════════════════════════════════════════════════════ */
+
+  body { background: var(--nc-black); color: var(--nc-white); font-family: var(--font-b); overflow-x: hidden; }
+  body:not(.js-loaded) { cursor: auto !important; }
+  .js-loaded body { cursor: none; }
+  @media (pointer: coarse) { #cur, #ring { display: none; } body, body * { cursor: auto !important; } }
+  #cur, #ring { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 20000; border-radius: 50%; transform: translate(-50%, -50%); transition: opacity .3s; }
+  #cur { width: 6px; height: 6px; background: var(--nc-red); }
+  #ring { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); }
+
+  .cl { --pad: clamp(1.25rem, 5vw, 6rem); }
+  .cl-wrap { max-width: 1400px; margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+  /* ── Reveal ── */
+  .cl-reveal { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--expo), transform .85s var(--expo); transition-delay: calc(var(--i, 0) * 85ms); }
+  .cl-reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .cl-reveal { opacity: 1 !important; transform: none !important; transition: none; }
+    * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+
+  /* ── Eyebrow ── */
+  .cl-eyebrow { display: inline-flex; align-items: center; gap: .85rem; font-family: var(--font-m); font-size: .6rem; text-transform: uppercase; letter-spacing: .28em; color: var(--nc-red-hot); font-weight: 500; }
+  .cl-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--nc-red); display: inline-block; }
+
+  /* ── Botones ── */
+  .cl-btn { font-family: var(--font-d); font-weight: 700; font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; border: none; padding: 1.05rem 2rem; display: inline-flex; align-items: center; justify-content: center; gap: .7rem; transition: transform .2s, color .2s, border-color .2s, background .2s; }
+  .cl-btn svg { width: 15px; height: 15px; flex: none; }
+  .cl-btn:active { transform: scale(.985); }
+  .cl-btn-p { position: relative; overflow: hidden; background: var(--nc-red); color: #fff; clip-path: polygon(0 0, 100% 0, 100% 70%, 94% 100%, 0 100%); }
+  .cl-btn-p::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent); transition: left .5s; }
+  .cl-btn-p:hover::before { left: 100%; }
+  .cl-btn-p:hover { background: var(--nc-red-hot); transform: translateY(-2px); }
+  .cl-btn-g { font-weight: 600; font-size: .72rem; letter-spacing: .16em; color: var(--nc-light); background: transparent; border: 1px solid var(--nc-steel-2); padding: .95rem 1.5rem; }
+  .cl-btn-g:hover { color: #fff; border-color: var(--nc-ash); background: rgba(255,255,255,.06); }
+  .cl-btn-wa { background: transparent; color: var(--nc-white); border: 1px solid var(--nc-steel-2); font-weight: 600; font-size: .72rem; letter-spacing: .16em; padding: .95rem 1.5rem; }
+  .cl-btn-wa:hover { border-color: var(--nc-red); color: #fff; background: rgba(193,18,31,.12); }
+
+  /* ═══ HERO ═══ */
+  .cl-hero { position: relative; overflow: hidden; padding: clamp(8rem, 16vh, 11rem) 0 clamp(2.5rem, 5vw, 4rem); }
+  .cl-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .cl-hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.3) saturate(.5); }
+  .cl-hero-ov { position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.72) 55%, rgba(10,10,10,.35) 100%),
+      linear-gradient(to top, var(--nc-black) 0%, rgba(10,10,10,.2) 60%); }
+  .cl-hero-in { position: relative; z-index: 2; }
+  .cl-hero-h1 { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.7rem, 7vw, 5.4rem); line-height: .9; letter-spacing: -.015em; text-transform: uppercase; color: var(--nc-white); margin: 1.2rem 0 1.3rem; }
+  .cl-hero-h1 .red { color: var(--nc-red-hot); }
+  .cl-hero-p { max-width: 640px; font-size: 1.02rem; line-height: 1.65; color: var(--nc-ash); font-weight: 300; }
+  .cl-hero-meta { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2.4rem; padding-top: 1.8rem; border-top: 1px solid var(--nc-steel); }
+  .cl-hero-meta div { display: flex; flex-direction: column; gap: .35rem; }
+  .cl-hero-meta .k { font-family: var(--font-m); font-size: .58rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-mid); }
+  .cl-hero-meta .v { font-family: var(--font-d); font-weight: 700; font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase; color: var(--nc-white); }
+
+  /* ═══ HERRAMIENTA ═══ */
+  .cl-tool { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(4rem, 9vw, 7rem); scroll-margin-top: 80px; }
+
+  /* Barra de módulo (sticky) */
+  .cl-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 0 1.1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--nc-steel); position: sticky; top: 68px; z-index: 40; background: var(--nc-black); }
+  .cl-bar-back { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex: none; background: transparent; border: 1px solid var(--nc-steel-2); color: var(--nc-light); transition: .2s; }
+  .cl-bar-back:hover { border-color: var(--nc-red); color: #fff; background: rgba(193,18,31,.12); }
+  .cl-bar-txt { min-width: 0; }
+  .cl-bar-k { font-family: var(--font-m); font-size: .58rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-red-hot); }
+  .cl-bar-t { font-family: var(--font-d); font-weight: 900; font-size: clamp(1.3rem, 3vw, 1.9rem); text-transform: uppercase; letter-spacing: -.01em; line-height: 1.1; margin-top: .2rem; }
+  .cl-bar-n { margin-left: auto; font-family: var(--font-d); font-weight: 900; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--nc-steel-2); letter-spacing: .02em; }
+
+  /* Módulos del menú */
+  .cl-mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
+  .cl-mod { position: relative; display: flex; flex-direction: column; gap: 1.4rem; background: var(--nc-dark); border: none; padding: 2.2rem 1.9rem 2rem; text-align: left; color: inherit; font: inherit; transition: background .3s var(--expo); overflow: hidden; }
+  .cl-mod::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--nc-red); transform: scaleY(0); transform-origin: top; transition: transform .45s var(--expo); }
+  .cl-mod:hover { background: var(--nc-carbon); }
+  .cl-mod:hover::after { transform: scaleY(1); }
+  .cl-mod-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .cl-mod-ico { width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--nc-steel-2); color: var(--nc-red-hot); transition: .3s; }
+  .cl-mod-ico svg { width: 24px; height: 24px; }
+  .cl-mod:hover .cl-mod-ico { border-color: var(--nc-red); background: rgba(193,18,31,.1); }
+  .cl-mod-n { font-family: var(--font-d); font-weight: 900; font-size: 1.5rem; color: var(--nc-steel-2); transition: color .3s; }
+  .cl-mod:hover .cl-mod-n { color: var(--nc-mid); }
+  .cl-mod-t { font-family: var(--font-d); font-weight: 700; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .01em; line-height: 1.1; }
+  .cl-mod-d { font-size: .88rem; line-height: 1.6; color: var(--nc-ash); font-weight: 300; margin-top: .6rem; }
+  .cl-mod-go { display: inline-flex; align-items: center; gap: .6rem; margin-top: auto; padding-top: 1.2rem; font-family: var(--font-d); font-weight: 700; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-light); }
+  .cl-mod-go svg { width: 13px; height: 13px; transition: transform .3s var(--expo); }
+  .cl-mod:hover .cl-mod-go { color: var(--nc-red-hot); }
+  .cl-mod:hover .cl-mod-go svg { transform: translateX(5px); }
+  .cl-mod-tag { display: inline-flex; align-items: center; gap: .45rem; align-self: flex-start; font-family: var(--font-m); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-red-hot); border: 1px solid rgba(193,18,31,.4); padding: .35rem .6rem; }
+
+  /* Grilla de formulario */
+  .cl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
+  .cl-grid--duo { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+  .cl-panel { background: var(--nc-dark); padding: 1.9rem 1.7rem; }
+  .cl-panel--wide { grid-column: 1 / -1; }
+  @media (min-width: 1100px) { .cl-grid--main { grid-template-columns: 1.35fr 1fr 1fr; } .cl-grid--main .cl-panel--wide { grid-column: span 1; } }
+
+  .cl-panel-h { display: flex; align-items: baseline; gap: .75rem; margin-bottom: 1.5rem; padding-bottom: .9rem; border-bottom: 1px solid var(--nc-steel); }
+  .cl-panel-h i { font-family: var(--font-m); font-style: normal; font-size: .62rem; letter-spacing: .2em; color: var(--nc-red); }
+  .cl-panel-h span { font-family: var(--font-d); font-weight: 700; font-size: .9rem; letter-spacing: .16em; text-transform: uppercase; color: var(--nc-white); }
+
+  /* Campos */
+  .cl-lbl { display: block; font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-ash); margin-bottom: .55rem; }
+  .cl-inp-w { position: relative; margin-bottom: 1.1rem; }
+  .cl-inp-w:last-child { margin-bottom: 0; }
+  .cl-inp-w input { width: 100%; background: var(--nc-black); color: var(--nc-white); border: 1px solid var(--nc-steel-2); padding: .95rem 4.2rem .95rem 1rem; font-family: var(--font-m); font-size: 1.05rem; font-weight: 500; letter-spacing: .01em; outline: none; transition: border-color .2s, background .2s; -moz-appearance: textfield; }
+  .cl-inp-w input::-webkit-outer-spin-button, .cl-inp-w input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .cl-inp-w input::placeholder { color: var(--nc-mid); font-weight: 400; }
+  .cl-inp-w input:focus { border-color: var(--nc-red); background: #0d0d0d; }
+  .cl-inp-w .u { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-family: var(--font-m); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-mid); pointer-events: none; }
+
+  /* Bloque excluyente espesor / m³ */
+  .cl-excl { border: 1px solid var(--nc-steel); background: rgba(0,0,0,.35); padding: 1.2rem; margin-top: 1.4rem; }
+  .cl-excl-h { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .cl-excl-h .t { font-family: var(--font-d); font-weight: 700; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-white); }
+  .cl-excl-h .h { font-size: .74rem; color: var(--nc-mid); font-weight: 300; }
+  .cl-excl-row { display: flex; align-items: stretch; gap: .9rem; }
+  .cl-excl-c { flex: 1; min-width: 0; }
+  .cl-excl-c .cap { display: flex; align-items: center; gap: .5rem; min-height: 20px; margin-bottom: .55rem; }
+  .cl-excl-c .cap .n { font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-ash); }
+  .cl-excl-c .cl-inp-w { margin-bottom: 0; }
+  .cl-auto { display: none; font-family: var(--font-m); font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-red-hot); border: 1px solid rgba(193,18,31,.45); padding: .15rem .4rem; }
+  .cl-excl-c.is-auto .cl-auto { display: inline-block; }
+  .cl-excl-c.is-auto input { background: rgba(193,18,31,.08); border-color: rgba(193,18,31,.35); color: var(--nc-white); cursor: default; }
+  .cl-excl-or { align-self: center; flex: none; width: 34px; height: 34px; margin-top: 1.6rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: .62rem; letter-spacing: .12em; color: var(--nc-mid); border: 1px solid var(--nc-steel); }
+  .cl-excl-note { display: none; align-items: center; gap: .5rem; margin-top: .9rem; font-size: .78rem; color: #E8A33D; font-weight: 300; }
+  .cl-excl-note.show { display: flex; }
+
+  /* Opciones */
+  .cl-opt { display: flex; align-items: center; gap: .8rem; border: 1px solid var(--nc-steel); background: rgba(255,255,255,.015); padding: .85rem .9rem; margin-bottom: .6rem; transition: border-color .2s, background .2s; }
+  .cl-opt:last-of-type { margin-bottom: 0; }
+  .cl-opt:hover { border-color: var(--nc-steel-2); background: rgba(255,255,255,.04); }
+  .cl-opt:has(input:checked) { border-color: rgba(193,18,31,.5); background: rgba(193,18,31,.08); }
+  .cl-opt-lb { display: flex; align-items: center; gap: .8rem; flex: 1; min-width: 0; cursor: pointer; }
+  .cl-opt input[type=checkbox] { appearance: none; -webkit-appearance: none; position: relative; width: 20px; height: 20px; flex: none; border: 1px solid var(--nc-steel-2); background: var(--nc-black); cursor: pointer; transition: .2s; }
+  .cl-opt input[type=checkbox]:checked { background: var(--nc-red); border-color: var(--nc-red); }
+  .cl-opt input[type=checkbox]:checked::after { content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .cl-opt-t { font-family: var(--font-d); font-weight: 700; font-size: .95rem; letter-spacing: .05em; text-transform: uppercase; }
+  .cl-info { flex: none; background: none; border: none; color: var(--nc-mid); font-family: var(--font-m); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; padding: .4rem .5rem; display: inline-flex; align-items: center; gap: .35rem; transition: color .2s; }
+  .cl-info svg { width: 13px; height: 13px; }
+  .cl-info:hover { color: var(--nc-red-hot); }
+
+  .cl-sub { border-left: 1px solid rgba(193,18,31,.4); padding: 1.1rem 0 .2rem 1.1rem; margin: .9rem 0 .2rem .35rem; }
+
+  /* Acciones */
+  .cl-acts { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.8rem; }
+  .cl-note { font-size: .78rem; color: var(--nc-mid); font-weight: 300; line-height: 1.6; margin-top: 1.4rem; max-width: 720px; }
+
+  /* Resumen */
+  .cl-chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); margin-bottom: 2rem; }
+  .cl-chip { background: var(--nc-dark); padding: 1.2rem 1.3rem; }
+  .cl-chip .k { font-family: var(--font-m); font-size: .58rem; letter-spacing: .24em; text-transform: uppercase; color: var(--nc-mid); }
+  .cl-chip .v { font-family: var(--font-d); font-weight: 900; font-size: 1.9rem; line-height: 1.1; margin-top: .35rem; letter-spacing: -.01em; }
+  .cl-chip .v small { font-family: var(--font-m); font-weight: 500; font-size: .72rem; color: var(--nc-ash); margin-left: .3rem; letter-spacing: .1em; text-transform: uppercase; }
+
+  /* Resultados */
+  .cl-sec-h { display: flex; align-items: center; gap: .85rem; font-family: var(--font-m); font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; color: var(--nc-ash); margin: 0 0 1.2rem; }
+  .cl-sec-h::before { content: ''; width: 22px; height: 1px; background: var(--nc-red); }
+  .cl-res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
+  .cl-res { position: relative; background: var(--nc-dark); padding: 1.8rem 1.7rem; display: flex; flex-direction: column; }
+  .cl-res::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--nc-red); }
+  .cl-res-n { font-family: var(--font-m); font-size: .58rem; letter-spacing: .24em; color: var(--nc-mid); margin-bottom: .5rem; }
+  .cl-res-t { font-family: var(--font-d); font-weight: 700; font-size: .92rem; letter-spacing: .14em; text-transform: uppercase; color: var(--nc-light); margin-bottom: .9rem; }
+  .cl-res-v { font-family: var(--font-d); font-weight: 900; font-size: 1.75rem; line-height: 1.15; letter-spacing: -.01em; color: var(--nc-white); }
+  .cl-res-s { font-size: .84rem; line-height: 1.65; color: var(--nc-ash); font-weight: 300; margin-top: .45rem; }
+  .cl-res .cl-info { align-self: flex-start; margin: 1rem 0 0 -.5rem; }
+
+  /* Modal ficha técnica */
+  .cl-modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.82); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 9000; padding: 1.25rem; }
+  .cl-modal-bg.open { display: flex; }
+  .cl-modal { background: var(--nc-dark); border: 1px solid var(--nc-steel); border-left: 2px solid var(--nc-red); max-width: 560px; width: 100%; max-height: 82vh; overflow-y: auto; }
+  .cl-modal-h { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: 1.1rem 1.4rem; background: var(--nc-dark); border-bottom: 1px solid var(--nc-steel); }
+  .cl-modal-h span { font-family: var(--font-m); font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-red-hot); }
+  .cl-modal-x { background: none; border: 1px solid var(--nc-steel-2); color: var(--nc-light); font-family: var(--font-d); font-weight: 700; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; padding: .5rem .9rem; transition: .2s; }
+  .cl-modal-x:hover { border-color: var(--nc-red); color: #fff; }
+  .cl-modal pre { white-space: pre-wrap; font-family: var(--font-b); font-size: .9rem; line-height: 1.75; color: var(--nc-light); margin: 0; padding: 1.5rem 1.4rem; font-weight: 300; }
+
+  /* Toast */
+  .cl-toast { position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(12px); background: var(--nc-carbon); border: 1px solid var(--nc-steel-2); border-left: 2px solid var(--nc-red); color: var(--nc-white); padding: .95rem 1.3rem; font-size: .85rem; font-weight: 300; z-index: 9500; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: 88vw; text-align: center; }
+  .cl-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* CTA final */
+  .cl-cta { border-top: 1px solid var(--nc-steel); padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .cl-cta-grid { display: flex; align-items: flex-end; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap; }
+  .cl-cta h2 { font-family: var(--font-d); font-weight: 900; font-size: clamp(1.9rem, 4.5vw, 3.2rem); line-height: 1; text-transform: uppercase; letter-spacing: -.015em; margin: 1.1rem 0 0; }
+  .cl-cta h2 .red { color: var(--nc-red-hot); }
+  .cl-cta p { max-width: 520px; margin-top: 1.1rem; color: var(--nc-ash); font-size: .95rem; line-height: 1.65; font-weight: 300; }
+
+  /* Responsive */
+  @media (max-width: 620px) {
+    .cl-bar { top: 66px; padding: .85rem 0 .9rem; }
+    .cl-excl-row { flex-direction: column; gap: .9rem; }
+    .cl-excl-or { margin: 0 auto; }
+    .cl-hero-meta { gap: 1.6rem 2rem; }
+    .cl-acts .cl-btn { width: 100%; }
+    .cl-panel { padding: 1.5rem 1.25rem; }
+    .cl-res { padding: 1.5rem 1.25rem; }
+  }
+
+  /* Impresión: sólo el resultado */
+  @media print {
+    .nav, .mob-nav-bar, .mob-progress, .footer, #nav-placeholder, #footer-placeholder,
+    .cl-hero, .cl-cta, .cl-acts, .cl-info, #cur, #ring, .cl-bar-back { display: none !important; }
+    body, .cl-panel, .cl-res, .cl-chip { background: #fff !important; color: #000 !important; }
+    .cl-res-v, .cl-chip .v, .cl-bar-t { color: #000 !important; }
+    .cl-res-s, .cl-res-t, .cl-chip .k { color: #444 !important; }
+    .cl-res-grid, .cl-chips { background: #ccc !important; border-color: #ccc !important; }
+  }
+</style>
+    <!-- seo:start (auto — scripts/seo.js · NO editar a mano) -->
+    <link rel="canonical" href="https://newconcret.com/calculadora/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NewConcret">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:title" content="Calculadora de materiales para pisos de hormigón — NewConcret">
+    <meta property="og:description" content="Calculá en segundos los materiales de tu obra de hormigón: nylon, macrofibra, microfibra, endurecedor, curador, juntas, Sistema 3 Pasos y productos de reparación. Herramienta técnica gratuita de NewConcret.">
+    <meta property="og:url" content="https://newconcret.com/calculadora/">
+    <meta property="og:image" content="https://newconcret.com/assets/img/hero/construccion.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Calculadora de materiales para pisos de hormigón — NewConcret">
+    <meta name="twitter:description" content="Calculá en segundos los materiales de tu obra de hormigón: nylon, macrofibra, microfibra, endurecedor, curador, juntas, Sistema 3 Pasos y productos de reparación. Herramienta técnica gratuita de NewConcret.">
+    <meta name="twitter:image" content="https://newconcret.com/assets/img/hero/construccion.webp">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://newconcret.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculadora",
+          "item": "https://newconcret.com/calculadora/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://newconcret.com/calculadora/",
+      "name": "Calculadora de materiales para pisos de hormigón — NewConcret",
+      "description": "Calculá en segundos los materiales de tu obra de hormigón: nylon, macrofibra, microfibra, endurecedor, curador, juntas, Sistema 3 Pasos y productos de reparación. Herramienta técnica gratuita de NewConcret.",
+      "isPartOf": {
+        "@id": "https://newconcret.com/#website"
+      }
+    }
+  ]
+}
+</script>
+    <!-- seo:end -->
+</head>
+
+<body class="cl">
+
+<div id="cur"></div>
+<div id="ring"></div>
+
+<div id="nav-placeholder"></div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="cl-hero">
+  <div class="cl-hero-bg">
+    <img src="../assets/img/hero/construccion.webp" alt="Colado y llaneado de un piso de hormigón" loading="eager">
+  </div>
+  <div class="cl-hero-ov"></div>
+
+  <div class="cl-hero-in cl-wrap">
+    <div class="cl-eyebrow cl-reveal">Herramienta técnica</div>
+    <h1 class="cl-hero-h1 cl-reveal" style="--i:1">Calculadora<br><span class="red">de materiales</span></h1>
+    <p class="cl-hero-p cl-reveal" style="--i:2">Cargá los metros de tu obra y obtené al instante las cantidades exactas de nylon, fibras, endurecedor, curador, selladores y morteros. Los mismos rendimientos que usamos en obra, según ficha técnica de cada producto.</p>
+
+    <div class="cl-hero-meta cl-reveal" style="--i:3">
+      <div><span class="k">Módulos</span><span class="v">03 Etapas</span></div>
+      <div><span class="k">Base de cálculo</span><span class="v">Ficha técnica</span></div>
+      <div><span class="k">Costo</span><span class="v">Sin cargo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HERRAMIENTA ═══════════ -->
+<section class="cl-tool" id="calculadora">
+  <div class="cl-wrap">
+    <div id="calcApp"></div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="cl-cta">
+  <div class="cl-wrap cl-cta-grid">
+    <div class="cl-reveal">
+      <div class="cl-eyebrow">Asesoramiento técnico</div>
+      <h2>¿Necesitás una<br><span class="red">mano con la obra?</span></h2>
+      <p>Nuestro equipo revisa tu cálculo, ajusta las cantidades según el tipo de hormigón y el destino del piso, y te arma el presupuesto completo.</p>
+    </div>
+    <div class="cl-acts cl-reveal" style="--i:1; margin-top:0;">
+      <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="cl-btn cl-btn-p">Consultar por WhatsApp
+        <svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
+      </a>
+      <a href="../contacto/" class="cl-btn cl-btn-g">Ver todos los contactos</a>
+    </div>
+  </div>
+</section>
+
+<!-- Ficha técnica -->
+<div class="cl-modal-bg" id="clModalBg">
+  <div class="cl-modal" role="dialog" aria-modal="true" aria-label="Ficha técnica">
+    <div class="cl-modal-h">
+      <span>Ficha técnica</span>
+      <button class="cl-modal-x" id="clModalX">Cerrar</button>
+    </div>
+    <pre id="clModalTxt"></pre>
+  </div>
+</div>
+
+<div class="cl-toast" id="clToast"></div>
+
+<script src="../assets/js/layout.js?v=3.5"></script>
+<script src="../assets/js/main.js?v=3.0"></script>
+<script src="../assets/js/nav.js?v=3.0"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  // ────────────────────────────────────────────────────────────────
+  // FICHAS TÉCNICAS
+  // ────────────────────────────────────────────────────────────────
+  var INFO = {
+    nylon: `NYLON NEGRO 200 MICRONES
+Barrera hidrófuga de polietileno.
+
+Se coloca directamente debajo del hormigón antes de la colada, sobre una superficie limpia y firme.
+
+¿Para qué sirve?
+Actúa como barrera de vapor, evitando que la humedad del suelo ascienda hacia el piso de hormigón.
+
+¿Cuánto usar?
+1 m² de nylon por cada m² de piso a construir.
+
+Presentaciones: rollo 2 m x 50 m (~100 m²) · rollo 4 m x 50 m (~200 m²)`,
+
+    macrofibra: `MACROFIBRA — CONCRET FIBRA
+Macrofibra de polipropileno estructural.
+
+Se agrega en la hormigonera junto con los demás componentes.
+
+Reemplaza total o parcialmente la malla electrosoldada.
+
+Dosis recomendada: 2,5 kg por m³ de hormigón.
+Presentación: bolsas x 5 kg`,
+
+    microfibra: `MICROFIBRA
+Fibra sintética para control de fisuras.
+
+Se incorpora a la mezcla durante el amasado.
+
+Dosis recomendada: 600 g (0,6 kg) por m³ de hormigón.`,
+
+    dur: `CONCRET DUR 100
+Endurecedor superficial no metálico.
+
+Se aplica en polvo sobre el hormigón fresco durante el llaneado.
+
+Dosis recomendada: 2 kg por m² de piso.
+
+Versiones: Dur 100 (uso medio) · Dur 200 (uso intenso) · Dur 300 (uso extremo)
+Presentación: bolsas x 25 kg`,
+
+    one: `CONCRET ONE
+Aditivo facilitador de llaneado.
+
+Rendimiento: 15 m² por litro.
+Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
+
+    scudo: `CONCRET SCUDO
+Curador de membrana para hormigón.
+
+Rendimiento: aprox. 6 a 10 m² por litro según clima.
+Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
+
+    juntas: `SELLADOR POLIURETANO
+Sellado de juntas de dilatación.
+
+Rendimiento: cada cartucho de 600 ml rinde ~10 metros lineales.
+Presentación: cartucho x 600 ml`,
+
+    sodium: `CONCRET SODIUM
+Densificador y sellador superficial a base de sodio.
+
+Rendimiento: 10 m² por litro.
+Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
+
+    lock: `CONCRET LOCK
+Impermeabilizante hidro y oleo repelente.
+
+Rendimiento: 15 m² por litro.
+Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
+
+    finish: `CONCRET FINISH
+Sellador premium de altos sólidos.
+
+Rendimiento: 15 m² por litro.
+Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
+
+    fix: `CONCRET FIX
+Grouting cementicio de reparación de secado rápido.
+
+Se coloca directamente en el área a reparar, sin aplicar en capas. Permite pulir a pocas horas.
+
+Mezclado: 2,75 a 3,25 L de agua por bolsa (11-13% del peso). Mezclar 3 a 5 minutos. No mezclar más de lo usable en 20 minutos.
+
+Rendimiento: una bolsa de 25 kg rinde aprox. 15 litros de volumen a rellenar.
+Presentación: bolsas x 25 kg`,
+
+    microstrong: `CONCRET MICROSTRONG
+Mortero cementicio modificado, pulible y de alto rendimiento.
+
+Se aplica con llana, espátula o cuchara. Superficie limpia, firme y saturada con agua previamente.
+
+Versiones:
+· Fino — sellado de poros y fisuras, hasta 2 mm por capa. Rendimiento ~1,9 kg/m² por mm.
+· Grueso (con microfibras) — reparación de bordes y oquedades, 3 a 5 mm. Rendimiento ~2,1 kg/m² por mm.
+
+No aplicar con temperatura inferior a 8 °C.
+Presentación: bolsas x 10 y 25 kg`
+  };
+
+  // ────────────────────────────────────────────────────────────────
+  // UI helpers
+  // ────────────────────────────────────────────────────────────────
+  var modalBg = document.getElementById('clModalBg');
+  var modalTxt = document.getElementById('clModalTxt');
+
+  function showInfo(key) {
+    modalTxt.textContent = INFO[key] || '';
+    modalBg.classList.add('open');
+  }
+  function closeInfo() { modalBg.classList.remove('open'); }
+
+  document.getElementById('clModalX').addEventListener('click', closeInfo);
+  modalBg.addEventListener('click', function (e) { if (e.target === modalBg) closeInfo(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeInfo(); });
+
+  var toastTimer;
+  function toast(msg) {
+    var t = document.getElementById('clToast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2600);
+  }
+
+  var ICO_INFO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.1"/></svg>';
+  var ICO_ARROW = '<svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>';
+  var ICO_BACK = '<svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M11.5 7h-9M6.5 3l-4 4 4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>';
+
+  function infoBtn(key) {
+    return '<button class="cl-info" type="button" data-info="' + key + '">' + ICO_INFO + 'Ficha</button>';
+  }
+
+  // número lindo: hasta 2 decimales, sin ceros colgando, coma decimal
+  function num(v, dec) {
+    if (v === null || v === undefined || isNaN(v)) return '';
+    var d = dec === undefined ? 2 : dec;
+    return parseFloat(v.toFixed(d)).toString().replace('.', ',');
+  }
+
+  // ────────────────────────────────────────────────────────────────
+  // ROUTER
+  // ────────────────────────────────────────────────────────────────
+  var app = document.getElementById('calcApp');
+  var screen = 'menu';
+  var lastResultado = null;
+  var firstRender = true;
+
+  function nav(to) {
+    screen = to;
+    render();
+    if (!firstRender) {
+      var y = document.getElementById('calculadora').getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    firstRender = false;
+  }
+
+  function bar(kicker, titulo, back, n) {
+    return '<div class="cl-bar">' +
+      (back ? '<button class="cl-bar-back" type="button" data-nav="' + back + '" aria-label="Volver">' + ICO_BACK + '</button>' : '') +
+      '<div class="cl-bar-txt">' +
+        '<div class="cl-bar-k">' + kicker + '</div>' +
+        '<div class="cl-bar-t">' + titulo + '</div>' +
+      '</div>' +
+      (n ? '<div class="cl-bar-n">' + n + '</div>' : '') +
+    '</div>';
+  }
+
+  function panelH(n, txt) {
+    return '<div class="cl-panel-h"><i>' + n + '</i><span>' + txt + '</span></div>';
+  }
+
+  function opcion(id, label, infoKey) {
+    return '<div class="cl-opt">' +
+      '<label class="cl-opt-lb"><input type="checkbox" id="' + id + '"><span class="cl-opt-t">' + label + '</span></label>' +
+      infoBtn(infoKey) +
+    '</div>';
+  }
+
+  function acts(primary, primaryAction, secondary, secondaryAction) {
+    var h = '<div class="cl-acts">' +
+      '<button class="cl-btn cl-btn-p" type="button" data-act="' + primaryAction + '">' + primary + ICO_ARROW + '</button>';
+    if (secondary) h += '<button class="cl-btn cl-btn-g" type="button" data-nav="' + secondaryAction + '">' + secondary + '</button>';
+    return h + '</div>';
+  }
+
+  function render() {
+    if (screen === 'menu') renderMenu();
+    else if (screen === 'materiales') renderMateriales();
+    else if (screen === 'proteccion') renderProteccion();
+    else if (screen === 'reparacion') renderReparacion();
+    else if (screen === 'resultadosMateriales') renderResultadosMateriales();
+    else if (screen === 'resultadosProteccion') renderResultadosProteccion();
+    else if (screen === 'resultadosReparacion') renderResultadosReparacion();
+  }
+
+  // ── MENÚ ──────────────────────────────────────────────────────────
+  var ICO_MOD = {
+    piso: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M12 2.6l9 4.9-9 4.9-9-4.9 9-4.9z"/><path d="M3 12.2l9 4.9 9-4.9"/><path d="M3 16.9l9 4.9 9-4.9"/></svg>',
+    escudo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M12 2.5l8 3v6.2c0 5-3.4 8.6-8 9.8-4.6-1.2-8-4.8-8-9.8V5.5l8-3z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.6"/></svg>',
+    grieta: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M10 3l1.6 6-3.1 2.6L11 15l-1.6 6"/></svg>'
+  };
+
+  function renderMenu() {
+    app.innerHTML =
+      bar('Calculadora NewConcret', 'Elegí la etapa de tu obra', null, '') +
+      '<div class="cl-mods">' +
+
+        '<button class="cl-mod" type="button" data-nav="materiales">' +
+          '<div class="cl-mod-top"><div class="cl-mod-ico">' + ICO_MOD.piso + '</div><div class="cl-mod-n">01</div></div>' +
+          '<div><div class="cl-mod-t">Construcción<br>de piso</div>' +
+          '<div class="cl-mod-d">Nylon, macrofibra, microfibra, endurecedor superficial, aditivo de llaneado, curador y juntas de dilatación.</div></div>' +
+          '<span class="cl-mod-go">Calcular' + ICO_ARROW + '</span>' +
+        '</button>' +
+
+        '<button class="cl-mod" type="button" data-nav="proteccion">' +
+          '<div class="cl-mod-top"><div class="cl-mod-ico">' + ICO_MOD.escudo + '</div><div class="cl-mod-n">02</div></div>' +
+          '<div><div class="cl-mod-t">Sistema<br>3 Pasos</div>' +
+          '<div class="cl-mod-d">Protección y embellecimiento del hormigón: Concret Sodium, Concret Lock y Concret Finish.</div></div>' +
+          '<span class="cl-mod-tag">Garantía 25 años</span>' +
+          '<span class="cl-mod-go">Calcular' + ICO_ARROW + '</span>' +
+        '</button>' +
+
+        '<button class="cl-mod" type="button" data-nav="reparacion">' +
+          '<div class="cl-mod-top"><div class="cl-mod-ico">' + ICO_MOD.grieta + '</div><div class="cl-mod-n">03</div></div>' +
+          '<div><div class="cl-mod-t">Reparación<br>de superficies</div>' +
+          '<div class="cl-mod-d">Grouting Concret Fix para rellenos de volumen y mortero Concret MicroStrong para bordes, poros y oquedades.</div></div>' +
+          '<span class="cl-mod-go">Calcular' + ICO_ARROW + '</span>' +
+        '</button>' +
+
+      '</div>' +
+      '<p class="cl-note">Los resultados son orientativos y están calculados con los rendimientos de ficha técnica de cada producto. Las cantidades reales pueden variar según la absorción del sustrato, el método de aplicación y las condiciones climáticas de la obra.</p>';
+  }
+
+  // ── MATERIALES (construcción de piso) ─────────────────────────────
+  function renderMateriales() {
+    app.innerHTML =
+      bar('Módulo 01', 'Construcción de piso', 'menu', '01') +
+      '<div class="cl-grid cl-grid--main">' +
+
+        '<div class="cl-panel cl-panel--wide">' +
+          panelH('01', 'Datos del piso') +
+          '<label class="cl-lbl" for="m_m2">Superficie del piso</label>' +
+          '<div class="cl-inp-w"><input type="number" id="m_m2" placeholder="Ej: 100" inputmode="decimal" min="0"><span class="u">m²</span></div>' +
+
+          '<div class="cl-excl">' +
+            '<div class="cl-excl-h"><span class="t">Espesor o volumen</span><span class="h">Completá uno · el otro se calcula solo</span></div>' +
+            '<div class="cl-excl-row">' +
+              '<div class="cl-excl-c" id="cell_esp">' +
+                '<div class="cap"><span class="n">Espesor</span><span class="cl-auto">Auto</span></div>' +
+                '<div class="cl-inp-w"><input type="number" id="m_esp" placeholder="Ej: 10" inputmode="decimal" min="0"><span class="u">cm</span></div>' +
+              '</div>' +
+              '<div class="cl-excl-or">Ó</div>' +
+              '<div class="cl-excl-c" id="cell_m3">' +
+                '<div class="cap"><span class="n">Volumen</span><span class="cl-auto">Auto</span></div>' +
+                '<div class="cl-inp-w"><input type="number" id="m_m3" placeholder="Ej: 10" inputmode="decimal" min="0"><span class="u">m³</span></div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="cl-excl-note" id="exclNote">Ingresá los m² para poder convertir automáticamente.</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="cl-panel">' +
+          panelH('02', 'Refuerzo de fibras') +
+          opcion('m_macrofibra', 'Macrofibra', 'macrofibra') +
+          opcion('m_microfibra', 'Microfibra', 'microfibra') +
+        '</div>' +
+
+        '<div class="cl-panel">' +
+          panelH('03', 'Terminación y juntas') +
+          opcion('m_dur', 'Concret Dur 100', 'dur') +
+          opcion('m_juntas', 'Sellador de juntas', 'juntas') +
+        '</div>' +
+
+      '</div>' +
+      acts('Calcular materiales', 'calcMateriales', 'Volver al menú', 'menu') +
+      '<p class="cl-note">El nylon, el Concret One (facilitador de llaneado) y el Concret Scudo (curador) se calculan siempre, porque intervienen en todo piso de hormigón llaneado.</p>';
+
+    initPiso();
+  }
+
+  function val(id) {
+    var el = document.getElementById(id);
+    if (!el) return null;
+    var v = parseFloat(el.value);
+    return isNaN(v) ? null : v;
+  }
+  function chk(id) { return document.getElementById(id).checked; }
+
+  // ── Espesor ↔ m³ excluyentes ────────────────────────────────────
+  // pisoSource guarda cuál de los dos campos cargó el usuario.
+  // El otro queda en modo AUTO (solo lectura) y se recalcula solo.
+  var pisoSource = null; // 'esp' | 'm3' | null
+
+  function initPiso() {
+    var m2El = document.getElementById('m_m2');
+    var espEl = document.getElementById('m_esp');
+    var m3El = document.getElementById('m_m3');
+
+    pisoSource = null;
+
+    espEl.addEventListener('input', function () {
+      if (espEl.value.trim() === '') { pisoSource = null; m3El.value = ''; }
+      else pisoSource = 'esp';
+      syncPiso();
+    });
+    m3El.addEventListener('input', function () {
+      if (m3El.value.trim() === '') { pisoSource = null; espEl.value = ''; }
+      else pisoSource = 'm3';
+      syncPiso();
+    });
+    m2El.addEventListener('input', syncPiso);
+
+    // Si tocan el campo bloqueado, avisamos por qué no se puede editar.
+    [['m_esp', 'esp'], ['m_m3', 'm3']].forEach(function (pair) {
+      document.getElementById(pair[0]).addEventListener('mousedown', function () {
+        if (pisoSource && pisoSource !== pair[1]) {
+          toast(pair[1] === 'esp'
+            ? 'El espesor se calcula solo. Borrá los m³ para editarlo.'
+            : 'Los m³ se calculan solos. Borrá el espesor para editarlos.');
+        }
+      });
+    });
+
+    syncPiso();
+  }
+
+  function syncPiso() {
+    var m2El = document.getElementById('m_m2');
+    var espEl = document.getElementById('m_esp');
+    var m3El = document.getElementById('m_m3');
+    var cellEsp = document.getElementById('cell_esp');
+    var cellM3 = document.getElementById('cell_m3');
+    var note = document.getElementById('exclNote');
+    if (!m2El || !espEl || !m3El) return;
+
+    var m2 = parseFloat(m2El.value);
+    var m2Ok = !isNaN(m2) && m2 > 0;
+
+    cellEsp.classList.remove('is-auto');
+    cellM3.classList.remove('is-auto');
+    espEl.readOnly = false;
+    m3El.readOnly = false;
+    note.classList.remove('show');
+
+    if (pisoSource === 'esp') {
+      cellM3.classList.add('is-auto');
+      m3El.readOnly = true;
+      var esp = parseFloat(espEl.value);
+      m3El.value = (m2Ok && !isNaN(esp)) ? parseFloat((m2 * esp / 100).toFixed(3)) : '';
+      if (!m2Ok) note.classList.add('show');
+    } else if (pisoSource === 'm3') {
+      cellEsp.classList.add('is-auto');
+      espEl.readOnly = true;
+      var m3 = parseFloat(m3El.value);
+      espEl.value = (m2Ok && !isNaN(m3)) ? parseFloat((m3 / m2 * 100).toFixed(2)) : '';
+      if (!m2Ok) note.classList.add('show');
+    }
+  }
+
+  function calcularMateriales() {
+    var m2 = val('m_m2');
+    var esp = val('m_esp'), m3 = val('m_m3');
+
+    if (m2 === null || m2 <= 0) { toast('Ingresá los metros cuadrados del piso'); return; }
+    if (esp === null && m3 === null) { toast('Ingresá el espesor (cm) o el volumen (m³)'); return; }
+    if (m3 === null || pisoSource === 'esp') m3 = m2 * esp / 100;
+    if (esp === null || pisoSource === 'm3') esp = m3 / m2 * 100;
+    if (esp <= 0 || m3 <= 0) { toast('El espesor y el volumen deben ser mayores a cero'); return; }
+
+    lastResultado = {
+      m2: m2, m3: m3, esp: esp,
+      macrofibra_kg: m3 * 2.5, macrofibra_bolsas: Math.ceil(m3 * 2.5 / 5),
+      microfibra_kg: m3 * 0.6, microfibra_bolsas: Math.ceil(m3 * 0.6 / 0.6),
+      dur_kg: m2 * 2, dur_bolsas: Math.ceil(m2 * 2 / 25),
+      one_litros: m2 / 15, scudo_litros: m2 * 0.15,
+      junta_min_m: (esp / 100) * 24, junta_max_m: (esp / 100) * 30, junta_prof_cm: esp / 4,
+      juntas_cartuchos: chk('m_juntas') ? Math.ceil((2 * m2 / ((esp / 100) * 27)) / 10) : 0,
+      usaMacrofibra: chk('m_macrofibra'), usaMicrofibra: chk('m_microfibra'),
+      usaDur: chk('m_dur'), usaJuntas: chk('m_juntas')
+    };
+    nav('resultadosMateriales');
+  }
+
+  // ── Tarjetas de resultado ────────────────────────────────────────
+  var resIdx = 0;
+
+  function resultCard(titulo, valor, infoKey) {
+    resIdx++;
+    var lineas = String(valor).split('\n');
+    var sub = lineas.slice(1).filter(function (l) { return l !== ''; })
+      .map(function (l) { return '<div class="cl-res-s">' + l + '</div>'; }).join('');
+    return '<div class="cl-res">' +
+      '<div class="cl-res-n">' + (resIdx < 10 ? '0' : '') + resIdx + '</div>' +
+      '<div class="cl-res-t">' + titulo + '</div>' +
+      '<div class="cl-res-v">' + lineas[0] + '</div>' + sub +
+      (infoKey ? infoBtn(infoKey) : '') +
+    '</div>';
+  }
+
+  function chip(k, v, u) {
+    return '<div class="cl-chip"><div class="k">' + k + '</div>' +
+      '<div class="v">' + v + (u ? '<small>' + u + '</small>' : '') + '</div></div>';
+  }
+
+  function bidones(litros) {
+    return 'Bidón 5 L: ' + Math.ceil(litros / 5) + 'u · Balde 10 L: ' + Math.ceil(litros / 10) +
+      'u · Balde 20 L: ' + Math.ceil(litros / 20) + 'u';
+  }
+
+  function resActs(volverA) {
+    return '<div class="cl-acts">' +
+      '<button class="cl-btn cl-btn-p" type="button" data-act="wa">Pedir presupuesto' +
+        '<svg viewBox="0 0 18 18" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9c0 1.32.36 2.56.98 3.63L1.5 16.5l3.97-.97A7.47 7.47 0 009 16.5c4.14 0 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5zm0 13.5c-1.13 0-2.2-.3-3.12-.82l-.22-.13-2.36.58.6-2.3-.14-.23A6 6 0 019 3a6 6 0 010 12z" fill="currentColor"></path></svg>' +
+      '</button>' +
+      '<button class="cl-btn cl-btn-g" type="button" data-nav="' + volverA + '">Recalcular</button>' +
+      '<button class="cl-btn cl-btn-g" type="button" data-act="print">Imprimir / PDF</button>' +
+      '<button class="cl-btn cl-btn-g" type="button" data-nav="menu">Volver al menú</button>' +
+    '</div>';
+  }
+
+  function renderResultadosMateriales() {
+    var r = lastResultado;
+    resIdx = 0;
+    var cards = resultCard('Nylon negro 200 micrones', num(r.m2, 1) + ' m²', 'nylon');
+    if (r.usaMacrofibra) cards += resultCard('Macrofibra Concret Fibra',
+      num(r.macrofibra_kg, 1) + ' kg\n' + r.macrofibra_bolsas + ' bolsa(s) de 5 kg', 'macrofibra');
+    if (r.usaMicrofibra) cards += resultCard('Microfibra',
+      num(r.microfibra_kg, 1) + ' kg\n' + r.microfibra_bolsas + ' bolsa(s) de 600 g', 'microfibra');
+    if (r.usaDur) cards += resultCard('Concret Dur 100',
+      num(r.dur_kg, 1) + ' kg\n' + r.dur_bolsas + ' bolsa(s) de 25 kg', 'dur');
+    cards += resultCard('Concret One · llaneado',
+      Math.round(r.one_litros) + ' litros\n' + bidones(r.one_litros), 'one');
+    cards += resultCard('Concret Scudo · curado',
+      Math.round(r.scudo_litros) + ' litros\n' + bidones(r.scudo_litros), 'scudo');
+    if (r.usaJuntas) {
+      cards += resultCard('Cuadrícula de juntas',
+        'Cortes cada ' + num(r.junta_min_m, 1) + ' – ' + num(r.junta_max_m, 1) + ' m\n' +
+        'Profundidad de corte: ' + num(r.junta_prof_cm, 1) + ' cm\n' +
+        'Momento de corte: entre 6 y 24 h del colado\n' +
+        'Cortá siempre en esquinas y junto a columnas o muros', 'juntas');
+      if (r.juntas_cartuchos > 0) cards += resultCard('Sellador poliuretano',
+        r.juntas_cartuchos + ' cartucho(s)\nCartuchos de 600 ml', 'juntas');
+    }
+
+    app.innerHTML =
+      bar('Módulo 01 · Resultado', 'Materiales necesarios', 'materiales', '01') +
+      '<div class="cl-chips">' +
+        chip('Superficie', num(r.m2, 1), 'm²') +
+        chip('Espesor', num(r.esp, 1), 'cm') +
+        chip('Volumen', num(r.m3, 2), 'm³') +
+      '</div>' +
+      '<div class="cl-sec-h">Materiales de obra</div>' +
+      '<div class="cl-res-grid">' + cards + '</div>' +
+      resActs('materiales') +
+      '<p class="cl-note">Cantidades orientativas según ficha técnica. No incluyen desperdicio de obra ni solapes: sumá un margen del 5 al 10 % para cortes, empalmes y absorción del sustrato.</p>';
+  }
+
+  // ── PROTECCIÓN (Sistema 3 Pasos) ─────────────────────────────────
+  function renderProteccion() {
+    app.innerHTML =
+      bar('Módulo 02', 'Sistema 3 Pasos', 'menu', '02') +
+      '<div class="cl-grid cl-grid--duo">' +
+
+        '<div class="cl-panel">' +
+          panelH('01', 'Superficie a tratar') +
+          '<label class="cl-lbl" for="p_m2">Metros cuadrados del piso</label>' +
+          '<div class="cl-inp-w"><input type="number" id="p_m2" placeholder="Ej: 100" inputmode="decimal" min="0"><span class="u">m²</span></div>' +
+          '<p class="cl-note" style="margin-top:1.2rem">El sistema completo entrega 25 años de garantía extensibles de por vida con el mantenimiento correspondiente.</p>' +
+        '</div>' +
+
+        '<div class="cl-panel">' +
+          panelH('02', 'Productos del sistema') +
+          opcion('p_sodium', 'Paso 1 — Concret Sodium', 'sodium') +
+          opcion('p_lock', 'Paso 2 — Concret Lock', 'lock') +
+          opcion('p_finish', 'Paso 3 — Concret Finish', 'finish') +
+        '</div>' +
+
+      '</div>' +
+      acts('Calcular materiales', 'calcProteccion', 'Volver al menú', 'menu');
+  }
+
+  function calcularProteccion() {
+    var m2 = val('p_m2');
+    if (m2 === null || m2 <= 0) { toast('Ingresá los metros cuadrados'); return; }
+    if (!chk('p_sodium') && !chk('p_lock') && !chk('p_finish')) { toast('Seleccioná al menos un producto'); return; }
+    lastResultado = {
+      m2: m2, sodium_litros: m2 / 10, lock_litros: m2 / 15, finish_litros: m2 / 15,
+      usaSodium: chk('p_sodium'), usaLock: chk('p_lock'), usaFinish: chk('p_finish')
+    };
+    nav('resultadosProteccion');
+  }
+
+  function renderResultadosProteccion() {
+    var r = lastResultado;
+    resIdx = 0;
+    var cards = '';
+    if (r.usaSodium) cards += resultCard('Paso 1 · Concret Sodium',
+      Math.round(r.sodium_litros) + ' litros\n' + bidones(r.sodium_litros), 'sodium');
+    if (r.usaLock) cards += resultCard('Paso 2 · Concret Lock',
+      Math.round(r.lock_litros) + ' litros\n' + bidones(r.lock_litros), 'lock');
+    if (r.usaFinish) cards += resultCard('Paso 3 · Concret Finish',
+      Math.round(r.finish_litros) + ' litros\n' + bidones(r.finish_litros), 'finish');
+
+    app.innerHTML =
+      bar('Módulo 02 · Resultado', 'Materiales necesarios', 'proteccion', '02') +
+      '<div class="cl-chips">' + chip('Superficie', num(r.m2, 1), 'm²') + '</div>' +
+      '<div class="cl-sec-h">Productos del sistema</div>' +
+      '<div class="cl-res-grid">' + cards + '</div>' +
+      resActs('proteccion') +
+      '<p class="cl-note">Rendimientos de ficha técnica sobre hormigón pulido y limpio. En pisos muy porosos o con desgaste, el consumo del densificador puede aumentar hasta un 20 %.</p>';
+  }
+
+  // ── REPARACIÓN (Fix + MicroStrong) ───────────────────────────────
+  function renderReparacion() {
+    app.innerHTML =
+      bar('Módulo 03', 'Reparación de superficies', 'menu', '03') +
+      '<div class="cl-grid cl-grid--duo">' +
+
+        '<div class="cl-panel">' +
+          panelH('01', 'Concret Fix · grouting') +
+          opcion('r_fix', 'Usar Concret Fix', 'fix') +
+          '<div class="cl-sub" id="fixFields" style="display:none">' +
+            '<label class="cl-lbl" for="r_fix_area">Área a reparar</label>' +
+            '<div class="cl-inp-w"><input type="number" id="r_fix_area" placeholder="Ej: 5" inputmode="decimal" min="0"><span class="u">m²</span></div>' +
+            '<label class="cl-lbl" for="r_fix_prof">Profundidad de relleno</label>' +
+            '<div class="cl-inp-w"><input type="number" id="r_fix_prof" placeholder="Ej: 15" inputmode="decimal" min="0"><span class="u">mm</span></div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="cl-panel">' +
+          panelH('02', 'Concret MicroStrong · mortero') +
+          opcion('r_ms', 'Usar MicroStrong', 'microstrong') +
+          '<div class="cl-sub" id="msFields" style="display:none">' +
+            '<label class="cl-lbl" for="r_ms_area">Área</label>' +
+            '<div class="cl-inp-w"><input type="number" id="r_ms_area" placeholder="Ej: 20" inputmode="decimal" min="0"><span class="u">m²</span></div>' +
+            '<label class="cl-lbl" for="r_ms_esp">Espesor</label>' +
+            '<div class="cl-inp-w"><input type="number" id="r_ms_esp" placeholder="Ej: 3" inputmode="decimal" min="0"><span class="u">mm</span></div>' +
+          '</div>' +
+        '</div>' +
+
+      '</div>' +
+      acts('Calcular materiales', 'calcReparacion', 'Volver al menú', 'menu');
+
+    document.getElementById('r_fix').addEventListener('change', function (e) {
+      document.getElementById('fixFields').style.display = e.target.checked ? 'block' : 'none';
+    });
+    document.getElementById('r_ms').addEventListener('change', function (e) {
+      document.getElementById('msFields').style.display = e.target.checked ? 'block' : 'none';
+    });
+  }
+
+  function calcularReparacion() {
+    var usaFix = chk('r_fix'), usaMicroStrong = chk('r_ms');
+    if (!usaFix && !usaMicroStrong) { toast('Seleccioná al menos un producto'); return; }
+
+    var r = { usaFix: usaFix, usaMicroStrong: usaMicroStrong };
+
+    if (usaFix) {
+      var areaF = val('r_fix_area'), prof = val('r_fix_prof');
+      if (areaF === null || prof === null) { toast('Completá área y profundidad para Concret Fix'); return; }
+      var litros = areaF * prof; // 1 m² x 1 mm = 1 L
+      r.fix_litros = Math.round(litros);
+      r.fix_bolsas25 = Math.ceil(litros / 15); // rinde 15 L por bolsa de 25 kg
+    }
+    if (usaMicroStrong) {
+      var areaM = val('r_ms_area'), esp = val('r_ms_esp');
+      if (areaM === null || esp === null) { toast('Completá área y espesor para MicroStrong'); return; }
+      // Rendimiento promedio entre Fino (1,9) y Grueso (2,1) kg/m² por mm.
+      var kg = areaM * esp * 2.0;
+      r.ms_kg = Math.round(kg);
+      r.ms_bolsas10 = Math.ceil(kg / 10);
+    }
+
+    lastResultado = r;
+    nav('resultadosReparacion');
+  }
+
+  function renderResultadosReparacion() {
+    var r = lastResultado;
+    resIdx = 0;
+    var cards = '';
+    if (r.usaFix) cards += resultCard('Concret Fix · grouting',
+      r.fix_litros + ' L a rellenar\n' + r.fix_bolsas25 + ' bolsa(s) de 25 kg', 'fix');
+    if (r.usaMicroStrong) cards += resultCard('Concret MicroStrong · mortero',
+      r.ms_kg + ' kg\n' + r.ms_bolsas10 + ' bolsa(s) de 10 kg', 'microstrong');
+
+    app.innerHTML =
+      bar('Módulo 03 · Resultado', 'Materiales de reparación', 'reparacion', '03') +
+      '<div class="cl-sec-h">Productos de reparación</div>' +
+      '<div class="cl-res-grid">' + cards + '</div>' +
+      resActs('reparacion') +
+      '<p class="cl-note">El rendimiento de MicroStrong se calcula con el promedio entre la versión Fina (1,9 kg/m² por mm) y la Gruesa (2,1 kg/m² por mm). Consultá la ficha para elegir la versión según el espesor.</p>';
+  }
+
+  // ── Presupuesto por WhatsApp ─────────────────────────────────────
+  function pedirPresupuesto() {
+    var titulo = app.querySelector('.cl-bar-t');
+    var lineas = ['Hola NewConcret, calculé mis materiales en la web y necesito un presupuesto.'];
+    lineas.push('');
+    lineas.push((titulo ? titulo.textContent : 'Cálculo') + ':');
+
+    app.querySelectorAll('.cl-chip').forEach(function (c) {
+      lineas.push('· ' + c.querySelector('.k').textContent + ': ' + c.querySelector('.v').textContent.trim());
+    });
+    lineas.push('');
+
+    app.querySelectorAll('.cl-res').forEach(function (c) {
+      var t = c.querySelector('.cl-res-t').textContent;
+      var v = c.querySelector('.cl-res-v').textContent;
+      var subs = [].map.call(c.querySelectorAll('.cl-res-s'), function (s) { return s.textContent; });
+      lineas.push('· ' + t + ': ' + v + (subs.length ? ' (' + subs.join(' · ') + ')' : ''));
+    });
+
+    window.open('https://wa.me/5492342464082?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
+  }
+
+  // ── Delegación de eventos ────────────────────────────────────────
+  app.addEventListener('click', function (e) {
+    var navBtn = e.target.closest('[data-nav]');
+    if (navBtn) { nav(navBtn.getAttribute('data-nav')); return; }
+
+    var infoEl = e.target.closest('[data-info]');
+    if (infoEl) { showInfo(infoEl.getAttribute('data-info')); return; }
+
+    var actEl = e.target.closest('[data-act]');
+    if (!actEl) return;
+    var act = actEl.getAttribute('data-act');
+    if (act === 'calcMateriales') calcularMateriales();
+    else if (act === 'calcProteccion') calcularProteccion();
+    else if (act === 'calcReparacion') calcularReparacion();
+    else if (act === 'wa') pedirPresupuesto();
+    else if (act === 'print') window.print();
+  });
+
+  render();
+  firstRender = false;
+
+  // ── Reveal on scroll ─────────────────────────────────────────────
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.cl-reveal').forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
