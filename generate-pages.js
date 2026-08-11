@@ -985,11 +985,60 @@ ${JS}
 
 /* ──────────────────────────────────────
    GENERATE ALL PAGES
+
+   ⚠ Este generador quedó desfasado de las páginas publicadas. Las 54
+   páginas del repo tienen tres bloques que este script NO produce:
+
+     · el bloque seo:start/seo:end (canonical, OpenGraph, JSON-LD) que
+       inyecta scripts/seo.js
+     · el filtro y el orden en mobile (.custom-select-*)
+     · la sección de CTA final (.cta-nos)
+
+   Su salida pesa la mitad que la página publicada. Correrlo sin más
+   borraría esos bloques en las 54, así que por defecto no sobrescribe
+   ninguna página que tenga contenido que él no sabe reproducir: informa
+   qué encontró y sale.
+
+   Para sobrescribir igual:  node generate-pages.js --force
+   (después de un --force hay que correr `npm run seo`)
 ────────────────────────────────────── */
+const FORCE = process.argv.includes('--force');
+
+// Marcadores de contenido que el generador no produce. Si una página ya
+// publicada tiene alguno, regenerarla lo perdería.
+const BLOQUES_PROPIOS_DE_LA_PAGINA = [
+  ['seo:start',             'bloque SEO (canonical/OG/JSON-LD)'],
+  ['custom-select-trigger', 'filtro y orden en mobile'],
+  ['cta-nos',               'sección de CTA final']
+];
+
+let escritas = 0;
+const preservadas = [];
+
 PAGES.forEach(p => {
-  const fullPath = path.join('c:/newconcret-2.0', p.file);
+  const fullPath = path.join(__dirname, p.file);
+
+  if (!FORCE && fs.existsSync(fullPath)) {
+    const actual = fs.readFileSync(fullPath, 'utf8');
+    const perderia = BLOQUES_PROPIOS_DE_LA_PAGINA
+      .filter(([marca]) => actual.includes(marca))
+      .map(([, nombre]) => nombre);
+    if (perderia.length) { preservadas.push([p.file, perderia]); return; }
+  }
+
   fs.mkdirSync(path.dirname(fullPath), { recursive: true });
   fs.writeFileSync(fullPath, buildPage(p), 'utf8');
-  console.log('✓ Generated:', p.file, '(' + fs.statSync(fullPath).size + ' bytes)');
+  escritas++;
+  console.log('✓ Generada:', p.file, '(' + fs.statSync(fullPath).size + ' bytes)');
 });
-console.log('\nDone! ' + PAGES.length + ' pages generated.');
+
+if (preservadas.length) {
+  const cuenta = {};
+  preservadas.forEach(([, nombres]) => nombres.forEach(n => { cuenta[n] = (cuenta[n] || 0) + 1; }));
+  console.log('\n⚠ ' + preservadas.length + ' páginas NO se tocaron: tienen contenido que este generador no produce.');
+  Object.keys(cuenta).forEach(n => console.log('   · ' + n + ': ' + cuenta[n] + ' páginas'));
+  console.log('\n   Para regenerarlas igual y perder esos bloques: node generate-pages.js --force');
+  console.log('   Después de un --force es obligatorio correr: npm run seo');
+}
+
+console.log('\nListo. ' + escritas + ' páginas escritas, ' + preservadas.length + ' preservadas.');
