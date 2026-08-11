@@ -52,25 +52,16 @@
   .cl-btn-wa { background: transparent; color: var(--nc-white); border: 1px solid var(--nc-steel-2); font-weight: 600; font-size: .72rem; letter-spacing: .16em; padding: .95rem 1.5rem; }
   .cl-btn-wa:hover { border-color: var(--nc-red); color: #fff; background: rgba(193,18,31,.12); }
 
-  /* ═══ HERO ═══ */
-  .cl-hero { position: relative; overflow: hidden; padding: clamp(8rem, 16vh, 11rem) 0 clamp(2.5rem, 5vw, 4rem); }
-  .cl-hero-bg { position: absolute; inset: 0; z-index: 0; }
-  .cl-hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.3) saturate(.5); }
-  .cl-hero-ov { position: absolute; inset: 0; z-index: 1;
-    background:
-      linear-gradient(to right, rgba(10,10,10,.96) 0%, rgba(10,10,10,.72) 55%, rgba(10,10,10,.35) 100%),
-      linear-gradient(to top, var(--nc-black) 0%, rgba(10,10,10,.2) 60%); }
-  .cl-hero-in { position: relative; z-index: 2; }
-  .cl-hero-h1 { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.7rem, 7vw, 5.4rem); line-height: .9; letter-spacing: -.015em; text-transform: uppercase; color: var(--nc-white); margin: 1.2rem 0 1.3rem; }
-  .cl-hero-h1 .red { color: var(--nc-red-hot); }
-  .cl-hero-p { max-width: 640px; font-size: 1.02rem; line-height: 1.65; color: var(--nc-ash); font-weight: 300; }
-  .cl-hero-meta { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2.4rem; padding-top: 1.8rem; border-top: 1px solid var(--nc-steel); }
-  .cl-hero-meta div { display: flex; flex-direction: column; gap: .35rem; }
-  .cl-hero-meta .k { font-family: var(--font-m); font-size: .58rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-mid); }
-  .cl-hero-meta .v { font-family: var(--font-d); font-weight: 700; font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase; color: var(--nc-white); }
-
   /* ═══ HERRAMIENTA ═══ */
-  .cl-tool { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(4rem, 9vw, 7rem); scroll-margin-top: 80px; }
+  /* Sin hero: la página arranca directamente en la calculadora. */
+  .cl-tool { padding: calc(68px + clamp(1.6rem, 4vw, 2.8rem)) 0 clamp(4rem, 9vw, 7rem); scroll-margin-top: 80px; }
+  @media (max-width: 900px) { .cl-tool { padding-top: calc(66px + 1.4rem); } }
+
+  /* Encabezado compacto del menú */
+  .cl-mast { padding-bottom: 1.6rem; margin-bottom: 2rem; border-bottom: 1px solid var(--nc-steel); }
+  .cl-mast-h1 { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: .95; letter-spacing: -.015em; text-transform: uppercase; color: var(--nc-white); margin: .8rem 0 0; }
+  .cl-mast-h1 .red { color: var(--nc-red-hot); }
+  .cl-mast-p { max-width: 640px; margin-top: .9rem; font-size: .96rem; line-height: 1.6; color: var(--nc-light); font-weight: 400; }
 
   /* Barra de módulo (sticky) */
   .cl-bar { display: flex; align-items: center; gap: 1rem; padding: 1rem 0 1.1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--nc-steel); position: sticky; top: 68px; z-index: 40; background: var(--nc-black); }
@@ -79,7 +70,7 @@
   .cl-bar-txt { min-width: 0; }
   .cl-bar-k { font-family: var(--font-m); font-size: .58rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-red-hot); }
   .cl-bar-t { font-family: var(--font-d); font-weight: 900; font-size: clamp(1.3rem, 3vw, 1.9rem); text-transform: uppercase; letter-spacing: -.01em; line-height: 1.1; margin-top: .2rem; }
-  .cl-bar-n { margin-left: auto; font-family: var(--font-d); font-weight: 900; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--nc-steel-2); letter-spacing: .02em; }
+  .cl-bar-n { margin-left: auto; font-family: var(--font-d); font-weight: 900; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--nc-mid); letter-spacing: .02em; }
 
   /* Módulos del menú */
   .cl-mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
@@ -91,10 +82,10 @@
   .cl-mod-ico { width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--nc-steel-2); color: var(--nc-red-hot); transition: .3s; }
   .cl-mod-ico svg { width: 24px; height: 24px; }
   .cl-mod:hover .cl-mod-ico { border-color: var(--nc-red); background: rgba(193,18,31,.1); }
-  .cl-mod-n { font-family: var(--font-d); font-weight: 900; font-size: 1.5rem; color: var(--nc-steel-2); transition: color .3s; }
-  .cl-mod:hover .cl-mod-n { color: var(--nc-mid); }
+  .cl-mod-n { font-family: var(--font-d); font-weight: 900; font-size: 1.5rem; color: var(--nc-mid); transition: color .3s; }
+  .cl-mod:hover .cl-mod-n { color: var(--nc-ash); }
   .cl-mod-t { font-family: var(--font-d); font-weight: 700; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .01em; line-height: 1.1; }
-  .cl-mod-d { font-size: .88rem; line-height: 1.6; color: var(--nc-ash); font-weight: 300; margin-top: .6rem; }
+  .cl-mod-d { font-size: .9rem; line-height: 1.6; color: var(--nc-light); font-weight: 400; margin-top: .6rem; }
   .cl-mod-go { display: inline-flex; align-items: center; gap: .6rem; margin-top: auto; padding-top: 1.2rem; font-family: var(--font-d); font-weight: 700; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-light); }
   .cl-mod-go svg { width: 13px; height: 13px; transition: transform .3s var(--expo); }
   .cl-mod:hover .cl-mod-go { color: var(--nc-red-hot); }
@@ -113,29 +104,29 @@
   .cl-panel-h span { font-family: var(--font-d); font-weight: 700; font-size: .9rem; letter-spacing: .16em; text-transform: uppercase; color: var(--nc-white); }
 
   /* Campos */
-  .cl-lbl { display: block; font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-ash); margin-bottom: .55rem; }
+  .cl-lbl { display: block; font-family: var(--font-m); font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-light); margin-bottom: .55rem; }
   .cl-inp-w { position: relative; margin-bottom: 1.1rem; }
   .cl-inp-w:last-child { margin-bottom: 0; }
-  .cl-inp-w input { width: 100%; background: var(--nc-black); color: var(--nc-white); border: 1px solid var(--nc-steel-2); padding: .95rem 4.2rem .95rem 1rem; font-family: var(--font-m); font-size: 1.05rem; font-weight: 500; letter-spacing: .01em; outline: none; transition: border-color .2s, background .2s; -moz-appearance: textfield; }
+  .cl-inp-w input { width: 100%; background: var(--nc-black); color: #fff; border: 1px solid var(--nc-steel-2); padding: .95rem 4.4rem .95rem 1rem; font-family: var(--font-m); font-size: 1.15rem; font-weight: 500; letter-spacing: .01em; outline: none; transition: border-color .2s, background .2s; -moz-appearance: textfield; }
   .cl-inp-w input::-webkit-outer-spin-button, .cl-inp-w input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-  .cl-inp-w input::placeholder { color: var(--nc-mid); font-weight: 400; }
+  .cl-inp-w input::placeholder { color: #6E6E6E; font-weight: 400; }
   .cl-inp-w input:focus { border-color: var(--nc-red); background: #0d0d0d; }
-  .cl-inp-w .u { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-family: var(--font-m); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-mid); pointer-events: none; }
+  .cl-inp-w .u { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-family: var(--font-m); font-size: .74rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--nc-light); pointer-events: none; }
 
   /* Bloque excluyente espesor / m³ */
   .cl-excl { border: 1px solid var(--nc-steel); background: rgba(0,0,0,.35); padding: 1.2rem; margin-top: 1.4rem; }
   .cl-excl-h { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; flex-wrap: wrap; margin-bottom: 1rem; }
   .cl-excl-h .t { font-family: var(--font-d); font-weight: 700; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-white); }
-  .cl-excl-h .h { font-size: .74rem; color: var(--nc-mid); font-weight: 300; }
+  .cl-excl-h .h { font-size: .78rem; color: var(--nc-ash); font-weight: 400; }
   .cl-excl-row { display: flex; align-items: stretch; gap: .9rem; }
   .cl-excl-c { flex: 1; min-width: 0; }
   .cl-excl-c .cap { display: flex; align-items: center; gap: .5rem; min-height: 20px; margin-bottom: .55rem; }
-  .cl-excl-c .cap .n { font-family: var(--font-m); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--nc-ash); }
+  .cl-excl-c .cap .n { font-family: var(--font-m); font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-light); }
   .cl-excl-c .cl-inp-w { margin-bottom: 0; }
   .cl-auto { display: none; font-family: var(--font-m); font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: var(--nc-red-hot); border: 1px solid rgba(193,18,31,.45); padding: .15rem .4rem; }
   .cl-excl-c.is-auto .cl-auto { display: inline-block; }
   .cl-excl-c.is-auto input { background: rgba(193,18,31,.08); border-color: rgba(193,18,31,.35); color: var(--nc-white); cursor: default; }
-  .cl-excl-or { align-self: center; flex: none; width: 34px; height: 34px; margin-top: 1.6rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: .62rem; letter-spacing: .12em; color: var(--nc-mid); border: 1px solid var(--nc-steel); }
+  .cl-excl-or { align-self: center; flex: none; width: 34px; height: 34px; margin-top: 1.6rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: .68rem; letter-spacing: .12em; color: var(--nc-light); border: 1px solid var(--nc-steel-2); }
   .cl-excl-note { display: none; align-items: center; gap: .5rem; margin-top: .9rem; font-size: .78rem; color: #E8A33D; font-weight: 300; }
   .cl-excl-note.show { display: flex; }
 
@@ -149,7 +140,7 @@
   .cl-opt input[type=checkbox]:checked { background: var(--nc-red); border-color: var(--nc-red); }
   .cl-opt input[type=checkbox]:checked::after { content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
   .cl-opt-t { font-family: var(--font-d); font-weight: 700; font-size: .95rem; letter-spacing: .05em; text-transform: uppercase; }
-  .cl-info { flex: none; background: none; border: none; color: var(--nc-mid); font-family: var(--font-m); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; padding: .4rem .5rem; display: inline-flex; align-items: center; gap: .35rem; transition: color .2s; }
+  .cl-info { flex: none; background: none; border: none; color: var(--nc-light); font-family: var(--font-m); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; padding: .4rem .5rem; display: inline-flex; align-items: center; gap: .35rem; transition: color .2s; }
   .cl-info svg { width: 13px; height: 13px; }
   .cl-info:hover { color: var(--nc-red-hot); }
 
@@ -157,26 +148,32 @@
 
   /* Acciones */
   .cl-acts { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.8rem; }
-  .cl-note { font-size: .78rem; color: var(--nc-mid); font-weight: 300; line-height: 1.6; margin-top: 1.4rem; max-width: 720px; }
+  .cl-note { font-size: .82rem; color: var(--nc-ash); font-weight: 400; line-height: 1.65; margin-top: 1.4rem; max-width: 720px; }
 
   /* Resumen */
   .cl-chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); margin-bottom: 2rem; }
   .cl-chip { background: var(--nc-dark); padding: 1.2rem 1.3rem; }
-  .cl-chip .k { font-family: var(--font-m); font-size: .58rem; letter-spacing: .24em; text-transform: uppercase; color: var(--nc-mid); }
-  .cl-chip .v { font-family: var(--font-d); font-weight: 900; font-size: 1.9rem; line-height: 1.1; margin-top: .35rem; letter-spacing: -.01em; }
-  .cl-chip .v small { font-family: var(--font-m); font-weight: 500; font-size: .72rem; color: var(--nc-ash); margin-left: .3rem; letter-spacing: .1em; text-transform: uppercase; }
+  .cl-chip .k { font-family: var(--font-m); font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--nc-light); }
+  .cl-chip .v { font-family: var(--font-d); font-weight: 900; font-size: 1.9rem; line-height: 1.1; margin-top: .35rem; letter-spacing: -.01em; color: #fff; }
+  .cl-chip .v small { font-family: var(--font-m); font-weight: 500; font-size: .76rem; color: var(--nc-light); margin-left: .3rem; letter-spacing: .1em; text-transform: uppercase; }
 
   /* Resultados */
-  .cl-sec-h { display: flex; align-items: center; gap: .85rem; font-family: var(--font-m); font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; color: var(--nc-ash); margin: 0 0 1.2rem; }
+  .cl-sec-h { display: flex; align-items: center; gap: .85rem; font-family: var(--font-m); font-size: .64rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-light); margin: 0 0 1.2rem; }
   .cl-sec-h::before { content: ''; width: 22px; height: 1px; background: var(--nc-red); }
   .cl-res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
   .cl-res { position: relative; background: var(--nc-dark); padding: 1.8rem 1.7rem; display: flex; flex-direction: column; }
   .cl-res::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--nc-red); }
-  .cl-res-n { font-family: var(--font-m); font-size: .58rem; letter-spacing: .24em; color: var(--nc-mid); margin-bottom: .5rem; }
-  .cl-res-t { font-family: var(--font-d); font-weight: 700; font-size: .92rem; letter-spacing: .14em; text-transform: uppercase; color: var(--nc-light); margin-bottom: .9rem; }
-  .cl-res-v { font-family: var(--font-d); font-weight: 900; font-size: 1.75rem; line-height: 1.15; letter-spacing: -.01em; color: var(--nc-white); }
-  .cl-res-s { font-size: .84rem; line-height: 1.65; color: var(--nc-ash); font-weight: 300; margin-top: .45rem; }
-  .cl-res .cl-info { align-self: flex-start; margin: 1rem 0 0 -.5rem; }
+  .cl-res-n { font-family: var(--font-m); font-size: .62rem; letter-spacing: .22em; color: var(--nc-ash); margin-bottom: .5rem; }
+  .cl-res-t { font-family: var(--font-d); font-weight: 700; font-size: .95rem; letter-spacing: .13em; text-transform: uppercase; color: #fff; margin-bottom: .9rem; }
+  .cl-res-v { font-family: var(--font-d); font-weight: 900; font-size: 1.85rem; line-height: 1.15; letter-spacing: -.01em; color: #fff; }
+  .cl-res-s { font-size: .9rem; line-height: 1.6; color: var(--nc-light); font-weight: 400; margin-top: .5rem; }
+  .cl-res-acts { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: auto; padding-top: 1.4rem; }
+  .cl-res-buy { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: .55rem; background: var(--nc-red); color: #fff; font-family: var(--font-d); font-weight: 700; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; padding: .75rem 1.15rem; clip-path: polygon(0 0, 100% 0, 100% 68%, 91% 100%, 0 100%); transition: background .2s, transform .2s; }
+  .cl-res-buy svg { width: 14px; height: 14px; flex: none; }
+  .cl-res-buy::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transition: left .5s; }
+  .cl-res-buy:hover::before { left: 100%; }
+  .cl-res-buy:hover { background: var(--nc-red-hot); transform: translateY(-2px); }
+  .cl-res .cl-info { margin: 0; }
 
   /* Modal ficha técnica */
   .cl-modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.82); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 9000; padding: 1.25rem; }
@@ -186,7 +183,7 @@
   .cl-modal-h span { font-family: var(--font-m); font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-red-hot); }
   .cl-modal-x { background: none; border: 1px solid var(--nc-steel-2); color: var(--nc-light); font-family: var(--font-d); font-weight: 700; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; padding: .5rem .9rem; transition: .2s; }
   .cl-modal-x:hover { border-color: var(--nc-red); color: #fff; }
-  .cl-modal pre { white-space: pre-wrap; font-family: var(--font-b); font-size: .9rem; line-height: 1.75; color: var(--nc-light); margin: 0; padding: 1.5rem 1.4rem; font-weight: 300; }
+  .cl-modal pre { white-space: pre-wrap; font-family: var(--font-b); font-size: .93rem; line-height: 1.75; color: var(--nc-light); margin: 0; padding: 1.5rem 1.4rem; font-weight: 400; }
 
   /* Toast */
   .cl-toast { position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(12px); background: var(--nc-carbon); border: 1px solid var(--nc-steel-2); border-left: 2px solid var(--nc-red); color: var(--nc-white); padding: .95rem 1.3rem; font-size: .85rem; font-weight: 300; z-index: 9500; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: 88vw; text-align: center; }
@@ -213,7 +210,7 @@
   /* Impresión: sólo el resultado */
   @media print {
     .nav, .mob-nav-bar, .mob-progress, .footer, #nav-placeholder, #footer-placeholder,
-    .cl-hero, .cl-cta, .cl-acts, .cl-info, #cur, #ring, .cl-bar-back { display: none !important; }
+    .cl-cta, .cl-acts, .cl-res-acts, .cl-info, #cur, #ring, .cl-bar-back { display: none !important; }
     body, .cl-panel, .cl-res, .cl-chip { background: #fff !important; color: #000 !important; }
     .cl-res-v, .cl-chip .v, .cl-bar-t { color: #000 !important; }
     .cl-res-s, .cl-res-t, .cl-chip .k { color: #444 !important; }
@@ -228,11 +225,11 @@
     <meta property="og:title" content="Calculadora de materiales para pisos de hormigón — NewConcret">
     <meta property="og:description" content="Calculá en segundos los materiales de tu obra de hormigón: nylon, macrofibra, microfibra, endurecedor, curador, juntas, Sistema 3 Pasos y productos de reparación. Herramienta técnica gratuita de NewConcret.">
     <meta property="og:url" content="https://newconcret.com/calculadora/">
-    <meta property="og:image" content="https://newconcret.com/assets/img/hero/construccion.webp">
+    <meta property="og:image" content="https://newconcret.com/assets/img/hero/productos.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Calculadora de materiales para pisos de hormigón — NewConcret">
     <meta name="twitter:description" content="Calculá en segundos los materiales de tu obra de hormigón: nylon, macrofibra, microfibra, endurecedor, curador, juntas, Sistema 3 Pasos y productos de reparación. Herramienta técnica gratuita de NewConcret.">
-    <meta name="twitter:image" content="https://newconcret.com/assets/img/hero/construccion.webp">
+    <meta name="twitter:image" content="https://newconcret.com/assets/img/hero/productos.webp">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -276,26 +273,6 @@
 
 <div id="nav-placeholder"></div>
 
-<!-- ═══════════ HERO ═══════════ -->
-<section class="cl-hero">
-  <div class="cl-hero-bg">
-    <img src="../assets/img/hero/construccion.webp" alt="Colado y llaneado de un piso de hormigón" loading="eager">
-  </div>
-  <div class="cl-hero-ov"></div>
-
-  <div class="cl-hero-in cl-wrap">
-    <div class="cl-eyebrow cl-reveal">Herramienta técnica</div>
-    <h1 class="cl-hero-h1 cl-reveal" style="--i:1">Calculadora<br><span class="red">de materiales</span></h1>
-    <p class="cl-hero-p cl-reveal" style="--i:2">Cargá los metros de tu obra y obtené al instante las cantidades exactas de nylon, fibras, endurecedor, curador, selladores y morteros. Los mismos rendimientos que usamos en obra, según ficha técnica de cada producto.</p>
-
-    <div class="cl-hero-meta cl-reveal" style="--i:3">
-      <div><span class="k">Módulos</span><span class="v">03 Etapas</span></div>
-      <div><span class="k">Base de cálculo</span><span class="v">Ficha técnica</span></div>
-      <div><span class="k">Costo</span><span class="v">Sin cargo</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══════════ HERRAMIENTA ═══════════ -->
 <section class="cl-tool" id="calculadora">
   <div class="cl-wrap">
@@ -333,6 +310,7 @@
 
 <div class="cl-toast" id="clToast"></div>
 
+<script src="../assets/data/productos.js?v=3.0"></script>
 <script src="../assets/js/layout.js?v=3.5"></script>
 <script src="../assets/js/main.js?v=3.0"></script>
 <script src="../assets/js/nav.js?v=3.0"></script>
@@ -477,6 +455,44 @@ Presentación: bolsas x 10 y 25 kg`
     return '<button class="cl-info" type="button" data-info="' + key + '">' + ICO_INFO + 'Ficha</button>';
   }
 
+  // ── Enlace a la tienda ───────────────────────────────────────────
+  // El SKU es la clave; la URL sale de assets/data/productos.js, que es
+  // la única fuente de verdad. Si el producto no está o no tiene tienda
+  // cargada, la tarjeta simplemente no muestra el botón.
+  var STORE_SKU = {
+    nylon: 'NYLONNEGRO',
+    macrofibra: 'CONCRETFIBRA',
+    microfibra: 'CONCRETMICRO',
+    dur: 'CONCRETDUR',
+    one: 'CONCRETONE',
+    scudo: 'CONCRETSCUDO',
+    juntas: 'SELLADORPOLIURETNICO',
+    sodium: 'CONCRETSODIUM',
+    lock: 'CONCRETLOCK',
+    finish: 'CONCRETFINISH',
+    fix: 'CONCRETFIX',
+    microstrong: 'CONCRETMICROSTRONG'
+  };
+
+  var ICO_CART = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3h2.2l2.3 11.2a1.6 1.6 0 001.6 1.3h8.6a1.6 1.6 0 001.6-1.3L20.5 7H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/></svg>';
+
+  function storeUrlOf(key) {
+    var sku = STORE_SKU[key];
+    if (!sku || typeof productos === 'undefined') return '';
+    for (var i = 0; i < productos.length; i++) {
+      if (productos[i].sku === sku && productos[i].visible !== false && productos[i].storeUrl) {
+        return productos[i].storeUrl;
+      }
+    }
+    return '';
+  }
+
+  function buyBtn(key) {
+    var url = storeUrlOf(key);
+    if (!url) return '';
+    return '<a class="cl-res-buy" href="' + url + '" target="_blank" rel="noopener">' + ICO_CART + 'Comprar</a>';
+  }
+
   // número lindo: hasta 2 decimales, sin ceros colgando, coma decimal
   function num(v, dec) {
     if (v === null || v === undefined || isNaN(v)) return '';
@@ -550,7 +566,11 @@ Presentación: bolsas x 10 y 25 kg`
 
   function renderMenu() {
     app.innerHTML =
-      bar('Calculadora NewConcret', 'Elegí la etapa de tu obra', null, '') +
+      '<div class="cl-mast">' +
+        '<div class="cl-eyebrow">Herramienta técnica</div>' +
+        '<h1 class="cl-mast-h1">Calculadora <span class="red">de materiales</span></h1>' +
+        '<p class="cl-mast-p">Elegí la etapa de tu obra, cargá los metros y obtené las cantidades exactas según la ficha técnica de cada producto.</p>' +
+      '</div>' +
       '<div class="cl-mods">' +
 
         '<button class="cl-mod" type="button" data-nav="materiales">' +
@@ -732,16 +752,20 @@ Presentación: bolsas x 10 y 25 kg`
   // ── Tarjetas de resultado ────────────────────────────────────────
   var resIdx = 0;
 
-  function resultCard(titulo, valor, infoKey) {
+  // storeKey: omitido usa infoKey; null para las tarjetas que no son un
+  // producto comprable (p. ej. la cuadrícula de juntas recomendada).
+  function resultCard(titulo, valor, infoKey, storeKey) {
     resIdx++;
+    var sk = storeKey === undefined ? infoKey : storeKey;
     var lineas = String(valor).split('\n');
     var sub = lineas.slice(1).filter(function (l) { return l !== ''; })
       .map(function (l) { return '<div class="cl-res-s">' + l + '</div>'; }).join('');
+    var acts = (sk ? buyBtn(sk) : '') + (infoKey ? infoBtn(infoKey) : '');
     return '<div class="cl-res">' +
       '<div class="cl-res-n">' + (resIdx < 10 ? '0' : '') + resIdx + '</div>' +
       '<div class="cl-res-t">' + titulo + '</div>' +
       '<div class="cl-res-v">' + lineas[0] + '</div>' + sub +
-      (infoKey ? infoBtn(infoKey) : '') +
+      (acts ? '<div class="cl-res-acts">' + acts + '</div>' : '') +
     '</div>';
   }
 
@@ -785,7 +809,7 @@ Presentación: bolsas x 10 y 25 kg`
         'Cortes cada ' + num(r.junta_min_m, 1) + ' – ' + num(r.junta_max_m, 1) + ' m\n' +
         'Profundidad de corte: ' + num(r.junta_prof_cm, 1) + ' cm\n' +
         'Momento de corte: entre 6 y 24 h del colado\n' +
-        'Cortá siempre en esquinas y junto a columnas o muros', 'juntas');
+        'Cortá siempre en esquinas y junto a columnas o muros', 'juntas', null);
       if (r.juntas_cartuchos > 0) cards += resultCard('Sellador poliuretano',
         r.juntas_cartuchos + ' cartucho(s)\nCartuchos de 600 ml', 'juntas');
     }
