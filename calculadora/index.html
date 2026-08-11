@@ -173,7 +173,9 @@
   .cl-res-buy::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transition: left .5s; }
   .cl-res-buy:hover::before { left: 100%; }
   .cl-res-buy:hover { background: var(--nc-red-hot); transform: translateY(-2px); }
-  .cl-res .cl-info { margin: 0; }
+  /* Dentro del resultado la ficha es un boton, a la par de Comprar */
+  .cl-res .cl-info { margin: 0; padding: .72rem 1.05rem; border: 1px solid var(--nc-steel-2); color: var(--nc-white); font-size: .68rem; transition: border-color .2s, background .2s, color .2s; }
+  .cl-res .cl-info:hover { border-color: var(--nc-ash); background: rgba(255,255,255,.06); color: #fff; }
 
   /* Modal ficha técnica */
   .cl-modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.82); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 9000; padding: 1.25rem; }
@@ -183,7 +185,15 @@
   .cl-modal-h span { font-family: var(--font-m); font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: var(--nc-red-hot); }
   .cl-modal-x { background: none; border: 1px solid var(--nc-steel-2); color: var(--nc-light); font-family: var(--font-d); font-weight: 700; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; padding: .5rem .9rem; transition: .2s; }
   .cl-modal-x:hover { border-color: var(--nc-red); color: #fff; }
-  .cl-modal pre { white-space: pre-wrap; font-family: var(--font-b); font-size: .93rem; line-height: 1.75; color: var(--nc-light); margin: 0; padding: 1.5rem 1.4rem; font-weight: 400; }
+  .cl-modal-body { padding: 1.5rem 1.4rem .2rem; }
+  .cl-modal-name { font-family: var(--font-d); font-weight: 900; font-size: 1.5rem; line-height: 1.1; letter-spacing: -.01em; text-transform: uppercase; color: #fff; }
+  .cl-modal-desc { font-family: var(--font-b); font-size: .95rem; line-height: 1.7; color: var(--nc-light); font-weight: 400; margin: .8rem 0 0; }
+  .cl-modal-foot { padding: 1.4rem 1.4rem 1.5rem; }
+  .cl-modal-pdf { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: .6rem; background: var(--nc-red); color: #fff; font-family: var(--font-d); font-weight: 700; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; padding: .85rem 1.3rem; clip-path: polygon(0 0, 100% 0, 100% 68%, 93% 100%, 0 100%); transition: background .2s, transform .2s; }
+  .cl-modal-pdf svg { width: 15px; height: 15px; flex: none; }
+  .cl-modal-pdf::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transition: left .5s; }
+  .cl-modal-pdf:hover::before { left: 100%; }
+  .cl-modal-pdf:hover { background: var(--nc-red-hot); transform: translateY(-2px); }
 
   /* Toast */
   .cl-toast { position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(12px); background: var(--nc-carbon); border: 1px solid var(--nc-steel-2); border-left: 2px solid var(--nc-red); color: var(--nc-white); padding: .95rem 1.3rem; font-size: .85rem; font-weight: 300; z-index: 9500; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: 88vw; text-align: center; }
@@ -304,7 +314,16 @@
       <span>Ficha técnica</span>
       <button class="cl-modal-x" id="clModalX">Cerrar</button>
     </div>
-    <pre id="clModalTxt"></pre>
+    <div class="cl-modal-body">
+      <div class="cl-modal-name" id="clModalName"></div>
+      <p class="cl-modal-desc" id="clModalDesc"></p>
+    </div>
+    <div class="cl-modal-foot" id="clModalFoot" hidden>
+      <a class="cl-modal-pdf" id="clModalPdf" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        Descargar ficha técnica (PDF)
+      </a>
+    </div>
   </div>
 </div>
 
@@ -319,117 +338,26 @@
 (function () {
   'use strict';
 
-  // ────────────────────────────────────────────────────────────────
-  // FICHAS TÉCNICAS
-  // ────────────────────────────────────────────────────────────────
-  var INFO = {
-    nylon: `NYLON NEGRO 200 MICRONES
-Barrera hidrófuga de polietileno.
-
-Se coloca directamente debajo del hormigón antes de la colada, sobre una superficie limpia y firme.
-
-¿Para qué sirve?
-Actúa como barrera de vapor, evitando que la humedad del suelo ascienda hacia el piso de hormigón.
-
-¿Cuánto usar?
-1 m² de nylon por cada m² de piso a construir.
-
-Presentaciones: rollo 2 m x 50 m (~100 m²) · rollo 4 m x 50 m (~200 m²)`,
-
-    macrofibra: `MACROFIBRA — CONCRET FIBRA
-Macrofibra de polipropileno estructural.
-
-Se agrega en la hormigonera junto con los demás componentes.
-
-Reemplaza total o parcialmente la malla electrosoldada.
-
-Dosis recomendada: 2,5 kg por m³ de hormigón.
-Presentación: bolsas x 5 kg`,
-
-    microfibra: `MICROFIBRA
-Fibra sintética para control de fisuras.
-
-Se incorpora a la mezcla durante el amasado.
-
-Dosis recomendada: 600 g (0,6 kg) por m³ de hormigón.`,
-
-    dur: `CONCRET DUR 100
-Endurecedor superficial no metálico.
-
-Se aplica en polvo sobre el hormigón fresco durante el llaneado.
-
-Dosis recomendada: 2 kg por m² de piso.
-
-Versiones: Dur 100 (uso medio) · Dur 200 (uso intenso) · Dur 300 (uso extremo)
-Presentación: bolsas x 25 kg`,
-
-    one: `CONCRET ONE
-Aditivo facilitador de llaneado.
-
-Rendimiento: 15 m² por litro.
-Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
-
-    scudo: `CONCRET SCUDO
-Curador de membrana para hormigón.
-
-Rendimiento: aprox. 6 a 10 m² por litro según clima.
-Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
-
-    juntas: `SELLADOR POLIURETANO
-Sellado de juntas de dilatación.
-
-Rendimiento: cada cartucho de 600 ml rinde ~10 metros lineales.
-Presentación: cartucho x 600 ml`,
-
-    sodium: `CONCRET SODIUM
-Densificador y sellador superficial a base de sodio.
-
-Rendimiento: 10 m² por litro.
-Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
-
-    lock: `CONCRET LOCK
-Impermeabilizante hidro y oleo repelente.
-
-Rendimiento: 15 m² por litro.
-Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
-
-    finish: `CONCRET FINISH
-Sellador premium de altos sólidos.
-
-Rendimiento: 15 m² por litro.
-Presentaciones: bidón 5 L / balde 10 L / balde 20 L`,
-
-    fix: `CONCRET FIX
-Grouting cementicio de reparación de secado rápido.
-
-Se coloca directamente en el área a reparar, sin aplicar en capas. Permite pulir a pocas horas.
-
-Mezclado: 2,75 a 3,25 L de agua por bolsa (11-13% del peso). Mezclar 3 a 5 minutos. No mezclar más de lo usable en 20 minutos.
-
-Rendimiento: una bolsa de 25 kg rinde aprox. 15 litros de volumen a rellenar.
-Presentación: bolsas x 25 kg`,
-
-    microstrong: `CONCRET MICROSTRONG
-Mortero cementicio modificado, pulible y de alto rendimiento.
-
-Se aplica con llana, espátula o cuchara. Superficie limpia, firme y saturada con agua previamente.
-
-Versiones:
-· Fino — sellado de poros y fisuras, hasta 2 mm por capa. Rendimiento ~1,9 kg/m² por mm.
-· Grueso (con microfibras) — reparación de bordes y oquedades, 3 a 5 mm. Rendimiento ~2,1 kg/m² por mm.
-
-No aplicar con temperatura inferior a 8 °C.
-Presentación: bolsas x 10 y 25 kg`
-  };
 
   // ────────────────────────────────────────────────────────────────
   // UI helpers
   // ────────────────────────────────────────────────────────────────
   var modalBg = document.getElementById('clModalBg');
-  var modalTxt = document.getElementById('clModalTxt');
+  var modalName = document.getElementById('clModalName');
+  var modalDesc = document.getElementById('clModalDesc');
+  var modalFoot = document.getElementById('clModalFoot');
+  var modalPdf = document.getElementById('clModalPdf');
 
+  // Nombre, descripción y ficha PDF salen de productos.js: son los
+  // mismos textos que ya muestra el resto de la web. Se asignan con
+  // textContent porque el catálogo se edita desde el panel admin.
   function showInfo(key) {
-    modalTxt.textContent = INFO[key] || '';
+    modalName.textContent = productField(key, 'nombre');
+    modalDesc.textContent = productField(key, 'descripcion') ||
+      'Consultá la ficha técnica para ver el detalle del producto.';
+    var pdf = productField(key, 'pdfUrl');
+    if (pdf) { modalPdf.href = pdf; modalFoot.hidden = false; }
+    else { modalFoot.hidden = true; }
     modalBg.classList.add('open');
   }
   function closeInfo() { modalBg.classList.remove('open'); }
@@ -451,14 +379,14 @@ Presentación: bolsas x 10 y 25 kg`
   var ICO_ARROW = '<svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>';
   var ICO_BACK = '<svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M11.5 7h-9M6.5 3l-4 4 4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>';
 
-  function infoBtn(key) {
-    return '<button class="cl-info" type="button" data-info="' + key + '">' + ICO_INFO + 'Ficha</button>';
+  function infoBtn(key, label) {
+    return '<button class="cl-info" type="button" data-info="' + key + '">' + ICO_INFO + (label || 'Ficha') + '</button>';
   }
 
-  // ── Enlace a la tienda ───────────────────────────────────────────
-  // El SKU es la clave; la URL sale de assets/data/productos.js, que es
-  // la única fuente de verdad. Si el producto no está o no tiene tienda
-  // cargada, la tarjeta simplemente no muestra el botón.
+  // ── Datos del producto (tienda y ficha técnica) ──────────────────
+  // El SKU es la clave; la tienda y el PDF salen de
+  // assets/data/productos.js, que es la única fuente de verdad. Si el
+  // producto no está o le falta el dato, no se muestra ese enlace.
   var STORE_SKU = {
     nylon: 'NYLONNEGRO',
     macrofibra: 'CONCRETFIBRA',
@@ -476,19 +404,19 @@ Presentación: bolsas x 10 y 25 kg`
 
   var ICO_CART = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3h2.2l2.3 11.2a1.6 1.6 0 001.6 1.3h8.6a1.6 1.6 0 001.6-1.3L20.5 7H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/></svg>';
 
-  function storeUrlOf(key) {
+  function productField(key, field) {
     var sku = STORE_SKU[key];
     if (!sku || typeof productos === 'undefined') return '';
     for (var i = 0; i < productos.length; i++) {
-      if (productos[i].sku === sku && productos[i].visible !== false && productos[i].storeUrl) {
-        return productos[i].storeUrl;
+      if (productos[i].sku === sku && productos[i].visible !== false && productos[i][field]) {
+        return productos[i][field];
       }
     }
     return '';
   }
 
   function buyBtn(key) {
-    var url = storeUrlOf(key);
+    var url = productField(key, 'storeUrl');
     if (!url) return '';
     return '<a class="cl-res-buy" href="' + url + '" target="_blank" rel="noopener">' + ICO_CART + 'Comprar</a>';
   }
@@ -760,7 +688,7 @@ Presentación: bolsas x 10 y 25 kg`
     var lineas = String(valor).split('\n');
     var sub = lineas.slice(1).filter(function (l) { return l !== ''; })
       .map(function (l) { return '<div class="cl-res-s">' + l + '</div>'; }).join('');
-    var acts = (sk ? buyBtn(sk) : '') + (infoKey ? infoBtn(infoKey) : '');
+    var acts = (sk ? buyBtn(sk) : '') + (infoKey ? infoBtn(infoKey, 'Ficha técnica') : '');
     return '<div class="cl-res">' +
       '<div class="cl-res-n">' + (resIdx < 10 ? '0' : '') + resIdx + '</div>' +
       '<div class="cl-res-t">' + titulo + '</div>' +
