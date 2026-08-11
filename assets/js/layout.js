@@ -49,7 +49,6 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     </button>
     <a href="${root}capacitacion/" class="nav-simple">Capacitaciones</a>
-    <a href="${root}calculadora/" class="nav-simple nav-tool">Calculadora</a>
     <a href="${root}nosotros/" class="nav-simple">Nosotros</a>
     <a href="${root}blog/" class="nav-simple">Blog</a>
   </div>

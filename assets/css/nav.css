@@ -539,13 +539,6 @@ body.no-scroll {
     }
 }
 
-/* Ultima franja de desktop: la calculadora se deja para el buscador y el footer */
-@media(max-width:1030px) {
-    .nav-tool {
-        display: none;
-    }
-}
-
 @media(max-width:900px) {
     .nav-main {
         display: none;
