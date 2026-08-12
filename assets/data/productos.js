@@ -4849,7 +4849,7 @@ const productos = [
     {
         "id": "sistema-newconcret-5l",
         "sku": "SISTEMANEWCONCRET5L",
-        "nombre": "Sistema 3 Pasos",
+        "nombre": "Fórmula NC",
         "secciones": [
             "pulido",
             "mantenimiento"
@@ -4857,7 +4857,7 @@ const productos = [
         "categoria": "",
         "cat_label": "",
         "subcategoria": "",
-        "descripcion": "Tratamiento de 3 pasos que endurece, protege y da brillo premium a los pisos de hormigón.",
+        "descripcion": "Fórmula NC (So+Lo+Fi): Concret Sodium, Lock y Finish endurecen, protegen y dan brillo premium a los pisos de hormigón.",
         "imagen": "/assets/img/productos/kit-nc-5l-sfondo-1784565744336.webp",
         "storeUrl": "https://tiendalonati.com.ar/productos/sistema-newconcret/",
         "specs": [

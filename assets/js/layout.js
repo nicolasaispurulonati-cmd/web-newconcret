@@ -209,7 +209,7 @@
       <div class="mob-sub" id="sub-mantenimiento">
         <div class="mob-sub-inner">
           <div><a href="${root}mantenimiento/equipos/" class="mob-grp-title">Equipos</a><ul class="mob-links"><li><a href="${root}mantenimiento/equipos/aspiradoras/">Aspiradoras</a></li><li><a href="${root}mantenimiento/equipos/lustradoras/">Lustradoras <span class="mob-tag">Destacado</span></a></li><li><a href="${root}mantenimiento/equipos/lavasecapisos/">Lavasecapisos</a></li></ul></div>
-          <div><a href="${root}mantenimiento/productos-quimicos/" class="mob-grp-title">Productos químicos</a><ul class="mob-links"><li><a href="${root}proteccion/">Sistema 3 Pasos</a></li><li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li></ul></div>
+          <div><a href="${root}mantenimiento/productos-quimicos/" class="mob-grp-title">Productos químicos</a><ul class="mob-links"><li><a href="${root}proteccion/">Fórmula NC</a></li><li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li></ul></div>
           <div><a href="${root}mantenimiento/accesorios/" class="mob-grp-title">Accesorios</a><ul class="mob-links"><li><a href="${root}mantenimiento/accesorios/mopas/">Mopas y pulverizadores</a></li><li><a href="${root}mantenimiento/accesorios/panos/">Paños de lustre</a></li></ul></div>
           <a href="${root}mantenimiento/" class="mob-sub-cta">Ver mantenimiento completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
         </div>
@@ -425,7 +425,7 @@
       <div class="mega-col">
         <a href="${root}mantenimiento/productos-quimicos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Productos químicos</a>
         <ul class="mega-links">
-          <li><a href="${root}proteccion/">Sistema 3 Pasos</a></li>
+          <li><a href="${root}proteccion/">Fórmula NC</a></li>
           <li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li>
           <li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li>
         </ul>
@@ -518,6 +518,11 @@
 
   <div class="footer-bot">
     <span>© <span id="ncYear">2026</span> NewConcret. Todos los derechos reservados.</span>
+    <span class="footer-legal-links">
+      <a href="${root}privacidad/" class="f-legal">Política de privacidad</a>
+      <a href="${root}terminos/" class="f-legal">Términos y condiciones</a>
+      <a href="#" class="f-legal" id="nc-cookie-prefs">Preferencias de cookies</a>
+    </span>
     <span>Premium Industrial Solutions (V5.2)</span>
   </div>
 </footer>
@@ -687,7 +692,7 @@
             { name: 'Lustradoras (mantenimiento)', crumb: 'Mantenimiento › Equipos', tags: ['lustradora','lustradoras','lustrar','brillo','mantenimiento','equipos'], href: root + 'mantenimiento/equipos/lustradoras/', group: 'Mantenimiento' },
             { name: 'Lavasecapisos (mantenimiento)', crumb: 'Mantenimiento › Equipos', tags: ['lavasecapiso','lavasecapisos','lavar','secar','mantenimiento','equipos'], href: root + 'mantenimiento/equipos/lavasecapisos/', group: 'Mantenimiento' },
             { name: 'Productos químicos para mantenimiento', crumb: 'Mantenimiento › Productos químicos', tags: ['quimicos','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/', group: 'Mantenimiento' },
-            { name: 'Sistema 3 Pasos', crumb: 'Protección', tags: ['sistema','newconcret','tratamiento','sodium','lock','finish','quimico','proteccion','mantenimiento'], href: root + 'proteccion/', group: 'Protección' },
+            { name: 'Fórmula NC', crumb: 'Protección', tags: ['formula','nc','solofi','so','lo','fi','sistema','3 pasos','newconcret','tratamiento','sodium','lock','finish','quimico','proteccion','mantenimiento'], href: root + 'proteccion/', group: 'Protección' },
             { name: 'Selladores (mantenimiento)', crumb: 'Mantenimiento › Productos químicos', tags: ['sellador','selladores','sellar','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/selladores/', group: 'Mantenimiento' },
             { name: 'Desengrasantes', crumb: 'Mantenimiento › Productos químicos', tags: ['desengrasante','desengrasantes','desengrasar','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/desengrasantes/', group: 'Mantenimiento' },
             { name: 'Accesorios de mantenimiento', crumb: 'Mantenimiento › Accesorios', tags: ['accesorios','mantenimiento'], href: root + 'mantenimiento/accesorios/', group: 'Mantenimiento' },
@@ -940,11 +945,129 @@
         }, 4000);
     };
 
+    // 5. Cookie Consent + Analytics (GDPR / Ley 25.326)
+    // ┌────────────────────────────────────────────────────────────────┐
+    // │  PEGÁ ACÁ TU ID DE GA4 (formato "G-XXXXXXXXXX").                 │
+    // │  Vacío = analítica desactivada. La analítica solo carga tras    │
+    // │  el consentimiento del usuario.                                 │
+    // └────────────────────────────────────────────────────────────────┘
+    window.NC_GA_ID = window.NC_GA_ID || '';
+
+    function ncGetConsent() { try { return localStorage.getItem('nc_consent'); } catch (e) { return null; } }
+    function ncSetConsent(v) { try { localStorage.setItem('nc_consent', v); } catch (e) {} }
+
+    function ncLoadYouTube() {
+        document.querySelectorAll('iframe.nc-yt[data-src]').forEach(function (f) {
+            f.src = f.getAttribute('data-src');
+            f.removeAttribute('data-src');
+            var wrap = f.parentNode;
+            var fac = wrap && wrap.querySelector('.nc-yt-facade');
+            if (fac) fac.remove();
+        });
+    }
+
+    function ncLoadAnalytics() {
+        if (!window.NC_GA_ID || !/^G-/.test(window.NC_GA_ID) || window.__ncGAloaded) return;
+        window.__ncGAloaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.NC_GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', window.NC_GA_ID, { anonymize_ip: true });
+        // Conversiones: clics a WhatsApp y a la tienda (único canal de venta)
+        document.addEventListener('click', function (e) {
+            var a = e.target.closest && e.target.closest('a');
+            if (!a) return;
+            var h = a.href || '';
+            if (/wa\.link|wa\.me|api\.whatsapp\.com|whatsapp/i.test(h)) window.gtag('event', 'whatsapp_click', { link_url: h });
+            else if (/tiendalonati\.com\.ar/i.test(h)) window.gtag('event', 'store_click', { link_url: h });
+        }, true);
+    }
+
+    // Facade "cargar video" cuando NO hay consentimiento total (evita cookies de YouTube)
+    function ncBuildYTFacades() {
+        document.querySelectorAll('iframe.nc-yt[data-src]').forEach(function (f) {
+            var wrap = f.parentNode;
+            if (!wrap || wrap.querySelector('.nc-yt-facade')) return;
+            if (getComputedStyle(wrap).position === 'static') wrap.style.position = 'relative';
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'nc-yt-facade';
+            b.innerHTML = '<span class="nc-yt-play">&#9654;</span><span class="nc-yt-txt">Cargar video de YouTube</span><span class="nc-yt-note">Al reproducir aceptás las cookies de YouTube.</span>';
+            b.addEventListener('click', function () {
+                f.src = f.getAttribute('data-src');
+                f.removeAttribute('data-src');
+                b.remove();
+            });
+            wrap.appendChild(b);
+        });
+    }
+
+    function ncApply(c) {
+        if (c === 'all') { ncLoadYouTube(); ncLoadAnalytics(); }
+        else { ncBuildYTFacades(); }
+    }
+
+    function ncShowBanner() {
+        if (document.getElementById('nc-consent')) return;
+        var d = document.createElement('div');
+        d.id = 'nc-consent';
+        d.innerHTML =
+            '<div class="nc-consent-box">' +
+              '<p class="nc-consent-txt">Usamos cookies para medir el uso del sitio y mostrar contenido embebido (YouTube). Podés aceptarlas o seguir solo con las esenciales. Más info en la <a href="' + root + 'privacidad/">política de privacidad</a>.</p>' +
+              '<div class="nc-consent-btns">' +
+                '<button type="button" class="nc-btn-ghost" id="nc-reject">Solo esenciales</button>' +
+                '<button type="button" class="nc-btn-solid" id="nc-accept">Aceptar todo</button>' +
+              '</div>' +
+            '</div>';
+        document.body.appendChild(d);
+        document.getElementById('nc-accept').addEventListener('click', function () { ncSetConsent('all'); d.remove(); ncApply('all'); });
+        document.getElementById('nc-reject').addEventListener('click', function () { ncSetConsent('essential'); d.remove(); ncApply('essential'); });
+    }
+
+    function ncInjectConsentStyles() {
+        if (document.getElementById('nc-consent-style')) return;
+        var st = document.createElement('style');
+        st.id = 'nc-consent-style';
+        st.textContent =
+            '#nc-consent{position:fixed;left:0;right:0;bottom:0;z-index:99999;background:rgba(10,10,10,.97);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.12);padding:1.1rem 1.25rem;}' +
+            '.nc-consent-box{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;justify-content:space-between;}' +
+            '.nc-consent-txt{color:rgba(255,255,255,.82);font-size:.82rem;line-height:1.5;margin:0;flex:1;min-width:260px;}' +
+            '.nc-consent-txt a{color:#fff;text-decoration:underline;}' +
+            '.nc-consent-btns{display:flex;gap:.6rem;flex-shrink:0;}' +
+            '.nc-consent-btns button{font-family:inherit;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;padding:.7rem 1.25rem;cursor:pointer;border:1px solid rgba(255,255,255,.25);transition:all .2s;}' +
+            '.nc-btn-ghost{background:transparent;color:rgba(255,255,255,.8);}' +
+            '.nc-btn-ghost:hover{border-color:#fff;color:#fff;}' +
+            '.nc-btn-solid{background:#C1121F;color:#fff;border-color:#C1121F;}' +
+            '.nc-btn-solid:hover{background:#E5161E;}' +
+            '.footer-legal-links{display:flex;gap:1rem;flex-wrap:wrap;}' +
+            '.f-legal{color:rgba(255,255,255,.55);text-decoration:none;}.f-legal:hover{color:#fff;text-decoration:underline;}' +
+            '.nc-yt-facade{position:absolute;inset:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:rgba(10,10,10,.92);color:#fff;border:none;cursor:pointer;font-family:inherit;z-index:3;}' +
+            '.nc-yt-play{font-size:2rem;color:#C1121F;}' +
+            '.nc-yt-txt{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;}' +
+            '.nc-yt-note{font-size:.68rem;color:rgba(255,255,255,.5);max-width:80%;text-align:center;}';
+        document.head.appendChild(st);
+    }
+
+    function initConsent() {
+        ncInjectConsentStyles();
+        var c = ncGetConsent();
+        if (c === 'all') ncApply('all');
+        else if (c === 'essential') ncApply('essential');
+        else ncShowBanner();
+        var prefs = document.getElementById('nc-cookie-prefs');
+        if (prefs) prefs.addEventListener('click', function (e) { e.preventDefault(); ncSetConsent(''); ncShowBanner(); });
+    }
+
     // Execute immediately or on DOM load
+    function ncBoot() { injectLayout(); initConsent(); }
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', injectLayout);
+        document.addEventListener('DOMContentLoaded', ncBoot);
     } else {
-        injectLayout();
+        ncBoot();
     }
 
 })();

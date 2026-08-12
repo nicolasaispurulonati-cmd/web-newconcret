@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NewConcret — Maquinaria, Insumos y Capacitación para Pisos</title>
-<meta name="description" content="Venta de maquinaria industrial, insumos especializados y capacitaciones para profesionales del pulido, reparación y mantenimiento de pisos de hormigón. Buenos Aires, Argentina.">
+<meta name="description" content="Maquinaria industrial, insumos y capacitaciones para el pulido, reparación y mantenimiento de pisos de hormigón. NewConcret, Buenos Aires, Argentina.">
 <link rel="icon" type="image/x-icon" href="logos/Favicon.ico">
   <link rel="stylesheet" href="assets/css/estilo.css?v=43">
   <link rel="stylesheet" href="assets/css/nav.css?v=2.0">
@@ -514,12 +514,12 @@
     <meta property="og:site_name" content="NewConcret">
     <meta property="og:locale" content="es_AR">
     <meta property="og:title" content="NewConcret — Maquinaria, Insumos y Capacitación para Pisos">
-    <meta property="og:description" content="Venta de maquinaria industrial, insumos especializados y capacitaciones para profesionales del pulido, reparación y mantenimiento de pisos de hormigón. Buenos Aires, Argentina.">
+    <meta property="og:description" content="Maquinaria industrial, insumos y capacitaciones para el pulido, reparación y mantenimiento de pisos de hormigón. NewConcret, Buenos Aires, Argentina.">
     <meta property="og:url" content="https://newconcret.com/">
     <meta property="og:image" content="https://newconcret.com/assets/img/hero/construccion.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="NewConcret — Maquinaria, Insumos y Capacitación para Pisos">
-    <meta name="twitter:description" content="Venta de maquinaria industrial, insumos especializados y capacitaciones para profesionales del pulido, reparación y mantenimiento de pisos de hormigón. Buenos Aires, Argentina.">
+    <meta name="twitter:description" content="Maquinaria industrial, insumos y capacitaciones para el pulido, reparación y mantenimiento de pisos de hormigón. NewConcret, Buenos Aires, Argentina.">
     <meta name="twitter:image" content="https://newconcret.com/assets/img/hero/construccion.webp">
     <script type="application/ld+json">
 {
@@ -586,7 +586,7 @@
 <!-- HERO (Desktop) -->
 <section class="hero hide-mobile" id="inicio">
   <div class="hero-bg">
-    <video src="assets/img/hero/principal.mp4" poster="assets/img/hero/principal-poster.webp" autoplay="" muted="" loop="" playsinline="" preload="metadata"></video>
+    <video class="hero-video-desktop" data-src="assets/img/hero/principal.mp4" poster="assets/img/hero/principal-poster.webp" autoplay="" muted="" loop="" playsinline="" preload="none"></video>
   </div>
   <div class="hero-ov"></div>
 
@@ -631,7 +631,7 @@
 <!-- HERO (Mobile) -->
 <section class="hero-mob hide-desktop" id="inicio-mob">
   <div class="hero-bg">
-    <video src="assets/img/hero/principal-mobile.mp4" poster="assets/img/hero/principal-poster.webp" autoplay="" muted="" loop="" playsinline="" preload="metadata"></video>
+    <video class="hero-video-mobile" data-src="assets/img/hero/principal-mobile.mp4" poster="assets/img/hero/principal-poster.webp" autoplay="" muted="" loop="" playsinline="" preload="none"></video>
   </div>
   <div class="hero-ov"></div>
   <div class="hero-content">
@@ -639,11 +639,11 @@
       <span class="eyebrow-line"></span>
       <span class="eyebrow-tx">Maquinaria · Insumos · Capacitación</span>
     </div>
-    <h1 class="hero-h1">
+    <div class="hero-h1" role="heading" aria-level="1">
       Todo para<br>
       <span class="red">trabajar</span><br>
       <span class="thin">el hormigón.</span>
-    </h1>
+    </div>
     <p class="hero-p">
       Venta de maquinaria industrial, insumos especializados y capacitaciones para profesionales del pulido, reparación y mantenimiento de pisos.
     </p>
@@ -712,7 +712,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/construccion.webp" alt="Construcción de pisos industriales"
+      <img loading="lazy" decoding="async" src="assets/img/hero/construccion.webp" alt="Construcción de pisos industriales"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.3) 60%, transparent 100%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -735,7 +735,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/pulido.webp" alt="Pulido de pisos de hormigón"
+      <img loading="lazy" decoding="async" src="assets/img/hero/pulido.webp" alt="Pulido de pisos de hormigón"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -757,7 +757,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/mantenimiento.webp" alt="Mantenimiento de pisos industriales"
+      <img loading="lazy" decoding="async" src="assets/img/hero/mantenimiento.webp" alt="Mantenimiento de pisos industriales"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -779,7 +779,7 @@
       display: block;
       background: var(--nc-carbon);
     ">
-      <img src="assets/img/hero/reparacion.webp" alt="Reparación de pisos de hormigón"
+      <img loading="lazy" decoding="async" src="assets/img/hero/reparacion.webp" alt="Reparación de pisos de hormigón"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s,opacity .6s;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.95) 0%, transparent 70%);z-index:1;"></div>
       <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--nc-red);z-index:3;opacity:0;transition:opacity .4s;" class="maq-accent-bar"></div>
@@ -820,7 +820,7 @@
     
     <!-- CONSTRUCCIÓN -->
     <a href="construccion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/construccion-mobile.webp" alt="Construcción" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img loading="lazy" decoding="async" src="assets/img/hero/construccion-mobile.webp" alt="Construcción" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color: var(--nc-red-hot); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Equipos y químicos</div>
@@ -830,7 +830,7 @@
 
     <!-- REPARACIÓN -->
     <a href="reparacion/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/reparacion.webp" alt="Reparación" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img loading="lazy" decoding="async" src="assets/img/hero/reparacion.webp" alt="Reparación" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color: var(--nc-red-hot); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Restauración de juntas</div>
@@ -840,7 +840,7 @@
 
     <!-- PULIDO -->
     <a href="pulido/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/pulido.webp" alt="Pulido" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img loading="lazy" decoding="async" src="assets/img/hero/pulido.webp" alt="Pulido" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color: var(--nc-red-hot); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Desbaste y brillo</div>
@@ -850,7 +850,7 @@
 
     <!-- MANTENIMIENTO -->
     <a href="mantenimiento/" class="maq-block" style="position:relative; height:200px; overflow:hidden; display:block; background:var(--nc-carbon); border-radius:4px;">
-      <img src="assets/img/hero/mantenimiento.webp" alt="Mantenimiento" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
+      <img loading="lazy" decoding="async" src="assets/img/hero/mantenimiento.webp" alt="Mantenimiento" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);">
       <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.85) 0%, transparent 60%); z-index:1;"></div>
       <div style="position:absolute; bottom:1.2rem; left:1.2rem; z-index:2;">
         <div style="font-family:var(--font-m); font-size:.55rem; color: var(--nc-red-hot); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.4rem;">Limpieza y protección</div>
@@ -865,7 +865,7 @@
 <section class="frida-sec sec hide-mobile">
   <div class="frida-layout">
     <div class="frida-imgwrap reveal">
-      <iframe src="https://www.youtube.com/embed/2IUMdoDIgNE?start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <iframe class="nc-yt" data-src="https://www.youtube-nocookie.com/embed/2IUMdoDIgNE?start=3" loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       <div class="frida-badge">
         <div class="frida-badge-n">450</div>
         <div class="frida-badge-l">Modelo Frida</div>
@@ -902,7 +902,7 @@
         </div>
       </div>
       <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="https://tienda.newconcret.com/productos/frida-450" target="_blank" rel="noopener" class="btn-p">
+        <a href="https://tiendalonati.com.ar/productos/frida-450/" target="_blank" rel="noopener" class="btn-p">
           Ver en tienda
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
         </a>
@@ -930,7 +930,7 @@
     
     <!-- Video Mobile -->
     <div class="frida-vid-mob" style="margin: 2.5rem 0; width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid var(--nc-steel); overflow: hidden;">
-      <iframe src="https://www.youtube.com/embed/2IUMdoDIgNE?start=3" style="width: 100%; height: 100%; border: none;" allowfullscreen="" title="Frida 450 en obra"></iframe>
+      <iframe class="nc-yt" data-src="https://www.youtube-nocookie.com/embed/2IUMdoDIgNE?start=3" loading="lazy" style="width: 100%; height: 100%; border: none;" allowfullscreen="" title="Frida 450 en obra"></iframe>
     </div>
 
     <div class="specs-grid" style="display:grid; grid-template-columns: 1fr 1fr; border:1px solid var(--nc-steel); margin-top:2rem;">
@@ -1421,51 +1421,51 @@
   <div class="brands-carousel">
     <div class="brands-track">
     <div class="brands-list">
-      <div class="brand-item"><img src="assets/img/logosempresas/Marena-1.jpg" alt="Marena"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/agd.png" alt="AGD"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/arcor-2-1.jpg" alt="Arcor"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/atanor-2.jpg" alt="Atanor"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/bagley.png" alt="Bagley"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/canapino.png" alt="Canapino"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/cartocor.png" alt="Cartocor"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/carx-1.jpg" alt="Carx"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/constructora-sudamericana.png" alt="Constructora Sudamericana"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/durlock.png" alt="Durlock"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/egger.png" alt="Egger"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/fmc-1.jpg" alt="FMC"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/ford2-1.jpg" alt="Ford"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/gastaldi.png" alt="Gastaldi"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/imap-1.jpg" alt="Imap"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/niza.png" alt="Niza"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/papelMisionero.png" alt="Papel Misionero"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/prochem.png" alt="Prochem"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/toprace.jpg" alt="Top Race"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/vital.png" alt="Vital"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/zucamor.png" alt="Zucamor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/Marena-1.jpg" alt="Marena"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/agd.png" alt="AGD"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/arcor-2-1.jpg" alt="Arcor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/atanor-2.jpg" alt="Atanor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/bagley.png" alt="Bagley"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/canapino.png" alt="Canapino"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/cartocor.png" alt="Cartocor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/carx-1.jpg" alt="Carx"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/constructora-sudamericana.png" alt="Constructora Sudamericana"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/durlock.png" alt="Durlock"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/egger.png" alt="Egger"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/fmc-1.jpg" alt="FMC"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/ford2-1.jpg" alt="Ford"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/gastaldi.png" alt="Gastaldi"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/imap-1.jpg" alt="Imap"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/niza.png" alt="Niza"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/papelMisionero.png" alt="Papel Misionero"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/prochem.png" alt="Prochem"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/toprace.jpg" alt="Top Race"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/vital.png" alt="Vital"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/zucamor.png" alt="Zucamor"></div>
     </div>
     <!-- Duplicate for infinite effect -->
     <div class="brands-list">
-      <div class="brand-item"><img src="assets/img/logosempresas/Marena-1.jpg" alt="Marena"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/agd.png" alt="AGD"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/arcor-2-1.jpg" alt="Arcor"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/atanor-2.jpg" alt="Atanor"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/bagley.png" alt="Bagley"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/canapino.png" alt="Canapino"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/cartocor.png" alt="Cartocor"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/carx-1.jpg" alt="Carx"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/constructora-sudamericana.png" alt="Constructora Sudamericana"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/durlock.png" alt="Durlock"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/egger.png" alt="Egger"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/fmc-1.jpg" alt="FMC"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/ford2-1.jpg" alt="Ford"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/gastaldi.png" alt="Gastaldi"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/imap-1.jpg" alt="Imap"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/niza.png" alt="Niza"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/papelMisionero.png" alt="Papel Misionero"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/prochem.png" alt="Prochem"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/toprace.jpg" alt="Top Race"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/vital.png" alt="Vital"></div>
-      <div class="brand-item"><img src="assets/img/logosempresas/zucamor.png" alt="Zucamor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/Marena-1.jpg" alt="Marena"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/agd.png" alt="AGD"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/arcor-2-1.jpg" alt="Arcor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/atanor-2.jpg" alt="Atanor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/bagley.png" alt="Bagley"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/canapino.png" alt="Canapino"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/cartocor.png" alt="Cartocor"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/carx-1.jpg" alt="Carx"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/constructora-sudamericana.png" alt="Constructora Sudamericana"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/durlock.png" alt="Durlock"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/egger.png" alt="Egger"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/fmc-1.jpg" alt="FMC"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/ford2-1.jpg" alt="Ford"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/gastaldi.png" alt="Gastaldi"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/imap-1.jpg" alt="Imap"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/niza.png" alt="Niza"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/papelMisionero.png" alt="Papel Misionero"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/prochem.png" alt="Prochem"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/toprace.jpg" alt="Top Race"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/vital.png" alt="Vital"></div>
+      <div class="brand-item"><img loading="lazy" decoding="async" src="assets/img/logosempresas/zucamor.png" alt="Zucamor"></div>
     </div>
   </div>
 </div>
@@ -1553,7 +1553,7 @@
 <!-- CTA -->
 <section class="cta-nos" id="contacto">
     <div class="cta-nos-bg">
-        <img src="assets/img/hero/pulido.webp" alt="">
+        <img loading="lazy" decoding="async" src="assets/img/hero/pulido.webp" alt="">
     </div>
     <div class="cta-nos-ov"></div>
     <div class="cta-nos-content reveal">
@@ -1606,6 +1606,21 @@
         });
       });
     });
+  </script>
+
+  <!-- Hero video: cargar solo el video visible segun viewport (evita ~8.5MB de descarga doble) -->
+  <script>
+    (function () {
+      var isMobile = window.matchMedia('(max-width: 900px)').matches;
+      var v = document.querySelector(isMobile ? '.hero-video-mobile' : '.hero-video-desktop');
+      if (v && v.dataset.src) {
+        v.src = v.dataset.src;
+        v.removeAttribute('data-src');
+        v.load();
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+    })();
   </script>
 </body>
 </html>

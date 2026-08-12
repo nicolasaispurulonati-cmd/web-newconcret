@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistema 3 Pasos | Protección | NewConcret</title>
-<meta name="description" content="El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.">
+<title>Fórmula NC · So+Lo+Fi | Protección | NewConcret</title>
+<meta name="description" content="La Fórmula NC combina Concret Sodium, Lock y Finish: densifica el poro, impermeabiliza y sella el hormigón. Cero polvo, brillo premium y garantía extendida.">
 <link rel="icon" type="image/x-icon" href="../logos/Favicon.ico">
 <link rel="stylesheet" href="../assets/css/estilo.css?v=43">
 <link rel="stylesheet" href="../assets/css/nav.css?v=2.0">
 <style>
   /* ══════════════════════════════════════════════════════════
-     PROTECCIÓN · Sistema 3 Pasos — hoja de estilo de página
-     Usa los tokens de marca (estilo.css). Prefijo s3- para aislar.
+     PROTECCIÓN · Fórmula NC (So + Lo + Fi) — hoja de estilo de página
+     Usa los tokens de marca (estilo.css). Prefijos s3- y nc- para aislar.
      ══════════════════════════════════════════════════════════ */
 
   body { background: var(--nc-black); color: var(--nc-white); cursor: none; }
@@ -41,7 +41,9 @@
   .s3-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
   .s3-hero-ov { position: absolute; inset: 0; z-index: 1;
     background:
-      linear-gradient(105deg, rgba(10,10,10,.95) 0%, rgba(10,10,10,.75) 38%, rgba(10,10,10,.30) 70%, rgba(10,10,10,.55) 100%),
+      /* El tramo 60–100% se oscurece algo más que antes (.30 → .45): es la
+         zona donde apoya la molécula. El resto lo hace el scrim local. */
+      linear-gradient(105deg, rgba(10,10,10,.95) 0%, rgba(10,10,10,.75) 38%, rgba(10,10,10,.45) 70%, rgba(10,10,10,.64) 100%),
       linear-gradient(to top, var(--nc-black) 2%, rgba(10,10,10,0) 45%); }
   .s3-hero-inner { position: relative; z-index: 2; width: 100%; }
   .s3-hero-grid { padding-bottom: clamp(2rem, 4vw, 3.5rem); }
@@ -195,7 +197,187 @@
 
   /* CTA final: usa el componente global .cta-nos de estilo.css */
 
+  /* ══════════════════════════════════════════════════════════
+     FÓRMULA NC — insignia So + Lo + Fi
+     Notación química aplicada a los tres reactivos del sistema.
+     Prefijo nc- para el módulo de fórmula.
+     ══════════════════════════════════════════════════════════ */
+
+  /* ── Lockup del hero: So + Lo + Fi = NC ──
+     Cada sigla es un enlace: al pasar por encima ilumina su rama en la
+     molécula y cambia el fondo del hero por el de su categoría. ── */
+  /* Mismo tratamiento tipográfico que el H1 (DIN Cond 900, line-height .86,
+     tracking -0.015em) un escalón más chico. Sin caja: es tipografía, no botón.
+     NC en rojo para rimar con el "NC" del titular. */
+  .nc-sig { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 0 clamp(0.35rem, 1vw, 0.7rem); margin-top: clamp(1rem, 2vw, 1.5rem); font-family: var(--font-d); font-weight: 900; line-height: 0.86; letter-spacing: -0.015em; }
+  .nc-sig-s { font-size: clamp(2rem, 5.2vw, 3.6rem); color: var(--nc-white); text-decoration: none; cursor: none; transition: color .35s var(--expo), transform .35s var(--expo); }
+  @media (pointer: coarse) { .nc-sig-s { cursor: pointer; } }
+  .nc-sig-s:hover, .nc-sig-s:focus-visible, .nc-sig-s.is-on { color: var(--nc-red-hot); transform: translateY(-3px); outline: none; }
+  .nc-sig-op, .nc-sig-eq { font-family: var(--font-d); font-weight: 700; font-size: clamp(1.05rem, 2.5vw, 1.7rem); color: var(--nc-mid); }
+  .nc-sig-eq { padding-left: 0.15rem; }
+  .nc-sig-nc { font-family: var(--font-d); font-weight: 900; font-size: clamp(2rem, 5.2vw, 3.6rem); letter-spacing: -0.015em; color: var(--nc-red-hot); }
+
+  /* ── Hero dinámico: capas de fondo que se cruzan por elemento ── */
+  .s3-hero-alt { position: absolute; inset: 0; opacity: 0; transition: opacity .85s var(--expo); }
+  .s3-hero-alt img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .s3-hero[data-el="so"] .s3-hero-alt[data-el="so"],
+  .s3-hero[data-el="lo"] .s3-hero-alt[data-el="lo"],
+  .s3-hero[data-el="fi"] .s3-hero-alt[data-el="fi"] { opacity: 1; }
+  /* Tinte de acento sobre el overlay mientras hay un elemento activo */
+  .s3-hero-ov::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(193,18,31,0.20) 0%, rgba(193,18,31,0) 55%); opacity: 0; transition: opacity .85s var(--expo); }
+  .s3-hero[data-el] .s3-hero-ov::after { opacity: 1; }
+
+  /* ── Molécula NC: núcleo + tres ramas (So / Lo / Fi) ── */
+  .s3-hero-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+  /* El reveal vive en el wrapper: así la opacidad de la marca de agua en
+     mobile no compite con `.s3-reveal.in { opacity: 1 }`. */
+  .nc-mol-wrap { position: relative; width: 100%; max-width: 620px; justify-self: center; }
+  /* Scrim local: garantiza el contraste del esqueleto sin oscurecer toda la
+     foto del hero. Se desvanece antes del borde, así no se ve el corte. */
+  .nc-mol-wrap::before { content: ''; position: absolute; inset: -14% -10%; z-index: 0; pointer-events: none;
+    background: radial-gradient(60% 58% at 50% 50%, rgba(10,10,10,0.80) 0%, rgba(10,10,10,0.55) 48%, rgba(10,10,10,0) 78%); }
+  .nc-mol { position: relative; z-index: 1; display: block; width: 100%; height: auto; overflow: visible; }
+  /* El esqueleto va sobre foto: gris claro (no steel) y con una sombra suave
+     que lo despega del fondo pase lo que pase detrás. */
+  .nc-mol { filter: drop-shadow(0 2px 5px rgba(10,10,10,0.75)); }
+  .nc-mol .bond { fill: none; stroke: var(--nc-light); stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; transition: stroke .5s var(--expo); }
+  .nc-mol .trace { fill: none; stroke: var(--nc-red-hot); stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 170; stroke-dashoffset: 170; transition: stroke-dashoffset .75s var(--expo); }
+  .nc-mol .node { fill: var(--nc-light); transition: fill .5s var(--expo); }
+  /* Las siglas llevan el mismo tratamiento que el H1 (DIN Cond 900, tracking
+     ajustado), un escalón más chicas. Blancas en reposo, rojas al activarse. */
+  /* 46u en un viewBox de 560 → ~51px renderizados: quedan por debajo de los
+     57.6px del lockup, que sigue siendo el elemento principal del hero. */
+  .nc-mol .sym { font-family: 'DINProCond', 'DINPro', sans-serif; font-weight: 900; font-size: 46px; letter-spacing: -0.015em; fill: var(--nc-white); text-anchor: middle; transition: fill .4s var(--expo); }
+  .nc-mol .core-lbl { font-family: 'DINProCond', 'DINPro', sans-serif; font-weight: 900; font-size: 36px; letter-spacing: -0.015em; fill: var(--nc-white); text-anchor: middle; }
+  .nc-mol .arm { cursor: none; }
+  @media (pointer: coarse) { .nc-mol .arm { cursor: pointer; } }
+  .nc-mol .arm .hit { fill: transparent; stroke: none; }
+  .nc-mol .arm.is-on .trace { stroke-dashoffset: 0; }
+  .nc-mol .arm.is-on .node { fill: var(--nc-red-hot); }
+  .nc-mol .arm.is-on .sym { fill: var(--nc-red-hot); }
+  /* Sin animación perpetua en el núcleo: bajo el drop-shadow obligaría a
+     rasterizar el filtro en cada frame. El movimiento lo aporta el trazo. */
+  @media (prefers-reduced-motion: reduce) { .nc-mol .trace { transition: none; } }
+
+  /* ═══ SECCIÓN FÓRMULA ═══ */
+  .nc-f { border-bottom: 1px solid var(--nc-steel); }
+
+  /* — Ecuación interactiva — */
+  .nc-eq { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto minmax(140px, 0.72fr); border: 1px solid var(--nc-steel); background: rgba(255,255,255,0.012); }
+  .nc-op { display: grid; place-items: center; padding: 0 clamp(0.4rem, 1.3vw, 1.1rem); font-family: var(--font-d); font-weight: 700; font-size: clamp(1rem, 1.9vw, 1.5rem); line-height: 1; color: var(--nc-mid); border-left: 1px solid var(--nc-steel); border-right: 1px solid var(--nc-steel); }
+  .nc-op.is-eq { color: var(--nc-red-hot); }
+
+  .nc-el { position: relative; display: block; width: 100%; text-align: left; background: transparent; border: 0; padding: clamp(1rem, 2vw, 1.6rem); cursor: none; overflow: hidden; font: inherit; color: inherit; transition: background .5s var(--expo); }
+  @media (pointer: coarse) { .nc-el { cursor: pointer; } }
+  .nc-el::before { content: ''; position: absolute; inset: 0 auto auto 0; width: 100%; height: 2px; background: var(--nc-red); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--expo); }
+  .nc-el:hover { background: rgba(255,255,255,0.028); }
+  .nc-el[aria-selected="true"] { background: rgba(193,18,31,0.07); }
+  .nc-el[aria-selected="true"]::before { transform: scaleX(1); }
+  .nc-el:focus-visible { outline: 1px solid var(--nc-red-hot); outline-offset: -3px; }
+  .nc-el-n { display: block; font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--nc-mid); transition: color .45s var(--expo); }
+  .nc-el[aria-selected="true"] .nc-el-n { color: var(--nc-red-hot); }
+  .nc-el-sym { display: block; font-family: var(--font-d); font-weight: 900; font-size: clamp(2.6rem, 6.5vw, 4.6rem); line-height: 0.82; letter-spacing: -0.025em; margin: 0.5rem 0 0.6rem; color: transparent; -webkit-text-stroke: 1px var(--nc-steel-2); transition: color .5s var(--expo), -webkit-text-stroke-color .5s var(--expo); }
+  .nc-el:hover .nc-el-sym { -webkit-text-stroke-color: var(--nc-mid); }
+  .nc-el[aria-selected="true"] .nc-el-sym { color: var(--nc-white); -webkit-text-stroke-color: var(--nc-white); }
+  .nc-el-name { display: block; font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 0.98rem; letter-spacing: 0.02em; color: var(--nc-light); transition: color .45s var(--expo); }
+  .nc-el[aria-selected="true"] .nc-el-name { color: var(--nc-white); }
+  .nc-el-role { display: block; font-family: var(--font-m); font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--nc-ash); margin-top: 0.35rem; }
+
+  .nc-res { display: grid; align-content: center; text-align: center; padding: clamp(1rem, 2vw, 1.6rem) 0.8rem; background: rgba(193,18,31,0.09); border-left: 1px solid var(--nc-red-dim); }
+  .nc-res b { display: block; font-family: var(--font-d); font-weight: 900; font-size: clamp(2.4rem, 5.5vw, 3.8rem); line-height: 0.82; letter-spacing: -0.02em; color: var(--nc-white); }
+  .nc-res span { display: block; font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--nc-red-hot); margin-top: 0.7rem; }
+
+  /* — Escenario: bidón + corte del hormigón — */
+  .nc-diag { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(1.6rem, 4vw, 4rem); margin-top: clamp(1.8rem, 3.5vw, 3rem); align-items: start; }
+
+  .nc-read { border-top: 1px solid var(--nc-steel); }
+  .nc-read-k { font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--nc-red-hot); padding-top: 1.4rem; display: block; }
+  .nc-read-h { font-family: var(--font-d); font-weight: 900; text-transform: uppercase; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 0.95; letter-spacing: -0.01em; color: var(--nc-white); margin-top: 0.7rem; }
+  .nc-read-h b { color: var(--nc-red-hot); font-weight: 900; }
+  /* min-height = 5 líneas (1.65em c/u): reserva el alto del texto más largo
+     para que el panel no salte al alternar entre elementos. */
+  .nc-read-p { font-family: var(--font-b); font-size: 0.95rem; font-weight: 300; line-height: 1.65; color: var(--nc-light); margin-top: 1rem; max-width: 46ch; min-height: 8.25em; }
+  .nc-read-specs { margin-top: 1.6rem; border-top: 1px solid var(--nc-steel); }
+  .nc-read-specs div { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--nc-steel); align-items: baseline; }
+  .nc-read-specs dt { font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--nc-ash); }
+  .nc-read-specs dd { font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.01em; color: var(--nc-white); }
+  /* Transición de contenido al cambiar de elemento */
+  .nc-swap { transition: opacity .3s var(--expo), transform .45s var(--expo); }
+  .nc-read.is-swapping .nc-swap { opacity: 0; transform: translateY(7px); }
+
+  .nc-stage { position: relative; }
+  .nc-bottles { position: relative; height: clamp(160px, 20vw, 240px); display: flex; align-items: flex-end; justify-content: center; }
+  .nc-bot { position: absolute; bottom: 0; height: 100%; width: auto; object-fit: contain; opacity: 0; transform: translateY(14px) scale(0.94); transition: opacity .55s var(--expo), transform .7s var(--expo); filter: drop-shadow(0 22px 34px rgba(0,0,0,0.6)); pointer-events: none; }
+  .nc-bot.is-on { opacity: 1; transform: translateY(0) scale(1); animation: s3-float 6.5s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .nc-bot.is-on { animation: none; } }
+
+  .nc-slab { display: block; width: 100%; height: auto; margin-top: -0.5rem; overflow: visible; }
+  .nc-slab .zone { transition: opacity .55s var(--expo), fill .55s var(--expo); }
+  .nc-slab .zone-fill { opacity: 0; }
+  .nc-slab .zone.is-on .zone-fill { opacity: 1; }
+  .nc-slab .zone-line { stroke: var(--nc-steel-2); stroke-width: 1; transition: stroke .55s var(--expo); }
+  .nc-slab .zone.is-on .zone-line { stroke: var(--nc-red); }
+  .nc-slab .zone-label { font-family: 'DINPro', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1.6px; fill: var(--nc-mid); transition: fill .55s var(--expo); }
+  .nc-slab .zone.is-on .zone-label { fill: var(--nc-white); }
+  .nc-slab .tick { stroke: var(--nc-steel); stroke-width: 1; transition: stroke .55s var(--expo); }
+  .nc-slab .zone.is-on .tick { stroke: var(--nc-red-dim); }
+  /* Capilares: se dibujan cuando Sodium está activo */
+  .nc-slab .cap { stroke: var(--nc-steel-2); stroke-width: 1.1; fill: none; stroke-linecap: round; stroke-dasharray: 200; stroke-dashoffset: 200; transition: stroke-dashoffset 1.1s var(--expo), stroke .55s var(--expo); }
+  .nc-slab .zone.is-on .cap { stroke: rgba(229,22,30,0.55); stroke-dashoffset: 0; }
+  /* Gotas: bordonean cuando Lock está activo */
+  .nc-slab .drop { fill: none; stroke: var(--nc-steel-2); stroke-width: 1.2; transition: stroke .55s var(--expo), transform .7s var(--expo); transform-box: fill-box; transform-origin: center bottom; }
+  .nc-slab .zone.is-on .drop { stroke: var(--nc-red-hot); transform: translateY(-4px) scale(1.12); }
+  /* Brillo: barrido sobre la película cuando Finish está activo */
+  .nc-slab .gloss { opacity: 0; }
+  .nc-slab .zone.is-on .gloss { opacity: 1; animation: nc-gloss 3.4s var(--expo) infinite; }
+  @keyframes nc-gloss { 0% { transform: translateX(-70px); opacity: 0; } 25% { opacity: .85; } 60%, 100% { transform: translateX(440px); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .nc-slab .zone.is-on .gloss { animation: none; opacity: .5; } .nc-slab .cap { transition: none; } }
+  /* Línea de penetración: se dibuja hasta la profundidad del reactivo activo */
+  .nc-slab .drip { stroke: var(--nc-red); stroke-width: 1.2; stroke-dasharray: 260; stroke-dashoffset: 260; transition: stroke-dashoffset .95s var(--expo); }
+  .nc-slab .drip-head { fill: var(--nc-red-hot); transition: transform .95s var(--expo); transform-box: view-box; }
+  /* Profundidad de penetración por reactivo (recorrido de 0 a 260 unidades) */
+  .nc-stage[data-active="fi"] .drip { stroke-dashoffset: 156; }
+  .nc-stage[data-active="fi"] .drip-head { transform: translateY(104px); }
+  .nc-stage[data-active="lo"] .drip { stroke-dashoffset: 118; }
+  .nc-stage[data-active="lo"] .drip-head { transform: translateY(142px); }
+  .nc-stage[data-active="so"] .drip { stroke-dashoffset: 10; }
+  .nc-stage[data-active="so"] .drip-head { transform: translateY(250px); }
+  .nc-slab .substrate { fill: rgba(255,255,255,0.018); stroke: var(--nc-steel); stroke-width: 1; }
+  .nc-slab .grain { fill: var(--nc-steel-2); }
+
+  .nc-cycle { display: flex; align-items: center; gap: 0.8rem; margin-top: 1.4rem; font-family: var(--font-m); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--nc-mid); }
+  .nc-cycle-bar { flex: 1; height: 1px; background: var(--nc-steel); position: relative; overflow: hidden; }
+  .nc-cycle-bar i { position: absolute; inset: 0 auto 0 0; width: 100%; background: var(--nc-red-dim); transform: scaleX(0); transform-origin: left; }
+  .nc-cycle.is-running .nc-cycle-bar i { animation: nc-prog 5s linear infinite; }
+  @keyframes nc-prog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  /* — Badge de elemento en los pasos — */
+  .s3-el-badge { display: inline-flex; align-items: baseline; gap: 0.5rem; margin-top: 0.9rem; padding: 0.3rem 0.65rem; border: 1px solid var(--nc-steel-2); }
+  .s3-el-badge b { font-family: var(--font-d); font-weight: 900; font-size: 0.95rem; color: var(--nc-red-hot); letter-spacing: 0.01em; }
+  .s3-el-badge span { font-family: var(--font-m); font-size: 0.52rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--nc-ash); }
+
   /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 900px) {
+    .nc-eq { grid-template-columns: 1fr; }
+    .nc-op { padding: 0.6rem 0; border-left: 0; border-right: 0; border-top: 1px solid var(--nc-steel); border-bottom: 1px solid var(--nc-steel); }
+    .nc-el { padding: 1.1rem 1.2rem; display: grid; grid-template-columns: auto 1fr; gap: 0 1.2rem; align-items: center; }
+    .nc-el-n { grid-column: 2; }
+    .nc-el-sym { grid-row: 1 / span 3; grid-column: 1; margin: 0; font-size: 3.1rem; }
+    .nc-el-name { grid-column: 2; }
+    .nc-el-role { grid-column: 2; }
+    .nc-res { border-left: 0; border-top: 1px solid var(--nc-red-dim); padding: 1.3rem 1.2rem; }
+    .nc-res b { font-size: 2.6rem; }
+    .nc-diag { grid-template-columns: 1fr; }
+    .nc-read-p { min-height: 0; }
+    .nc-read-specs div { grid-template-columns: 7rem 1fr; gap: 0.8rem; }
+    .nc-sig { flex-wrap: nowrap; }
+
+    /* En mobile la molécula no compite por espacio: pasa a marca de agua
+       detrás del texto, arriba a la derecha. Sigue iluminándose al tocar. */
+    .s3-hero-grid { grid-template-columns: 1fr; }
+    .nc-mol-wrap { position: absolute; top: 4.5rem; right: -14%; width: 78%; max-width: none; z-index: -1; pointer-events: none; }
+    .nc-mol { opacity: 0.4; }
+  }
   @media (max-width: 900px) {
     .s3-hero { min-height: 92dvh; padding-top: 6rem; }
     .s3-hero-h1 { font-size: clamp(4.2rem, 17.5vw, 5.5rem); }
@@ -237,13 +419,13 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="NewConcret">
     <meta property="og:locale" content="es_AR">
-    <meta property="og:title" content="Sistema 3 Pasos | Protección | NewConcret">
-    <meta property="og:description" content="El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.">
+    <meta property="og:title" content="Fórmula NC · So+Lo+Fi | Protección | NewConcret">
+    <meta property="og:description" content="La Fórmula NC combina Concret Sodium, Lock y Finish: densifica el poro, impermeabiliza y sella el hormigón. Cero polvo, brillo premium y garantía extendida.">
     <meta property="og:url" content="https://newconcret.com/proteccion/">
     <meta property="og:image" content="https://newconcret.com/assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sistema 3 Pasos | Protección | NewConcret">
-    <meta name="twitter:description" content="El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.">
+    <meta name="twitter:title" content="Fórmula NC · So+Lo+Fi | Protección | NewConcret">
+    <meta name="twitter:description" content="La Fórmula NC combina Concret Sodium, Lock y Finish: densifica el poro, impermeabiliza y sella el hormigón. Cero polvo, brillo premium y garantía extendida.">
     <meta name="twitter:image" content="https://newconcret.com/assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp">
     <script type="application/ld+json">
 {
@@ -269,8 +451,8 @@
     {
       "@type": "WebPage",
       "url": "https://newconcret.com/proteccion/",
-      "name": "Sistema 3 Pasos | Protección | NewConcret",
-      "description": "El Sistema 3 Pasos de NewConcret densifica, impermeabiliza y sella el hormigón: protección extrema, cero polvo y brillo premium, con 25 años de garantía extensibles de por vida.",
+      "name": "Fórmula NC · So+Lo+Fi | Protección | NewConcret",
+      "description": "La Fórmula NC combina Concret Sodium, Lock y Finish: densifica el poro, impermeabiliza y sella el hormigón. Cero polvo, brillo premium y garantía extendida.",
       "isPartOf": {
         "@id": "https://newconcret.com/#website"
       }
@@ -290,7 +472,18 @@
 <!-- ═══════════ HERO ═══════════ -->
 <section class="s3-hero">
   <div class="s3-hero-bg">
-    <img src="../assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp" alt="Piso de hormigón tratado con el Sistema 3 Pasos NewConcret">
+    <img src="../assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp" alt="Piso de hormigón tratado con la Fórmula NC de NewConcret">
+    <!-- Fondos por elemento. Se cargan al primer contacto con las siglas
+         (data-src) para no penalizar el LCP del hero. -->
+    <div class="s3-hero-alt" data-el="so" aria-hidden="true">
+      <img alt="" data-src="../assets/img/hero/pulido-quimicos-densificadores.webp" data-src-m="../assets/img/hero/pulido-quimicos-densificadores-mobile.webp">
+    </div>
+    <div class="s3-hero-alt" data-el="lo" aria-hidden="true">
+      <img alt="" data-src="../assets/img/hero/pulido-quimicos-impermeabilizantes.webp" data-src-m="../assets/img/hero/pulido-quimicos-impermeabilizantes-mobile.webp">
+    </div>
+    <div class="s3-hero-alt" data-el="fi" aria-hidden="true">
+      <img alt="" data-src="../assets/img/hero/pulido-quimicos-selladores.webp" data-src-m="../assets/img/hero/pulido-quimicos-selladores-mobile.webp">
+    </div>
   </div>
   <div class="s3-hero-ov"></div>
 
@@ -299,10 +492,19 @@
       <div class="s3-hero-grid">
         <div>
           <div class="s3-eyebrow s3-reveal">Sistema de protección</div>
-          <h1 class="s3-hero-h1 s3-reveal" style="--i:1">Sistema<br><span class="red">3 Pasos</span></h1>
-          <p class="s3-hero-p s3-reveal" style="--i:2">Densifica, impermeabiliza y sella el hormigón desde el poro: protección extrema, cero polvo y brillo premium.</p>
-          <div class="s3-hero-acts s3-reveal" style="--i:3">
-            <a href="#pasos" class="s3-btn s3-btn-primary">Ver los pasos
+          <h1 class="s3-hero-h1 s3-reveal" style="--i:1">Fórmula<br><span class="red">NC</span></h1>
+          <div class="nc-sig s3-reveal" style="--i:2" role="group" aria-label="Fórmula NC: Sodium más Lock más Finish">
+            <a class="nc-sig-s" href="#paso-1" data-el="so" aria-label="Concret Sodium, densificador">So</a>
+            <span class="nc-sig-op" aria-hidden="true">+</span>
+            <a class="nc-sig-s" href="#paso-2" data-el="lo" aria-label="Concret Lock, impermeabilizante">Lo</a>
+            <span class="nc-sig-op" aria-hidden="true">+</span>
+            <a class="nc-sig-s" href="#paso-3" data-el="fi" aria-label="Concret Finish, sellador">Fi</a>
+            <span class="nc-sig-eq" aria-hidden="true">=</span>
+            <span class="nc-sig-nc">NC</span>
+          </div>
+          <p class="s3-hero-p s3-reveal" style="--i:3">Tres reactivos que trabajan a tres profundidades del mismo hormigón. Sodium densifica el poro, Lock bloquea el agua, Finish cierra con brillo.</p>
+          <div class="s3-hero-acts s3-reveal" style="--i:4">
+            <a href="#formula" class="s3-btn s3-btn-primary">Ver la fórmula
               <svg viewBox="0 0 13 13" fill="none"><path d="M6.5 2.5v8M3 7l3.5 3.5L10 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path></svg>
             </a>
             <a href="../calculadora/" class="s3-btn s3-btn-ghost">
@@ -312,15 +514,57 @@
             <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="s3-btn s3-btn-ghost">Consultar asesoramiento</a>
           </div>
         </div>
+
+        <!-- Molécula NC: núcleo con tres ramas. Cada rama se ilumina
+             al pasar por su sigla (o por la rama misma). -->
+        <div class="nc-mol-wrap s3-reveal" style="--i:3">
+        <svg class="nc-mol" viewBox="-40 110 560 300" role="img"
+             aria-label="Diagrama de la Fórmula NC: tres ramas, Sodium, Lock y Finish, unidas a un núcleo NC">
+          <!-- Núcleo -->
+          <g class="core">
+            <path class="bond" d="M230 157 L280 186 L280 244 L230 273 L180 244 L180 186 Z"/>
+            <path class="bond" d="M236 172 L265 189"/>
+            <path class="bond" d="M195 241 L224 258"/>
+            <text class="core-lbl" x="230" y="227">NC</text>
+          </g>
+
+          <!-- Rama So · arriba a la izquierda -->
+          <g class="arm" data-el="so">
+            <path class="bond" d="M180 186 L128 156 L80 184"/>
+            <path class="trace" d="M180 186 L128 156 L80 184"/>
+            <circle class="node" cx="128" cy="156" r="5.4"/>
+            <text class="sym" x="42" y="201">So</text>
+            <rect class="hit" x="-30" y="126" width="205" height="100"/>
+          </g>
+
+          <!-- Rama Fi · arriba a la derecha -->
+          <g class="arm" data-el="fi">
+            <path class="bond" d="M280 186 L332 156 L380 184"/>
+            <path class="trace" d="M280 186 L332 156 L380 184"/>
+            <circle class="node" cx="332" cy="156" r="5.4"/>
+            <text class="sym" x="418" y="201">Fi</text>
+            <rect class="hit" x="285" y="126" width="205" height="100"/>
+          </g>
+
+          <!-- Rama Lo · abajo a la derecha -->
+          <g class="arm" data-el="lo">
+            <path class="bond" d="M230 273 L230 325 L278 352"/>
+            <path class="trace" d="M230 273 L230 325 L278 352"/>
+            <circle class="node" cx="230" cy="325" r="5.4"/>
+            <text class="sym" x="324" y="371">Lo</text>
+            <rect class="hit" x="196" y="280" width="200" height="118"/>
+          </g>
+        </svg>
+        </div>
       </div>
     </div>
   </div>
 
   <nav class="s3-hero-strip" aria-label="Etapas del sistema">
-    <a href="#paso-0"><span class="s3-hs-n">00</span><span><span class="s3-hs-name">Concret D</span><span class="s3-hs-role">Preparación</span></span></a>
-    <a href="#paso-1"><span class="s3-hs-n">01</span><span><span class="s3-hs-name">Concret Sodium</span><span class="s3-hs-role">Densificador</span></span></a>
-    <a href="#paso-2"><span class="s3-hs-n">02</span><span><span class="s3-hs-name">Concret Lock</span><span class="s3-hs-role">Impermeabilizante</span></span></a>
-    <a href="#paso-3"><span class="s3-hs-n">03</span><span><span class="s3-hs-name">Concret Finish</span><span class="s3-hs-role">Sellador</span></span></a>
+    <a href="#paso-0"><span class="s3-hs-n">D</span><span><span class="s3-hs-name">Concret D</span><span class="s3-hs-role">Preparación · Paso cero</span></span></a>
+    <a href="#paso-1"><span class="s3-hs-n">So</span><span><span class="s3-hs-name">Concret Sodium</span><span class="s3-hs-role">Densificador</span></span></a>
+    <a href="#paso-2"><span class="s3-hs-n">Lo</span><span><span class="s3-hs-name">Concret Lock</span><span class="s3-hs-role">Impermeabilizante</span></span></a>
+    <a href="#paso-3"><span class="s3-hs-n">Fi</span><span><span class="s3-hs-name">Concret Finish</span><span class="s3-hs-role">Sellador</span></span></a>
   </nav>
 </section>
 
@@ -328,9 +572,9 @@
 <section class="s3-intro">
   <div class="s3-wrap">
     <div class="s3-intro-grid">
-      <h2 class="s3-intro-lead s3-reveal">Excelencia <span class="red">en 3 pasos</span> sobre el hormigón.</h2>
+      <h2 class="s3-intro-lead s3-reveal">Tres reactivos, <span class="red">una sola fórmula</span> sobre el hormigón.</h2>
       <div>
-        <p class="s3-intro-p s3-reveal">El Sistema 3 Pasos actúa sobre la estructura interna del hormigón, no sobre una película superficial. Cada etapa reacciona con la matriz del piso para elevar drásticamente su resistencia estructural y su valor estético, logrando superficies densificadas, de alta dureza y libres de polvo, con propiedades impermeables y oleorrepelentes.</p>
+        <p class="s3-intro-p s3-reveal">La Fórmula NC actúa sobre la estructura interna del hormigón, no sobre una película superficial. Cada reactivo entra a una profundidad distinta y reacciona con la matriz del piso para elevar su resistencia estructural y su valor estético, logrando superficies densificadas, de alta dureza y libres de polvo, con propiedades impermeables y oleorrepelentes.</p>
         <div class="s3-outcomes s3-reveal" style="--i:1">
           <div class="s3-outcome">
             <div class="s3-outcome-k"><i>01 —</i> Densificado</div>
@@ -350,24 +594,157 @@
   </div>
 </section>
 
+<!-- ═══════════ LA FÓRMULA (insignia interactiva So + Lo + Fi) ═══════════ -->
+<section class="s3-sec nc-f" id="formula">
+  <div class="s3-wrap">
+    <div class="s3-sec-head s3-reveal">
+      <div class="s3-eyebrow">La insignia · So + Lo + Fi</div>
+      <h2 class="s3-sec-h2">Anatomía de la <span class="red">Fórmula NC</span></h2>
+      <p class="s3-sec-intro">Ninguno de los tres reactivos hace el trabajo de otro. Cada uno entra a una profundidad distinta del hormigón y deja preparado el terreno para el siguiente. Elegí un elemento para ver dónde actúa.</p>
+    </div>
+
+    <!-- Ecuación interactiva -->
+    <div class="nc-eq s3-reveal" role="tablist" aria-label="Elementos de la Fórmula NC">
+      <button class="nc-el" type="button" role="tab" id="tab-so" aria-controls="nc-readout" aria-selected="true" data-el="so">
+        <span class="nc-el-n">Elemento 01</span>
+        <span class="nc-el-sym" aria-hidden="true">So</span>
+        <span class="nc-el-name">Sodium</span>
+        <span class="nc-el-role">Densificador</span>
+      </button>
+      <div class="nc-op" aria-hidden="true">+</div>
+      <button class="nc-el" type="button" role="tab" id="tab-lo" aria-controls="nc-readout" aria-selected="false" tabindex="-1" data-el="lo">
+        <span class="nc-el-n">Elemento 02</span>
+        <span class="nc-el-sym" aria-hidden="true">Lo</span>
+        <span class="nc-el-name">Lock</span>
+        <span class="nc-el-role">Impermeabilizante</span>
+      </button>
+      <div class="nc-op" aria-hidden="true">+</div>
+      <button class="nc-el" type="button" role="tab" id="tab-fi" aria-controls="nc-readout" aria-selected="false" tabindex="-1" data-el="fi">
+        <span class="nc-el-n">Elemento 03</span>
+        <span class="nc-el-sym" aria-hidden="true">Fi</span>
+        <span class="nc-el-name">Finish</span>
+        <span class="nc-el-role">Sellador</span>
+      </button>
+      <div class="nc-op is-eq" aria-hidden="true">=</div>
+      <div class="nc-res" aria-hidden="true"><b>NC</b><span>Fórmula NewConcret</span></div>
+    </div>
+
+    <!-- Lectura + corte del hormigón -->
+    <div class="nc-diag">
+      <div class="nc-read s3-reveal" id="nc-readout" role="tabpanel" aria-labelledby="tab-so" tabindex="0">
+        <span class="nc-read-k nc-swap" data-slot="k">Elemento 01 · Profundidad de acción</span>
+        <h3 class="nc-read-h nc-swap" data-slot="h">Cierra el poro <b>desde adentro</b></h3>
+        <p class="nc-read-p nc-swap" data-slot="p">Penetra en la red capilar del hormigón y reacciona con la cal libre. La matriz se vuelve más dura y densa en profundidad, no en la superficie: por eso el piso deja de largar polvo de forma definitiva.</p>
+        <dl class="nc-read-specs">
+          <div><dt>Actúa en</dt><dd class="nc-swap" data-slot="s1">Red capilar</dd></div>
+          <div><dt>Efecto</dt><dd class="nc-swap" data-slot="s2">Densificado y endurecido</dd></div>
+          <div><dt>Deja listo para</dt><dd class="nc-swap" data-slot="s3">Concret Lock</dd></div>
+        </dl>
+        <a href="#paso-1" class="s3-btn s3-btn-ghost s3-btn-sm nc-swap" data-slot="cta" style="margin-top: 1.6rem;">
+          Ver el paso completo
+          <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </a>
+        <div class="nc-cycle is-running" id="nc-cycle">
+          <span>Recorrido automático</span>
+          <span class="nc-cycle-bar" aria-hidden="true"><i></i></span>
+        </div>
+      </div>
+
+      <div class="nc-stage s3-reveal" id="nc-stage" data-active="so" style="--i:1">
+        <div class="nc-bottles">
+          <img class="nc-bot is-on" data-el="so" src="../assets/img/productos/sodium-5-l-1778605845082.webp" alt="Bidón de Concret Sodium" loading="lazy" width="1024" height="1024">
+          <img class="nc-bot" data-el="lo" src="../assets/img/productos/lock-5l-1778606821609.webp" alt="Bidón de Concret Lock" loading="lazy" width="1024" height="1024">
+          <img class="nc-bot" data-el="fi" src="../assets/img/productos/finish-5l-1778606979003.webp" alt="Bidón de Concret Finish" loading="lazy" width="1024" height="1024">
+        </div>
+
+        <svg class="nc-slab" viewBox="0 0 560 400" role="img" aria-label="Corte transversal del hormigón mostrando la profundidad de acción de cada reactivo">
+          <defs>
+            <clipPath id="nc-clip-film"><rect x="30" y="95" width="370" height="21"/></clipPath>
+            <linearGradient id="nc-gloss-g" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#F4F4F2" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#F4F4F2" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#F4F4F2" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Línea de penetración del reactivo activo -->
+          <line class="drip" x1="215" y1="0" x2="215" y2="260"/>
+          <circle class="drip-head" cx="215" cy="0" r="3"/>
+
+          <!-- Cuerpo del hormigón -->
+          <rect class="substrate" x="30" y="95" width="370" height="285"/>
+          <g class="grain" opacity="0.9">
+            <circle cx="78" cy="205" r="2.4"/><circle cx="150" cy="255" r="3.1"/><circle cx="235" cy="196" r="2"/>
+            <circle cx="312" cy="240" r="2.7"/><circle cx="358" cy="300" r="2.2"/><circle cx="112" cy="330" r="2.9"/>
+            <circle cx="196" cy="312" r="2.1"/><circle cx="272" cy="352" r="2.5"/><circle cx="62" cy="272" r="1.9"/>
+            <circle cx="334" cy="180" r="1.8"/>
+          </g>
+
+          <!-- ZONA Sodium · red capilar -->
+          <g class="zone is-on" data-zone="so">
+            <rect class="zone-fill" x="30" y="165" width="370" height="165" fill="rgba(229,22,30,0.10)"/>
+            <path class="cap" d="M72 165 q10 32 -3 60 q-12 28 4 56 q9 20 1 40"/>
+            <path class="cap" d="M126 165 q-11 30 2 58 q13 30 -3 56 q-8 18 0 36"/>
+            <path class="cap" d="M188 165 q12 28 0 56 q-13 30 3 58 q9 20 -1 38"/>
+            <path class="cap" d="M252 165 q-10 34 3 62 q12 26 -4 54 q-7 16 1 34"/>
+            <path class="cap" d="M314 165 q11 30 -2 58 q-12 28 4 56 q8 18 -1 38"/>
+            <path class="cap" d="M366 165 q-12 32 1 60 q13 28 -3 54 q-7 16 1 32"/>
+            <line class="zone-line" x1="30" y1="165" x2="400" y2="165"/>
+            <line class="tick" x1="402" y1="248" x2="414" y2="248"/>
+            <text class="zone-label" x="418" y="252">Red capilar</text>
+          </g>
+
+          <!-- ZONA Lock · poro superficial -->
+          <g class="zone" data-zone="lo">
+            <rect class="zone-fill" x="30" y="116" width="370" height="49" fill="rgba(229,22,30,0.14)"/>
+            <path class="drop" d="M92 95 a13 13 0 0 1 26 0 z"/>
+            <path class="drop" d="M258 95 a10 10 0 0 1 20 0 z"/>
+            <path class="drop" d="M336 95 a15 15 0 0 1 30 0 z"/>
+            <line class="zone-line" x1="30" y1="116" x2="400" y2="116"/>
+            <line class="tick" x1="402" y1="141" x2="414" y2="141"/>
+            <text class="zone-label" x="418" y="145">Poro superficial</text>
+          </g>
+
+          <!-- ZONA Finish · película -->
+          <g class="zone" data-zone="fi">
+            <rect class="zone-fill" x="30" y="95" width="370" height="21" fill="rgba(229,22,30,0.20)"/>
+            <g clip-path="url(#nc-clip-film)">
+              <rect class="gloss" x="-30" y="95" width="70" height="21" fill="url(#nc-gloss-g)"/>
+            </g>
+            <line class="zone-line" x1="30" y1="95" x2="400" y2="95"/>
+            <line class="tick" x1="402" y1="105" x2="414" y2="105"/>
+            <text class="zone-label" x="418" y="109">Película</text>
+          </g>
+
+          <!-- Base -->
+          <line x1="30" y1="330" x2="400" y2="330" stroke="#272727" stroke-width="1" stroke-dasharray="3 4"/>
+          <text class="zone-label" x="418" y="358" style="fill:#555">Sustrato</text>
+          <line x1="402" y1="354" x2="414" y2="354" stroke="#272727" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ PASOS ═══════════ -->
 <section class="s3-sec s3-steps" id="pasos">
   <div class="s3-wrap">
     <div class="s3-sec-head s3-reveal">
-      <div class="s3-eyebrow">El proceso · 4 etapas</div>
-      <h2 class="s3-sec-h2">Cómo se aplica el <span class="red">sistema</span></h2>
-      <p class="s3-sec-intro">Cada paso prepara el terreno para el siguiente. El orden y los tiempos de reacción son lo que garantiza el resultado: una química que trabaja penetrando el poro, no cubriéndolo.</p>
+      <div class="s3-eyebrow">El proceso · Paso cero + 3 elementos</div>
+      <h2 class="s3-sec-h2">Cómo se aplica la <span class="red">fórmula</span></h2>
+      <p class="s3-sec-intro">Antes de los tres elementos va el paso cero: Concret D deja el sustrato limpio y receptivo. Después, el orden y los tiempos de reacción son lo que garantiza el resultado: una química que trabaja penetrando el poro, no cubriéndolo.</p>
     </div>
 
     <!-- Paso 0 -->
     <article class="s3-step s3-reveal" id="paso-0">
       <div class="s3-step-media">
         <div class="s3-step-visual">
-          <div class="s3-step-num">00</div>
+          <div class="s3-step-num">D</div>
           <img class="s3-step-img" src="../assets/img/productos/concret-d-5-1778606889938.webp" alt="Bidón de Concret D 5 litros" loading="lazy" width="1024" height="1024">
         </div>
         <span class="s3-step-prod">Concret <b>D</b></span>
         <span class="s3-step-role">Preparación · Desengrasante</span>
+        <div class="s3-el-badge"><b>D</b><span>Paso cero · fuera de la fórmula</span></div>
         <a href="../assets/docs/ficha-tcnica-concret-d-1784567245888.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret D">
           <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           Ficha técnica (PDF)
@@ -397,11 +774,12 @@
     <article class="s3-step s3-reveal" id="paso-1">
       <div class="s3-step-media">
         <div class="s3-step-visual">
-          <div class="s3-step-num">01</div>
+          <div class="s3-step-num">So</div>
           <img class="s3-step-img" src="../assets/img/productos/sodium-5-l-1778605845082.webp" alt="Bidón de Concret Sodium 5 litros" loading="lazy" width="1024" height="1024">
         </div>
         <span class="s3-step-prod">Concret <b>Sodium</b></span>
         <span class="s3-step-role">Densificador de alta penetración</span>
+        <div class="s3-el-badge"><b>So</b><span>Elemento 01 de la Fórmula NC</span></div>
         <a href="../assets/docs/ficha-tcnica-concret-sodium-1784567193545.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret Sodium">
           <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           Ficha técnica (PDF)
@@ -431,11 +809,12 @@
     <article class="s3-step s3-reveal" id="paso-2">
       <div class="s3-step-media">
         <div class="s3-step-visual">
-          <div class="s3-step-num">02</div>
+          <div class="s3-step-num">Lo</div>
           <img class="s3-step-img" src="../assets/img/productos/lock-5l-1778606821609.webp" alt="Bidón de Concret Lock 5 litros" loading="lazy" width="1024" height="1024">
         </div>
         <span class="s3-step-prod">Concret <b>Lock</b></span>
         <span class="s3-step-role">Impermeabilizante · Escudo protector</span>
+        <div class="s3-el-badge"><b>Lo</b><span>Elemento 02 de la Fórmula NC</span></div>
         <a href="../assets/docs/ficha-tcnica---new-concret---concret-lock-1778606837774.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret Lock">
           <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           Ficha técnica (PDF)
@@ -465,11 +844,12 @@
     <article class="s3-step s3-reveal" id="paso-3">
       <div class="s3-step-media">
         <div class="s3-step-visual">
-          <div class="s3-step-num">03</div>
+          <div class="s3-step-num">Fi</div>
           <img class="s3-step-img" src="../assets/img/productos/finish-5l-1778606979003.webp" alt="Bidón de Concret Finish 5 litros" loading="lazy" width="1024" height="1024">
         </div>
         <span class="s3-step-prod">Concret <b>Finish</b></span>
         <span class="s3-step-role">Sellador de altos sólidos</span>
+        <div class="s3-el-badge"><b>Fi</b><span>Elemento 03 de la Fórmula NC</span></div>
         <a href="../assets/docs/ficha-tcnica-concret-finish-1784567219919.pdf" target="_blank" download class="s3-btn s3-btn-ghost s3-btn-sm s3-btn-ficha" aria-label="Descargar ficha técnica de Concret Finish">
           <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           Ficha técnica (PDF)
@@ -502,7 +882,7 @@
   <div class="s3-wrap">
     <div class="s3-system-actions s3-reveal" style="display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; justify-content: space-between;">
       <div>
-        <h3 style="font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 1.3rem; color: var(--nc-white); margin: 0 0 0.4rem;">Sistema 3 Pasos completo</h3>
+        <h3 style="font-family: var(--font-d); font-weight: 800; text-transform: uppercase; font-size: 1.3rem; color: var(--nc-white); margin: 0 0 0.4rem;">Fórmula NC completa</h3>
         <p style="font-family: var(--font-b); font-size: 0.92rem; color: var(--nc-ash); margin: 0;">Descargá la ficha técnica unificada o adquirí el sistema en nuestra tienda oficial.</p>
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: 0.9rem;">
@@ -526,10 +906,10 @@
       <div class="s3-eyebrow">El círculo virtuoso</div>
     </div>
     <div class="s3-flow-track s3-reveal" style="--i:1">
-      <div class="s3-flow-node"><b>00</b><span class="n">Preparación</span><p>Concret D elimina contaminantes y abre los poros para recibir el tratamiento.</p></div>
-      <div class="s3-flow-node"><b>01</b><span class="n">Densificación</span><p>Concret Sodium endurece la estructura y detiene el polvo para siempre.</p></div>
-      <div class="s3-flow-node"><b>02</b><span class="n">Impermeabilización</span><p>Concret Lock crea la barrera hidrofóbica y oleofóbica que protege la inversión.</p></div>
-      <div class="s3-flow-node"><b>03</b><span class="n">Sellado</span><p>Concret Finish aporta el brillo premium y facilita el mantenimiento posterior.</p></div>
+      <div class="s3-flow-node"><b>D</b><span class="n">Preparación</span><p>Concret D elimina contaminantes y abre los poros para recibir la fórmula.</p></div>
+      <div class="s3-flow-node"><b>So</b><span class="n">Densificación</span><p>Concret Sodium endurece la estructura y detiene el polvo para siempre.</p></div>
+      <div class="s3-flow-node"><b>Lo</b><span class="n">Impermeabilización</span><p>Concret Lock crea la barrera hidrofóbica y oleofóbica que protege la inversión.</p></div>
+      <div class="s3-flow-node"><b>Fi</b><span class="n">Sellado</span><p>Concret Finish aporta el brillo premium y facilita el mantenimiento posterior.</p></div>
     </div>
   </div>
 </section>
@@ -539,7 +919,7 @@
   <div class="s3-wrap">
     <div class="s3-sec-head s3-reveal">
       <div class="s3-eyebrow">Ventajas</div>
-      <h2 class="s3-sec-h2">Por qué elegir el <span class="red">Sistema 3 Pasos</span></h2>
+      <h2 class="s3-sec-h2">Por qué elegir la <span class="red">Fórmula NC</span></h2>
     </div>
     <div class="s3-why-grid s3-reveal">
       <div class="s3-why-item"><div class="s3-why-n">01</div><div><div class="s3-why-t">Alta rentabilidad</div><div class="s3-why-d">Optimiza costos operativos y maximiza la vida útil del hormigón.</div></div></div>
@@ -565,7 +945,7 @@
         <div class="s3-war-note">Con posibilidad de extenderla de por vida</div>
       </div>
       <div class="s3-reveal" style="--i:1">
-        <p class="s3-war-p">Con más de 16 años de rendimiento comprobado, NewConcret respalda el sistema con una de las garantías más extensas de la industria. Durante 25 años desde el tratamiento, la superficie permanece repelente al agua, resistente al polvo, endurecida y resistente a la abrasión. Si algún área dejara de cumplirlo, NewConcret suministra a su costo el sistema para volver a tratarla.</p>
+        <p class="s3-war-p">Con más de 16 años de rendimiento comprobado, NewConcret respalda la fórmula con una de las garantías más extensas de la industria. Durante 25 años desde el tratamiento, la superficie permanece repelente al agua, resistente al polvo, endurecida y resistente a la abrasión. Si algún área dejara de cumplirlo, NewConcret suministra a su costo el sistema para volver a tratarla.</p>
         <div class="s3-cover">
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2s7 3 7 8c0 6-7 12-7 12S5 16 5 10c0-5 7-8 7-8z" stroke-linejoin="round"></path></svg><span>Repelente al agua</span></div>
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20s2-6 8-6 8 6 8 6M12 3v6M9 6h6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Resistente al polvo</span></div>
@@ -574,7 +954,7 @@
         </div>
         <div class="s3-war-extend">
           <b>De 25 años a de por vida</b>
-          <p>Manteniendo el piso con Concret D, la garantía de 25 años se extiende a una garantía de por vida. El uso de químicos ajenos al sistema anula la cobertura técnica.</p>
+          <p>Manteniendo el piso con Concret D, la garantía de 25 años se extiende a una garantía de por vida. El uso de químicos ajenos a la fórmula anula la cobertura técnica.</p>
         </div>
         <div style="margin-top: 1.8rem;">
           <a href="../assets/docs/sistema-3-pasos-nc-garantia.pdf" target="_blank" download class="s3-btn s3-btn-ghost">
@@ -593,7 +973,7 @@
     <div class="s3-maint-grid">
       <div class="s3-reveal">
         <div class="s3-eyebrow">Cuidado a largo plazo</div>
-        <h2 class="s3-maint-h" style="margin-top: 1.3rem;">El mantenimiento <span class="red">preserva el sistema</span></h2>
+        <h2 class="s3-maint-h" style="margin-top: 1.3rem;">El mantenimiento <span class="red">preserva la fórmula</span></h2>
         <p class="s3-maint-p">Resistencia no es indestructibilidad. El cuidado diario con Concret D mantiene el brillo, protege el sellado y es lo que extiende la garantía de por vida. Un plan de limpieza frecuente es significativamente más eficiente y económico que una restauración profunda.</p>
         <p class="s3-maint-p">Ver la <a href="../mantenimiento/productos-quimicos/desengrasantes/" class="s3-inline-link">gama de mantenimiento y desengrasantes</a> recomendada para conservar el piso.</p>
         <div style="margin-top: 1.8rem;">
@@ -627,20 +1007,20 @@
     </div>
     <div class="s3-faq-list s3-reveal">
       <div class="s3-faq-item">
-        <button class="s3-faq-q" type="button">¿Puedo aplicar el sistema sobre hormigón viejo?<span class="s3-faq-ic"></span></button>
-        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Sí. El sistema es ideal tanto para obras nuevas como para la restauración de pisos existentes. En hormigones antiguos, el Paso 0 (Concret D) y el Paso 1 (Concret Sodium) son críticos para recuperar la dureza perdida y detener el desprendimiento de polvo.</p></div></div>
+        <button class="s3-faq-q" type="button">¿Puedo aplicar la fórmula sobre hormigón viejo?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Sí. La Fórmula NC es ideal tanto para obras nuevas como para la restauración de pisos existentes. En hormigones antiguos, el paso cero (Concret D) y el elemento So (Concret Sodium) son críticos para recuperar la dureza perdida y detener el desprendimiento de polvo.</p></div></div>
       </div>
       <div class="s3-faq-item">
-        <button class="s3-faq-q" type="button">¿Cuánto debo esperar entre cada paso?<span class="s3-faq-ic"></span></button>
-        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Entre el Paso 0 y 1, la superficie debe estar visualmente seca. Entre el 1 y el 2 se recomienda esperar a que el densificador haya reaccionado y secado (aprox. 4 horas según el clima). Entre el 2 y el 3, el impermeabilizante debe haber penetrado totalmente. Para habilitar tránsito pesado o derrame de líquidos, se recomienda un curado total de 24 horas.</p></div></div>
+        <button class="s3-faq-q" type="button">¿Cuánto debo esperar entre cada elemento?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Entre el paso cero y So, la superficie debe estar visualmente seca. Entre So y Lo se recomienda esperar a que el densificador haya reaccionado y secado (aprox. 4 horas según el clima). Entre Lo y Fi, el impermeabilizante debe haber penetrado totalmente. Para habilitar tránsito pesado o derrame de líquidos, se recomienda un curado total de 24 horas.</p></div></div>
       </div>
       <div class="s3-faq-item">
         <button class="s3-faq-q" type="button">¿Qué pasa si uso un desengrasante común en lugar de Concret D?<span class="s3-faq-ic"></span></button>
-        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Los limpiadores domésticos o neutros no tienen la Tecnología DPA necesaria para encapsular grasas en superficies porosas. Además, muchos contienen sulfatos o ácidos que opacan el brillo del sistema y degradan el sellado de Concret Finish.</p></div></div>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>Los limpiadores domésticos o neutros no tienen la Tecnología DPA necesaria para encapsular grasas en superficies porosas. Además, muchos contienen sulfatos o ácidos que opacan el brillo de la fórmula y degradan el sellado de Concret Finish.</p></div></div>
       </div>
       <div class="s3-faq-item">
-        <button class="s3-faq-q" type="button">¿El sistema hace que el piso sea resbaladizo?<span class="s3-faq-ic"></span></button>
-        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>No. A diferencia de las ceras tradicionales que crean una película gruesa, el sistema trabaja penetrando el poro. El Paso 3 (Concret Finish) mejora la tracción y la suavidad sin comprometer la seguridad del tránsito peatonal.</p></div></div>
+        <button class="s3-faq-q" type="button">¿La fórmula hace que el piso sea resbaladizo?<span class="s3-faq-ic"></span></button>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>No. A diferencia de las ceras tradicionales que crean una película gruesa, la fórmula trabaja penetrando el poro. El elemento Fi (Concret Finish) mejora la tracción y la suavidad sin comprometer la seguridad del tránsito peatonal.</p></div></div>
       </div>
       <div class="s3-faq-item">
         <button class="s3-faq-q" type="button">¿Con qué frecuencia debo reaplicar los productos?<span class="s3-faq-ic"></span></button>
@@ -648,7 +1028,7 @@
       </div>
       <div class="s3-faq-item">
         <button class="s3-faq-q" type="button">¿Cómo se activa la garantía?<span class="s3-faq-ic"></span></button>
-        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>La garantía se activa al demostrar el uso integral del sistema (Pasos 0 al 3) y el mantenimiento exclusivo con Concret D. El uso de químicos ajenos a NewConcret anula la cobertura técnica.</p></div></div>
+        <div class="s3-faq-a"><div class="s3-faq-a-inner"><p>La garantía se activa al demostrar el uso integral de la Fórmula NC (paso cero más So, Lo y Fi) y el mantenimiento exclusivo con Concret D. El uso de químicos ajenos a NewConcret anula la cobertura técnica.</p></div></div>
       </div>
     </div>
   </div>
@@ -691,6 +1071,179 @@
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (e) { obs.observe(e); });
+  })();
+
+  /* ── Hero dinámico · siglas ↔ molécula ↔ fondo ──
+     Al pasar por So / Lo / Fi se ilumina su rama de la molécula y el fondo
+     del hero cruza al de la categoría correspondiente. Las ramas del SVG
+     son el mismo control, así que funciona en los dos sentidos. */
+  (function () {
+    var hero = document.querySelector('.s3-hero');
+    if (!hero) return;
+
+    var sigs = [].slice.call(hero.querySelectorAll('.nc-sig-s'));
+    var arms = [].slice.call(hero.querySelectorAll('.nc-mol .arm'));
+    var alts = [].slice.call(hero.querySelectorAll('.s3-hero-alt img'));
+    var primed = false, off = null;
+
+    /* Los fondos alternativos se descargan recién al primer contacto,
+       para no competir con el LCP del hero. */
+    function prime() {
+      if (primed) return;
+      primed = true;
+      var small = window.matchMedia('(max-width: 900px)').matches;
+      alts.forEach(function (img) {
+        var src = (small && img.dataset.srcM) ? img.dataset.srcM : img.dataset.src;
+        if (src) img.src = src;
+      });
+    }
+
+    function paint(el) {
+      clearTimeout(off);
+      if (el) hero.dataset.el = el; else delete hero.dataset.el;
+      sigs.forEach(function (s) { s.classList.toggle('is-on', s.dataset.el === el); });
+      arms.forEach(function (a) { a.classList.toggle('is-on', a.dataset.el === el); });
+    }
+    /* Pequeño retardo al salir: evita parpadeos al cruzar de una sigla a otra */
+    function release() { off = setTimeout(function () { paint(null); }, 220); }
+
+    function wire(node) {
+      var el = node.dataset.el;
+      node.addEventListener('pointerenter', function () { prime(); paint(el); });
+      node.addEventListener('pointerleave', release);
+      node.addEventListener('focus', function () { prime(); paint(el); });
+      node.addEventListener('blur', release);
+    }
+    sigs.forEach(wire);
+    arms.forEach(wire);
+
+    /* Precarga ociosa por si nadie pasa por las siglas */
+    var idle = window.requestIdleCallback || function (fn) { return setTimeout(fn, 2500); };
+    idle(prime);
+  })();
+
+  /* ── Fórmula NC · selector de elementos So / Lo / Fi ──
+     Pinta la ecuación, el bidón activo y la zona del corte transversal.
+     Recorre los tres solo, se pasa a manual en cuanto el usuario interviene. */
+  (function () {
+    var stage = document.getElementById('nc-stage');
+    var readout = document.getElementById('nc-readout');
+    if (!stage || !readout) return;
+
+    var tabs = [].slice.call(document.querySelectorAll('.nc-el'));
+    var bottles = [].slice.call(stage.querySelectorAll('.nc-bot'));
+    var zones = [].slice.call(stage.querySelectorAll('.zone'));
+    var cycle = document.getElementById('nc-cycle');
+    var cycleLabel = cycle ? cycle.querySelector('span') : null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var DATA = {
+      so: {
+        k: 'Elemento 01 · Profundidad de acción',
+        h: 'Cierra el poro <b>desde adentro</b>',
+        p: 'Penetra en la red capilar del hormigón y reacciona con la cal libre. La matriz se vuelve más dura y densa en profundidad, no en la superficie: por eso el piso deja de largar polvo de forma definitiva.',
+        s1: 'Red capilar', s2: 'Densificado y endurecido', s3: 'Concret Lock', cta: '#paso-1'
+      },
+      lo: {
+        k: 'Elemento 02 · Profundidad de acción',
+        h: 'Bloquea el agua <b>sin tapar el poro</b>',
+        p: 'Sobre el hormigón ya densificado, Lock ocupa el poro superficial y levanta una barrera hidrofóbica y oleorrepelente. El agua y los aceites quedan arriba; el vapor del sustrato sigue saliendo, así no aparecen ampollamientos.',
+        s1: 'Poro superficial', s2: 'Barrera hidro y oleorrepelente', s3: 'Concret Finish', cta: '#paso-2'
+      },
+      fi: {
+        k: 'Elemento 03 · Profundidad de acción',
+        h: 'Cierra la superficie <b>con brillo</b>',
+        p: 'Una película de altos sólidos apoyada sobre los dos reactivos anteriores. Aporta el efecto espejo, suaviza el tacto y funciona como capa de sacrificio: el tránsito desgasta el Finish antes que al hormigón.',
+        s1: 'Superficie', s2: 'Sellado de altos sólidos', s3: 'Mantenimiento con Concret D', cta: '#paso-3'
+      }
+    };
+    var ORDER = ['so', 'lo', 'fi'];
+    var current = 'so';
+    var auto = !reduce;
+    var tick = null, resume = null, swap = null, visible = true;
+
+    function fill(key) {
+      var d = DATA[key];
+      readout.querySelector('[data-slot="k"]').textContent = d.k;
+      readout.querySelector('[data-slot="h"]').innerHTML = d.h;
+      readout.querySelector('[data-slot="p"]').textContent = d.p;
+      readout.querySelector('[data-slot="s1"]').textContent = d.s1;
+      readout.querySelector('[data-slot="s2"]').textContent = d.s2;
+      readout.querySelector('[data-slot="s3"]').textContent = d.s3;
+      readout.querySelector('[data-slot="cta"]').setAttribute('href', d.cta);
+    }
+
+    function select(key, moveFocus) {
+      if (!DATA[key] || key === current) return;
+      current = key;
+
+      tabs.forEach(function (t) {
+        var on = t.dataset.el === key;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (on) {
+          readout.setAttribute('aria-labelledby', t.id);
+          if (moveFocus) t.focus();
+        }
+      });
+      bottles.forEach(function (b) { b.classList.toggle('is-on', b.dataset.el === key); });
+      zones.forEach(function (z) { z.classList.toggle('is-on', z.dataset.zone === key); });
+      stage.dataset.active = key;
+
+      readout.classList.add('is-swapping');
+      clearTimeout(swap);
+      swap = setTimeout(function () {
+        fill(key);
+        readout.classList.remove('is-swapping');
+      }, 300);
+    }
+
+    /* Recorrido automático — solo mientras la sección está a la vista */
+    function startAuto() {
+      stopAuto();
+      if (!auto || !visible) return;
+      if (cycle) { cycle.classList.remove('is-running'); void cycle.offsetWidth; cycle.classList.add('is-running'); }
+      if (cycleLabel) cycleLabel.textContent = 'Recorrido automático';
+      tick = setInterval(function () {
+        select(ORDER[(ORDER.indexOf(current) + 1) % ORDER.length]);
+      }, 5000);
+    }
+    function stopAuto() {
+      clearInterval(tick); tick = null;
+      if (cycle) cycle.classList.remove('is-running');
+    }
+    function goManual() {
+      auto = false;
+      stopAuto();
+      if (cycleLabel) cycleLabel.textContent = 'Modo manual';
+      clearTimeout(resume);
+      resume = setTimeout(function () { auto = !reduce; startAuto(); }, 14000);
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { goManual(); select(t.dataset.el); });
+      t.addEventListener('mouseenter', function () {
+        document.body.classList.add('cur-grow');
+        goManual(); select(t.dataset.el);
+      });
+      t.addEventListener('mouseleave', function () { document.body.classList.remove('cur-grow'); });
+      t.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1
+              : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        goManual();
+        select(ORDER[(i + d + ORDER.length) % ORDER.length], true);
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible) { if (auto) startAuto(); } else { stopAuto(); }
+      }, { threshold: 0.25 }).observe(stage);
+    }
+    startAuto();
   })();
 
   /* FAQ accordion */
