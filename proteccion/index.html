@@ -395,12 +395,17 @@
     .nc-mol-wrap { display: none; }
     .s3-hero-ov::before { display: none; }
 
-    /* Ritmo vertical parejo en lugar de 14 / 16 / 21 / 38 / 32 */
-    .s3-hero-h1 { margin-top: 0.8rem; }
-    .nc-sig { flex-wrap: nowrap; margin-top: 1.15rem; }
-    .nc-sig-s, .nc-sig-nc { font-size: 2.3rem; }
-    .s3-hero-p { margin-top: 1.15rem; }
-    .s3-hero-acts { margin-top: 1.7rem; gap: 0.55rem; }
+    /* Ritmo vertical parejo y compacto */
+    .s3-hero-h1 { margin-top: 0.6rem; }
+    .nc-sig { flex-wrap: nowrap; margin-top: 0.9rem; }
+    .nc-sig-s, .nc-sig-nc { font-size: 2.1rem; }
+    .s3-hero-p { margin-top: 0.9rem; }
+    .s3-hero-acts { margin-top: 1.3rem; gap: 0.5rem; }
+
+    /* El strip pierde la linea de rol: 12 items de texto en 4 celdas era la
+       mayor fuente de densidad del hero. Los roles estan en cada paso. */
+    .s3-hs-role { display: none; }
+    .s3-hero-strip a { padding-top: 0.9rem; padding-bottom: 0.9rem; align-items: center; }
 
     /* Los tres CTA a ancho completo: se leen como filas alineadas y no como
        una escalera de botones de anchos distintos. */
@@ -415,12 +420,11 @@
   @media (max-width: 360px) {
     .s3-hero-strip a { padding-left: 1rem; padding-right: 0.7rem; gap: 0.6rem; }
     .s3-hs-name { font-size: 0.86rem; }
-    .s3-hs-role { font-size: 0.68rem; }
   }
   @media (max-width: 900px) {
-    .s3-hero { min-height: 92dvh; padding-top: 6rem; }
-    .s3-hero-h1 { font-size: clamp(4.2rem, 17.5vw, 5.5rem); }
-    .s3-hero-p { font-size: .95rem; line-height: 1.55; opacity: .75; }
+    .s3-hero { min-height: 92dvh; padding-top: 5rem; }
+    .s3-hero-h1 { font-size: clamp(3.3rem, 14vw, 4.2rem); }
+    .s3-hero-p { font-size: .88rem; line-height: 1.5; opacity: .75; }
     .s3-hero-strip { grid-template-columns: repeat(2, 1fr); }
     .s3-hero-strip a { border-bottom: 1px solid var(--nc-steel); padding: 1.1rem var(--pad); }
     .s3-hero-strip a:nth-child(2) { border-right: none; }
