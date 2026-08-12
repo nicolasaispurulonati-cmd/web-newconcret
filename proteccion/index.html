@@ -405,13 +405,15 @@
     /* El strip pierde la linea de rol: 12 items de texto en 4 celdas era la
        mayor fuente de densidad del hero. Los roles estan en cada paso. */
     .s3-hs-role { display: none; }
-    .s3-hero-strip a { padding-top: 0.9rem; padding-bottom: 0.9rem; align-items: center; }
+    .s3-hero-strip a { align-items: center; }
 
     /* Los tres CTA a ancho completo: se leen como filas alineadas y no como
        una escalera de botones de anchos distintos. */
     /* line-height: 1 evita que la caja de texto de DIN empuje 0.6px de más
        y deja que min-height fije las tres alturas exactamente iguales. */
-    .s3-hero-acts .s3-btn { width: 100%; min-height: 48px; justify-content: flex-start; padding: 1rem 1.2rem; font-size: 0.74rem; letter-spacing: 0.14em; line-height: 1; }
+    /* 44px = minimo tactil de iOS. Con 48 y padding de 1rem las dos losas
+       full-width dominaban la composicion por encima del titular. */
+    .s3-hero-acts .s3-btn { width: 100%; min-height: 44px; justify-content: flex-start; padding: 0.8rem 1.1rem; font-size: 0.72rem; letter-spacing: 0.13em; line-height: 1; }
     .s3-hero-acts .s3-btn-ghost { gap: 0.6rem; }
   }
 
@@ -423,10 +425,10 @@
   }
   @media (max-width: 900px) {
     .s3-hero { min-height: 92dvh; padding-top: 5rem; }
-    .s3-hero-h1 { font-size: clamp(3.3rem, 14vw, 4.2rem); }
+    .s3-hero-h1 { font-size: clamp(3.6rem, 19vw, 5.2rem); }
     .s3-hero-p { font-size: .88rem; line-height: 1.5; opacity: .75; }
     .s3-hero-strip { grid-template-columns: repeat(2, 1fr); }
-    .s3-hero-strip a { border-bottom: 1px solid var(--nc-steel); padding: 1.1rem var(--pad); }
+    .s3-hero-strip a { border-bottom: 1px solid var(--nc-steel); padding: 0.7rem var(--pad); }
     .s3-hero-strip a:nth-child(2) { border-right: none; }
     .s3-intro-grid, .s3-war-grid, .s3-maint-grid { grid-template-columns: 1fr; }
     .s3-step { grid-template-columns: 1fr; gap: 1.2rem; }
@@ -545,7 +547,9 @@
             <span class="nc-sig-eq" aria-hidden="true">=</span>
             <span class="nc-sig-nc">NC</span>
           </div>
-          <p class="s3-hero-p s3-reveal" style="--i:3">Tres reactivos que trabajan a tres profundidades del mismo hormigón. Sodium densifica el poro, Lock bloquea el agua, Finish cierra con brillo.</p>
+          <!-- La segunda frase repite lo que ya dicen el lockup y el strip:
+               se oculta en mobile para bajar el peso del hero. -->
+          <p class="s3-hero-p s3-reveal" style="--i:3">Tres reactivos que trabajan a tres profundidades del mismo hormigón.<span class="hide-mobile"> Sodium densifica el poro, Lock bloquea el agua, Finish cierra con brillo.</span></p>
           <!-- Dos CTA, mismo criterio: ícono siempre a la izquierda del texto. -->
           <div class="s3-hero-acts s3-reveal" style="--i:4">
             <a href="https://wa.me/5492342464082" target="_blank" rel="noopener" class="s3-btn s3-btn-primary">
