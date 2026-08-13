@@ -139,7 +139,44 @@ Si no necesitás atribución, alcanza con el `>` de Markdown, que ya tiene estil
 
 ---
 
-## 7. Tablas
+## 7. Texto + imagen en la misma fila
+
+La imagen queda a la mitad de ancho y acompaña al texto en lugar de cortar la
+lectura. Es la mejor opción cuando la foto ilustra algo puntual de un párrafo.
+
+```html
+<div class="nb-split">
+  <div>
+    <h3>El punto intermedio</h3>
+    <p>Entre esos dos extremos está la terminación <strong>sal y pimienta</strong>:
+    un desbaste algo mayor retira la capa más superficial.</p>
+  </div>
+  <figure>
+    <img src="/assets/img/blog/terminacion-sal-y-pimienta.webp"
+         alt="Piso con terminación sal y pimienta" loading="lazy"
+         width="1100" height="1100">
+    <figcaption>Sal y pimienta</figcaption>
+  </figure>
+</div>
+```
+
+El `<h3>` y el `<figcaption>` son opcionales.
+
+Para alternar el lado y que dos bloques seguidos no queden iguales, agregá
+`nb-split--inv`: la imagen pasa a la izquierda.
+
+```html
+<div class="nb-split nb-split--inv">
+  ...
+</div>
+```
+
+En mobile los dos se apilan en una sola columna y **el texto siempre va primero**,
+incluso en la variante invertida.
+
+---
+
+## 8. Tablas
 
 Las tablas de Markdown ahora tienen estilo propio, así que escribilas normal:
 

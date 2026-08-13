@@ -473,3 +473,20 @@
     .nb-cita p { font-size: 1.25rem; }
     .nb-pasos div { grid-template-columns: 2.2rem 1fr; gap: .9rem; }
 }
+
+/* ── 7. Texto + imagen en la misma fila ── */
+.nb-split { margin: 3rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 2.75rem); align-items: center; }
+.nb-split > div > * + * { margin-top: 1rem; }
+.nb-split > div > :first-child { margin-top: 0; }
+.nb-split h3 { margin-top: 0; }
+.nb-split figure { margin: 0; }
+.nb-split img { width: 100%; max-width: none; height: auto; margin: 0; display: block; }
+.nb-split figcaption { margin-top: .7rem; font-family: var(--font-m); font-size: .56rem; text-transform: uppercase; letter-spacing: .16em; color: var(--nc-ash); }
+/* Variante: la imagen pasa a la izquierda, para alternar entre secciones */
+.nb-split--inv > figure { order: -1; }
+
+@media (max-width: 700px) {
+    .nb-split { grid-template-columns: 1fr; gap: 1.4rem; }
+    /* En una sola columna el texto va primero siempre, sin importar la variante */
+    .nb-split--inv > figure { order: 0; }
+}
