@@ -223,8 +223,9 @@
   .s3-hero[data-el="so"] .s3-hero-alt[data-el="so"],
   .s3-hero[data-el="lo"] .s3-hero-alt[data-el="lo"],
   .s3-hero[data-el="fi"] .s3-hero-alt[data-el="fi"] { opacity: 1; }
-  /* Tinte de acento sobre el overlay mientras hay un elemento activo */
-  .s3-hero-ov::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(193,18,31,0.20) 0%, rgba(193,18,31,0) 55%); opacity: 0; transition: opacity .85s var(--expo); }
+  /* Velo negro sobre el overlay mientras hay un elemento activo: asienta la
+     foto que entra y sostiene la legibilidad del texto. */
+  .s3-hero-ov::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(10,10,10,0.20) 0%, rgba(10,10,10,0) 55%); opacity: 0; transition: opacity .85s var(--expo); }
   .s3-hero[data-el] .s3-hero-ov::after { opacity: 1; }
 
   /* Los CTA del hero apoyan sobre la foto: los ghost llevan fondo negro
