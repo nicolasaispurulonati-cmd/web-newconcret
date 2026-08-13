@@ -4877,38 +4877,7 @@ const productos = [
                 "valor": "Endurece, impermeabiliza y abrillanta"
             }
         ],
-        "rutas": [
-            {
-                "sección": "pulido",
-                "categoría": "",
-                "subcategoría": ""
-            },
-            {
-                "sección": "pulido",
-                "categoría": "productos-quimicos",
-                "subcategoría": ""
-            },
-            {
-                "sección": "pulido",
-                "categoría": "productos-quimicos",
-                "subcategoría": "selladores"
-            },
-            {
-                "sección": "mantenimiento",
-                "categoría": "",
-                "subcategoría": ""
-            },
-            {
-                "sección": "mantenimiento",
-                "categoría": "productos-quimicos",
-                "subcategoría": ""
-            },
-            {
-                "sección": "mantenimiento",
-                "categoría": "productos-quimicos",
-                "subcategoría": "formula-nc"
-            }
-        ],
+        "rutas": [],
         "pdfUrl": "/assets/docs/formula-nc-1784565561209.pdf",
         "visible": true
     },

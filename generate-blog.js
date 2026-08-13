@@ -113,7 +113,7 @@ ${content}
 
     <div id="footer-placeholder"></div>
 
-    <script src="${root}assets/js/layout.js?v=3.5"></script>
+    <script src="${root}assets/js/layout.js?v=3.6"></script>
     <script src="/assets/js/main.js?v=3.0"></script>
     <script src="/assets/js/nav.js?v=3.0"></script>
     <script>

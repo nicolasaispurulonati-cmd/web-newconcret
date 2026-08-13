@@ -209,7 +209,7 @@
       <div class="mob-sub" id="sub-mantenimiento">
         <div class="mob-sub-inner">
           <div><a href="${root}mantenimiento/equipos/" class="mob-grp-title">Equipos</a><ul class="mob-links"><li><a href="${root}mantenimiento/equipos/aspiradoras/">Aspiradoras</a></li><li><a href="${root}mantenimiento/equipos/lustradoras/">Lustradoras <span class="mob-tag">Destacado</span></a></li><li><a href="${root}mantenimiento/equipos/lavasecapisos/">Lavasecapisos</a></li></ul></div>
-          <div><a href="${root}mantenimiento/productos-quimicos/" class="mob-grp-title">Productos químicos</a><ul class="mob-links"><li><a href="${root}proteccion/">Fórmula NC</a></li><li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li></ul></div>
+          <div><a href="${root}mantenimiento/productos-quimicos/" class="mob-grp-title">Productos químicos</a><ul class="mob-links"><li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li><li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li></ul></div>
           <div><a href="${root}mantenimiento/accesorios/" class="mob-grp-title">Accesorios</a><ul class="mob-links"><li><a href="${root}mantenimiento/accesorios/mopas/">Mopas y pulverizadores</a></li><li><a href="${root}mantenimiento/accesorios/panos/">Paños de lustre</a></li></ul></div>
           <a href="${root}mantenimiento/" class="mob-sub-cta">Ver mantenimiento completo <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg></a>
         </div>
@@ -425,7 +425,6 @@
       <div class="mega-col">
         <a href="${root}mantenimiento/productos-quimicos/" class="mega-col-title" style="text-decoration:none;"><span class="mega-col-title-dot"></span>Productos químicos</a>
         <ul class="mega-links">
-          <li><a href="${root}proteccion/">Fórmula NC</a></li>
           <li><a href="${root}mantenimiento/productos-quimicos/selladores/">Selladores</a></li>
           <li><a href="${root}mantenimiento/productos-quimicos/desengrasantes/">Desengrasantes</a></li>
         </ul>
@@ -692,7 +691,7 @@
             { name: 'Lustradoras (mantenimiento)', crumb: 'Mantenimiento › Equipos', tags: ['lustradora','lustradoras','lustrar','brillo','mantenimiento','equipos'], href: root + 'mantenimiento/equipos/lustradoras/', group: 'Mantenimiento' },
             { name: 'Lavasecapisos (mantenimiento)', crumb: 'Mantenimiento › Equipos', tags: ['lavasecapiso','lavasecapisos','lavar','secar','mantenimiento','equipos'], href: root + 'mantenimiento/equipos/lavasecapisos/', group: 'Mantenimiento' },
             { name: 'Productos químicos para mantenimiento', crumb: 'Mantenimiento › Productos químicos', tags: ['quimicos','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/', group: 'Mantenimiento' },
-            { name: 'Fórmula NC', crumb: 'Protección', tags: ['formula','nc','solofi','so','lo','fi','sistema','3 pasos','newconcret','tratamiento','sodium','lock','finish','quimico','proteccion','mantenimiento'], href: root + 'proteccion/', group: 'Protección' },
+            { name: 'Fórmula NC', crumb: 'Protección', tags: ['formula','nc','solofi','so','lo','fi','sistema','3 pasos','newconcret','tratamiento','sodium','lock','finish','quimico','proteccion'], href: root + 'proteccion/', group: 'Protección' },
             { name: 'Selladores (mantenimiento)', crumb: 'Mantenimiento › Productos químicos', tags: ['sellador','selladores','sellar','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/selladores/', group: 'Mantenimiento' },
             { name: 'Desengrasantes', crumb: 'Mantenimiento › Productos químicos', tags: ['desengrasante','desengrasantes','desengrasar','quimico','mantenimiento'], href: root + 'mantenimiento/productos-quimicos/desengrasantes/', group: 'Mantenimiento' },
             { name: 'Accesorios de mantenimiento', crumb: 'Mantenimiento › Accesorios', tags: ['accesorios','mantenimiento'], href: root + 'mantenimiento/accesorios/', group: 'Mantenimiento' },
