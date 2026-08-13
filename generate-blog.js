@@ -100,7 +100,7 @@ function pagina({ title, description, ogImage, canonical, ogType = 'website', js
     <link rel="icon" type="image/x-icon" href="/logos/Favicon.ico">
     <link rel="stylesheet" href="/assets/css/estilo.css?v=43">
     <link rel="stylesheet" href="/assets/css/nav.css?v=2.0">
-    <link rel="stylesheet" href="/assets/css/blog.css?v=2.0">
+    <link rel="stylesheet" href="/assets/css/blog.css?v=2.1">
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
 
@@ -265,6 +265,16 @@ function htmlArticulo(a, todos) {
     const cuerpo  = sanitizeHtml(marked.parse(a.cuerpo_md || ''), SANITIZE);
     const portada = a.portada || '/assets/img/hero/productos.webp';
 
+    // Portada mobile por convención de nombre: si existe <portada>-mobile.<ext>
+    // se usa en pantallas chicas. No es un campo del artículo a propósito: el
+    // panel admin reconstruye el objeto desde una lista fija y lo borraría.
+    const portadaMobile = (() => {
+        const m = portada.match(/^(.*)(\.[a-z0-9]+)$/i);
+        if (!m) return null;
+        const cand = `${m[1]}-mobile${m[2]}`;
+        return fs.existsSync(path.join(__dirname, cand.replace(/^\//, ''))) ? cand : null;
+    })();
+
     const tags = (a.etiquetas || []).length
         ? `        <div class="art-tags">${a.etiquetas.map(t => `<span class="art-tag">#${esc(t)}</span>`).join('')}</div>`
         : '';
@@ -285,7 +295,7 @@ ${relacionados.map(card).join('\n')}
         : '';
 
     const content = `    <article class="art">
-        <header class="art-hero" style="--cover:url('${esc(portada)}')">
+        <header class="art-hero" style="--cover:url('${esc(portada)}')${portadaMobile ? `;--cover-m:url('${esc(portadaMobile)}')` : ''}">
             <div class="art-hero-ov"></div>
             <div class="art-hero-inner">
                 <a class="art-back" href="/blog/">
