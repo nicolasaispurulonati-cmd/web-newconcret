@@ -327,12 +327,13 @@
 .art-body li { margin-top: .55rem; }
 .art-body li::marker { color: var(--nc-red-hot); }
 
+/* Sin borde: la mayoría de las fotos ya vienen sobre fondo oscuro y el marco
+   las recortaba en una caja en lugar de dejarlas integrarse con la página. */
 .art-body img {
     width: 100%;
     max-width: 620px;
     height: auto;
     display: block;
-    border: 1px solid var(--nc-steel);
     margin: 2.5rem auto;
 }
 .art-body blockquote {
@@ -441,7 +442,9 @@
 .nb-pasos strong { display: block; font-family: var(--font-d); font-weight: 700; text-transform: uppercase; font-size: 1rem; letter-spacing: .01em; color: var(--nc-white); margin-bottom: .3rem; }
 
 /* ── 4. Antes y después ── */
-.nb-ab { margin: 2.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--nc-steel); border: 1px solid var(--nc-steel); }
+/* Sin borde exterior, igual que las imágenes sueltas. El gap de 1px sobre el
+   fondo deja solo la costura entre las dos fotos, que sí hace falta. */
+.nb-ab { margin: 2.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--nc-steel); }
 .nb-ab figure { margin: 0; background: var(--nc-black); }
 .nb-ab img { width: 100%; max-width: none; height: auto; margin: 0; border: none; display: block; }
 .nb-ab figcaption { padding: .7rem 1rem; font-family: var(--font-m); font-size: .56rem; text-transform: uppercase; letter-spacing: .16em; color: var(--nc-ash); }
