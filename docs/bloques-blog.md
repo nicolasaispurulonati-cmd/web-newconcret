@@ -83,6 +83,21 @@ Cuando el orden importa y una lista `1. 2. 3.` de Markdown queda pobre.
 </div>
 ```
 
+### Variante línea de tiempo
+
+Para hitos históricos, cambiá el ordinal por un año y agregá `nb-pasos--hito`.
+La columna del número se ensancha para que entren cuatro dígitos.
+
+```html
+<div class="nb-pasos nb-pasos--hito">
+  <div><b>1824</b><p><strong>Joseph Aspdin patenta el cemento Portland</strong>Por
+  primera vez fue posible fabricar un material resistente, uniforme y reproducible
+  a gran escala.</p></div>
+  <div><b>1867</b><p><strong>Joseph Monier y el hormigón armado</strong>Combinó la
+  resistencia a compresión del hormigón con la del acero a tracción.</p></div>
+</div>
+```
+
 ---
 
 ## 4. Antes y después
