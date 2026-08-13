@@ -7,6 +7,13 @@
     { "source": "/newconcret-construccion.html", "destination": "/construccion/", "permanent": true },
     { "source": "/mantenimiento/productos-quimicos/sistema-3-pasos", "destination": "/proteccion/", "permanent": true },
     { "source": "/mantenimiento/productos-quimicos/sistema-3-pasos/", "destination": "/proteccion/", "permanent": true },
+    { "source": "/mantenimiento/productos-quimicos/formula-nc", "destination": "/proteccion/", "permanent": true },
+    { "source": "/mantenimiento/productos-quimicos/formula-nc/", "destination": "/proteccion/", "permanent": true },
+    { "source": "/assets/docs/sistema-3-pasos-nc-1784565561209.pdf", "destination": "/assets/docs/formula-nc-1784565561209.pdf", "permanent": true },
+    { "source": "/assets/docs/sistema-3-pasos-nc-garantia.pdf", "destination": "/assets/docs/formula-nc-garantia.pdf", "permanent": true },
+    { "source": "/assets/docs/sistema-3-pasos-nc-mantenimiento.pdf", "destination": "/assets/docs/formula-nc-mantenimiento.pdf", "permanent": true },
+    { "source": "/assets/img/hero/mantenimiento-quimicos-sistema-3-pasos.webp", "destination": "/assets/img/hero/mantenimiento-quimicos-formula-nc.webp", "permanent": true },
+    { "source": "/assets/img/hero/mantenimiento-quimicos-sistema-3-pasos-mobile.webp", "destination": "/assets/img/hero/mantenimiento-quimicos-formula-nc-mobile.webp", "permanent": true },
     { "source": "/pulido/productos-quimicos/detergentes", "destination": "/pulido/productos-quimicos/desengrasantes/", "permanent": true },
     { "source": "/pulido/productos-quimicos/detergentes/", "destination": "/pulido/productos-quimicos/desengrasantes/", "permanent": true }
   ],

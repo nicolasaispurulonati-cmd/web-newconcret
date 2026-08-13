@@ -72,7 +72,7 @@ const LABELS = {
   'accesorios-amoladora': 'Accesorios de Amoladora', bujardado: 'Bujardado', 'mechas-copa': 'Mechas Copa',
   'puntas-martillo': 'Puntas de Martillo', productos: 'Productos', nosotros: 'Nosotros',
   contacto: 'Contacto', capacitacion: 'Capacitaciones', blog: 'Blog',
-  proteccion: 'Protección', 'sistema-3-pasos': 'Fórmula NC'
+  proteccion: 'Protección', 'formula-nc': 'Fórmula NC'
 };
 
 function label(seg) {

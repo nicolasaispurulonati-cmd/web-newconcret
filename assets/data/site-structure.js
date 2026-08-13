@@ -127,7 +127,7 @@ const NEWCONCRET_STRUCTURE = {
       "productos-quimicos": {
         "label": "Productos químicos",
         "subcategories": [
-          { "slug": "sistema-3-pasos", "label": "Fórmula NC" },
+          { "slug": "formula-nc", "label": "Fórmula NC" },
           { "slug": "selladores", "label": "Selladores" },
           { "slug": "desengrasantes", "label": "Desengrasantes" }
         ]

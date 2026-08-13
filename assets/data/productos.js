@@ -4906,10 +4906,10 @@ const productos = [
             {
                 "sección": "mantenimiento",
                 "categoría": "productos-quimicos",
-                "subcategoría": "sistema-3-pasos"
+                "subcategoría": "formula-nc"
             }
         ],
-        "pdfUrl": "/assets/docs/sistema-3-pasos-nc-1784565561209.pdf",
+        "pdfUrl": "/assets/docs/formula-nc-1784565561209.pdf",
         "visible": true
     },
     {
