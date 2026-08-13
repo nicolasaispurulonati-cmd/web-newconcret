@@ -98,9 +98,9 @@ function pagina({ title, description, ogImage, canonical, ogType = 'website', js
     ${ogImageAbs ? `<meta name="twitter:image" content="${esc(ogImageAbs)}">` : ''}
     ${jsonld ? `<script type="application/ld+json">\n${ldjson(jsonld)}\n    </script>` : ''}
     <link rel="icon" type="image/x-icon" href="/logos/Favicon.ico">
-    <link rel="stylesheet" href="/assets/css/estilo.css?v=40">
-    <link rel="stylesheet" href="/assets/css/nav.css?v=1.3">
-    <link rel="stylesheet" href="/assets/css/blog.css?v=1.6">
+    <link rel="stylesheet" href="/assets/css/estilo.css?v=43">
+    <link rel="stylesheet" href="/assets/css/nav.css?v=2.0">
+    <link rel="stylesheet" href="/assets/css/blog.css?v=1.7">
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
 
@@ -113,8 +113,8 @@ ${content}
 
     <div id="footer-placeholder"></div>
 
-    <script src="${root}assets/js/layout.js"></script>
-    <script src="/assets/js/main.js?v=1.1"></script>
+    <script src="${root}assets/js/layout.js?v=3.5"></script>
+    <script src="/assets/js/main.js?v=3.0"></script>
     <script src="/assets/js/nav.js?v=3.0"></script>
     <script>
         document.documentElement.classList.add('js-loaded');
