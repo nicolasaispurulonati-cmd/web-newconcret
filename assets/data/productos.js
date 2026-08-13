@@ -4869,7 +4869,7 @@ const productos = [
             {
                 "icono": "◉",
                 "clave": "Presentación",
-                "valor": "5 litros por paso"
+                "valor": "5 litros por elemento"
             },
             {
                 "icono": "◉",
