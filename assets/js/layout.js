@@ -955,6 +955,26 @@
     function ncGetConsent() { try { return localStorage.getItem('nc_consent'); } catch (e) { return null; } }
     function ncSetConsent(v) { try { localStorage.setItem('nc_consent', v); } catch (e) {} }
 
+    // Consent Mode: le avisa a GTM qué eligió el visitante. El estado por
+    // defecto se declara inline en el <head> de cada página, antes de que
+    // cargue el contenedor; acá solo se actualiza. Los tags de medición se
+    // gobiernan desde GTM con estas señales, no desde este archivo.
+    function ncConsentSignal(c) {
+        var g = (c === 'all') ? 'granted' : 'denied';
+        window.dataLayer = window.dataLayer || [];
+        if (typeof window.gtag !== 'function') {
+            window.gtag = function () { window.dataLayer.push(arguments); };
+        }
+        window.gtag('consent', 'update', {
+            ad_storage: g,
+            ad_user_data: g,
+            ad_personalization: g,
+            analytics_storage: g
+        });
+        // Trigger disponible en GTM para disparar tags al momento de la elección.
+        window.dataLayer.push({ event: 'nc_consent', nc_consent_state: c || 'unset' });
+    }
+
     function ncLoadYouTube() {
         document.querySelectorAll('iframe.nc-yt[data-src]').forEach(function (f) {
             f.src = f.getAttribute('data-src');
@@ -1006,6 +1026,7 @@
     }
 
     function ncApply(c) {
+        ncConsentSignal(c);
         if (c === 'all') { ncLoadYouTube(); ncLoadAnalytics(); }
         else { ncBuildYTFacades(); }
     }

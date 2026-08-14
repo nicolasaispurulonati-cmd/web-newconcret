@@ -906,7 +906,14 @@ const PAGES = [
 // Google Tag Manager. Después del charset a propósito: la declaración de charset
 // tiene que caer en los primeros 1024 bytes y el snippet mide ~470.
 const GTM_ID = 'GTM-PKMHC975';
-const GTM_HEAD = `<!-- Google Tag Manager -->
+// Consent Mode v2: estado por defecto antes de que arranque el contenedor.
+const GTM_HEAD = `<!-- Consent Mode -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var g='denied';try{if(localStorage.getItem('nc_consent')==='all')g='granted';}catch(e){}
+gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,
+functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
+<!-- End Consent Mode -->
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -987,7 +994,7 @@ ${GTM_BODY}
 ${MODAL}
 
 <div id="footer-placeholder"></div>
-<script src="${p.root}assets/js/layout.js?v=3.6"><\/script>
+<script src="${p.root}assets/js/layout.js?v=3.7"><\/script>
 <script src="${p.root}assets/data/productos.js?v=3.0"><\/script>
 <script>
 const PAGE_SECCION      = '${p.seccion}';

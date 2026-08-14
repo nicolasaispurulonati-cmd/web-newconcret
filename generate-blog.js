@@ -39,7 +39,16 @@ const SANITIZE = {
 // mide ~470. Si se cambia el contenedor, cambiarlo también en las páginas
 // estáticas (no se generan desde acá).
 const GTM_ID = 'GTM-PKMHC975';
-const GTM_HEAD = `    <!-- Google Tag Manager -->
+// Consent Mode v2: el estado por defecto se declara antes de que arranque el
+// contenedor. Lee la elección guardada por el banner (localStorage nc_consent)
+// para que quien ya aceptó no vuelva a empezar denegado en cada página.
+const GTM_HEAD = `    <!-- Consent Mode -->
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    (function(){var g='denied';try{if(localStorage.getItem('nc_consent')==='all')g='granted';}catch(e){}
+    gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,
+    functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
+    <!-- End Consent Mode -->
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -132,7 +141,7 @@ ${content}
 
     <div id="footer-placeholder"></div>
 
-    <script src="${root}assets/js/layout.js?v=3.6"></script>
+    <script src="${root}assets/js/layout.js?v=3.7"></script>
     <script src="/assets/js/main.js?v=3.0"></script>
     <script src="/assets/js/nav.js?v=3.0"></script>
     <script>
