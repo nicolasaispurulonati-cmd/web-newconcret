@@ -993,12 +993,9 @@
     };
 
     // 5. Cookie Consent + Analytics (GDPR / Ley 25.326)
-    // ┌────────────────────────────────────────────────────────────────┐
-    // │  PEGÁ ACÁ TU ID DE GA4 (formato "G-XXXXXXXXXX").                 │
-    // │  Vacío = analítica desactivada. La analítica solo carga tras    │
-    // │  el consentimiento del usuario.                                 │
-    // └────────────────────────────────────────────────────────────────┘
-    window.NC_GA_ID = window.NC_GA_ID || '';
+    // La medición se configura en Google Tag Manager (contenedor GTM-PKMHC975),
+    // que se carga desde el <head> de cada página. Acá no se declara ningún ID
+    // de GA4: el tag vive en GTM y queda gobernado por Consent Mode.
 
     function ncGetConsent() { try { return localStorage.getItem('nc_consent'); } catch (e) { return null; } }
     function ncSetConsent(v) { try { localStorage.setItem('nc_consent', v); } catch (e) {} }
@@ -1033,24 +1030,47 @@
         });
     }
 
-    function ncLoadAnalytics() {
-        if (!window.NC_GA_ID || !/^G-/.test(window.NC_GA_ID) || window.__ncGAloaded) return;
-        window.__ncGAloaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.NC_GA_ID;
-        document.head.appendChild(s);
+    // ── Conversiones: clics a WhatsApp y a la tienda ────────────────────────
+    // Los dos únicos canales de venta. Se empujan al dataLayer y GTM decide qué
+    // hacer con ellos; NO se dispara ninguna medición desde acá.
+    //
+    // Va sin condicionar por consentimiento a propósito: un push al dataLayer no
+    // escribe cookies ni contacta a nadie. Quien mide es el tag dentro de GTM, y
+    // ese sí queda gobernado por Consent Mode. Si se gateara acá, al aceptar
+    // después no habría forma de recuperar el evento.
+    //
+    // Se detecta por href y no con un trigger de clic de GTM para que el patrón
+    // viva en el repo: si cambia el dominio de la tienda o el número, se toca
+    // este archivo y no la interfaz de Tag Manager.
+    var NC_RE_WA = /wa\.link|wa\.me|api\.whatsapp\.com|whatsapp/i;
+    var NC_RE_TIENDA = /tiendalonati\.com\.ar/i;
+
+    function ncTrackConversiones() {
+        if (window.__ncConvOn) return;
+        window.__ncConvOn = true;
         window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { window.dataLayer.push(arguments); };
-        window.gtag('js', new Date());
-        window.gtag('config', window.NC_GA_ID, { anonymize_ip: true });
-        // Conversiones: clics a WhatsApp y a la tienda (único canal de venta)
+
         document.addEventListener('click', function (e) {
             var a = e.target.closest && e.target.closest('a');
             if (!a) return;
             var h = a.href || '';
-            if (/wa\.link|wa\.me|api\.whatsapp\.com|whatsapp/i.test(h)) window.gtag('event', 'whatsapp_click', { link_url: h });
-            else if (/tiendalonati\.com\.ar/i.test(h)) window.gtag('event', 'store_click', { link_url: h });
+            var evento = NC_RE_WA.test(h) ? 'whatsapp_click'
+                       : NC_RE_TIENDA.test(h) ? 'store_click'
+                       : null;
+            if (!evento) return;
+
+            window.dataLayer.push({
+                event: evento,
+                link_url: h,
+                // El botón flotante no tiene texto, solo el ícono: cae al aria-label
+                // para que en los informes no aparezca una fila vacía.
+                link_texto: ((a.textContent || '').replace(/\s+/g, ' ').trim() ||
+                             a.getAttribute('aria-label') || '').slice(0, 80),
+                // Distingue el botón flotante de los CTA del contenido, que es
+                // lo que después permite saber cuál de los dos convierte.
+                origen: a.id === 'nc-wa' ? 'boton-flotante' : 'contenido',
+                pagina: location.pathname
+            });
         }, true);
     }
 
@@ -1075,8 +1095,8 @@
 
     function ncApply(c) {
         ncConsentSignal(c);
-        if (c === 'all') { ncLoadYouTube(); ncLoadAnalytics(); }
-        else { ncBuildYTFacades(); }
+        if (c === 'all') ncLoadYouTube();
+        else ncBuildYTFacades();
     }
 
     function ncShowBanner() {
@@ -1138,6 +1158,7 @@
         // está visible, en lugar de aparecer abajo y saltar un instante después.
         initConsent();
         ncInjectWhatsApp();
+        ncTrackConversiones();
         // El banner cambia de alto al reflowear el texto en pantallas angostas.
         window.addEventListener('resize', ncAjustarPorBanner);
     }

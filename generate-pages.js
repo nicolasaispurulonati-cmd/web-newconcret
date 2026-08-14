@@ -994,7 +994,7 @@ ${GTM_BODY}
 ${MODAL}
 
 <div id="footer-placeholder"></div>
-<script src="${p.root}assets/js/layout.js?v=3.9"><\/script>
+<script src="${p.root}assets/js/layout.js?v=4.0"><\/script>
 <script src="${p.root}assets/data/productos.js?v=3.0"><\/script>
 <script>
 const PAGE_SECCION      = '${p.seccion}';
