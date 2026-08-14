@@ -34,6 +34,23 @@ const SANITIZE = {
   }
 };
 
+// Google Tag Manager. Va después del charset a propósito: la declaración de
+// charset tiene que caer en los primeros 1024 bytes del documento y el snippet
+// mide ~470. Si se cambia el contenedor, cambiarlo también en las páginas
+// estáticas (no se generan desde acá).
+const GTM_ID = 'GTM-PKMHC975';
+const GTM_HEAD = `    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','${GTM_ID}');</script>
+    <!-- End Google Tag Manager -->`;
+const GTM_BODY = `<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->`;
+
 // JSON-LD seguro (escapa "<" para no romper el <script>).
 const ldjson = obj => JSON.stringify(obj, null, 2).replace(/</g, '\\u003c');
 const absUrl = u => !u ? '' : (/^https?:\/\//.test(u) ? u : DOMAIN + (u.startsWith('/') ? '' : '/') + u);
@@ -81,6 +98,7 @@ function pagina({ title, description, ogImage, canonical, ogType = 'website', js
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+${GTM_HEAD}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(description)}">
@@ -103,6 +121,7 @@ function pagina({ title, description, ogImage, canonical, ogType = 'website', js
     <link rel="stylesheet" href="/assets/css/blog.css?v=2.1">
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
+${GTM_BODY}
 
     <div id="cur"></div>
     <div id="ring"></div>

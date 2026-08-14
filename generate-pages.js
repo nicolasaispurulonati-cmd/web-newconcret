@@ -903,23 +903,40 @@ const PAGES = [
 /* ──────────────────────────────────────
    BUILD FUNCTION
 ────────────────────────────────────── */
+// Google Tag Manager. Después del charset a propósito: la declaración de charset
+// tiene que caer en los primeros 1024 bytes y el snippet mide ~470.
+const GTM_ID = 'GTM-PKMHC975';
+const GTM_HEAD = `<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');</script>
+<!-- End Google Tag Manager -->`;
+const GTM_BODY = `<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->`;
+
 function buildPage(p) {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+${GTM_HEAD}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="${p.metaDesc}">
 <title>${p.title}</title>
 <link rel="icon" type="image/x-icon" href="${p.root}logos/Favicon.ico">
-<link rel="stylesheet" href="${p.root}assets/css/estilo.css?v=40">
-<link rel="stylesheet" href="${p.root}assets/css/nav.css?v=1.3">
+<link rel="stylesheet" href="${p.root}assets/css/estilo.css?v=43">
+<link rel="stylesheet" href="${p.root}assets/css/nav.css?v=2.0">
 <style>
 ${CSS}
 .page-header{margin-top:68px!important;background-image:linear-gradient(rgba(10,10,10,0.7),rgba(10,10,10,0.7)),url('${p.hero}');background-size:cover;background-position:center;}
 </style>
 </head>
 <body>
+${GTM_BODY}
 <div id="cur"></div>
 <div id="ring"></div>
 <div id="nav-placeholder"></div>
