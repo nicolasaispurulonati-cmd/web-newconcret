@@ -527,6 +527,54 @@
 </footer>
 `;
 
+    // ── Botón flotante de WhatsApp ──────────────────────────────────────────
+    // Se inyecta desde acá para que exista en todas las páginas sin tocar los
+    // 82 HTML. Queda por debajo del banner de consentimiento (z-index 99999) y
+    // del cursor propio (999999), y se corre hacia arriba mientras el banner
+    // esté visible para no quedar tapado.
+    const NC_WA = '5492342464082';
+    const NC_WA_TXT = 'Hola, quiero hacer una consulta.';
+
+    function ncInjectWhatsApp() {
+        if (document.getElementById('nc-wa')) return;
+
+        const st = document.createElement('style');
+        st.textContent =
+            // El primer bottom es el respaldo: si algún motor viejo invalida el
+            // calc con env(), queda la posición fija de 24px en lugar de nada.
+            '#nc-wa{position:fixed;right:24px;bottom:24px;' +
+            'bottom:calc(24px + var(--nc-consent-h,0px) + env(safe-area-inset-bottom,0px));' +
+            'z-index:9000;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;' +
+            'background:#25D366;box-shadow:0 6px 20px rgba(0,0,0,.35);text-decoration:none;' +
+            'transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s,bottom .3s cubic-bezier(.16,1,.3,1);}' +
+            '#nc-wa svg{width:31px;height:31px;fill:#fff;display:block;}' +
+            '#nc-wa:hover{background:#1FBE59;transform:translateY(-3px) scale(1.04);}' +
+            '#nc-wa:focus-visible{outline:3px solid var(--nc-white,#F4F4F2);outline-offset:3px;}' +
+            '@media (max-width:900px){#nc-wa{right:18px;bottom:18px;' +
+            'bottom:calc(18px + var(--nc-consent-h,0px) + env(safe-area-inset-bottom,0px));width:54px;height:54px;}' +
+            '#nc-wa svg{width:29px;height:29px;}}' +
+            '@media (prefers-reduced-motion:reduce){#nc-wa{transition:none;}#nc-wa:hover{transform:none;}}';
+        document.head.appendChild(st);
+
+        const a = document.createElement('a');
+        a.id = 'nc-wa';
+        a.href = 'https://wa.me/' + NC_WA + '?text=' + encodeURIComponent(NC_WA_TXT);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.setAttribute('aria-label', 'Escribinos por WhatsApp');
+        a.title = 'Escribinos por WhatsApp';
+        a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15h-.01c-1.52 0-3.02-.41-4.32-1.18l-.31-.18-3.21.84.86-3.13-.2-.32a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24z"/></svg>';
+        document.body.appendChild(a);
+    }
+
+    // El banner de cookies ocupa todo el borde inferior: mientras esté visible,
+    // el botón sube su altura exacta en lugar de quedar tapado.
+    function ncAjustarPorBanner() {
+        const b = document.getElementById('nc-consent');
+        const alto = b ? Math.ceil(b.getBoundingClientRect().height) + 12 : 0;
+        document.documentElement.style.setProperty('--nc-consent-h', alto + 'px');
+    }
+
     // 3. Injection Logic
     function injectLayout() {
         const navTarget = document.getElementById('nav-placeholder') || document.body;
@@ -1044,8 +1092,9 @@
               '</div>' +
             '</div>';
         document.body.appendChild(d);
-        document.getElementById('nc-accept').addEventListener('click', function () { ncSetConsent('all'); d.remove(); ncApply('all'); });
-        document.getElementById('nc-reject').addEventListener('click', function () { ncSetConsent('essential'); d.remove(); ncApply('essential'); });
+        ncAjustarPorBanner();
+        document.getElementById('nc-accept').addEventListener('click', function () { ncSetConsent('all'); d.remove(); ncAjustarPorBanner(); ncApply('all'); });
+        document.getElementById('nc-reject').addEventListener('click', function () { ncSetConsent('essential'); d.remove(); ncAjustarPorBanner(); ncApply('essential'); });
     }
 
     function ncInjectConsentStyles() {
@@ -1083,7 +1132,15 @@
     }
 
     // Execute immediately or on DOM load
-    function ncBoot() { injectLayout(); initConsent(); }
+    function ncBoot() {
+        injectLayout();
+        // Después del consentimiento: así el botón nace ya corrido si el banner
+        // está visible, en lugar de aparecer abajo y saltar un instante después.
+        initConsent();
+        ncInjectWhatsApp();
+        // El banner cambia de alto al reflowear el texto en pantallas angostas.
+        window.addEventListener('resize', ncAjustarPorBanner);
+    }
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', ncBoot);
     } else {
