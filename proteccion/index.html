@@ -35,8 +35,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   #ring { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); }
   body.cur-grow #ring { width: 60px; height: 60px; background: rgba(193,18,31,0.1); border-color: var(--nc-red); }
 
-  .s3 { --pad: clamp(1.25rem, 5vw, 6rem); }
-  .s3-wrap { max-width: 1400px; margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+  /* --pad: solo lo usan las celdas del strip del hero. El minimo sube a
+     1.5rem para que en mobile su texto arranque a la misma altura que el
+     contenido y no 4px antes. */
+  .s3 { --pad: clamp(1.5rem, 5vw, 6rem);
+        /* Inset del contenido, igual que el resto del sitio: las demas paginas
+           usan .page-header{padding:4rem} + .ph-inner{max-width:1400px}, o sea
+           el margen POR FUERA de la columna de 1400. Aca estaba por dentro y el
+           texto quedaba hasta 96px mas adentro que en cualquier otra pagina. */
+        --pad-wrap: 4rem; }
+  .s3-wrap { max-width: calc(1400px + 2 * var(--pad-wrap)); margin: 0 auto;
+             padding-left: var(--pad-wrap); padding-right: var(--pad-wrap); }
 
   /* ── Reveal (IntersectionObserver → .in) ── */
   .s3-reveal { opacity: 0; transform: translateY(30px); transition: opacity .9s var(--expo), transform .9s var(--expo); transition-delay: calc(var(--i, 0) * 85ms); will-change: opacity, transform; }
@@ -389,6 +398,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* ═══ RESPONSIVE ═══ */
   @media (max-width: 900px) {
+    /* El resto del sitio pasa a 1.5rem fijo debajo de 900 (.page-header con
+       padding:1.5rem !important). Sin esto, entre 480 y 900 el contenido de
+       esta pagina quedaba mas adentro que en las demas. */
+    .s3 { --pad-wrap: 1.5rem; }
     .nc-eq { grid-template-columns: 1fr; }
     .nc-op { padding: 0.6rem 0; border-left: 0; border-right: 0; border-top: 1px solid var(--nc-steel); border-bottom: 1px solid var(--nc-steel); }
     .nc-el { padding: 1.1rem 1.2rem; display: grid; grid-template-columns: auto 1fr; gap: 0 1.2rem; align-items: center; }
@@ -451,7 +464,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .s3-hero-h1 { font-size: clamp(3.6rem, 19vw, 5.2rem); }
     .s3-hero-p { font-size: .88rem; line-height: 1.5; opacity: .75; }
     .s3-hero-strip { grid-template-columns: repeat(2, 1fr); }
-    .s3-hero-strip a { border-bottom: 1px solid var(--nc-steel); padding: 0.7rem var(--pad); }
+    /* Debajo de 900 el strip deja de ser 4 columnas y pasa a filas de ancho
+       completo: ahi su texto tiene que arrancar donde arranca el contenido. */
+    .s3-hero-strip a { border-bottom: 1px solid var(--nc-steel); padding: 0.7rem var(--pad-wrap); }
     .s3-hero-strip a:nth-child(2) { border-right: none; }
     .s3-intro-grid, .s3-war-grid, .s3-maint-grid { grid-template-columns: 1fr; }
     .s3-step { grid-template-columns: 1fr; gap: 1.2rem; }
